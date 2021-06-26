@@ -71,8 +71,8 @@ Un petit exemple avec le package `UDpipe`.
 ```{r 71, fig.cap='p', out.width='80%', fig.asp=.75, fig.align='center'}
 
 library(udpipe)
-#fr <- udpipe_download_model(language = "french")
-udmodel_french <- udpipe_load_model(file = "C:/Users/33623/Documents/_bibliographie/MethodologieQuantitative/Chapitre20NLP/_BookdownNLP/NLPR_bookdown/french-gsd-ud-2.5-191206.udpipe")
+fr <- udpipe_download_model(language = "french")
+udmodel_french <- udpipe_load_model(file = "french-gsd-ud-2.5-191206.udpipe")
 Citations <- read_csv("Citations.csv")
 
 Flaubert<-Citations %>%
@@ -87,7 +87,7 @@ flextable(foo)
 ```
 
 
-Les trois première colonne identifient le document, les phrases et les mots. Des lemmes sont proposées. La colonne UPOS donne les part of Speech universel.
+Les trois première colonnes identifient le document, les phrases et les mots. Des lemmes sont proposées. La colonne UPOS donne les part of Speech universel.
 
 
 ## Dépendances syntaxiques
@@ -113,7 +113,7 @@ L'arbre syntaxique est obtenue en analysant les relations entre les termes. Nous
 
 Onn utilise ici une fonction écrite par (bnosac](http://www.bnosac.be/index.php/blog/93-dependency-parsing-with-udpipe) pour donner une représentation graphique de l'arbre.
 
-```{r 72, fig.cap='p', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 72, fig.cap='arbre de dépendance', out.width='80%', fig.asp=.75, fig.align='center'}
 
 plot_annotation <- function(x, size = 3){
   stopifnot(is.data.frame(x) & all(c("doc_id","paragraph_id", "sentence_id", "token_id","token","lemma","head_token_id", "upos","feats", "dep_rel") %in% colnames(x)))
@@ -130,8 +130,7 @@ plot_annotation <- function(x, size = 3){
                   end_cap = ggraph::label_rect("wordswordswords"),
                   label_colour = "red", check_overlap = TRUE, label_size = size) +
     geom_node_label(ggplot2::aes(label = token), col = "darkgreen", size = size, fontface = "bold") +
-    geom_node_text(ggplot2::aes(label = upos), nudge_y = -0.35, size = size) +
-    theme_graph(base_family = "Arial Narrow") +
+    geom_node_text(ggplot2::aes(label = upos), nudge_y = -0.35, size = size)  +
     labs(title = "Tokenisation, PoS & dependency relations")
 }
 
