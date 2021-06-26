@@ -1,0 +1,17 @@
+# Machine learning with text
+
+## simples models
+
+
+### Naives bayes
+
+### elastic net
+
+### RF
+
+## art of featuring
+
+utiliser les plongements
+
+
+

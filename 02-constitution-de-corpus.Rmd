@@ -1,0 +1,143 @@
+# Constitution du corpus
+
+La constitution d'un corpus est la première étape d'un projet NLP. Il se définit d'abord par des méthodes de collecte, ensuite par des techniques d'échantillonnage, et enfin par des techniques de filtrage.
+
+
+## Méthodes de collecte
+
+Un corpus est un ensemble de documents.  Ils peuvent être courts, les tweets, paas trop long - abstract articles court - long ( article de recherche, ou très long ( livres).  
+
+### Les techniques de recueil direct
+
+Ces document sont d'abord obtenus directements
+les entretiens 
+le processus de la transcription
+
+#### La gestion d'un ensemble de documents
+
+
+
+pdftool
+
+
+### L'exploitation de base de données textuelles
+
+Prenons l'exemple de factiva
+
+https://github.com/koheiw/newspapers
+
+
+### Scrapping
+
+De ces deux approches on pourra considérer que la première correspond à un internet sauvage où la collecte d’information se traduit par une technique de chasseurs-cueilleurs, le glanage. Le recours aux APIs est civilisé, ne serait-ce parce qu'on introduit une sorte d’étiquette, des règles de courtoisie, un système de reconnaissance réciproque et d’attribution de droits. 
+Le scraping est l’activité qui consiste à moissonner les informations disponibles sur le net en simulant et en automatisant la lecture par un butineur. Elle consiste à construire un robot capable de lire et d’enregistrer les informations disponibles sous forme html puis à les distribuer (parsing) dans des tableaux structurés, selon une stratégie d’exploration du web préalablement définie.
+De nombreuses ressources sont disponibles, mais pour en rester à r , le package rvest permet de réaliser des extractions simples mais suffisantes pour de nombreux usages. 
+
+Les caractéristiques clés du scraping :
+
+    * La nécessité de programmer de manière ad hoc, en fonction des spécificités de chaque site. 
+    * Des stratégies mécaniques, en boule de neige. 
+    
+
+
+#### Prendre avantage de la structure du html
+
+Le langage html est un langage à balise
+
+Les balises sont la cible du scrapping
+
+
+#### des problèmes pratiques, juridiques et éthiques
+
+La pratique du scrapping se heurte à différents problèmes éthiques et juridique. Si elle n'est pas interdite en tant que telle, elle se confronte à différents droits et principes éthiques
+
+En termes pratiques
+
+ * Le risque de deny of service, c’est à dire de saturer ou de parasiter un système et de s’exposer à ses contre-mesures.
+ * Le risque d'information parcellaires, tronquées, inexactes qui résultent de ces contre-mesures. Les producteurs développent des stratégies moins naives. L'exemple des pages numérotée par ordre de production auxquels on substitue un nombre au hasard pour annihilier l'information temporelle.
+
+En termes de droits Les conditions légales ne sont pas homogènes et relèvent de différents droits : 
+
+ * de la propriété intellectuelle, 
+ * du respect de la vie privée, 
+ * du droit de la concurrence. 
+
+Cependant des facilités et tolérances sont souvent accordées quand c’est dans un objectif de recherche et que des précautions minimales d’anonymisation ou de pseudonymisation sont prises, et que les règles de conservation et de destruction des données sont précisées. 
+    
+En termes éthiques
+
+ * Un principe éthique essentiel dans la recherche, et ailleurs, et de ne pas nuire à la socité dans son ensemble, hors cette technique participe à la “robotisation” du web (plus de 50% du trafic résulterait de la circulation des spiders , scrapers, sniffers et autres bots). 
+ * Elle contribue à la complexification du web, et implique une consommation excessive de ressources energétiques.  
+
+#### rvest avec r
+
+le package rvest
+
+
+### API
+
+Les API doivent être considérées comme la voie normale d'accès à l'information: les requêtes sont reproductibles au moins par les requêtes, les bases visée peuvent varier.
+
+Parmi les contre-mesures, le développement des APIs qui permet un accès contrôlé par le détenteur des informations en échange d’une facilitation de l’accès, et d’une plus grande fiabilité des données.
+
+L’utilisation d’API lève l'ambiguïté légale qui accompagne le scraping est peut ainsi paraître comme plus civilisée. Elle nécessite naturellement que le gestionnaire de la base de données fournissent les moyens de s’identifier et de requêter, elle peut avoir l'inconvénient d’être coûteuse quand l’accès est payant. Elle affirme aussi le pouvoir de ceux qui contrôlent les données. Ces dernières ne sont pas, insuffisamment pour le chercheur, un bien commun.
+
+
+#### Un tour d'horizon des API
+
+La plus part des grande plateformes offrent des API plus ou moins ouvertes
+
+- twitter est celle qu'on utilise dans cet ouvrage
+
+
+#### Un exemple avec Rtwitter
+
+library (twittr) # on appelle la librairie twittr qui permet les requêtes
+consumerKey<-"Xq..."   #paramètres requis par l’ API de twitter (Ouvrir un compte au prélable)
+consumerSecret<-"30l..."
+access_token<-"27A..."
+access_secret<-"zA7..."
+
+fonction d’initialisation des requêtes
+setup_twitter_oauth(consumerKey, consumerSecret, access_token,access_secret)
+
+recherche des tweets
+tweets1 <- searchTwitter("#IA", n = 2000, lang = "fr", resultType = "recent", since 
+= "2019-08-01") 
+
+transformer en data frame 
+tweets_df1 <- twListToDF(tweets1) 
+
+
+
+## Un corpus reste un échantillon
+
+La collecte doit rester raisonnée. 
+
+Les unités de texte
+
+Une unité de texte : un chaine de caractère intégrée dans un document. Celui ci peut être un livre un article, une note, une transcription, 
+
+ * Un document
+ * Un ou des auteurs du document
+ * Une date
+ * Un endroit
+ * Un contexte : les unités précedente, et subséquentes. 
+ 
+
+## Filtrage
+
+Dans un corpus massif il est souvent néçéssaire de filtrer le contenu d'éléments qui sortent du champs d'études. POur étudier l'opinion inutile d'analyser ce qui est produit par les bots ou les trolls.
+
+Il faut aussi réduire les contenus en éliminant les doublons
+
+### Eliminer les bots et les fakes
+
+botometer
+
+### Eliminer les doublons
+unique
+
+## références
+
+

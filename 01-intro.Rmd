@@ -1,0 +1,44 @@
+# Introduction {#intro}
+
+
+Le texte connaît une double révolution. la première est celle de son système de production, la seconde est celle de sa lecture. 
+
+Il se produit désormais tant de textes que personne ne peut plus tous lire, même en réduisant son effort à sa sphère d’intérêt et de compétence. La production primaire de texte se soumet ensuite à ceux qui en contrôlent les flux et en exploitent les contenus, qui les mettent en avant ou les écartent, définissant la composition de ce que chacun va lire. La révolution de la lecture est venue avec les moteurs de recherche, et les pratiques de curations (ref), c’est une lecture sélectionnée et digérée par les moteurs de recommandation. (ref). S’il ne fallait qu’un exemple on pourrait évoquer la transformation radicale de la littérature dite scientifique sur le plan technique. La recherche par mots clés est complétée de plus en plus par des outils de veille, l’indexation a donné naissance à l’immatriculation de la moindre note, les fichiers ont adopté des standards, l’interopérabilité est de mise, le réseau des co-citation est maintenu en temps réel. Les scores qualifient autant les articles que leurs auteurs et les revues qui les accueillent. 
+
+## Un nouveau champs méthodologique
+
+Pour le chercheur qui étudie les organisations, cette révolution textuelle offre de nouvelles opportunités d’obtenir et d’analyser des données pour vérifier ses hypothèses. La production abondante d’avis de consommateurs, de discours de dirigeants, de compte-rendus de conseils, d’articles techniques, rencontre une multiplication des techniques, provenant de la linguistique computationnelle, de la fouille de données, des moteurs de recommandation, de la traduction automatique, et des ressources nouvelles et précieuses pour traiter l’abondance des données. Un nouveau paradigme méthodologique se construit à la croisée de données abondantes et de techniques de traitement intelligentes. Il permet d’aller plus loin que l’analyse lexicale traditionnelle en incorporant des éléments syntaxiques, sémantiques, et pragmatiques, proposés par l’ensemble des outils des techniques de traitement du langage naturel.
+Il se dessine surtout une nouvelle approche méthodologique qui prend place entre l’analyse qualitative, et les traditionnelles enquêtes par questionnaires capables de traiter des corpus d’une taille inédite. Le travail de (Humphreys et Wang 2018) en donne une première synthèse dans le cadre d’un processus qui s’articule autour des différentes phases d’une recherche : la formulation de la question de recherche, la définition des construits, la récolte des données, l’opérationnalisation des construits, et enfin l'interprétation, l’analyse et la validation des résultats obtenus. Dans le champ du management, on trouvera des synthèses pour la recherche en éthique (Lock et Seele 2015), en comportement du consommateur @humphreys_automated_2018  en management public  (Anastasopoulos, Moldogaziev, et Scott 2017) ou en organisation (Kobayashi et al. 2018). ( et ajouter en sociologie le texte recent de xxx)
+
+## Les facteurs de développement
+Ces développements sont favorisés par un environnement fertile dont trois facteurs se renforcent mutuellement.
+ * Le premier est l’expansion de deux langages, proprement statistiques pour r et plus généraliste pour python. Le propre de ces langages est, prenons le cas de r, de permettre d’élaborer des fonctions, dont un ensemble cohérent pour réaliser certaines tâches peuvent être rassemblées dans une bibliothèque. Coder une analyse revient ainsi à jouer avec un immense jeu de lego, dont de nombreuses pièces sont déjà pré-assemblées. D’un point de vue pratique, les lignes d’écriture sont fortement simplifiées permettant à un chercheur sans compétence de codage d’effectuer simplement des opérations complexes. L’autre conséquence est la croissance exponentielle du nombre de packages disponibles : près de 20 000 pour r. Dans le domaine de l’analyse du texte, on citera l’ancêtre “tm", le sophistiqué “quanteda”, “ cleanNLP”, “tidytext”. La dimension langagière se traduit aussi dans l’édition : le rôle du markdown et des carnets Jupyters1. De plus de nouvelles familles de techniques se généralisent et sont accessibles en open-source au travers de langages tels que python ou r, qui est privilégié dans ce chapitre. 
+ * Le second, intimement lié au premier, est la constitution d’une large communauté de développeurs et d’utilisateurs qui se retrouvent aujourd’hui dans des plateformes de dépots (Github, Gitlab), d’arxiv, de plateformes de type quora (StalkOverFlow), de tutoriaux, de blogs (BloggeR) et de journaux (Journal of Statistical Software). Des ressources abondantes sont ainsi disponibles et facilitent la formation des chercheurs et des data scientists. Toutes les conditions sont réunies pour  engendrer une effervescence créative. 
+ * Le troisième est la multiplication des sources de données et leur facilité d’accès. Les données privées, et en particulier celles des réseaux sociaux,  même si un péage doit être payé pour accéder aux APIs, popularisent le traitement de données massives. Le mouvement des données ouvertes (open data) proposent et facilitent l’accès à des milliers de corps de données : retards de la SNCF, grand débat, le formidable travail de l’Insee, european survey etc.
+ 
+## Le projet de l’ouvrage
+
+Dans ce chapitre, on choisit de présenter les différentes facettes de ce qui s'appelle TAl, NPL, Text Mining,  dans une approche procédurale qui suit les principales étapes du traitement des données. On rendra compte à chaque étape des techniques disponibles, et on illustre d’exemples. Nous suivrons ici une approche plus fidèle au processus de traitement des données, lequel peut connaître une stratégie inférentielle et exploratoire - quelles informations sont utiles au sein d’un corpus de texte -, tout aussi bien qu’une stratégie hypothético-déductive. Nous resterons agnostiques sur cette question, restant délibérément à un niveau technique et procédural.
+
+
+## Labelliser les figures et les tableaux 
+
+You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(intro). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(methods).
+
+Figures and tables with captions will be placed in `figure` and `table` environments, respectively.
+
+```{r nice-fig, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center'}
+par(mar = c(4, 4, .1, .1))
+plot(pressure, type = 'b', pch = 19)
+```
+
+Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab).
+
+```{r nice-tab, tidy=FALSE}
+knitr::kable(
+  head(iris, 20), caption = 'Here is a nice table!',
+  booktabs = TRUE
+)
+```
+
+You can write citations, too. For example, we are using the **bookdown** package [@R-bookdown] in this sample book, which was built on top of R Markdown and **knitr** [@xie2015].

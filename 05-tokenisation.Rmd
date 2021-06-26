@@ -1,0 +1,33 @@
+# Tokenisation
+
+L'étape intiale de toute analyse textuelle est de découper le texte en unités d'analyse. Les tokenizers sont les outils indispensables à cette tâche. 
+
+
+## Le principe
+
+découper un texte en unités
+
+ * des lettres
+ * des syllabes
+ * des mots
+ * des phrases
+ * des paragraphes
+ * des sections
+ * des chapitres
+ * des livres
+
+## les outils
+
+quanteda
+
+
+## Collocation
+
+Dans ce livres l'unité principales d'analyse restera le mot. Mais nous savons, au moins intuitivement que certaines combinaisons de mots repréentent des expressions qui ont la valeur d'un mot, une valuer sémantique. Par exemple, l'expression " Assemblée Nationale". Ces deux mots réunis constitue un syntagme. Et une unité de sens.
+
+Comment les identifier dans le flot des caractères? 
+
+La technique est simple : si deux morts se retrouvent dans un ordre donné plus pfrquemment que ce que le produit de leur probabilité d'apparition laisse espérer, c'est qu'il constitue une expression régulière. On peut imaginer faire un test du chi² pour décider si un couple de mots constitue une unité sémantique ou non. 
+
+Le package quanteda p^ropose une bonne solution à ce problème avec la fonction collocation.
+

@@ -1,0 +1,44 @@
+# Préparation des données
+
+
+Avant de se lancer dans l'analyse, il est nécessaire de préparer le texte, de le pré-traiter. Il s'agira d'abord de savoir dans quelle langue il est exprimé, ensuite de simplifier le teste en enlevant l'information redondante
+
+
+## Identifier la langue
+
+Pour travailler la langue, il faut avant tout l'identifier. Nombreux sont les corpus multi-lingues. Les commentaire de airbnb par exemple. De manière générale les outils de traitement du langage nécessitent que l'on détermine la langue.
+
+
+
+Le package textcat offre une solution basée sur la frénquence des ngrams.
+
+en voici une appplication sur le corpus airbnb.
+
+
+## Nettoyer le texte
+
+
+ * enlever les mentions
+ * enlever les url
+ * enlever ou recoder les emojis
+ * enlever la ponctuation
+ * enlever les nombres
+ 
+
+## Corriger le texte
+
+Dans un tiers des cas le mot " opinion" s'orthographie "opignons". Chaque mot du lexique s'évanouit dans la langue vernaculaire dans des morphologies nombreuses. 
+
+plusieurs stratégies sont possibles
+
+### La correction orthographique automatique
+
+voir hunspell
+
+https://cran.r-project.org/web/packages/hunspell/vignettes/intro.html#Custom_Dictionaries
+
+
+### L'usage des regex
+
+Une expression régulière est un masque qui permet d'identifier des formes principales et leurs variétés. 
+

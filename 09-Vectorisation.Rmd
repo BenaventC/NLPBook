@@ -1,0 +1,23 @@
+# Vectorisation du corpus
+
+
+## Word2vec
+
+
+
+### vectorisation pipe
+
+### closest2
+
+### map with tsne
+
+
+
+
+## paragraph2vec
+
+
+
+## l'avenir des modèles pré-entrainés
+
+

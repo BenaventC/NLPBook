@@ -1,0 +1,22 @@
+# Topic  Analysis
+
+
+## LDA
+
+### le modèle de blei
+
+### implementation avec wor2vec
+
+### Représentation graphique
+
+### La 
+
+
+## STM
+
+###
+
+###
+
+
+

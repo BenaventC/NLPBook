@@ -1,0 +1,91 @@
+# Une première analyse quantitative
+
+Chargeons le fichier de données. On en profite pour compter le nombre de post et de variables
+
+```{r chap01_00}
+
+df <- read_csv("TrumpTwitterArchive01-08-2021.csv")
+nrow<-nrow(df)
+ncol<-ncol(df)
+
+```
+## Comptons les mots
+
+Il y `r nrow` tweets et `r ncol` variables. On peut vouloir compter le nombre de mots. A cette fin on emploie une fonction de `stringr`. 
+
+```{r 1, fig.cap='Distribution du nombre de mots par post', out.width='80%', fig.asp=.75, fig.align='center'}
+
+df$nb_mots<-str_count(df$text, " ")+1 # l'astuce : compter les espaces et ajouter 1, pour compter les mots
+sum_mots<-sum(df$nb_mots)             #ON COMPTE LE NOMBRE DE MOTS
+ggplot(df, aes(x=nb_mots))+
+  geom_histogram(fill="deepskyblue3")+
+  labs(title=paste0("Nombre total de mots du corpus : ",sum_mots), x="Nombre de mots par post", y="Fréquence")
+
+```
+
+La bimodalité provient surement du changement de taille maximum effectué en setembre 2017. On peut le vérifier en examinant cette même distribution - par les courbes de densité - pour chacune des années, avec cette technique rendue fameuse par la pochette de l'album de Joy Division : un graphique en crêtes (ridges plot) avec [ggridges](https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html)
+
+```{r 2, fig.cap=' Evolution de la distribution du nombre de mots', out.width='80%', fig.asp=.75, fig.align='center'}
+
+df$Year<-format(df$date, format = "%Y") #on extrait l'année de la date
+
+ggplot(df,aes(x = nb_mots, y = Year, group = Year)) +
+  geom_density_ridges(scale = 3, fill="peachpuff")+
+  theme_ridges() +
+  scale_x_continuous(limits = c(1, 70), expand = c(0, 0)) +
+  coord_cartesian(clip = "off")+labs(x="Nombre de mots par post", y=NULL)
+```
+
+## la production dans le temps
+
+
+Le résultat remarquable est que si Trump dans un premier temps exploite cette nouvel fonctionnalité, il en revient avec un phrasé de 20 mots en moyenne, gardant cependant à l'occasion d'autre contenu en 50 mots environ.
+
+Concluons en examiner le nombre de tweets produit au cours du temps
+
+```{r 3, fig.cap='Evolution de la production mensuelle des tweets de Trump', out.width='80%', fig.asp=.75, fig.align='center'}
+
+## plot time series of tweets
+ts_plot(df, "1 month", color="darkblue") + theme(plot.title = element_text(face = "bold")) + 
+  labs( x = NULL, y = "Nombre de tweets par mois",title = "Fréquence des posts twitters Donald Trump")+
+  scale_x_datetime(date_breaks = "1 year", labels = scales::label_date_short())
+#raf : labeliser avec les dates clés
+```
+
+
+## Lisibilité et complexité lexicale
+
+Pour aller un peu plus loin, dans les comptages, introduisons deux quantifications utiles du texte : la lisibilité et la complexité lexicale. On gardera le principe d'une analyse longitudinale
+
+https://fr.wikipedia.org/wiki/Covfefe
+
+### Les indices de lisibilité
+
+La lisibilité est une vieille notion autant que sa mesure (par exemple @coleman_computer_1975). Il s'agit d'évaluer la complexité d'un texte à partir de deux critères : la complexité des mots capturée par le nombre moyen de syllabes par mot, et la complexité des phrases mesurée par le nombre de mots. 
+
+Le nombre d'indicateurs est considérable et le package compagnon de quanteda , quanteda.textstats , en fournit au moins une trentaine. On en utilise les ressources.
+
+```{r 4, fig.cap='Evolution de la lisibilité des tweets de Trump', out.width='80%', fig.asp=.75, fig.align='center'}
+
+
+
+readability<-textstat_readability(df$text, measure = "Flesch")
+df<-cbind(df,readability[,2])
+foo<-df %>% 
+  group_by(Year)%>%
+  summarize(Flesch=mean(Flesch, na.rm=TRUE))
+ggplot(foo,aes(x=Year, y=Flesch, group=1))+geom_line(size=1.2, color="darkblue")+
+  labs(title = "Evolution de la lisibilité des tweets de Trump", x=NULL, y="indice de Flesch")
+
+```
+
+### Les indices de complexité lexicale
+
+La complexité lexicale rend compte de la diversité du vocabulaire, elle consiste à rapporter le nombre de mot uniques sur le nombre total de mots. La difficulté est que la taille des corpus joue fortement sur cette mesure et que l'orsque cette taille est hétérogène, l'indicateur marque plus cette variété que les variations de complexité lexicales. 
+
+
+C'est un pb auquel se sont attaché x et y
+
+Dans notre univers trumpesque, ce n'est pas trop sensible, d'autant plus que nous allons moyenner les tweets par période.
+
+Une manière plus fine sera de considérer chaque période comme un texte, 

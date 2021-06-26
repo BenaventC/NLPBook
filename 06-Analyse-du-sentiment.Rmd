@@ -1,0 +1,41 @@
+# Analyse du sentiment
+
+liu ping est le fondateur
+
+
+
+
+## Valence et expression
+
+la linguistique donne aux mots une valence : elle peut être positive (bonheur), négative (malheur) ou neutre ( tranquité).
+
+C'est un régime ternaire. Chaque mot d'une phrase est neutre, positif ou négatif. 
+
+On peut doser les effets
+
+On a des dictionnaires
+
+
+
+## La généralisation par le liwc
+
+Le liwc vient de l'idée simple d'un psychiatre qui a souhaité faire des diagnoistics de trauma craniens à partir des entretiens menés avec lmes patients atteints. 
+
+80 dictionnaires permettent de saisirs des 
+
+
+## Encore d'autres généralisations
+
+L'approche par dictionnaire s'est déplacée vers l'identification d'autre catégorie
+
+ * les valeurs morales
+ 
+ 
+## construire son propre dictionnaire
+
+
+faire des listes de lmots
+
+
+
+
