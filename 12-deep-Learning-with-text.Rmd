@@ -1,13 +1,13 @@
-# Machine learning with text
+# Deep Learning
 
-## simples models
+## RNN
 
 
 ### Naives bayes
 
 ### elastic net
 
-### RF
+### Transformer
 
 ## art of featuring
 

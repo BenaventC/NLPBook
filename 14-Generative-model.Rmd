@@ -1,4 +1,4 @@
-# Machine learning with text
+# Modèles génératifs
 
 ## simples models
 

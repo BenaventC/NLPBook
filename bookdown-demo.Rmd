@@ -9,7 +9,7 @@ bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: rstudio/bookdown-demo
-description: " bookdown::gitbook."
+description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
 ---
 
 # Préface
@@ -708,7 +708,7 @@ summary(bg)
 # Plot the network
 shape = ifelse(V(bg)$type, "circle", "square") # assign shape by node type
 col = ifelse(V(bg)$type, "peachpuff", "darkolivegreen1") # assign color by node type
-plot(bg, vertex.shape = shape, vertex.label.cex=.9,vertex.label.color="black",vertex.color = col,edge.color="azure2",vertex.frame.color=col,vertex.label.family="TT Arial", vertex.size=0.5*igraph::degree(bg),layout=layout_with_fr,edge.width=1*E(bg)$weight,edge.curved=0.5)
+plot(bg, vertex.shape = shape, vertex.label.cex=.9,vertex.label.color="black",vertex.color = col,edge.color="azure2",vertex.frame.color=col, vertex.size=0.5*igraph::degree(bg),layout=layout_with_fr,edge.width=1*E(bg)$weight,edge.curved=0.5)
 ```
 
  
@@ -857,16 +857,16 @@ utiliser les plongements
 
 <!--chapter:end:11-ML-with-text.Rmd-->
 
-# Machine learning with text
+# Deep Learning
 
-## simples models
+## RNN
 
 
 ### Naives bayes
 
 ### elastic net
 
-### RF
+### Transformer
 
 ## art of featuring
 
@@ -877,7 +877,7 @@ utiliser les plongements
 
 <!--chapter:end:12-deep-Learning-with-text.Rmd-->
 
-# Machine learning with text
+# Translation
 
 ## simples models
 
@@ -897,7 +897,7 @@ utiliser les plongements
 
 <!--chapter:end:13-Translation.Rmd-->
 
-# Machine learning with text
+# Modèles génératifs
 
 ## simples models
 
