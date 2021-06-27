@@ -1,5 +1,5 @@
 --- 
-title: "NLP avec r et en français"
+title: "NLP avec r et en français - un Manuel synthétique"
 author: "Sophie Balech et Christophe Benavent et al"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -14,18 +14,22 @@ description: "This is a minimal example of using the bookdown package to write a
 
 # Préface
 
-Ce livre a pour but de donnner une synthèses des ressources de r en matière de NLP. 
+![](Incantationfor6voices_scotthelmes2001.jpeg)
+^[Incantation for 6 voices Scott helmes, 2001. [Museum of Minessota](https://medium.com/minneapolis-institute-of-art/painting-a-picture-with-words-a0a3fef3cf63)]
 
-Il estle fruit d'un accumulation d'expériences, sa vocation est pratique. 
 
-On ouvrira cependant chaque fois que c'est possibles aux questions théoriques et éthiques de ces méthodes. Leur réalisation computationnelle est le fruit souvent d'une longue histoire, au cours de laquelle les linguistes ont semés des idées essentielles. 
 
-La bibliographie synthétique est en fait un essai état de l'art essentielle. 
+L'eco système r s'est enrichi ces dernière année à grande vitesse dans le domaine du traitement du langage naturels, l'objet de ce manuel a pour but de donnner une synthèses des ressources de r en matière de NLP. Sa vocation est pratique. La bibliographie synthétique en fait un essai d'état de l'art essentiel. 
 
-Il a pour but d'être reproductible
+On ouvrira cependant chaque fois que c'est possibles aux questions théoriques et éthiques de ces méthodes. Leur réalisation computationnelle est le fruit souvent d'une longue histoire, au cours de laquelle les linguistes ont semé des idées essentielles qu'ont systématisés les informaticiens.
+
+
+Il a pour but d'être reproductible, c'est pourquoi le choix de ce support et des jeux de données associés. 
 
 Il sera dynamique, modifié à mesure de nos cours, séminaires et ateliers. 
 
+
+# Plan et outils du manuel
 
 ## La structure du livre
 
@@ -66,18 +70,19 @@ disponibles dans le [repositery](https://benaventc.github.io/NLPBook/) avec le c
 
 ## Le cadre technique
 
-Ce  _livre_ est écrit en **Markdown**. avec le package **Bookdown** 
+Ce  _livre_ est écrit en **Markdown** [@allaire_rmarkdown_2021] et  avec le package **Bookdown** [@R-bookdown]
 
 Le code s'appuie très largement sur **tidyverse** et emploie largement les ressources de **ggplot** . Les packages seront introduits au fur et à mesure. En voici la liste complète.
 
 
-```{r pack}
+```{r pack, echo = TRUE, message=FALSE,warning=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message=FALSE,warning=FALSE)
 
 #boite à outils et viz
 library(tidyverse) # inclut ggplot pour la viz, readr et 
 library(cowplot) #pour créer des graphiques composés
 library(ggridges) # le joy division touch
+library(citr)
 
 #networks
 library(igraph)
@@ -121,17 +126,20 @@ Quelques conventions d'écriture du code r
 
  * On appele les dataframes  de manière générale `df`, les tableaux intermédiaires sont appelé systématiquement `foo`
  * Gestion des palettes de couleurs
-  ** une couleur
+  ** une couleur :" royalblue"
+  ** deux couleurs
+  ** 3 à 7 couleurs
  * On emploie autant que possible le dialecte tidy.
  * Les chunks sont notés X, le chapitre, 01 à n, les jeux. 502 est le second chunk du chapitre 4.
+ * On commente au maximum les lignes de code pour épargner le corps du texte et le rendre lisible
+
+
+## A faire
+
+todo list :
+
+* insérer un compteur google analytics ( voir https://stackoverflow.com/questions/41376989/how-to-include-google-analytics-in-an-rmarkdown-generated-github-page)
+* modifier le titre en haut à gauche
+* vérifier le système de références voir ( https://doc.isara.fr/tuto-zothero-5-bibtex-rmarkdown-zotero/)
+* Vérifier la publication en pdf
  
-
-
-To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <https://yihui.name/tinytex/>.
-
-```{r include=FALSE}
-# automatically create a bib database for R packages
-knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown'
-), 'packages.bib')
-```

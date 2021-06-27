@@ -1,5 +1,3 @@
-fig:nice-fig
-tab:nice-tab
 fig:1
 fig:2
 fig:3
@@ -9,14 +7,15 @@ fig:502
 fig:503
 fig:72
 préface
+plan-et-outils-du-manuel
 la-structure-du-livre
 les-jeux-de-données
 le-cadre-technique
+a-faire
 intro
 un-nouveau-champs-méthodologique
 les-facteurs-de-développement
 le-projet-de-louvrage
-labelliser-les-figures-et-les-tableaux
 constitution-du-corpus
 méthodes-de-collecte
 les-techniques-de-recueil-direct
