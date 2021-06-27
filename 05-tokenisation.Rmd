@@ -1,33 +1,113 @@
 # Tokenisation
 
-L'étape intiale de toute analyse textuelle est de découper le texte en unités d'analyse. Les tokenizers sont les outils indispensables à cette tâche. 
+L'étape intiale de toute analyse textuelle est de découper le texte en unités d'analyse. Les _tokenizers_ sont les outils indispensables à cette tâche. 
 
 
 ## Le principe
 
-découper un texte en unités
+Découper un texte en unités qui peuvent être
 
- * des lettres
- * des syllabes
- * des mots
- * des phrases
- * des paragraphes
- * des sections
- * des chapitres
- * des livres
+ * Des lettres
+ * Des syllabes
+ * Des mots
+ * Des phrases
+ * Des paragraphes
+ * Des sections
+ * Des chapitres
+ * Des livres
 
-## les outils
+## Les outils
 
-quanteda
+Pour les exemples on se concentre sur le package [`tokenizer`](https://cran.r-project.org/web/packages/tokenizers/vignettes/introduction-to-tokenizers.html). Commençons par un tout petit exemple, une citation réputée de Max Weber. 
 
 
-## Collocation
 
-Dans ce livres l'unité principales d'analyse restera le mot. Mais nous savons, au moins intuitivement que certaines combinaisons de mots repréentent des expressions qui ont la valeur d'un mot, une valuer sémantique. Par exemple, l'expression " Assemblée Nationale". Ces deux mots réunis constitue un syntagme. Et une unité de sens.
+```{r 501, fig.cap='Distribution du nombre de lettres', out.width='80%', fig.asp=.75, fig.align='center'}
+#Les données
+MaxWeber <- paste0("Bureaucratie: le moyen le plus rationnel que l’on connaisse pour exercer un contrôle impératif sur des êtres humains")
+
+#On tokenise, plus on transforme en dataframe le résultat.
+toc_maxweber<-tokenize_characters(MaxWeber)%>%
+        as.data.frame()%>%
+        rename(tokens=1)
+#On compte pour chaque token sa fréquence d'apparition
+foo<-toc_maxweber %>%mutate(n=1) %>% 
+        group_by(tokens)%>% 
+        summarise(n=sum(n))%>%filter(n>0)
+#On représente par un diagramme en barre cette distribution des occuences d'apparition, en classant les tokens par fréquence
+ggplot(foo, aes(x=reorder(tokens,n), y=n))+
+               geom_bar(stat="identity", fill="royalblue")+
+               coord_flip()+labs(title = "unigram, bigram et trigram", x="ngram", y="nombre d'occurences", caption =" 'Bureaucratie: le moyen le plus rationnel que l’on connaisse pour exercer un contrôle impératif sur des êtres humains' ")
+```
+
+
+## Ngrams
+
+Les ngrams sont des séquences de n tokens.
+
+Il peuvent être consécutifs, ou être 
+
+### Les lettres
+
+```{r 502, fig.cap='Distribution du nombre de mots par post', out.width='80%', fig.asp=.75, fig.align='center'}
+toc_maxweber<-tokenize_character_shingles(MaxWeber,n=3, n_min=1) %>%
+        as.data.frame()%>%rename(tokens=1)
+ft<-flextable(head(toc_maxweber))
+ft
+foo<-toc_maxweber %>%mutate(n=1) %>% 
+        group_by(tokens)%>% 
+        summarise(n=sum(n))%>%filter(n>1)
+
+ggplot(foo, aes(x=reorder(tokens,n), y=n))+
+               geom_bar(stat="identity", fill="royalblue")+
+               coord_flip()+labs(title = "unigram, bigram et trigram", x="ngram", y="nombre d'occurences")
+
+```
+
+le principe de textcat est fondée sur ces ngram de lettre. Chaque langue se charactérise par une distribution particulière des ngrams. Pour décider de l'appartenance d'un text à une langue, si on dispose des profils de distribution, on comparera la distribution des ngrams du texte à ces références. On pourra ainsi calculer une distance et attribuer le texte à la langue dont il est le plus proche.
+
+### Les mots
+
+
+On refait la même opération, mais avec un texte complété. Il y a bien moins de mots que de lettres!
+
+```{r 503, fig.cap='Distribution du nombre de mots', out.width='80%', fig.asp=.75, fig.align='center'}
+#Les données
+
+MaxWeber <- paste0("Bureaucratie: le moyen le plus rationnel que l’on connaisse pour exercer un contrôle impératif sur des êtres humains. la bureaucratie est une forme d'organisation générale caractérisée par la prépondérance des règles et de procédures qui sont appliquées de façon impersonnelle par des agents spécialisés. Ces agents appliquent les règles sans discuter des objectifs ou des raisons qui les fondent. Ils doivent faire preuve de neutralité et oublier leurs propres intérêts personnels au profit de l’intérêt général")
+
+#On tokenise, plus on transforme en dataframe le résultat.
+toc_maxweber<-tokenize_words(MaxWeber)%>%
+        as.data.frame()%>%
+        rename(tokens=1)
+
+#On compte pour chaque token sa fréquence d'apparition
+foo<-toc_maxweber %>%mutate(n=1) %>% 
+        group_by(tokens)%>% 
+        summarise(n=sum(n))%>%filter(n>0)
+
+#On représente par un diagramme en barre cette distribution des occurrences, en classant les tokens par fréquence
+ggplot(foo, aes(x=reorder(tokens,n), y=n))+
+               geom_bar(stat="identity", fill="royalblue")+
+               coord_flip()+labs(title = "unigram, bigram et trigram", x="ngram", y="nombre d'occurences", caption =" 'Bureaucratie: le moyen le plus rationnel que l’on connaisse pour exercer un contrôle impératif sur des êtres humains' ")
+```
+
+## Choisir des n grams pertinents
+
+Dans ce livre l'unité principales d'analyse restera le mot. Mais nous savons, au moins intuitivement que certaines combinaisons de mots représentent des expressions qui ont la valeur d'un mot, une valuer sémantique. Par exemple, l'expression " Assemblée Nationale". Ces deux mots réunis constituent un syntagme. Donc une unité de sens.
 
 Comment les identifier dans le flot des caractères? 
 
-La technique est simple : si deux morts se retrouvent dans un ordre donné plus pfrquemment que ce que le produit de leur probabilité d'apparition laisse espérer, c'est qu'il constitue une expression régulière. On peut imaginer faire un test du chi² pour décider si un couple de mots constitue une unité sémantique ou non. 
+La technique est simple : si deux mots se retrouvent dans un ordre donné plus fréquemment que ce que le produit de leurs probabilités d'apparition laisse espérer, c'est qu'ils constituent une expression. On peut imaginer faire un test du chi² pour décider si un couple de mots constitue une unité sémantique ou non. 
 
-Le package quanteda p^ropose une bonne solution à ce problème avec la fonction collocation.
+Le package quanteda propose une bonne solution à ce problème avec la fonction collocation.
 
+## Propriétés statistiques des ngrams
+
+Sur d'un base d'un corpus importants on peut calculer les probabilité d'apparitions d'un ngram. C'est une ressource de fournit google
+ avec son [Books Ngram Viewer](https://books.google.com/ngrams/).
+ 
+ 
+[Processus de markov](https://fr.wikipedia.org/wiki/N-gramme)
+
+application à la correction

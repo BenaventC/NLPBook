@@ -139,7 +139,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#la-structure-du-livre"><i class="fa fa-check"></i><b>1.1</b> La structure du livre</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#les-jeux-de-données"><i class="fa fa-check"></i><b>1.2</b> Les jeux de données</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#le-cadre-technique"><i class="fa fa-check"></i><b>1.3</b> Le cadre technique</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#a-propos-de-bookdown"><i class="fa fa-check"></i><b>1.4</b> A propos de bookdown</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
 <li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#un-nouveau-champs-méthodologique"><i class="fa fa-check"></i><b>2.1</b> Un nouveau champs méthodologique</a></li>
@@ -179,8 +178,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6" data-path="tokenisation.html"><a href="tokenisation.html"><i class="fa fa-check"></i><b>6</b> Tokenisation</a><ul>
 <li class="chapter" data-level="6.1" data-path="tokenisation.html"><a href="tokenisation.html#le-principe"><i class="fa fa-check"></i><b>6.1</b> Le principe</a></li>
-<li class="chapter" data-level="6.2" data-path="tokenisation.html"><a href="tokenisation.html#les-outils"><i class="fa fa-check"></i><b>6.2</b> les outils</a></li>
-<li class="chapter" data-level="6.3" data-path="tokenisation.html"><a href="tokenisation.html#collocation"><i class="fa fa-check"></i><b>6.3</b> Collocation</a></li>
+<li class="chapter" data-level="6.2" data-path="tokenisation.html"><a href="tokenisation.html#les-outils"><i class="fa fa-check"></i><b>6.2</b> Les outils</a></li>
+<li class="chapter" data-level="6.3" data-path="tokenisation.html"><a href="tokenisation.html#ngrams"><i class="fa fa-check"></i><b>6.3</b> Ngrams</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="tokenisation.html"><a href="tokenisation.html#les-lettres"><i class="fa fa-check"></i><b>6.3.1</b> Les lettres</a></li>
+<li class="chapter" data-level="6.3.2" data-path="tokenisation.html"><a href="tokenisation.html#les-mots"><i class="fa fa-check"></i><b>6.3.2</b> Les mots</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="tokenisation.html"><a href="tokenisation.html#choisir-des-n-grams-pertinents"><i class="fa fa-check"></i><b>6.4</b> Choisir des n grams pertinents</a></li>
+<li class="chapter" data-level="6.5" data-path="tokenisation.html"><a href="tokenisation.html#propriétés-statistiques-des-ngrams"><i class="fa fa-check"></i><b>6.5</b> Propriétés statistiques des ngrams</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html"><i class="fa fa-check"></i><b>7</b> Analyse du sentiment</a><ul>
 <li class="chapter" data-level="7.1" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#valence-et-expression"><i class="fa fa-check"></i><b>7.1</b> Valence et expression</a></li>
@@ -306,31 +310,165 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="tokenisation" class="section level1">
 <h1><span class="header-section-number">Chapter 6</span> Tokenisation</h1>
-<p>L’étape intiale de toute analyse textuelle est de découper le texte en unités d’analyse. Les tokenizers sont les outils indispensables à cette tâche.</p>
+<p>L’étape intiale de toute analyse textuelle est de découper le texte en unités d’analyse. Les <em>tokenizers</em> sont les outils indispensables à cette tâche.</p>
 <div id="le-principe" class="section level2">
 <h2><span class="header-section-number">6.1</span> Le principe</h2>
-<p>découper un texte en unités</p>
+<p>Découper un texte en unités qui peuvent être</p>
 <ul>
-<li>des lettres</li>
-<li>des syllabes</li>
-<li>des mots</li>
-<li>des phrases</li>
-<li>des paragraphes</li>
-<li>des sections</li>
-<li>des chapitres</li>
-<li>des livres</li>
+<li>Des lettres</li>
+<li>Des syllabes</li>
+<li>Des mots</li>
+<li>Des phrases</li>
+<li>Des paragraphes</li>
+<li>Des sections</li>
+<li>Des chapitres</li>
+<li>Des livres</li>
 </ul>
 </div>
 <div id="les-outils" class="section level2">
-<h2><span class="header-section-number">6.2</span> les outils</h2>
-<p>quanteda</p>
+<h2><span class="header-section-number">6.2</span> Les outils</h2>
+<p>Pour les exemples on se concentre sur le package <a href="https://cran.r-project.org/web/packages/tokenizers/vignettes/introduction-to-tokenizers.html"><code>tokenizer</code></a>. Commençons par un tout petit exemple, une citation réputée de Max Weber.</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1"><span class="co">#Les données</span></a>
+<a class="sourceLine" id="cb74-2" title="2">MaxWeber &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;Bureaucratie: le moyen le plus rationnel que l’on connaisse pour exercer un contrôle impératif sur des êtres humains&quot;</span>)</a>
+<a class="sourceLine" id="cb74-3" title="3"></a>
+<a class="sourceLine" id="cb74-4" title="4"><span class="co">#On tokenise, plus on transforme en dataframe le résultat.</span></a>
+<a class="sourceLine" id="cb74-5" title="5">toc_maxweber&lt;-<span class="kw">tokenize_characters</span>(MaxWeber)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb74-6" title="6"><span class="st">        </span><span class="kw">as.data.frame</span>()<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb74-7" title="7"><span class="st">        </span><span class="kw">rename</span>(<span class="dt">tokens=</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb74-8" title="8"><span class="co">#On compte pour chaque token sa fréquence d&#39;apparition</span></a>
+<a class="sourceLine" id="cb74-9" title="9">foo&lt;-toc_maxweber <span class="op">%&gt;%</span><span class="kw">mutate</span>(<span class="dt">n=</span><span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb74-10" title="10"><span class="st">        </span><span class="kw">group_by</span>(tokens)<span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb74-11" title="11"><span class="st">        </span><span class="kw">summarise</span>(<span class="dt">n=</span><span class="kw">sum</span>(n))<span class="op">%&gt;%</span><span class="kw">filter</span>(n<span class="op">&gt;</span><span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb74-12" title="12"><span class="co">#On représente par un diagramme en barre cette distribution des occuences d&#39;apparition, en classant les tokens par fréquence</span></a>
+<a class="sourceLine" id="cb74-13" title="13"><span class="kw">ggplot</span>(foo, <span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">reorder</span>(tokens,n), <span class="dt">y=</span>n))<span class="op">+</span></a>
+<a class="sourceLine" id="cb74-14" title="14"><span class="st">               </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="dt">fill=</span><span class="st">&quot;royalblue&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb74-15" title="15"><span class="st">               </span><span class="kw">coord_flip</span>()<span class="op">+</span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;unigram, bigram et trigram&quot;</span>, <span class="dt">x=</span><span class="st">&quot;ngram&quot;</span>, <span class="dt">y=</span><span class="st">&quot;nombre d&#39;occurences&quot;</span>, <span class="dt">caption =</span><span class="st">&quot; &#39;Bureaucratie: le moyen le plus rationnel que l’on connaisse pour exercer un contrôle impératif sur des êtres humains&#39; &quot;</span>)</a></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:501"></span>
+<img src="bookdown-demo_files/figure-html/501-1.png" alt="Distribution du nombre de lettres" width="80%" />
+<p class="caption">
+Figure 6.1: Distribution du nombre de lettres
+</p>
 </div>
-<div id="collocation" class="section level2">
-<h2><span class="header-section-number">6.3</span> Collocation</h2>
-<p>Dans ce livres l’unité principales d’analyse restera le mot. Mais nous savons, au moins intuitivement que certaines combinaisons de mots repréentent des expressions qui ont la valeur d’un mot, une valuer sémantique. Par exemple, l’expression " Assemblée Nationale". Ces deux mots réunis constitue un syntagme. Et une unité de sens.</p>
+</div>
+<div id="ngrams" class="section level2">
+<h2><span class="header-section-number">6.3</span> Ngrams</h2>
+<p>Les ngrams sont des séquences de n tokens.</p>
+<p>Il peuvent être consécutifs, ou être</p>
+<div id="les-lettres" class="section level3">
+<h3><span class="header-section-number">6.3.1</span> Les lettres</h3>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" title="1">toc_maxweber&lt;-<span class="kw">tokenize_character_shingles</span>(MaxWeber,<span class="dt">n=</span><span class="dv">3</span>, <span class="dt">n_min=</span><span class="dv">1</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb75-2" title="2"><span class="st">        </span><span class="kw">as.data.frame</span>()<span class="op">%&gt;%</span><span class="kw">rename</span>(<span class="dt">tokens=</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb75-3" title="3">ft&lt;-<span class="kw">flextable</span>(<span class="kw">head</span>(toc_maxweber))</a>
+<a class="sourceLine" id="cb75-4" title="4">ft</a></code></pre></div>
+<template id="eb3ef761-75fc-4bc4-b688-018d388ea6d0"><style>
+.tabwid table{
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-spacing: 0;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-ccd49698{border-collapse:collapse;}.cl-ccca8b58{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-cccab254{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-cccb002e{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-cccb002f{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-cccb0030{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-ccd49698'>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-cccb0030"><p class="cl-cccab254"><span class="cl-ccca8b58">tokens</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-cccb002e"><p class="cl-cccab254"><span class="cl-ccca8b58">b</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-cccb002e"><p class="cl-cccab254"><span class="cl-ccca8b58">bu</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-cccb002e"><p class="cl-cccab254"><span class="cl-ccca8b58">bur</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-cccb002e"><p class="cl-cccab254"><span class="cl-ccca8b58">u</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-cccb002e"><p class="cl-cccab254"><span class="cl-ccca8b58">ur</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-cccb002f"><p class="cl-cccab254"><span class="cl-ccca8b58">ure</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="b6ab92c6-0a04-4435-a82b-9439b19f7fcc"></div>
+<script>
+var dest = document.getElementById("b6ab92c6-0a04-4435-a82b-9439b19f7fcc");
+var template = document.getElementById("eb3ef761-75fc-4bc4-b688-018d388ea6d0");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" title="1">foo&lt;-toc_maxweber <span class="op">%&gt;%</span><span class="kw">mutate</span>(<span class="dt">n=</span><span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb76-2" title="2"><span class="st">        </span><span class="kw">group_by</span>(tokens)<span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb76-3" title="3"><span class="st">        </span><span class="kw">summarise</span>(<span class="dt">n=</span><span class="kw">sum</span>(n))<span class="op">%&gt;%</span><span class="kw">filter</span>(n<span class="op">&gt;</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb76-4" title="4"></a>
+<a class="sourceLine" id="cb76-5" title="5"><span class="kw">ggplot</span>(foo, <span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">reorder</span>(tokens,n), <span class="dt">y=</span>n))<span class="op">+</span></a>
+<a class="sourceLine" id="cb76-6" title="6"><span class="st">               </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="dt">fill=</span><span class="st">&quot;royalblue&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb76-7" title="7"><span class="st">               </span><span class="kw">coord_flip</span>()<span class="op">+</span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;unigram, bigram et trigram&quot;</span>, <span class="dt">x=</span><span class="st">&quot;ngram&quot;</span>, <span class="dt">y=</span><span class="st">&quot;nombre d&#39;occurences&quot;</span>)</a></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:502"></span>
+<img src="bookdown-demo_files/figure-html/502-1.png" alt="Distribution du nombre de mots par post" width="80%" />
+<p class="caption">
+Figure 6.2: Distribution du nombre de mots par post
+</p>
+</div>
+<p>le principe de textcat est fondée sur ces ngram de lettre. Chaque langue se charactérise par une distribution particulière des ngrams. Pour décider de l’appartenance d’un text à une langue, si on dispose des profils de distribution, on comparera la distribution des ngrams du texte à ces références. On pourra ainsi calculer une distance et attribuer le texte à la langue dont il est le plus proche.</p>
+</div>
+<div id="les-mots" class="section level3">
+<h3><span class="header-section-number">6.3.2</span> Les mots</h3>
+<p>On refait la même opération, mais avec un texte complété. Il y a bien moins de mots que de lettres!</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1"><span class="co">#Les données</span></a>
+<a class="sourceLine" id="cb77-2" title="2"></a>
+<a class="sourceLine" id="cb77-3" title="3">MaxWeber &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;Bureaucratie: le moyen le plus rationnel que l’on connaisse pour exercer un contrôle impératif sur des êtres humains. la bureaucratie est une forme d&#39;organisation générale caractérisée par la prépondérance des règles et de procédures qui sont appliquées de façon impersonnelle par des agents spécialisés. Ces agents appliquent les règles sans discuter des objectifs ou des raisons qui les fondent. Ils doivent faire preuve de neutralité et oublier leurs propres intérêts personnels au profit de l’intérêt général&quot;</span>)</a>
+<a class="sourceLine" id="cb77-4" title="4"></a>
+<a class="sourceLine" id="cb77-5" title="5"><span class="co">#On tokenise, plus on transforme en dataframe le résultat.</span></a>
+<a class="sourceLine" id="cb77-6" title="6">toc_maxweber&lt;-<span class="kw">tokenize_words</span>(MaxWeber)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb77-7" title="7"><span class="st">        </span><span class="kw">as.data.frame</span>()<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb77-8" title="8"><span class="st">        </span><span class="kw">rename</span>(<span class="dt">tokens=</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb77-9" title="9"></a>
+<a class="sourceLine" id="cb77-10" title="10"><span class="co">#On compte pour chaque token sa fréquence d&#39;apparition</span></a>
+<a class="sourceLine" id="cb77-11" title="11">foo&lt;-toc_maxweber <span class="op">%&gt;%</span><span class="kw">mutate</span>(<span class="dt">n=</span><span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb77-12" title="12"><span class="st">        </span><span class="kw">group_by</span>(tokens)<span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb77-13" title="13"><span class="st">        </span><span class="kw">summarise</span>(<span class="dt">n=</span><span class="kw">sum</span>(n))<span class="op">%&gt;%</span><span class="kw">filter</span>(n<span class="op">&gt;</span><span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb77-14" title="14"></a>
+<a class="sourceLine" id="cb77-15" title="15"><span class="co">#On représente par un diagramme en barre cette distribution des occurrences, en classant les tokens par fréquence</span></a>
+<a class="sourceLine" id="cb77-16" title="16"><span class="kw">ggplot</span>(foo, <span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">reorder</span>(tokens,n), <span class="dt">y=</span>n))<span class="op">+</span></a>
+<a class="sourceLine" id="cb77-17" title="17"><span class="st">               </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="dt">fill=</span><span class="st">&quot;royalblue&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb77-18" title="18"><span class="st">               </span><span class="kw">coord_flip</span>()<span class="op">+</span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;unigram, bigram et trigram&quot;</span>, <span class="dt">x=</span><span class="st">&quot;ngram&quot;</span>, <span class="dt">y=</span><span class="st">&quot;nombre d&#39;occurences&quot;</span>, <span class="dt">caption =</span><span class="st">&quot; &#39;Bureaucratie: le moyen le plus rationnel que l’on connaisse pour exercer un contrôle impératif sur des êtres humains&#39; &quot;</span>)</a></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:503"></span>
+<img src="bookdown-demo_files/figure-html/503-1.png" alt="Distribution du nombre de mots" width="80%" />
+<p class="caption">
+Figure 6.3: Distribution du nombre de mots
+</p>
+</div>
+</div>
+</div>
+<div id="choisir-des-n-grams-pertinents" class="section level2">
+<h2><span class="header-section-number">6.4</span> Choisir des n grams pertinents</h2>
+<p>Dans ce livre l’unité principales d’analyse restera le mot. Mais nous savons, au moins intuitivement que certaines combinaisons de mots représentent des expressions qui ont la valeur d’un mot, une valuer sémantique. Par exemple, l’expression " Assemblée Nationale". Ces deux mots réunis constituent un syntagme. Donc une unité de sens.</p>
 <p>Comment les identifier dans le flot des caractères?</p>
-<p>La technique est simple : si deux morts se retrouvent dans un ordre donné plus pfrquemment que ce que le produit de leur probabilité d’apparition laisse espérer, c’est qu’il constitue une expression régulière. On peut imaginer faire un test du chi² pour décider si un couple de mots constitue une unité sémantique ou non.</p>
-<p>Le package quanteda p^ropose une bonne solution à ce problème avec la fonction collocation.</p>
+<p>La technique est simple : si deux mots se retrouvent dans un ordre donné plus fréquemment que ce que le produit de leurs probabilités d’apparition laisse espérer, c’est qu’ils constituent une expression. On peut imaginer faire un test du chi² pour décider si un couple de mots constitue une unité sémantique ou non.</p>
+<p>Le package quanteda propose une bonne solution à ce problème avec la fonction collocation.</p>
+</div>
+<div id="propriétés-statistiques-des-ngrams" class="section level2">
+<h2><span class="header-section-number">6.5</span> Propriétés statistiques des ngrams</h2>
+<p>Sur d’un base d’un corpus importants on peut calculer les probabilité d’apparitions d’un ngram. C’est une ressource de fournit google
+avec son <a href="https://books.google.com/ngrams/">Books Ngram Viewer</a>.</p>
+<p><a href="https://fr.wikipedia.org/wiki/N-gramme">Processus de markov</a></p>
+<p>application à la correction</p>
 
 </div>
 </div>

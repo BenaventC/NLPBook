@@ -139,7 +139,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#la-structure-du-livre"><i class="fa fa-check"></i><b>1.1</b> La structure du livre</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#les-jeux-de-données"><i class="fa fa-check"></i><b>1.2</b> Les jeux de données</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#le-cadre-technique"><i class="fa fa-check"></i><b>1.3</b> Le cadre technique</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#a-propos-de-bookdown"><i class="fa fa-check"></i><b>1.4</b> A propos de bookdown</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
 <li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#un-nouveau-champs-méthodologique"><i class="fa fa-check"></i><b>2.1</b> Un nouveau champs méthodologique</a></li>
@@ -179,8 +178,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6" data-path="tokenisation.html"><a href="tokenisation.html"><i class="fa fa-check"></i><b>6</b> Tokenisation</a><ul>
 <li class="chapter" data-level="6.1" data-path="tokenisation.html"><a href="tokenisation.html#le-principe"><i class="fa fa-check"></i><b>6.1</b> Le principe</a></li>
-<li class="chapter" data-level="6.2" data-path="tokenisation.html"><a href="tokenisation.html#les-outils"><i class="fa fa-check"></i><b>6.2</b> les outils</a></li>
-<li class="chapter" data-level="6.3" data-path="tokenisation.html"><a href="tokenisation.html#collocation"><i class="fa fa-check"></i><b>6.3</b> Collocation</a></li>
+<li class="chapter" data-level="6.2" data-path="tokenisation.html"><a href="tokenisation.html#les-outils"><i class="fa fa-check"></i><b>6.2</b> Les outils</a></li>
+<li class="chapter" data-level="6.3" data-path="tokenisation.html"><a href="tokenisation.html#ngrams"><i class="fa fa-check"></i><b>6.3</b> Ngrams</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="tokenisation.html"><a href="tokenisation.html#les-lettres"><i class="fa fa-check"></i><b>6.3.1</b> Les lettres</a></li>
+<li class="chapter" data-level="6.3.2" data-path="tokenisation.html"><a href="tokenisation.html#les-mots"><i class="fa fa-check"></i><b>6.3.2</b> Les mots</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="tokenisation.html"><a href="tokenisation.html#choisir-des-n-grams-pertinents"><i class="fa fa-check"></i><b>6.4</b> Choisir des n grams pertinents</a></li>
+<li class="chapter" data-level="6.5" data-path="tokenisation.html"><a href="tokenisation.html#propriétés-statistiques-des-ngrams"><i class="fa fa-check"></i><b>6.5</b> Propriétés statistiques des ngrams</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html"><i class="fa fa-check"></i><b>7</b> Analyse du sentiment</a><ul>
 <li class="chapter" data-level="7.1" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#valence-et-expression"><i class="fa fa-check"></i><b>7.1</b> Valence et expression</a></li>
@@ -307,17 +311,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="une-première-analyse-quantitative" class="section level1">
 <h1><span class="header-section-number">Chapter 5</span> Une première analyse quantitative</h1>
 <p>Chargeons le fichier de données. On en profite pour compter le nombre de post et de variables</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1">df &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;TrumpTwitterArchive01-08-2021.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb67-2" title="2">nrow&lt;-<span class="kw">nrow</span>(df)</a>
-<a class="sourceLine" id="cb67-3" title="3">ncol&lt;-<span class="kw">ncol</span>(df)</a></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1">df &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;TrumpTwitterArchive01-08-2021.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb68-2" title="2">nrow&lt;-<span class="kw">nrow</span>(df)</a>
+<a class="sourceLine" id="cb68-3" title="3">ncol&lt;-<span class="kw">ncol</span>(df)</a></code></pre></div>
 <div id="comptons-les-mots" class="section level2">
 <h2><span class="header-section-number">5.1</span> Comptons les mots</h2>
 <p>Il y 56571 tweets et 9 variables. On peut vouloir compter le nombre de mots. A cette fin on emploie une fonction de <code>stringr</code>.</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1">df<span class="op">$</span>nb_mots&lt;-<span class="kw">str_count</span>(df<span class="op">$</span>text, <span class="st">&quot; &quot;</span>)<span class="op">+</span><span class="dv">1</span> <span class="co"># l&#39;astuce : compter les espaces et ajouter 1, pour compter les mots</span></a>
-<a class="sourceLine" id="cb68-2" title="2">sum_mots&lt;-<span class="kw">sum</span>(df<span class="op">$</span>nb_mots)             <span class="co">#ON COMPTE LE NOMBRE DE MOTS</span></a>
-<a class="sourceLine" id="cb68-3" title="3"><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x=</span>nb_mots))<span class="op">+</span></a>
-<a class="sourceLine" id="cb68-4" title="4"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">fill=</span><span class="st">&quot;deepskyblue3&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb68-5" title="5"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="kw">paste0</span>(<span class="st">&quot;Nombre total de mots du corpus : &quot;</span>,sum_mots), <span class="dt">x=</span><span class="st">&quot;Nombre de mots par post&quot;</span>, <span class="dt">y=</span><span class="st">&quot;Fréquence&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" title="1">df<span class="op">$</span>nb_mots&lt;-<span class="kw">str_count</span>(df<span class="op">$</span>text, <span class="st">&quot; &quot;</span>)<span class="op">+</span><span class="dv">1</span> <span class="co"># l&#39;astuce : compter les espaces et ajouter 1, pour compter les mots</span></a>
+<a class="sourceLine" id="cb69-2" title="2">sum_mots&lt;-<span class="kw">sum</span>(df<span class="op">$</span>nb_mots)             <span class="co">#ON COMPTE LE NOMBRE DE MOTS</span></a>
+<a class="sourceLine" id="cb69-3" title="3"><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x=</span>nb_mots))<span class="op">+</span></a>
+<a class="sourceLine" id="cb69-4" title="4"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">fill=</span><span class="st">&quot;deepskyblue3&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb69-5" title="5"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="kw">paste0</span>(<span class="st">&quot;Nombre total de mots du corpus : &quot;</span>,sum_mots), <span class="dt">x=</span><span class="st">&quot;Nombre de mots par post&quot;</span>, <span class="dt">y=</span><span class="st">&quot;Fréquence&quot;</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:1"></span>
 <img src="bookdown-demo_files/figure-html/1-1.png" alt="Distribution du nombre de mots par post" width="80%" />
 <p class="caption">
@@ -325,13 +329,13 @@ Figure 5.1: Distribution du nombre de mots par post
 </p>
 </div>
 <p>La bimodalité provient surement du changement de taille maximum effectué en setembre 2017. On peut le vérifier en examinant cette même distribution - par les courbes de densité - pour chacune des années, avec cette technique rendue fameuse par la pochette de l’album de Joy Division : un graphique en crêtes (ridges plot) avec <a href="https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html">ggridges</a></p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" title="1">df<span class="op">$</span>Year&lt;-<span class="kw">format</span>(df<span class="op">$</span>date, <span class="dt">format =</span> <span class="st">&quot;%Y&quot;</span>) <span class="co">#on extrait l&#39;année de la date</span></a>
-<a class="sourceLine" id="cb69-2" title="2"></a>
-<a class="sourceLine" id="cb69-3" title="3"><span class="kw">ggplot</span>(df,<span class="kw">aes</span>(<span class="dt">x =</span> nb_mots, <span class="dt">y =</span> Year, <span class="dt">group =</span> Year)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb69-4" title="4"><span class="st">  </span><span class="kw">geom_density_ridges</span>(<span class="dt">scale =</span> <span class="dv">3</span>, <span class="dt">fill=</span><span class="st">&quot;peachpuff&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb69-5" title="5"><span class="st">  </span><span class="kw">theme_ridges</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb69-6" title="6"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">70</span>), <span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb69-7" title="7"><span class="st">  </span><span class="kw">coord_cartesian</span>(<span class="dt">clip =</span> <span class="st">&quot;off&quot;</span>)<span class="op">+</span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Nombre de mots par post&quot;</span>, <span class="dt">y=</span><span class="ot">NULL</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1">df<span class="op">$</span>Year&lt;-<span class="kw">format</span>(df<span class="op">$</span>date, <span class="dt">format =</span> <span class="st">&quot;%Y&quot;</span>) <span class="co">#on extrait l&#39;année de la date</span></a>
+<a class="sourceLine" id="cb70-2" title="2"></a>
+<a class="sourceLine" id="cb70-3" title="3"><span class="kw">ggplot</span>(df,<span class="kw">aes</span>(<span class="dt">x =</span> nb_mots, <span class="dt">y =</span> Year, <span class="dt">group =</span> Year)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb70-4" title="4"><span class="st">  </span><span class="kw">geom_density_ridges</span>(<span class="dt">scale =</span> <span class="dv">3</span>, <span class="dt">fill=</span><span class="st">&quot;peachpuff&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb70-5" title="5"><span class="st">  </span><span class="kw">theme_ridges</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb70-6" title="6"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">limits =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">70</span>), <span class="dt">expand =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb70-7" title="7"><span class="st">  </span><span class="kw">coord_cartesian</span>(<span class="dt">clip =</span> <span class="st">&quot;off&quot;</span>)<span class="op">+</span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Nombre de mots par post&quot;</span>, <span class="dt">y=</span><span class="ot">NULL</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:2"></span>
 <img src="bookdown-demo_files/figure-html/2-1.png" alt=" Evolution de la distribution du nombre de mots" width="80%" />
 <p class="caption">
@@ -343,17 +347,17 @@ Figure 5.2:  Evolution de la distribution du nombre de mots
 <h2><span class="header-section-number">5.2</span> la production dans le temps</h2>
 <p>Le résultat remarquable est que si Trump dans un premier temps exploite cette nouvel fonctionnalité, il en revient avec un phrasé de 20 mots en moyenne, gardant cependant à l’occasion d’autre contenu en 50 mots environ.</p>
 <p>Concluons en examiner le nombre de tweets produit au cours du temps</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1"><span class="co">## plot time series of tweets</span></a>
-<a class="sourceLine" id="cb70-2" title="2"><span class="kw">ts_plot</span>(df, <span class="st">&quot;1 month&quot;</span>, <span class="dt">color=</span><span class="st">&quot;darkblue&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb70-3" title="3"><span class="st">  </span><span class="kw">labs</span>( <span class="dt">x =</span> <span class="ot">NULL</span>, <span class="dt">y =</span> <span class="st">&quot;Nombre de tweets par mois&quot;</span>,<span class="dt">title =</span> <span class="st">&quot;Fréquence des posts twitters Donald Trump&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb70-4" title="4"><span class="st">  </span><span class="kw">scale_x_datetime</span>(<span class="dt">date_breaks =</span> <span class="st">&quot;1 year&quot;</span>, <span class="dt">labels =</span> scales<span class="op">::</span><span class="kw">label_date_short</span>())</a></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" title="1"><span class="co">## plot time series of tweets</span></a>
+<a class="sourceLine" id="cb71-2" title="2"><span class="kw">ts_plot</span>(df, <span class="st">&quot;1 month&quot;</span>, <span class="dt">color=</span><span class="st">&quot;darkblue&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb71-3" title="3"><span class="st">  </span><span class="kw">labs</span>( <span class="dt">x =</span> <span class="ot">NULL</span>, <span class="dt">y =</span> <span class="st">&quot;Nombre de tweets par mois&quot;</span>,<span class="dt">title =</span> <span class="st">&quot;Fréquence des posts twitters Donald Trump&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb71-4" title="4"><span class="st">  </span><span class="kw">scale_x_datetime</span>(<span class="dt">date_breaks =</span> <span class="st">&quot;1 year&quot;</span>, <span class="dt">labels =</span> scales<span class="op">::</span><span class="kw">label_date_short</span>())</a></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:3"></span>
 <img src="bookdown-demo_files/figure-html/3-1.png" alt="Evolution de la production mensuelle des tweets de Trump" width="80%" />
 <p class="caption">
 Figure 5.3: Evolution de la production mensuelle des tweets de Trump
 </p>
 </div>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" title="1"><span class="co">#raf : labeliser avec les dates clés</span></a></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1"><span class="co">#raf : labeliser avec les dates clés</span></a></code></pre></div>
 </div>
 <div id="lisibilité-et-complexité-lexicale" class="section level2">
 <h2><span class="header-section-number">5.3</span> Lisibilité et complexité lexicale</h2>
@@ -363,13 +367,13 @@ Figure 5.3: Evolution de la production mensuelle des tweets de Trump
 <h3><span class="header-section-number">5.3.1</span> Les indices de lisibilité</h3>
 <p>La lisibilité est une vieille notion autant que sa mesure (par exemple <span class="citation">Coleman and Liau (<a href="#ref-coleman_computer_1975" role="doc-biblioref">1975</a>)</span>). Il s’agit d’évaluer la complexité d’un texte à partir de deux critères : la complexité des mots capturée par le nombre moyen de syllabes par mot, et la complexité des phrases mesurée par le nombre de mots.</p>
 <p>Le nombre d’indicateurs est considérable et le package compagnon de quanteda , quanteda.textstats , en fournit au moins une trentaine. On en utilise les ressources.</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1">readability&lt;-<span class="kw">textstat_readability</span>(df<span class="op">$</span>text, <span class="dt">measure =</span> <span class="st">&quot;Flesch&quot;</span>)</a>
-<a class="sourceLine" id="cb72-2" title="2">df&lt;-<span class="kw">cbind</span>(df,readability[,<span class="dv">2</span>])</a>
-<a class="sourceLine" id="cb72-3" title="3">foo&lt;-df <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb72-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(Year)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb72-5" title="5"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">Flesch=</span><span class="kw">mean</span>(Flesch, <span class="dt">na.rm=</span><span class="ot">TRUE</span>))</a>
-<a class="sourceLine" id="cb72-6" title="6"><span class="kw">ggplot</span>(foo,<span class="kw">aes</span>(<span class="dt">x=</span>Year, <span class="dt">y=</span>Flesch, <span class="dt">group=</span><span class="dv">1</span>))<span class="op">+</span><span class="kw">geom_line</span>(<span class="dt">size=</span><span class="fl">1.2</span>, <span class="dt">color=</span><span class="st">&quot;darkblue&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb72-7" title="7"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Evolution de la lisibilité des tweets de Trump&quot;</span>, <span class="dt">x=</span><span class="ot">NULL</span>, <span class="dt">y=</span><span class="st">&quot;indice de Flesch&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" title="1">readability&lt;-<span class="kw">textstat_readability</span>(df<span class="op">$</span>text, <span class="dt">measure =</span> <span class="st">&quot;Flesch&quot;</span>)</a>
+<a class="sourceLine" id="cb73-2" title="2">df&lt;-<span class="kw">cbind</span>(df,readability[,<span class="dv">2</span>])</a>
+<a class="sourceLine" id="cb73-3" title="3">foo&lt;-df <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb73-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(Year)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb73-5" title="5"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">Flesch=</span><span class="kw">mean</span>(Flesch, <span class="dt">na.rm=</span><span class="ot">TRUE</span>))</a>
+<a class="sourceLine" id="cb73-6" title="6"><span class="kw">ggplot</span>(foo,<span class="kw">aes</span>(<span class="dt">x=</span>Year, <span class="dt">y=</span>Flesch, <span class="dt">group=</span><span class="dv">1</span>))<span class="op">+</span><span class="kw">geom_line</span>(<span class="dt">size=</span><span class="fl">1.2</span>, <span class="dt">color=</span><span class="st">&quot;darkblue&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb73-7" title="7"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Evolution de la lisibilité des tweets de Trump&quot;</span>, <span class="dt">x=</span><span class="ot">NULL</span>, <span class="dt">y=</span><span class="st">&quot;indice de Flesch&quot;</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:4"></span>
 <img src="bookdown-demo_files/figure-html/4-1.png" alt="Evolution de la lisibilité des tweets de Trump" width="80%" />
 <p class="caption">
