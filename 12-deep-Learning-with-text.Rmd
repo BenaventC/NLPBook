@@ -1,17 +1,79 @@
 # Deep Learning
 
-## RNN
+Pour l'utilisateur en sciences sociales même si le deep learning est accessible dans un environnement r, et nous examinerons les possibilités offerte par kera, constuire son modèle de langage est sans doute hors de portée. Il s'agira donc le plus souvent d'employer des modèles pré-entrainés, et éventuellement de les réentrainer sur nos coprus de données.
 
 
-### Naives bayes
+## L'environnement keras
 
-### elastic net
+l'interface de r pour [Keras](https://keras.rstudio.com/)
 
-### Transformer
 
-## art of featuring
+### Les fonctions principales
 
-utiliser les plongements
+ * cpu et gpu
+ * 
+
+### Un premier exemple
+
+lequel?
+
+### Un deuxième exemple
+
+Lequel?
+
+
+
+## Les architectures du texte : RNN, LTSM, Transformer et reformer
+
+Les évolutions de ces 10 dernières années se caractèreisent par la recherche d'architectures qui prennent en comptent la structure du texte : il y a un ordre séquentiel : les mots font sens quand on les lis ou les entends après une succision d'ordre mots dont on connait les règles de composition. 
+
+
+### rnn
+
+Il était logique que les rnn soient la première architecture qui a rendu des résultats intéressants. Leur acaractère autorégressif
+
+### ltsm
+
+Les ltsm on apportant une amélioration en prenant en compte des coorélations immédiates mais aussi plus lointaine dans le régl&age de l'oubli et de la mémoire
+
+
+### transformer
+
+L'innovation des transformer, fondée sur des modèles a trou.....
+
+
+### reformer
+
+Les reformer étendent l'échelle des corrélations possibles. Parfois ce qui donne le sens d'un texte après 500 mots est peut _être le premier, même si nous ne l'ons pas perçu, il devient le contexte de la chute par exemple.
+
+exemple?
+
+
+
+## Les cas d'applications remarquables
+
+### Detection d'intention
+
+quand la théorie des actes de langages rencontre l'informatique
+
+### détection de toxicité des contenus
+
+
+### la detection des trolls
+
+### détection des sophismes et autres fallacies
+
+la lutte anti fake
+
+### La détection du sarcasme et de l'ironie
+
+
+
+### L'extraction d'argumennts
+triplet 
+
+
+
 
 
 

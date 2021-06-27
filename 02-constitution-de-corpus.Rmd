@@ -5,19 +5,14 @@ La constitution d'un corpus est la première étape d'un projet NLP. Il se défi
 
 ## Méthodes de collecte
 
-Un corpus est un ensemble de documents.  Ils peuvent être courts, les tweets, paas trop long - abstract articles court - long ( article de recherche, ou très long ( livres).  
+Un corpus est un ensemble de documents.  Ils peuvent être courts, les tweets, pas trop long - abstract articles court - long ( article de recherche, ou très long ( livres).  
 
 ### Les techniques de recueil direct
 
-Ces document sont d'abord obtenus directements
-les entretiens 
-le processus de la transcription
+La tradition méthodologique de la sociologie est celle de l'entretien, avec toute sorte d'acteur. Elle aboutit à la production de transcriptions, plus ou moins détaillées et précise. Mais des textes
 
-#### La gestion d'un ensemble de documents
+On peut désormais enregistré des réaction par des interfaces cocales. le sppeche to text est de plus en plus effiace
 
-
-
-pdftool
 
 
 ### L'exploitation de base de données textuelles
@@ -71,10 +66,12 @@ En termes éthiques
 
 #### rvest avec r
 
-le package rvest
+le package rvest est générique
 
 
-### API
+
+
+### les API
 
 Les API doivent être considérées comme la voie normale d'accès à l'information: les requêtes sont reproductibles au moins par les requêtes, les bases visée peuvent varier.
 
@@ -88,9 +85,16 @@ L’utilisation d’API lève l'ambiguïté légale qui accompagne le scraping e
 La plus part des grande plateformes offrent des API plus ou moins ouvertes
 
 - twitter est celle qu'on utilise dans cet ouvrage
+- facebook
+- crunchbase
+
 
 
 #### Un exemple avec Rtwitter
+
+
+Plusieur package sur r permettent d'interroger le fire nose, c'est àdire le sytème d'acces que twitter a organisé.
+
 
 library (twittr) # on appelle la librairie twittr qui permet les requêtes
 consumerKey<-"Xq..."   #paramètres requis par l’ API de twitter (Ouvrir un compte au prélable)
@@ -108,6 +112,12 @@ tweets1 <- searchTwitter("#IA", n = 2000, lang = "fr", resultType = "recent", si
 transformer en data frame 
 tweets_df1 <- twListToDF(tweets1) 
 
+
+## La gestion des documents
+
+
+
+pdftool
 
 
 ## Un corpus reste un échantillon
@@ -127,7 +137,7 @@ Une unité de texte : un chaine de caractère intégrée dans un document. Celui
 
 ## Filtrage
 
-Dans un corpus massif il est souvent néçéssaire de filtrer le contenu d'éléments qui sortent du champs d'études. POur étudier l'opinion inutile d'analyser ce qui est produit par les bots ou les trolls.
+Dans un corpus massif il est souvent néçéssaire de filtrer le contenu d'éléments qui sortent du champs d'étude. POur étudier l'opinion utile écarter d'analyser ce qui est produit par les bots ou les trolls.
 
 Il faut aussi réduire les contenus en éliminant les doublons
 
@@ -138,6 +148,5 @@ botometer
 ### Eliminer les doublons
 unique
 
-## références
 
 

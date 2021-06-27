@@ -1,6 +1,6 @@
 --- 
 title: "NLP avec r et en français"
-author: "Sophie Balech et Christophe Benavent"
+author: "Sophie Balech et Christophe Benavent et al"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
@@ -14,27 +14,59 @@ description: "This is a minimal example of using the bookdown package to write a
 
 # Préface
 
-Ce livre synthètise ce que nous avons appris depuis quelques années.
+Ce livre a pour but de donnner une synthèses des ressources de r en matière de NLP. 
+
+Il estle fruit d'un accumulation d'expériences, sa vocation est pratique. 
+
+On ouvrira cependant chaque fois que c'est possibles aux questions théoriques et éthiques de ces méthodes. Leur réalisation computationnelle est le fruit souvent d'une longue histoire, au cours de laquelle les linguistes ont semés des idées essentielles. 
+
+La bibliographie synthétique est en fait un essai état de l'art essentielle. 
 
 Il a pour but d'être reproductible
+
+Il sera dynamique, modifié à mesure de nos cours, séminaires et ateliers. 
 
 
 ## La structure du livre
 
-L' analyse NLP peut être analysée comme un processus qui va de la collecte ( ou production ) jusqu' à la diffusion. 
+L' analyse NLP peut être analysée comme un processus qui va de la production jusqu' à la diffusion des analyses. Elle est aussi traversée par des évolutions profondes de méthodes qui ont complexifié au sens formels les modèles initiaux. L'apprentissage submerge le comptage,et les catégorisations....
+
+Rappelons nous que les modèles de langages désormais distribués par les grands acteurs, comprennent des dizaines, voir des centaines de milliards de paramètres. 
+
+Le plan suit une logique du simple au compliqué, de l'acquition au traitement.
+
+
+ * acquisition des données : directe, api et scrapping
+ * corpus dtm et cooccurence
+ * AFC et typologie
+ * l'annotation syntaxique et lexicale
+ * analyse du sentiment et sa généralisation
+ * word embedness
+ * factorial models
+ * Topic analysis
+ * ML
+ * deep learning
+ * translation
+ * génératives
 
 ## Les jeux de données 
 
-Plusieurs cas, et les données afférantes sont utilisées : 
+Au cours du développement, plusieurs cas pratiques - souvent réduit en volume pour rester exemplaires, seront employés. Les donées seront partagées.
 
-* [Trump Twitter Archive](https://www.thetrumparchive.com/) : L'intégralité des tweets de Trump jusqu'à son banissement le 8 Janvier 2021.
-* Confinement Jour J
-*
-*
+En voici la présentation  systématique.
 
-## Prérequis
+ * [Trump Twitter Archive](https://www.thetrumparchive.com/) : L'intégralité des tweets de Trump jusqu'à son banissement le 8 Janvier 2021.
+ * Confinement Jour J
+ * Citations : un recueil de citations littéraires pour de petits exemples et ponctuer le texte aride d'un peu de littérature et de poésie.
+ * Trip advisor polynésie
+ * Airbnb
+ * Covid
 
-Ceci est un _livre_ écrit en **Markdown**. avec le package **Bookdown** 
+disponibles dans le [repositery](https://benaventc.github.io/NLPBook/) avec le code du book. Les amendements et améloirations sont souhaitée et attendue. 
+
+## Le cadre technique
+
+Ce  _livre_ est écrit en **Markdown**. avec le package **Bookdown** 
 
 Le code s'appuie très largement sur **tidyverse** et emploie largement les ressources de **ggplot** . Les packages seront introduits au fur et à mesure. En voici la liste complète.
 
@@ -42,39 +74,58 @@ Le code s'appuie très largement sur **tidyverse** et emploie largement les ress
 ```{r pack}
 knitr::opts_chunk$set(echo = TRUE, message=FALSE,warning=FALSE)
 
-#boite à outils
+#boite à outils et viz
 library(tidyverse) # inclut ggplot pour la viz, readr et 
 library(cowplot) #pour créer des graphiques composés
-library(colorspace) #pour les couleurs
-library(ggridges)
-# NLP
-library(rtweet)
-library(quanteda)
-library(quanteda.textstats)
-library(udpipe)
-library(tidytext)
-library(cleanNLP)
+library(ggridges) # le joy division touch
 
-#mise en page des tableau
-library(flextable)
-
-#HREPR2SENTATION DE R2SEAUX
+#networks
 library(igraph)
 library(ggraph)
 
+# Accéder aux données
+library(rtweet)  # une interface efficace pour interroger l'api de Twitter
+
+# NLP
+library(quanteda)
+library(quanteda.textstats)
+library(udpipe) #annotation syntaxique
+library(tidytext)
+library(cleanNLP) #annotation syntaxique
+
+#mise en page des tableaux
+library(flextable)
+
+
 #statistiques et modèles
+library(lme4)
+library(jtools)
+library(interactions)
 
 #ML
+library(caret)
+
+#graphismes
 theme_set(theme_bw())
+
+
+#palettes
+library(colorspace) #pour les couleurs
+
+#statistiques
+
+
 
 ```
 
-L'ensemble du code est disponible [ici]()
+L'ensemble du code est disponible [sur github](https://github.com/BenaventC/NLPBook). A ce stade c'est encore très embryonnaire. Les proches pourrons cependant y voir l'évolution du projet et de la [progression](https://benaventc.github.io/NLPBook/)
 
 Quelques conventions d'écriture du code r
 
- * On appele les dataframes  de manière générale `df`, les tableaux intermédiaires sont appelé systématiquement `foo` et 
+ * On appele les dataframes  de manière générale `df`, les tableaux intermédiaires sont appelé systématiquement `foo`
  * gestion des palettes de couleurs
+ * On emploie autant que possible le dialecte tidy.
+ 
 
 ## A propos de bookdown
 
