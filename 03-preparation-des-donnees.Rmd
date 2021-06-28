@@ -1,18 +1,49 @@
 # Préparation des données
 
 
-Avant de se lancer dans l'analyse, il est nécessaire de préparer le texte, de le pré-traiter. Il s'agira d'abord de savoir dans quelle langue il est exprimé, ensuite de simplifier le teste en enlevant l'information redondante
-
-
-## Identifier la langue
-
-Pour travailler la langue, il faut avant tout l'identifier. Nombreux sont les corpus multi-lingues. Les commentaire de airbnb par exemple. De manière générale les outils de traitement du langage nécessitent que l'on détermine la langue.
+Avant de se lancer dans l'analyse, il est nécessaire de préparer le texte, de le pré-traiter. Sont format est celui de chaine de caractère, la base est d'avoir des outis pour les manipuler.
 
 
 
-Le package textcat offre une solution basée sur la frénquence des ngrams.
+## Manipuler des chaines de caractères
 
-en voici une appplication sur le corpus airbnb.
+[Stringer](https://stringr.tidyverse.org/) est un des composants essentiels de tidyverse. Il est destiné à traiter les chaines de caractères. D'autres packages sont équilavent : stringi par exemple.
+
+
+### manipulation de chaînes de caractères 
+
+
+ * rechercher une chaine de caractères;
+ * remplacer une chaine de caractères
+ * extraire une chaine de caractère d'un emplacement à l'autre
+ * supprimer une chaine de caractères
+ * concaténer des chaines de caractères
+ 
+### Une illustration
+
+
+
+## La technique des expressions régulières (regex)
+
+Une expression régulière est un masque qui permet d'identifier des formes principales et leurs variétés. Il s'appuit sur une codification dont quelques éléments clés permettent de se donner une bonne idée de la logique générale
+
+  * le ^, indique que la forme commence par le caractère qui suit "^A"
+  * le . signifie n'importe quel caractère. le regex "^a." signifiera ainsi n'importe quelle chaine de caractère qui commence par a est est suivi de n'importe quel caractère.
+  
+  * le * la répétition indéfinie du caractère . 
+
+### Des applications courantes
+
+Le langage des regex a répondu d'abord au besoin des informaticiens, et à ceux qui face à des questions de métier, par exemple les professionnel de marketing direct ou des services postaux, ont été amené à traiter de jeux de données textuels limités tel qu'une adresse postale. 
+
+ * détecter une adresse
+
+ * détecter une date
+
+ * détecter un compte
+
+ * détecter une url
+
 
 
 ## Nettoyer le texte
@@ -27,9 +58,11 @@ en voici une appplication sur le corpus airbnb.
 
 ## Corriger le texte
 
-Dans un tiers des cas le mot " opinion" s'orthographie "opignons". Chaque mot du lexique s'évanouit dans la langue vernaculaire dans des morphologies nombreuses. 
+Si certains corpus sont par les conditions de leur production presque parfait du point de vue grammatical et lexical, c'est le cas en principe des articles de presse et des documents officiels, d'autres qui s'appuient sur une langue vernaculaire on des graphies plus incertaines et des syntaxes approximatives. Dans un tiers des cas le mot " opinion" s'orthographie "opignons". Chaque mot du lexique s'évanouit dans des morphologies  nombreuses et approximatives. 
 
-plusieurs stratégies sont possibles
+C'est un obstacle à l'analyse car la variété morphologique est aléatoire. 
+
+plusieurs stratégies sont possibles. La première est de corriger le texte notamment en employant des outils de corrections efficaces. 
 
 ### La correction orthographique automatique
 
@@ -38,7 +71,22 @@ voir hunspell
 https://cran.r-project.org/web/packages/hunspell/vignettes/intro.html#Custom_Dictionaries
 
 
-### L'usage des regex
+### Analyse ciblée par les regex
 
-Une expression régulière est un masque qui permet d'identifier des formes principales et leurs variétés. 
+Une application des regex est l'analyse ciblée d'un certain nombre de termes. LA coorection est partielle mais couvre les cibles essentielles
+
+exemple des gestes barières dans le flux twitter
+
+
+
+## Identifier la langue
+
+Dans les points précedents on suppose que la langue est homogène, mais les corpus peuvent être multi-langues. Par exemple, dans les corpus d'avis d'hôtes sur Airbnb, les avis sont formulés dans une large variété de langues. Il va falloir en tenir compte et une tâche préliminaire sera de détecter les langues pour séparer les corpus.
+
+Le package textcat offre une solution basée sur la fréquence des ngrams. Google propose un algo cpl3
+
+Faisons un test sur un extrait du corpus Airbnb.
+
+
+
 

@@ -1,17 +1,23 @@
 # Une première analyse quantitative
 
-Chargeons le fichier de données. On en profite pour compter le nombre de post et de variables
+Avant tout un texte doit être analyser de manière volumétrique. Comment de texte? Quelle longueur ? combien de mots ? quelles variations? 
+
+Dans ce chapitre nous allons analyser le flux des tweets produit par donald Trump, jusqu'au moment de son banissement en Janvier 2021, àprès sa défaite.
+
+Chargeons le fichier de données. On en profite pour compter le nombre de posts et de variables
 
 ```{r chap01_00}
 
 df <- read_csv("TrumpTwitterArchive01-08-2021.csv")
-nrow<-nrow(df)
-ncol<-ncol(df)
+nrow<-nrow(df) #nombre de ligne
+ncol<-ncol(df) #nombre de colonne
 
 ```
+
 ## Comptons les mots
 
-Il y `r nrow` tweets et `r ncol` variables. On peut vouloir compter le nombre de mots. A cette fin on emploie une fonction de `stringr`. 
+Il y `r nrow` tweets et `r ncol` variables. On peut vouloir compter le nombre de mots. A cette fin on emploie une fonction de `stringr :  `str_count`. ( On reviendra sur la question de la manipulation des chaines de caractères dans un chapitre ad hoc)
+
 
 ```{r 1, fig.cap='Distribution du nombre de mots par post', out.width='80%', fig.asp=.75, fig.align='center'}
 
@@ -23,7 +29,7 @@ ggplot(df, aes(x=nb_mots))+
 
 ```
 
-La bimodalité provient surement du changement de taille maximum effectué en setembre 2017. On peut le vérifier en examinant cette même distribution - par les courbes de densité - pour chacune des années, avec cette technique rendue fameuse par la pochette de l'album de Joy Division : un graphique en crêtes (ridges plot) avec [ggridges](https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html)
+La bimodalité provient surement du changement de taille maximum effectué en septembre 2017, le passage de 180 caractères max à 280. On peut le vérifier en examinant cette même distribution - par les courbes de densité - pour chacune des années, avec cette technique rendue fameuse par la pochette de l'album de Joy Division : un graphique en crêtes (ridges plot) avec [ggridges](https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html)
 
 ```{r 2, fig.cap=' Evolution de la distribution du nombre de mots', out.width='80%', fig.asp=.75, fig.align='center'}
 

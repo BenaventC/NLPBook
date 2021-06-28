@@ -24,7 +24,7 @@ Le NLP est au coeur de ces technologies, il se nourrit de plus en plus d'intelli
 Mais le NLP est aussi une nouvelle ressource pour les chercheurs en sciences sociales à la fois par les matériaux empiriquement, l'emballement de la production de texte génère une nouvelle matière d'étude pour le sociologues, le gestionnaire, l'économiste, le psychologue pour n'évoquer que quelques disciplines, mais aussi de nouvellle techniques d'analyses. 
 
 
-## Un nouveau champs méthodologique
+## Un nouveau champ méthodologique
 
 Pour le chercheur qui étudie les organisations, cette révolution textuelle offre de nouvelles opportunités d’obtenir et d’analyser des données pour vérifier ses hypothèses. La production abondante d’avis de consommateurs, de discours de dirigeants, de compte-rendus de conseils, d’articles techniques, rencontre une multiplication des techniques, provenant de la linguistique computationnelle, de la fouille de données, des moteurs de recommandation, de la traduction automatique, et des ressources nouvelles et précieuses pour traiter l’abondance des données. Un nouveau paradigme méthodologique se construit à la croisée de données abondantes et de techniques de traitement intelligentes. Il permet d’aller plus loin que l’analyse lexicale traditionnelle en incorporant des éléments syntaxiques, sémantiques, et pragmatiques, proposés par l’ensemble des outils des techniques de traitement du langage naturel.
 
@@ -36,14 +36,74 @@ Dans le champ du management, on trouvera des synthèses pour la recherche en ét
 
 Ces développements sont favorisés par un environnement fertile dont trois facteurs se renforcent mutuellement.
 
- * Le premier est l’expansion de deux langages, proprement statistiques pour r et plus généraliste pour python. Le propre de ces langages est, prenons le cas de r, de permettre d’élaborer des fonctions, dont un ensemble cohérent pour réaliser certaines tâches peuvent être rassemblées dans une bibliothèque. Coder une analyse revient ainsi à jouer avec un immense jeu de lego, dont de nombreuses pièces sont déjà pré-assemblées. D’un point de vue pratique, les lignes d’écriture sont fortement simplifiées permettant à un chercheur sans compétence de codage d’effectuer simplement des opérations complexes. L’autre conséquence est la croissance exponentielle du nombre de packages disponibles : près de 20 000 pour r. Dans le domaine de l’analyse du texte, on citera l’ancêtre “tm", le sophistiqué “quanteda”, “ cleanNLP”, “tidytext”. La dimension langagière se traduit aussi dans l’édition : le rôle du markdown et des carnets Jupyters1. De plus de nouvelles familles de techniques se généralisent et sont accessibles en open-source au travers de langages tels que python ou r, qui est privilégié dans ce chapitre. 
- 
- * Le second, intimement lié au premier, est la constitution d’une large communauté de développeurs et d’utilisateurs qui se retrouvent aujourd’hui dans des plateformes de dépots (Github, Gitlab), d’arxiv, de plateformes de type quora (StalkOverFlow), de tutoriaux, de blogs (BloggeR) et de journaux (Journal of Statistical Software). Des ressources abondantes sont ainsi disponibles et facilitent la formation des chercheurs et des data scientists. Toutes les conditions sont réunies pour  engendrer une effervescence créative. 
- 
- * Le troisième est la multiplication des sources de données et leur facilité d’accès. Les données privées, et en particulier celles des réseaux sociaux,  même si un péage doit être payé pour accéder aux APIs, popularisent le traitement de données massives. Le mouvement des données ouvertes (open data) proposent et facilitent l’accès à des milliers de corps de données : retards de la SNCF, grand débat, le formidable travail de l’Insee, european survey etc.
- 
-## Le projet de l’ouvrage
+### Une lingua franca
 
-Dans ce chapitre, on choisit de présenter les différentes facettes de ce qui s'appelle TAl, NPL, Text Mining,  dans une approche procédurale qui suit les principales étapes du traitement des données. On rendra compte à chaque étape des techniques disponibles, et on illustre d’exemples. Nous suivrons ici une approche plus fidèle au processus de traitement des données, lequel peut connaître une stratégie inférentielle et exploratoire - quelles informations sont utiles au sein d’un corpus de texte -, tout aussi bien qu’une stratégie hypothético-déductive. Nous resterons agnostiques sur cette question, restant délibérément à un niveau technique et procédural.
+Le premier est l’expansion de deux langages, proprement statistique pour r et plus généraliste pour Python. Le propre de ces langages est, prenons le cas de r, de permettre d’élaborer des fonctions, dont un ensemble cohérent pour réaliser certaines tâches peut être rassemblé dans une bibliothèque appelée package (et chargé par library(nomdupackage)). On dispose désormais de milliers de packages (17 788 sur le CRAN) destinés à résoudre un nombre incalculable de tâches. 
+
+![hornik](number_CRAN_packages.png)
+
+Coder une analyse revient ainsi à jouer avec un immense jeu de lego, dont de nombreuses pièces sont déjà pré-assemblées. D’un point de vue pratique, les lignes d’écriture sont fortement simplifiées permettant à un chercheur sans grande compétence de codage d’effectuer simplement des opérations complexes.  En retour, cette facilitation de l'analyse abonde le stock de solutions.
+
+### Une communauté
+
+Le second facteur , intimement lié au premier, est la constitution d’une large communauté de développeurs et d’utilisateurs qui se retrouvent aujourd’hui dans des plateformes de dépots (Github, Gitlab), de plateformes de type quora (StalkOverFlow), de tutoriaux, de blogs (BloggeR), de journaux (Journal of Statistical Software) et de bookdown.
+
+Des ressources abondantes sont ainsi disponibles et facilitent la formation des chercheurs et des data scientists. Toutes les conditions sont réunies pour  engendrer une effervescence créative. 
+
+### La multiplication des sources de données.
+
+Le troisième est la multiplication des sources de données et leur facilité d’accès. Les données privées, et en particulier celles des réseaux sociaux,  même si un péage doit être payé pour accéder aux APIs, popularisent le traitement de données massives. Le mouvement des données ouvertes (open data) proposent et facilitent l’accès à des milliers de corps de données : retards de la SNCF, grand débat, le formidable travail de l’Insee, european survey etc.
+ 
+ 
+## Des racines anciennes
+
+Si dans ce manuel, on choisit de présenter les différentes facettes de ce qui s'appelle TAl, NPL, Text Mining,  dans une approche procédurale qui suit les principales étapes du traitement des données. On rendra compte à chaque étape des techniques disponibles, et on illustre d’exemples. Nous suivrons ici une approche plus fidèle au processus de traitement des données, lequel peut connaître une stratégie inférentielle et exploratoire - quelles informations sont utiles au sein d’un corpus de texte -, tout aussi bien qu’une stratégie hypothético-déductive. Nous resterons agnostique sur cette question, restant délibérément à un niveau technique et procédural.
+
+Cependant on se doit pas se faire aveugler par l'éclat de la nouveautés, les techniques d'aujourd'hui dépendent d'idées semée depuis longtemps dans au moins deux champs disciplinaire
+
+
+la convergence de deux grands mouvements. Sans en faire l'histoire minutieuse que ce domaine réclame, nous pouvons au moins rappeler un certains nombre d'étapes clés.
+
+### Linguistique
+
+Tesnière et les dépendances syntaxiques
+
+Zipf et 
+
+fisth pour l'approche distributionnnelle. 
+
+Chomsky et la grammaire générative
+
+
+### Informatique
+
+
+ngram et théorie du signal
+
+
+
+information retrieval
+
+### la psychologie
+
+Très tôt la psychogie s'est intéressée au langage, pas seulement comme produit des processus psychologique, mais comme expression de ceux-ci. 
+
+Une partie du domaine du nlp se dénomme linguistique psycho computationnelle. 
+
+
+Dans le champs de la psychologie de l'éducation et avec une forte motivation scientiste, dès les années 60 s'est posée la question de la mesure de la difficulté d'un texte pour un niveau d'éducation donné. La mesure de la lisibilité des texte s'est développée profitant à d'autre secteurs tels que ceux de la propagande. Dans cette même êrspective la richesse lexicographique comme représenant les compétences a a son tour développé de nouvelles instrumentation. 
+
+James W. Pennebaker a développé son approche à partir de l'étude des traumas; donnant une grande importance à la production discursive des patients. Sa contribution majeure est l'établissement d'un ensemble de dictionnaires destinés à mesurer des caractéristiques du discours. Un instrument qu'on présentatera dans les chapitre 7 ( à vérifier). Auteur en 2011 d'un livre s'intéresant à l'usage des petits mots.  Son approche se poursuit en psychiatrie avec l'analyse des troubles du langage, et a connu des coup d'éclat avec la demonstration que l'analyse des messages sur les réseaux sociaux comme facebook permet de detecter des risques de depression.
+
+
+### D'autres champs aussi
+
+la biologie et en particulier la génétique
+
+la finance et l'analyse du sentiment
+
+La sociologie. Peut emploie l'analyse du langage. On citera cependant jean-baptiste Coulmont et son obstinatio à étudier les entités nommées, prénoms et autres marqueurs culturels de l'identité et des classes.
+
+
 
 

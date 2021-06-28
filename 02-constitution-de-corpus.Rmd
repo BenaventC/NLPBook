@@ -5,13 +5,30 @@ La constitution d'un corpus est la première étape d'un projet NLP. Il se défi
 
 ## Méthodes de collecte
 
-Un corpus est un ensemble de documents.  Ils peuvent être courts, les tweets, pas trop long - abstract articles court - long ( article de recherche, ou très long ( livres).  
+Un corpus est un ensemble de documents.  Ils peuvent être courts, les tweets, pas trop long - abstract articles court - long ( article de recherche, ou très long (livres).
+
+La collecte peut se faire d'abord sur des matiériaux primaire, numérisé sous forme d'images, et dans lesquels en analusant les pixels on peut reconnaitre un texte. 
+
+### la numérisation
+
+D'immenses archives sont numérisées, quand du texte est dans les images il faut le détecter
+
+l'Ocr a fait d'immense progrès et prédit avec un erreur du demi pourt cent de qui est vrai.
+
+Le traitement des adresses est ainsi l'obsession de nombreux métiers depuis quarante ans : les banques , la vad par exemple.  Le problème matériel est que si l'idéal est que les les scripteurs suivent des conventions indicatives comme la suivante :
+
+![Modèle de rédaction correcte d'une adresse postale](adresse-postale.png)
+
+La réalité ressemble souvent 
+![à çà](Posted_registered_letter_cover_Ukraine1998.jpg)
+
+
 
 ### Les techniques de recueil direct
 
 La tradition méthodologique de la sociologie est celle de l'entretien, avec toute sorte d'acteur. Elle aboutit à la production de transcriptions, plus ou moins détaillées et précise. Mais des textes
 
-On peut désormais enregistré des réaction par des interfaces cocales. le sppeche to text est de plus en plus effiace
+On peut désormais enregistré des réaction par des interfaces vocales. le speech to text est de plus en plus effiace
 
 
 
@@ -29,9 +46,10 @@ Le scraping est l’activité qui consiste à moissonner les informations dispon
 De nombreuses ressources sont disponibles, mais pour en rester à r , le package rvest permet de réaliser des extractions simples mais suffisantes pour de nombreux usages. 
 
 Les caractéristiques clés du scraping :
-
-    * La nécessité de programmer de manière ad hoc, en fonction des spécificités de chaque site. 
-    * Des stratégies mécaniques, en boule de neige. 
+ * La nécessité de programmer de manière ad hoc, en fonction des spécificités de chaque site. 
+ * Des stratégies mécaniques, en boule de neige. 
+    
+    
     
 
 
@@ -40,6 +58,11 @@ Les caractéristiques clés du scraping :
 Le langage html est un langage à balise
 
 Les balises sont la cible du scrapping
+
+une application rvest 
+
+https://www.r-bloggers.com/2018/10/first-release-and-update-dates-of-r-packages-statistics/
+
 
 
 #### des problèmes pratiques, juridiques et éthiques
@@ -115,12 +138,13 @@ tweets_df1 <- twListToDF(tweets1)
 
 ## La gestion des documents
 
+### Collections et tableaux
 
 
 pdftool
 
 
-## Un corpus reste un échantillon
+### Un corpus reste un échantillon
 
 La collecte doit rester raisonnée. 
 
@@ -135,7 +159,7 @@ Une unité de texte : un chaine de caractère intégrée dans un document. Celui
  * Un contexte : les unités précedente, et subséquentes. 
  
 
-## Filtrage
+### Filtrage
 
 Dans un corpus massif il est souvent néçéssaire de filtrer le contenu d'éléments qui sortent du champs d'étude. POur étudier l'opinion utile écarter d'analyser ce qui est produit par les bots ou les trolls.
 
