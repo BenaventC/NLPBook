@@ -67,6 +67,7 @@ les-mots
 choisir-des-n-grams-pertinents
 propriétés-statistiques-des-ngrams
 analyse-du-sentiment
+un-exemple-avec-syuzhet
 valence-et-expression
 la-généralisation-par-le-liwc
 encore-dautres-généralisations

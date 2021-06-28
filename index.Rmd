@@ -62,7 +62,7 @@ En voici la présentation  systématique.
  * [Trump Twitter Archive](https://www.thetrumparchive.com/) : L'intégralité des tweets de Trump jusqu'à son banissement le 8 Janvier 2021.
  * Confinement Jour J
  * Citations : un recueil de citations littéraires pour de petits exemples et ponctuer le texte aride d'un peu de littérature et de poésie.
- * Trip advisor polynésie
+ * Trip advisor Polynésie, un extrait d'un corpus établi par Pierre Ghewy et Sebastien de l'UPF
  * Airbnb
  * Covid
 
@@ -99,6 +99,8 @@ library(udpipe) #annotation syntaxique
 library(tidytext)
 library(cleanNLP) #annotation syntaxique
 
+#sentiment
+library(syuzhet)             #analyse du sentimeent
 #mise en page des tableaux
 library(flextable)
 
