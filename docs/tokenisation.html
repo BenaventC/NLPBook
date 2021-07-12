@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 Tokenisation | NLP avec r et en français - un Manuel synthétique</title>
+  <title>Chapitre 7 Tokenisation | NLP avec r et en français - un Manuel synthétique</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.22.3 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7 Tokenisation | NLP avec r et en français - un Manuel synthétique" />
+  <meta property="og:title" content="Chapitre 7 Tokenisation | NLP avec r et en français - un Manuel synthétique" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 Tokenisation | NLP avec r et en français - un Manuel synthétique" />
+  <meta name="twitter:title" content="Chapitre 7 Tokenisation | NLP avec r et en français - un Manuel synthétique" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Sophie Balech et Christophe Benavent et al" />
 
 
-<meta name="date" content="2021-06-28" />
+<meta name="date" content="2021-07-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -132,7 +132,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
+<li><a href="./">NLP en r et en français</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Préface</a></li>
@@ -174,18 +174,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="préparation-des-données.html"><a href="préparation-des-données.html"><i class="fa fa-check"></i><b>5</b> Préparation des données</a><ul>
 <li class="chapter" data-level="5.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#manipuler-des-chaines-de-caractères"><i class="fa fa-check"></i><b>5.1</b> Manipuler des chaines de caractères</a><ul>
-<li class="chapter" data-level="5.1.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#manipulation-de-chaînes-de-caractères"><i class="fa fa-check"></i><b>5.1.1</b> manipulation de chaînes de caractères</a></li>
-<li class="chapter" data-level="5.1.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#une-illustration"><i class="fa fa-check"></i><b>5.1.2</b> Une illustration</a></li>
+<li class="chapter" data-level="5.1.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#les-opérations-sur-les-chaînes-de-caractères"><i class="fa fa-check"></i><b>5.1.1</b> Les opérations sur les chaînes de caractères</a></li>
+<li class="chapter" data-level="5.1.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#la-technique-des-expressions-régulières-regex"><i class="fa fa-check"></i><b>5.1.2</b> La technique des expressions régulières (regex)</a></li>
+<li class="chapter" data-level="5.1.3" data-path="préparation-des-données.html"><a href="préparation-des-données.html#un-fondement-profond-et-ancien"><i class="fa fa-check"></i><b>5.1.3</b> Un fondement profond et ancien</a></li>
+<li class="chapter" data-level="5.1.4" data-path="préparation-des-données.html"><a href="préparation-des-données.html#des-applications-très-pratiques"><i class="fa fa-check"></i><b>5.1.4</b> Des applications très pratiques</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#la-technique-des-expressions-régulières-regex"><i class="fa fa-check"></i><b>5.2</b> La technique des expressions régulières (regex)</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#des-applications-courantes"><i class="fa fa-check"></i><b>5.2.1</b> Des applications courantes</a></li>
+<li class="chapter" data-level="5.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#nettoyer-le-texte"><i class="fa fa-check"></i><b>5.2</b> Nettoyer le texte</a></li>
+<li class="chapter" data-level="5.3" data-path="préparation-des-données.html"><a href="préparation-des-données.html#corriger-le-texte"><i class="fa fa-check"></i><b>5.3</b> Corriger le texte</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#la-correction-orthographique-automatique"><i class="fa fa-check"></i><b>5.3.1</b> La correction orthographique automatique</a></li>
+<li class="chapter" data-level="5.3.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#analyse-ciblée-par-les-regex"><i class="fa fa-check"></i><b>5.3.2</b> Analyse ciblée par les regex</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="préparation-des-données.html"><a href="préparation-des-données.html#nettoyer-le-texte"><i class="fa fa-check"></i><b>5.3</b> Nettoyer le texte</a></li>
-<li class="chapter" data-level="5.4" data-path="préparation-des-données.html"><a href="préparation-des-données.html#corriger-le-texte"><i class="fa fa-check"></i><b>5.4</b> Corriger le texte</a><ul>
-<li class="chapter" data-level="5.4.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#la-correction-orthographique-automatique"><i class="fa fa-check"></i><b>5.4.1</b> La correction orthographique automatique</a></li>
-<li class="chapter" data-level="5.4.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#analyse-ciblée-par-les-regex"><i class="fa fa-check"></i><b>5.4.2</b> Analyse ciblée par les regex</a></li>
+<li class="chapter" data-level="5.4" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-sources"><i class="fa fa-check"></i><b>5.4</b> Identifier les sources</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-la-langue"><i class="fa fa-check"></i><b>5.4.1</b> Identifier la langue</a></li>
+<li class="chapter" data-level="5.4.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-la-source"><i class="fa fa-check"></i><b>5.4.2</b> Identifier la source</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-la-langue"><i class="fa fa-check"></i><b>5.5</b> Identifier la langue</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html"><i class="fa fa-check"></i><b>6</b> Une première analyse quantitative</a><ul>
 <li class="chapter" data-level="6.1" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#comptons-les-mots"><i class="fa fa-check"></i><b>6.1</b> Comptons les mots</a></li>
@@ -194,6 +196,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3.1" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#les-indices-de-lisibilité"><i class="fa fa-check"></i><b>6.3.1</b> Les indices de lisibilité</a></li>
 <li class="chapter" data-level="6.3.2" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#les-indices-de-complexité-lexicale"><i class="fa fa-check"></i><b>6.3.2</b> Les indices de complexité lexicale</a></li>
 </ul></li>
+<li class="chapter" data-level="6.4" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#conclusion"><i class="fa fa-check"></i><b>6.4</b> Conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="tokenisation.html"><a href="tokenisation.html"><i class="fa fa-check"></i><b>7</b> Tokenisation</a><ul>
 <li class="chapter" data-level="7.1" data-path="tokenisation.html"><a href="tokenisation.html#le-principe"><i class="fa fa-check"></i><b>7.1</b> Le principe</a></li>
@@ -209,7 +212,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.1" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#un-exemple-avec-syuzhet"><i class="fa fa-check"></i><b>8.1</b> Un exemple avec syuzhet</a><ul>
 <li class="chapter" data-level="8.1.1" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#valence-et-expression"><i class="fa fa-check"></i><b>8.1.1</b> Valence et expression</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#la-généralisation-par-le-liwc"><i class="fa fa-check"></i><b>8.2</b> La généralisation par le liwc</a></li>
+<li class="chapter" data-level="8.2" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#la-généralisation-par-le-liwc"><i class="fa fa-check"></i><b>8.2</b> La généralisation par le Liwc</a></li>
 <li class="chapter" data-level="8.3" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#encore-dautres-généralisations"><i class="fa fa-check"></i><b>8.3</b> Encore d’autres généralisations</a></li>
 <li class="chapter" data-level="8.4" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#construire-son-propre-dictionnaire"><i class="fa fa-check"></i><b>8.4</b> construire son propre dictionnaire</a></li>
 </ul></li>
@@ -330,7 +333,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="tokenisation" class="section level1">
-<h1><span class="header-section-number">Chapter 7</span> Tokenisation</h1>
+<h1><span class="header-section-number">Chapitre 7</span> Tokenisation</h1>
 <p>L’étape intiale de toute analyse textuelle est de découper le texte en unités d’analyse. Les <em>tokenizers</em> sont les outils indispensables à cette tâche.</p>
 <div id="le-principe" class="section level2">
 <h2><span class="header-section-number">7.1</span> Le principe</h2>
@@ -349,21 +352,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="les-outils" class="section level2">
 <h2><span class="header-section-number">7.2</span> Les outils</h2>
 <p>Pour les exemples on se concentre sur le package <a href="https://cran.r-project.org/web/packages/tokenizers/vignettes/introduction-to-tokenizers.html"><code>tokenizer</code></a>. Commençons par un tout petit exemple, une citation réputée de Max Weber.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="co">#Les données</span></a>
-<a class="sourceLine" id="cb8-2" title="2">MaxWeber &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;Bureaucratie: le moyen le plus rationnel que l’on connaisse pour exercer un contrôle impératif sur des êtres humains&quot;</span>)</a>
-<a class="sourceLine" id="cb8-3" title="3"></a>
-<a class="sourceLine" id="cb8-4" title="4"><span class="co">#On tokenise, plus on transforme en dataframe le résultat.</span></a>
-<a class="sourceLine" id="cb8-5" title="5">toc_maxweber&lt;-<span class="kw">tokenize_characters</span>(MaxWeber)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb8-6" title="6"><span class="st">        </span><span class="kw">as.data.frame</span>()<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb8-7" title="7"><span class="st">        </span><span class="kw">rename</span>(<span class="dt">tokens=</span><span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb8-8" title="8"><span class="co">#On compte pour chaque token sa fréquence d&#39;apparition</span></a>
-<a class="sourceLine" id="cb8-9" title="9">foo&lt;-toc_maxweber <span class="op">%&gt;%</span><span class="kw">mutate</span>(<span class="dt">n=</span><span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb8-10" title="10"><span class="st">        </span><span class="kw">group_by</span>(tokens)<span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb8-11" title="11"><span class="st">        </span><span class="kw">summarise</span>(<span class="dt">n=</span><span class="kw">sum</span>(n))<span class="op">%&gt;%</span><span class="kw">filter</span>(n<span class="op">&gt;</span><span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb8-12" title="12"><span class="co">#On représente par un diagramme en barre cette distribution des occuences d&#39;apparition, en classant les tokens par fréquence</span></a>
-<a class="sourceLine" id="cb8-13" title="13"><span class="kw">ggplot</span>(foo, <span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">reorder</span>(tokens,n), <span class="dt">y=</span>n))<span class="op">+</span></a>
-<a class="sourceLine" id="cb8-14" title="14"><span class="st">               </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="dt">fill=</span><span class="st">&quot;royalblue&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb8-15" title="15"><span class="st">               </span><span class="kw">coord_flip</span>()<span class="op">+</span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;unigram, bigram et trigram&quot;</span>, <span class="dt">x=</span><span class="st">&quot;ngram&quot;</span>, <span class="dt">y=</span><span class="st">&quot;nombre d&#39;occurences&quot;</span>, <span class="dt">caption =</span><span class="st">&quot; &#39;Bureaucratie: le moyen le plus rationnel que l’on connaisse pour exercer un contrôle impératif sur des êtres humains&#39; &quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="co">#Les données</span></a>
+<a class="sourceLine" id="cb15-2" title="2">MaxWeber &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;Bureaucratie: le moyen le plus rationnel que l’on connaisse pour exercer un contrôle impératif sur des êtres humains&quot;</span>)</a>
+<a class="sourceLine" id="cb15-3" title="3"></a>
+<a class="sourceLine" id="cb15-4" title="4"><span class="co">#On tokenise, plus on transforme en dataframe le résultat.</span></a>
+<a class="sourceLine" id="cb15-5" title="5">toc_maxweber&lt;-<span class="kw">tokenize_characters</span>(MaxWeber)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb15-6" title="6"><span class="st">        </span><span class="kw">as.data.frame</span>()<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb15-7" title="7"><span class="st">        </span><span class="kw">rename</span>(<span class="dt">tokens=</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb15-8" title="8"><span class="co">#On compte pour chaque token sa fréquence d&#39;apparition</span></a>
+<a class="sourceLine" id="cb15-9" title="9">foo&lt;-toc_maxweber <span class="op">%&gt;%</span><span class="kw">mutate</span>(<span class="dt">n=</span><span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb15-10" title="10"><span class="st">        </span><span class="kw">group_by</span>(tokens)<span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb15-11" title="11"><span class="st">        </span><span class="kw">summarise</span>(<span class="dt">n=</span><span class="kw">sum</span>(n))<span class="op">%&gt;%</span><span class="kw">filter</span>(n<span class="op">&gt;</span><span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb15-12" title="12"><span class="co">#On représente par un diagramme en barre cette distribution des occuences d&#39;apparition, en classant les tokens par fréquence</span></a>
+<a class="sourceLine" id="cb15-13" title="13"><span class="kw">ggplot</span>(foo, <span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">reorder</span>(tokens,n), <span class="dt">y=</span>n))<span class="op">+</span></a>
+<a class="sourceLine" id="cb15-14" title="14"><span class="st">               </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="dt">fill=</span><span class="st">&quot;royalblue&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb15-15" title="15"><span class="st">               </span><span class="kw">coord_flip</span>()<span class="op">+</span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;unigram, bigram et trigram&quot;</span>, <span class="dt">x=</span><span class="st">&quot;ngram&quot;</span>, <span class="dt">y=</span><span class="st">&quot;nombre d&#39;occurences&quot;</span>, <span class="dt">caption =</span><span class="st">&quot; &#39;Bureaucratie: le moyen le plus rationnel que l’on connaisse pour exercer un contrôle impératif sur des êtres humains&#39; &quot;</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:501"></span>
 <img src="bookdown-demo_files/figure-html/501-1.png" alt="Distribution du nombre de lettres" width="80%" />
 <p class="caption">
@@ -377,11 +380,11 @@ Figure 7.1: Distribution du nombre de lettres
 <p>Il peuvent être consécutifs, ou être</p>
 <div id="les-lettres" class="section level3">
 <h3><span class="header-section-number">7.3.1</span> Les lettres</h3>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">toc_maxweber&lt;-<span class="kw">tokenize_character_shingles</span>(MaxWeber,<span class="dt">n=</span><span class="dv">3</span>, <span class="dt">n_min=</span><span class="dv">1</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-2" title="2"><span class="st">        </span><span class="kw">as.data.frame</span>()<span class="op">%&gt;%</span><span class="kw">rename</span>(<span class="dt">tokens=</span><span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb9-3" title="3">ft&lt;-<span class="kw">flextable</span>(<span class="kw">head</span>(toc_maxweber))</a>
-<a class="sourceLine" id="cb9-4" title="4">ft</a></code></pre></div>
-<template id="a68aa27b-e9dc-4887-8f77-af1f238fddb3"><style>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1">toc_maxweber&lt;-<span class="kw">tokenize_character_shingles</span>(MaxWeber,<span class="dt">n=</span><span class="dv">3</span>, <span class="dt">n_min=</span><span class="dv">1</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb16-2" title="2"><span class="st">        </span><span class="kw">as.data.frame</span>()<span class="op">%&gt;%</span><span class="kw">rename</span>(<span class="dt">tokens=</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb16-3" title="3">ft&lt;-<span class="kw">flextable</span>(<span class="kw">head</span>(toc_maxweber))</a>
+<a class="sourceLine" id="cb16-4" title="4">ft</a></code></pre></div>
+<template id="95b91e32-8d36-4eea-b600-3b2345857409"><style>
 .tabwid table{
   border-collapse:collapse;
   line-height:1;
@@ -415,12 +418,12 @@ Figure 7.1: Distribution du nombre de lettres
 .tabwid table tr {
 background-color: transparent;
 }
-</style><div class="tabwid"><style>.cl-79b77c16{border-collapse:collapse;}.cl-79ae3188{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-79ae3189{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-79aea672{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-79aea673{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-79aea674{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-79b77c16'>
-<thead><tr style="overflow-wrap:break-word;"><td class="cl-79aea674"><p class="cl-79ae3189"><span class="cl-79ae3188">tokens</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-79aea672"><p class="cl-79ae3189"><span class="cl-79ae3188">b</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-79aea672"><p class="cl-79ae3189"><span class="cl-79ae3188">bu</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-79aea672"><p class="cl-79ae3189"><span class="cl-79ae3188">bur</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-79aea672"><p class="cl-79ae3189"><span class="cl-79ae3188">u</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-79aea672"><p class="cl-79ae3189"><span class="cl-79ae3188">ur</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-79aea673"><p class="cl-79ae3189"><span class="cl-79ae3188">ure</span></p></td></tr></tbody></table></div></template>
-<div class="flextable-shadow-host" id="d92eced5-f94e-4a44-a905-dde3be9ad82d"></div>
+</style><div class="tabwid"><style>.cl-f03fe9d2{border-collapse:collapse;}.cl-f0330d52{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-f0333444{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-f0335b36{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f0335b37{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f0335b38{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-f03fe9d2'>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-f0335b38"><p class="cl-f0333444"><span class="cl-f0330d52">tokens</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-f0335b36"><p class="cl-f0333444"><span class="cl-f0330d52">b</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f0335b36"><p class="cl-f0333444"><span class="cl-f0330d52">bu</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f0335b36"><p class="cl-f0333444"><span class="cl-f0330d52">bur</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f0335b36"><p class="cl-f0333444"><span class="cl-f0330d52">u</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f0335b36"><p class="cl-f0333444"><span class="cl-f0330d52">ur</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f0335b37"><p class="cl-f0333444"><span class="cl-f0330d52">ure</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="84e18d76-2c38-4164-aaab-2e885cadb351"></div>
 <script>
-var dest = document.getElementById("d92eced5-f94e-4a44-a905-dde3be9ad82d");
-var template = document.getElementById("a68aa27b-e9dc-4887-8f77-af1f238fddb3");
+var dest = document.getElementById("84e18d76-2c38-4164-aaab-2e885cadb351");
+var template = document.getElementById("95b91e32-8d36-4eea-b600-3b2345857409");
 var caption = template.content.querySelector("caption");
 if(caption) {
   caption.style.cssText = "display:block;text-align:center;";
@@ -433,13 +436,13 @@ var templateContent = template.content;
 fantome.appendChild(templateContent);
 </script>
 
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">foo&lt;-toc_maxweber <span class="op">%&gt;%</span><span class="kw">mutate</span>(<span class="dt">n=</span><span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb10-2" title="2"><span class="st">        </span><span class="kw">group_by</span>(tokens)<span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb10-3" title="3"><span class="st">        </span><span class="kw">summarise</span>(<span class="dt">n=</span><span class="kw">sum</span>(n))<span class="op">%&gt;%</span><span class="kw">filter</span>(n<span class="op">&gt;</span><span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb10-4" title="4"></a>
-<a class="sourceLine" id="cb10-5" title="5"><span class="kw">ggplot</span>(foo, <span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">reorder</span>(tokens,n), <span class="dt">y=</span>n))<span class="op">+</span></a>
-<a class="sourceLine" id="cb10-6" title="6"><span class="st">               </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="dt">fill=</span><span class="st">&quot;royalblue&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb10-7" title="7"><span class="st">               </span><span class="kw">coord_flip</span>()<span class="op">+</span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;unigram, bigram et trigram&quot;</span>, <span class="dt">x=</span><span class="st">&quot;ngram&quot;</span>, <span class="dt">y=</span><span class="st">&quot;nombre d&#39;occurences&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1">foo&lt;-toc_maxweber <span class="op">%&gt;%</span><span class="kw">mutate</span>(<span class="dt">n=</span><span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb17-2" title="2"><span class="st">        </span><span class="kw">group_by</span>(tokens)<span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb17-3" title="3"><span class="st">        </span><span class="kw">summarise</span>(<span class="dt">n=</span><span class="kw">sum</span>(n))<span class="op">%&gt;%</span><span class="kw">filter</span>(n<span class="op">&gt;</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb17-4" title="4"></a>
+<a class="sourceLine" id="cb17-5" title="5"><span class="kw">ggplot</span>(foo, <span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">reorder</span>(tokens,n), <span class="dt">y=</span>n))<span class="op">+</span></a>
+<a class="sourceLine" id="cb17-6" title="6"><span class="st">               </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="dt">fill=</span><span class="st">&quot;royalblue&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb17-7" title="7"><span class="st">               </span><span class="kw">coord_flip</span>()<span class="op">+</span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;unigram, bigram et trigram&quot;</span>, <span class="dt">x=</span><span class="st">&quot;ngram&quot;</span>, <span class="dt">y=</span><span class="st">&quot;nombre d&#39;occurences&quot;</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:502"></span>
 <img src="bookdown-demo_files/figure-html/502-1.png" alt="Distribution du nombre de mots par post" width="80%" />
 <p class="caption">
@@ -451,24 +454,24 @@ Figure 7.2: Distribution du nombre de mots par post
 <div id="les-mots" class="section level3">
 <h3><span class="header-section-number">7.3.2</span> Les mots</h3>
 <p>On refait la même opération, mais avec un texte complété. Il y a bien moins de mots que de lettres!</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="co">#Les données</span></a>
-<a class="sourceLine" id="cb11-2" title="2"></a>
-<a class="sourceLine" id="cb11-3" title="3">MaxWeber &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;Bureaucratie: le moyen le plus rationnel que l’on connaisse pour exercer un contrôle impératif sur des êtres humains. la bureaucratie est une forme d&#39;organisation générale caractérisée par la prépondérance des règles et de procédures qui sont appliquées de façon impersonnelle par des agents spécialisés. Ces agents appliquent les règles sans discuter des objectifs ou des raisons qui les fondent. Ils doivent faire preuve de neutralité et oublier leurs propres intérêts personnels au profit de l’intérêt général&quot;</span>)</a>
-<a class="sourceLine" id="cb11-4" title="4"></a>
-<a class="sourceLine" id="cb11-5" title="5"><span class="co">#On tokenise, plus on transforme en dataframe le résultat.</span></a>
-<a class="sourceLine" id="cb11-6" title="6">toc_maxweber&lt;-<span class="kw">tokenize_words</span>(MaxWeber)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb11-7" title="7"><span class="st">        </span><span class="kw">as.data.frame</span>()<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb11-8" title="8"><span class="st">        </span><span class="kw">rename</span>(<span class="dt">tokens=</span><span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb11-9" title="9"></a>
-<a class="sourceLine" id="cb11-10" title="10"><span class="co">#On compte pour chaque token sa fréquence d&#39;apparition</span></a>
-<a class="sourceLine" id="cb11-11" title="11">foo&lt;-toc_maxweber <span class="op">%&gt;%</span><span class="kw">mutate</span>(<span class="dt">n=</span><span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb11-12" title="12"><span class="st">        </span><span class="kw">group_by</span>(tokens)<span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb11-13" title="13"><span class="st">        </span><span class="kw">summarise</span>(<span class="dt">n=</span><span class="kw">sum</span>(n))<span class="op">%&gt;%</span><span class="kw">filter</span>(n<span class="op">&gt;</span><span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb11-14" title="14"></a>
-<a class="sourceLine" id="cb11-15" title="15"><span class="co">#On représente par un diagramme en barre cette distribution des occurrences, en classant les tokens par fréquence</span></a>
-<a class="sourceLine" id="cb11-16" title="16"><span class="kw">ggplot</span>(foo, <span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">reorder</span>(tokens,n), <span class="dt">y=</span>n))<span class="op">+</span></a>
-<a class="sourceLine" id="cb11-17" title="17"><span class="st">               </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="dt">fill=</span><span class="st">&quot;royalblue&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb11-18" title="18"><span class="st">               </span><span class="kw">coord_flip</span>()<span class="op">+</span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;unigram, bigram et trigram&quot;</span>, <span class="dt">x=</span><span class="st">&quot;ngram&quot;</span>, <span class="dt">y=</span><span class="st">&quot;nombre d&#39;occurences&quot;</span>, <span class="dt">caption =</span><span class="st">&quot; &#39;Bureaucratie: le moyen le plus rationnel que l’on connaisse pour exercer un contrôle impératif sur des êtres humains&#39; &quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="co">#Les données</span></a>
+<a class="sourceLine" id="cb18-2" title="2"></a>
+<a class="sourceLine" id="cb18-3" title="3">MaxWeber &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;Bureaucratie: le moyen le plus rationnel que l’on connaisse pour exercer un contrôle impératif sur des êtres humains. la bureaucratie est une forme d&#39;organisation générale caractérisée par la prépondérance des règles et de procédures qui sont appliquées de façon impersonnelle par des agents spécialisés. Ces agents appliquent les règles sans discuter des objectifs ou des raisons qui les fondent. Ils doivent faire preuve de neutralité et oublier leurs propres intérêts personnels au profit de l’intérêt général&quot;</span>)</a>
+<a class="sourceLine" id="cb18-4" title="4"></a>
+<a class="sourceLine" id="cb18-5" title="5"><span class="co">#On tokenise, plus on transforme en dataframe le résultat.</span></a>
+<a class="sourceLine" id="cb18-6" title="6">toc_maxweber&lt;-<span class="kw">tokenize_words</span>(MaxWeber)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb18-7" title="7"><span class="st">        </span><span class="kw">as.data.frame</span>()<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb18-8" title="8"><span class="st">        </span><span class="kw">rename</span>(<span class="dt">tokens=</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb18-9" title="9"></a>
+<a class="sourceLine" id="cb18-10" title="10"><span class="co">#On compte pour chaque token sa fréquence d&#39;apparition</span></a>
+<a class="sourceLine" id="cb18-11" title="11">foo&lt;-toc_maxweber <span class="op">%&gt;%</span><span class="kw">mutate</span>(<span class="dt">n=</span><span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb18-12" title="12"><span class="st">        </span><span class="kw">group_by</span>(tokens)<span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb18-13" title="13"><span class="st">        </span><span class="kw">summarise</span>(<span class="dt">n=</span><span class="kw">sum</span>(n))<span class="op">%&gt;%</span><span class="kw">filter</span>(n<span class="op">&gt;</span><span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb18-14" title="14"></a>
+<a class="sourceLine" id="cb18-15" title="15"><span class="co">#On représente par un diagramme en barre cette distribution des occurrences, en classant les tokens par fréquence</span></a>
+<a class="sourceLine" id="cb18-16" title="16"><span class="kw">ggplot</span>(foo, <span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">reorder</span>(tokens,n), <span class="dt">y=</span>n))<span class="op">+</span></a>
+<a class="sourceLine" id="cb18-17" title="17"><span class="st">               </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="dt">fill=</span><span class="st">&quot;royalblue&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb18-18" title="18"><span class="st">               </span><span class="kw">coord_flip</span>()<span class="op">+</span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;unigram, bigram et trigram&quot;</span>, <span class="dt">x=</span><span class="st">&quot;ngram&quot;</span>, <span class="dt">y=</span><span class="st">&quot;nombre d&#39;occurences&quot;</span>, <span class="dt">caption =</span><span class="st">&quot; &#39;Bureaucratie: le moyen le plus rationnel que l’on connaisse pour exercer un contrôle impératif sur des êtres humains&#39; &quot;</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:503"></span>
 <img src="bookdown-demo_files/figure-html/503-1.png" alt="Distribution du nombre de mots" width="80%" />
 <p class="caption">

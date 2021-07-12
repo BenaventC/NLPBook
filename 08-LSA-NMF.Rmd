@@ -1,53 +1,42 @@
-# Constitution du corpus
+# Le retour des méthodes factorielles
 
-Some _significant_ applications are demonstrated in this chapter.
+D'un point de vue historique l'analyse factorielle est une idées de psychologue. D'ailleur un des meilleurs packages jamais développé est sans doute psych
 
-## Scrapping
+L'école française a choisit l'ACP, et ses dérivée appliquées à des données de comptage comme l'AFCM.
 
-De ces deux approches on pourra considérer que la première correspond à un internet sauvage où la collecte d’information se traduit par une technique de chasseurs-cueilleurs, le glanage. Le recours aux APIs est civilisé, ne serait-ce parce qu'on introduit une sorte d’étiquette, des règles de courtoisie, un système de reconnaissance réciproque et d’attribution de droits. 
-Le scraping est l’activité qui consiste à moissonner les informations disponibles sur le net en simulant et en automatisant la lecture par un butineur. Elle consiste à construire un robot capable de lire et d’enregistrer les informations disponibles sous forme html puis à les distribuer (parsing) dans des tableaux structurés, selon une stratégie d’exploration du web préalablement définie.
-De nombreuses ressources sont disponibles, mais pour en rester à r , le package rvest permet de réaliser des extractions simples mais suffisantes pour de nombreux usages. 
-
-Les caractéristiques clés du scraping :
-    • La nécessité de programmer de manière ad hoc, en fonction des spécificités de chaque site. 
-    • Des stratégies mécaniques, en boules de neige. 
-    • Le risque de deny of service, c’est à dire de saturer ou de parasiter un système et de s’exposer à ses contre-mesures.
-    • Les conditions légales ne sont pas homogènes et relèvent de différents droits : de la propriété intellectuelle, du respect de la vie privée, du droit de la concurrence. Cependant des facilités et tolérances sont souvent accordées quand c’est dans un objectif de recherche et que des précautions minimales d’anonymisation ou de pseudonymisation sont prises, et que les règles de conservation et de destruction des données sont précisées. 
-    • La question éthique va au-delà du droit, elle concerne les conséquences de cette action sur l’évolution d’ensemble. On notera qu’elle participe à la “robotisation” du web ( plus de 50% du trafic résulterait de la circulation des spiders , scrapers2, sniffers et autres bots. Et qu’elle fait l’objet de contre-mesures.
-Parmi les contre-mesures, le développement des APIs qui permet un accès contrôlé par le détenteur des informations en échange d’une facilitation de l’accès, et d’une plus grande fiabilité des données.
-L’utilisation d’API lève l'ambiguïté légale qui accompagne le scraping est peut ainsi paraître comme plus civilisée. Elle nécessite naturellement que le gestionnaire de la base de données fournissent les moyens de s’identifier et de requêter, elle peut avoir l'inconvénient d’être coûteuse quand l’accès est payant. Elle affirme aussi le pouvoir de ceux qui contrôlent les données. Ces dernières ne sont pas, insuffisamment pour le chercheur, un bien commun.
+Ces méthodes s'appuient sur des techniques de décomposition de matrice, et vise à réduire leur rang. Le problèmes qu'elle cherchent à résoudre est de réduire l'espace d'information. 
 
 
-### Prendre avantage de la structure du html
+## retour sur l'ACP
 
-### des problèmes de droits et d'éthique
+L'ACP a été longtemps la méthode reine, elle est toujours fréquemmment utilisée.
 
 
-### rvest avec r
+Elle vise à un but simple : représenter un ensemble de donnée comportant k variable à un petit nombre de combinaisions de ces varibles qui représente une grandes part de l'information.
+
+
+Historiquement elle a été développée pour analyser des matrices de coorélation multiples où X est une matrice de n individus x k variables. 
+
+$\Sigma=X*X^\top$
+
+L'idée principale est de trouver des combnaire linéaires des variables qui capture succésivment une part macimale de la variance. La solution à ce problème revient à décomposer cette matrice en fonction d'un matrice de poids qui est determinée comme la matrice des valeur prore de sigma.
+
+$\Sigma=F*V*F^\top$
 
 
 
+https://fr.wikipedia.org/wiki/Jean-Paul_Benz%C3%A9cri
 
-## API
+https://www.math3ma.com/blog/understanding-entanglement-with-svd
+
+X=FSF
+
+## SVD
 
 
+## LSA
 
-### Un tour d'horizon des API
 
-### Un exemple avec Rtwitter
+## NLM
 
-library (twittr) # on appelle la librairie twittr qui permet les requêtes
-consumerKey<-"Xq..."   #paramètres requis par l’ API de twitter (Ouvrir un compte au prélable)
-consumerSecret<-"30l..."
-access_token<-"27A..."
-access_secret<-"zA7..."
 
-fonction d’initialisation des requêtes
-setup_twitter_oauth(consumerKey, consumerSecret, access_token,access_secret)
-
-recherche des tweets
-tweets1 <- searchTwitter("#IA", n = 2000, lang = "fr", resultType = "recent", since 
-= "2019-08-01") 
-
-transformer en data frame 
-tweets_df1 <- twListToDF(tweets1) 

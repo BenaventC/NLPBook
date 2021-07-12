@@ -1,29 +1,49 @@
 # Préparation des données
 
+Avant de se lancer dans l'analyse, il est nécessaire de préparer le texte, de le pré-traiter. Son format fondamental est celui d'une chaine de caractères, sans signification particulière mais composé à partir d'un alphbat, c'un jeux de signes déterminés et démobralement. 1/0 pour lelangage bianre, AGCP pour l'adan, 26 caractère de base pour l'alphabet, sans compter les accents.  
 
-Avant de se lancer dans l'analyse, il est nécessaire de préparer le texte, de le pré-traiter. Sont format est celui de chaine de caractère, la base est d'avoir des outis pour les manipuler.
+Ces variations sont l'objet de convention en informatique. et de certaines opérations. 
 
+
+traiter du texte c'est avant tout disposer d'opérateurs pour manipuler ces éléments élémentaire.  la base est d'avoir des outils pour les manipuler.
+
+Le langage avant d'être signifiant est signifié, littéralement produit comme une chaine de signes qui dans l'usage suit certaine convention. Par exemple la satisfaction peut s'exprimé par mmmm, une forte satisfaction par un mmmmmmmmmmmmmmmmmmmmm. Pour distinguer les significations, il faut d'abord compter. les mmm sont sans doute courants car conventionnels (ce mot est à deux doigts d'être incorporé au dictionnaire de l'Académie Française, s'il n'était qu'une onomatopée), les "mmmmmmmmmmmmmmmmmmmmm" sont sans doute beaucoups plus rares. De plus on trouvera des "hum" des "hummm", des 'mmmmhummmm". On comprend qu'à la nuance de l'intensité que le locuteur veut exprimer, toute ces morphologies se rapportent à une même idée. 
+
+Comment le rammener à une même formes est une question essentielle même si elle semble excessivement technique.
 
 
 ## Manipuler des chaines de caractères
 
-[Stringer](https://stringr.tidyverse.org/) est un des composants essentiels de tidyverse. Il est destiné à traiter les chaines de caractères. D'autres packages sont équilavent : stringi par exemple.
+Il faut donc traiter le texte, avant même de s'engager dans des modèles compliqués. Il faut savoir traiter des chaines de caractères pour en réduire la diversité, et en produire des chaines grammaticalement exacte. C'est un travail d'artisan, celui des des imprimeurs et de leurs coorecteur. Et en particulier d'un métier celui du [compositeur](http://www.textesrares.com/dupon/d376.htm), ou ouvrier de la casse,  qui distribue des caractères de plomb en séquences dans des casiers de bois. 
+
+[cmpositeur](compositeur.jpg)
+
+L'artisan n'avait pas de choix, la précision était essentielle pour éviter la coquille. Le texte moderne, numérique, est l'objet de plus d'aller et retours. Les mots qu'on pianotent sont corrigés avant même d'être frappés. Les gestes techniques sont différents mais s'articulent sur une même idée : la langue écrite, du moins les langues alphabétiques sont des chaines de caractères dont la formation suit des règles fluctuantes à travers l'histoire mais contraignante à chaque moments. Les conventiosn peuvent changer, mais dans son temps elle s'imposent définitivement. Personne n'écrirait "deffert", pour dire "dessert". Et pourtant la graphie du s était un f jusqu'au XVI ème siècle (trouver la source)!
+https://www.cairn.info/revue-la-linguistique-2003-1-page-3.htm
+
+De nombreuses ressources sont disponibles pour traiter ces chaines de caractères.
+
+On utilisera surtout [Stringer](https://stringr.tidyverse.org/) qui est est un des composants essentiels de tidyverse. D'autres packages sont équivalents : stringi par exemple. 
 
 
-### manipulation de chaînes de caractères 
+### Les opérations sur les chaînes de caractères
 
 
+ * mettre en minuscule. L'alphabet se présente au moins en deux versions : des majuscules et des minuscules, il est souvent nécessaire de réduire le texte à une seule casse pour en réduire la variété, sauf si les majuscules signalent une information spécifique et socialement conventionnelle. Un mot qui débute par une majuscule signale un nom commun, désormais conceptualisé comme une entité nommée appartenant à différentes catégories : noms de lieux, noms de personnes, noms d'organisation ...ou l'expression d'un sentiment, au sein des chats, la majuscule en série signale un niveau de langage "loud", un cri , une engueulade, la véhémence.  
  * rechercher une chaine de caractères;
  * remplacer une chaine de caractères
  * extraire une chaine de caractère d'un emplacement à l'autre
- * supprimer une chaine de caractères
- * concaténer des chaines de caractères
+ * supprimer une chaine de caractères. Les nombres, 
+ * concaténer des chaines de caractères. Le texte peut être divisés en unités. Un paragraphe par exemple, ou un titre.  
  
-### Une illustration
+Si la manipulation deslaquelle ? vaccin ?
 
+### La technique des expressions régulières (regex)
 
+Il ne suffit pas de chercher une chaine de caractère particulière, il faut souvent saisir un ensemble de variations qui suivent un motif determiné et qui répond à une sorte de loi générale.
 
-## La technique des expressions régulières (regex)
+Par exemple si je veux retrouvrer dans un corpus l'ensemble des mots relatif au monde de l'hôpital, nous chercherions aussi le mot "hopital". Nombreux seront les locuteur qui omeetent l'accent circonflexe. Une formule pour trouver ces deux varietés serait d'utiliser un opérateur, "(), pour définir une option . soit l'un soit l'autre :
+h(ô,o)pital
 
 Une expression régulière est un masque qui permet d'identifier des formes principales et leurs variétés. Il s'appuit sur une codification dont quelques éléments clés permettent de se donner une bonne idée de la logique générale
 
@@ -32,9 +52,38 @@ Une expression régulière est un masque qui permet d'identifier des formes prin
   
   * le * la répétition indéfinie du caractère . 
 
-### Des applications courantes
+D'un point de vue linguistique les regex travaillent sur la morphologie et ses variations, indépendemment des règles de grammaires mais profitant de leur régularité. 
 
-Le langage des regex a répondu d'abord au besoin des informaticiens, et à ceux qui face à des questions de métier, par exemple les professionnel de marketing direct ou des services postaux, ont été amené à traiter de jeux de données textuels limités tel qu'une adresse postale. 
+Les mots sont généralement composés d'une racine, de suffixe et de préfixe qui contiennent les flexions grammaticales et sémantiques.
+
+des exemples :
+
+ * la négation : visible et in-visible. 
+ * la conjugaison : aime et aim-ât
+ * la numération : fraise et fraise-s
+ * le genre : épicier et épicière-s. 
+ 
+ grepl
+ 
+
+### Un fondement profond et ancien
+
+Le langage des regex a répondu d'abord aux besoin des informaticiens, et s'appuie sur une construction mathématique sophistiquée : les automatates finis
+https://swtch.com/~rsc/regexp/regexp1.html don t un des contributeurs essentiels à été 
+
+doi.org/10.1145/363347.363387 Ken Thompson
+
+fondateur de Grepl
+
+a method for locating specific character strings embedded in character text is described and an implementation of this method in the form of a compiler is discussed. The compiler accepts a regular expression as source language and produces an IBM 7094 program as object language. The object program then accepts the text to be searched as input and produces a signal every time an embedded string in the text matches the given regular expression. Examples, problems, and solutions are also presented.
+
+https://swtch.com/~rsc/regexp/regexp1.html
+
+### Des applications très pratiques
+
+et à ceux qui face à des questions de métier, par exemple les professionnel de marketing direct ou des services postaux, ont été amené à traiter de jeux de données textuels limités tel qu'une adresse postale. 
+
+ * dectecter une entité nommée : la majuscule
 
  * détecter une adresse
 
@@ -73,20 +122,131 @@ https://cran.r-project.org/web/packages/hunspell/vignettes/intro.html#Custom_Dic
 
 ### Analyse ciblée par les regex
 
-Une application des regex est l'analyse ciblée d'un certain nombre de termes. LA coorection est partielle mais couvre les cibles essentielles
+Une application des regex est l'analyse ciblée d'un certain nombre de termes. LA corection est partielle mais couvre les cibles essentielles
 
 exemple des gestes barières dans le flux twitter
 
+## Identifier les sources
 
+Dans l'analyse des contenus sociaux, les textes viennent de sources multiples et confuses. Elles peuvent être aisément multilingue. Analyser un corpus d'entretien, une collection de discours, posent peu la questions des locuteurs car ils sont bien identifiés. Ce n'est pas le cas dans les réseaux sociaux où les buts sont multiples et plus ou moins avoués. 
 
-## Identifier la langue
+Les acteurs :
+
+- des professionnels de la politiques et les institutions qu'ils dirigent
+- Journaliste et professionnels de la communication
+- Experts et universitaires
+- les marques et leur community manager
+- les bots
+- les trolls
+- les activistes
+
+### Identifier la langue
 
 Dans les points précedents on suppose que la langue est homogène, mais les corpus peuvent être multi-langues. Par exemple, dans les corpus d'avis d'hôtes sur Airbnb, les avis sont formulés dans une large variété de langues. Il va falloir en tenir compte et une tâche préliminaire sera de détecter les langues pour séparer les corpus.
 
-Le package textcat offre une solution basée sur la fréquence des ngrams. Google propose un algo cpl3
+Le package textcat offre une solution basée sur la fréquence des ngrams (voir chapitre x). et compare la distribution du texte ciblée avec les distributions typiques des langues. Google propose un algo cpd3(https://github.com/google/cld3) plus sophistiqués dans la mesure où c'est un réseau de neurones qui fait le travail. Comparons les. 
+
+On utilise un jeu de donnée Airbnb sur Bruxelles qui accueillant les institutions européennnes est une des villes les plus cosmopolite qui soit avec des fonctionnaires venant de toutes l'europe et s'exprimant dans une large varité de langue, sans compter les représentations des autres pays du monde. 
+
+En terme de durée de calcul, la différence en temps de calcul est faramineuse 7 secondes contre 7 minutes, ce qui s'explique car texcat s'appuyant sur la distribution des ngrams doit les calculer pour les 36000 observations que nous avons retenues. 
 
 Faisons un test sur un extrait du corpus Airbnb.
 
 
 
+```{r 301, fig.cap='', out.width='80%', fig.asp=1, fig.align='center'}
+BXL2021 <- read_csv("reviewsBXL2021.csv")
+BXL2021$Year<- as.numeric(format(as.Date(BXL2021$date, format="%Y-%m-%d"),"%Y"))
 
+BXL2021<- BXL2021 %>% filter(Year>2019) # on filtre sur la période de confinement
+
+library(cld3)
+
+t1<-Sys.time()
+
+cld3<-as.data.frame(detect_language(BXL2021$comments))%>%rename(cld3=1)
+t2<-Sys.time()
+
+t_cld3<-t2-t1 #on calcule la durée de l'opération en faisant la différence du temps de départ et d'arrivée
+
+library(textcat)
+t1<-Sys.time()
+textcat<-textcat(BXL2021$comments)
+t2<-Sys.time()
+t_texcat<-t2-t1
+foo<-cbind(cld3, textcat)
+
+```
+
+Examinons les résultats et la distribution des langues identifées par les deux systèmes. Si l'ordre est respecté. Des différences s'observent, cld3 identifie du chinois qui ne fait pas partie du répertoire de texcat. 
+
+
+```{r 302, fig.cap='', out.width='80%', fig.asp=1, fig.align='center'}
+
+g1<-foo%>%mutate(n=1)%>%group_by(textcat)%>%summarise(n=sum(n))%>%
+  ggplot(aes(x=reorder(textcat,n), y=n))+geom_bar(stat="identity")+coord_flip()+scale_y_log10()
+
+g2<-foo%>%mutate(n=1)%>%
+  group_by(cld3)%>%
+  summarise(n=sum(n))%>%
+  ggplot(aes(x=reorder(cld3,n), y=n))+ geom_bar(stat="identity")+coord_flip()+scale_y_log10()
+
+plot_grid(g1, g2, labels = c('Texcat','Cld3'), label_size = 12)
+```
+
+Examions maintenant la convergence des méthodes en représentant la répartition du résultat d'un système dans les langue de l'autre. Si la convergence est parfaite 1000% des textes classé en Français par Textact devrait se retrouver dans 100% de ces textes classé par cld3 et réciproquement.
+
+```{r 303, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
+
+foo1 <-foo %>% mutate(n=1)%>%group_by(textcat) %>%summarise(n=sum(n))
+foo1<-foo%>% left_join(foo1) %>% filter(n>10)
+
+table<-table(foo1$cld3,foo1$textcat)
+foo1<-as.data.frame(prop.table(table,2))
+
+
+ggplot(foo1, aes(reorder(Var2, Freq),Var1)) + 
+  geom_tile(aes(fill = Freq)) + 
+  scale_fill_gradient(low = "White",high = "Blue")+
+  theme_bw()+ theme(axis.text.x=element_text(angle = 45, hjust =1))+coord_flip()
+
+
+foo1 <-foo %>% mutate(n=1)%>%group_by(cld3) %>%summarise(n=sum(n))
+foo1<-foo%>% left_join(foo1)%>%filter(n>10)
+
+table<-table(foo1$cld3,foo1$textcat)
+foo1<-as.data.frame(prop.table(table,1))
+
+ggplot(foo1, aes(reorder(Var1, Freq),Var2)) + 
+  geom_tile(aes(fill = Freq, label=Freq)) + 
+  scale_fill_gradient(low = "White",high = "Red")+
+  theme_bw()+ theme(axis.text.x=element_text(angle = 45, hjust =1))+coord_flip()
+```
+
+```{r 304, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
+
+library(pheatmap)
+library(viridis)
+
+table2<-as.data.frame(table) %>%
+  mutate(Freq=log10(Freq+1))  %>% 
+  pivot_wider(names_from = Var1, values_from = Freq) %>%
+  column_to_rownames( var = "Var2")
+pheatmap(table2 , color = inferno(10))
+
+chi2<- chisq.test(table)
+chi2<- as.data.frame(chi2$residual)
+
+table2<-chi2 %>% mutate(Freq=Freq^2)%>%
+  pivot_wider(names_from = Var1, values_from = Freq) %>%
+  column_to_rownames( var = "Var2")
+pheatmap(table2 , color = inferno(20, direction=1))
+
+```
+
+
+
+### Identifier la source
+
+botometer
+botchecks

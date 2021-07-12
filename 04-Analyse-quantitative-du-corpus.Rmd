@@ -69,29 +69,90 @@ https://fr.wikipedia.org/wiki/Covfefe
 
 La lisibilité est une vieille notion autant que sa mesure (par exemple @coleman_computer_1975). Il s'agit d'évaluer la complexité d'un texte à partir de deux critères : la complexité des mots capturée par le nombre moyen de syllabes par mot, et la complexité des phrases mesurée par le nombre de mots. 
 
-Le nombre d'indicateurs est considérable et le package compagnon de quanteda , quanteda.textstats , en fournit au moins une trentaine. On en utilise les ressources.
+Le nombre d'indicateurs est considérable et le package compagnon de quanteda , `[quanteda.textstats](https://quanteda.io/reference/textstat_readability.html)` , en fournit au moins des dizaines. Dans l'exemple suivant, on se contente d'un grand classique, le plus ancien, l'indice de Flesch [@flesch_new_1948] et de ses constituants: le nombre moyen de syllabes par mot et le nombre moyen de mots par phrase.  
 
-```{r 4, fig.cap='Evolution de la lisibilité des tweets de Trump', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 404, fig.cap='Evolution de la lisibilité moyenne des tweets de Trump', out.width='80%', fig.asp=.75, fig.align='center'}
 
+foo<-df %>% filter(isRetweet==FALSE) # on ne prend pas en compte les RT
 
+readability<-textstat_readability(foo$text, measure = c("Flesch","meanSentenceLength", "meanWordSyllables"),
+                                  min_sentence_length = 3,max_sentence_length = 1000) #la fonction de calcul de lisibilité
 
-readability<-textstat_readability(df$text, measure = "Flesch")
-df<-cbind(df,readability[,2])
-foo<-df %>% 
-  group_by(Year)%>%
-  summarize(Flesch=mean(Flesch, na.rm=TRUE))
-ggplot(foo,aes(x=Year, y=Flesch, group=1))+geom_line(size=1.2, color="darkblue")+
-  labs(title = "Evolution de la lisibilité des tweets de Trump", x=NULL, y="indice de Flesch")
+foo<-cbind(foo,readability[,2:4])
+foo1<-foo %>% 
+  group_by(Year) %>%
+  summarise(Flesch=mean(Flesch, na.rm=TRUE), 
+            SentenceLength= mean(meanSentenceLength, na.rm=TRUE),
+            WordSyllables= mean(meanWordSyllables, na.rm=TRUE)) %>%
+  gather(variable, value, -Year)
 
+ggplot(foo1,aes(x=Year, y=value, group=variable))+
+  geom_line(size=1.2, aes(color=variable), stat="identity")+
+  facet_wrap(vars(variable), scale="free", ncol=1)+
+  labs(title = "Evolution de la lisibilité des tweets de Trump", x=NULL, y=NULL)
 ```
+
+Pour aider le lecteur à donner un sens, voici l'abaque proposée par [Flesch](http://www.appstate.edu/~steelekm/classes/psy2664/Flesch.htm)lui-même. [Flesch](ReadabilityFlesch.JPG). On peut aussi prendre pour références les éléments suivants: "All Plain English examples in this book score at least 60. Here are the scores of some reading materials I've tested. These are average scores of random samples."
+
+Comics                      92
+Consumer ads in magazines   82
+Reader's Digest             65
+Time                        52
+Wall Street Journal         43
+Harvard Business Review     43
+Harvard Law Review          32
+Auto insurance policy       10
+
+Trump ne parait pas être sa caricature, non niveau de lisibilité correspond à la Licence. Il est moins simple que le Reader's Digest mais plus compliqué à lire que la Harvard Business Review !  
 
 ### Les indices de complexité lexicale
 
-La complexité lexicale rend compte de la diversité du vocabulaire, elle consiste à rapporter le nombre de mot uniques sur le nombre total de mots. La difficulté est que la taille des corpus joue fortement sur cette mesure et que l'orsque cette taille est hétérogène, l'indicateur marque plus cette variété que les variations de complexité lexicales. 
+La complexité lexicale rend compte de la diversité du vocabulaire, elle consiste à rapporter le nombre de mot uniques sur le nombre total de mots. La difficulté est que la taille des corpus joue fortement sur cette mesure et que l'orsque cette taille est hétérogène, l'indicateur marque plus cette variété que les variations de complexité lexicale.[@tweedie_how_1998] 
 
-
-C'est un pb auquel se sont attaché x et y
-
-Dans notre univers trumpesque, ce n'est pas trop sensible, d'autant plus que nous allons moyenner les tweets par période.
+https://quanteda.io/reference/textstat_lexdiv.html
 
 Une manière plus fine sera de considérer chaque période comme un texte, 
+
+un pb est que l'allongement des tweets peut expliquer l'accroissement de diversité
+
+Dans notre univers trumpesque, ce n'est pas trop sensible, d'autant plus que nous allons moyenner les tweets par période.Notons au passage que si nous moyennons la diversité lexicale de chaque tweets , une autre approche pourrait être de concatener l'ensemble des tweets d'une période ( un jour, une semaine) pour approcher cette variable à une autre échelle, qui couvrent l'ensemble des sujets d'intérêt de trump, que les tweets fractionnenet nécessairement. Ce qui en en question dans la mise en pratique n'est pas seulement la question du choix de l'indice mais aussi la définition de l'unité de calcul. La diversité lexical concerne sans doute plus le discours que la phrase. 
+
+
+là, encore la nécessité d'avoir des points de repère, des échelles.
+
+
+```{r 4, fig.cap='Evolution de la lisibilité moyenne des tweets de Trump', out.width='80%', fig.asp=.75, fig.align='center'}
+
+
+lexdiv<-tokens(foo$text) %>% 
+  textstat_lexdiv(foo$text, measure = c("CTTR"),remove_numbers = TRUE,
+  remove_punct = TRUE,
+  remove_symbols = TRUE,
+  remove_hyphens = FALSE) #la fonction de calcul de diversité
+
+foo<-cbind(foo,lexdiv[,2])
+foo1<-foo %>% 
+  group_by(Year) %>%
+  summarise(CTTR=mean(CTTR, na.rm=TRUE)) %>%
+  gather(variable, value, -Year)
+
+ggplot(foo1,aes(x=Year, y=value, group=variable))+
+  geom_line(size=1.2, aes(color=variable), stat="identity")+
+  facet_wrap(vars(variable), scale="free", ncol=1)+
+  labs(title = "Evolution de la diversité lexicale des tweets de Trump", x=NULL, y=NULL)
+```
+
+## Conclusion
+
+Nous aurons appris à 
+
+* compter le nombre de document
+* mesurer la complexité du langage
+* mesurer la diversité de son vocabulaire.
+
+Ces mesures n'ont ne sens que si elles peuvent être comparées
+
+de manière interne
+
+de manière externe
+

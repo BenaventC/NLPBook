@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Préparation des données | NLP avec r et en français - un Manuel synthétique</title>
+  <title>Chapitre 5 Préparation des données | NLP avec r et en français - un Manuel synthétique</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.22.3 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Préparation des données | NLP avec r et en français - un Manuel synthétique" />
+  <meta property="og:title" content="Chapitre 5 Préparation des données | NLP avec r et en français - un Manuel synthétique" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Préparation des données | NLP avec r et en français - un Manuel synthétique" />
+  <meta name="twitter:title" content="Chapitre 5 Préparation des données | NLP avec r et en français - un Manuel synthétique" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Sophie Balech et Christophe Benavent et al" />
 
 
-<meta name="date" content="2021-06-28" />
+<meta name="date" content="2021-07-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -132,7 +132,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
+<li><a href="./">NLP en r et en français</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Préface</a></li>
@@ -174,18 +174,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="préparation-des-données.html"><a href="préparation-des-données.html"><i class="fa fa-check"></i><b>5</b> Préparation des données</a><ul>
 <li class="chapter" data-level="5.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#manipuler-des-chaines-de-caractères"><i class="fa fa-check"></i><b>5.1</b> Manipuler des chaines de caractères</a><ul>
-<li class="chapter" data-level="5.1.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#manipulation-de-chaînes-de-caractères"><i class="fa fa-check"></i><b>5.1.1</b> manipulation de chaînes de caractères</a></li>
-<li class="chapter" data-level="5.1.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#une-illustration"><i class="fa fa-check"></i><b>5.1.2</b> Une illustration</a></li>
+<li class="chapter" data-level="5.1.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#les-opérations-sur-les-chaînes-de-caractères"><i class="fa fa-check"></i><b>5.1.1</b> Les opérations sur les chaînes de caractères</a></li>
+<li class="chapter" data-level="5.1.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#la-technique-des-expressions-régulières-regex"><i class="fa fa-check"></i><b>5.1.2</b> La technique des expressions régulières (regex)</a></li>
+<li class="chapter" data-level="5.1.3" data-path="préparation-des-données.html"><a href="préparation-des-données.html#un-fondement-profond-et-ancien"><i class="fa fa-check"></i><b>5.1.3</b> Un fondement profond et ancien</a></li>
+<li class="chapter" data-level="5.1.4" data-path="préparation-des-données.html"><a href="préparation-des-données.html#des-applications-très-pratiques"><i class="fa fa-check"></i><b>5.1.4</b> Des applications très pratiques</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#la-technique-des-expressions-régulières-regex"><i class="fa fa-check"></i><b>5.2</b> La technique des expressions régulières (regex)</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#des-applications-courantes"><i class="fa fa-check"></i><b>5.2.1</b> Des applications courantes</a></li>
+<li class="chapter" data-level="5.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#nettoyer-le-texte"><i class="fa fa-check"></i><b>5.2</b> Nettoyer le texte</a></li>
+<li class="chapter" data-level="5.3" data-path="préparation-des-données.html"><a href="préparation-des-données.html#corriger-le-texte"><i class="fa fa-check"></i><b>5.3</b> Corriger le texte</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#la-correction-orthographique-automatique"><i class="fa fa-check"></i><b>5.3.1</b> La correction orthographique automatique</a></li>
+<li class="chapter" data-level="5.3.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#analyse-ciblée-par-les-regex"><i class="fa fa-check"></i><b>5.3.2</b> Analyse ciblée par les regex</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="préparation-des-données.html"><a href="préparation-des-données.html#nettoyer-le-texte"><i class="fa fa-check"></i><b>5.3</b> Nettoyer le texte</a></li>
-<li class="chapter" data-level="5.4" data-path="préparation-des-données.html"><a href="préparation-des-données.html#corriger-le-texte"><i class="fa fa-check"></i><b>5.4</b> Corriger le texte</a><ul>
-<li class="chapter" data-level="5.4.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#la-correction-orthographique-automatique"><i class="fa fa-check"></i><b>5.4.1</b> La correction orthographique automatique</a></li>
-<li class="chapter" data-level="5.4.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#analyse-ciblée-par-les-regex"><i class="fa fa-check"></i><b>5.4.2</b> Analyse ciblée par les regex</a></li>
+<li class="chapter" data-level="5.4" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-sources"><i class="fa fa-check"></i><b>5.4</b> Identifier les sources</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-la-langue"><i class="fa fa-check"></i><b>5.4.1</b> Identifier la langue</a></li>
+<li class="chapter" data-level="5.4.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-la-source"><i class="fa fa-check"></i><b>5.4.2</b> Identifier la source</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-la-langue"><i class="fa fa-check"></i><b>5.5</b> Identifier la langue</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html"><i class="fa fa-check"></i><b>6</b> Une première analyse quantitative</a><ul>
 <li class="chapter" data-level="6.1" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#comptons-les-mots"><i class="fa fa-check"></i><b>6.1</b> Comptons les mots</a></li>
@@ -194,6 +196,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3.1" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#les-indices-de-lisibilité"><i class="fa fa-check"></i><b>6.3.1</b> Les indices de lisibilité</a></li>
 <li class="chapter" data-level="6.3.2" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#les-indices-de-complexité-lexicale"><i class="fa fa-check"></i><b>6.3.2</b> Les indices de complexité lexicale</a></li>
 </ul></li>
+<li class="chapter" data-level="6.4" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#conclusion"><i class="fa fa-check"></i><b>6.4</b> Conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="tokenisation.html"><a href="tokenisation.html"><i class="fa fa-check"></i><b>7</b> Tokenisation</a><ul>
 <li class="chapter" data-level="7.1" data-path="tokenisation.html"><a href="tokenisation.html#le-principe"><i class="fa fa-check"></i><b>7.1</b> Le principe</a></li>
@@ -209,7 +212,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.1" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#un-exemple-avec-syuzhet"><i class="fa fa-check"></i><b>8.1</b> Un exemple avec syuzhet</a><ul>
 <li class="chapter" data-level="8.1.1" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#valence-et-expression"><i class="fa fa-check"></i><b>8.1.1</b> Valence et expression</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#la-généralisation-par-le-liwc"><i class="fa fa-check"></i><b>8.2</b> La généralisation par le liwc</a></li>
+<li class="chapter" data-level="8.2" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#la-généralisation-par-le-liwc"><i class="fa fa-check"></i><b>8.2</b> La généralisation par le Liwc</a></li>
 <li class="chapter" data-level="8.3" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#encore-dautres-généralisations"><i class="fa fa-check"></i><b>8.3</b> Encore d’autres généralisations</a></li>
 <li class="chapter" data-level="8.4" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#construire-son-propre-dictionnaire"><i class="fa fa-check"></i><b>8.4</b> construire son propre dictionnaire</a></li>
 </ul></li>
@@ -330,37 +333,69 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="préparation-des-données" class="section level1">
-<h1><span class="header-section-number">Chapter 5</span> Préparation des données</h1>
-<p>Avant de se lancer dans l’analyse, il est nécessaire de préparer le texte, de le pré-traiter. Sont format est celui de chaine de caractère, la base est d’avoir des outis pour les manipuler.</p>
+<h1><span class="header-section-number">Chapitre 5</span> Préparation des données</h1>
+<p>Avant de se lancer dans l’analyse, il est nécessaire de préparer le texte, de le pré-traiter. Son format fondamental est celui d’une chaine de caractères, sans signification particulière mais composé à partir d’un alphbat, c’un jeux de signes déterminés et démobralement. 1/0 pour lelangage bianre, AGCP pour l’adan, 26 caractère de base pour l’alphabet, sans compter les accents.</p>
+<p>Ces variations sont l’objet de convention en informatique. et de certaines opérations.</p>
+<p>traiter du texte c’est avant tout disposer d’opérateurs pour manipuler ces éléments élémentaire. la base est d’avoir des outils pour les manipuler.</p>
+<p>Le langage avant d’être signifiant est signifié, littéralement produit comme une chaine de signes qui dans l’usage suit certaine convention. Par exemple la satisfaction peut s’exprimé par mmmm, une forte satisfaction par un mmmmmmmmmmmmmmmmmmmmm. Pour distinguer les significations, il faut d’abord compter. les mmm sont sans doute courants car conventionnels (ce mot est à deux doigts d’être incorporé au dictionnaire de l’Académie Française, s’il n’était qu’une onomatopée), les “mmmmmmmmmmmmmmmmmmmmm” sont sans doute beaucoups plus rares. De plus on trouvera des “hum” des “hummm”, des ’mmmmhummmm". On comprend qu’à la nuance de l’intensité que le locuteur veut exprimer, toute ces morphologies se rapportent à une même idée.</p>
+<p>Comment le rammener à une même formes est une question essentielle même si elle semble excessivement technique.</p>
 <div id="manipuler-des-chaines-de-caractères" class="section level2">
 <h2><span class="header-section-number">5.1</span> Manipuler des chaines de caractères</h2>
-<p><a href="https://stringr.tidyverse.org/">Stringer</a> est un des composants essentiels de tidyverse. Il est destiné à traiter les chaines de caractères. D’autres packages sont équilavent : stringi par exemple.</p>
-<div id="manipulation-de-chaînes-de-caractères" class="section level3">
-<h3><span class="header-section-number">5.1.1</span> manipulation de chaînes de caractères</h3>
+<p>Il faut donc traiter le texte, avant même de s’engager dans des modèles compliqués. Il faut savoir traiter des chaines de caractères pour en réduire la diversité, et en produire des chaines grammaticalement exacte. C’est un travail d’artisan, celui des des imprimeurs et de leurs coorecteur. Et en particulier d’un métier celui du <a href="http://www.textesrares.com/dupon/d376.htm">compositeur</a>, ou ouvrier de la casse, qui distribue des caractères de plomb en séquences dans des casiers de bois.</p>
+<p><a href="compositeur.jpg">cmpositeur</a></p>
+<p>L’artisan n’avait pas de choix, la précision était essentielle pour éviter la coquille. Le texte moderne, numérique, est l’objet de plus d’aller et retours. Les mots qu’on pianotent sont corrigés avant même d’être frappés. Les gestes techniques sont différents mais s’articulent sur une même idée : la langue écrite, du moins les langues alphabétiques sont des chaines de caractères dont la formation suit des règles fluctuantes à travers l’histoire mais contraignante à chaque moments. Les conventiosn peuvent changer, mais dans son temps elle s’imposent définitivement. Personne n’écrirait “deffert”, pour dire “dessert”. Et pourtant la graphie du s était un f jusqu’au XVI ème siècle (trouver la source)!
+<a href="https://www.cairn.info/revue-la-linguistique-2003-1-page-3.htm" class="uri">https://www.cairn.info/revue-la-linguistique-2003-1-page-3.htm</a></p>
+<p>De nombreuses ressources sont disponibles pour traiter ces chaines de caractères.</p>
+<p>On utilisera surtout <a href="https://stringr.tidyverse.org/">Stringer</a> qui est est un des composants essentiels de tidyverse. D’autres packages sont équivalents : stringi par exemple.</p>
+<div id="les-opérations-sur-les-chaînes-de-caractères" class="section level3">
+<h3><span class="header-section-number">5.1.1</span> Les opérations sur les chaînes de caractères</h3>
 <ul>
+<li>mettre en minuscule. L’alphabet se présente au moins en deux versions : des majuscules et des minuscules, il est souvent nécessaire de réduire le texte à une seule casse pour en réduire la variété, sauf si les majuscules signalent une information spécifique et socialement conventionnelle. Un mot qui débute par une majuscule signale un nom commun, désormais conceptualisé comme une entité nommée appartenant à différentes catégories : noms de lieux, noms de personnes, noms d’organisation …ou l’expression d’un sentiment, au sein des chats, la majuscule en série signale un niveau de langage “loud”, un cri , une engueulade, la véhémence.<br />
+</li>
 <li>rechercher une chaine de caractères;</li>
 <li>remplacer une chaine de caractères</li>
 <li>extraire une chaine de caractère d’un emplacement à l’autre</li>
-<li>supprimer une chaine de caractères</li>
-<li>concaténer des chaines de caractères</li>
+<li>supprimer une chaine de caractères. Les nombres,</li>
+<li>concaténer des chaines de caractères. Le texte peut être divisés en unités. Un paragraphe par exemple, ou un titre.</li>
 </ul>
+<p>Si la manipulation deslaquelle ? vaccin ?</p>
 </div>
-<div id="une-illustration" class="section level3">
-<h3><span class="header-section-number">5.1.2</span> Une illustration</h3>
-</div>
-</div>
-<div id="la-technique-des-expressions-régulières-regex" class="section level2">
-<h2><span class="header-section-number">5.2</span> La technique des expressions régulières (regex)</h2>
+<div id="la-technique-des-expressions-régulières-regex" class="section level3">
+<h3><span class="header-section-number">5.1.2</span> La technique des expressions régulières (regex)</h3>
+<p>Il ne suffit pas de chercher une chaine de caractère particulière, il faut souvent saisir un ensemble de variations qui suivent un motif determiné et qui répond à une sorte de loi générale.</p>
+<p>Par exemple si je veux retrouvrer dans un corpus l’ensemble des mots relatif au monde de l’hôpital, nous chercherions aussi le mot “hopital”. Nombreux seront les locuteur qui omeetent l’accent circonflexe. Une formule pour trouver ces deux varietés serait d’utiliser un opérateur, "(), pour définir une option . soit l’un soit l’autre :
+h(ô,o)pital</p>
 <p>Une expression régulière est un masque qui permet d’identifier des formes principales et leurs variétés. Il s’appuit sur une codification dont quelques éléments clés permettent de se donner une bonne idée de la logique générale</p>
 <ul>
 <li><p>le ^, indique que la forme commence par le caractère qui suit “^A”</p></li>
 <li><p>le . signifie n’importe quel caractère. le regex “^a.” signifiera ainsi n’importe quelle chaine de caractère qui commence par a est est suivi de n’importe quel caractère.</p></li>
 <li><p>le * la répétition indéfinie du caractère .</p></li>
 </ul>
-<div id="des-applications-courantes" class="section level3">
-<h3><span class="header-section-number">5.2.1</span> Des applications courantes</h3>
-<p>Le langage des regex a répondu d’abord au besoin des informaticiens, et à ceux qui face à des questions de métier, par exemple les professionnel de marketing direct ou des services postaux, ont été amené à traiter de jeux de données textuels limités tel qu’une adresse postale.</p>
+<p>D’un point de vue linguistique les regex travaillent sur la morphologie et ses variations, indépendemment des règles de grammaires mais profitant de leur régularité.</p>
+<p>Les mots sont généralement composés d’une racine, de suffixe et de préfixe qui contiennent les flexions grammaticales et sémantiques.</p>
+<p>des exemples :</p>
 <ul>
+<li>la négation : visible et in-visible.</li>
+<li>la conjugaison : aime et aim-ât</li>
+<li>la numération : fraise et fraise-s</li>
+<li>le genre : épicier et épicière-s.</li>
+</ul>
+<p>grepl</p>
+</div>
+<div id="un-fondement-profond-et-ancien" class="section level3">
+<h3><span class="header-section-number">5.1.3</span> Un fondement profond et ancien</h3>
+<p>Le langage des regex a répondu d’abord aux besoin des informaticiens, et s’appuie sur une construction mathématique sophistiquée : les automatates finis
+<a href="https://swtch.com/~rsc/regexp/regexp1.html" class="uri">https://swtch.com/~rsc/regexp/regexp1.html</a> don t un des contributeurs essentiels à été</p>
+<p>doi.org/10.1145/363347.363387 Ken Thompson</p>
+<p>fondateur de Grepl</p>
+<p>a method for locating specific character strings embedded in character text is described and an implementation of this method in the form of a compiler is discussed. The compiler accepts a regular expression as source language and produces an IBM 7094 program as object language. The object program then accepts the text to be searched as input and produces a signal every time an embedded string in the text matches the given regular expression. Examples, problems, and solutions are also presented.</p>
+<p><a href="https://swtch.com/~rsc/regexp/regexp1.html" class="uri">https://swtch.com/~rsc/regexp/regexp1.html</a></p>
+</div>
+<div id="des-applications-très-pratiques" class="section level3">
+<h3><span class="header-section-number">5.1.4</span> Des applications très pratiques</h3>
+<p>et à ceux qui face à des questions de métier, par exemple les professionnel de marketing direct ou des services postaux, ont été amené à traiter de jeux de données textuels limités tel qu’une adresse postale.</p>
+<ul>
+<li><p>dectecter une entité nommée : la majuscule</p></li>
 <li><p>détecter une adresse</p></li>
 <li><p>détecter une date</p></li>
 <li><p>détecter un compte</p></li>
@@ -369,7 +404,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div id="nettoyer-le-texte" class="section level2">
-<h2><span class="header-section-number">5.3</span> Nettoyer le texte</h2>
+<h2><span class="header-section-number">5.2</span> Nettoyer le texte</h2>
 <ul>
 <li>enlever les mentions</li>
 <li>enlever les url</li>
@@ -379,27 +414,120 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 <div id="corriger-le-texte" class="section level2">
-<h2><span class="header-section-number">5.4</span> Corriger le texte</h2>
+<h2><span class="header-section-number">5.3</span> Corriger le texte</h2>
 <p>Si certains corpus sont par les conditions de leur production presque parfait du point de vue grammatical et lexical, c’est le cas en principe des articles de presse et des documents officiels, d’autres qui s’appuient sur une langue vernaculaire on des graphies plus incertaines et des syntaxes approximatives. Dans un tiers des cas le mot " opinion" s’orthographie “opignons”. Chaque mot du lexique s’évanouit dans des morphologies nombreuses et approximatives.</p>
 <p>C’est un obstacle à l’analyse car la variété morphologique est aléatoire.</p>
 <p>plusieurs stratégies sont possibles. La première est de corriger le texte notamment en employant des outils de corrections efficaces.</p>
 <div id="la-correction-orthographique-automatique" class="section level3">
-<h3><span class="header-section-number">5.4.1</span> La correction orthographique automatique</h3>
+<h3><span class="header-section-number">5.3.1</span> La correction orthographique automatique</h3>
 <p>voir hunspell</p>
 <p><a href="https://cran.r-project.org/web/packages/hunspell/vignettes/intro.html#Custom_Dictionaries" class="uri">https://cran.r-project.org/web/packages/hunspell/vignettes/intro.html#Custom_Dictionaries</a></p>
 </div>
 <div id="analyse-ciblée-par-les-regex" class="section level3">
-<h3><span class="header-section-number">5.4.2</span> Analyse ciblée par les regex</h3>
-<p>Une application des regex est l’analyse ciblée d’un certain nombre de termes. LA coorection est partielle mais couvre les cibles essentielles</p>
+<h3><span class="header-section-number">5.3.2</span> Analyse ciblée par les regex</h3>
+<p>Une application des regex est l’analyse ciblée d’un certain nombre de termes. LA corection est partielle mais couvre les cibles essentielles</p>
 <p>exemple des gestes barières dans le flux twitter</p>
 </div>
 </div>
-<div id="identifier-la-langue" class="section level2">
-<h2><span class="header-section-number">5.5</span> Identifier la langue</h2>
+<div id="identifier-les-sources" class="section level2">
+<h2><span class="header-section-number">5.4</span> Identifier les sources</h2>
+<p>Dans l’analyse des contenus sociaux, les textes viennent de sources multiples et confuses. Elles peuvent être aisément multilingue. Analyser un corpus d’entretien, une collection de discours, posent peu la questions des locuteurs car ils sont bien identifiés. Ce n’est pas le cas dans les réseaux sociaux où les buts sont multiples et plus ou moins avoués.</p>
+<p>Les acteurs :</p>
+<ul>
+<li>des professionnels de la politiques et les institutions qu’ils dirigent</li>
+<li>Journaliste et professionnels de la communication</li>
+<li>Experts et universitaires</li>
+<li>les marques et leur community manager</li>
+<li>les bots</li>
+<li>les trolls</li>
+<li>les activistes</li>
+</ul>
+<div id="identifier-la-langue" class="section level3">
+<h3><span class="header-section-number">5.4.1</span> Identifier la langue</h3>
 <p>Dans les points précedents on suppose que la langue est homogène, mais les corpus peuvent être multi-langues. Par exemple, dans les corpus d’avis d’hôtes sur Airbnb, les avis sont formulés dans une large variété de langues. Il va falloir en tenir compte et une tâche préliminaire sera de détecter les langues pour séparer les corpus.</p>
-<p>Le package textcat offre une solution basée sur la fréquence des ngrams. Google propose un algo cpl3</p>
+<p>Le package textcat offre une solution basée sur la fréquence des ngrams (voir chapitre x). et compare la distribution du texte ciblée avec les distributions typiques des langues. Google propose un algo cpd3(<a href="https://github.com/google/cld3" class="uri">https://github.com/google/cld3</a>) plus sophistiqués dans la mesure où c’est un réseau de neurones qui fait le travail. Comparons les.</p>
+<p>On utilise un jeu de donnée Airbnb sur Bruxelles qui accueillant les institutions européennnes est une des villes les plus cosmopolite qui soit avec des fonctionnaires venant de toutes l’europe et s’exprimant dans une large varité de langue, sans compter les représentations des autres pays du monde.</p>
+<p>En terme de durée de calcul, la différence en temps de calcul est faramineuse 7 secondes contre 7 minutes, ce qui s’explique car texcat s’appuyant sur la distribution des ngrams doit les calculer pour les 36000 observations que nous avons retenues.</p>
 <p>Faisons un test sur un extrait du corpus Airbnb.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">BXL2021 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;reviewsBXL2021.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb2-2" title="2">BXL2021<span class="op">$</span>Year&lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">format</span>(<span class="kw">as.Date</span>(BXL2021<span class="op">$</span>date, <span class="dt">format=</span><span class="st">&quot;%Y-%m-%d&quot;</span>),<span class="st">&quot;%Y&quot;</span>))</a>
+<a class="sourceLine" id="cb2-3" title="3"></a>
+<a class="sourceLine" id="cb2-4" title="4">BXL2021&lt;-<span class="st"> </span>BXL2021 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Year<span class="op">&gt;</span><span class="dv">2019</span>) <span class="co"># on filtre sur la période de confinement</span></a>
+<a class="sourceLine" id="cb2-5" title="5"></a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="kw">library</span>(cld3)</a>
+<a class="sourceLine" id="cb2-7" title="7"></a>
+<a class="sourceLine" id="cb2-8" title="8">t1&lt;-<span class="kw">Sys.time</span>()</a>
+<a class="sourceLine" id="cb2-9" title="9"></a>
+<a class="sourceLine" id="cb2-10" title="10">cld3&lt;-<span class="kw">as.data.frame</span>(<span class="kw">detect_language</span>(BXL2021<span class="op">$</span>comments))<span class="op">%&gt;%</span><span class="kw">rename</span>(<span class="dt">cld3=</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb2-11" title="11">t2&lt;-<span class="kw">Sys.time</span>()</a>
+<a class="sourceLine" id="cb2-12" title="12"></a>
+<a class="sourceLine" id="cb2-13" title="13">t_cld3&lt;-t2<span class="op">-</span>t1 <span class="co">#on calcule la durée de l&#39;opération en faisant la différence du temps de départ et d&#39;arrivée</span></a>
+<a class="sourceLine" id="cb2-14" title="14"></a>
+<a class="sourceLine" id="cb2-15" title="15"><span class="kw">library</span>(textcat)</a>
+<a class="sourceLine" id="cb2-16" title="16">t1&lt;-<span class="kw">Sys.time</span>()</a>
+<a class="sourceLine" id="cb2-17" title="17">textcat&lt;-<span class="kw">textcat</span>(BXL2021<span class="op">$</span>comments)</a>
+<a class="sourceLine" id="cb2-18" title="18">t2&lt;-<span class="kw">Sys.time</span>()</a>
+<a class="sourceLine" id="cb2-19" title="19">t_texcat&lt;-t2<span class="op">-</span>t1</a>
+<a class="sourceLine" id="cb2-20" title="20">foo&lt;-<span class="kw">cbind</span>(cld3, textcat)</a></code></pre></div>
+<p>Examinons les résultats et la distribution des langues identifées par les deux systèmes. Si l’ordre est respecté. Des différences s’observent, cld3 identifie du chinois qui ne fait pas partie du répertoire de texcat.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">g1&lt;-foo<span class="op">%&gt;%</span><span class="kw">mutate</span>(<span class="dt">n=</span><span class="dv">1</span>)<span class="op">%&gt;%</span><span class="kw">group_by</span>(textcat)<span class="op">%&gt;%</span><span class="kw">summarise</span>(<span class="dt">n=</span><span class="kw">sum</span>(n))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">reorder</span>(textcat,n), <span class="dt">y=</span>n))<span class="op">+</span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)<span class="op">+</span><span class="kw">coord_flip</span>()<span class="op">+</span><span class="kw">scale_y_log10</span>()</a>
+<a class="sourceLine" id="cb3-3" title="3"></a>
+<a class="sourceLine" id="cb3-4" title="4">g2&lt;-foo<span class="op">%&gt;%</span><span class="kw">mutate</span>(<span class="dt">n=</span><span class="dv">1</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="st">  </span><span class="kw">group_by</span>(cld3)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-6" title="6"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n=</span><span class="kw">sum</span>(n))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-7" title="7"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">reorder</span>(cld3,n), <span class="dt">y=</span>n))<span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)<span class="op">+</span><span class="kw">coord_flip</span>()<span class="op">+</span><span class="kw">scale_y_log10</span>()</a>
+<a class="sourceLine" id="cb3-8" title="8"></a>
+<a class="sourceLine" id="cb3-9" title="9"><span class="kw">plot_grid</span>(g1, g2, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&#39;Texcat&#39;</span>,<span class="st">&#39;Cld3&#39;</span>), <span class="dt">label_size =</span> <span class="dv">12</span>)</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/302-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>Examions maintenant la convergence des méthodes en représentant la répartition du résultat d’un système dans les langue de l’autre. Si la convergence est parfaite 1000% des textes classé en Français par Textact devrait se retrouver dans 100% de ces textes classé par cld3 et réciproquement.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">foo1 &lt;-foo <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">n=</span><span class="dv">1</span>)<span class="op">%&gt;%</span><span class="kw">group_by</span>(textcat) <span class="op">%&gt;%</span><span class="kw">summarise</span>(<span class="dt">n=</span><span class="kw">sum</span>(n))</a>
+<a class="sourceLine" id="cb4-2" title="2">foo1&lt;-foo<span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(foo1) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(n<span class="op">&gt;</span><span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb4-3" title="3"></a>
+<a class="sourceLine" id="cb4-4" title="4">table&lt;-<span class="kw">table</span>(foo1<span class="op">$</span>cld3,foo1<span class="op">$</span>textcat)</a>
+<a class="sourceLine" id="cb4-5" title="5">foo1&lt;-<span class="kw">as.data.frame</span>(<span class="kw">prop.table</span>(table,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb4-6" title="6"></a>
+<a class="sourceLine" id="cb4-7" title="7"></a>
+<a class="sourceLine" id="cb4-8" title="8"><span class="kw">ggplot</span>(foo1, <span class="kw">aes</span>(<span class="kw">reorder</span>(Var2, Freq),Var1)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-9" title="9"><span class="st">  </span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> Freq)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-10" title="10"><span class="st">  </span><span class="kw">scale_fill_gradient</span>(<span class="dt">low =</span> <span class="st">&quot;White&quot;</span>,<span class="dt">high =</span> <span class="st">&quot;Blue&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb4-11" title="11"><span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">axis.text.x=</span><span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span><span class="dv">1</span>))<span class="op">+</span><span class="kw">coord_flip</span>()</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/303-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">foo1 &lt;-foo <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">n=</span><span class="dv">1</span>)<span class="op">%&gt;%</span><span class="kw">group_by</span>(cld3) <span class="op">%&gt;%</span><span class="kw">summarise</span>(<span class="dt">n=</span><span class="kw">sum</span>(n))</a>
+<a class="sourceLine" id="cb5-2" title="2">foo1&lt;-foo<span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(foo1)<span class="op">%&gt;%</span><span class="kw">filter</span>(n<span class="op">&gt;</span><span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb5-3" title="3"></a>
+<a class="sourceLine" id="cb5-4" title="4">table&lt;-<span class="kw">table</span>(foo1<span class="op">$</span>cld3,foo1<span class="op">$</span>textcat)</a>
+<a class="sourceLine" id="cb5-5" title="5">foo1&lt;-<span class="kw">as.data.frame</span>(<span class="kw">prop.table</span>(table,<span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb5-6" title="6"></a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="kw">ggplot</span>(foo1, <span class="kw">aes</span>(<span class="kw">reorder</span>(Var1, Freq),Var2)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-8" title="8"><span class="st">  </span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> Freq, <span class="dt">label=</span>Freq)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-9" title="9"><span class="st">  </span><span class="kw">scale_fill_gradient</span>(<span class="dt">low =</span> <span class="st">&quot;White&quot;</span>,<span class="dt">high =</span> <span class="st">&quot;Red&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb5-10" title="10"><span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">axis.text.x=</span><span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span><span class="dv">1</span>))<span class="op">+</span><span class="kw">coord_flip</span>()</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/303-2.png" width="80%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">library</span>(pheatmap)</a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="kw">library</span>(viridis)</a>
+<a class="sourceLine" id="cb6-3" title="3"></a>
+<a class="sourceLine" id="cb6-4" title="4">table2&lt;-<span class="kw">as.data.frame</span>(table) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Freq=</span><span class="kw">log10</span>(Freq<span class="op">+</span><span class="dv">1</span>))  <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-6" title="6"><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> Var1, <span class="dt">values_from =</span> Freq) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-7" title="7"><span class="st">  </span><span class="kw">column_to_rownames</span>( <span class="dt">var =</span> <span class="st">&quot;Var2&quot;</span>)</a>
+<a class="sourceLine" id="cb6-8" title="8"><span class="kw">pheatmap</span>(table2 , <span class="dt">color =</span> <span class="kw">inferno</span>(<span class="dv">10</span>))</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/304-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">chi2&lt;-<span class="st"> </span><span class="kw">chisq.test</span>(table)</a>
+<a class="sourceLine" id="cb7-2" title="2">chi2&lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(chi2<span class="op">$</span>residual)</a>
+<a class="sourceLine" id="cb7-3" title="3"></a>
+<a class="sourceLine" id="cb7-4" title="4">table2&lt;-chi2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">Freq=</span>Freq<span class="op">^</span><span class="dv">2</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> Var1, <span class="dt">values_from =</span> Freq) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb7-6" title="6"><span class="st">  </span><span class="kw">column_to_rownames</span>( <span class="dt">var =</span> <span class="st">&quot;Var2&quot;</span>)</a>
+<a class="sourceLine" id="cb7-7" title="7"><span class="kw">pheatmap</span>(table2 , <span class="dt">color =</span> <span class="kw">inferno</span>(<span class="dv">20</span>, <span class="dt">direction=</span><span class="dv">1</span>))</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/304-2.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="identifier-la-source" class="section level3">
+<h3><span class="header-section-number">5.4.2</span> Identifier la source</h3>
+<p>botometer
+botchecks</p>
 
+</div>
 </div>
 </div>
             </section>

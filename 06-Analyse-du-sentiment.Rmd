@@ -83,7 +83,7 @@ plot_grid(G11, G12, G13,G14, labels = c('A', 'B', 'C','D'))
 
 
 
-## La généralisation par le liwc
+## La généralisation par le Liwc
 
 Le liwc vient de l'idée simple d'un psychiatre qui a souhaité faire des diagnoistics de trauma craniens à partir des entretiens menés avec lmes patients atteints. [@tausczik_psychological_2010]
 
