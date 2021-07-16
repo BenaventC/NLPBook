@@ -120,6 +120,11 @@ theme_set(theme_bw())
 #palettes
 library(colorspace) #pour les couleurs
 
+# chapitre II
+library(revtools)
+library(rvest)
+
+
 ```
 
 L'ensemble du code est disponible [sur github](https://github.com/BenaventC/NLPBook). A ce stade c'est encore très embryonnaire. Les proches pourrons cependant y voir l'évolution du projet et de la [progression](https://benaventc.github.io/NLPBook/)

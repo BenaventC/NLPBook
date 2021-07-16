@@ -244,9 +244,38 @@ pheatmap(table2 , color = inferno(20, direction=1))
 
 ```
 
+### Identifier les plagiats et réutilisations
+
+Dans la définition du corpus il peut être utile de se concentrer sur les contenus originaux 
 
 
-### Identifier la source
+Une autre question est de detection les contenus riginaux des contenu réutilisés ou carrément plagiés.
+
+https://github.com/ropensci/textreuse
+
+https://journal.r-project.org/archive/2020/RJ-2020-017/index.html
+
+
+### Identifier les fakes
+
+https://github.com/sherylWM/Fake-News-Detection-using-Twitter
+
+
+
+### Identifier les trolls
+
+
+http://golovchenko.github.io/tutorials/snatrolls
+
+### Identifier les bots
 
 botometer
 botchecks
+
+pour un benchmark
+
+https://rpubs.com/xil865/528096
+
+
+detecter les fakes https://blogs.rstudio.com/ai/posts/2020-08-18-deepfake/
+

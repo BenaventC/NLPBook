@@ -93,7 +93,7 @@ Une partie du domaine du nlp se dénomme linguistique psycho computationnelle.
 
 Dans le champs de la psychologie de l'éducation et avec une forte motivation scientiste, dès les années 60 s'est posée la question de la mesure de la difficulté d'un texte pour un niveau d'éducation donné. La mesure de la lisibilité des texte s'est développée profitant à d'autre secteurs tels que ceux de la propagande. Dans cette même êrspective la richesse lexicographique comme représenant les compétences a a son tour développé de nouvelles instrumentation. 
 
-James W. Pennebaker a développé son approche à partir de l'étude des traumas; donnant une grande importance à la production discursive des patients. Sa contribution majeure est l'établissement d'un ensemble de dictionnaires destinés à mesurer des caractéristiques du discours. Un instrument qu'on présentatera dans les chapitre 7 ( à vérifier). Auteur en 2011 d'un livre s'intéresant à l'usage des petits mots.  Son approche se poursuit en psychiatrie avec l'analyse des troubles du langage, et a connu des coup d'éclat avec la demonstration que l'analyse des messages sur les réseaux sociaux comme facebook permet de detecter des risques de depression.
+James W. Pennebaker a développé son approche à partir de l'étude des traumas; donnant une grande importance à la production discursive des patients. Sa contribution majeure est l'établissement d'un ensemble de dictionnaires destinés à mesurer des caractéristiques du discours. Un instrument qu'on présentatera dans les chapitre 7 ( à vérifier). Auteur en 2011 d'un livre s'intéressant à l'usage des petits mots.  Son approche se poursuit en psychiatrie avec l'analyse des troubles du langage, et a connu des coup d'éclat avec la demonstration que l'analyse des messages sur les réseaux sociaux comme facebook permet de detecter des risques de depression.
 
 
 ### D'autres champs aussi
@@ -102,7 +102,7 @@ la biologie et en particulier la génétique
 
 la finance et l'analyse du sentiment
 
-La sociologie. Peut emploie l'analyse du langage. On citera cependant jean-baptiste Coulmont et son obstinatio à étudier les entités nommées, prénoms et autres marqueurs culturels de l'identité et des classes.
+La sociologie. Peut emploie l'analyse du langage. On citera cependant jean-baptiste Coulmont et son obstination à étudier les entités nommées, prénoms et autres marqueurs culturels de l'identité et des classes.
 
 
 

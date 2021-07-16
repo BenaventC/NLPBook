@@ -1,45 +1,65 @@
 # Constitution du corpus
 
-La constitution d'un corpus est la première étape d'un projet NLP. Il se définit d'abord par des méthodes de collecte, ensuite par des techniques d'échantillonnage, et enfin par des techniques de filtrage.
+La constitution d'un corpus est la première étape d'un projet NLP. Il se définit d'abord par la constitution d'une collection de textes dont la provenance est la nature peut être diverse. Dans ce chapitre on va examiner plusieurs techniques de collecte.
 
+ * L'exploitation de bases textuelles
+ * Les méthodes de scrapping
+ * Le recours aux APIs
+ * La collection de document pas que textuels
+ * Les sources orales
 
-## Méthodes de collecte
+Un corpus reste un échantillon. Dans ce chapitre nous avons appris comment faire la cueillette dans les sources de textes et constituer matériellement un corpus.  Il reste à traiter la question de la représentativité. La collecte doit rester raisonnée.
+
+Les unités de texte. Une unité de texte : un chaine de caractère intégrée dans un document. Celui ci peut être un livre un article, une note, une transcription, 
+
+ * Un document
+ * Un ou des auteurs du document
+ * Une date
+ * Un endroit
+ * Un contexte : les unités précedente, et subséquentes. 
+
+Unités de production et de reception, Un texte est produit et puis il est lu, peut-être.Analyser le texte peut se faire dans deux perspectives, celle de la production et celle de la réception. Les corpus doivent être construit en fonction de ce critère. 
+
+Examiner la question de l'engagement dans ce cadre est essentiel, certains acteurs sur un sujet donnée sont amenés à parler plus que les autres et développent un surcroit de voix. la question du biais de selection
 
 Un corpus est un ensemble de documents.  Ils peuvent être courts, les tweets, pas trop long - abstract articles court - long ( article de recherche, ou très long (livres).
 
-La collecte peut se faire d'abord sur des matiériaux primaire, numérisé sous forme d'images, et dans lesquels en analusant les pixels on peut reconnaitre un texte. 
-
-### la numérisation
-
-D'immenses archives sont numérisées, quand du texte est dans les images il faut le détecter
-
-l'Ocr a fait d'immense progrès et prédit avec un erreur du demi pourt cent de qui est vrai.
-
-Le traitement des adresses est ainsi l'obsession de nombreux métiers depuis quarante ans : les banques , la vad par exemple.  Le problème matériel est que si l'idéal est que les les scripteurs suivent des conventions indicatives comme la suivante :
-
-![Modèle de rédaction correcte d'une adresse postale](adresse-postale.png)
-
-La réalité ressemble souvent 
-![à çà](Posted_registered_letter_cover_Ukraine1998.jpg)
+La collecte peut se faire d'abord sur des matériaux primaires, numérisé sous forme d'images, et dans lesquels en analysant les pixels on peut reconnaitre un texte. 
 
 
+## L'exploitation de base de données textuelles
 
-### Les techniques de recueil direct
+On commence par un exemple simple en utilisant la base europresse. l'objectif est de constituer un fichier de références bibliographiques, exploitable via r. Dans europresse , nous avons fait une recherche sur les articles comprenant le terme " vaccination" dans la presse nationale françaises, constituées de 14 titres. On retient les 150 derniers articles au 16 Juillet.
 
-La tradition méthodologique de la sociologie est celle de l'entretien, avec toute sorte d'acteur. Elle aboutit à la production de transcriptions, plus ou moins détaillées et précise. Mais des textes
+https://revtools.net/data.html#importing-to-r)
 
-On peut désormais enregistré des réaction par des interfaces vocales. le speech to text est de plus en plus effiace
+```{r 201, fig.cap='', out.width='80%',caption= "le traitement de la vaccination dans la presse nationale française", fig.asp=1, fig.align='center'}
+#library(revtools)
+df <- read_bibliography("20210716042105.ris")
+head(df,3)
+df<-df%>%
+  mutate(jour=substring(DA,1,2))
+
+g21<-ggplot(df, aes(x=journal))+
+  geom_bar()+
+  coord_flip()+labs(x=NULL,y="Fréquence")
+g22<-ggplot(df, aes(x=jour))+
+  geom_bar()+labs(x=NULL,y="Fréquence")+
+  geom_vline(xintercept=12, linetype="dashed", color = "red")
+
+plot_grid(g21, g22, labels = c('A', 'B'), label_size = 12,ncol=1)
 
 
+```
 
-### L'exploitation de base de données textuelles
+
 
 Prenons l'exemple de factiva
 
 https://github.com/koheiw/newspapers
 
 
-### Scrapping
+## Scrapping
 
 De ces deux approches on pourra considérer que la première correspond à un internet sauvage où la collecte d’information se traduit par une technique de chasseurs-cueilleurs, le glanage. Le recours aux APIs est civilisé, ne serait-ce parce qu'on introduit une sorte d’étiquette, des règles de courtoisie, un système de reconnaissance réciproque et d’attribution de droits. 
 Le scraping est l’activité qui consiste à moissonner les informations disponibles sur le net en simulant et en automatisant la lecture par un butineur. Elle consiste à construire un robot capable de lire et d’enregistrer les informations disponibles sous forme html puis à les distribuer (parsing) dans des tableaux structurés, selon une stratégie d’exploration du web préalablement définie.
@@ -49,11 +69,6 @@ Les caractéristiques clés du scraping :
  * La nécessité de programmer de manière ad hoc, en fonction des spécificités de chaque site. 
  * Des stratégies mécaniques, en boule de neige. 
     
-    
-    
-
-
-#### Prendre avantage de la structure du html
 
 Le langage html est un langage à balise
 
@@ -65,7 +80,7 @@ https://www.r-bloggers.com/2018/10/first-release-and-update-dates-of-r-packages-
 
 
 
-#### des problèmes pratiques, juridiques et éthiques
+### des problèmes pratiques, juridiques et éthiques
 
 La pratique du scrapping se heurte à différents problèmes éthiques et juridique. Si elle n'est pas interdite en tant que telle, elle se confronte à différents droits et principes éthiques
 
@@ -87,14 +102,49 @@ En termes éthiques
  * Un principe éthique essentiel dans la recherche, et ailleurs, et de ne pas nuire à la socité dans son ensemble, hors cette technique participe à la “robotisation” du web (plus de 50% du trafic résulterait de la circulation des spiders , scrapers, sniffers et autres bots). 
  * Elle contribue à la complexification du web, et implique une consommation excessive de ressources energétiques.  
 
-#### rvest avec r
+### rvest avec r
 
 le package rvest est générique
 
+https://community.rstudio.com/t/scraping-messages-in-forum-using-rvest/27846/2
+
+```{r 202, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
+
+library(rvest)
+
+# Scrape thread titles, thread links, authors and number of views
+
+url <- "https://uberzone.fr/threads/si-la-vaccination-devient-obligatoire-vous-feriez-vous-vacciner-ou-changeriez-vous-de-corps-de-metier.17425"
+
+#x<-c("","/page-2", "/page-3", "/page-4")
+
+for val in x{
+  h <- read_html(url)
+
+post <- h %>%
+  html_nodes(".js-messageContent") %>%
+  html_text()%>%
+      str_replace_all(pattern = "\t|\r|\n", replacement = "")
+
+authors <- h %>%
+  html_nodes(".username--style2 ") %>%
+  html_text() %>%
+  str_replace_all(pattern = "\t|\r|\n", replacement = "")
+
+# Create master dataset (and scrape messages in each thread in process)
+
+master_data <- 
+  tibble(post, authors)
+saveRDS(paste0("df",val))
+}
+
+head(master_data)
+
+```
 
 
 
-### les API
+## les API
 
 Les API doivent être considérées comme la voie normale d'accès à l'information: les requêtes sont reproductibles au moins par les requêtes, les bases visée peuvent varier.
 
@@ -103,7 +153,7 @@ Parmi les contre-mesures, le développement des APIs qui permet un accès contr�
 L’utilisation d’API lève l'ambiguïté légale qui accompagne le scraping est peut ainsi paraître comme plus civilisée. Elle nécessite naturellement que le gestionnaire de la base de données fournissent les moyens de s’identifier et de requêter, elle peut avoir l'inconvénient d’être coûteuse quand l’accès est payant. Elle affirme aussi le pouvoir de ceux qui contrôlent les données. Ces dernières ne sont pas, insuffisamment pour le chercheur, un bien commun.
 
 
-#### Un tour d'horizon des API
+### Un tour d'horizon des API
 
 La plus part des grande plateformes offrent des API plus ou moins ouvertes
 
@@ -111,66 +161,205 @@ La plus part des grande plateformes offrent des API plus ou moins ouvertes
 - facebook
 - crunchbase
 
+https://www.dataquest.io/blog/r-api-tutorial/
 
 
-#### Un exemple avec Rtwitter
+
+### Un exemple avec Rtweet
+
+https://cran.r-project.org/web/packages/rtweet/vignettes/intro.html
 
 
-Plusieur package sur r permettent d'interroger le fire nose, c'est àdire le sytème d'acces que twitter a organisé.
+Plusieurs packages de r permettent d'interroger le firehose ( la bouche d'incendie!) de twitter.
+
+https://www.rdocumentation.org/packages/rtweet/versions/0.7.0
+
+L'authentification ne nécesssite par de clé API, il suffit d'avoir son compte twitter ouvert. Cependant la fonction lookup_coords requiert d'avoir une clé d'api ou google cloud map. Elle permet de selectionner sur un critère géographique. 
+
+https://developer.twitter.com/en/docs/tutorials/getting-started-with-r-and-v2-of-the-twitter-api
 
 
-library (twittr) # on appelle la librairie twittr qui permet les requêtes
-consumerKey<-"Xq..."   #paramètres requis par l’ API de twitter (Ouvrir un compte au prélable)
-consumerSecret<-"30l..."
-access_token<-"27A..."
-access_secret<-"zA7..."
+```{r 203, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
+#une boucle pour multiplier les hashtag 
 
-fonction d’initialisation des requêtes
-setup_twitter_oauth(consumerKey, consumerSecret, access_token,access_secret)
+x<-c("#Blablacar","#Uber", "#heetch")
 
-recherche des tweets
-tweets1 <- searchTwitter("#IA", n = 2000, lang = "fr", resultType = "recent", since 
-= "2019-08-01") 
+for (val in x) {
+  tweets <- search_tweets(val,n=20000,retryonratelimit = TRUE, geocode = lookup_coords("france"))%>%
+      mutate(search=val)
+  write_rds(tweets,paste0("tweets_",substring(val,2),".rds"))
+}
 
-transformer en data frame 
-tweets_df1 <- twListToDF(tweets1) 
+df_blablacar<-readRDS("tweets_blablacar.rds")
+df_uber<-readRDS("tweets_uber.rds")
+df_heetch<-readRDS("tweets_heetch.rds")
+
+df<-rbind(df_blablacar,df_uber )
+
+ls(df_blablacar)
+
+foo<-df %>% select(account_lang, geo_coords,country_code, country, account_lang,place_name)
+
+```
+
+On laisse le lecteur explorer les différentes fonctionnalités du package. On aime cependant celle-ci qui sample le flux courrant au taux annoncé de 1%. Voici l'extraction de ce qui se dit en france pendant 10 mn (600s). La procédure peut donner une sorte de benchmark auquel on peut comparer une recherche plus spécifique. 
+
+
+```{r 210, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
+
+
+rt <- stream_tweets(lookup_coords("france"), timeout = 600)
+
+
+```
 
 
 ## La gestion des documents
 
-### Collections et tableaux
+voir aussi 
+
+https://cran.r-project.org/web/packages/fulltext/fulltext.pdf
 
 
-pdftool
+### Extraire du texte des pdf
+
+https://ropensci.org/blog/2016/03/01/pdftools-and-jeroen/
+
+Chaque page est contenue dans une ligne. 
+
+```{r 211, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
+library(pdftools)
+
+info <- pdf_info("./pdf/2021neoliberalismegouverner_Meunier_Esprit.pdf")
+info
+text
+fonts <- pdf_fonts("./pdf/2021neoliberalismegouverner_Meunier_Esprit.pdf")
+fonts
+files <- pdf_attachments("./pdf/2021neoliberalismegouverner_Meunier_Esprit.pdf")
+files
+toc <- pdf_toc("./pdf/2021neoliberalismegouverner_Meunier_Esprit.pdf")
+toc
+text <- pdf_text("./pdf/2021neoliberalismegouverner_Meunier_Esprit.pdf")
+cat(text[[1]])
 
 
-### Un corpus reste un échantillon
+```
+Il va falloir traiter ce texte 
 
-La collecte doit rester raisonnée. 
+* Suprimer haut et bas de pages
 
-Les unités de texte
+* Supprimer les sauts de ligne
+* Identifier les sauts de paragraphe
+* Enlever les citations ()
 
-Une unité de texte : un chaine de caractère intégrée dans un document. Celui ci peut être un livre un article, une note, une transcription, 
+On va utiliser des fonctions de traitement de chaines de caractère. avec Stringr
 
- * Un document
- * Un ou des auteurs du document
- * Une date
- * Un endroit
- * Un contexte : les unités précedente, et subséquentes. 
- 
 
-### Filtrage
+```{r 212, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
+tex<- as.data.frame(text)
+tex[1,]
+t_reg<-str_replace(tex$text,"[\\s+].*Meunier[\n]+", " ") # entete droite
+t_reg<-str_replace(t_reg,"[\\s+].*gouverner[\n]+", " ") # entete gauche
 
-Dans un corpus massif il est souvent néçéssaire de filtrer le contenu d'éléments qui sortent du champs d'étude. POur étudier l'opinion utile écarter d'analyser ce qui est produit par les bots ou les trolls.
+t_reg[4]
 
-Il faut aussi réduire les contenus en éliminant les doublons
+t_reg<-str_replace_all(t_reg,"[\\s+].*2021[\n]", " ") # bas de page  gauche
+t_reg<-str_replace_all(t_reg,"ESPRIT.*[\n]", " ") # bas de page droit
+t_reg[3]
 
-### Eliminer les bots et les fakes
+#on marque les paragraphe pour les splitter dans un second temps()
+t_reg<-str_replace_all(t_reg,"\n\n\n", "XXX") # bas de page droit
+t_reg[3]
+t_reg<-str_replace_all(t_reg,"[\n]", " ") # bas de page droit
+t_reg[3]
+#pour enlever les espaces excedentaires
+t_reg<-str_squish(t_reg)
 
-botometer
+#hyphenation
+#note de bas de page
 
-### Eliminer les doublons
-unique
+#on regroupe les pages
 
+t<-paste(unlist(t(t_reg)), collapse=" ")
+
+#on identifie les reférences et on les supprime
+t_reg2<-str_replace_all(t_reg,"[0-9]+", "")
+t_reg2<-str_replace_all(t_reg2,"[\\(].*[\\)]", " auteur")
+
+```
+
+voir aussi : https://programminghistorian.org/en/lessons/basic-text-processing-in-r
+
+
+
+Un autre exemple
+
+
+```{r 213, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
+
+
+download.file("http://arxiv.org/pdf/1403.2805.pdf", "1403.2805.pdf", mode = "wb")
+txt <- pdf_text("1403.2805.pdf")
+
+# first page text
+cat(txt[1])
+txt
+# second page text
+cat(txt[2])
+
+toc <- pdf_toc("1403.2805.pdf")
+
+```
+
+https://ropensci.org/blog/2018/12/14/pdftools-20/ pour extraire un tableau
+
+
+### la numérisation et l'OCR
+
+
+The tesseract package provides R bindings to the Google Tesseract OCR C++ library. This allows for detecting text from scanned images.
+
+
+
+D'immenses archives sont numérisées, quand du texte est dans les images il faut le détecter. l'Ocr a fait d'immense progrès et prédit avec un erreur du demi pourt cent de qui est vrai.
+
+Le traitement des adresses est ainsi l'obsession de nombreux métiers depuis quarante ans : les banques , la vad par exemple.  Le problème matériel est que si l'idéal est que les les scripteurs suivent des conventions indicatives comme la suivante :
+
+![Modèle de rédaction correcte d'une adresse postale](adresse-postale.png)
+
+La réalité ressemble souvent 
+![à çà](Posted_registered_letter_cover_Ukraine1998.jpg)
+
+Une solution popur r est tesseract de google 
+
+https://cran.r-project.org/web/packages/tesseract/vignettes/intro.html
+
+```{r 214, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
+
+library(tesseract)
+#library(magick)
+
+tesseract_download("fra")
+
+eng <- tesseract("fra")
+text <- tesseract::ocr("voltaire.jpg", engine = "fra")
+cat(text)
+
+text <- tesseract::ocr("LOL-est-aussi-un-palindrome.jpg", engine = "fra")
+
+cat(text)
+
+
+tesseract_info()
+
+```
+
+
+
+## Les techniques de recueil direct
+
+La tradition méthodologique de la sociologie est celle de l'entretien, avec toute sorte d'acteur. Elle aboutit à la production de transcriptions, plus ou moins détaillées et précise. Mais des textes
+
+On peut désormais enregistré des réaction par des interfaces vocales. le speech to text est de plus en plus efficace
 
 
