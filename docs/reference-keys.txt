@@ -77,12 +77,6 @@ les-lettres
 les-mots
 choisir-des-n-grams-pertinents
 propriétés-statistiques-des-ngrams
-analyse-du-sentiment
-un-exemple-avec-syuzhet
-valence-et-expression
-la-généralisation-par-le-liwc
-encore-dautres-généralisations
-construire-son-propre-dictionnaire
 annotations-lexicales-et-syntaxiques
 tokenization
 les-niveaux-de-tokenisation
@@ -97,6 +91,12 @@ arbre-syntaxique
 vers-des-application-plus-générale
 reconnaissance-dentités-nommées
 co-reférence
+analyse-du-sentiment
+un-exemple-avec-syuzhet
+valence-et-expression
+la-généralisation-par-le-liwc
+encore-dautres-généralisations
+construire-son-propre-dictionnaire
 le-retour-des-méthodes-factorielles
 retour-sur-lacp
 svd
