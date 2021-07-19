@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapitre 9 Annotations lexicales et syntaxiques | NLP avec r et en français - un Manuel synthétique</title>
+  <title>Chapitre 8 Annotations lexicales et syntaxiques | NLP avec r et en français - un Manuel synthétique</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.22.3 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapitre 9 Annotations lexicales et syntaxiques | NLP avec r et en français - un Manuel synthétique" />
+  <meta property="og:title" content="Chapitre 8 Annotations lexicales et syntaxiques | NLP avec r et en français - un Manuel synthétique" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapitre 9 Annotations lexicales et syntaxiques | NLP avec r et en français - un Manuel synthétique" />
+  <meta name="twitter:title" content="Chapitre 8 Annotations lexicales et syntaxiques | NLP avec r et en français - un Manuel synthétique" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Sophie Balech et Christophe Benavent et al" />
 
 
-<meta name="date" content="2021-07-13" />
+<meta name="date" content="2021-07-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -135,179 +135,188 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">NLP en r et en français</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Préface</a></li>
-<li class="chapter" data-level="2" data-path="plan-et-outils-du-manuel.html"><a href="plan-et-outils-du-manuel.html"><i class="fa fa-check"></i><b>2</b> Plan et outils du manuel</a><ul>
-<li class="chapter" data-level="2.1" data-path="plan-et-outils-du-manuel.html"><a href="plan-et-outils-du-manuel.html#la-structure-du-livre"><i class="fa fa-check"></i><b>2.1</b> La structure du livre</a></li>
-<li class="chapter" data-level="2.2" data-path="plan-et-outils-du-manuel.html"><a href="plan-et-outils-du-manuel.html#les-jeux-de-données"><i class="fa fa-check"></i><b>2.2</b> Les jeux de données</a></li>
-<li class="chapter" data-level="2.3" data-path="plan-et-outils-du-manuel.html"><a href="plan-et-outils-du-manuel.html#le-cadre-technique"><i class="fa fa-check"></i><b>2.3</b> Le cadre technique</a></li>
-<li class="chapter" data-level="2.4" data-path="plan-et-outils-du-manuel.html"><a href="plan-et-outils-du-manuel.html#a-faire"><i class="fa fa-check"></i><b>2.4</b> A faire</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Préface</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#cours-et-séminaires"><i class="fa fa-check"></i><b>1.1</b> Cours et séminaires</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#la-structure-du-livre"><i class="fa fa-check"></i><b>1.2</b> La structure du livre</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#les-jeux-de-données"><i class="fa fa-check"></i><b>1.3</b> Les jeux de données</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#les-ressources"><i class="fa fa-check"></i><b>1.4</b> Les ressources</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#disponibilité"><i class="fa fa-check"></i><b>1.5</b> Disponibilité</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#conventions"><i class="fa fa-check"></i><b>1.6</b> conventions</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#a-faire"><i class="fa fa-check"></i><b>1.7</b> A faire</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>3</b> Introduction</a><ul>
-<li class="chapter" data-level="3.1" data-path="intro.html"><a href="intro.html#un-nouveau-champ-méthodologique"><i class="fa fa-check"></i><b>3.1</b> Un nouveau champ méthodologique</a></li>
-<li class="chapter" data-level="3.2" data-path="intro.html"><a href="intro.html#les-facteurs-de-développement"><i class="fa fa-check"></i><b>3.2</b> Les facteurs de développement</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="intro.html"><a href="intro.html#une-lingua-franca"><i class="fa fa-check"></i><b>3.2.1</b> Une lingua franca</a></li>
-<li class="chapter" data-level="3.2.2" data-path="intro.html"><a href="intro.html#une-communauté"><i class="fa fa-check"></i><b>3.2.2</b> Une communauté</a></li>
-<li class="chapter" data-level="3.2.3" data-path="intro.html"><a href="intro.html#la-multiplication-des-sources-de-données."><i class="fa fa-check"></i><b>3.2.3</b> La multiplication des sources de données.</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#une-réflexion-ancienne-et-un-nouveau-champ-méthodologique"><i class="fa fa-check"></i><b>2.1</b> Une réflexion ancienne et un nouveau champ méthodologique</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="intro.html"><a href="intro.html#lhéritage-linguistique"><i class="fa fa-check"></i><b>2.1.1</b> L’héritage linguistique</a></li>
+<li class="chapter" data-level="2.1.2" data-path="intro.html"><a href="intro.html#la-tradition-lexicologique"><i class="fa fa-check"></i><b>2.1.2</b> la tradition lexicologique</a></li>
+<li class="chapter" data-level="2.1.3" data-path="intro.html"><a href="intro.html#la-linguistique-computationnelle"><i class="fa fa-check"></i><b>2.1.3</b> la linguistique computationnelle</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="intro.html"><a href="intro.html#des-racines-anciennes"><i class="fa fa-check"></i><b>3.3</b> Des racines anciennes</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="intro.html"><a href="intro.html#linguistique"><i class="fa fa-check"></i><b>3.3.1</b> Linguistique</a></li>
-<li class="chapter" data-level="3.3.2" data-path="intro.html"><a href="intro.html#informatique"><i class="fa fa-check"></i><b>3.3.2</b> Informatique</a></li>
-<li class="chapter" data-level="3.3.3" data-path="intro.html"><a href="intro.html#la-psychologie"><i class="fa fa-check"></i><b>3.3.3</b> la psychologie</a></li>
-<li class="chapter" data-level="3.3.4" data-path="intro.html"><a href="intro.html#dautres-champs-aussi"><i class="fa fa-check"></i><b>3.3.4</b> D’autres champs aussi</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#les-facteurs-de-développement"><i class="fa fa-check"></i><b>2.2</b> Les facteurs de développement</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="intro.html"><a href="intro.html#une-lingua-franca"><i class="fa fa-check"></i><b>2.2.1</b> Une lingua franca</a></li>
+<li class="chapter" data-level="2.2.2" data-path="intro.html"><a href="intro.html#la-multiplication-des-sources-de-données."><i class="fa fa-check"></i><b>2.2.2</b> La multiplication des sources de données.</a></li>
+<li class="chapter" data-level="2.2.3" data-path="intro.html"><a href="intro.html#une-communauté"><i class="fa fa-check"></i><b>2.2.3</b> Une communauté</a></li>
 </ul></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#de-nouvelles-méthodologies-pour-les-sciences-sociales"><i class="fa fa-check"></i><b>2.3</b> De nouvelles méthodologies pour les sciences sociales</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="intro.html"><a href="intro.html#sociologie-et-histoire"><i class="fa fa-check"></i><b>2.3.1</b> Sociologie et histoire</a></li>
+<li class="chapter" data-level="2.3.2" data-path="intro.html"><a href="intro.html#psychologie"><i class="fa fa-check"></i><b>2.3.2</b> Psychologie</a></li>
+<li class="chapter" data-level="2.3.3" data-path="intro.html"><a href="intro.html#management"><i class="fa fa-check"></i><b>2.3.3</b> Management</a></li>
+<li class="chapter" data-level="2.3.4" data-path="intro.html"><a href="intro.html#economie"><i class="fa fa-check"></i><b>2.3.4</b> Economie</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html"><i class="fa fa-check"></i><b>4</b> Constitution du corpus</a><ul>
-<li class="chapter" data-level="4.1" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#méthodes-de-collecte"><i class="fa fa-check"></i><b>4.1</b> Méthodes de collecte</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#la-numérisation"><i class="fa fa-check"></i><b>4.1.1</b> la numérisation</a></li>
-<li class="chapter" data-level="4.1.2" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#les-techniques-de-recueil-direct"><i class="fa fa-check"></i><b>4.1.2</b> Les techniques de recueil direct</a></li>
-<li class="chapter" data-level="4.1.3" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#lexploitation-de-base-de-données-textuelles"><i class="fa fa-check"></i><b>4.1.3</b> L’exploitation de base de données textuelles</a></li>
-<li class="chapter" data-level="4.1.4" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#scrapping"><i class="fa fa-check"></i><b>4.1.4</b> Scrapping</a></li>
-<li class="chapter" data-level="4.1.5" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#les-api"><i class="fa fa-check"></i><b>4.1.5</b> les API</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#conclusion"><i class="fa fa-check"></i><b>2.4</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#la-gestion-des-documents"><i class="fa fa-check"></i><b>4.2</b> La gestion des documents</a><ul>
-<li class="chapter" data-level="4.2.1" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#collections-et-tableaux"><i class="fa fa-check"></i><b>4.2.1</b> Collections et tableaux</a></li>
-<li class="chapter" data-level="4.2.2" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#un-corpus-reste-un-échantillon"><i class="fa fa-check"></i><b>4.2.2</b> Un corpus reste un échantillon</a></li>
-<li class="chapter" data-level="4.2.3" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#filtrage"><i class="fa fa-check"></i><b>4.2.3</b> Filtrage</a></li>
-<li class="chapter" data-level="4.2.4" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#eliminer-les-bots-et-les-fakes"><i class="fa fa-check"></i><b>4.2.4</b> Eliminer les bots et les fakes</a></li>
-<li class="chapter" data-level="4.2.5" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#eliminer-les-doublons"><i class="fa fa-check"></i><b>4.2.5</b> Eliminer les doublons</a></li>
+<li class="chapter" data-level="3" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html"><i class="fa fa-check"></i><b>3</b> Constitution du corpus</a><ul>
+<li class="chapter" data-level="3.1" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#lexploitation-de-base-de-données-textuelles"><i class="fa fa-check"></i><b>3.1</b> L’exploitation de base de données textuelles</a></li>
+<li class="chapter" data-level="3.2" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#scrapping"><i class="fa fa-check"></i><b>3.2</b> Scrapping</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#des-problèmes-pratiques-juridiques-et-éthiques"><i class="fa fa-check"></i><b>3.2.1</b> des problèmes pratiques, juridiques et éthiques</a></li>
+<li class="chapter" data-level="3.2.2" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#rvest-avec-r"><i class="fa fa-check"></i><b>3.2.2</b> rvest avec r</a></li>
 </ul></li>
+<li class="chapter" data-level="3.3" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#les-api"><i class="fa fa-check"></i><b>3.3</b> les API</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#un-tour-dhorizon-des-api"><i class="fa fa-check"></i><b>3.3.1</b> Un tour d’horizon des API</a></li>
+<li class="chapter" data-level="3.3.2" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#un-point-de-vue-plus-technique"><i class="fa fa-check"></i><b>3.3.2</b> un point de vue plus technique</a></li>
+<li class="chapter" data-level="3.3.3" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#un-exemple-avec-rtweet"><i class="fa fa-check"></i><b>3.3.3</b> Un exemple avec Rtweet</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="préparation-des-données.html"><a href="préparation-des-données.html"><i class="fa fa-check"></i><b>5</b> Préparation des données</a><ul>
-<li class="chapter" data-level="5.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#manipuler-des-chaines-de-caractères"><i class="fa fa-check"></i><b>5.1</b> Manipuler des chaines de caractères</a><ul>
-<li class="chapter" data-level="5.1.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#les-opérations-sur-les-chaînes-de-caractères"><i class="fa fa-check"></i><b>5.1.1</b> Les opérations sur les chaînes de caractères</a></li>
-<li class="chapter" data-level="5.1.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#la-technique-des-expressions-régulières-regex"><i class="fa fa-check"></i><b>5.1.2</b> La technique des expressions régulières (regex)</a></li>
-<li class="chapter" data-level="5.1.3" data-path="préparation-des-données.html"><a href="préparation-des-données.html#un-fondement-profond-et-ancien"><i class="fa fa-check"></i><b>5.1.3</b> Un fondement profond et ancien</a></li>
-<li class="chapter" data-level="5.1.4" data-path="préparation-des-données.html"><a href="préparation-des-données.html#des-applications-très-pratiques"><i class="fa fa-check"></i><b>5.1.4</b> Des applications très pratiques</a></li>
+<li class="chapter" data-level="3.4" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#la-gestion-des-documents"><i class="fa fa-check"></i><b>3.4</b> La gestion des documents</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#extraire-du-texte-des-pdf"><i class="fa fa-check"></i><b>3.4.1</b> Extraire du texte des pdf</a></li>
+<li class="chapter" data-level="3.4.2" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#la-numérisation-et-locr"><i class="fa fa-check"></i><b>3.4.2</b> la numérisation et l’OCR</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#nettoyer-le-texte"><i class="fa fa-check"></i><b>5.2</b> Nettoyer le texte</a></li>
-<li class="chapter" data-level="5.3" data-path="préparation-des-données.html"><a href="préparation-des-données.html#corriger-le-texte"><i class="fa fa-check"></i><b>5.3</b> Corriger le texte</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#la-correction-orthographique-automatique"><i class="fa fa-check"></i><b>5.3.1</b> La correction orthographique automatique</a></li>
-<li class="chapter" data-level="5.3.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#analyse-ciblée-par-les-regex"><i class="fa fa-check"></i><b>5.3.2</b> Analyse ciblée par les regex</a></li>
+<li class="chapter" data-level="3.5" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#les-contenus-vocaux"><i class="fa fa-check"></i><b>3.5</b> Les contenus vocaux</a></li>
+<li class="chapter" data-level="3.6" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#conclusion-1"><i class="fa fa-check"></i><b>3.6</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-sources"><i class="fa fa-check"></i><b>5.4</b> Identifier les sources</a><ul>
-<li class="chapter" data-level="5.4.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-la-langue"><i class="fa fa-check"></i><b>5.4.1</b> Identifier la langue</a></li>
-<li class="chapter" data-level="5.4.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-plagiats-et-réutilisations"><i class="fa fa-check"></i><b>5.4.2</b> Identifier les plagiats et réutilisations</a></li>
-<li class="chapter" data-level="5.4.3" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-fakes"><i class="fa fa-check"></i><b>5.4.3</b> Identifier les fakes</a></li>
-<li class="chapter" data-level="5.4.4" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-trolls"><i class="fa fa-check"></i><b>5.4.4</b> Identifier les trolls</a></li>
-<li class="chapter" data-level="5.4.5" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-bots"><i class="fa fa-check"></i><b>5.4.5</b> Identifier les bots</a></li>
+<li class="chapter" data-level="4" data-path="préparation-des-données.html"><a href="préparation-des-données.html"><i class="fa fa-check"></i><b>4</b> Préparation des données</a><ul>
+<li class="chapter" data-level="4.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#manipuler-des-chaines-de-caractères"><i class="fa fa-check"></i><b>4.1</b> Manipuler des chaines de caractères</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#les-opérations-sur-les-chaînes-de-caractères"><i class="fa fa-check"></i><b>4.1.1</b> Les opérations sur les chaînes de caractères</a></li>
+<li class="chapter" data-level="4.1.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#la-technique-des-expressions-régulières-regex"><i class="fa fa-check"></i><b>4.1.2</b> La technique des expressions régulières (regex)</a></li>
+<li class="chapter" data-level="4.1.3" data-path="préparation-des-données.html"><a href="préparation-des-données.html#un-fondement-profond-et-ancien"><i class="fa fa-check"></i><b>4.1.3</b> Un fondement profond et ancien</a></li>
+<li class="chapter" data-level="4.1.4" data-path="préparation-des-données.html"><a href="préparation-des-données.html#des-applications-très-pratiques"><i class="fa fa-check"></i><b>4.1.4</b> Des applications très pratiques</a></li>
 </ul></li>
+<li class="chapter" data-level="4.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#nettoyer-le-texte"><i class="fa fa-check"></i><b>4.2</b> Nettoyer le texte</a></li>
+<li class="chapter" data-level="4.3" data-path="préparation-des-données.html"><a href="préparation-des-données.html#corriger-le-texte"><i class="fa fa-check"></i><b>4.3</b> Corriger le texte</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#la-correction-orthographique-automatique"><i class="fa fa-check"></i><b>4.3.1</b> La correction orthographique automatique</a></li>
+<li class="chapter" data-level="4.3.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#analyse-ciblée-par-les-regex"><i class="fa fa-check"></i><b>4.3.2</b> Analyse ciblée par les regex</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html"><i class="fa fa-check"></i><b>6</b> Une première analyse quantitative</a><ul>
-<li class="chapter" data-level="6.1" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#comptons-les-mots"><i class="fa fa-check"></i><b>6.1</b> Comptons les mots</a></li>
-<li class="chapter" data-level="6.2" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#la-production-dans-le-temps"><i class="fa fa-check"></i><b>6.2</b> la production dans le temps</a></li>
-<li class="chapter" data-level="6.3" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#lisibilité-et-complexité-lexicale"><i class="fa fa-check"></i><b>6.3</b> Lisibilité et complexité lexicale</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#les-indices-de-lisibilité"><i class="fa fa-check"></i><b>6.3.1</b> Les indices de lisibilité</a></li>
-<li class="chapter" data-level="6.3.2" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#les-indices-de-complexité-lexicale"><i class="fa fa-check"></i><b>6.3.2</b> Les indices de complexité lexicale</a></li>
-</ul></li>
-<li class="chapter" data-level="6.4" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#conclusion"><i class="fa fa-check"></i><b>6.4</b> Conclusion</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="tokenisation.html"><a href="tokenisation.html"><i class="fa fa-check"></i><b>7</b> Tokenisation</a><ul>
-<li class="chapter" data-level="7.1" data-path="tokenisation.html"><a href="tokenisation.html#le-principe"><i class="fa fa-check"></i><b>7.1</b> Le principe</a></li>
-<li class="chapter" data-level="7.2" data-path="tokenisation.html"><a href="tokenisation.html#les-outils"><i class="fa fa-check"></i><b>7.2</b> Les outils</a></li>
-<li class="chapter" data-level="7.3" data-path="tokenisation.html"><a href="tokenisation.html#ngrams"><i class="fa fa-check"></i><b>7.3</b> Ngrams</a><ul>
-<li class="chapter" data-level="7.3.1" data-path="tokenisation.html"><a href="tokenisation.html#les-lettres"><i class="fa fa-check"></i><b>7.3.1</b> Les lettres</a></li>
-<li class="chapter" data-level="7.3.2" data-path="tokenisation.html"><a href="tokenisation.html#les-mots"><i class="fa fa-check"></i><b>7.3.2</b> Les mots</a></li>
-</ul></li>
-<li class="chapter" data-level="7.4" data-path="tokenisation.html"><a href="tokenisation.html#choisir-des-n-grams-pertinents"><i class="fa fa-check"></i><b>7.4</b> Choisir des n grams pertinents</a></li>
-<li class="chapter" data-level="7.5" data-path="tokenisation.html"><a href="tokenisation.html#propriétés-statistiques-des-ngrams"><i class="fa fa-check"></i><b>7.5</b> Propriétés statistiques des ngrams</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html"><i class="fa fa-check"></i><b>8</b> Analyse du sentiment</a><ul>
-<li class="chapter" data-level="8.1" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#un-exemple-avec-syuzhet"><i class="fa fa-check"></i><b>8.1</b> Un exemple avec syuzhet</a><ul>
-<li class="chapter" data-level="8.1.1" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#valence-et-expression"><i class="fa fa-check"></i><b>8.1.1</b> Valence et expression</a></li>
-</ul></li>
-<li class="chapter" data-level="8.2" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#la-généralisation-par-le-liwc"><i class="fa fa-check"></i><b>8.2</b> La généralisation par le Liwc</a></li>
-<li class="chapter" data-level="8.3" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#encore-dautres-généralisations"><i class="fa fa-check"></i><b>8.3</b> Encore d’autres généralisations</a></li>
-<li class="chapter" data-level="8.4" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#construire-son-propre-dictionnaire"><i class="fa fa-check"></i><b>8.4</b> construire son propre dictionnaire</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html"><i class="fa fa-check"></i><b>9</b> Annotations lexicales et syntaxiques</a><ul>
-<li class="chapter" data-level="9.1" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#tokenization"><i class="fa fa-check"></i><b>9.1</b> Tokenization</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#les-niveaux-de-tokenisation"><i class="fa fa-check"></i><b>9.1.1</b> Les niveaux de tokenisation</a></li>
-<li class="chapter" data-level="9.1.2" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#un-exemple-en-tidytext"><i class="fa fa-check"></i><b>9.1.2</b> Un exemple en tidytext</a></li>
-</ul></li>
-<li class="chapter" data-level="9.2" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#stemmatisation-lemmatisation-et-synonymisation"><i class="fa fa-check"></i><b>9.2</b> Stemmatisation, lemmatisation et synonymisation</a><ul>
-<li class="chapter" data-level="9.2.1" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#la-stemmatisation"><i class="fa fa-check"></i><b>9.2.1</b> la stemmatisation</a></li>
-<li class="chapter" data-level="9.2.2" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#la-lemmatisation"><i class="fa fa-check"></i><b>9.2.2</b> la lemmatisation</a></li>
-<li class="chapter" data-level="9.2.3" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#synonymisation"><i class="fa fa-check"></i><b>9.2.3</b> Synonymisation</a></li>
-</ul></li>
-<li class="chapter" data-level="9.3" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#part-of-speech-pos"><i class="fa fa-check"></i><b>9.3</b> Part of Speech (POS)</a></li>
-<li class="chapter" data-level="9.4" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#dépendances-syntaxiques"><i class="fa fa-check"></i><b>9.4</b> Dépendances syntaxiques</a><ul>
-<li class="chapter" data-level="9.4.1" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#arbre-syntaxique"><i class="fa fa-check"></i><b>9.4.1</b> Arbre syntaxique</a></li>
-<li class="chapter" data-level="9.4.2" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#vers-des-application-plus-générale"><i class="fa fa-check"></i><b>9.4.2</b> Vers des application plus générale</a></li>
-</ul></li>
-<li class="chapter" data-level="9.5" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#reconnaissance-dentités-nommées"><i class="fa fa-check"></i><b>9.5</b> reconnaissance d’entités nommées</a></li>
-<li class="chapter" data-level="9.6" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#co-reférence"><i class="fa fa-check"></i><b>9.6</b> co-reférence</a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html"><i class="fa fa-check"></i><b>10</b> Le retour des méthodes factorielles</a><ul>
-<li class="chapter" data-level="10.1" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#retour-sur-lacp"><i class="fa fa-check"></i><b>10.1</b> Retour sur l’ACP</a></li>
-<li class="chapter" data-level="10.2" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#svd"><i class="fa fa-check"></i><b>10.2</b> SVD</a></li>
-<li class="chapter" data-level="10.3" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#lsa"><i class="fa fa-check"></i><b>10.3</b> LSA</a></li>
-<li class="chapter" data-level="10.4" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#nlm"><i class="fa fa-check"></i><b>10.4</b> NLM</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html"><i class="fa fa-check"></i><b>11</b> Vectorisation du corpus</a><ul>
-<li class="chapter" data-level="11.1" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#word2vec"><i class="fa fa-check"></i><b>11.1</b> Word2vec</a><ul>
-<li class="chapter" data-level="11.1.1" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#vectorisation-pipe"><i class="fa fa-check"></i><b>11.1.1</b> vectorisation pipe</a></li>
-<li class="chapter" data-level="11.1.2" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#closest2"><i class="fa fa-check"></i><b>11.1.2</b> closest2</a></li>
-<li class="chapter" data-level="11.1.3" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#map-with-tsne"><i class="fa fa-check"></i><b>11.1.3</b> map with tsne</a></li>
-</ul></li>
-<li class="chapter" data-level="11.2" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#paragraph2vec"><i class="fa fa-check"></i><b>11.2</b> paragraph2vec</a></li>
-<li class="chapter" data-level="11.3" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#lavenir-des-modèles-pré-entrainés"><i class="fa fa-check"></i><b>11.3</b> l’avenir des modèles pré-entrainés</a></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="topic-analysis.html"><a href="topic-analysis.html"><i class="fa fa-check"></i><b>12</b> Topic Analysis</a><ul>
-<li class="chapter" data-level="12.1" data-path="topic-analysis.html"><a href="topic-analysis.html#lda"><i class="fa fa-check"></i><b>12.1</b> LDA</a><ul>
-<li class="chapter" data-level="12.1.1" data-path="topic-analysis.html"><a href="topic-analysis.html#le-modèle-de-blei"><i class="fa fa-check"></i><b>12.1.1</b> le modèle de blei</a></li>
-<li class="chapter" data-level="12.1.2" data-path="topic-analysis.html"><a href="topic-analysis.html#implementation-avec-wor2vec"><i class="fa fa-check"></i><b>12.1.2</b> implementation avec wor2vec</a></li>
-<li class="chapter" data-level="12.1.3" data-path="topic-analysis.html"><a href="topic-analysis.html#représentation-graphique"><i class="fa fa-check"></i><b>12.1.3</b> Représentation graphique</a></li>
-<li class="chapter" data-level="12.1.4" data-path="topic-analysis.html"><a href="topic-analysis.html#la"><i class="fa fa-check"></i><b>12.1.4</b> La</a></li>
-</ul></li>
-<li class="chapter" data-level="12.2" data-path="topic-analysis.html"><a href="topic-analysis.html#stm"><i class="fa fa-check"></i><b>12.2</b> STM</a><ul>
-<li class="chapter" data-level="12.2.1" data-path="topic-analysis.html"><a href="topic-analysis.html#section"><i class="fa fa-check"></i><b>12.2.1</b> </a></li>
-<li class="chapter" data-level="12.2.2" data-path="topic-analysis.html"><a href="topic-analysis.html#section-1"><i class="fa fa-check"></i><b>12.2.2</b> </a></li>
+<li class="chapter" data-level="4.4" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-sources"><i class="fa fa-check"></i><b>4.4</b> Identifier les sources</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-la-langue"><i class="fa fa-check"></i><b>4.4.1</b> Identifier la langue</a></li>
+<li class="chapter" data-level="4.4.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-plagiats-et-réutilisations"><i class="fa fa-check"></i><b>4.4.2</b> Identifier les plagiats et réutilisations</a></li>
+<li class="chapter" data-level="4.4.3" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-fakes"><i class="fa fa-check"></i><b>4.4.3</b> Identifier les fakes</a></li>
+<li class="chapter" data-level="4.4.4" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-trolls"><i class="fa fa-check"></i><b>4.4.4</b> Identifier les trolls</a></li>
+<li class="chapter" data-level="4.4.5" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-bots"><i class="fa fa-check"></i><b>4.4.5</b> Identifier les bots</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="machine-learning-with-text.html"><a href="machine-learning-with-text.html"><i class="fa fa-check"></i><b>13</b> Machine learning with text</a><ul>
-<li class="chapter" data-level="13.1" data-path="machine-learning-with-text.html"><a href="machine-learning-with-text.html#simples-models"><i class="fa fa-check"></i><b>13.1</b> simples models</a><ul>
-<li class="chapter" data-level="13.1.1" data-path="machine-learning-with-text.html"><a href="machine-learning-with-text.html#naives-bayes"><i class="fa fa-check"></i><b>13.1.1</b> Naives bayes</a></li>
-<li class="chapter" data-level="13.1.2" data-path="machine-learning-with-text.html"><a href="machine-learning-with-text.html#elastic-net"><i class="fa fa-check"></i><b>13.1.2</b> elastic net</a></li>
-<li class="chapter" data-level="13.1.3" data-path="machine-learning-with-text.html"><a href="machine-learning-with-text.html#rf"><i class="fa fa-check"></i><b>13.1.3</b> RF</a></li>
+<li class="chapter" data-level="5" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html"><i class="fa fa-check"></i><b>5</b> Une première analyse quantitative</a><ul>
+<li class="chapter" data-level="5.1" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#comptons-les-mots"><i class="fa fa-check"></i><b>5.1</b> Comptons les mots</a></li>
+<li class="chapter" data-level="5.2" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#la-production-dans-le-temps"><i class="fa fa-check"></i><b>5.2</b> la production dans le temps</a></li>
+<li class="chapter" data-level="5.3" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#lisibilité-et-complexité-lexicale"><i class="fa fa-check"></i><b>5.3</b> Lisibilité et complexité lexicale</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#les-indices-de-lisibilité"><i class="fa fa-check"></i><b>5.3.1</b> Les indices de lisibilité</a></li>
+<li class="chapter" data-level="5.3.2" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#les-indices-de-complexité-lexicale"><i class="fa fa-check"></i><b>5.3.2</b> Les indices de complexité lexicale</a></li>
 </ul></li>
-<li class="chapter" data-level="13.2" data-path="machine-learning-with-text.html"><a href="machine-learning-with-text.html#art-of-featuring"><i class="fa fa-check"></i><b>13.2</b> art of featuring</a></li>
+<li class="chapter" data-level="5.4" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#conclusion-2"><i class="fa fa-check"></i><b>5.4</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="deep-learning.html"><a href="deep-learning.html"><i class="fa fa-check"></i><b>14</b> Deep Learning</a><ul>
-<li class="chapter" data-level="14.1" data-path="deep-learning.html"><a href="deep-learning.html#lenvironnement-keras"><i class="fa fa-check"></i><b>14.1</b> L’environnement keras</a><ul>
-<li class="chapter" data-level="14.1.1" data-path="deep-learning.html"><a href="deep-learning.html#les-fonctions-principales"><i class="fa fa-check"></i><b>14.1.1</b> Les fonctions principales</a></li>
-<li class="chapter" data-level="14.1.2" data-path="deep-learning.html"><a href="deep-learning.html#un-premier-exemple"><i class="fa fa-check"></i><b>14.1.2</b> Un premier exemple</a></li>
-<li class="chapter" data-level="14.1.3" data-path="deep-learning.html"><a href="deep-learning.html#un-deuxième-exemple"><i class="fa fa-check"></i><b>14.1.3</b> Un deuxième exemple</a></li>
+<li class="chapter" data-level="6" data-path="tokenisation.html"><a href="tokenisation.html"><i class="fa fa-check"></i><b>6</b> Tokenisation</a><ul>
+<li class="chapter" data-level="6.1" data-path="tokenisation.html"><a href="tokenisation.html#le-principe"><i class="fa fa-check"></i><b>6.1</b> Le principe</a></li>
+<li class="chapter" data-level="6.2" data-path="tokenisation.html"><a href="tokenisation.html#les-outils"><i class="fa fa-check"></i><b>6.2</b> Les outils</a></li>
+<li class="chapter" data-level="6.3" data-path="tokenisation.html"><a href="tokenisation.html#ngrams"><i class="fa fa-check"></i><b>6.3</b> Ngrams</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="tokenisation.html"><a href="tokenisation.html#les-lettres"><i class="fa fa-check"></i><b>6.3.1</b> Les lettres</a></li>
+<li class="chapter" data-level="6.3.2" data-path="tokenisation.html"><a href="tokenisation.html#les-mots"><i class="fa fa-check"></i><b>6.3.2</b> Les mots</a></li>
 </ul></li>
-<li class="chapter" data-level="14.2" data-path="deep-learning.html"><a href="deep-learning.html#les-architectures-du-texte-rnn-ltsm-transformer-et-reformer"><i class="fa fa-check"></i><b>14.2</b> Les architectures du texte : RNN, LTSM, Transformer et reformer</a><ul>
-<li class="chapter" data-level="14.2.1" data-path="deep-learning.html"><a href="deep-learning.html#rnn"><i class="fa fa-check"></i><b>14.2.1</b> rnn</a></li>
-<li class="chapter" data-level="14.2.2" data-path="deep-learning.html"><a href="deep-learning.html#ltsm"><i class="fa fa-check"></i><b>14.2.2</b> ltsm</a></li>
-<li class="chapter" data-level="14.2.3" data-path="deep-learning.html"><a href="deep-learning.html#transformer"><i class="fa fa-check"></i><b>14.2.3</b> transformer</a></li>
-<li class="chapter" data-level="14.2.4" data-path="deep-learning.html"><a href="deep-learning.html#reformer"><i class="fa fa-check"></i><b>14.2.4</b> reformer</a></li>
+<li class="chapter" data-level="6.4" data-path="tokenisation.html"><a href="tokenisation.html#choisir-des-n-grams-pertinents"><i class="fa fa-check"></i><b>6.4</b> Choisir des n grams pertinents</a></li>
+<li class="chapter" data-level="6.5" data-path="tokenisation.html"><a href="tokenisation.html#propriétés-statistiques-des-ngrams"><i class="fa fa-check"></i><b>6.5</b> Propriétés statistiques des ngrams</a></li>
 </ul></li>
-<li class="chapter" data-level="14.3" data-path="deep-learning.html"><a href="deep-learning.html#les-cas-dapplications-remarquables"><i class="fa fa-check"></i><b>14.3</b> Les cas d’applications remarquables</a><ul>
-<li class="chapter" data-level="14.3.1" data-path="deep-learning.html"><a href="deep-learning.html#detection-dintention"><i class="fa fa-check"></i><b>14.3.1</b> Detection d’intention</a></li>
-<li class="chapter" data-level="14.3.2" data-path="deep-learning.html"><a href="deep-learning.html#détection-de-toxicité-des-contenus"><i class="fa fa-check"></i><b>14.3.2</b> détection de toxicité des contenus</a></li>
-<li class="chapter" data-level="14.3.3" data-path="deep-learning.html"><a href="deep-learning.html#la-detection-des-trolls"><i class="fa fa-check"></i><b>14.3.3</b> la detection des trolls</a></li>
-<li class="chapter" data-level="14.3.4" data-path="deep-learning.html"><a href="deep-learning.html#détection-des-sophismes-et-autres-fallacies"><i class="fa fa-check"></i><b>14.3.4</b> détection des sophismes et autres fallacies</a></li>
-<li class="chapter" data-level="14.3.5" data-path="deep-learning.html"><a href="deep-learning.html#la-détection-du-sarcasme-et-de-lironie"><i class="fa fa-check"></i><b>14.3.5</b> La détection du sarcasme et de l’ironie</a></li>
-<li class="chapter" data-level="14.3.6" data-path="deep-learning.html"><a href="deep-learning.html#lextraction-dargumennts"><i class="fa fa-check"></i><b>14.3.6</b> L’extraction d’argumennts</a></li>
+<li class="chapter" data-level="7" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html"><i class="fa fa-check"></i><b>7</b> Analyse du sentiment</a><ul>
+<li class="chapter" data-level="7.1" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#un-exemple-avec-syuzhet"><i class="fa fa-check"></i><b>7.1</b> Un exemple avec syuzhet</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#valence-et-expression"><i class="fa fa-check"></i><b>7.1.1</b> Valence et expression</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#la-généralisation-par-le-liwc"><i class="fa fa-check"></i><b>7.2</b> La généralisation par le Liwc</a></li>
+<li class="chapter" data-level="7.3" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#encore-dautres-généralisations"><i class="fa fa-check"></i><b>7.3</b> Encore d’autres généralisations</a></li>
+<li class="chapter" data-level="7.4" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#construire-son-propre-dictionnaire"><i class="fa fa-check"></i><b>7.4</b> construire son propre dictionnaire</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html"><i class="fa fa-check"></i><b>8</b> Annotations lexicales et syntaxiques</a><ul>
+<li class="chapter" data-level="8.1" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#tokenization"><i class="fa fa-check"></i><b>8.1</b> Tokenization</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#les-niveaux-de-tokenisation"><i class="fa fa-check"></i><b>8.1.1</b> Les niveaux de tokenisation</a></li>
+<li class="chapter" data-level="8.1.2" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#un-exemple-en-tidytext"><i class="fa fa-check"></i><b>8.1.2</b> Un exemple en tidytext</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#stemmatisation-lemmatisation-et-synonymisation"><i class="fa fa-check"></i><b>8.2</b> Stemmatisation, lemmatisation et synonymisation</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#la-stemmatisation"><i class="fa fa-check"></i><b>8.2.1</b> la stemmatisation</a></li>
+<li class="chapter" data-level="8.2.2" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#la-lemmatisation"><i class="fa fa-check"></i><b>8.2.2</b> la lemmatisation</a></li>
+<li class="chapter" data-level="8.2.3" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#synonymisation"><i class="fa fa-check"></i><b>8.2.3</b> Synonymisation</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#part-of-speech-pos"><i class="fa fa-check"></i><b>8.3</b> Part of Speech (POS)</a></li>
+<li class="chapter" data-level="8.4" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#dépendances-syntaxiques"><i class="fa fa-check"></i><b>8.4</b> Dépendances syntaxiques</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#arbre-syntaxique"><i class="fa fa-check"></i><b>8.4.1</b> Arbre syntaxique</a></li>
+<li class="chapter" data-level="8.4.2" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#vers-des-application-plus-générale"><i class="fa fa-check"></i><b>8.4.2</b> Vers des application plus générale</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#reconnaissance-dentités-nommées"><i class="fa fa-check"></i><b>8.5</b> reconnaissance d’entités nommées</a></li>
+<li class="chapter" data-level="8.6" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#co-reférence"><i class="fa fa-check"></i><b>8.6</b> co-reférence</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html"><i class="fa fa-check"></i><b>9</b> Le retour des méthodes factorielles</a><ul>
+<li class="chapter" data-level="9.1" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#retour-sur-lacp"><i class="fa fa-check"></i><b>9.1</b> Retour sur l’ACP</a></li>
+<li class="chapter" data-level="9.2" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#svd"><i class="fa fa-check"></i><b>9.2</b> SVD</a></li>
+<li class="chapter" data-level="9.3" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#lsa"><i class="fa fa-check"></i><b>9.3</b> LSA</a></li>
+<li class="chapter" data-level="9.4" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#nlm"><i class="fa fa-check"></i><b>9.4</b> NLM</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html"><i class="fa fa-check"></i><b>10</b> Vectorisation du corpus</a><ul>
+<li class="chapter" data-level="10.1" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#word2vec"><i class="fa fa-check"></i><b>10.1</b> Word2vec</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#vectorisation-pipe"><i class="fa fa-check"></i><b>10.1.1</b> vectorisation pipe</a></li>
+<li class="chapter" data-level="10.1.2" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#closest2"><i class="fa fa-check"></i><b>10.1.2</b> closest2</a></li>
+<li class="chapter" data-level="10.1.3" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#map-with-tsne"><i class="fa fa-check"></i><b>10.1.3</b> map with tsne</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#paragraph2vec"><i class="fa fa-check"></i><b>10.2</b> paragraph2vec</a></li>
+<li class="chapter" data-level="10.3" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#lavenir-des-modèles-pré-entrainés"><i class="fa fa-check"></i><b>10.3</b> l’avenir des modèles pré-entrainés</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="topic-analysis.html"><a href="topic-analysis.html"><i class="fa fa-check"></i><b>11</b> Topic Analysis</a><ul>
+<li class="chapter" data-level="11.1" data-path="topic-analysis.html"><a href="topic-analysis.html#lda"><i class="fa fa-check"></i><b>11.1</b> LDA</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="topic-analysis.html"><a href="topic-analysis.html#le-modèle-de-blei"><i class="fa fa-check"></i><b>11.1.1</b> le modèle de blei</a></li>
+<li class="chapter" data-level="11.1.2" data-path="topic-analysis.html"><a href="topic-analysis.html#implementation-avec-wor2vec"><i class="fa fa-check"></i><b>11.1.2</b> implementation avec wor2vec</a></li>
+<li class="chapter" data-level="11.1.3" data-path="topic-analysis.html"><a href="topic-analysis.html#représentation-graphique"><i class="fa fa-check"></i><b>11.1.3</b> Représentation graphique</a></li>
+<li class="chapter" data-level="11.1.4" data-path="topic-analysis.html"><a href="topic-analysis.html#la"><i class="fa fa-check"></i><b>11.1.4</b> La</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="topic-analysis.html"><a href="topic-analysis.html#stm"><i class="fa fa-check"></i><b>11.2</b> STM</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="topic-analysis.html"><a href="topic-analysis.html#section"><i class="fa fa-check"></i><b>11.2.1</b> </a></li>
+<li class="chapter" data-level="11.2.2" data-path="topic-analysis.html"><a href="topic-analysis.html#section-1"><i class="fa fa-check"></i><b>11.2.2</b> </a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="translation.html"><a href="translation.html"><i class="fa fa-check"></i><b>15</b> Translation</a><ul>
-<li class="chapter" data-level="15.1" data-path="translation.html"><a href="translation.html#simples-models-1"><i class="fa fa-check"></i><b>15.1</b> simples models</a><ul>
-<li class="chapter" data-level="15.1.1" data-path="translation.html"><a href="translation.html#naives-bayes-1"><i class="fa fa-check"></i><b>15.1.1</b> Naives bayes</a></li>
-<li class="chapter" data-level="15.1.2" data-path="translation.html"><a href="translation.html#elastic-net-1"><i class="fa fa-check"></i><b>15.1.2</b> elastic net</a></li>
-<li class="chapter" data-level="15.1.3" data-path="translation.html"><a href="translation.html#rf-1"><i class="fa fa-check"></i><b>15.1.3</b> RF</a></li>
+<li class="chapter" data-level="12" data-path="machine-learning-with-text.html"><a href="machine-learning-with-text.html"><i class="fa fa-check"></i><b>12</b> Machine learning with text</a><ul>
+<li class="chapter" data-level="12.1" data-path="machine-learning-with-text.html"><a href="machine-learning-with-text.html#simples-models"><i class="fa fa-check"></i><b>12.1</b> simples models</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="machine-learning-with-text.html"><a href="machine-learning-with-text.html#naives-bayes"><i class="fa fa-check"></i><b>12.1.1</b> Naives bayes</a></li>
+<li class="chapter" data-level="12.1.2" data-path="machine-learning-with-text.html"><a href="machine-learning-with-text.html#elastic-net"><i class="fa fa-check"></i><b>12.1.2</b> elastic net</a></li>
+<li class="chapter" data-level="12.1.3" data-path="machine-learning-with-text.html"><a href="machine-learning-with-text.html#rf"><i class="fa fa-check"></i><b>12.1.3</b> RF</a></li>
 </ul></li>
-<li class="chapter" data-level="15.2" data-path="translation.html"><a href="translation.html#art-of-featuring-1"><i class="fa fa-check"></i><b>15.2</b> art of featuring</a></li>
+<li class="chapter" data-level="12.2" data-path="machine-learning-with-text.html"><a href="machine-learning-with-text.html#art-of-featuring"><i class="fa fa-check"></i><b>12.2</b> art of featuring</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html"><i class="fa fa-check"></i><b>16</b> Modèles génératifs</a><ul>
-<li class="chapter" data-level="16.1" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html#simples-models-2"><i class="fa fa-check"></i><b>16.1</b> simples models</a><ul>
-<li class="chapter" data-level="16.1.1" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html#naives-bayes-2"><i class="fa fa-check"></i><b>16.1.1</b> Naives bayes</a></li>
-<li class="chapter" data-level="16.1.2" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html#elastic-net-2"><i class="fa fa-check"></i><b>16.1.2</b> elastic net</a></li>
-<li class="chapter" data-level="16.1.3" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html#rf-2"><i class="fa fa-check"></i><b>16.1.3</b> RF</a></li>
+<li class="chapter" data-level="13" data-path="deep-learning.html"><a href="deep-learning.html"><i class="fa fa-check"></i><b>13</b> Deep Learning</a><ul>
+<li class="chapter" data-level="13.1" data-path="deep-learning.html"><a href="deep-learning.html#lenvironnement-keras"><i class="fa fa-check"></i><b>13.1</b> L’environnement keras</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="deep-learning.html"><a href="deep-learning.html#les-fonctions-principales"><i class="fa fa-check"></i><b>13.1.1</b> Les fonctions principales</a></li>
+<li class="chapter" data-level="13.1.2" data-path="deep-learning.html"><a href="deep-learning.html#un-premier-exemple"><i class="fa fa-check"></i><b>13.1.2</b> Un premier exemple</a></li>
+<li class="chapter" data-level="13.1.3" data-path="deep-learning.html"><a href="deep-learning.html#un-deuxième-exemple"><i class="fa fa-check"></i><b>13.1.3</b> Un deuxième exemple</a></li>
 </ul></li>
-<li class="chapter" data-level="16.2" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html#art-of-featuring-2"><i class="fa fa-check"></i><b>16.2</b> art of featuring</a></li>
+<li class="chapter" data-level="13.2" data-path="deep-learning.html"><a href="deep-learning.html#les-architectures-du-texte-rnn-ltsm-transformer-et-reformer"><i class="fa fa-check"></i><b>13.2</b> Les architectures du texte : RNN, LTSM, Transformer et reformer</a><ul>
+<li class="chapter" data-level="13.2.1" data-path="deep-learning.html"><a href="deep-learning.html#rnn"><i class="fa fa-check"></i><b>13.2.1</b> rnn</a></li>
+<li class="chapter" data-level="13.2.2" data-path="deep-learning.html"><a href="deep-learning.html#ltsm"><i class="fa fa-check"></i><b>13.2.2</b> ltsm</a></li>
+<li class="chapter" data-level="13.2.3" data-path="deep-learning.html"><a href="deep-learning.html#transformer"><i class="fa fa-check"></i><b>13.2.3</b> transformer</a></li>
+<li class="chapter" data-level="13.2.4" data-path="deep-learning.html"><a href="deep-learning.html#reformer"><i class="fa fa-check"></i><b>13.2.4</b> reformer</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="deep-learning.html"><a href="deep-learning.html#les-cas-dapplications-remarquables"><i class="fa fa-check"></i><b>13.3</b> Les cas d’applications remarquables</a><ul>
+<li class="chapter" data-level="13.3.1" data-path="deep-learning.html"><a href="deep-learning.html#detection-dintention"><i class="fa fa-check"></i><b>13.3.1</b> Detection d’intention</a></li>
+<li class="chapter" data-level="13.3.2" data-path="deep-learning.html"><a href="deep-learning.html#détection-de-toxicité-des-contenus"><i class="fa fa-check"></i><b>13.3.2</b> détection de toxicité des contenus</a></li>
+<li class="chapter" data-level="13.3.3" data-path="deep-learning.html"><a href="deep-learning.html#la-detection-des-trolls"><i class="fa fa-check"></i><b>13.3.3</b> la detection des trolls</a></li>
+<li class="chapter" data-level="13.3.4" data-path="deep-learning.html"><a href="deep-learning.html#détection-des-sophismes-et-autres-fallacies"><i class="fa fa-check"></i><b>13.3.4</b> détection des sophismes et autres fallacies</a></li>
+<li class="chapter" data-level="13.3.5" data-path="deep-learning.html"><a href="deep-learning.html#la-détection-du-sarcasme-et-de-lironie"><i class="fa fa-check"></i><b>13.3.5</b> La détection du sarcasme et de l’ironie</a></li>
+<li class="chapter" data-level="13.3.6" data-path="deep-learning.html"><a href="deep-learning.html#lextraction-dargumennts"><i class="fa fa-check"></i><b>13.3.6</b> L’extraction d’argumennts</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="translation.html"><a href="translation.html"><i class="fa fa-check"></i><b>14</b> Translation</a><ul>
+<li class="chapter" data-level="14.1" data-path="translation.html"><a href="translation.html#simples-models-1"><i class="fa fa-check"></i><b>14.1</b> simples models</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="translation.html"><a href="translation.html#naives-bayes-1"><i class="fa fa-check"></i><b>14.1.1</b> Naives bayes</a></li>
+<li class="chapter" data-level="14.1.2" data-path="translation.html"><a href="translation.html#elastic-net-1"><i class="fa fa-check"></i><b>14.1.2</b> elastic net</a></li>
+<li class="chapter" data-level="14.1.3" data-path="translation.html"><a href="translation.html#rf-1"><i class="fa fa-check"></i><b>14.1.3</b> RF</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="translation.html"><a href="translation.html#art-of-featuring-1"><i class="fa fa-check"></i><b>14.2</b> art of featuring</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html"><i class="fa fa-check"></i><b>15</b> Modèles génératifs</a><ul>
+<li class="chapter" data-level="15.1" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html#simples-models-2"><i class="fa fa-check"></i><b>15.1</b> simples models</a><ul>
+<li class="chapter" data-level="15.1.1" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html#naives-bayes-2"><i class="fa fa-check"></i><b>15.1.1</b> Naives bayes</a></li>
+<li class="chapter" data-level="15.1.2" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html#elastic-net-2"><i class="fa fa-check"></i><b>15.1.2</b> elastic net</a></li>
+<li class="chapter" data-level="15.1.3" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html#rf-2"><i class="fa fa-check"></i><b>15.1.3</b> RF</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html#art-of-featuring-2"><i class="fa fa-check"></i><b>15.2</b> art of featuring</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -331,7 +340,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="annotations-lexicales-et-syntaxiques" class="section level1">
-<h1><span class="header-section-number">Chapitre 9</span> Annotations lexicales et syntaxiques</h1>
+<h1><span class="header-section-number">Chapitre 8</span> Annotations lexicales et syntaxiques</h1>
 <p>Pour aller au-delà de l’analyse du seul lexique et de l’analyse de la cooccurence des termes à travers les textes, comme le font les méthodes de typologie et d’analyse factorielle des correspondance depuis longtemps, il est néçessaire d’analyser le texte en tenant compte de ses propriétés syntaxiques. Depuis une dizaine d’années, des outils puissants, les annotateurs, sont proposés de manière accessible.</p>
 <p>Les plus connus sont Spacy, Stanford NLP et désormais UDpipe.</p>
 <p>Dans l’environnement r différentes ressources sont disponibles : Quanteda, clean_nlp, Udpipe, …</p>
@@ -347,9 +356,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>identifier les co-reférence</li>
 </ul>
 <div id="tokenization" class="section level2">
-<h2><span class="header-section-number">9.1</span> Tokenization</h2>
+<h2><span class="header-section-number">8.1</span> Tokenization</h2>
 <div id="les-niveaux-de-tokenisation" class="section level3">
-<h3><span class="header-section-number">9.1.1</span> Les niveaux de tokenisation</h3>
+<h3><span class="header-section-number">8.1.1</span> Les niveaux de tokenisation</h3>
 <p>Un token est une unité d’analyse dont la granularité est plus ou moins fine</p>
 <ul>
 <li>Le paragraphe est sans l’unité l’unité la plus générale, quand un texte est correctement rédigé, un paragraphe développe une idée.</li>
@@ -361,47 +370,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 <div id="un-exemple-en-tidytext" class="section level3">
-<h3><span class="header-section-number">9.1.2</span> Un exemple en tidytext</h3>
+<h3><span class="header-section-number">8.1.2</span> Un exemple en tidytext</h3>
 </div>
 </div>
 <div id="stemmatisation-lemmatisation-et-synonymisation" class="section level2">
-<h2><span class="header-section-number">9.2</span> Stemmatisation, lemmatisation et synonymisation</h2>
+<h2><span class="header-section-number">8.2</span> Stemmatisation, lemmatisation et synonymisation</h2>
 <p>Les mots prennent des formes variées, il peut être intéressant dans certains cas de réduire cette variété et ne considérer que l’idée des mots. Deux techniques sont disponibles</p>
 <div id="la-stemmatisation" class="section level3">
-<h3><span class="header-section-number">9.2.1</span> la stemmatisation</h3>
+<h3><span class="header-section-number">8.2.1</span> la stemmatisation</h3>
 <p>c’est un</p>
 </div>
 <div id="la-lemmatisation" class="section level3">
-<h3><span class="header-section-number">9.2.2</span> la lemmatisation</h3>
+<h3><span class="header-section-number">8.2.2</span> la lemmatisation</h3>
 <p>Un lemme est un mot racine, sans inflexions de genre, de nombre ou de conjugaison. C’est généralement celui qu’on trouve dans les dictionnaire.</p>
 </div>
 <div id="synonymisation" class="section level3">
-<h3><span class="header-section-number">9.2.3</span> Synonymisation</h3>
+<h3><span class="header-section-number">8.2.3</span> Synonymisation</h3>
 <p>le cas de wordnet et l’invention des synset</p>
 <p>synonymes, antonymes, hipponyne, hyperonymes…..</p>
 <p><a href="https://cran.r-project.org/web/packages/wordnet/vignettes/wordnet.pdf" class="uri">https://cran.r-project.org/web/packages/wordnet/vignettes/wordnet.pdf</a></p>
 </div>
 </div>
 <div id="part-of-speech-pos" class="section level2">
-<h2><span class="header-section-number">9.3</span> Part of Speech (POS)</h2>
+<h2><span class="header-section-number">8.3</span> Part of Speech (POS)</h2>
 <p>Dans une phrase les mots n’on pas la même valeur. Certains sont des nombres propres, ils se réfèrent à ce que nous venons de voir, c’est à dire des entitées nommées, d’autres désignent des catégories d’objet. Ce sont les noms communs qui se rapportent à des catégories de choses. Un marteau - si j’en avais un - peut être n’importe quel marteau, la masse qui casse la pierre, ou ce petit marteau qui me permet d’enfoncer un clou dans le cadre du tableau.</p>
 <p>Des typologies universelles ont été construites, elles recouvrent des typologies plus spécifiques à certaines langues. Les désinences du latin ont par exemple disparu du français. Cette forme est spécifiques au latin, on la retrouvera en allemand. La notion de morphosntaxique désigne présisément que les variations de formes des mots dépendent d’une règle syntaxique. Prenons le verbe, et sa forme, “être”, dont la forme au passé simple est “était”. La forme des mots change, mais l’idée reste.</p>
 <p>Une catégorisation en 17 éléments est proposée. En voici les <a href="https://universaldependencies.org/u/pos/">éléments et les définitions</a></p>
 <p>Un petit exemple avec le package <code>UDpipe</code>.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="kw">library</span>(udpipe)</a>
-<a class="sourceLine" id="cb25-2" title="2">fr &lt;-<span class="st"> </span><span class="kw">udpipe_download_model</span>(<span class="dt">language =</span> <span class="st">&quot;french&quot;</span>)</a>
-<a class="sourceLine" id="cb25-3" title="3">udmodel_french &lt;-<span class="st"> </span><span class="kw">udpipe_load_model</span>(<span class="dt">file =</span> <span class="st">&quot;french-gsd-ud-2.5-191206.udpipe&quot;</span>)</a>
-<a class="sourceLine" id="cb25-4" title="4">Citations &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;Citations.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb25-5" title="5"></a>
-<a class="sourceLine" id="cb25-6" title="6">Flaubert&lt;-Citations <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb25-7" title="7"><span class="st">  </span><span class="kw">filter</span>(doc<span class="op">==</span><span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb25-8" title="8"></a>
-<a class="sourceLine" id="cb25-9" title="9">UD &lt;-<span class="st"> </span><span class="kw">udpipe_annotate</span>(udmodel_french, <span class="dt">x=</span>Flaubert<span class="op">$</span>text)</a>
-<a class="sourceLine" id="cb25-10" title="10">x &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(UD)</a>
-<a class="sourceLine" id="cb25-11" title="11">foo&lt;-x <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb25-12" title="12"><span class="st">  </span><span class="kw">select</span>(doc_id,paragraph_id, sentence_id, token_id,token,lemma,head_token_id, upos,feats)<span class="op">%&gt;%</span><span class="kw">filter</span>(sentence_id<span class="op">==</span><span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb25-13" title="13"><span class="kw">flextable</span>(foo)</a></code></pre></div>
-<template id="e33057cd-9238-405a-b54f-10d68117bcca"><style>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1"><span class="kw">library</span>(udpipe)</a>
+<a class="sourceLine" id="cb46-2" title="2">fr &lt;-<span class="st"> </span><span class="kw">udpipe_download_model</span>(<span class="dt">language =</span> <span class="st">&quot;french&quot;</span>)</a>
+<a class="sourceLine" id="cb46-3" title="3">udmodel_french &lt;-<span class="st"> </span><span class="kw">udpipe_load_model</span>(<span class="dt">file =</span> <span class="st">&quot;french-gsd-ud-2.5-191206.udpipe&quot;</span>)</a>
+<a class="sourceLine" id="cb46-4" title="4">Citations &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;./data/Citations.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb46-5" title="5"></a>
+<a class="sourceLine" id="cb46-6" title="6">Flaubert&lt;-Citations <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb46-7" title="7"><span class="st">  </span><span class="kw">filter</span>(doc<span class="op">==</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb46-8" title="8"></a>
+<a class="sourceLine" id="cb46-9" title="9">UD &lt;-<span class="st"> </span><span class="kw">udpipe_annotate</span>(udmodel_french, <span class="dt">x=</span>Flaubert<span class="op">$</span>text)</a>
+<a class="sourceLine" id="cb46-10" title="10">x &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(UD)</a>
+<a class="sourceLine" id="cb46-11" title="11">foo&lt;-x <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb46-12" title="12"><span class="st">  </span><span class="kw">select</span>(doc_id,paragraph_id, sentence_id, token_id,token,lemma,head_token_id, upos,feats)<span class="op">%&gt;%</span><span class="kw">filter</span>(sentence_id<span class="op">==</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb46-13" title="13"><span class="kw">flextable</span>(foo)</a></code></pre></div>
+<template id="a4498f1b-9609-4673-96b2-21795aad1b3a"><style>
 .tabwid table{
   border-collapse:collapse;
   line-height:1;
@@ -435,12 +444,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 .tabwid table tr {
 background-color: transparent;
 }
-</style><div class="tabwid"><style>.cl-33208f1a{border-collapse:collapse;}.cl-33149c82{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-33149c83{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-33149c84{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-33151162{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-33151163{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-33151164{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-33151165{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-33151166{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-33151167{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-33208f1a'>
-<thead><tr style="overflow-wrap:break-word;"><td class="cl-33151166"><p class="cl-33149c83"><span class="cl-33149c82">doc_id</span></p></td><td class="cl-33151167"><p class="cl-33149c84"><span class="cl-33149c82">paragraph_id</span></p></td><td class="cl-33151167"><p class="cl-33149c84"><span class="cl-33149c82">sentence_id</span></p></td><td class="cl-33151166"><p class="cl-33149c83"><span class="cl-33149c82">token_id</span></p></td><td class="cl-33151166"><p class="cl-33149c83"><span class="cl-33149c82">token</span></p></td><td class="cl-33151166"><p class="cl-33149c83"><span class="cl-33149c82">lemma</span></p></td><td class="cl-33151166"><p class="cl-33149c83"><span class="cl-33149c82">head_token_id</span></p></td><td class="cl-33151166"><p class="cl-33149c83"><span class="cl-33149c82">upos</span></p></td><td class="cl-33151166"><p class="cl-33149c83"><span class="cl-33149c82">feats</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">doc1</span></p></td><td class="cl-33151163"><p class="cl-33149c84"><span class="cl-33149c82">1</span></p></td><td class="cl-33151163"><p class="cl-33149c84"><span class="cl-33149c82">1</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">1</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">Le</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">le</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">2</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">DET</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">Definite=Def|Gender=Masc|Number=Sing|PronType=Art</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">doc1</span></p></td><td class="cl-33151163"><p class="cl-33149c84"><span class="cl-33149c82">1</span></p></td><td class="cl-33151163"><p class="cl-33149c84"><span class="cl-33149c82">1</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">2</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">lendemain</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">lendemain</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">9</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">NOUN</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">Gender=Masc|Number=Sing</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">doc1</span></p></td><td class="cl-33151163"><p class="cl-33149c84"><span class="cl-33149c82">1</span></p></td><td class="cl-33151163"><p class="cl-33149c84"><span class="cl-33149c82">1</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">3</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">fut</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">être</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">9</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">AUX</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">doc1</span></p></td><td class="cl-33151163"><p class="cl-33149c84"><span class="cl-33149c82">1</span></p></td><td class="cl-33151163"><p class="cl-33149c84"><span class="cl-33149c82">1</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">4</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">,</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">,</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">6</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">PUNCT</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">doc1</span></p></td><td class="cl-33151163"><p class="cl-33149c84"><span class="cl-33149c82">1</span></p></td><td class="cl-33151163"><p class="cl-33149c84"><span class="cl-33149c82">1</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">5</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">pour</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">pour</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">6</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">ADP</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">doc1</span></p></td><td class="cl-33151163"><p class="cl-33149c84"><span class="cl-33149c82">1</span></p></td><td class="cl-33151163"><p class="cl-33149c84"><span class="cl-33149c82">1</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">6</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">Emma</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">Emma</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">9</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">PROPN</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">doc1</span></p></td><td class="cl-33151163"><p class="cl-33149c84"><span class="cl-33149c82">1</span></p></td><td class="cl-33151163"><p class="cl-33149c84"><span class="cl-33149c82">1</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">7</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">,</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">,</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">6</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">PUNCT</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">doc1</span></p></td><td class="cl-33151163"><p class="cl-33149c84"><span class="cl-33149c82">1</span></p></td><td class="cl-33151163"><p class="cl-33149c84"><span class="cl-33149c82">1</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">8</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">une</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">un</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">9</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">DET</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">Definite=Ind|Gender=Fem|Number=Sing|PronType=Art</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">doc1</span></p></td><td class="cl-33151163"><p class="cl-33149c84"><span class="cl-33149c82">1</span></p></td><td class="cl-33151163"><p class="cl-33149c84"><span class="cl-33149c82">1</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">9</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">journée</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">journée</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">0</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">NOUN</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">Gender=Fem|Number=Sing</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">doc1</span></p></td><td class="cl-33151163"><p class="cl-33149c84"><span class="cl-33149c82">1</span></p></td><td class="cl-33151163"><p class="cl-33149c84"><span class="cl-33149c82">1</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">10</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">funèbre</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">funèbre</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">9</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">ADJ</span></p></td><td class="cl-33151162"><p class="cl-33149c83"><span class="cl-33149c82">Gender=Fem|Number=Sing</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-33151164"><p class="cl-33149c83"><span class="cl-33149c82">doc1</span></p></td><td class="cl-33151165"><p class="cl-33149c84"><span class="cl-33149c82">1</span></p></td><td class="cl-33151165"><p class="cl-33149c84"><span class="cl-33149c82">1</span></p></td><td class="cl-33151164"><p class="cl-33149c83"><span class="cl-33149c82">11</span></p></td><td class="cl-33151164"><p class="cl-33149c83"><span class="cl-33149c82">.</span></p></td><td class="cl-33151164"><p class="cl-33149c83"><span class="cl-33149c82">.</span></p></td><td class="cl-33151164"><p class="cl-33149c83"><span class="cl-33149c82">9</span></p></td><td class="cl-33151164"><p class="cl-33149c83"><span class="cl-33149c82">PUNCT</span></p></td><td class="cl-33151164"><p class="cl-33149c83"><span class="cl-33149c82"></span></p></td></tr></tbody></table></div></template>
-<div class="flextable-shadow-host" id="03d3e90f-16a7-4e18-b93c-144d4c902ba4"></div>
+</style><div class="tabwid"><style>.cl-034eabae{border-collapse:collapse;}.cl-0339368e{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-03395d80{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-03395d81{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-033a204e{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-033a204f{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-033a2050{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-033a2051{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-033a2052{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-033a2053{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-034eabae'>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-033a2052"><p class="cl-03395d80"><span class="cl-0339368e">doc_id</span></p></td><td class="cl-033a2053"><p class="cl-03395d81"><span class="cl-0339368e">paragraph_id</span></p></td><td class="cl-033a2053"><p class="cl-03395d81"><span class="cl-0339368e">sentence_id</span></p></td><td class="cl-033a2052"><p class="cl-03395d80"><span class="cl-0339368e">token_id</span></p></td><td class="cl-033a2052"><p class="cl-03395d80"><span class="cl-0339368e">token</span></p></td><td class="cl-033a2052"><p class="cl-03395d80"><span class="cl-0339368e">lemma</span></p></td><td class="cl-033a2052"><p class="cl-03395d80"><span class="cl-0339368e">head_token_id</span></p></td><td class="cl-033a2052"><p class="cl-03395d80"><span class="cl-0339368e">upos</span></p></td><td class="cl-033a2052"><p class="cl-03395d80"><span class="cl-0339368e">feats</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">doc1</span></p></td><td class="cl-033a204f"><p class="cl-03395d81"><span class="cl-0339368e">1</span></p></td><td class="cl-033a204f"><p class="cl-03395d81"><span class="cl-0339368e">1</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">1</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">Le</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">le</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">2</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">DET</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">Definite=Def|Gender=Masc|Number=Sing|PronType=Art</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">doc1</span></p></td><td class="cl-033a204f"><p class="cl-03395d81"><span class="cl-0339368e">1</span></p></td><td class="cl-033a204f"><p class="cl-03395d81"><span class="cl-0339368e">1</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">2</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">lendemain</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">lendemain</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">9</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">NOUN</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">Gender=Masc|Number=Sing</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">doc1</span></p></td><td class="cl-033a204f"><p class="cl-03395d81"><span class="cl-0339368e">1</span></p></td><td class="cl-033a204f"><p class="cl-03395d81"><span class="cl-0339368e">1</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">3</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">fut</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">être</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">9</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">AUX</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">doc1</span></p></td><td class="cl-033a204f"><p class="cl-03395d81"><span class="cl-0339368e">1</span></p></td><td class="cl-033a204f"><p class="cl-03395d81"><span class="cl-0339368e">1</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">4</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">,</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">,</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">6</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">PUNCT</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">doc1</span></p></td><td class="cl-033a204f"><p class="cl-03395d81"><span class="cl-0339368e">1</span></p></td><td class="cl-033a204f"><p class="cl-03395d81"><span class="cl-0339368e">1</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">5</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">pour</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">pour</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">6</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">ADP</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">doc1</span></p></td><td class="cl-033a204f"><p class="cl-03395d81"><span class="cl-0339368e">1</span></p></td><td class="cl-033a204f"><p class="cl-03395d81"><span class="cl-0339368e">1</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">6</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">Emma</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">Emma</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">9</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">PROPN</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">doc1</span></p></td><td class="cl-033a204f"><p class="cl-03395d81"><span class="cl-0339368e">1</span></p></td><td class="cl-033a204f"><p class="cl-03395d81"><span class="cl-0339368e">1</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">7</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">,</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">,</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">6</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">PUNCT</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">doc1</span></p></td><td class="cl-033a204f"><p class="cl-03395d81"><span class="cl-0339368e">1</span></p></td><td class="cl-033a204f"><p class="cl-03395d81"><span class="cl-0339368e">1</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">8</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">une</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">un</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">9</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">DET</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">Definite=Ind|Gender=Fem|Number=Sing|PronType=Art</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">doc1</span></p></td><td class="cl-033a204f"><p class="cl-03395d81"><span class="cl-0339368e">1</span></p></td><td class="cl-033a204f"><p class="cl-03395d81"><span class="cl-0339368e">1</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">9</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">journée</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">journée</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">0</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">NOUN</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">Gender=Fem|Number=Sing</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">doc1</span></p></td><td class="cl-033a204f"><p class="cl-03395d81"><span class="cl-0339368e">1</span></p></td><td class="cl-033a204f"><p class="cl-03395d81"><span class="cl-0339368e">1</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">10</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">funèbre</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">funèbre</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">9</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">ADJ</span></p></td><td class="cl-033a204e"><p class="cl-03395d80"><span class="cl-0339368e">Gender=Fem|Number=Sing</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-033a2050"><p class="cl-03395d80"><span class="cl-0339368e">doc1</span></p></td><td class="cl-033a2051"><p class="cl-03395d81"><span class="cl-0339368e">1</span></p></td><td class="cl-033a2051"><p class="cl-03395d81"><span class="cl-0339368e">1</span></p></td><td class="cl-033a2050"><p class="cl-03395d80"><span class="cl-0339368e">11</span></p></td><td class="cl-033a2050"><p class="cl-03395d80"><span class="cl-0339368e">.</span></p></td><td class="cl-033a2050"><p class="cl-03395d80"><span class="cl-0339368e">.</span></p></td><td class="cl-033a2050"><p class="cl-03395d80"><span class="cl-0339368e">9</span></p></td><td class="cl-033a2050"><p class="cl-03395d80"><span class="cl-0339368e">PUNCT</span></p></td><td class="cl-033a2050"><p class="cl-03395d80"><span class="cl-0339368e"></span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="fd3ba95e-ef97-47b6-bdee-6387b0824e62"></div>
 <script>
-var dest = document.getElementById("03d3e90f-16a7-4e18-b93c-144d4c902ba4");
-var template = document.getElementById("e33057cd-9238-405a-b54f-10d68117bcca");
+var dest = document.getElementById("fd3ba95e-ef97-47b6-bdee-6387b0824e62");
+var template = document.getElementById("a4498f1b-9609-4673-96b2-21795aad1b3a");
 var caption = template.content.querySelector("caption");
 if(caption) {
   caption.style.cssText = "display:block;text-align:center;";
@@ -456,7 +465,7 @@ fantome.appendChild(templateContent);
 <p>Les trois première colonnes identifient le document, les phrases et les mots. Des lemmes sont proposées. La colonne UPOS donne les part of Speech universel.</p>
 </div>
 <div id="dépendances-syntaxiques" class="section level2">
-<h2><span class="header-section-number">9.4</span> Dépendances syntaxiques</h2>
+<h2><span class="header-section-number">8.4</span> Dépendances syntaxiques</h2>
 <p>C’est à <a href="https://www.ac-sciences-lettres-montpellier.fr/academie_edition/fichiers_conf/VERDELHAN-BOURGADE-2020.pdf">Lucien Tesnière</a> que l’on doit l’idée de la grammaire de la dépendance qui est au coeur du NLP moderne. L’idée est de déterminer au niveau de la phrase les relations entre ses termes de manière hierarchisée selon un principe de gouvernant à subordonné.</p>
 <p><span class="citation">Verdelhan-Bourgade (<a href="#ref-verdelhan-bourgade_lucien_2020" role="doc-biblioref">2020</a>)</span> résume son analyse de manière précise et concise :</p>
 <ul>
@@ -471,88 +480,88 @@ fantome.appendChild(templateContent);
 </ul>
 <p><img src="Tesnière_dependance_syntaxique.jpg" /></p>
 <div id="arbre-syntaxique" class="section level3">
-<h3><span class="header-section-number">9.4.1</span> Arbre syntaxique</h3>
+<h3><span class="header-section-number">8.4.1</span> Arbre syntaxique</h3>
 <p>L’arbre syntaxique est obtenue en analysant les relations entre les termes. Nous poursuivons avec UPpipe, l’annovation précédente a déjà fait le travail. A chaque mot deux informations sont associée : la première est l’index du mot auxquel il se rapporte, la seconde est la nature de la relation.</p>
 <p>Onn utilise ici une fonction écrite par (bnosac](<a href="http://www.bnosac.be/index.php/blog/93-dependency-parsing-with-udpipe" class="uri">http://www.bnosac.be/index.php/blog/93-dependency-parsing-with-udpipe</a>) pour donner une représentation graphique de l’arbre.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1">plot_annotation &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">size =</span> <span class="dv">3</span>){</a>
-<a class="sourceLine" id="cb26-2" title="2">  <span class="kw">stopifnot</span>(<span class="kw">is.data.frame</span>(x) <span class="op">&amp;</span><span class="st"> </span><span class="kw">all</span>(<span class="kw">c</span>(<span class="st">&quot;doc_id&quot;</span>,<span class="st">&quot;paragraph_id&quot;</span>, <span class="st">&quot;sentence_id&quot;</span>, <span class="st">&quot;token_id&quot;</span>,<span class="st">&quot;token&quot;</span>,<span class="st">&quot;lemma&quot;</span>,<span class="st">&quot;head_token_id&quot;</span>, <span class="st">&quot;upos&quot;</span>,<span class="st">&quot;feats&quot;</span>, <span class="st">&quot;dep_rel&quot;</span>) <span class="op">%in%</span><span class="st"> </span><span class="kw">colnames</span>(x)))</a>
-<a class="sourceLine" id="cb26-3" title="3">  x &lt;-<span class="st"> </span>x[<span class="op">!</span><span class="kw">is.na</span>(x<span class="op">$</span>head_token_id), ]</a>
-<a class="sourceLine" id="cb26-4" title="4">  x &lt;-<span class="st"> </span>x[x<span class="op">$</span>sentence_id <span class="op">%in%</span><span class="st"> </span><span class="kw">min</span>(x<span class="op">$</span>sentence_id), ]</a>
-<a class="sourceLine" id="cb26-5" title="5">  edges &lt;-<span class="st"> </span>x[x<span class="op">$</span>head_token_id <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>, <span class="kw">c</span>(<span class="st">&quot;token_id&quot;</span>, <span class="st">&quot;head_token_id&quot;</span>, <span class="st">&quot;dep_rel&quot;</span>)]</a>
-<a class="sourceLine" id="cb26-6" title="6">  edges<span class="op">$</span>label &lt;-<span class="st"> </span>edges<span class="op">$</span>dep_rel</a>
-<a class="sourceLine" id="cb26-7" title="7">  g &lt;-<span class="st"> </span><span class="kw">graph_from_data_frame</span>(edges,</a>
-<a class="sourceLine" id="cb26-8" title="8">                             <span class="dt">vertices =</span> x[, <span class="kw">c</span>(<span class="st">&quot;token_id&quot;</span>, <span class="st">&quot;token&quot;</span>, <span class="st">&quot;lemma&quot;</span>, <span class="st">&quot;upos&quot;</span>, <span class="st">&quot;xpos&quot;</span>, <span class="st">&quot;feats&quot;</span>)],</a>
-<a class="sourceLine" id="cb26-9" title="9">                             <span class="dt">directed =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb26-10" title="10">  <span class="kw">ggraph</span>(g, <span class="dt">layout =</span> <span class="st">&quot;linear&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb26-11" title="11"><span class="st">    </span><span class="kw">geom_edge_arc</span>(ggplot2<span class="op">::</span><span class="kw">aes</span>(<span class="dt">label =</span> dep_rel, <span class="dt">vjust =</span> <span class="fl">-0.20</span>),</a>
-<a class="sourceLine" id="cb26-12" title="12">                  <span class="dt">arrow =</span> grid<span class="op">::</span><span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="dv">4</span>, <span class="st">&#39;mm&#39;</span>), <span class="dt">ends =</span> <span class="st">&quot;last&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;closed&quot;</span>),</a>
-<a class="sourceLine" id="cb26-13" title="13">                  <span class="dt">end_cap =</span> ggraph<span class="op">::</span><span class="kw">label_rect</span>(<span class="st">&quot;wordswordswords&quot;</span>),</a>
-<a class="sourceLine" id="cb26-14" title="14">                  <span class="dt">label_colour =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">check_overlap =</span> <span class="ot">TRUE</span>, <span class="dt">label_size =</span> size) <span class="op">+</span></a>
-<a class="sourceLine" id="cb26-15" title="15"><span class="st">    </span><span class="kw">geom_node_label</span>(ggplot2<span class="op">::</span><span class="kw">aes</span>(<span class="dt">label =</span> token), <span class="dt">col =</span> <span class="st">&quot;darkgreen&quot;</span>, <span class="dt">size =</span> size, <span class="dt">fontface =</span> <span class="st">&quot;bold&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb26-16" title="16"><span class="st">    </span><span class="kw">geom_node_text</span>(ggplot2<span class="op">::</span><span class="kw">aes</span>(<span class="dt">label =</span> upos), <span class="dt">nudge_y =</span> <span class="fl">-0.35</span>, <span class="dt">size =</span> size)  <span class="op">+</span></a>
-<a class="sourceLine" id="cb26-17" title="17"><span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Tokenisation, PoS &amp; dependency relations&quot;</span>)</a>
-<a class="sourceLine" id="cb26-18" title="18">}</a>
-<a class="sourceLine" id="cb26-19" title="19"></a>
-<a class="sourceLine" id="cb26-20" title="20"><span class="kw">plot_annotation</span>(x, <span class="dt">size =</span> <span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1">plot_annotation &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">size =</span> <span class="dv">3</span>){</a>
+<a class="sourceLine" id="cb47-2" title="2">  <span class="kw">stopifnot</span>(<span class="kw">is.data.frame</span>(x) <span class="op">&amp;</span><span class="st"> </span><span class="kw">all</span>(<span class="kw">c</span>(<span class="st">&quot;doc_id&quot;</span>,<span class="st">&quot;paragraph_id&quot;</span>, <span class="st">&quot;sentence_id&quot;</span>, <span class="st">&quot;token_id&quot;</span>,<span class="st">&quot;token&quot;</span>,<span class="st">&quot;lemma&quot;</span>,<span class="st">&quot;head_token_id&quot;</span>, <span class="st">&quot;upos&quot;</span>,<span class="st">&quot;feats&quot;</span>, <span class="st">&quot;dep_rel&quot;</span>) <span class="op">%in%</span><span class="st"> </span><span class="kw">colnames</span>(x)))</a>
+<a class="sourceLine" id="cb47-3" title="3">  x &lt;-<span class="st"> </span>x[<span class="op">!</span><span class="kw">is.na</span>(x<span class="op">$</span>head_token_id), ]</a>
+<a class="sourceLine" id="cb47-4" title="4">  x &lt;-<span class="st"> </span>x[x<span class="op">$</span>sentence_id <span class="op">%in%</span><span class="st"> </span><span class="kw">min</span>(x<span class="op">$</span>sentence_id), ]</a>
+<a class="sourceLine" id="cb47-5" title="5">  edges &lt;-<span class="st"> </span>x[x<span class="op">$</span>head_token_id <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>, <span class="kw">c</span>(<span class="st">&quot;token_id&quot;</span>, <span class="st">&quot;head_token_id&quot;</span>, <span class="st">&quot;dep_rel&quot;</span>)]</a>
+<a class="sourceLine" id="cb47-6" title="6">  edges<span class="op">$</span>label &lt;-<span class="st"> </span>edges<span class="op">$</span>dep_rel</a>
+<a class="sourceLine" id="cb47-7" title="7">  g &lt;-<span class="st"> </span><span class="kw">graph_from_data_frame</span>(edges,</a>
+<a class="sourceLine" id="cb47-8" title="8">                             <span class="dt">vertices =</span> x[, <span class="kw">c</span>(<span class="st">&quot;token_id&quot;</span>, <span class="st">&quot;token&quot;</span>, <span class="st">&quot;lemma&quot;</span>, <span class="st">&quot;upos&quot;</span>, <span class="st">&quot;xpos&quot;</span>, <span class="st">&quot;feats&quot;</span>)],</a>
+<a class="sourceLine" id="cb47-9" title="9">                             <span class="dt">directed =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb47-10" title="10">  <span class="kw">ggraph</span>(g, <span class="dt">layout =</span> <span class="st">&quot;linear&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb47-11" title="11"><span class="st">    </span><span class="kw">geom_edge_arc</span>(ggplot2<span class="op">::</span><span class="kw">aes</span>(<span class="dt">label =</span> dep_rel, <span class="dt">vjust =</span> <span class="fl">-0.20</span>),</a>
+<a class="sourceLine" id="cb47-12" title="12">                  <span class="dt">arrow =</span> grid<span class="op">::</span><span class="kw">arrow</span>(<span class="dt">length =</span> <span class="kw">unit</span>(<span class="dv">4</span>, <span class="st">&#39;mm&#39;</span>), <span class="dt">ends =</span> <span class="st">&quot;last&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;closed&quot;</span>),</a>
+<a class="sourceLine" id="cb47-13" title="13">                  <span class="dt">end_cap =</span> ggraph<span class="op">::</span><span class="kw">label_rect</span>(<span class="st">&quot;wordswordswords&quot;</span>),</a>
+<a class="sourceLine" id="cb47-14" title="14">                  <span class="dt">label_colour =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">check_overlap =</span> <span class="ot">TRUE</span>, <span class="dt">label_size =</span> size) <span class="op">+</span></a>
+<a class="sourceLine" id="cb47-15" title="15"><span class="st">    </span><span class="kw">geom_node_label</span>(ggplot2<span class="op">::</span><span class="kw">aes</span>(<span class="dt">label =</span> token), <span class="dt">col =</span> <span class="st">&quot;darkgreen&quot;</span>, <span class="dt">size =</span> size, <span class="dt">fontface =</span> <span class="st">&quot;bold&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb47-16" title="16"><span class="st">    </span><span class="kw">geom_node_text</span>(ggplot2<span class="op">::</span><span class="kw">aes</span>(<span class="dt">label =</span> upos), <span class="dt">nudge_y =</span> <span class="fl">-0.35</span>, <span class="dt">size =</span> size)  <span class="op">+</span></a>
+<a class="sourceLine" id="cb47-17" title="17"><span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Tokenisation, PoS &amp; dependency relations&quot;</span>)</a>
+<a class="sourceLine" id="cb47-18" title="18">}</a>
+<a class="sourceLine" id="cb47-19" title="19"></a>
+<a class="sourceLine" id="cb47-20" title="20"><span class="kw">plot_annotation</span>(x, <span class="dt">size =</span> <span class="dv">3</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:72"></span>
 <img src="bookdown-demo_files/figure-html/72-1.png" alt="arbre de dépendance" width="80%" />
 <p class="caption">
-Figure 9.1: arbre de dépendance
+Figure 8.1: arbre de dépendance
 </p>
 </div>
 </div>
 <div id="vers-des-application-plus-générale" class="section level3">
-<h3><span class="header-section-number">9.4.2</span> Vers des application plus générale</h3>
+<h3><span class="header-section-number">8.4.2</span> Vers des application plus générale</h3>
 <p>Dans la phrase precédente on note que funèbre est l’adjectif de journée. On peut être tenté de retrouver ces relations qui caractérisent des choses (les “nouns” ou noms choses) à des adjectifs. On souhaite faire une liste de ces paires.</p>
 <p>L’exemple va être court : un poème de Maupassant</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1">Maupassant&lt;-Citations <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb27-2" title="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">filter</span>(doc<span class="op">==</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb27-3" title="3"></a>
-<a class="sourceLine" id="cb27-4" title="4">UD &lt;-<span class="st"> </span><span class="kw">udpipe_annotate</span>(udmodel_french, <span class="dt">x=</span>Maupassant<span class="op">$</span>text)</a>
-<a class="sourceLine" id="cb27-5" title="5">foo &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(UD)</a>
-<a class="sourceLine" id="cb27-6" title="6">foo&lt;-<span class="st"> </span>foo <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(paragraph_id,sentence_id, token_id,lemma,upos,head_token_id,dep_rel)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb27-7" title="7"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">key1=</span><span class="kw">paste0</span>(paragraph_id,sentence_id, token_id),<span class="dt">key2=</span><span class="kw">paste0</span>(paragraph_id,sentence_id, head_token_id) )</a></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1">Maupassant&lt;-Citations <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb48-2" title="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">filter</span>(doc<span class="op">==</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb48-3" title="3"></a>
+<a class="sourceLine" id="cb48-4" title="4">UD &lt;-<span class="st"> </span><span class="kw">udpipe_annotate</span>(udmodel_french, <span class="dt">x=</span>Maupassant<span class="op">$</span>text)</a>
+<a class="sourceLine" id="cb48-5" title="5">foo &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(UD)</a>
+<a class="sourceLine" id="cb48-6" title="6">foo&lt;-<span class="st"> </span>foo <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(paragraph_id,sentence_id, token_id,lemma,upos,head_token_id,dep_rel)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb48-7" title="7"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">key1=</span><span class="kw">paste0</span>(paragraph_id,sentence_id, token_id),<span class="dt">key2=</span><span class="kw">paste0</span>(paragraph_id,sentence_id, head_token_id) )</a></code></pre></div>
 <p>On va donc construires un tableau lemme_cible x lemmes_associés, les premiers risqueront d’êtres les noms communs, les seconds leurs adjectifs.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1"><span class="co"># selection de la relation.</span></a>
-<a class="sourceLine" id="cb28-2" title="2">res &lt;-<span class="st"> </span>foo <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(dep_rel <span class="op">==</span><span class="st"> &quot;amod&quot;</span>)</a>
-<a class="sourceLine" id="cb28-3" title="3"><span class="co">#on y joint les dependences</span></a>
-<a class="sourceLine" id="cb28-4" title="4">dep&lt;-res <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(foo, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;key2&quot;</span> =<span class="st"> &quot;key1&quot;</span>))</a>
-<a class="sourceLine" id="cb28-5" title="5"></a>
-<a class="sourceLine" id="cb28-6" title="6"><span class="co">#on construit la tables des relations lemmes cibles -adjectifs</span></a>
-<a class="sourceLine" id="cb28-7" title="7">table&lt;-<span class="kw">as.data.frame.matrix</span>(<span class="kw">table</span>(dep<span class="op">$</span>lemma.x, dep<span class="op">$</span>lemma.y)) </a>
-<a class="sourceLine" id="cb28-8" title="8"><span class="co">#table$n&lt;-rowSums(table)</span></a>
-<a class="sourceLine" id="cb28-9" title="9"><span class="co">#table$adj&lt;-rownames(table)</span></a>
-<a class="sourceLine" id="cb28-10" title="10"><span class="co">#row.names(table) &lt;- table$adj</span></a></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1"><span class="co"># selection de la relation.</span></a>
+<a class="sourceLine" id="cb49-2" title="2">res &lt;-<span class="st"> </span>foo <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(dep_rel <span class="op">==</span><span class="st"> &quot;amod&quot;</span>)</a>
+<a class="sourceLine" id="cb49-3" title="3"><span class="co">#on y joint les dependences</span></a>
+<a class="sourceLine" id="cb49-4" title="4">dep&lt;-res <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(foo, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;key2&quot;</span> =<span class="st"> &quot;key1&quot;</span>))</a>
+<a class="sourceLine" id="cb49-5" title="5"></a>
+<a class="sourceLine" id="cb49-6" title="6"><span class="co">#on construit la tables des relations lemmes cibles -adjectifs</span></a>
+<a class="sourceLine" id="cb49-7" title="7">table&lt;-<span class="kw">as.data.frame.matrix</span>(<span class="kw">table</span>(dep<span class="op">$</span>lemma.x, dep<span class="op">$</span>lemma.y)) </a>
+<a class="sourceLine" id="cb49-8" title="8"><span class="co">#table$n&lt;-rowSums(table)</span></a>
+<a class="sourceLine" id="cb49-9" title="9"><span class="co">#table$adj&lt;-rownames(table)</span></a>
+<a class="sourceLine" id="cb49-10" title="10"><span class="co">#row.names(table) &lt;- table$adj</span></a></code></pre></div>
 <p>le tableau obtenu est en fait la structure d’un graphe bipartite. la représentation passe par un de <code>igraph</code> avec pour paramètres importants :
 * Taille des arcs (edge) : est proportionnelle à la force du lien ( nombre de relations)
 * Taille des noeud : proportiennel au rangs du noeud.
 * Couleur et forme des noeuds : lemme et lemme cible.
 * Un algorithme de force de <span class="citation">Fruchterman and Reingold (<a href="#ref-fruchterman_graph_1991" role="doc-biblioref">1991</a>)</span> est employé pour représenter les positions relatives des mots et minimiser les superpositions.</p>
 <p>Dessiner le réseau</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1">bg &lt;-<span class="kw">graph_from_incidence_matrix</span>(table, <span class="dt">weighted=</span><span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb29-2" title="2"><span class="kw">summary</span>(bg)</a></code></pre></div>
-<pre><code>## IGRAPH 33b8972 UNWB 36 20 -- 
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1">bg &lt;-<span class="kw">graph_from_incidence_matrix</span>(table, <span class="dt">weighted=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb50-2" title="2"><span class="kw">summary</span>(bg)</a></code></pre></div>
+<pre><code>## IGRAPH 03fb15e UNWB 36 20 -- 
 ## + attr: type (v/l), name (v/c), weight (e/n)</code></pre>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1"><span class="co">#E(bg)$weight# See the vertex attributes </span></a>
-<a class="sourceLine" id="cb31-2" title="2"><span class="co">#V(bg)$type </span></a>
-<a class="sourceLine" id="cb31-3" title="3"><span class="co">#V(bg)$name</span></a>
-<a class="sourceLine" id="cb31-4" title="4"></a>
-<a class="sourceLine" id="cb31-5" title="5"><span class="co"># Plot the network</span></a>
-<a class="sourceLine" id="cb31-6" title="6">shape =<span class="st"> </span><span class="kw">ifelse</span>(<span class="kw">V</span>(bg)<span class="op">$</span>type, <span class="st">&quot;circle&quot;</span>, <span class="st">&quot;square&quot;</span>) <span class="co"># assign shape by node type</span></a>
-<a class="sourceLine" id="cb31-7" title="7">col =<span class="st"> </span><span class="kw">ifelse</span>(<span class="kw">V</span>(bg)<span class="op">$</span>type, <span class="st">&quot;peachpuff&quot;</span>, <span class="st">&quot;darkolivegreen1&quot;</span>) <span class="co"># assign color by node type</span></a>
-<a class="sourceLine" id="cb31-8" title="8"><span class="kw">plot</span>(bg, <span class="dt">vertex.shape =</span> shape, <span class="dt">vertex.label.cex=</span>.<span class="dv">9</span>,<span class="dt">vertex.label.color=</span><span class="st">&quot;black&quot;</span>,<span class="dt">vertex.color =</span> col,<span class="dt">edge.color=</span><span class="st">&quot;azure2&quot;</span>,<span class="dt">vertex.frame.color=</span>col,<span class="dt">vertex.label.family=</span><span class="st">&quot;TT Arial&quot;</span>, <span class="dt">vertex.size=</span><span class="fl">0.5</span><span class="op">*</span>igraph<span class="op">::</span><span class="kw">degree</span>(bg),<span class="dt">layout=</span>layout_with_fr,<span class="dt">edge.width=</span><span class="dv">1</span><span class="op">*</span><span class="kw">E</span>(bg)<span class="op">$</span>weight,<span class="dt">edge.curved=</span><span class="fl">0.5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" title="1"><span class="co">#E(bg)$weight# See the vertex attributes </span></a>
+<a class="sourceLine" id="cb52-2" title="2"><span class="co">#V(bg)$type </span></a>
+<a class="sourceLine" id="cb52-3" title="3"><span class="co">#V(bg)$name</span></a>
+<a class="sourceLine" id="cb52-4" title="4"></a>
+<a class="sourceLine" id="cb52-5" title="5"><span class="co"># Plot the network</span></a>
+<a class="sourceLine" id="cb52-6" title="6">shape =<span class="st"> </span><span class="kw">ifelse</span>(<span class="kw">V</span>(bg)<span class="op">$</span>type, <span class="st">&quot;circle&quot;</span>, <span class="st">&quot;square&quot;</span>) <span class="co"># assign shape by node type</span></a>
+<a class="sourceLine" id="cb52-7" title="7">col =<span class="st"> </span><span class="kw">ifelse</span>(<span class="kw">V</span>(bg)<span class="op">$</span>type, <span class="st">&quot;peachpuff&quot;</span>, <span class="st">&quot;darkolivegreen1&quot;</span>) <span class="co"># assign color by node type</span></a>
+<a class="sourceLine" id="cb52-8" title="8"><span class="kw">plot</span>(bg, <span class="dt">vertex.shape =</span> shape, <span class="dt">vertex.label.cex=</span>.<span class="dv">9</span>,<span class="dt">vertex.label.color=</span><span class="st">&quot;black&quot;</span>,<span class="dt">vertex.color =</span> col,<span class="dt">edge.color=</span><span class="st">&quot;azure2&quot;</span>,<span class="dt">vertex.frame.color=</span>col,<span class="dt">vertex.label.family=</span><span class="st">&quot;TT Arial&quot;</span>, <span class="dt">vertex.size=</span><span class="fl">0.5</span><span class="op">*</span>igraph<span class="op">::</span><span class="kw">degree</span>(bg),<span class="dt">layout=</span>layout_with_fr,<span class="dt">edge.width=</span><span class="dv">1</span><span class="op">*</span><span class="kw">E</span>(bg)<span class="op">$</span>weight,<span class="dt">edge.curved=</span><span class="fl">0.5</span>)</a></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/75-1.png" width="768" /></p>
 </div>
 </div>
 <div id="reconnaissance-dentités-nommées" class="section level2">
-<h2><span class="header-section-number">9.5</span> reconnaissance d’entités nommées</h2>
+<h2><span class="header-section-number">8.5</span> reconnaissance d’entités nommées</h2>
 <p>En français courant les entités nommées correspondent largement à l’idée de noms propres. Un nom propre à une entité. Une chose qui est est indépendemment des catégories qui peuvent l’étiqueter. John Dupont, né le 19 février 1898 à Glasgow et abattu à Verdun le 8 août 1917, est un personnage unique. John Dupont ne désigne par une catégorie, mais bien une personne singulière. La designation peut cependant être ambigüe, il y a un “Paris, Texas.”, et un Paris sur Seine. La morphologie ne ressout pas l’ambiguité.</p>
 <p>les entités nommées appartiennent à différentes catégories d’objets : des noms de lieux, des noms de personnes, des noms de marques, des acronymes d’organisation,</p>
 <p>Elles ne représentent jamais une catégorie mais une unité singulière.</p>
 <p><a href="https://cran.r-project.org/web/packages/nametagger/nametagger.pdf" class="uri">https://cran.r-project.org/web/packages/nametagger/nametagger.pdf</a></p>
 </div>
 <div id="co-reférence" class="section level2">
-<h2><span class="header-section-number">9.6</span> co-reférence</h2>
+<h2><span class="header-section-number">8.6</span> co-reférence</h2>
 
 </div>
 </div>

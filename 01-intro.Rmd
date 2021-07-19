@@ -3,38 +3,82 @@
 
 Le texte connaît une double révolution. la première est celle de son système de production, il se produit désormais tant de textes que personne ne peut plus tous les lire, même en réduisant son effort à sa propre sphère d’intérêt et de compétence, la seconde est celle de sa lecture, c'est une lecture conditionnée et recommandée.. 
 
-La production primaire de texte voit son volume croître exponentiellement. Prenons quelques exemples :
-
- * le contenu écrit des réseaux sociaux
- * les rapports d'activités des entreprises,
- * les compte-rendu archivé de réunion
- * Les avis des consommateurs sur les catalogues de produit
- * Les articles et les revues scientifiques
- * Même les livres
+La production primaire de textes voit son volume croître exponentiellement. Prenons quelques exemples :
 
 
 La production se soumet ensuite à ceux qui en contrôlent les flux et en exploitent les contenus, qui les mettent en avant ou les écartent, définissant la composition de ce que chacun va lire. La diffusion de cette production suit des loi puissances, c'est ainsi que la révolution de la lecture est venue avec les moteurs de recherche, et les pratiques de curations (ref), c’est une lecture sélectionnée et digérée par les moteurs de recommandation. (ref). 
 
-S’il ne fallait qu’un exemple on pourrait évoquer la transformation radicale de la littérature dite scientifique sur le plan technique. La recherche par mots clés est complétée de plus en plus par des outils de veille, l’indexation a donné naissance à l’immatriculation de la moindre note, les fichiers ont adopté des standards, l’interopérabilité est de mise, le réseau des co-citation est maintenu en temps réel. Les scores qualifient autant les articles que leurs auteurs et les revues qui les accueillent. 
+S’il ne fallait qu’un exemple on pourrait évoquer la transformation radicale de la littérature dite scientifique sur le plan technique. La recherche par mots clés est complétée de plus en plus par des outils de veille, l’indexation a donné naissance à l’immatriculation de la moindre note, les fichiers ont adopté des standards, l’interopérabilité est de mise, le réseau des co-citations est maintenu en temps réel. Les scores qualifient autant les articles que leurs auteurs et les revues qui les accueillent. 
 
-Elle risque de ce poursuivre par la production de résumé par exemple, la transcription automatique (speech2tex) etc.
+Elle risque de ce poursuivre par la production de résumés, la transcription automatique (speech2tex) etc.
 
-Le NLP est au coeur de ces technologies, il se nourrit de plus en plus d'intelligence artificielle. 
+Le NLP est au coeur de ces technologies, il se nourrit de plus en plus d'intelligence artificielle. Nous en verrons de nombreux exemple à tout les stades du traitement : identifier la langue, mesurer le sentiment, isoler des sujets. 
 
-Mais le NLP est aussi une nouvelle ressource pour les chercheurs en sciences sociales à la fois par les matériaux empiriquement, l'emballement de la production de texte génère une nouvelle matière d'étude pour le sociologues, le gestionnaire, l'économiste, le psychologue pour n'évoquer que quelques disciplines, mais aussi de nouvellle techniques d'analyses. 
+Le NLP est aussi une nouvelle ressource pour les chercheurs en sciences sociales à la fois par les matériaux empiriques et les méthodes d'analyse. C'est une mouvemenjt qui affecte toutes les shs. L'emballement de la production de texte génère une nouvelle matière d'étude pour le sociologues, le gestionnaire, l'économiste, le psychologue pour n'évoquer que quelques disciplines.  
 
 
-## Un nouveau champ méthodologique
+## Une réflexion ancienne et un nouveau champ méthodologique
 
-Pour le chercheur qui étudie les organisations, cette révolution textuelle offre de nouvelles opportunités d’obtenir et d’analyser des données pour vérifier ses hypothèses. La production abondante d’avis de consommateurs, de discours de dirigeants, de compte-rendus de conseils, d’articles techniques, rencontre une multiplication des techniques, provenant de la linguistique computationnelle, de la fouille de données, des moteurs de recommandation, de la traduction automatique, et des ressources nouvelles et précieuses pour traiter l’abondance des données. Un nouveau paradigme méthodologique se construit à la croisée de données abondantes et de techniques de traitement intelligentes. Il permet d’aller plus loin que l’analyse lexicale traditionnelle en incorporant des éléments syntaxiques, sémantiques, et pragmatiques, proposés par l’ensemble des outils des techniques de traitement du langage naturel.
+On se doit pas se faire aveugler par l'éclat de la nouveauté, les techniques d'aujourd'hui dépendent d'idées semées depuis longtemps dans au moins deux champs disciplinaire la linguistique et l'informatique
 
-Il se dessine surtout une nouvelle approche méthodologique qui prend place entre l’analyse qualitative, et les traditionnelles enquêtes par questionnaires capables de traiter des corpus d’une taille inédite. Le travail de [@humphreys_automated_2018] en donne une première synthèse dans le cadre d’un processus qui s’articule autour des différentes phases d’une recherche : la formulation de la question de recherche, la définition des construits, la récolte des données, l’opérationnalisation des construits, et enfin l'interprétation, l’analyse et la validation des résultats obtenus. 
 
-Dans le champ du management, on trouvera des synthèses pour la recherche en éthique [@lock_quantitative_2015], en comportement du consommateur @humphreys_automated_2018  en management public [@anastasopoulos_computational_2017] ou en organisation [@kobayashi_text_2018] , en sociologie [@kozlowski_geometry_2019].
+Les pratiques et techniques que nous allons étudier ne tombent pas de mars mais résultent de plusieurs flux de pensées qui se croisent se confortent et amène l'energie pour créer un nouveau bras dans le champs immensement étendu de l'étude de la langue et du langage. Et c'ets sans doute par celà qu'il faut commencer. La langue c'est l'ensemble des règle formelles et moins formelle qui constitue une parole, ce qu'on se dit de l'un à l'autre ou de l'un à aux autres. Le langage est la production de cette parole. L'inscription de cette parole par l'écriture constitue le texte. Le miracle du passage de la parole au signe est celui du symbole.
+
+Si dans ce manuel, on choisit de présenter les différentes facettes de ce qui s'appelle TAl, NPL, Text Mining,  dans une approche procédurale qui suit les principales étapes du traitement des données. On rendra compte à chaque étape des techniques disponibles, et on illustre d’exemples. Nous suivrons ici une approche plus fidèle au processus de traitement des données, lequel peut connaître une stratégie inférentielle et exploratoire - quelles informations sont utiles au sein d’un corpus de texte -, tout aussi bien qu’une stratégie hypothético-déductive. Nous resterons agnostique sur cette question, restant délibérément à un niveau technique et procédural.
+
+### L'héritage linguistique
+
+la convergence de deux grands mouvements. 
+
+Sans en faire l'histoire minutieuse que ce domaine réclame, nous pouvons au moins rappeler un certains nombre d'étapes  et de contributeurs clés. 
+
+
+La langue et le langage sont l'objet d'une interrogation millénaire mais quelques auteurs clés ont mis à jour les idées essentielles qui justifient l'usage des méthodes actuelles. Donnons en un aperçu rapide de manière historique, en bornant un champs de connaissance que nous ne pouvons qu'affleurer.
+
+ * les sophistes : plier le langage à ses intérêy est une première sciences du langege qui produit une connaissances des dispositifs les plus efficaces. Par sur que cette displines aient trouvé un chemine de vérité,; mais elle ereste commune, c'est l'oeuvre de la publicité.L
+ * Saussure : il apporte une idée fondamentale que dans le symbole, le signe et le signifiant sont les deux face d'une même monaiie, qu'il existe une relation entre l'artefact et l'idée. Qu'un signe particulier puisse signifier une idée. c'est un penseur de la correspondance.
+ * Frith et l'idée distributionnelle. un mot trouve son sens dans ceux qui lui sont le plus associés
+ * Zipf
+ * Tesnière et les arbres syntaxiques. 
+ * Chomsky et sa grammaire génératitive. enracinant le phénomène linguistique dans la cortalisation du langage, il apporte une idée forte et structuraliste d'un équivalence des langues. 
+ * Genette et l'intertextualité, le palimpseste. c'est une question de sens, le sens d'un texte vient de ses prédecesssurs de ceux à qui ils se réfèrent. Les textes se parlent l'un l'autre,  et ce n'est pas dans leur contenu qu'on trouvera une vérité dans dans le rapport qu'ils établissent avec leur prédecesseur par l'appareil des notes et des bibliographies. 
+ * Austin et l'idée que le langage n'est ^pas que communication mais performation . ce qu'on dirt agit sur le monde
+  * La narrativité
+
+### la tradition lexicologique
+
+le lexique est affaire ancienne, le français est aidé par des expériences les fondamentales :  le littré,  l'académie française et les dictionnaires des éditeurs. pour étudier un lanage il faut se rapporter à des formes stables, les dictionnaires les fournissent et fournisse les normes pour les coder. 
+
+L'idée de quantifier le langage n'est pas nouvelle. Encore moins s'il faut compter les occurences et les cooccurences des mots.Un vaste mouvement s'est formé dans les années soixante autour de la lexicologiue stimulée par l'école française d'analyse de données. Le descendant de ce mouvement se retrouve dans l'excellent iramutek de l'équipe de toulouse, il a été précedé par le fameur Alceste.
+
+Nous y consacrerons un chapitre plein sur le plan technique. Mais il est important de souligner que cette école française de l'analyse textuelle ne se limite pas au comptage. Un logiciel comme trope qui d'ailleurs ne connait aucun équivalent dans l'écosystème que nous allons explorer manifeste aussi cette inventivité. 
+
+S'y exprime pleinement la logique distributionnelle. 
+
+
+
+### la linguistique computationnelle
+
+le frottement de la linguistique et de l'informatique se produit à propos de questions pratiques. 
+
+#### la question de la fouille de données
+
+les nomenclatures
+
+une convergence nécessaire
+
+#### la question du classement des documents
+
+Le monde des bibliothèques et celui de la GED.
+
 
 ## Les facteurs de développement
 
-Ces développements sont favorisés par un environnement fertile dont trois facteurs se renforcent mutuellement.
+Ces développements sont favorisés par un environnement fertile dont trois facteurs se renforcent mutuellement. Ils conduisent à l'élaboration de nouvelles méthodes.
+
+ * la naissance de langue universelle
+ * l'emergence vaste ensemble de données textuelle
+ * la naissance d'une communauté épistémique, de pratique et
 
 ### Une lingua franca
 
@@ -44,66 +88,104 @@ Le premier est l’expansion de deux langages, proprement statistique pour r et 
 
 Coder une analyse revient ainsi à jouer avec un immense jeu de lego, dont de nombreuses pièces sont déjà pré-assemblées. D’un point de vue pratique, les lignes d’écriture sont fortement simplifiées permettant à un chercheur sans grande compétence de codage d’effectuer simplement des opérations complexes.  En retour, cette facilitation de l'analyse abonde le stock de solutions.
 
-### Une communauté
-
-Le second facteur , intimement lié au premier, est la constitution d’une large communauté de développeurs et d’utilisateurs qui se retrouvent aujourd’hui dans des plateformes de dépots (Github, Gitlab), de plateformes de type quora (StalkOverFlow), de tutoriaux, de blogs (BloggeR), de journaux (Journal of Statistical Software) et de bookdown.
-
-Des ressources abondantes sont ainsi disponibles et facilitent la formation des chercheurs et des data scientists. Toutes les conditions sont réunies pour  engendrer une effervescence créative. 
 
 ### La multiplication des sources de données.
 
-Le troisième est la multiplication des sources de données et leur facilité d’accès. Les données privées, et en particulier celles des réseaux sociaux,  même si un péage doit être payé pour accéder aux APIs, popularisent le traitement de données massives. Le mouvement des données ouvertes (open data) proposent et facilitent l’accès à des milliers de corps de données : retards de la SNCF, grand débat, le formidable travail de l’Insee, european survey etc.
+Le troisième est la multiplication des sources de données et leur facilité d’accès. 
+
+ * le contenu écrit des réseaux sociaux
+ * les rapports d'activités des entreprises,
+ * les compte-rendu archivé de réunion
+ * Les avis des consommateurs sur les catalogues de produit
+ * Les articles et les revues scientifiques
+ * Même les livres
+
+
+Les plus évidentes sont proposées par les bases d'articles de presse telles qu' presseurop ou factiva. Les bases de données bibliographiques sont dans la même veine particuièrement intéressante et pensée pour ces usages.
+
+
+Les données privées, et en particulier celles des réseaux sociaux,  même si un péage doit être payé pour accéder aux APIs, popularisent le traitement de données massives. 
+
+Les forums et sites d'avis de consommateurs sont pour les sociologues de la consommation et les specialiste du comportement de consommation une ressource directe et précieuses.
+
+Le mouvement des données ouvertes (open data) proposent et facilitent l’accès à des milliers de corps de données :  grand débat.
+
  
+
+### Une communauté
+
+Le second facteur de développement , intimement lié au premier, est la constitution d’une large communauté de développeurs et d’utilisateurs qui se retrouvent aujourd’hui dans des plateformes diverses. Le savoir, autrement dit des codes commentés se trouvent dans une varété importante de lieux :
+
+ * Des plateformes de dépots telle que Github qui rassemblent une trentaine de millions de developpeurs et datascientits.  
+ * Des plateformes de Q&A (question et réponses) telles que [Stalk Over Flow](), 
+ * Des tutoriaux de toute sortes
+ * Des blogs ou des fédération de blog de blogs (BloggeR), 
+ * Des revues (Journal of Statistical Software) et de bookdown. 
+
+Des ressources abondantes sont ainsi disponibles et facilitent la formation des chercheurs et des data scientists et la résolution de leurs problèmes pratiques, quiconque n'arrive pas à résoudre un problème a une bonne chance de trouver la solution d'un autre, à un degré de circonstance près.  Elles sont d'autant plus utiles que certaines règles ou conventions s'imposent pour fluidifier l'échange.
+
+La principale est celle de l'exemple reproductible.
+
+La seconde est le maintien d'une éthique du partage qui encourage à partager le code, et dont une littérature importante étudie l'effet positif sur les performances économiques et la durabilité [rauter]. Les externalités de réseaux y sont fortes
+
+Toutes les conditions sont réunies pour  engendrer une effervescence créative. Python ou r, sont dans cet univers en rapide expansion, les langues véhiculaires qui favorise une innovation constante. Les statistiques de github en témoigne : près de 50 millions d'utiliseurs, 128 millions de " repositories" et 23 millions de propriétaires.
+
+![source](github.png)
+
+voir aussi
+https://towardsdatascience.com/githubs-path-to-128m-public-repositories-f6f656ab56b1
+
+
+## De nouvelles méthodologies pour les sciences sociales
+
+Pour les chercheurs en sciences sociales (et en premier lieu pour les chercheurs en gestion où toutes les sciences sociales se croisent) cette révolution textuelle offre de nouvelles opportunités d’obtenir et d’analyser des données pour vérifier ses hypothèses et mener son enquête. Ce sont de nouveaux terrains, de nouvelles méthodes et un nouvel objet de recherche.
+
+
+ * Nouveaux terrains : La multiplication des sources de données, associée à leur normalisation  rencontre une multiplication de techniques provenant de mulpliples discplinaire et qui convergent dans un langage commun. . production abondante d’avis de consommateurs, de discours de dirigeants, de compte-rendus de conseils, d’articles techniques,la linguistique computationnelle, de la fouille de données, des moteurs de recommandation, de la traduction automatique, et des ressources nouvelles et précieuses pour traiter l’abondance des données
+
+ * Nouvelles méthodes : Un nouveau paradigme méthodologique se construit à la croisée de données abondantes et de techniques de traitement intelligentes. Il permet d’aller plus loin que l’analyse lexicale traditionnelle en incorporant des éléments syntaxiques, sémantiques, et pragmatiques, proposés par l’ensemble des outils des techniques de traitement du langage naturel. Il se dessine surtout une nouvelle approche méthodologique qui prend place entre l’analyse qualitative, et les traditionnelles enquêtes par questionnaires capables de traiter des corpus d’une taille inédite. Le travail de [@humphreys_automated_2018] en donne une première synthèse dans le cadre d’un processus qui s’articule autour des différentes phases d’une recherche : la formulation de la question de recherche, la définition des construits, la récolte des données, l’opérationnalisation des construits, et enfin l'interprétation, l’analyse et la validation des résultats obtenus. 
  
-## Des racines anciennes
+ * Un nouvel objet : on pourrait croire qu'avec des données massives et des techniques "intelligente" on assiste à un retour du positivisme qui bénéficierait enfin des instruments de mesure et de calculs qui ont permis aux les chercheur plus proches de la matière des succès majeurs. Sans doute, l'administration de la preuve va être faciliter par ces techniques et encourager l'evidence based policy (REF) et résoudre en partie la crise de la réplication et de la reproductibilité. Mais à mesure que ce développe l'appareillage de méthode et de données, moins on peut supposer que l'observateur est neutre. Les téléscopes géants, les synchrotron, n'affecte ni les galaxies lointaines ni les atomes proches. Le propre des données que l'ont est amené à étudier est de résulter de la confrontation d'un système d'observation (certains préfèrent de parler de surveillance), et d'un agent qui a des buts, une connaissance, et des ressources. Le dispositif de mesure est en lui-même performatif. L'exemple le plus évident est celui des  systèmes de notation, qui sous prétexte de transparence donne la distribution des répondants précédents. L'agent qui va noter choisit la valeur en fonction d'une norme apparente - la note majoritaire- et de sa propre intention - se manifester ou se confondre à la foule. 
+ 
+ Pour se donner une idée plus précise de ce mouvement, examinons quelques publications récentes dans les champs qui nous concernent. 
 
-Si dans ce manuel, on choisit de présenter les différentes facettes de ce qui s'appelle TAl, NPL, Text Mining,  dans une approche procédurale qui suit les principales étapes du traitement des données. On rendra compte à chaque étape des techniques disponibles, et on illustre d’exemples. Nous suivrons ici une approche plus fidèle au processus de traitement des données, lequel peut connaître une stratégie inférentielle et exploratoire - quelles informations sont utiles au sein d’un corpus de texte -, tout aussi bien qu’une stratégie hypothético-déductive. Nous resterons agnostique sur cette question, restant délibérément à un niveau technique et procédural.
+### Sociologie et histoire
 
-Cependant on se doit pas se faire aveugler par l'éclat de la nouveautés, les techniques d'aujourd'hui dépendent d'idées semée depuis longtemps dans au moins deux champs disciplinaire
-
-
-la convergence de deux grands mouvements. Sans en faire l'histoire minutieuse que ce domaine réclame, nous pouvons au moins rappeler un certains nombre d'étapes clés.
-
-### Linguistique
-
-Tesnière et les dépendances syntaxiques
-
-Zipf et 
-
-fisth pour l'approche distributionnnelle. 
-
-Chomsky et la grammaire générative
+classes sociales avec word to vec  en sociologie [@kozlowski_geometry_2019].
 
 
-### Informatique
+L'article révolution française [PNAS)
 
 
-ngram et théorie du signal
+On citera cependant jean-baptiste Coulmont et son obstination à étudier les entités nommées, prénoms et autres marqueurs culturels de l'identité et des classes.
+
+### Psychologie
+
+Très tôt la psychogie s'est intéressée au langage, pas seulement comme produit des processus psychologiques, mais comme expression de ceux-ci. 
+
+Dans le champs de la psychologie de l'éducation et avec une forte motivation scientiste, dès les années 60 s'est posée la question de la mesure de la difficulté d'un texte pour un niveau d'éducation donné. La mesure de la lisibilité des texte s'est développée profitant à d'autre secteurs tels que ceux de la propagande. Dans cette même perspective, la richesse lexicographique comme représentant les compétences a a son tour développé de nouvelles instrumentations. 
+
+James W. Pennebaker a développé son approche à partir de l'étude des traumas; donnant une grande importance à la production discursive des patients. Sa contribution majeure est l'établissement d'un ensemble de dictionnaires destinés à mesurer des caractéristiques du discours. Un instrument qu'on présentatera dans les chapitre 7 (à vérifier). Auteur en 2011 d'un livre s'intéressant à l'usage des petits mots.  Son approche se poursuit en psychiatrie avec l'analyse des troubles du langage, et a connu un coup d'éclat avec la demonstration que l'analyse des messages sur les réseaux sociaux comme facebook permet de détecter des risques de depression.
 
 
+### Management
 
-information retrieval
-
-### la psychologie
-
-Très tôt la psychogie s'est intéressée au langage, pas seulement comme produit des processus psychologique, mais comme expression de ceux-ci. 
-
-Une partie du domaine du nlp se dénomme linguistique psycho computationnelle. 
+La finance et l'analyse du sentiment
 
 
-Dans le champs de la psychologie de l'éducation et avec une forte motivation scientiste, dès les années 60 s'est posée la question de la mesure de la difficulté d'un texte pour un niveau d'éducation donné. La mesure de la lisibilité des texte s'est développée profitant à d'autre secteurs tels que ceux de la propagande. Dans cette même êrspective la richesse lexicographique comme représenant les compétences a a son tour développé de nouvelles instrumentation. 
-
-James W. Pennebaker a développé son approche à partir de l'étude des traumas; donnant une grande importance à la production discursive des patients. Sa contribution majeure est l'établissement d'un ensemble de dictionnaires destinés à mesurer des caractéristiques du discours. Un instrument qu'on présentatera dans les chapitre 7 ( à vérifier). Auteur en 2011 d'un livre s'intéressant à l'usage des petits mots.  Son approche se poursuit en psychiatrie avec l'analyse des troubles du langage, et a connu des coup d'éclat avec la demonstration que l'analyse des messages sur les réseaux sociaux comme facebook permet de detecter des risques de depression.
-
-
-### D'autres champs aussi
-
-la biologie et en particulier la génétique
-
-la finance et l'analyse du sentiment
-
-La sociologie. Peut emploie l'analyse du langage. On citera cependant jean-baptiste Coulmont et son obstination à étudier les entités nommées, prénoms et autres marqueurs culturels de l'identité et des classes.
+Dans le champ du management, on trouvera des synthèses pour la recherche en éthique [@lock_quantitative_2015], en comportement du consommateur [@humphreys_automated_2018  en management public [@anastasopoulos_computational_2017] ou en organisation [@kobayashi_text_2018] ,
 
 
 
+### Economie
 
+economie des brevets
+intervention des institutions
+
+
+
+## Conclusion
+
+des techniques
+
+des méthodes

@@ -8,7 +8,7 @@ Chargeons le fichier de données. On en profite pour compter le nombre de posts 
 
 ```{r chap01_00}
 
-df <- read_csv("TrumpTwitterArchive01-08-2021.csv")
+df <- read_csv("./data/TrumpTwitterArchive01-08-2021.csv")
 nrow<-nrow(df) #nombre de ligne
 ncol<-ncol(df) #nombre de colonne
 

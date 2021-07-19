@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapitre 5 Préparation des données | NLP avec r et en français - un Manuel synthétique</title>
+  <title>Chapitre 4 Préparation des données | NLP avec r et en français - un Manuel synthétique</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.22.3 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapitre 5 Préparation des données | NLP avec r et en français - un Manuel synthétique" />
+  <meta property="og:title" content="Chapitre 4 Préparation des données | NLP avec r et en français - un Manuel synthétique" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapitre 5 Préparation des données | NLP avec r et en français - un Manuel synthétique" />
+  <meta name="twitter:title" content="Chapitre 4 Préparation des données | NLP avec r et en français - un Manuel synthétique" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -24,7 +24,7 @@
 <meta name="author" content="Sophie Balech et Christophe Benavent et al" />
 
 
-<meta name="date" content="2021-07-13" />
+<meta name="date" content="2021-07-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -135,179 +135,188 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">NLP en r et en français</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Préface</a></li>
-<li class="chapter" data-level="2" data-path="plan-et-outils-du-manuel.html"><a href="plan-et-outils-du-manuel.html"><i class="fa fa-check"></i><b>2</b> Plan et outils du manuel</a><ul>
-<li class="chapter" data-level="2.1" data-path="plan-et-outils-du-manuel.html"><a href="plan-et-outils-du-manuel.html#la-structure-du-livre"><i class="fa fa-check"></i><b>2.1</b> La structure du livre</a></li>
-<li class="chapter" data-level="2.2" data-path="plan-et-outils-du-manuel.html"><a href="plan-et-outils-du-manuel.html#les-jeux-de-données"><i class="fa fa-check"></i><b>2.2</b> Les jeux de données</a></li>
-<li class="chapter" data-level="2.3" data-path="plan-et-outils-du-manuel.html"><a href="plan-et-outils-du-manuel.html#le-cadre-technique"><i class="fa fa-check"></i><b>2.3</b> Le cadre technique</a></li>
-<li class="chapter" data-level="2.4" data-path="plan-et-outils-du-manuel.html"><a href="plan-et-outils-du-manuel.html#a-faire"><i class="fa fa-check"></i><b>2.4</b> A faire</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Préface</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#cours-et-séminaires"><i class="fa fa-check"></i><b>1.1</b> Cours et séminaires</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#la-structure-du-livre"><i class="fa fa-check"></i><b>1.2</b> La structure du livre</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#les-jeux-de-données"><i class="fa fa-check"></i><b>1.3</b> Les jeux de données</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#les-ressources"><i class="fa fa-check"></i><b>1.4</b> Les ressources</a></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#disponibilité"><i class="fa fa-check"></i><b>1.5</b> Disponibilité</a></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#conventions"><i class="fa fa-check"></i><b>1.6</b> conventions</a></li>
+<li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#a-faire"><i class="fa fa-check"></i><b>1.7</b> A faire</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>3</b> Introduction</a><ul>
-<li class="chapter" data-level="3.1" data-path="intro.html"><a href="intro.html#un-nouveau-champ-méthodologique"><i class="fa fa-check"></i><b>3.1</b> Un nouveau champ méthodologique</a></li>
-<li class="chapter" data-level="3.2" data-path="intro.html"><a href="intro.html#les-facteurs-de-développement"><i class="fa fa-check"></i><b>3.2</b> Les facteurs de développement</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="intro.html"><a href="intro.html#une-lingua-franca"><i class="fa fa-check"></i><b>3.2.1</b> Une lingua franca</a></li>
-<li class="chapter" data-level="3.2.2" data-path="intro.html"><a href="intro.html#une-communauté"><i class="fa fa-check"></i><b>3.2.2</b> Une communauté</a></li>
-<li class="chapter" data-level="3.2.3" data-path="intro.html"><a href="intro.html#la-multiplication-des-sources-de-données."><i class="fa fa-check"></i><b>3.2.3</b> La multiplication des sources de données.</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#une-réflexion-ancienne-et-un-nouveau-champ-méthodologique"><i class="fa fa-check"></i><b>2.1</b> Une réflexion ancienne et un nouveau champ méthodologique</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="intro.html"><a href="intro.html#lhéritage-linguistique"><i class="fa fa-check"></i><b>2.1.1</b> L’héritage linguistique</a></li>
+<li class="chapter" data-level="2.1.2" data-path="intro.html"><a href="intro.html#la-tradition-lexicologique"><i class="fa fa-check"></i><b>2.1.2</b> la tradition lexicologique</a></li>
+<li class="chapter" data-level="2.1.3" data-path="intro.html"><a href="intro.html#la-linguistique-computationnelle"><i class="fa fa-check"></i><b>2.1.3</b> la linguistique computationnelle</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="intro.html"><a href="intro.html#des-racines-anciennes"><i class="fa fa-check"></i><b>3.3</b> Des racines anciennes</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="intro.html"><a href="intro.html#linguistique"><i class="fa fa-check"></i><b>3.3.1</b> Linguistique</a></li>
-<li class="chapter" data-level="3.3.2" data-path="intro.html"><a href="intro.html#informatique"><i class="fa fa-check"></i><b>3.3.2</b> Informatique</a></li>
-<li class="chapter" data-level="3.3.3" data-path="intro.html"><a href="intro.html#la-psychologie"><i class="fa fa-check"></i><b>3.3.3</b> la psychologie</a></li>
-<li class="chapter" data-level="3.3.4" data-path="intro.html"><a href="intro.html#dautres-champs-aussi"><i class="fa fa-check"></i><b>3.3.4</b> D’autres champs aussi</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#les-facteurs-de-développement"><i class="fa fa-check"></i><b>2.2</b> Les facteurs de développement</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="intro.html"><a href="intro.html#une-lingua-franca"><i class="fa fa-check"></i><b>2.2.1</b> Une lingua franca</a></li>
+<li class="chapter" data-level="2.2.2" data-path="intro.html"><a href="intro.html#la-multiplication-des-sources-de-données."><i class="fa fa-check"></i><b>2.2.2</b> La multiplication des sources de données.</a></li>
+<li class="chapter" data-level="2.2.3" data-path="intro.html"><a href="intro.html#une-communauté"><i class="fa fa-check"></i><b>2.2.3</b> Une communauté</a></li>
 </ul></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#de-nouvelles-méthodologies-pour-les-sciences-sociales"><i class="fa fa-check"></i><b>2.3</b> De nouvelles méthodologies pour les sciences sociales</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="intro.html"><a href="intro.html#sociologie-et-histoire"><i class="fa fa-check"></i><b>2.3.1</b> Sociologie et histoire</a></li>
+<li class="chapter" data-level="2.3.2" data-path="intro.html"><a href="intro.html#psychologie"><i class="fa fa-check"></i><b>2.3.2</b> Psychologie</a></li>
+<li class="chapter" data-level="2.3.3" data-path="intro.html"><a href="intro.html#management"><i class="fa fa-check"></i><b>2.3.3</b> Management</a></li>
+<li class="chapter" data-level="2.3.4" data-path="intro.html"><a href="intro.html#economie"><i class="fa fa-check"></i><b>2.3.4</b> Economie</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html"><i class="fa fa-check"></i><b>4</b> Constitution du corpus</a><ul>
-<li class="chapter" data-level="4.1" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#méthodes-de-collecte"><i class="fa fa-check"></i><b>4.1</b> Méthodes de collecte</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#la-numérisation"><i class="fa fa-check"></i><b>4.1.1</b> la numérisation</a></li>
-<li class="chapter" data-level="4.1.2" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#les-techniques-de-recueil-direct"><i class="fa fa-check"></i><b>4.1.2</b> Les techniques de recueil direct</a></li>
-<li class="chapter" data-level="4.1.3" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#lexploitation-de-base-de-données-textuelles"><i class="fa fa-check"></i><b>4.1.3</b> L’exploitation de base de données textuelles</a></li>
-<li class="chapter" data-level="4.1.4" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#scrapping"><i class="fa fa-check"></i><b>4.1.4</b> Scrapping</a></li>
-<li class="chapter" data-level="4.1.5" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#les-api"><i class="fa fa-check"></i><b>4.1.5</b> les API</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#conclusion"><i class="fa fa-check"></i><b>2.4</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#la-gestion-des-documents"><i class="fa fa-check"></i><b>4.2</b> La gestion des documents</a><ul>
-<li class="chapter" data-level="4.2.1" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#collections-et-tableaux"><i class="fa fa-check"></i><b>4.2.1</b> Collections et tableaux</a></li>
-<li class="chapter" data-level="4.2.2" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#un-corpus-reste-un-échantillon"><i class="fa fa-check"></i><b>4.2.2</b> Un corpus reste un échantillon</a></li>
-<li class="chapter" data-level="4.2.3" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#filtrage"><i class="fa fa-check"></i><b>4.2.3</b> Filtrage</a></li>
-<li class="chapter" data-level="4.2.4" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#eliminer-les-bots-et-les-fakes"><i class="fa fa-check"></i><b>4.2.4</b> Eliminer les bots et les fakes</a></li>
-<li class="chapter" data-level="4.2.5" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#eliminer-les-doublons"><i class="fa fa-check"></i><b>4.2.5</b> Eliminer les doublons</a></li>
+<li class="chapter" data-level="3" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html"><i class="fa fa-check"></i><b>3</b> Constitution du corpus</a><ul>
+<li class="chapter" data-level="3.1" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#lexploitation-de-base-de-données-textuelles"><i class="fa fa-check"></i><b>3.1</b> L’exploitation de base de données textuelles</a></li>
+<li class="chapter" data-level="3.2" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#scrapping"><i class="fa fa-check"></i><b>3.2</b> Scrapping</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#des-problèmes-pratiques-juridiques-et-éthiques"><i class="fa fa-check"></i><b>3.2.1</b> des problèmes pratiques, juridiques et éthiques</a></li>
+<li class="chapter" data-level="3.2.2" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#rvest-avec-r"><i class="fa fa-check"></i><b>3.2.2</b> rvest avec r</a></li>
 </ul></li>
+<li class="chapter" data-level="3.3" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#les-api"><i class="fa fa-check"></i><b>3.3</b> les API</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#un-tour-dhorizon-des-api"><i class="fa fa-check"></i><b>3.3.1</b> Un tour d’horizon des API</a></li>
+<li class="chapter" data-level="3.3.2" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#un-point-de-vue-plus-technique"><i class="fa fa-check"></i><b>3.3.2</b> un point de vue plus technique</a></li>
+<li class="chapter" data-level="3.3.3" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#un-exemple-avec-rtweet"><i class="fa fa-check"></i><b>3.3.3</b> Un exemple avec Rtweet</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="préparation-des-données.html"><a href="préparation-des-données.html"><i class="fa fa-check"></i><b>5</b> Préparation des données</a><ul>
-<li class="chapter" data-level="5.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#manipuler-des-chaines-de-caractères"><i class="fa fa-check"></i><b>5.1</b> Manipuler des chaines de caractères</a><ul>
-<li class="chapter" data-level="5.1.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#les-opérations-sur-les-chaînes-de-caractères"><i class="fa fa-check"></i><b>5.1.1</b> Les opérations sur les chaînes de caractères</a></li>
-<li class="chapter" data-level="5.1.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#la-technique-des-expressions-régulières-regex"><i class="fa fa-check"></i><b>5.1.2</b> La technique des expressions régulières (regex)</a></li>
-<li class="chapter" data-level="5.1.3" data-path="préparation-des-données.html"><a href="préparation-des-données.html#un-fondement-profond-et-ancien"><i class="fa fa-check"></i><b>5.1.3</b> Un fondement profond et ancien</a></li>
-<li class="chapter" data-level="5.1.4" data-path="préparation-des-données.html"><a href="préparation-des-données.html#des-applications-très-pratiques"><i class="fa fa-check"></i><b>5.1.4</b> Des applications très pratiques</a></li>
+<li class="chapter" data-level="3.4" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#la-gestion-des-documents"><i class="fa fa-check"></i><b>3.4</b> La gestion des documents</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#extraire-du-texte-des-pdf"><i class="fa fa-check"></i><b>3.4.1</b> Extraire du texte des pdf</a></li>
+<li class="chapter" data-level="3.4.2" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#la-numérisation-et-locr"><i class="fa fa-check"></i><b>3.4.2</b> la numérisation et l’OCR</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#nettoyer-le-texte"><i class="fa fa-check"></i><b>5.2</b> Nettoyer le texte</a></li>
-<li class="chapter" data-level="5.3" data-path="préparation-des-données.html"><a href="préparation-des-données.html#corriger-le-texte"><i class="fa fa-check"></i><b>5.3</b> Corriger le texte</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#la-correction-orthographique-automatique"><i class="fa fa-check"></i><b>5.3.1</b> La correction orthographique automatique</a></li>
-<li class="chapter" data-level="5.3.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#analyse-ciblée-par-les-regex"><i class="fa fa-check"></i><b>5.3.2</b> Analyse ciblée par les regex</a></li>
+<li class="chapter" data-level="3.5" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#les-contenus-vocaux"><i class="fa fa-check"></i><b>3.5</b> Les contenus vocaux</a></li>
+<li class="chapter" data-level="3.6" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#conclusion-1"><i class="fa fa-check"></i><b>3.6</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-sources"><i class="fa fa-check"></i><b>5.4</b> Identifier les sources</a><ul>
-<li class="chapter" data-level="5.4.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-la-langue"><i class="fa fa-check"></i><b>5.4.1</b> Identifier la langue</a></li>
-<li class="chapter" data-level="5.4.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-plagiats-et-réutilisations"><i class="fa fa-check"></i><b>5.4.2</b> Identifier les plagiats et réutilisations</a></li>
-<li class="chapter" data-level="5.4.3" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-fakes"><i class="fa fa-check"></i><b>5.4.3</b> Identifier les fakes</a></li>
-<li class="chapter" data-level="5.4.4" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-trolls"><i class="fa fa-check"></i><b>5.4.4</b> Identifier les trolls</a></li>
-<li class="chapter" data-level="5.4.5" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-bots"><i class="fa fa-check"></i><b>5.4.5</b> Identifier les bots</a></li>
+<li class="chapter" data-level="4" data-path="préparation-des-données.html"><a href="préparation-des-données.html"><i class="fa fa-check"></i><b>4</b> Préparation des données</a><ul>
+<li class="chapter" data-level="4.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#manipuler-des-chaines-de-caractères"><i class="fa fa-check"></i><b>4.1</b> Manipuler des chaines de caractères</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#les-opérations-sur-les-chaînes-de-caractères"><i class="fa fa-check"></i><b>4.1.1</b> Les opérations sur les chaînes de caractères</a></li>
+<li class="chapter" data-level="4.1.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#la-technique-des-expressions-régulières-regex"><i class="fa fa-check"></i><b>4.1.2</b> La technique des expressions régulières (regex)</a></li>
+<li class="chapter" data-level="4.1.3" data-path="préparation-des-données.html"><a href="préparation-des-données.html#un-fondement-profond-et-ancien"><i class="fa fa-check"></i><b>4.1.3</b> Un fondement profond et ancien</a></li>
+<li class="chapter" data-level="4.1.4" data-path="préparation-des-données.html"><a href="préparation-des-données.html#des-applications-très-pratiques"><i class="fa fa-check"></i><b>4.1.4</b> Des applications très pratiques</a></li>
 </ul></li>
+<li class="chapter" data-level="4.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#nettoyer-le-texte"><i class="fa fa-check"></i><b>4.2</b> Nettoyer le texte</a></li>
+<li class="chapter" data-level="4.3" data-path="préparation-des-données.html"><a href="préparation-des-données.html#corriger-le-texte"><i class="fa fa-check"></i><b>4.3</b> Corriger le texte</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#la-correction-orthographique-automatique"><i class="fa fa-check"></i><b>4.3.1</b> La correction orthographique automatique</a></li>
+<li class="chapter" data-level="4.3.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#analyse-ciblée-par-les-regex"><i class="fa fa-check"></i><b>4.3.2</b> Analyse ciblée par les regex</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html"><i class="fa fa-check"></i><b>6</b> Une première analyse quantitative</a><ul>
-<li class="chapter" data-level="6.1" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#comptons-les-mots"><i class="fa fa-check"></i><b>6.1</b> Comptons les mots</a></li>
-<li class="chapter" data-level="6.2" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#la-production-dans-le-temps"><i class="fa fa-check"></i><b>6.2</b> la production dans le temps</a></li>
-<li class="chapter" data-level="6.3" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#lisibilité-et-complexité-lexicale"><i class="fa fa-check"></i><b>6.3</b> Lisibilité et complexité lexicale</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#les-indices-de-lisibilité"><i class="fa fa-check"></i><b>6.3.1</b> Les indices de lisibilité</a></li>
-<li class="chapter" data-level="6.3.2" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#les-indices-de-complexité-lexicale"><i class="fa fa-check"></i><b>6.3.2</b> Les indices de complexité lexicale</a></li>
-</ul></li>
-<li class="chapter" data-level="6.4" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#conclusion"><i class="fa fa-check"></i><b>6.4</b> Conclusion</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="tokenisation.html"><a href="tokenisation.html"><i class="fa fa-check"></i><b>7</b> Tokenisation</a><ul>
-<li class="chapter" data-level="7.1" data-path="tokenisation.html"><a href="tokenisation.html#le-principe"><i class="fa fa-check"></i><b>7.1</b> Le principe</a></li>
-<li class="chapter" data-level="7.2" data-path="tokenisation.html"><a href="tokenisation.html#les-outils"><i class="fa fa-check"></i><b>7.2</b> Les outils</a></li>
-<li class="chapter" data-level="7.3" data-path="tokenisation.html"><a href="tokenisation.html#ngrams"><i class="fa fa-check"></i><b>7.3</b> Ngrams</a><ul>
-<li class="chapter" data-level="7.3.1" data-path="tokenisation.html"><a href="tokenisation.html#les-lettres"><i class="fa fa-check"></i><b>7.3.1</b> Les lettres</a></li>
-<li class="chapter" data-level="7.3.2" data-path="tokenisation.html"><a href="tokenisation.html#les-mots"><i class="fa fa-check"></i><b>7.3.2</b> Les mots</a></li>
-</ul></li>
-<li class="chapter" data-level="7.4" data-path="tokenisation.html"><a href="tokenisation.html#choisir-des-n-grams-pertinents"><i class="fa fa-check"></i><b>7.4</b> Choisir des n grams pertinents</a></li>
-<li class="chapter" data-level="7.5" data-path="tokenisation.html"><a href="tokenisation.html#propriétés-statistiques-des-ngrams"><i class="fa fa-check"></i><b>7.5</b> Propriétés statistiques des ngrams</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html"><i class="fa fa-check"></i><b>8</b> Analyse du sentiment</a><ul>
-<li class="chapter" data-level="8.1" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#un-exemple-avec-syuzhet"><i class="fa fa-check"></i><b>8.1</b> Un exemple avec syuzhet</a><ul>
-<li class="chapter" data-level="8.1.1" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#valence-et-expression"><i class="fa fa-check"></i><b>8.1.1</b> Valence et expression</a></li>
-</ul></li>
-<li class="chapter" data-level="8.2" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#la-généralisation-par-le-liwc"><i class="fa fa-check"></i><b>8.2</b> La généralisation par le Liwc</a></li>
-<li class="chapter" data-level="8.3" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#encore-dautres-généralisations"><i class="fa fa-check"></i><b>8.3</b> Encore d’autres généralisations</a></li>
-<li class="chapter" data-level="8.4" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#construire-son-propre-dictionnaire"><i class="fa fa-check"></i><b>8.4</b> construire son propre dictionnaire</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html"><i class="fa fa-check"></i><b>9</b> Annotations lexicales et syntaxiques</a><ul>
-<li class="chapter" data-level="9.1" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#tokenization"><i class="fa fa-check"></i><b>9.1</b> Tokenization</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#les-niveaux-de-tokenisation"><i class="fa fa-check"></i><b>9.1.1</b> Les niveaux de tokenisation</a></li>
-<li class="chapter" data-level="9.1.2" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#un-exemple-en-tidytext"><i class="fa fa-check"></i><b>9.1.2</b> Un exemple en tidytext</a></li>
-</ul></li>
-<li class="chapter" data-level="9.2" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#stemmatisation-lemmatisation-et-synonymisation"><i class="fa fa-check"></i><b>9.2</b> Stemmatisation, lemmatisation et synonymisation</a><ul>
-<li class="chapter" data-level="9.2.1" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#la-stemmatisation"><i class="fa fa-check"></i><b>9.2.1</b> la stemmatisation</a></li>
-<li class="chapter" data-level="9.2.2" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#la-lemmatisation"><i class="fa fa-check"></i><b>9.2.2</b> la lemmatisation</a></li>
-<li class="chapter" data-level="9.2.3" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#synonymisation"><i class="fa fa-check"></i><b>9.2.3</b> Synonymisation</a></li>
-</ul></li>
-<li class="chapter" data-level="9.3" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#part-of-speech-pos"><i class="fa fa-check"></i><b>9.3</b> Part of Speech (POS)</a></li>
-<li class="chapter" data-level="9.4" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#dépendances-syntaxiques"><i class="fa fa-check"></i><b>9.4</b> Dépendances syntaxiques</a><ul>
-<li class="chapter" data-level="9.4.1" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#arbre-syntaxique"><i class="fa fa-check"></i><b>9.4.1</b> Arbre syntaxique</a></li>
-<li class="chapter" data-level="9.4.2" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#vers-des-application-plus-générale"><i class="fa fa-check"></i><b>9.4.2</b> Vers des application plus générale</a></li>
-</ul></li>
-<li class="chapter" data-level="9.5" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#reconnaissance-dentités-nommées"><i class="fa fa-check"></i><b>9.5</b> reconnaissance d’entités nommées</a></li>
-<li class="chapter" data-level="9.6" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#co-reférence"><i class="fa fa-check"></i><b>9.6</b> co-reférence</a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html"><i class="fa fa-check"></i><b>10</b> Le retour des méthodes factorielles</a><ul>
-<li class="chapter" data-level="10.1" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#retour-sur-lacp"><i class="fa fa-check"></i><b>10.1</b> Retour sur l’ACP</a></li>
-<li class="chapter" data-level="10.2" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#svd"><i class="fa fa-check"></i><b>10.2</b> SVD</a></li>
-<li class="chapter" data-level="10.3" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#lsa"><i class="fa fa-check"></i><b>10.3</b> LSA</a></li>
-<li class="chapter" data-level="10.4" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#nlm"><i class="fa fa-check"></i><b>10.4</b> NLM</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html"><i class="fa fa-check"></i><b>11</b> Vectorisation du corpus</a><ul>
-<li class="chapter" data-level="11.1" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#word2vec"><i class="fa fa-check"></i><b>11.1</b> Word2vec</a><ul>
-<li class="chapter" data-level="11.1.1" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#vectorisation-pipe"><i class="fa fa-check"></i><b>11.1.1</b> vectorisation pipe</a></li>
-<li class="chapter" data-level="11.1.2" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#closest2"><i class="fa fa-check"></i><b>11.1.2</b> closest2</a></li>
-<li class="chapter" data-level="11.1.3" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#map-with-tsne"><i class="fa fa-check"></i><b>11.1.3</b> map with tsne</a></li>
-</ul></li>
-<li class="chapter" data-level="11.2" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#paragraph2vec"><i class="fa fa-check"></i><b>11.2</b> paragraph2vec</a></li>
-<li class="chapter" data-level="11.3" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#lavenir-des-modèles-pré-entrainés"><i class="fa fa-check"></i><b>11.3</b> l’avenir des modèles pré-entrainés</a></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="topic-analysis.html"><a href="topic-analysis.html"><i class="fa fa-check"></i><b>12</b> Topic Analysis</a><ul>
-<li class="chapter" data-level="12.1" data-path="topic-analysis.html"><a href="topic-analysis.html#lda"><i class="fa fa-check"></i><b>12.1</b> LDA</a><ul>
-<li class="chapter" data-level="12.1.1" data-path="topic-analysis.html"><a href="topic-analysis.html#le-modèle-de-blei"><i class="fa fa-check"></i><b>12.1.1</b> le modèle de blei</a></li>
-<li class="chapter" data-level="12.1.2" data-path="topic-analysis.html"><a href="topic-analysis.html#implementation-avec-wor2vec"><i class="fa fa-check"></i><b>12.1.2</b> implementation avec wor2vec</a></li>
-<li class="chapter" data-level="12.1.3" data-path="topic-analysis.html"><a href="topic-analysis.html#représentation-graphique"><i class="fa fa-check"></i><b>12.1.3</b> Représentation graphique</a></li>
-<li class="chapter" data-level="12.1.4" data-path="topic-analysis.html"><a href="topic-analysis.html#la"><i class="fa fa-check"></i><b>12.1.4</b> La</a></li>
-</ul></li>
-<li class="chapter" data-level="12.2" data-path="topic-analysis.html"><a href="topic-analysis.html#stm"><i class="fa fa-check"></i><b>12.2</b> STM</a><ul>
-<li class="chapter" data-level="12.2.1" data-path="topic-analysis.html"><a href="topic-analysis.html#section"><i class="fa fa-check"></i><b>12.2.1</b> </a></li>
-<li class="chapter" data-level="12.2.2" data-path="topic-analysis.html"><a href="topic-analysis.html#section-1"><i class="fa fa-check"></i><b>12.2.2</b> </a></li>
+<li class="chapter" data-level="4.4" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-sources"><i class="fa fa-check"></i><b>4.4</b> Identifier les sources</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-la-langue"><i class="fa fa-check"></i><b>4.4.1</b> Identifier la langue</a></li>
+<li class="chapter" data-level="4.4.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-plagiats-et-réutilisations"><i class="fa fa-check"></i><b>4.4.2</b> Identifier les plagiats et réutilisations</a></li>
+<li class="chapter" data-level="4.4.3" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-fakes"><i class="fa fa-check"></i><b>4.4.3</b> Identifier les fakes</a></li>
+<li class="chapter" data-level="4.4.4" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-trolls"><i class="fa fa-check"></i><b>4.4.4</b> Identifier les trolls</a></li>
+<li class="chapter" data-level="4.4.5" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-bots"><i class="fa fa-check"></i><b>4.4.5</b> Identifier les bots</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="machine-learning-with-text.html"><a href="machine-learning-with-text.html"><i class="fa fa-check"></i><b>13</b> Machine learning with text</a><ul>
-<li class="chapter" data-level="13.1" data-path="machine-learning-with-text.html"><a href="machine-learning-with-text.html#simples-models"><i class="fa fa-check"></i><b>13.1</b> simples models</a><ul>
-<li class="chapter" data-level="13.1.1" data-path="machine-learning-with-text.html"><a href="machine-learning-with-text.html#naives-bayes"><i class="fa fa-check"></i><b>13.1.1</b> Naives bayes</a></li>
-<li class="chapter" data-level="13.1.2" data-path="machine-learning-with-text.html"><a href="machine-learning-with-text.html#elastic-net"><i class="fa fa-check"></i><b>13.1.2</b> elastic net</a></li>
-<li class="chapter" data-level="13.1.3" data-path="machine-learning-with-text.html"><a href="machine-learning-with-text.html#rf"><i class="fa fa-check"></i><b>13.1.3</b> RF</a></li>
+<li class="chapter" data-level="5" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html"><i class="fa fa-check"></i><b>5</b> Une première analyse quantitative</a><ul>
+<li class="chapter" data-level="5.1" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#comptons-les-mots"><i class="fa fa-check"></i><b>5.1</b> Comptons les mots</a></li>
+<li class="chapter" data-level="5.2" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#la-production-dans-le-temps"><i class="fa fa-check"></i><b>5.2</b> la production dans le temps</a></li>
+<li class="chapter" data-level="5.3" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#lisibilité-et-complexité-lexicale"><i class="fa fa-check"></i><b>5.3</b> Lisibilité et complexité lexicale</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#les-indices-de-lisibilité"><i class="fa fa-check"></i><b>5.3.1</b> Les indices de lisibilité</a></li>
+<li class="chapter" data-level="5.3.2" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#les-indices-de-complexité-lexicale"><i class="fa fa-check"></i><b>5.3.2</b> Les indices de complexité lexicale</a></li>
 </ul></li>
-<li class="chapter" data-level="13.2" data-path="machine-learning-with-text.html"><a href="machine-learning-with-text.html#art-of-featuring"><i class="fa fa-check"></i><b>13.2</b> art of featuring</a></li>
+<li class="chapter" data-level="5.4" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#conclusion-2"><i class="fa fa-check"></i><b>5.4</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="deep-learning.html"><a href="deep-learning.html"><i class="fa fa-check"></i><b>14</b> Deep Learning</a><ul>
-<li class="chapter" data-level="14.1" data-path="deep-learning.html"><a href="deep-learning.html#lenvironnement-keras"><i class="fa fa-check"></i><b>14.1</b> L’environnement keras</a><ul>
-<li class="chapter" data-level="14.1.1" data-path="deep-learning.html"><a href="deep-learning.html#les-fonctions-principales"><i class="fa fa-check"></i><b>14.1.1</b> Les fonctions principales</a></li>
-<li class="chapter" data-level="14.1.2" data-path="deep-learning.html"><a href="deep-learning.html#un-premier-exemple"><i class="fa fa-check"></i><b>14.1.2</b> Un premier exemple</a></li>
-<li class="chapter" data-level="14.1.3" data-path="deep-learning.html"><a href="deep-learning.html#un-deuxième-exemple"><i class="fa fa-check"></i><b>14.1.3</b> Un deuxième exemple</a></li>
+<li class="chapter" data-level="6" data-path="tokenisation.html"><a href="tokenisation.html"><i class="fa fa-check"></i><b>6</b> Tokenisation</a><ul>
+<li class="chapter" data-level="6.1" data-path="tokenisation.html"><a href="tokenisation.html#le-principe"><i class="fa fa-check"></i><b>6.1</b> Le principe</a></li>
+<li class="chapter" data-level="6.2" data-path="tokenisation.html"><a href="tokenisation.html#les-outils"><i class="fa fa-check"></i><b>6.2</b> Les outils</a></li>
+<li class="chapter" data-level="6.3" data-path="tokenisation.html"><a href="tokenisation.html#ngrams"><i class="fa fa-check"></i><b>6.3</b> Ngrams</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="tokenisation.html"><a href="tokenisation.html#les-lettres"><i class="fa fa-check"></i><b>6.3.1</b> Les lettres</a></li>
+<li class="chapter" data-level="6.3.2" data-path="tokenisation.html"><a href="tokenisation.html#les-mots"><i class="fa fa-check"></i><b>6.3.2</b> Les mots</a></li>
 </ul></li>
-<li class="chapter" data-level="14.2" data-path="deep-learning.html"><a href="deep-learning.html#les-architectures-du-texte-rnn-ltsm-transformer-et-reformer"><i class="fa fa-check"></i><b>14.2</b> Les architectures du texte : RNN, LTSM, Transformer et reformer</a><ul>
-<li class="chapter" data-level="14.2.1" data-path="deep-learning.html"><a href="deep-learning.html#rnn"><i class="fa fa-check"></i><b>14.2.1</b> rnn</a></li>
-<li class="chapter" data-level="14.2.2" data-path="deep-learning.html"><a href="deep-learning.html#ltsm"><i class="fa fa-check"></i><b>14.2.2</b> ltsm</a></li>
-<li class="chapter" data-level="14.2.3" data-path="deep-learning.html"><a href="deep-learning.html#transformer"><i class="fa fa-check"></i><b>14.2.3</b> transformer</a></li>
-<li class="chapter" data-level="14.2.4" data-path="deep-learning.html"><a href="deep-learning.html#reformer"><i class="fa fa-check"></i><b>14.2.4</b> reformer</a></li>
+<li class="chapter" data-level="6.4" data-path="tokenisation.html"><a href="tokenisation.html#choisir-des-n-grams-pertinents"><i class="fa fa-check"></i><b>6.4</b> Choisir des n grams pertinents</a></li>
+<li class="chapter" data-level="6.5" data-path="tokenisation.html"><a href="tokenisation.html#propriétés-statistiques-des-ngrams"><i class="fa fa-check"></i><b>6.5</b> Propriétés statistiques des ngrams</a></li>
 </ul></li>
-<li class="chapter" data-level="14.3" data-path="deep-learning.html"><a href="deep-learning.html#les-cas-dapplications-remarquables"><i class="fa fa-check"></i><b>14.3</b> Les cas d’applications remarquables</a><ul>
-<li class="chapter" data-level="14.3.1" data-path="deep-learning.html"><a href="deep-learning.html#detection-dintention"><i class="fa fa-check"></i><b>14.3.1</b> Detection d’intention</a></li>
-<li class="chapter" data-level="14.3.2" data-path="deep-learning.html"><a href="deep-learning.html#détection-de-toxicité-des-contenus"><i class="fa fa-check"></i><b>14.3.2</b> détection de toxicité des contenus</a></li>
-<li class="chapter" data-level="14.3.3" data-path="deep-learning.html"><a href="deep-learning.html#la-detection-des-trolls"><i class="fa fa-check"></i><b>14.3.3</b> la detection des trolls</a></li>
-<li class="chapter" data-level="14.3.4" data-path="deep-learning.html"><a href="deep-learning.html#détection-des-sophismes-et-autres-fallacies"><i class="fa fa-check"></i><b>14.3.4</b> détection des sophismes et autres fallacies</a></li>
-<li class="chapter" data-level="14.3.5" data-path="deep-learning.html"><a href="deep-learning.html#la-détection-du-sarcasme-et-de-lironie"><i class="fa fa-check"></i><b>14.3.5</b> La détection du sarcasme et de l’ironie</a></li>
-<li class="chapter" data-level="14.3.6" data-path="deep-learning.html"><a href="deep-learning.html#lextraction-dargumennts"><i class="fa fa-check"></i><b>14.3.6</b> L’extraction d’argumennts</a></li>
+<li class="chapter" data-level="7" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html"><i class="fa fa-check"></i><b>7</b> Analyse du sentiment</a><ul>
+<li class="chapter" data-level="7.1" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#un-exemple-avec-syuzhet"><i class="fa fa-check"></i><b>7.1</b> Un exemple avec syuzhet</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#valence-et-expression"><i class="fa fa-check"></i><b>7.1.1</b> Valence et expression</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#la-généralisation-par-le-liwc"><i class="fa fa-check"></i><b>7.2</b> La généralisation par le Liwc</a></li>
+<li class="chapter" data-level="7.3" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#encore-dautres-généralisations"><i class="fa fa-check"></i><b>7.3</b> Encore d’autres généralisations</a></li>
+<li class="chapter" data-level="7.4" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#construire-son-propre-dictionnaire"><i class="fa fa-check"></i><b>7.4</b> construire son propre dictionnaire</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html"><i class="fa fa-check"></i><b>8</b> Annotations lexicales et syntaxiques</a><ul>
+<li class="chapter" data-level="8.1" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#tokenization"><i class="fa fa-check"></i><b>8.1</b> Tokenization</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#les-niveaux-de-tokenisation"><i class="fa fa-check"></i><b>8.1.1</b> Les niveaux de tokenisation</a></li>
+<li class="chapter" data-level="8.1.2" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#un-exemple-en-tidytext"><i class="fa fa-check"></i><b>8.1.2</b> Un exemple en tidytext</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#stemmatisation-lemmatisation-et-synonymisation"><i class="fa fa-check"></i><b>8.2</b> Stemmatisation, lemmatisation et synonymisation</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#la-stemmatisation"><i class="fa fa-check"></i><b>8.2.1</b> la stemmatisation</a></li>
+<li class="chapter" data-level="8.2.2" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#la-lemmatisation"><i class="fa fa-check"></i><b>8.2.2</b> la lemmatisation</a></li>
+<li class="chapter" data-level="8.2.3" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#synonymisation"><i class="fa fa-check"></i><b>8.2.3</b> Synonymisation</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#part-of-speech-pos"><i class="fa fa-check"></i><b>8.3</b> Part of Speech (POS)</a></li>
+<li class="chapter" data-level="8.4" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#dépendances-syntaxiques"><i class="fa fa-check"></i><b>8.4</b> Dépendances syntaxiques</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#arbre-syntaxique"><i class="fa fa-check"></i><b>8.4.1</b> Arbre syntaxique</a></li>
+<li class="chapter" data-level="8.4.2" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#vers-des-application-plus-générale"><i class="fa fa-check"></i><b>8.4.2</b> Vers des application plus générale</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#reconnaissance-dentités-nommées"><i class="fa fa-check"></i><b>8.5</b> reconnaissance d’entités nommées</a></li>
+<li class="chapter" data-level="8.6" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#co-reférence"><i class="fa fa-check"></i><b>8.6</b> co-reférence</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html"><i class="fa fa-check"></i><b>9</b> Le retour des méthodes factorielles</a><ul>
+<li class="chapter" data-level="9.1" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#retour-sur-lacp"><i class="fa fa-check"></i><b>9.1</b> Retour sur l’ACP</a></li>
+<li class="chapter" data-level="9.2" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#svd"><i class="fa fa-check"></i><b>9.2</b> SVD</a></li>
+<li class="chapter" data-level="9.3" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#lsa"><i class="fa fa-check"></i><b>9.3</b> LSA</a></li>
+<li class="chapter" data-level="9.4" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#nlm"><i class="fa fa-check"></i><b>9.4</b> NLM</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html"><i class="fa fa-check"></i><b>10</b> Vectorisation du corpus</a><ul>
+<li class="chapter" data-level="10.1" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#word2vec"><i class="fa fa-check"></i><b>10.1</b> Word2vec</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#vectorisation-pipe"><i class="fa fa-check"></i><b>10.1.1</b> vectorisation pipe</a></li>
+<li class="chapter" data-level="10.1.2" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#closest2"><i class="fa fa-check"></i><b>10.1.2</b> closest2</a></li>
+<li class="chapter" data-level="10.1.3" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#map-with-tsne"><i class="fa fa-check"></i><b>10.1.3</b> map with tsne</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#paragraph2vec"><i class="fa fa-check"></i><b>10.2</b> paragraph2vec</a></li>
+<li class="chapter" data-level="10.3" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#lavenir-des-modèles-pré-entrainés"><i class="fa fa-check"></i><b>10.3</b> l’avenir des modèles pré-entrainés</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="topic-analysis.html"><a href="topic-analysis.html"><i class="fa fa-check"></i><b>11</b> Topic Analysis</a><ul>
+<li class="chapter" data-level="11.1" data-path="topic-analysis.html"><a href="topic-analysis.html#lda"><i class="fa fa-check"></i><b>11.1</b> LDA</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="topic-analysis.html"><a href="topic-analysis.html#le-modèle-de-blei"><i class="fa fa-check"></i><b>11.1.1</b> le modèle de blei</a></li>
+<li class="chapter" data-level="11.1.2" data-path="topic-analysis.html"><a href="topic-analysis.html#implementation-avec-wor2vec"><i class="fa fa-check"></i><b>11.1.2</b> implementation avec wor2vec</a></li>
+<li class="chapter" data-level="11.1.3" data-path="topic-analysis.html"><a href="topic-analysis.html#représentation-graphique"><i class="fa fa-check"></i><b>11.1.3</b> Représentation graphique</a></li>
+<li class="chapter" data-level="11.1.4" data-path="topic-analysis.html"><a href="topic-analysis.html#la"><i class="fa fa-check"></i><b>11.1.4</b> La</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="topic-analysis.html"><a href="topic-analysis.html#stm"><i class="fa fa-check"></i><b>11.2</b> STM</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="topic-analysis.html"><a href="topic-analysis.html#section"><i class="fa fa-check"></i><b>11.2.1</b> </a></li>
+<li class="chapter" data-level="11.2.2" data-path="topic-analysis.html"><a href="topic-analysis.html#section-1"><i class="fa fa-check"></i><b>11.2.2</b> </a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="translation.html"><a href="translation.html"><i class="fa fa-check"></i><b>15</b> Translation</a><ul>
-<li class="chapter" data-level="15.1" data-path="translation.html"><a href="translation.html#simples-models-1"><i class="fa fa-check"></i><b>15.1</b> simples models</a><ul>
-<li class="chapter" data-level="15.1.1" data-path="translation.html"><a href="translation.html#naives-bayes-1"><i class="fa fa-check"></i><b>15.1.1</b> Naives bayes</a></li>
-<li class="chapter" data-level="15.1.2" data-path="translation.html"><a href="translation.html#elastic-net-1"><i class="fa fa-check"></i><b>15.1.2</b> elastic net</a></li>
-<li class="chapter" data-level="15.1.3" data-path="translation.html"><a href="translation.html#rf-1"><i class="fa fa-check"></i><b>15.1.3</b> RF</a></li>
+<li class="chapter" data-level="12" data-path="machine-learning-with-text.html"><a href="machine-learning-with-text.html"><i class="fa fa-check"></i><b>12</b> Machine learning with text</a><ul>
+<li class="chapter" data-level="12.1" data-path="machine-learning-with-text.html"><a href="machine-learning-with-text.html#simples-models"><i class="fa fa-check"></i><b>12.1</b> simples models</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="machine-learning-with-text.html"><a href="machine-learning-with-text.html#naives-bayes"><i class="fa fa-check"></i><b>12.1.1</b> Naives bayes</a></li>
+<li class="chapter" data-level="12.1.2" data-path="machine-learning-with-text.html"><a href="machine-learning-with-text.html#elastic-net"><i class="fa fa-check"></i><b>12.1.2</b> elastic net</a></li>
+<li class="chapter" data-level="12.1.3" data-path="machine-learning-with-text.html"><a href="machine-learning-with-text.html#rf"><i class="fa fa-check"></i><b>12.1.3</b> RF</a></li>
 </ul></li>
-<li class="chapter" data-level="15.2" data-path="translation.html"><a href="translation.html#art-of-featuring-1"><i class="fa fa-check"></i><b>15.2</b> art of featuring</a></li>
+<li class="chapter" data-level="12.2" data-path="machine-learning-with-text.html"><a href="machine-learning-with-text.html#art-of-featuring"><i class="fa fa-check"></i><b>12.2</b> art of featuring</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html"><i class="fa fa-check"></i><b>16</b> Modèles génératifs</a><ul>
-<li class="chapter" data-level="16.1" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html#simples-models-2"><i class="fa fa-check"></i><b>16.1</b> simples models</a><ul>
-<li class="chapter" data-level="16.1.1" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html#naives-bayes-2"><i class="fa fa-check"></i><b>16.1.1</b> Naives bayes</a></li>
-<li class="chapter" data-level="16.1.2" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html#elastic-net-2"><i class="fa fa-check"></i><b>16.1.2</b> elastic net</a></li>
-<li class="chapter" data-level="16.1.3" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html#rf-2"><i class="fa fa-check"></i><b>16.1.3</b> RF</a></li>
+<li class="chapter" data-level="13" data-path="deep-learning.html"><a href="deep-learning.html"><i class="fa fa-check"></i><b>13</b> Deep Learning</a><ul>
+<li class="chapter" data-level="13.1" data-path="deep-learning.html"><a href="deep-learning.html#lenvironnement-keras"><i class="fa fa-check"></i><b>13.1</b> L’environnement keras</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="deep-learning.html"><a href="deep-learning.html#les-fonctions-principales"><i class="fa fa-check"></i><b>13.1.1</b> Les fonctions principales</a></li>
+<li class="chapter" data-level="13.1.2" data-path="deep-learning.html"><a href="deep-learning.html#un-premier-exemple"><i class="fa fa-check"></i><b>13.1.2</b> Un premier exemple</a></li>
+<li class="chapter" data-level="13.1.3" data-path="deep-learning.html"><a href="deep-learning.html#un-deuxième-exemple"><i class="fa fa-check"></i><b>13.1.3</b> Un deuxième exemple</a></li>
 </ul></li>
-<li class="chapter" data-level="16.2" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html#art-of-featuring-2"><i class="fa fa-check"></i><b>16.2</b> art of featuring</a></li>
+<li class="chapter" data-level="13.2" data-path="deep-learning.html"><a href="deep-learning.html#les-architectures-du-texte-rnn-ltsm-transformer-et-reformer"><i class="fa fa-check"></i><b>13.2</b> Les architectures du texte : RNN, LTSM, Transformer et reformer</a><ul>
+<li class="chapter" data-level="13.2.1" data-path="deep-learning.html"><a href="deep-learning.html#rnn"><i class="fa fa-check"></i><b>13.2.1</b> rnn</a></li>
+<li class="chapter" data-level="13.2.2" data-path="deep-learning.html"><a href="deep-learning.html#ltsm"><i class="fa fa-check"></i><b>13.2.2</b> ltsm</a></li>
+<li class="chapter" data-level="13.2.3" data-path="deep-learning.html"><a href="deep-learning.html#transformer"><i class="fa fa-check"></i><b>13.2.3</b> transformer</a></li>
+<li class="chapter" data-level="13.2.4" data-path="deep-learning.html"><a href="deep-learning.html#reformer"><i class="fa fa-check"></i><b>13.2.4</b> reformer</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="deep-learning.html"><a href="deep-learning.html#les-cas-dapplications-remarquables"><i class="fa fa-check"></i><b>13.3</b> Les cas d’applications remarquables</a><ul>
+<li class="chapter" data-level="13.3.1" data-path="deep-learning.html"><a href="deep-learning.html#detection-dintention"><i class="fa fa-check"></i><b>13.3.1</b> Detection d’intention</a></li>
+<li class="chapter" data-level="13.3.2" data-path="deep-learning.html"><a href="deep-learning.html#détection-de-toxicité-des-contenus"><i class="fa fa-check"></i><b>13.3.2</b> détection de toxicité des contenus</a></li>
+<li class="chapter" data-level="13.3.3" data-path="deep-learning.html"><a href="deep-learning.html#la-detection-des-trolls"><i class="fa fa-check"></i><b>13.3.3</b> la detection des trolls</a></li>
+<li class="chapter" data-level="13.3.4" data-path="deep-learning.html"><a href="deep-learning.html#détection-des-sophismes-et-autres-fallacies"><i class="fa fa-check"></i><b>13.3.4</b> détection des sophismes et autres fallacies</a></li>
+<li class="chapter" data-level="13.3.5" data-path="deep-learning.html"><a href="deep-learning.html#la-détection-du-sarcasme-et-de-lironie"><i class="fa fa-check"></i><b>13.3.5</b> La détection du sarcasme et de l’ironie</a></li>
+<li class="chapter" data-level="13.3.6" data-path="deep-learning.html"><a href="deep-learning.html#lextraction-dargumennts"><i class="fa fa-check"></i><b>13.3.6</b> L’extraction d’argumennts</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="translation.html"><a href="translation.html"><i class="fa fa-check"></i><b>14</b> Translation</a><ul>
+<li class="chapter" data-level="14.1" data-path="translation.html"><a href="translation.html#simples-models-1"><i class="fa fa-check"></i><b>14.1</b> simples models</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="translation.html"><a href="translation.html#naives-bayes-1"><i class="fa fa-check"></i><b>14.1.1</b> Naives bayes</a></li>
+<li class="chapter" data-level="14.1.2" data-path="translation.html"><a href="translation.html#elastic-net-1"><i class="fa fa-check"></i><b>14.1.2</b> elastic net</a></li>
+<li class="chapter" data-level="14.1.3" data-path="translation.html"><a href="translation.html#rf-1"><i class="fa fa-check"></i><b>14.1.3</b> RF</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="translation.html"><a href="translation.html#art-of-featuring-1"><i class="fa fa-check"></i><b>14.2</b> art of featuring</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html"><i class="fa fa-check"></i><b>15</b> Modèles génératifs</a><ul>
+<li class="chapter" data-level="15.1" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html#simples-models-2"><i class="fa fa-check"></i><b>15.1</b> simples models</a><ul>
+<li class="chapter" data-level="15.1.1" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html#naives-bayes-2"><i class="fa fa-check"></i><b>15.1.1</b> Naives bayes</a></li>
+<li class="chapter" data-level="15.1.2" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html#elastic-net-2"><i class="fa fa-check"></i><b>15.1.2</b> elastic net</a></li>
+<li class="chapter" data-level="15.1.3" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html#rf-2"><i class="fa fa-check"></i><b>15.1.3</b> RF</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html#art-of-featuring-2"><i class="fa fa-check"></i><b>15.2</b> art of featuring</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -331,22 +340,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="préparation-des-données" class="section level1">
-<h1><span class="header-section-number">Chapitre 5</span> Préparation des données</h1>
+<h1><span class="header-section-number">Chapitre 4</span> Préparation des données</h1>
 <p>Avant de se lancer dans l’analyse, il est nécessaire de préparer le texte, de le pré-traiter. Son format fondamental est celui d’une chaine de caractères, sans signification particulière mais composé à partir d’un alphbat, c’un jeux de signes déterminés et démobralement. 1/0 pour lelangage bianre, AGCP pour l’adan, 26 caractère de base pour l’alphabet, sans compter les accents.</p>
 <p>Ces variations sont l’objet de convention en informatique. et de certaines opérations.</p>
 <p>traiter du texte c’est avant tout disposer d’opérateurs pour manipuler ces éléments élémentaire. la base est d’avoir des outils pour les manipuler.</p>
 <p>Le langage avant d’être signifiant est signifié, littéralement produit comme une chaine de signes qui dans l’usage suit certaine convention. Par exemple la satisfaction peut s’exprimé par mmmm, une forte satisfaction par un mmmmmmmmmmmmmmmmmmmmm. Pour distinguer les significations, il faut d’abord compter. les mmm sont sans doute courants car conventionnels (ce mot est à deux doigts d’être incorporé au dictionnaire de l’Académie Française, s’il n’était qu’une onomatopée), les “mmmmmmmmmmmmmmmmmmmmm” sont sans doute beaucoups plus rares. De plus on trouvera des “hum” des “hummm”, des ’mmmmhummmm". On comprend qu’à la nuance de l’intensité que le locuteur veut exprimer, toute ces morphologies se rapportent à une même idée.</p>
 <p>Comment le rammener à une même formes est une question essentielle même si elle semble excessivement technique.</p>
 <div id="manipuler-des-chaines-de-caractères" class="section level2">
-<h2><span class="header-section-number">5.1</span> Manipuler des chaines de caractères</h2>
+<h2><span class="header-section-number">4.1</span> Manipuler des chaines de caractères</h2>
 <p>Il faut donc traiter le texte, avant même de s’engager dans des modèles compliqués. Il faut savoir traiter des chaines de caractères pour en réduire la diversité, et en produire des chaines grammaticalement exacte. C’est un travail d’artisan, celui des des imprimeurs et de leurs coorecteur. Et en particulier d’un métier celui du <a href="http://www.textesrares.com/dupon/d376.htm">compositeur</a>, ou ouvrier de la casse, qui distribue des caractères de plomb en séquences dans des casiers de bois.</p>
-<p><a href="compositeur.jpg">cmpositeur</a></p>
+<p><a href="%22./data/compositeur.jpg%22">cmpositeur</a></p>
 <p>L’artisan n’avait pas de choix, la précision était essentielle pour éviter la coquille. Le texte moderne, numérique, est l’objet de plus d’aller et retours. Les mots qu’on pianotent sont corrigés avant même d’être frappés. Les gestes techniques sont différents mais s’articulent sur une même idée : la langue écrite, du moins les langues alphabétiques sont des chaines de caractères dont la formation suit des règles fluctuantes à travers l’histoire mais contraignante à chaque moments. Les conventiosn peuvent changer, mais dans son temps elle s’imposent définitivement. Personne n’écrirait “deffert”, pour dire “dessert”. Et pourtant la graphie du s était un f jusqu’au XVI ème siècle (trouver la source)!
 <a href="https://www.cairn.info/revue-la-linguistique-2003-1-page-3.htm" class="uri">https://www.cairn.info/revue-la-linguistique-2003-1-page-3.htm</a></p>
 <p>De nombreuses ressources sont disponibles pour traiter ces chaines de caractères.</p>
 <p>On utilisera surtout <a href="https://stringr.tidyverse.org/">Stringer</a> qui est est un des composants essentiels de tidyverse. D’autres packages sont équivalents : stringi par exemple.</p>
 <div id="les-opérations-sur-les-chaînes-de-caractères" class="section level3">
-<h3><span class="header-section-number">5.1.1</span> Les opérations sur les chaînes de caractères</h3>
+<h3><span class="header-section-number">4.1.1</span> Les opérations sur les chaînes de caractères</h3>
 <ul>
 <li>mettre en minuscule. L’alphabet se présente au moins en deux versions : des majuscules et des minuscules, il est souvent nécessaire de réduire le texte à une seule casse pour en réduire la variété, sauf si les majuscules signalent une information spécifique et socialement conventionnelle. Un mot qui débute par une majuscule signale un nom commun, désormais conceptualisé comme une entité nommée appartenant à différentes catégories : noms de lieux, noms de personnes, noms d’organisation …ou l’expression d’un sentiment, au sein des chats, la majuscule en série signale un niveau de langage “loud”, un cri , une engueulade, la véhémence.<br />
 </li>
@@ -359,7 +368,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Si la manipulation deslaquelle ? vaccin ?</p>
 </div>
 <div id="la-technique-des-expressions-régulières-regex" class="section level3">
-<h3><span class="header-section-number">5.1.2</span> La technique des expressions régulières (regex)</h3>
+<h3><span class="header-section-number">4.1.2</span> La technique des expressions régulières (regex)</h3>
 <p>Il ne suffit pas de chercher une chaine de caractère particulière, il faut souvent saisir un ensemble de variations qui suivent un motif determiné et qui répond à une sorte de loi générale.</p>
 <p>Par exemple si je veux retrouvrer dans un corpus l’ensemble des mots relatif au monde de l’hôpital, nous chercherions aussi le mot “hopital”. Nombreux seront les locuteur qui omeetent l’accent circonflexe. Une formule pour trouver ces deux varietés serait d’utiliser un opérateur, "(), pour définir une option . soit l’un soit l’autre :
 h(ô,o)pital</p>
@@ -378,10 +387,9 @@ h(ô,o)pital</p>
 <li>la numération : fraise et fraise-s</li>
 <li>le genre : épicier et épicière-s.</li>
 </ul>
-<p>grepl</p>
 </div>
 <div id="un-fondement-profond-et-ancien" class="section level3">
-<h3><span class="header-section-number">5.1.3</span> Un fondement profond et ancien</h3>
+<h3><span class="header-section-number">4.1.3</span> Un fondement profond et ancien</h3>
 <p>Le langage des regex a répondu d’abord aux besoin des informaticiens, et s’appuie sur une construction mathématique sophistiquée : les automatates finis
 <a href="https://swtch.com/~rsc/regexp/regexp1.html" class="uri">https://swtch.com/~rsc/regexp/regexp1.html</a> don t un des contributeurs essentiels à été</p>
 <p>doi.org/10.1145/363347.363387 Ken Thompson</p>
@@ -390,7 +398,7 @@ h(ô,o)pital</p>
 <p><a href="https://swtch.com/~rsc/regexp/regexp1.html" class="uri">https://swtch.com/~rsc/regexp/regexp1.html</a></p>
 </div>
 <div id="des-applications-très-pratiques" class="section level3">
-<h3><span class="header-section-number">5.1.4</span> Des applications très pratiques</h3>
+<h3><span class="header-section-number">4.1.4</span> Des applications très pratiques</h3>
 <p>et à ceux qui face à des questions de métier, par exemple les professionnel de marketing direct ou des services postaux, ont été amené à traiter de jeux de données textuels limités tel qu’une adresse postale.</p>
 <ul>
 <li><p>dectecter une entité nommée : la majuscule</p></li>
@@ -402,7 +410,7 @@ h(ô,o)pital</p>
 </div>
 </div>
 <div id="nettoyer-le-texte" class="section level2">
-<h2><span class="header-section-number">5.2</span> Nettoyer le texte</h2>
+<h2><span class="header-section-number">4.2</span> Nettoyer le texte</h2>
 <ul>
 <li>enlever les mentions</li>
 <li>enlever les url</li>
@@ -412,23 +420,23 @@ h(ô,o)pital</p>
 </ul>
 </div>
 <div id="corriger-le-texte" class="section level2">
-<h2><span class="header-section-number">5.3</span> Corriger le texte</h2>
+<h2><span class="header-section-number">4.3</span> Corriger le texte</h2>
 <p>Si certains corpus sont par les conditions de leur production presque parfait du point de vue grammatical et lexical, c’est le cas en principe des articles de presse et des documents officiels, d’autres qui s’appuient sur une langue vernaculaire on des graphies plus incertaines et des syntaxes approximatives. Dans un tiers des cas le mot " opinion" s’orthographie “opignons”. Chaque mot du lexique s’évanouit dans des morphologies nombreuses et approximatives.</p>
 <p>C’est un obstacle à l’analyse car la variété morphologique est aléatoire.</p>
 <p>plusieurs stratégies sont possibles. La première est de corriger le texte notamment en employant des outils de corrections efficaces.</p>
 <div id="la-correction-orthographique-automatique" class="section level3">
-<h3><span class="header-section-number">5.3.1</span> La correction orthographique automatique</h3>
+<h3><span class="header-section-number">4.3.1</span> La correction orthographique automatique</h3>
 <p>voir hunspell</p>
 <p><a href="https://cran.r-project.org/web/packages/hunspell/vignettes/intro.html#Custom_Dictionaries" class="uri">https://cran.r-project.org/web/packages/hunspell/vignettes/intro.html#Custom_Dictionaries</a></p>
 </div>
 <div id="analyse-ciblée-par-les-regex" class="section level3">
-<h3><span class="header-section-number">5.3.2</span> Analyse ciblée par les regex</h3>
+<h3><span class="header-section-number">4.3.2</span> Analyse ciblée par les regex</h3>
 <p>Une application des regex est l’analyse ciblée d’un certain nombre de termes. LA corection est partielle mais couvre les cibles essentielles</p>
 <p>exemple des gestes barières dans le flux twitter</p>
 </div>
 </div>
 <div id="identifier-les-sources" class="section level2">
-<h2><span class="header-section-number">5.4</span> Identifier les sources</h2>
+<h2><span class="header-section-number">4.4</span> Identifier les sources</h2>
 <p>Dans l’analyse des contenus sociaux, les textes viennent de sources multiples et confuses. Elles peuvent être aisément multilingue. Analyser un corpus d’entretien, une collection de discours, posent peu la questions des locuteurs car ils sont bien identifiés. Ce n’est pas le cas dans les réseaux sociaux où les buts sont multiples et plus ou moins avoués.</p>
 <p>Les acteurs :</p>
 <ul>
@@ -441,102 +449,102 @@ h(ô,o)pital</p>
 <li>les activistes</li>
 </ul>
 <div id="identifier-la-langue" class="section level3">
-<h3><span class="header-section-number">5.4.1</span> Identifier la langue</h3>
+<h3><span class="header-section-number">4.4.1</span> Identifier la langue</h3>
 <p>Dans les points précedents on suppose que la langue est homogène, mais les corpus peuvent être multi-langues. Par exemple, dans les corpus d’avis d’hôtes sur Airbnb, les avis sont formulés dans une large variété de langues. Il va falloir en tenir compte et une tâche préliminaire sera de détecter les langues pour séparer les corpus.</p>
 <p>Le package textcat offre une solution basée sur la fréquence des ngrams (voir chapitre x). et compare la distribution du texte ciblée avec les distributions typiques des langues. Google propose un algo cpd3(<a href="https://github.com/google/cld3" class="uri">https://github.com/google/cld3</a>) plus sophistiqués dans la mesure où c’est un réseau de neurones qui fait le travail. Comparons les.</p>
-<p>On utilise un jeu de donnée Airbnb sur Bruxelles qui accueillant les institutions européennnes est une des villes les plus cosmopolite qui soit avec des fonctionnaires venant de toutes l’europe et s’exprimant dans une large varité de langue, sans compter les représentations des autres pays du monde.</p>
+<p>On utilise un jeu de donnée Airbnb sur Bruxelles qui accueillant les institutions européennnes est une des villes les plus cosmopolite qui soit avec des fonctionnaires venant de toutes l’europe et s’exprimant dans une large variété de langue, sans compter les représentations des autres pays du monde.</p>
 <p>En terme de durée de calcul, la différence en temps de calcul est faramineuse 7 secondes contre 7 minutes, ce qui s’explique car texcat s’appuyant sur la distribution des ngrams doit les calculer pour les 36000 observations que nous avons retenues.</p>
 <p>Faisons un test sur un extrait du corpus Airbnb.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">BXL2021 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;reviewsBXL2021.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb2-2" title="2">BXL2021<span class="op">$</span>Year&lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">format</span>(<span class="kw">as.Date</span>(BXL2021<span class="op">$</span>date, <span class="dt">format=</span><span class="st">&quot;%Y-%m-%d&quot;</span>),<span class="st">&quot;%Y&quot;</span>))</a>
-<a class="sourceLine" id="cb2-3" title="3"></a>
-<a class="sourceLine" id="cb2-4" title="4">BXL2021&lt;-<span class="st"> </span>BXL2021 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Year<span class="op">&gt;</span><span class="dv">2019</span>) <span class="co"># on filtre sur la période de confinement</span></a>
-<a class="sourceLine" id="cb2-5" title="5"></a>
-<a class="sourceLine" id="cb2-6" title="6"><span class="kw">library</span>(cld3)</a>
-<a class="sourceLine" id="cb2-7" title="7"></a>
-<a class="sourceLine" id="cb2-8" title="8">t1&lt;-<span class="kw">Sys.time</span>()</a>
-<a class="sourceLine" id="cb2-9" title="9"></a>
-<a class="sourceLine" id="cb2-10" title="10">cld3&lt;-<span class="kw">as.data.frame</span>(<span class="kw">detect_language</span>(BXL2021<span class="op">$</span>comments))<span class="op">%&gt;%</span><span class="kw">rename</span>(<span class="dt">cld3=</span><span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb2-11" title="11">t2&lt;-<span class="kw">Sys.time</span>()</a>
-<a class="sourceLine" id="cb2-12" title="12"></a>
-<a class="sourceLine" id="cb2-13" title="13">t_cld3&lt;-t2<span class="op">-</span>t1 <span class="co">#on calcule la durée de l&#39;opération en faisant la différence du temps de départ et d&#39;arrivée</span></a>
-<a class="sourceLine" id="cb2-14" title="14"></a>
-<a class="sourceLine" id="cb2-15" title="15"><span class="kw">library</span>(textcat)</a>
-<a class="sourceLine" id="cb2-16" title="16">t1&lt;-<span class="kw">Sys.time</span>()</a>
-<a class="sourceLine" id="cb2-17" title="17">textcat&lt;-<span class="kw">textcat</span>(BXL2021<span class="op">$</span>comments)</a>
-<a class="sourceLine" id="cb2-18" title="18">t2&lt;-<span class="kw">Sys.time</span>()</a>
-<a class="sourceLine" id="cb2-19" title="19">t_texcat&lt;-t2<span class="op">-</span>t1</a>
-<a class="sourceLine" id="cb2-20" title="20">foo&lt;-<span class="kw">cbind</span>(cld3, textcat)</a></code></pre></div>
-<p>Examinons les résultats et la distribution des langues identifées par les deux systèmes. Si l’ordre est respecté. Des différences s’observent, cld3 identifie du chinois qui ne fait pas partie du répertoire de texcat.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">g1&lt;-foo<span class="op">%&gt;%</span><span class="kw">mutate</span>(<span class="dt">n=</span><span class="dv">1</span>)<span class="op">%&gt;%</span><span class="kw">group_by</span>(textcat)<span class="op">%&gt;%</span><span class="kw">summarise</span>(<span class="dt">n=</span><span class="kw">sum</span>(n))<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">reorder</span>(textcat,n), <span class="dt">y=</span>n))<span class="op">+</span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)<span class="op">+</span><span class="kw">coord_flip</span>()<span class="op">+</span><span class="kw">scale_y_log10</span>()</a>
-<a class="sourceLine" id="cb3-3" title="3"></a>
-<a class="sourceLine" id="cb3-4" title="4">g2&lt;-foo<span class="op">%&gt;%</span><span class="kw">mutate</span>(<span class="dt">n=</span><span class="dv">1</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-5" title="5"><span class="st">  </span><span class="kw">group_by</span>(cld3)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-6" title="6"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n=</span><span class="kw">sum</span>(n))<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-7" title="7"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">reorder</span>(cld3,n), <span class="dt">y=</span>n))<span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)<span class="op">+</span><span class="kw">coord_flip</span>()<span class="op">+</span><span class="kw">scale_y_log10</span>()</a>
-<a class="sourceLine" id="cb3-8" title="8"></a>
-<a class="sourceLine" id="cb3-9" title="9"><span class="kw">plot_grid</span>(g1, g2, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&#39;Texcat&#39;</span>,<span class="st">&#39;Cld3&#39;</span>), <span class="dt">label_size =</span> <span class="dv">12</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1">BXL2021 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;./data/reviewsBXL2021.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb23-2" title="2">BXL2021<span class="op">$</span>Year&lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">format</span>(<span class="kw">as.Date</span>(BXL2021<span class="op">$</span>date, <span class="dt">format=</span><span class="st">&quot;%Y-%m-%d&quot;</span>),<span class="st">&quot;%Y&quot;</span>))</a>
+<a class="sourceLine" id="cb23-3" title="3"></a>
+<a class="sourceLine" id="cb23-4" title="4">BXL2021&lt;-<span class="st"> </span>BXL2021 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(Year<span class="op">&gt;</span><span class="dv">2019</span>) <span class="co"># on filtre sur la période de confinement</span></a>
+<a class="sourceLine" id="cb23-5" title="5"></a>
+<a class="sourceLine" id="cb23-6" title="6"><span class="kw">library</span>(cld3)</a>
+<a class="sourceLine" id="cb23-7" title="7"></a>
+<a class="sourceLine" id="cb23-8" title="8">t1&lt;-<span class="kw">Sys.time</span>()</a>
+<a class="sourceLine" id="cb23-9" title="9"></a>
+<a class="sourceLine" id="cb23-10" title="10">cld3&lt;-<span class="kw">as.data.frame</span>(<span class="kw">detect_language</span>(BXL2021<span class="op">$</span>comments))<span class="op">%&gt;%</span><span class="kw">rename</span>(<span class="dt">cld3=</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb23-11" title="11">t2&lt;-<span class="kw">Sys.time</span>()</a>
+<a class="sourceLine" id="cb23-12" title="12"></a>
+<a class="sourceLine" id="cb23-13" title="13">t_cld3&lt;-t2<span class="op">-</span>t1 <span class="co">#on calcule la durée de l&#39;opération en faisant la différence du temps de départ et d&#39;arrivée</span></a>
+<a class="sourceLine" id="cb23-14" title="14"></a>
+<a class="sourceLine" id="cb23-15" title="15"><span class="kw">library</span>(textcat)</a>
+<a class="sourceLine" id="cb23-16" title="16">t1&lt;-<span class="kw">Sys.time</span>()</a>
+<a class="sourceLine" id="cb23-17" title="17">textcat&lt;-<span class="kw">textcat</span>(BXL2021<span class="op">$</span>comments)</a>
+<a class="sourceLine" id="cb23-18" title="18">t2&lt;-<span class="kw">Sys.time</span>()</a>
+<a class="sourceLine" id="cb23-19" title="19">t_texcat&lt;-t2<span class="op">-</span>t1</a>
+<a class="sourceLine" id="cb23-20" title="20">foo&lt;-<span class="kw">cbind</span>(cld3, textcat)</a></code></pre></div>
+<p>Examinons les résultats et la distribution des langues identifiées par les deux systèmes. Si l’ordre est respecté, des différences s’observent, <code>cld3</code> identifie du chinois qui ne fait pas partie du répertoire de texcat.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1">g1&lt;-foo<span class="op">%&gt;%</span><span class="kw">mutate</span>(<span class="dt">n=</span><span class="dv">1</span>)<span class="op">%&gt;%</span><span class="kw">group_by</span>(textcat)<span class="op">%&gt;%</span><span class="kw">summarise</span>(<span class="dt">n=</span><span class="kw">sum</span>(n))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb24-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">reorder</span>(textcat,n), <span class="dt">y=</span>n))<span class="op">+</span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)<span class="op">+</span><span class="kw">coord_flip</span>()<span class="op">+</span><span class="kw">scale_y_log10</span>()</a>
+<a class="sourceLine" id="cb24-3" title="3"></a>
+<a class="sourceLine" id="cb24-4" title="4">g2&lt;-foo<span class="op">%&gt;%</span><span class="kw">mutate</span>(<span class="dt">n=</span><span class="dv">1</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb24-5" title="5"><span class="st">  </span><span class="kw">group_by</span>(cld3)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb24-6" title="6"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n=</span><span class="kw">sum</span>(n))<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb24-7" title="7"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">reorder</span>(cld3,n), <span class="dt">y=</span>n))<span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)<span class="op">+</span><span class="kw">coord_flip</span>()<span class="op">+</span><span class="kw">scale_y_log10</span>()</a>
+<a class="sourceLine" id="cb24-8" title="8"></a>
+<a class="sourceLine" id="cb24-9" title="9"><span class="kw">plot_grid</span>(g1, g2, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&#39;Texcat&#39;</span>,<span class="st">&#39;Cld3&#39;</span>), <span class="dt">label_size =</span> <span class="dv">12</span>)</a></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/302-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>Examions maintenant la convergence des méthodes en représentant la répartition du résultat d’un système dans les langue de l’autre. Si la convergence est parfaite 1000% des textes classé en Français par Textact devrait se retrouver dans 100% de ces textes classé par cld3 et réciproquement.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">foo1 &lt;-foo <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">n=</span><span class="dv">1</span>)<span class="op">%&gt;%</span><span class="kw">group_by</span>(textcat) <span class="op">%&gt;%</span><span class="kw">summarise</span>(<span class="dt">n=</span><span class="kw">sum</span>(n))</a>
-<a class="sourceLine" id="cb4-2" title="2">foo1&lt;-foo<span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(foo1) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(n<span class="op">&gt;</span><span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb4-3" title="3"></a>
-<a class="sourceLine" id="cb4-4" title="4">table&lt;-<span class="kw">table</span>(foo1<span class="op">$</span>cld3,foo1<span class="op">$</span>textcat)</a>
-<a class="sourceLine" id="cb4-5" title="5">foo1&lt;-<span class="kw">as.data.frame</span>(<span class="kw">prop.table</span>(table,<span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb4-6" title="6"></a>
-<a class="sourceLine" id="cb4-7" title="7"></a>
-<a class="sourceLine" id="cb4-8" title="8"><span class="kw">ggplot</span>(foo1, <span class="kw">aes</span>(<span class="kw">reorder</span>(Var2, Freq),Var1)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb4-9" title="9"><span class="st">  </span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> Freq)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb4-10" title="10"><span class="st">  </span><span class="kw">scale_fill_gradient</span>(<span class="dt">low =</span> <span class="st">&quot;White&quot;</span>,<span class="dt">high =</span> <span class="st">&quot;Blue&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb4-11" title="11"><span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">axis.text.x=</span><span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span><span class="dv">1</span>))<span class="op">+</span><span class="kw">coord_flip</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1">foo1 &lt;-foo <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">n=</span><span class="dv">1</span>)<span class="op">%&gt;%</span><span class="kw">group_by</span>(textcat) <span class="op">%&gt;%</span><span class="kw">summarise</span>(<span class="dt">n=</span><span class="kw">sum</span>(n))</a>
+<a class="sourceLine" id="cb25-2" title="2">foo1&lt;-foo<span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(foo1) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(n<span class="op">&gt;</span><span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb25-3" title="3"></a>
+<a class="sourceLine" id="cb25-4" title="4">table&lt;-<span class="kw">table</span>(foo1<span class="op">$</span>cld3,foo1<span class="op">$</span>textcat)</a>
+<a class="sourceLine" id="cb25-5" title="5">foo1&lt;-<span class="kw">as.data.frame</span>(<span class="kw">prop.table</span>(table,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb25-6" title="6"></a>
+<a class="sourceLine" id="cb25-7" title="7"></a>
+<a class="sourceLine" id="cb25-8" title="8"><span class="kw">ggplot</span>(foo1, <span class="kw">aes</span>(<span class="kw">reorder</span>(Var2, Freq),Var1)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb25-9" title="9"><span class="st">  </span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> Freq)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb25-10" title="10"><span class="st">  </span><span class="kw">scale_fill_gradient</span>(<span class="dt">low =</span> <span class="st">&quot;White&quot;</span>,<span class="dt">high =</span> <span class="st">&quot;Blue&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb25-11" title="11"><span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">axis.text.x=</span><span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span><span class="dv">1</span>))<span class="op">+</span><span class="kw">coord_flip</span>()</a></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/303-1.png" width="80%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">foo1 &lt;-foo <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">n=</span><span class="dv">1</span>)<span class="op">%&gt;%</span><span class="kw">group_by</span>(cld3) <span class="op">%&gt;%</span><span class="kw">summarise</span>(<span class="dt">n=</span><span class="kw">sum</span>(n))</a>
-<a class="sourceLine" id="cb5-2" title="2">foo1&lt;-foo<span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(foo1)<span class="op">%&gt;%</span><span class="kw">filter</span>(n<span class="op">&gt;</span><span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb5-3" title="3"></a>
-<a class="sourceLine" id="cb5-4" title="4">table&lt;-<span class="kw">table</span>(foo1<span class="op">$</span>cld3,foo1<span class="op">$</span>textcat)</a>
-<a class="sourceLine" id="cb5-5" title="5">foo1&lt;-<span class="kw">as.data.frame</span>(<span class="kw">prop.table</span>(table,<span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb5-6" title="6"></a>
-<a class="sourceLine" id="cb5-7" title="7"><span class="kw">ggplot</span>(foo1, <span class="kw">aes</span>(<span class="kw">reorder</span>(Var1, Freq),Var2)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-8" title="8"><span class="st">  </span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> Freq, <span class="dt">label=</span>Freq)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-9" title="9"><span class="st">  </span><span class="kw">scale_fill_gradient</span>(<span class="dt">low =</span> <span class="st">&quot;White&quot;</span>,<span class="dt">high =</span> <span class="st">&quot;Red&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb5-10" title="10"><span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">axis.text.x=</span><span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span><span class="dv">1</span>))<span class="op">+</span><span class="kw">coord_flip</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1">foo1 &lt;-foo <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">n=</span><span class="dv">1</span>)<span class="op">%&gt;%</span><span class="kw">group_by</span>(cld3) <span class="op">%&gt;%</span><span class="kw">summarise</span>(<span class="dt">n=</span><span class="kw">sum</span>(n))</a>
+<a class="sourceLine" id="cb26-2" title="2">foo1&lt;-foo<span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(foo1)<span class="op">%&gt;%</span><span class="kw">filter</span>(n<span class="op">&gt;</span><span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb26-3" title="3"></a>
+<a class="sourceLine" id="cb26-4" title="4">table&lt;-<span class="kw">table</span>(foo1<span class="op">$</span>cld3,foo1<span class="op">$</span>textcat)</a>
+<a class="sourceLine" id="cb26-5" title="5">foo1&lt;-<span class="kw">as.data.frame</span>(<span class="kw">prop.table</span>(table,<span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb26-6" title="6"></a>
+<a class="sourceLine" id="cb26-7" title="7"><span class="kw">ggplot</span>(foo1, <span class="kw">aes</span>(<span class="kw">reorder</span>(Var1, Freq),Var2)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb26-8" title="8"><span class="st">  </span><span class="kw">geom_tile</span>(<span class="kw">aes</span>(<span class="dt">fill =</span> Freq, <span class="dt">label=</span>Freq)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb26-9" title="9"><span class="st">  </span><span class="kw">scale_fill_gradient</span>(<span class="dt">low =</span> <span class="st">&quot;White&quot;</span>,<span class="dt">high =</span> <span class="st">&quot;Red&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb26-10" title="10"><span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">axis.text.x=</span><span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">45</span>, <span class="dt">hjust =</span><span class="dv">1</span>))<span class="op">+</span><span class="kw">coord_flip</span>()</a></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/303-2.png" width="80%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">library</span>(pheatmap)</a>
-<a class="sourceLine" id="cb6-2" title="2"><span class="kw">library</span>(viridis)</a>
-<a class="sourceLine" id="cb6-3" title="3"></a>
-<a class="sourceLine" id="cb6-4" title="4">table2&lt;-<span class="kw">as.data.frame</span>(table) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb6-5" title="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Freq=</span><span class="kw">log10</span>(Freq<span class="op">+</span><span class="dv">1</span>))  <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb6-6" title="6"><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> Var1, <span class="dt">values_from =</span> Freq) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb6-7" title="7"><span class="st">  </span><span class="kw">column_to_rownames</span>( <span class="dt">var =</span> <span class="st">&quot;Var2&quot;</span>)</a>
-<a class="sourceLine" id="cb6-8" title="8"><span class="kw">pheatmap</span>(table2 , <span class="dt">color =</span> <span class="kw">inferno</span>(<span class="dv">10</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1"><span class="kw">library</span>(pheatmap)</a>
+<a class="sourceLine" id="cb27-2" title="2"><span class="kw">library</span>(viridis)</a>
+<a class="sourceLine" id="cb27-3" title="3"></a>
+<a class="sourceLine" id="cb27-4" title="4">table2&lt;-<span class="kw">as.data.frame</span>(table) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb27-5" title="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Freq=</span><span class="kw">log10</span>(Freq<span class="op">+</span><span class="dv">1</span>))  <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb27-6" title="6"><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> Var1, <span class="dt">values_from =</span> Freq) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb27-7" title="7"><span class="st">  </span><span class="kw">column_to_rownames</span>( <span class="dt">var =</span> <span class="st">&quot;Var2&quot;</span>)</a>
+<a class="sourceLine" id="cb27-8" title="8"><span class="kw">pheatmap</span>(table2 , <span class="dt">color =</span> <span class="kw">inferno</span>(<span class="dv">10</span>))</a></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/304-1.png" width="80%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">chi2&lt;-<span class="st"> </span><span class="kw">chisq.test</span>(table)</a>
-<a class="sourceLine" id="cb7-2" title="2">chi2&lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(chi2<span class="op">$</span>residual)</a>
-<a class="sourceLine" id="cb7-3" title="3"></a>
-<a class="sourceLine" id="cb7-4" title="4">table2&lt;-chi2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">Freq=</span>Freq<span class="op">^</span><span class="dv">2</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-5" title="5"><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> Var1, <span class="dt">values_from =</span> Freq) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-6" title="6"><span class="st">  </span><span class="kw">column_to_rownames</span>( <span class="dt">var =</span> <span class="st">&quot;Var2&quot;</span>)</a>
-<a class="sourceLine" id="cb7-7" title="7"><span class="kw">pheatmap</span>(table2 , <span class="dt">color =</span> <span class="kw">inferno</span>(<span class="dv">20</span>, <span class="dt">direction=</span><span class="dv">1</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1">chi2&lt;-<span class="st"> </span><span class="kw">chisq.test</span>(table)</a>
+<a class="sourceLine" id="cb28-2" title="2">chi2&lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(chi2<span class="op">$</span>residual)</a>
+<a class="sourceLine" id="cb28-3" title="3"></a>
+<a class="sourceLine" id="cb28-4" title="4">table2&lt;-chi2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">Freq=</span>Freq<span class="op">^</span><span class="dv">2</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb28-5" title="5"><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> Var1, <span class="dt">values_from =</span> Freq) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb28-6" title="6"><span class="st">  </span><span class="kw">column_to_rownames</span>( <span class="dt">var =</span> <span class="st">&quot;Var2&quot;</span>)</a>
+<a class="sourceLine" id="cb28-7" title="7"><span class="kw">pheatmap</span>(table2 , <span class="dt">color =</span> <span class="kw">inferno</span>(<span class="dv">20</span>, <span class="dt">direction=</span><span class="dv">1</span>))</a></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/304-2.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="identifier-les-plagiats-et-réutilisations" class="section level3">
-<h3><span class="header-section-number">5.4.2</span> Identifier les plagiats et réutilisations</h3>
+<h3><span class="header-section-number">4.4.2</span> Identifier les plagiats et réutilisations</h3>
 <p>Dans la définition du corpus il peut être utile de se concentrer sur les contenus originaux</p>
 <p>Une autre question est de detection les contenus riginaux des contenu réutilisés ou carrément plagiés.</p>
 <p><a href="https://github.com/ropensci/textreuse" class="uri">https://github.com/ropensci/textreuse</a></p>
 <p><a href="https://journal.r-project.org/archive/2020/RJ-2020-017/index.html" class="uri">https://journal.r-project.org/archive/2020/RJ-2020-017/index.html</a></p>
 </div>
 <div id="identifier-les-fakes" class="section level3">
-<h3><span class="header-section-number">5.4.3</span> Identifier les fakes</h3>
+<h3><span class="header-section-number">4.4.3</span> Identifier les fakes</h3>
 <p><a href="https://github.com/sherylWM/Fake-News-Detection-using-Twitter" class="uri">https://github.com/sherylWM/Fake-News-Detection-using-Twitter</a></p>
 </div>
 <div id="identifier-les-trolls" class="section level3">
-<h3><span class="header-section-number">5.4.4</span> Identifier les trolls</h3>
+<h3><span class="header-section-number">4.4.4</span> Identifier les trolls</h3>
 <p><a href="http://golovchenko.github.io/tutorials/snatrolls" class="uri">http://golovchenko.github.io/tutorials/snatrolls</a></p>
 </div>
 <div id="identifier-les-bots" class="section level3">
-<h3><span class="header-section-number">5.4.5</span> Identifier les bots</h3>
+<h3><span class="header-section-number">4.4.5</span> Identifier les bots</h3>
 <p>botometer
 botchecks</p>
 <p>pour un benchmark</p>
