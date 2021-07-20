@@ -1,0 +1,40 @@
+# Annexes : quelques problèmes très techniques
+
+## La question de l'encodage
+
+Le lecteur sera soumis très rapidement au problème compliqué et agaçant de l'encodage des données. 
+
+
+## Jouer avec les formats de données
+
+Le modèle excell appartient au passé
+### json
+Le jason et la logique des liste
+### xml
+l'xml triomphant
+
+### des formats exotiques
+
+ris et bib pour la biblio
+
+
+## Adopter des formats "propres" (tidy)
+
+
+
+
+## Les limites du calcul
+
+Certaines opérations sont couteuse en calcul, notamment l'annotation.
+
+
+calculer les temps de calculs
+
+
+parralélisation
+
+optimisation
+
+
+
+

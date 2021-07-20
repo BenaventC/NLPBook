@@ -14,30 +14,40 @@ description: "This is a minimal example of using the bookdown package to write a
 
 # Préface
 
-![](Incantationfor6voices_scotthelmes2001.jpeg)
+![](./images/Incantationfor6voices_scotthelmes2001.jpeg)
 ^[Incantation for 6 voices Scott helmes, 2001. [Museum of Minessota](https://medium.com/minneapolis-institute-of-art/painting-a-picture-with-words-a0a3fef3cf63)]
 
 
 
-L'eco système r s'est enrichi ces dernière année à grande vitesse dans le domaine du traitement du langage naturels, l'objet de ce manuel a pour but de donnner une synthèses des ressources de r en matière de NLP. Sa vocation est pratique. La bibliographie synthétique en fait un essai d'état de l'art essentiel. 
+L'eco système r s'est enrichi ces dernière années à grande vitesse dans le domaine du traitement du langage naturel, l'objet de ce manuel a pour but d'en donner une synthèse. Sa vocation est pratique même si on y laissera germer quelques considérations plus méthodologiques, voire épistémologiques. 
+On ouvrira cependant chaque fois que c'est possibles aux questions théoriques et éthiques de ces méthodes. Leur réalisation computationnelle est le fruit souvent d'une longue histoire, au cours de laquelle les linguistes ont semé des idées essentielles qu'ont systématisé les informaticiens.
 
-On ouvrira cependant chaque fois que c'est possibles aux questions théoriques et éthiques de ces méthodes. Leur réalisation computationnelle est le fruit souvent d'une longue histoire, au cours de laquelle les linguistes ont semé des idées essentielles qu'ont systématisés les informaticiens.
+On soignera la bibliographie de manière synthétique pour en faire un état de l'art essentielet actualisée.
 
+La rédaction de l'ouvrage est mené avec une règle de reproductibilité et de transparence, c'est le pourquoi le choix de ce support et des jeux de données associés. 
 
-Il a pour but d'être reproductible, c'est pourquoi le choix de ce support et des jeux de données associés. 
+Il sera dynamique, modifié à mesure de nos cours, séminaires, ateliers et observations des lecteurs.
 
-Il sera dynamique, modifié à mesure de nos cours, séminaires et ateliers. 
+## Cours et séminaires
 
+La liste des cours et séminaires où il sera présenté et utilisé. 
 
-# Plan et outils du manuel
+ * Colloque Marketing digital 1-2 septembre 2021
+ * AFM decembre 2021
+ * Ed Sorbonne - février 2022
+ * Dauphine master 204 - octobre 2021
+ * Master Siren - Dauphine - mai 2022
+ * Toulouse
+ * Lille master Data Science
+
 
 ## La structure du livre
 
-L' analyse NLP peut être analysée comme un processus qui va de la production jusqu' à la diffusion des analyses. Elle est aussi traversée par des évolutions profondes de méthodes qui ont complexifié au sens formels les modèles initiaux. L'apprentissage submerge le comptage,et les catégorisations....
+L analyse NLP peut être analysée comme un processus qui va de la production jusqu' à la diffusion des analyses. Elle est aussi traversée par des évolutions profondes de méthodes qui ont complexifié au sens formel les modèles initiaux. L'apprentissage submerge le comptage,et les catégorisations....
 
 Rappelons nous que les modèles de langages désormais distribués par les grands acteurs, comprennent des dizaines, voir des centaines de milliards de paramètres. 
 
-Le plan suit une logique du simple au compliqué, de l'acquition au traitement.
+Le plan suit une logique qui va du simple au très compliqué, et de l'acquisition des données, de leur traitement et leur modélisation, jusqu'à la propagation....
 
 
  * acquisition des données : directe, api et scrapping
@@ -50,8 +60,8 @@ Le plan suit une logique du simple au compliqué, de l'acquition au traitement.
  * Topic analysis
  * ML
  * deep learning
- * translation
- * génératives
+ * translation : parsceque qu'il faut traiter des corpus multi lingual et que la communication peut aussi etre multilinguales. 
+ * génératives : parce que la prochaine étape c'est quand on appliquera ces méthode sur la productions textuelles des bots.
 
 ## Les jeux de données 
 
@@ -68,14 +78,25 @@ En voici la présentation  systématique.
 
 disponibles dans le [repositery](https://benaventc.github.io/NLPBook/) avec le code du book. Les amendements et améliorations sont souhaitées et attendues. 
 
-## Le cadre technique
+## Les ressources
 
 Ce  _livre_ est écrit en **Markdown** [@allaire_rmarkdown_2021] et  avec le package **Bookdown** [@R-bookdown]
 
-Le code s'appuie très largement sur **tidyverse** et emploie largement les ressources de **ggplot** . Les packages seront introduits au fur et à mesure. En voici la liste complète.
+Le code s'appuie très largement sur **tidyverse** et emploie largement les ressources de **ggplot** et **dplyr** . On recommande au lecteur de consulter donc les ouvrages suivants quand il s'interroge sur la construction des graphiques. On part du parti-pris que les lecteurs ont une connaissance satisfaisantes de ces outils génériques. Une mention particulère doit être faite sur la question du traitement du texte, **stringr** est aussi un des outils fondamentaux, 
+
+ * rmardown
+ * ggplot
+ * dplyr
+ * stringer
+ 
+
+###les packages 
 
 
-```{r pack, echo = TRUE, message=FALSE,warning=FALSE}
+Les packages seront introduits au fur et à mesure. En voici la liste complète.
+
+
+```{r pack, echo = TRUE, message=FALSE, warning=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message=FALSE,warning=FALSE)
 
 #boite à outils et viz
@@ -127,7 +148,12 @@ library(rvest)
 
 ```
 
+
+## Disponibilité
+
 L'ensemble du code est disponible [sur github](https://github.com/BenaventC/NLPBook). A ce stade c'est encore très embryonnaire. Les proches pourrons cependant y voir l'évolution du projet et de la [progression](https://benaventc.github.io/NLPBook/)
+
+## conventions
 
 Quelques conventions d'écriture du code r
 
@@ -145,8 +171,9 @@ Quelques conventions d'écriture du code r
 
 todo list :
 
-* insérer un compteur google analytics ( voir https://stackoverflow.com/questions/41376989/how-to-include-google-analytics-in-an-rmarkdown-generated-github-page)
-* modifier le titre en haut à gauche
-* vérifier le système de références voir ( https://doc.isara.fr/tuto-zothero-5-bibtex-rmarkdown-zotero/)
-* Vérifier la publication en pdf
+ * insérer un compteur google analytics ( voir https://stackoverflow.com/questions/41376989/how-to-include-google-analytics-in-an-rmarkdown-generated-github-page)
+ * modifier le titre en haut à gauche
+ * vérifier le système de références voir ( https://doc.isara.fr/tuto-zothero-5-bibtex-rmarkdown-zotero/)
+ * Vérifier la publication en pdf
+ * restructurer le plan
  

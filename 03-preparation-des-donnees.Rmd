@@ -16,7 +16,7 @@ Comment le rammener à une même formes est une question essentielle même si el
 
 Il faut donc traiter le texte, avant même de s'engager dans des modèles compliqués. Il faut savoir traiter des chaines de caractères pour en réduire la diversité, et en produire des chaines grammaticalement exacte. C'est un travail d'artisan, celui des des imprimeurs et de leurs coorecteur. Et en particulier d'un métier celui du [compositeur](http://www.textesrares.com/dupon/d376.htm), ou ouvrier de la casse,  qui distribue des caractères de plomb en séquences dans des casiers de bois. 
 
-[cmpositeur](compositeur.jpg)
+[cmpositeur]("./data/compositeur.jpg")
 
 L'artisan n'avait pas de choix, la précision était essentielle pour éviter la coquille. Le texte moderne, numérique, est l'objet de plus d'aller et retours. Les mots qu'on pianotent sont corrigés avant même d'être frappés. Les gestes techniques sont différents mais s'articulent sur une même idée : la langue écrite, du moins les langues alphabétiques sont des chaines de caractères dont la formation suit des règles fluctuantes à travers l'histoire mais contraignante à chaque moments. Les conventiosn peuvent changer, mais dans son temps elle s'imposent définitivement. Personne n'écrirait "deffert", pour dire "dessert". Et pourtant la graphie du s était un f jusqu'au XVI ème siècle (trouver la source)!
 https://www.cairn.info/revue-la-linguistique-2003-1-page-3.htm
@@ -63,8 +63,7 @@ des exemples :
  * la numération : fraise et fraise-s
  * le genre : épicier et épicière-s. 
  
- grepl
- 
+
 
 ### Un fondement profond et ancien
 
@@ -146,7 +145,7 @@ Dans les points précedents on suppose que la langue est homogène, mais les cor
 
 Le package textcat offre une solution basée sur la fréquence des ngrams (voir chapitre x). et compare la distribution du texte ciblée avec les distributions typiques des langues. Google propose un algo cpd3(https://github.com/google/cld3) plus sophistiqués dans la mesure où c'est un réseau de neurones qui fait le travail. Comparons les. 
 
-On utilise un jeu de donnée Airbnb sur Bruxelles qui accueillant les institutions européennnes est une des villes les plus cosmopolite qui soit avec des fonctionnaires venant de toutes l'europe et s'exprimant dans une large varité de langue, sans compter les représentations des autres pays du monde. 
+On utilise un jeu de donnée Airbnb sur Bruxelles qui accueillant les institutions européennnes est une des villes les plus cosmopolite qui soit avec des fonctionnaires venant de toutes l'europe et s'exprimant dans une large variété de langue, sans compter les représentations des autres pays du monde. 
 
 En terme de durée de calcul, la différence en temps de calcul est faramineuse 7 secondes contre 7 minutes, ce qui s'explique car texcat s'appuyant sur la distribution des ngrams doit les calculer pour les 36000 observations que nous avons retenues. 
 
@@ -155,7 +154,7 @@ Faisons un test sur un extrait du corpus Airbnb.
 
 
 ```{r 301, fig.cap='', out.width='80%', fig.asp=1, fig.align='center'}
-BXL2021 <- read_csv("reviewsBXL2021.csv")
+BXL2021 <- read_csv("./data/reviewsBXL2021.csv")
 BXL2021$Year<- as.numeric(format(as.Date(BXL2021$date, format="%Y-%m-%d"),"%Y"))
 
 BXL2021<- BXL2021 %>% filter(Year>2019) # on filtre sur la période de confinement
@@ -178,7 +177,7 @@ foo<-cbind(cld3, textcat)
 
 ```
 
-Examinons les résultats et la distribution des langues identifées par les deux systèmes. Si l'ordre est respecté. Des différences s'observent, cld3 identifie du chinois qui ne fait pas partie du répertoire de texcat. 
+Examinons les résultats et la distribution des langues identifiées par les deux systèmes. Si l'ordre est respecté, des différences s'observent, `cld3` identifie du chinois qui ne fait pas partie du répertoire de texcat. 
 
 
 ```{r 302, fig.cap='', out.width='80%', fig.asp=1, fig.align='center'}

@@ -37,7 +37,7 @@ Commençons par un exemple simple, à l'aide d'une courte citation de Max Weber.
 
 ```{r 501, fig.cap='Distribution du nombre de lettres', out.width='80%', fig.asp=.75, fig.align='center'}
 #Les données
-MaxWeber <- paste0("Bureaucratie: le moyen le plus rationnel que l’on connaisse pour exercer un contrôle impératif sur des êtres humains.")
+MaxWeber <- paste0("Bureaucratie: le moyen le plus rationnel que l’on connaisse pour exercer un contrôle impératif sur des êtres humains. la bureaucratie est une forme d'organisation générale caractérisée par la prépondérance des règles et de procédures qui sont appliquées de façon impersonnelle par des agents spécialisés. Ces agents appliquent les règles sans discuter des objectifs ou des raisons qui les fondent. Ils doivent faire preuve de neutralité et oublier leurs propres intérêts personnels au profit de l’intérêt général")
 
 #On tokenise, plus on transforme en dataframe le résultat.
 toc_maxweber<-tokenize_characters(MaxWeber)%>%
@@ -72,7 +72,7 @@ toc_maxweber<-tokenize_words(MaxWeber)%>%
 #On compte pour chaque token sa fréquence d'apparition
 foo<-toc_maxweber %>%mutate(n=1) %>% 
         group_by(tokens)%>% 
-        summarise(n=sum(n))%>%filter(n>0)
+        summarise(n=sum(n))%>%filter(n>4)
 
 #On représente par un diagramme en barre cette distribution des occurrences, en classant les tokens par fréquence
 ggplot(foo, aes(x=reorder(tokens,n), y=n))+
@@ -82,6 +82,9 @@ ggplot(foo, aes(x=reorder(tokens,n), y=n))+
 ```
 
 On constate que les deux mots les plus fréquents de cette citation sont un article indéfini et une préposition. Ces mots sont souvent superflus pour les analyses menées, il convient alors de les supprimer. C'est ce qu'on fait par la suite, en utilisant le package 'stopwords' qui comprend des listes de stopwords dans différentes langues.
+
+### Les mots
+
 
 ```{r 503, fig.cap='Distribution du nombre de mots, sans les stopwords', out.width='80%', fig.asp=.75, fig.align='center'}
 

@@ -5,7 +5,7 @@ liu ping est le fondateur de l'analyse du sentiment et dès 2012 en donne une sy
 On travaillera sur un corpus d'avis trip advisor, sur la période avant co
 
 ```{r 61, echo=TRUE}
-df<-readRDS("AvisTripadvisor.rds")
+df<-readRDS("./data/AvisTripadvisor.rds")
 ```
 
 ## Un exemple avec syuzhet

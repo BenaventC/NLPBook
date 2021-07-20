@@ -73,7 +73,7 @@ Un petit exemple avec le package `UDpipe`.
 library(udpipe)
 fr <- udpipe_download_model(language = "french")
 udmodel_french <- udpipe_load_model(file = "french-gsd-ud-2.5-191206.udpipe")
-Citations <- read_csv("Citations.csv")
+Citations <- read_csv("./data/Citations.csv")
 
 Flaubert<-Citations %>%
   filter(doc==1)
