@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapitre 10 Le retour des méthodes factorielles | NLP avec r et en français - un Manuel synthétique</title>
+  <title>Chapitre 4 Visualiser et réduire le corpus | NLP avec r et en français - un Manuel synthétique</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.22.3 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapitre 10 Le retour des méthodes factorielles | NLP avec r et en français - un Manuel synthétique" />
+  <meta property="og:title" content="Chapitre 4 Visualiser et réduire le corpus | NLP avec r et en français - un Manuel synthétique" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapitre 10 Le retour des méthodes factorielles | NLP avec r et en français - un Manuel synthétique" />
+  <meta name="twitter:title" content="Chapitre 4 Visualiser et réduire le corpus | NLP avec r et en français - un Manuel synthétique" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="analyse-du-sentiment.html"/>
-<link rel="next" href="vectorisation-du-corpus.html"/>
+<link rel="prev" href="constitution-du-corpus.html"/>
+<link rel="next" href="préparation-des-données.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -351,32 +351,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="le-retour-des-méthodes-factorielles" class="section level1">
-<h1><span class="header-section-number">Chapitre 10</span> Le retour des méthodes factorielles</h1>
-<p>D’un point de vue historique l’analyse factorielle est une idées de psychologue. D’ailleur un des meilleurs packages jamais développé est sans doute psych</p>
-<p>L’école française a choisit l’ACP, et ses dérivée appliquées à des données de comptage comme l’AFCM.</p>
-<p>Ces méthodes s’appuient sur des techniques de décomposition de matrice, et vise à réduire leur rang. Le problèmes qu’elle cherchent à résoudre est de réduire l’espace d’information.</p>
-<div id="retour-sur-lacp" class="section level2">
-<h2><span class="header-section-number">10.1</span> Retour sur l’ACP</h2>
-<p>L’ACP a été longtemps la méthode reine, elle est toujours fréquemmment utilisées.Elle vise à un but simple : représenter un ensemble de donnée comportant k variable à un petit nombre de combinaisons de ces variables qui représentent une grandes part de l’information.</p>
-<p>Historiquement elle a été développée pour analyser des matrices de corrélations multiples où X est une matrice de n individus et k variables ou mesure. Dans le domain textuel ce tableau correspond au dtm où les individus sont les documents et les colonnes les termes.</p>
-<p><span class="math inline">\(\Sigma=X*X^\top\)</span></p>
-<p>L’idée principale est de trouver des combinaisons linéaires des variables qui capture succéssivement une part maximale de la variance. La solution à ce problème revient à décomposer cette matrice en fonction d’un matrice de poids qui est determinée comme la matrice des valeur propre de <span class="math inline">\(\Sigma\)</span>.</p>
-<p><span class="math inline">\(\Sigma=F*V*F^\top\)</span></p>
-<p><a href="https://fr.wikipedia.org/wiki/Jean-Paul_Benz%C3%A9cri" class="uri">https://fr.wikipedia.org/wiki/Jean-Paul_Benz%C3%A9cri</a></p>
-<p><a href="https://www.math3ma.com/blog/understanding-entanglement-with-svd" class="uri">https://www.math3ma.com/blog/understanding-entanglement-with-svd</a></p>
-<p>X=FSF</p>
+<div id="visualiser-et-réduire-le-corpus" class="section level1">
+<h1><span class="header-section-number">Chapitre 4</span> Visualiser et réduire le corpus</h1>
+<div id="explorer-le-corpus" class="section level2">
+<h2><span class="header-section-number">4.1</span> Explorer le corpus</h2>
+<p>(attention, c’est un chapitre qui doit être par la suite détaché)</p>
+<p>Avant de procéder aux analyses du corpus, il est souvent utile de le représenter. On va utiliser le package Corpora explore à cette fin. Il permet de préparer un corpus et de le visualiser de manière interactive avec la génération d’une app shiny. Malheuresuement nous ne savons pas rendre compte de la dynamique de l’outil. On peut naviguer aisement dans l’ensemble de texte.</p>
+<p>On va utiliser une collection de donnée préparée avec Manel Benzarafa de l’Université paris Nanterre, et qui comprend l’intégralité des résumés, auteurs etc.. relatifs aux articles publiés dans PMP. Une base bibliographique intégrale. 1025 articles la compose.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1"><span class="kw">library</span>(readr)</a>
+<a class="sourceLine" id="cb26-2" title="2"><span class="co">#install.packages(&quot;corporaexplorer&quot;)</span></a>
+<a class="sourceLine" id="cb26-3" title="3"><span class="kw">library</span>(corporaexplorer)</a>
+<a class="sourceLine" id="cb26-4" title="4"></a>
+<a class="sourceLine" id="cb26-5" title="5"></a>
+<a class="sourceLine" id="cb26-6" title="6"><span class="kw">library</span>(readr)</a>
+<a class="sourceLine" id="cb26-7" title="7">PMP &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/PMPLast.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb26-8" title="8"></a>
+<a class="sourceLine" id="cb26-9" title="9">PMP&lt;-PMP <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb26-10" title="10"><span class="st">  </span><span class="kw">select</span>(Key, Author, Title, Issue, <span class="dv">3</span>, <span class="dv">11</span>)</a>
+<a class="sourceLine" id="cb26-11" title="11">PMP&lt;-PMP<span class="op">%&gt;%</span><span class="st"> </span><span class="kw">rename</span>(<span class="dt">Text=</span><span class="dv">6</span>, <span class="dt">Annee=</span><span class="dv">5</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb26-12" title="12"><span class="st">  </span><span class="kw">filter</span>(Text<span class="op">!=</span><span class="st">&quot;Null&quot;</span> <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(Annee))</a>
+<a class="sourceLine" id="cb26-13" title="13"></a>
+<a class="sourceLine" id="cb26-14" title="14"></a>
+<a class="sourceLine" id="cb26-15" title="15"></a>
+<a class="sourceLine" id="cb26-16" title="16">corpus &lt;-<span class="st"> </span><span class="kw">prepare_data</span>(PMP,</a>
+<a class="sourceLine" id="cb26-17" title="17">    <span class="dt">date_based_corpus =</span><span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb26-18" title="18">    <span class="dt">grouping_variable =</span> <span class="st">&quot;Annee&quot;</span>,                <span class="co"># change grouping variable</span></a>
+<a class="sourceLine" id="cb26-19" title="19"> <span class="dt">within_group_identifier =</span> <span class="st">&quot;Title&quot;</span>,</a>
+<a class="sourceLine" id="cb26-20" title="20"> <span class="dt">columns_doc_info =</span></a>
+<a class="sourceLine" id="cb26-21" title="21">        <span class="kw">colnames</span>(df)[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>],</a>
+<a class="sourceLine" id="cb26-22" title="22"> <span class="dt">tile_length_range =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">10</span>),</a>
+<a class="sourceLine" id="cb26-23" title="23">    <span class="dt">use_matrix =</span> <span class="ot">FALSE</span></a>
+<a class="sourceLine" id="cb26-24" title="24">)</a>
+<a class="sourceLine" id="cb26-25" title="25"><span class="co">#explore(corpus)</span></a></code></pre></div>
+<p>Dans la photo d’écran suivante, on teste les termes " politique" et “management”. Chaque tuile ( tile) représente un des 1025 abstracts qui composent le corpus. Les couleurs correspondent à la fréquence des deux termes.</p>
+<div class="figure">
+<img src="images/Corporaexplore.JPG" alt="Exploration des abstracts de PMP" />
+<p class="caption">Exploration des abstracts de PMP</p>
 </div>
-<div id="svd" class="section level2">
-<h2><span class="header-section-number">10.2</span> SVD</h2>
-<p>quelle différence avec PCA</p>
-<p><a href="https://stats.stackexchange.com/questions/134282/relationship-between-svd-and-pca-how-to-use-svd-to-perform-pca" class="uri">https://stats.stackexchange.com/questions/134282/relationship-between-svd-and-pca-how-to-use-svd-to-perform-pca</a></p>
-</div>
-<div id="lsa" class="section level2">
-<h2><span class="header-section-number">10.3</span> LSA</h2>
-</div>
-<div id="nlm" class="section level2">
-<h2><span class="header-section-number">10.4</span> NLM</h2>
 
 </div>
 </div>
@@ -385,8 +396,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="analyse-du-sentiment.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="vectorisation-du-corpus.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="constitution-du-corpus.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="préparation-des-données.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -418,7 +429,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/08-LSA-NMF.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-constitution-de-corpus.Rmd",
 "text": "Edit"
 },
 "history": {

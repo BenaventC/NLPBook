@@ -34,9 +34,10 @@ economie
 conclusion
 constitution-du-corpus
 lexploitation-de-base-de-données-textuelles
+jouer-avec-les-bases-bibliographiques
 scrapping
-des-problèmes-pratiques-juridiques-et-éthiques
 rvest-avec-r
+des-problèmes-pratiques-juridiques-et-éthiques
 les-api
 un-tour-dhorizon-des-api
 un-point-de-vue-plus-technique
@@ -45,7 +46,10 @@ la-gestion-des-documents
 extraire-du-texte-des-pdf
 la-numérisation-et-locr
 les-contenus-vocaux
+echantillonner-le-texte
 conclusion-1
+visualiser-et-réduire-le-corpus
+explorer-le-corpus
 préparation-des-données
 manipuler-des-chaines-de-caractères
 les-opérations-sur-les-chaînes-de-caractères
@@ -70,7 +74,6 @@ les-indices-de-lisibilité
 les-indices-de-complexité-lexicale
 conclusion-2
 tokenisation
-le-principe
 les-outils
 ngrams
 les-lettres
@@ -153,3 +156,9 @@ naives-bayes-2
 elastic-net-2
 rf-2
 art-of-featuring-2
+annexes-quelques-problèmes-très-techniques
+la-question-de-lencodage
+jouer-avec-les-formats-de-données
+des-formats-exotiques
+adopter-des-formats-propres-tidy
+les-limites-du-calcul

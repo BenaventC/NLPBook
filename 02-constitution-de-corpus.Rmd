@@ -1,9 +1,9 @@
 # Constitution du corpus
 
-__Objectifs du chapitre : __
+__Objectifs du chapitre : __ ** explorer différente techniques de collectes de données : exploitation de bases textuelles, méthodes de scrapping, APIS, extraction de document pdf, extration de texte dans des images, et une perspective oral avec les techniques de speech2 tex.**
 
 
-La constitution d'un corpus est la première étape d'un projet NLP. Il se définit d'abord par la constitution d'une collection de textes dont la provenance est la nature peut être diverse. Dans ce chapitre on va examiner plusieurs techniques de collecte.
+La constitution d'un corpus est la première étape d'un projet NLP. Il se définit d'abord par la constitution d'une collection de textes dont la provenance est la nature peut être diverse. Dans ce chapitre on va examiner plusieurs techniques de collecte, et on conclue avec quelques réflexions que la questions de la constitution de l'échantillon.
 
  * L'exploitation de bases textuelles
  * Les méthodes de scrapping
@@ -11,107 +11,132 @@ La constitution d'un corpus est la première étape d'un projet NLP. Il se défi
  * La collection de document pas que textuels
  * Les sources orales
 
-Un corpus reste un échantillon. Dans ce chapitre nous avons appris comment faire la cueillette dans les sources de textes et constituer matériellement un corpus.  Il reste à traiter la question de la représentativité. La collecte doit rester raisonnée.
-
-Les unités de texte. Une unité de texte : un chaine de caractère intégrée dans un document. Celui ci peut être un livre un article, une note, une transcription, 
-
- * Un document
- * Un ou des auteurs du document
- * Une date
- * Un endroit
- * Un contexte : les unités précedente, et subséquentes. 
-
-Unités de production et de reception, Un texte est produit et puis il est lu, peut-être.Analyser le texte peut se faire dans deux perspectives, celle de la production et celle de la réception. Les corpus doivent être construit en fonction de ce critère. 
-
-Examiner la question de l'engagement dans ce cadre est essentiel, certains acteurs sur un sujet donnée sont amenés à parler plus que les autres et développent un surcroit de voix. la question du biais de selection
-
-Un corpus est un ensemble de documents.  Ils peuvent être courts, les tweets, pas trop long - abstract articles court - long ( article de recherche, ou très long (livres).
-
-La collecte peut se faire d'abord sur des matériaux primaires, numérisé sous forme d'images, et dans lesquels en analysant les pixels on peut reconnaitre un texte. 
+et on conclue avec quelques réflexions que la questions de la constitution de l'échantillon.
 
 
 ## L'exploitation de base de données textuelles
 
-On commence par un exemple simple en utilisant la base europresse. l'objectif est de constituer un fichier de références bibliographiques, exploitable via r. Dans europresse , nous avons fait une recherche sur les articles comprenant le terme " vaccination" dans la presse nationale françaises, constituées de 14 titres. On retient les 150 derniers articles au 16 Juillet.
+On commence par un exemple simple en utilisant la base [europresse](http://www.europresse.com/fr/). l'objectif est de constituer un fichier de références bibliographiques, exploitable via r. 
 
-https://revtools.net/data.html#importing-to-r)
+Dans europresse , nous avons fait une recherche sur les articles comprenant le terme " vaccination" dans la presse nationale françaises, constituées de 14 titres. On retient les 150 derniers articles au 16 Juillet 2021.
+
+On utilise [revtools](https://revtools.net/data.html#importing-to-r) pour sa fonction d'importation des fichier *.RIS et de transformation en data frame, 
 
 ```{r 201, fig.cap='', out.width='80%',caption= "le traitement de la vaccination dans la presse nationale française", fig.asp=1, fig.align='center'}
-#library(revtools)
-df <- read_bibliography("./data/20210716042105.ris")
-head(df,3)
+library(revtools)
+
+
+df <- read_bibliography(iconv("./data/20210719013820.ris"))
+
+flextable(head(df,3))
 df<-df%>%
   mutate(jour=substring(DA,1,2))
 
-g21<-ggplot(df, aes(x=journal))+
-  geom_bar()+
-  coord_flip()+labs(x=NULL,y="Fréquence")
 g22<-ggplot(df, aes(x=jour))+
   geom_bar()+labs(x=NULL,y="Fréquence")+
-  geom_vline(xintercept=12, linetype="dashed", color = "red")
+  geom_vline(xintercept=12, linetype="dashed", color = "red")+
+  facet_grid(vars(journal))
+g22
 
-plot_grid(g21, g22, labels = c('A', 'B'), label_size = 12,ncol=1)
+#screen_topics()
+
 
 
 ```
 
 
+`revtools` n'est pas fait que pour importer des données au format bibliographique .ris, ou au format .bib, et de les transformer un tableau observations - variables ( bref, un dateframe). Il a des fonctions de visualisations rapides fort efficace. La plus spectaculaire est un outil de visualisation qui s'appuie sur deux modèles de détections de topics (ce sujet sera l'objet du chapitre 8), paramétrables de manière interactive en quelques minutes, et conçu avec `shiny`, le package star des graphes interactifs. 
 
-Prenons l'exemple de factiva
+C'est un super outils pour avoir un premier coup d'oeil sur les données, un plug in super pratique.  
 
-https://github.com/koheiw/newspapers
+On l'applique sur nos données.  L'allure de l'interface est la suivante.
+
+
+![screen_topic](./images/LDA_revtools.jpg)
+
+
+L'interface n'étant pas programmatique, on exporte quelques images en jpeg (un bouton dans l'interface permet de faire celà sans effort) et on les récupère avec `cowplot`, le package qui permet d'assembler des graphes et que nous utiliserons systématiquement dans ce cours. 
+
+
+```{r 202, fig.cap='', out.width='80%',caption= "Disctribution des topics et des document dans leur espace (ACP)", fig.asp=1, fig.align='center'}
+p1 <- ggdraw() + draw_image("./images/topic_espace.png")
+p2 <- ggdraw() + draw_image("./images/topic_topic.png")
+p3 <- ggdraw() + draw_image("./images/topic1.png")
+p4 <- ggdraw() + draw_image("./images/topic5.png")
+
+plot_grid(p1, p2 , ncol=2)
+```
+
+Et pour illustrer les graphiques des termes les plus proches du topic 1 et du topic 5. L'un est relatif à l'actualité austrlienne, l'autre à l'actualité anglaise. 
+
+```{r 203, fig.cap='', out.width='80%',caption= "La description des topic 1 et 5", fig.asp=1, fig.align='center'}
+
+plot_grid(p3, p4 , ncol=1)
+
+```
+La méthode est sympa, rapide, sur le pouce, mais pas suffisante pour aller audelà et noatmment comparer les lignes éditoriales des deux titres que nous avons choisis. A ce stade de l'analyse c'est déjà beaucoup.
+
+
+## Jouer avec les bases bibliographiques
+
+Fulltext
+
+https://books.ropensci.org/fulltext/data-sources.html
+
+
+
+
+
+
 
 
 ## Scrapping
 
-De ces deux approches on pourra considérer que la première correspond à un internet sauvage où la collecte d’information se traduit par une technique de chasseurs-cueilleurs, le glanage. Le recours aux APIs est civilisé, ne serait-ce parce qu'on introduit une sorte d’étiquette, des règles de courtoisie, un système de reconnaissance réciproque et d’attribution de droits. 
-Le scraping est l’activité qui consiste à moissonner les informations disponibles sur le net en simulant et en automatisant la lecture par un butineur. Elle consiste à construire un robot capable de lire et d’enregistrer les informations disponibles sous forme html puis à les distribuer (parsing) dans des tableaux structurés, selon une stratégie d’exploration du web préalablement définie.
+Le scrapping correspond à un internet sauvage où la collecte d’information se traduit par une technique de chasseurs-cueilleurs, le glanage. c'est l’activité qui consiste à moissonner les informations disponibles sur le net en simulant et en automatisant la lecture par un navigateur ( on préfère l'expression des quebecois : des butinuers). 
+
+Elle consiste à construire un robot capable de lire et d’enregistrer les informations disponibles sous forme html puis à les distribuer (parsing) dans des tableaux structurés, selon une stratégie d’exploration du web préalablement définie. En réalité le scrapping pose deux problèmes :
+
+ * celui de la structure de recherche. C'est le problème que relève les spiders, des robots qui recherchent dans les pages des liens, et vont de proche en proche, de lien en lien, pour explorer un domaine.Ils peuvent être plus systématique et prendre avantage de l'organisation d'un site web pour enummérer les pages. 
+ * celui de la collecte de l'information sur chacune des pages. Il s'appuie sur le principe que le langage html est un langage à balise où le contenu et le contenant sont clairement séparés. Par exemple,  dans le corps de texte d'une page on définira un titre par la balise <h1> dont l'instruction s'achève par la balise </h1>. On sépare ainsi clairement le contenu de la forme.
+
+`<body>
+
+  <h1>Un titre de niveau 1 (un gros titre)</h1>
+    <p>Un paragraphe.</p>
+
+    <h2>Un titre de niveau 2 (un sous titre)</h2>
+      <p>Un paragraphe.</p>
+
+      <h3>Un titre de niveau 3 (un sous-sous titre)</h3>
+        <p>Etc.</p>
+
+</body>
+`
+
+Ultérieurement on pourra définirs les propriété graphiques d'une balise par des CSS. par exemple avec ceci les paragraphes seront publiés en caractère bleu. 
+
+
+`p{
+    color: blue;
+}
+`
+
+Ce qui nous intéresse n'est pas la décoration, mais le fait que les développeurs définissent des balises spécifiques pour chacun des éléments de leurs page web, et que si nous savons les repérer , nous avons le moyen de mieux lire le texte. Les balises sont la cible du scrapping
+
+### rvest avec r
+
+
 De nombreuses ressources sont disponibles, mais pour en rester à r , le package rvest permet de réaliser des extractions simples mais suffisantes pour de nombreux usages. 
-
-Les caractéristiques clés du scraping :
- * La nécessité de programmer de manière ad hoc, en fonction des spécificités de chaque site. 
- * Des stratégies mécaniques, en boule de neige. 
-    
-
-Le langage html est un langage à balise
-
-Les balises sont la cible du scrapping
 
 une application rvest 
 
 https://www.r-bloggers.com/2018/10/first-release-and-update-dates-of-r-packages-statistics/
 
-
-
-### des problèmes pratiques, juridiques et éthiques
-
-La pratique du scrapping se heurte à différents problèmes éthiques et juridique. Si elle n'est pas interdite en tant que telle, elle se confronte à différents droits et principes éthiques
-
-En termes pratiques
-
- * Le risque de deny of service, c’est à dire de saturer ou de parasiter un système et de s’exposer à ses contre-mesures.
- * Le risque d'information parcellaires, tronquées, inexactes qui résultent de ces contre-mesures. Les producteurs développent des stratégies moins naives. L'exemple des pages numérotée par ordre de production auxquels on substitue un nombre au hasard pour annihilier l'information temporelle.
-
-En termes de droits Les conditions légales ne sont pas homogènes et relèvent de différents droits : 
-
- * de la propriété intellectuelle, 
- * du respect de la vie privée, 
- * du droit de la concurrence. 
-
-Cependant des facilités et tolérances sont souvent accordées quand c’est dans un objectif de recherche et que des précautions minimales d’anonymisation ou de pseudonymisation sont prises, et que les règles de conservation et de destruction des données sont précisées. 
-    
-En termes éthiques
-
- * Un principe éthique essentiel dans la recherche, et ailleurs, et de ne pas nuire à la socité dans son ensemble, hors cette technique participe à la “robotisation” du web (plus de 50% du trafic résulterait de la circulation des spiders , scrapers, sniffers et autres bots). 
- * Elle contribue à la complexification du web, et implique une consommation excessive de ressources energétiques.  
-
-### rvest avec r
-
 le package rvest est générique
 
 https://community.rstudio.com/t/scraping-messages-in-forum-using-rvest/27846/2
 
-```{r 202, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
+```{r 204, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
 
 library(rvest)
 
@@ -147,11 +172,36 @@ head(master_data)
 
 ```
 
+### Des problèmes pratiques, juridiques et éthiques
 
+La pratique du scrapping se heurte d'abord à une question technique. ce n'est pas un excercice facile, et il doit être confier à des spécialistes. Il se heurte aussi à différents problèmes d'ordre éthique et juridique. Si la pratique n'est pas interdite en tant que telle, elle se confronte à différents droits et principes éthiques
+
+En termes pratiques, le scrapping crée des risques pour les sites :
+
+ * Le risque de deny of service, c’est à dire de saturer ou de parasiter un système et de s’exposer à ses contre-mesures.
+ * Il contribue à la complexification du web, et implique une consommation excessive de ressources energétiques.  
+
+Et des risques pour la qualité dU recueil de données
+ 
+ * Le risque d'information parcellaires, tronquées, inexactes qui résultent de ces contre-mesures. Les producteurs développent des stratégies moins naives. L'exemple des pages numérotée par ordre de production auxquels on substitue un nombre au hasard pour annihilier l'information temporelle.
+ * le risque matériel de mal lire les informations, pour des raison d'encodage approximatifs.
+
+En termes de droits même les conditions légales relèvent de différents droits : 
+
+ * De la propriété intellectuelle, 
+ * Du respect de la vie privée, 
+ * Du droit de la concurrence qui sans l'interdire, condamne la copie laissant espérer qu'une transformation des données fasse qu'il y échappeR. 
+
+Cependant des facilités et tolérances sont souvent accordées quand c’est dans un objectif de recherche et que des précautions minimales d’anonymisation ou de pseudonymisation sont prises, et que les règles de conservation et de destruction des données sont précisées. 
+    
+En termes éthiques
+
+ * Un principe éthique essentiel dans la recherche, et ailleurs, et de ne pas nuire à la soci2té dans son ensemble, hors cette technique participe à la “robotisation” du web (plus de 50% du trafic résulterait de la circulation des spi.ders , scrapers, sniffers et autres bots, comme dans la forêt une éthique écologique revient à préveler le minimal nécessaire pour l'étude entreprise
+ 
 
 ## les API
 
-Les API doivent être considérées comme la voie normale d'accès à l'information, du moins en droit. Elles relèvent du contrat. 
+Les API doivent être considérées comme la voie normale d'accès à l'information, du moins en droit. Elles relèvent du contrat. Le recours aux APIs est civilisé, ne serait-ce parce qu'on introduit une sorte d’étiquette, des règles de courtoisie, un système de reconnaissance réciproque et d’attribution de droits. 
 
 Sur le plan méthodologique elles présentent d'avantage de donner aux requêtes un caractère reproductible , mêmes si les bases visées peuvent varier. Elles asurent une grande fiabilité des données.
 
@@ -196,7 +246,7 @@ L'authentification ne nécesssite par de clé API, il suffit d'avoir son compte 
 https://developer.twitter.com/en/docs/tutorials/getting-started-with-r-and-v2-of-the-twitter-api
 
 
-```{r 203, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9, eval=FALSE }
+```{r 205, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9, eval=FALSE }
 #une boucle pour multiplier les hashtag 
 
 x<-c("#getaround","#Uber", "#heetch")
@@ -222,7 +272,7 @@ foo<-df %>% select(account_lang, geo_coords,country_code, country, account_lang,
 On laisse le lecteur explorer les différentes fonctionnalités du package. On aime cependant celle-ci qui sample le flux courrant au taux annoncé de 1%. Voici l'extraction de ce qui se dit en france pendant 10 mn (600s). La procédure peut donner une sorte de benchmark auquel on peut comparer une recherche plus spécifique. 
 
 
-```{r 210, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9, eval=FALSE}
+```{r 206, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9, eval=FALSE}
 
 
 rt <- stream_tweets(lookup_coords("france"), timeout = 600)
@@ -252,7 +302,7 @@ Le package [pdftools](https://ropensci.org/blog/2016/03/01/pdftools-and-jeroen/
 
 Chaque page est contenue dans une ligne. 
 
-```{r 211, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
+```{r 207, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
 library(pdftools)
 
 info <- pdf_info("./pdf/2021neoliberalismegouverner_Meunier_Esprit.pdf")
@@ -284,7 +334,7 @@ Il va falloir traiter ce texte en analysant précisément sa composition. Et en 
 On va utiliser des fonctions de traitement de chaines de caractère avec Stringret le recours à l'art ( ici simple) des regex auxquels on consacre un développement dans le chapitres X. 
 
 
-```{r 212, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
+```{r 208, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
 tex<- as.data.frame(text)
 tex[1,]
 t_reg<-str_replace(tex$text,"[\\s+].*Meunier[\n]+", " ") # entete droite
@@ -363,7 +413,7 @@ https://gabriben.github.io/NLP.html#introduction
 
 
 
-```{r 214, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
+```{r 209, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
 
 library(tesseract)
 
@@ -397,8 +447,29 @@ La tradition méthodologique de la sociologie est celle de l'entretien, avec tou
 
 On peut désormais enregistré des réaction par des interfaces vocales. le speech to text est de plus en plus efficace, voir l'API de google.
 
+Il existe déja des packages sur r qui permettent d'accéder aux solutions de google langage qui necessite une clé d'API. 
 
-Il existe déja des package sur r
+https://cran.r-project.org/web/packages/googleLanguageR/vignettes/setup.html
+
+## Echantillonner le texte
+
+Un corpus reste un échantillon. Dans ce chapitre nous avons appris comment faire la cueillette dans les sources de textes et constituer matériellement un corpus.  Il reste à traiter la question de la représentativité. La collecte doit rester raisonnée.
+
+Les unités de texte. Une unité de texte : un chaine de caractère intégrée dans un document. Celui ci peut être un livre un article, une note, une transcription, 
+
+ * Un document
+ * Un ou des auteurs du document
+ * Une date
+ * Un endroit
+ * Un contexte : les unités précedente, et subséquentes. 
+
+Unités de production et de reception, Un texte est produit et puis il est lu, peut-être.Analyser le texte peut se faire dans deux perspectives, celle de la production et celle de la réception. Les corpus doivent être construit en fonction de ce critère. 
+
+Examiner la question de l'engagement dans ce cadre est essentiel, certains acteurs sur un sujet donnée sont amenés à parler plus que les autres et développent un surcroit de voix. la question du biais de selection
+
+Un corpus est un ensemble de documents.  Ils peuvent être courts, les tweets, pas trop long - abstract articles court - long ( article de recherche, ou très long (livres).
+
+La collecte peut se faire d'abord sur des matériaux primaires, numérisés sous forme d'images, et dans lesquels en analysant les pixels on peut reconnaitre un texte. 
 
 
 ## Conclusion
@@ -416,4 +487,48 @@ Dans ce chapitre nous aurons égratigné des sujets techniques de constitution d
  On observera l'étendue des domaines à exploiter.
  
  
+# Visualiser et réduire le corpus
+
+
+## Explorer le corpus
+ 
+ (attention, c'est un chapitre qui doit être par la suite détaché)
+ 
+Avant de procéder aux analyses du corpus, il est souvent utile de le représenter. On va utiliser le package Corpora explore à cette fin. Il permet de préparer un corpus et de le visualiser de manière interactive avec la génération d'une app shiny. Malheuresuement nous ne savons pas rendre compte de la dynamique de l'outil. On peut naviguer aisement dans l'ensemble de texte.
+
+On va utiliser une collection de donnée préparée avec Manel Benzarafa de l'Université paris Nanterre, et qui comprend l'intégralité des résumés, auteurs etc.. relatifs aux articles publiés dans PMP. Une base bibliographique intégrale. 1025 articles la compose.
+
+```{r 212, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
+library(readr)
+#install.packages("corporaexplorer")
+library(corporaexplorer)
+
+
+library(readr)
+PMP <- read_csv("data/PMPLast.csv")
+
+PMP<-PMP %>% 
+  select(Key, Author, Title, Issue, 3, 11)
+PMP<-PMP%>% rename(Text=6, Annee=5) %>% 
+  filter(Text!="Null" & !is.na(Annee))
+
+
+
+corpus <- prepare_data(PMP,
+    date_based_corpus =FALSE,
+    grouping_variable = "Annee",                # change grouping variable
+ within_group_identifier = "Title",
+ columns_doc_info =
+        colnames(df)[1:4],
+ tile_length_range = c(2, 10),
+    use_matrix = FALSE
+)
+#explore(corpus)
+
+
+```
+
+Dans la photo d'écran suivante, on teste les termes " politique" et "management". Chaque tuile ( tile) représente un des 1025 abstracts qui composent le corpus. Les couleurs correspondent à la fréquence des deux termes. 
+
+![Exploration des abstracts de PMP](./images/Corporaexplore.jpg)
 

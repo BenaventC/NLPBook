@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapitre 10 Le retour des méthodes factorielles | NLP avec r et en français - un Manuel synthétique</title>
+  <title>Chapitre 17 Annexes : quelques problèmes très techniques | NLP avec r et en français - un Manuel synthétique</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.22.3 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapitre 10 Le retour des méthodes factorielles | NLP avec r et en français - un Manuel synthétique" />
+  <meta property="og:title" content="Chapitre 17 Annexes : quelques problèmes très techniques | NLP avec r et en français - un Manuel synthétique" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapitre 10 Le retour des méthodes factorielles | NLP avec r et en français - un Manuel synthétique" />
+  <meta name="twitter:title" content="Chapitre 17 Annexes : quelques problèmes très techniques | NLP avec r et en français - un Manuel synthétique" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="analyse-du-sentiment.html"/>
-<link rel="next" href="vectorisation-du-corpus.html"/>
+<link rel="prev" href="modèles-génératifs.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -351,32 +351,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="le-retour-des-méthodes-factorielles" class="section level1">
-<h1><span class="header-section-number">Chapitre 10</span> Le retour des méthodes factorielles</h1>
-<p>D’un point de vue historique l’analyse factorielle est une idées de psychologue. D’ailleur un des meilleurs packages jamais développé est sans doute psych</p>
-<p>L’école française a choisit l’ACP, et ses dérivée appliquées à des données de comptage comme l’AFCM.</p>
-<p>Ces méthodes s’appuient sur des techniques de décomposition de matrice, et vise à réduire leur rang. Le problèmes qu’elle cherchent à résoudre est de réduire l’espace d’information.</p>
-<div id="retour-sur-lacp" class="section level2">
-<h2><span class="header-section-number">10.1</span> Retour sur l’ACP</h2>
-<p>L’ACP a été longtemps la méthode reine, elle est toujours fréquemmment utilisées.Elle vise à un but simple : représenter un ensemble de donnée comportant k variable à un petit nombre de combinaisons de ces variables qui représentent une grandes part de l’information.</p>
-<p>Historiquement elle a été développée pour analyser des matrices de corrélations multiples où X est une matrice de n individus et k variables ou mesure. Dans le domain textuel ce tableau correspond au dtm où les individus sont les documents et les colonnes les termes.</p>
-<p><span class="math inline">\(\Sigma=X*X^\top\)</span></p>
-<p>L’idée principale est de trouver des combinaisons linéaires des variables qui capture succéssivement une part maximale de la variance. La solution à ce problème revient à décomposer cette matrice en fonction d’un matrice de poids qui est determinée comme la matrice des valeur propre de <span class="math inline">\(\Sigma\)</span>.</p>
-<p><span class="math inline">\(\Sigma=F*V*F^\top\)</span></p>
-<p><a href="https://fr.wikipedia.org/wiki/Jean-Paul_Benz%C3%A9cri" class="uri">https://fr.wikipedia.org/wiki/Jean-Paul_Benz%C3%A9cri</a></p>
-<p><a href="https://www.math3ma.com/blog/understanding-entanglement-with-svd" class="uri">https://www.math3ma.com/blog/understanding-entanglement-with-svd</a></p>
-<p>X=FSF</p>
+<div id="annexes-quelques-problèmes-très-techniques" class="section level1">
+<h1><span class="header-section-number">Chapitre 17</span> Annexes : quelques problèmes très techniques</h1>
+<div id="la-question-de-lencodage" class="section level2">
+<h2><span class="header-section-number">17.1</span> La question de l’encodage</h2>
+<p>Le lecteur sera soumis très rapidement au problème compliqué et agaçant de l’encodage des données.</p>
 </div>
-<div id="svd" class="section level2">
-<h2><span class="header-section-number">10.2</span> SVD</h2>
-<p>quelle différence avec PCA</p>
-<p><a href="https://stats.stackexchange.com/questions/134282/relationship-between-svd-and-pca-how-to-use-svd-to-perform-pca" class="uri">https://stats.stackexchange.com/questions/134282/relationship-between-svd-and-pca-how-to-use-svd-to-perform-pca</a></p>
+<div id="jouer-avec-les-formats-de-données" class="section level2">
+<h2><span class="header-section-number">17.2</span> Jouer avec les formats de données</h2>
+<p>Le modèle excell appartient au passé
+### json
+Le jason et la logique des liste
+### xml
+l’xml triomphant</p>
+<div id="des-formats-exotiques" class="section level3">
+<h3><span class="header-section-number">17.2.1</span> des formats exotiques</h3>
+<p>ris et bib pour la biblio</p>
 </div>
-<div id="lsa" class="section level2">
-<h2><span class="header-section-number">10.3</span> LSA</h2>
 </div>
-<div id="nlm" class="section level2">
-<h2><span class="header-section-number">10.4</span> NLM</h2>
+<div id="adopter-des-formats-propres-tidy" class="section level2">
+<h2><span class="header-section-number">17.3</span> Adopter des formats “propres” (tidy)</h2>
+</div>
+<div id="les-limites-du-calcul" class="section level2">
+<h2><span class="header-section-number">17.4</span> Les limites du calcul</h2>
+<p>Certaines opérations sont couteuse en calcul, notamment l’annotation.</p>
+<p>calculer les temps de calculs</p>
+<p>parralélisation</p>
+<p>optimisation</p>
 
 </div>
 </div>
@@ -385,8 +386,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="analyse-du-sentiment.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="vectorisation-du-corpus.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="modèles-génératifs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -418,7 +419,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/08-LSA-NMF.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/15-Annexes.Rmd",
 "text": "Edit"
 },
 "history": {
