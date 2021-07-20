@@ -3,11 +3,10 @@
 ## _Objectifs du chapitre_
 
 * Découper un texte en _tokens_
-* 
 * Visualiser les ngrams du texte
 * Identifier les ngrams pertinents et les transformer en _tokens_
 
-### Les outils
+## Les outils
 
 * Jeu de données : une citation de Max Weber et un extrait du corpus Airbnb
 * Packages utilisés : [`tokenizer`](https://cran.r-project.org/web/packages/tokenizers/vignettes/introduction-to-tokenizers.html) ; [`quanteda`](https://quanteda.io) ; ['stopwords'](https://github.com/quanteda/stopwords)
