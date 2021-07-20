@@ -61,7 +61,8 @@ ggplot(foo, aes(x=reorder(tokens,n), y=n))+
 
 ```
 
-5le principe de textcat est fondée sur ces ngram de lettre. Chaque langue se charactérise par une distribution particulière des ngrams. Pour décider de l'appartenance d'un text à une langue, si on dispose des profils de distribution, on comparera la distribution des ngrams du texte à ces références. On pourra ainsi calculer une distance et attribuer le texte à la langue dont il est le plus proche.
+
+le principe de textcat est fondée sur ces ngram de lettre. Chaque langue se charactérise par une distribution particulière des ngrams. Pour décider de l'appartenance d'un text à une langue, si on dispose des profils de distribution, on comparera la distribution des ngrams du texte à ces références. On pourra ainsi calculer une distance et attribuer le texte à la langue dont il est le plus proche.
 
 ### Les mots
 

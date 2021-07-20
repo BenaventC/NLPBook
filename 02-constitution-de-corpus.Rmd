@@ -38,7 +38,7 @@ g22<-ggplot(df, aes(x=jour))+
   facet_grid(vars(journal))
 g22
 
-#screen_topics()
+screen_topics()
 
 
 
