@@ -124,7 +124,7 @@ Il peuvent être consécutifs, ou être
 
 
 
-```{r 502, fig.cap='Distribution du nombre de mots par post', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 505, fig.cap='Distribution du nombre de mots par post', out.width='80%', fig.asp=.75, fig.align='center'}
 toc_maxweber<-tokenize_character_shingles(MaxWeber,n=3, n_min=1) %>%
         as.data.frame()%>%rename(tokens=1)
 ft<-flextable(head(toc_maxweber))

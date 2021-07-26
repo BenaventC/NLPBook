@@ -1,9 +1,9 @@
 # Constitution du corpus
 
-__Objectifs du chapitre : __ ** explorer différente techniques de collectes de données : exploitation de bases textuelles, méthodes de scrapping, APIS, extraction de document pdf, extration de texte dans des images, et une perspective oral avec les techniques de speech2 tex.**
+__Objectifs du chapitre : __ ** explorer différente techniques de collectes de données : exploitation de bases textuelles, méthodes de scrapping, APIS, extraction de document pdf, extration de texte dans des images, et une perspective orale avec les techniques de speech2 tex.**
 
 
-La constitution d'un corpus est la première étape d'un projet NLP. Il se définit d'abord par la constitution d'une collection de textes dont la provenance est la nature peut être diverse. Dans ce chapitre on va examiner plusieurs techniques de collecte, et on conclue avec quelques réflexions que la questions de la constitution de l'échantillon.
+La constitution du corpus est la première étape d'un projet NLP. Il se définit d'abord par la constitution d'une collection de textes dont la provenance est la nature peut être diverse. Dans ce chapitre on va examiner plusieurs techniques de collecte : 
 
  * L'exploitation de bases textuelles
  * Les méthodes de scrapping
@@ -11,20 +11,19 @@ La constitution d'un corpus est la première étape d'un projet NLP. Il se défi
  * La collection de document pas que textuels
  * Les sources orales
 
-et on conclue avec quelques réflexions que la questions de la constitution de l'échantillon.
+On conclue avec quelques réflexions sur la question de la constitution de l'échantillon.
 
 
 ## L'exploitation de base de données textuelles
 
-On commence par un exemple simple en utilisant la base [europresse](http://www.europresse.com/fr/). l'objectif est de constituer un fichier de références bibliographiques, exploitable via r. 
+On commence par un exemple simple en utilisant la base [Europresse](http://www.europresse.com/fr/). l'objectif est de constituer un fichier de références bibliographiques, exploitable via r. 
 
-Dans europresse , nous avons fait une recherche sur les articles comprenant le terme " vaccination" dans la presse nationale françaises, constituées de 14 titres. On retient les 150 derniers articles au 16 Juillet 2021.
+Dans Europresse , nous avons fait une recherche sur les articles comprenant le terme " vaccination" dans la presse nationale françaises, constituées de 14 titres. On retient les 150 derniers articles au 16 Juillet 2021.
 
-On utilise [revtools](https://revtools.net/data.html#importing-to-r) pour sa fonction d'importation des fichier *.RIS et de transformation en data frame, 
+On utilise [revtools](https://revtools.net/data.html#importing-to-r) pour sa fonction d'importation des fichiers `*.RIS` et de sa transformation en dataframe.  
 
 ```{r 201, fig.cap='', out.width='80%',caption= "le traitement de la vaccination dans la presse nationale française", fig.asp=1, fig.align='center'}
-library(revtools)
-
+#library(revtools)
 
 df <- read_bibliography(iconv("./data/20210719013820.ris"))
 
@@ -38,22 +37,18 @@ g22<-ggplot(df, aes(x=jour))+
   facet_grid(vars(journal))
 g22
 
-screen_topics()
+#screen_topics() #fonction de digramme interactif 
 
 
 
 ```
 
 
-`revtools` n'est pas fait que pour importer des données au format bibliographique .ris, ou au format .bib, et de les transformer un tableau observations - variables ( bref, un dateframe). Il a des fonctions de visualisations rapides fort efficace. La plus spectaculaire est un outil de visualisation qui s'appuie sur deux modèles de détections de topics (ce sujet sera l'objet du chapitre 8), paramétrables de manière interactive en quelques minutes, et conçu avec `shiny`, le package star des graphes interactifs. 
+`revtools` n'est pas fait que pour importer des données au format bibliographique .ris, ou au format .bib, et de les transformer un tableau observations/variables. Il a des fonctions de visualisations rapides fort efficaces. La plus spectaculaire est un outil de visualisation qui s'appuie sur deux modèles de détections de topics (ce sujet sera l'objet du chapitre 8), paramétrables de manière interactive en quelques minutes, et conçu avec `shiny`, le package star des graphes interactifs. 
 
-C'est un super outils pour avoir un premier coup d'oeil sur les données, un plug in super pratique.  
-
-On l'applique sur nos données.  L'allure de l'interface est la suivante.
-
+C'est un super outil pour avoir un premier coup d'oeil sur les données de manière interactive. On l'applique sur nos données.  L'allure de l'interface est donnée dans la copie d'écran suivante.
 
 ![screen_topic](./images/LDA_revtools.jpg)
-
 
 L'interface n'étant pas programmatique, on exporte quelques images en jpeg (un bouton dans l'interface permet de faire celà sans effort) et on les récupère avec `cowplot`, le package qui permet d'assembler des graphes et que nous utiliserons systématiquement dans ce cours. 
 
@@ -65,6 +60,8 @@ p3 <- ggdraw() + draw_image("./images/topic1.png")
 p4 <- ggdraw() + draw_image("./images/topic5.png")
 
 plot_grid(p1, p2 , ncol=2)
+plot_grid(p3, p4 , ncol=2)
+
 ```
 
 Et pour illustrer les graphiques des termes les plus proches du topic 1 et du topic 5. L'un est relatif à l'actualité austrlienne, l'autre à l'actualité anglaise. 
@@ -291,65 +288,63 @@ https://cran.r-project.org/web/packages/fulltext/fulltext.pdf
 ### Extraire du texte des pdf
 
 Le package [pdftools](https://ropensci.org/blog/2016/03/01/pdftools-and-jeroen/
-) est parfaitement adapté à la tâche. Des fonctions simples extraient différents éléments du pdf :
- * les information relative au document pdf lui-même
+) est parfaitement adapté à la tâche. 
+
+Des fonctions simples extraient différents éléments du pdf :
+
+ * les information relative au document pdf lui-même 
  * La liste des polices employées
  * Les attachements
  * La table des matières ( si elle a été encodée)
  * et naturellement le texte dans un ordre de droite à gauche et de ligne à ligne, reconnaissant cependant les retrour chariot, et sauts de lignes.
  
- 
-
-Chaque page est contenue dans une ligne. 
+Chaque page est contenue dans une ligne. On comprendra que l'extraction va nous donner un texte en vrac!
 
 ```{r 207, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
 library(pdftools)
 
-info <- pdf_info("./pdf/2021neoliberalismegouverner_Meunier_Esprit.pdf")
-info
+info <- pdf_info("./pdf/2021neoliberalismegouverner_Meunier_Esprit.pdf") #les meta donnée du fichier
 
-fonts <- pdf_fonts("./pdf/2021neoliberalismegouverner_Meunier_Esprit.pdf")
+fonts <- pdf_fonts("./pdf/2021neoliberalismegouverner_Meunier_Esprit.pdf") # les polices utilisée dans le fichier
 
-files <- pdf_attachments("./pdf/2021neoliberalismegouverner_Meunier_Esprit.pdf")
+files <- pdf_attachments("./pdf/2021neoliberalismegouverner_Meunier_Esprit.pdf") # les attachements
 
-toc <- pdf_toc("./pdf/2021neoliberalismegouverner_Meunier_Esprit.pdf") #il n'y a pas de table des matière dans ce texte
+toc <- pdf_toc("./pdf/2021neoliberalismegouverner_Meunier_Esprit.pdf") #il n'y a pas de table des matières dans ce texte
+#mais ce pourrait être utile
 
-text <- pdf_text("./pdf/2021neoliberalismegouverner_Meunier_Esprit.pdf")
-cat(text[[1]]) # pour afficher le texte de la page 1
+text <- pdf_text("./pdf/2021neoliberalismegouverner_Meunier_Esprit.pdf") #extraire le texte, avec ses éléments de mise en page
+
+cat(text[[1]]) # pour afficher le texte de la première page
 
 
 ```
 
 
-Il va falloir traiter ce texte en analysant précisément sa composition. Et en définissant une séquence d'opérations logiques qui permette un premier nettoyage du texte. Dans l'exemple on va de plus essayer de respecter la structure en paragraphe du texte.
+Le texte extrait n'est pas directement utilisable, Il va falloir le traiter en analysant précisément sa composition, et en définissant une séquence d'opérations logiques qui permettent un premier nettoyage du texte. Dans l'exemple,  on va de plus essayer de respecter la structure en paragraphes du texte. L'ordre des opérations est le suivant
 
  * Suprimer haut et bas de pages
  * Supprimer les sauts de ligne
  * Identifier les sauts de paragraphe
  * Enlever les notes de bas de page
  * Corriger l'hyphénation ()
- * regrouper les document en un seul bloc de texte
+ * Grouper les document en un seul bloc de texte
  * le splitter en autant de paragraphes. 
 
-On va utiliser des fonctions de traitement de chaines de caractère avec Stringret le recours à l'art ( ici simple) des regex auxquels on consacre un développement dans le chapitres X. 
+On va utiliser des fonctions de traitement de chaines de caractère avec Stringret le recours à l'art (ici simple, voire minimal) des regex auxquels on consacre un développement dans le chapitre X. (il va falloir gérer les réferences internes !!!!) 
 
 
 ```{r 208, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
 tex<- as.data.frame(text)
 tex[1,]
-t_reg<-str_replace(tex$text,"[\\s+].*Meunier[\n]+", " ") # entete droite
-## on selectionne tout bloc de texte qui commence par un nombre indéterminée de blanc qui s'achève par n'importe quel caractère répétés mais terimé par la séquence Meunier suivie de sauts de ligne.
+t_reg<-str_replace(tex$text,"[\\s+].*Meunier[\n]+", " ") # entete droite : on selectionne tout bloc de texte qui commence par un nombre indéterminée de blanc qui s'achève par n'importe quel caractère répétés mais terminé par la séquence Meunier suivie de sauts de ligne.
 t_reg<-str_replace(t_reg,"[\\s+].*gouverner[\n]+", " ") # entete gauche
 t_reg<-str_replace_all(t_reg,"[\\s+].*2021[\n]", " ") # bas de page  gauche
 t_reg<-str_replace_all(t_reg,"ESPRIT.*[\n]", " ") # bas de page droit
 
 #on marque les paragraphes avec la chaine XXX pour les splitter dans un second temps
-
-
 t_reg<-str_replace_all(t_reg,"\n\n\n", "XXX") 
 
 # On supprime les saut de ligne en les remplaçant par un espace
-
 t_reg<-str_replace_all(t_reg,"[\n]", " ")
 
 #on enlève les notes de bas de page
@@ -359,12 +354,9 @@ t_reg<-str_replace_all(t_reg,"\\d\\s[\\-].*XXX", "XXX")
 
 t<-paste(unlist(t(t_reg)), collapse=" ")
 
-
-
 #on enlève les notes dans le texte
 
 t<-str_replace_all(t,"[A-Z|a-z]+\\d\\s[\\-]", " ")
-
 t<-str_replace_all(t,"\\d\\d\\s[\\-]", " ")
 
 #hyphenation
@@ -383,35 +375,36 @@ t2<-as.data.frame(t(t))
 ```
 
 
-Plus les textes sont standardisés et plus simple est le processus d'importation des pdf. Si l'on souhaite aller plus loin on recommande par exemple https://ropensci.org/blog/2018/12/14/pdftools-20/ pour extraire un tableau. ( à développer en 4 ou 5 lignes avec des références)
+Plus les textes sont standardisés et plus facile est le processus d'importation des pdf. 
+
+Si l'on souhaite aller plus loin on recommande par exemple https://ropensci.org/blog/2018/12/14/pdftools-20/ pour extraire un tableau. ( à développer en 4 ou 5 lignes avec des références)
 
 
 ### la numérisation et l'OCR
 
-D'immenses archives sont numérisées, ce qui signifie qu'on en a prise une image. L'information est contenu dans les pixels, et l'enjeu est de reconnaitre parmis eux des formes caractéristiques : alphabet, ponctuation à travers de multiples variations. Les plus fortes sont celles manuscrites, mais l'écriture typographique est aussi très variables dans ses formes. C'est un enjeu industriel anciens. La reconnaissance optique des caractère a cependant fait d'immense progrès et atteint des niveau de performance élevé.
+D'immenses archives sont numérisées, ce qui signifie qu'on en a prise une image. L'information est contenu dans les pixels, et l'enjeu est de reconnaitre parmis eux des formes caractéristiques : alphabet, ponctuation à travers de multiples variations. Les plus fortes sont celles manuscrites, mais l'écriture typographique est aussi très variables dans ses formes. C'est un enjeu industriel anciens. La reconnaissance optique des caractère a cependant fait d'immense progrès et atteint des niveau de performance élevé.( ref)
 
-Le traitement des adresses a sans doute été le problème principal qui a stimulé les technologies de l'OCR. La qualité du matériaux est essentiel, et s'assurer que les expéditeurs choisissent un modèle conventiel et normé de rédaction de la l'adresse est une condition de leur succcès. La situation idéale ressemble à ceci.
+Le traitement des adresses a été le problème qui a stimulé le developpement des technologies de la reconnaissance optique de caractères (OCR) ne serait-ce que pour les problèmes de tri postaux ce [petit film](https://www.youtube.com/watch?v=V4LJs2ZoDR4) en donne une très bonne idée. 
+
+La qualité du matériau est essentielle, et s'assurer que les expéditeurs choisissent un modèle conventionnel et standardisé de rédaction de l'adresse est une condition de leur succcès. La situation idéale ressemble à ceci.
 
 ![Modèle de rédaction correcte d'une adresse postale](./images/adresse-postale.png)
 
-La réalité ressemble souvent à celà
-
+Mais la réalité ressemble souvent à celà :
 
 ![à çà](./images/Posted_registered_letter_cover_Ukraine1998.jpg)
 
-Dans un environnement en science sociale la situation est moins complexe, les documents analysés ne seront le plus souvent pas des documents mansuscrits ( sauf pour les médiévistes), mais le scan de document plus structurés. Par exemple les jpg
+Dans un environnement en sciences sociales la situation est moins complexe, les documents analysés ne seront le plus souvent pas des documents manuscrits (sauf pour les médiévistes), mais le scan de documents plus structurés. Par exemple les jpg
 
+
+### La solution tesseract
 
 Une solution pour r est [tesseract](https://cran.r-project.org/web/packages/tesseract/vignettes/intro.html
-). C'est un package qui permet d'accéder au programme du même nom,développé à l'origine Chez Hewlett-Packard Laboratories entre 1985 et 1994, avec quelques modifications supplémentaires apportées en 1996 pour le portage sur Windows, et sur C en 1998.Tesseract a été mis en open Source par HP  En 2005. Et de 2006 à novembre 2018, Google a continué a le développer.Il s'appuie sur des réseaux neuronaux de type LSTM. C'est une petite mais puissante intelligence artificielle qui supporte plus d'une centaine de langues.
+). C'est un package qui permet d'accéder au programme du même nom, développé à l'origine chez Hewlett-Packard Laboratories entre 1985 et 1994, avec quelques modifications supplémentaires apportées en 1996 pour le portage sur Windows, et sur C en 1998.Tesseract a été mis en open Source par HP en 2005. Et de 2006 à novembre 2018, Google a continué a le développer. Il s'appuie sur des réseaux neuronaux de type LSTM (voir chpitre  deep for langage) . C'est une petite mais puissante intelligence artificielle qui supporte plus d'une centaine de langues.
 
-Testons-le sans attendre avec le texte suivant. 
+Testons-le sans attendre avec le texte suivant : une lettre de motivation empruntée sur le net. C'est un fichier .jpeg de x ko.
 
 ![Lettre de motivation](./images/LettreMotivation.jpg)
-
-https://gabriben.github.io/NLP.html#introduction
-
-
 
 ```{r 209, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
 
@@ -427,49 +420,99 @@ t2<-Sys.time()
 t<- t2-t1
 cat(text)
 
-
 #tesseract_info() #voir les langues disponibles
 
 ```
 
-Pour améliorer la performance qui peut se mesurer au niveau des lettres mais doit surtout l'être au niveau des mots, deux stratégies sont possibles, la première de préprocessing, la seconde de postprocessing avec un mécanisme de détection et de correction d'erreur. 
+Pour améliorer la performance qui peut se mesurer au niveau des lettres mais doit surtout l'être au niveau des mots, deux stratégies sont possibles, la première de préprocessing, la seconde de postprocessing avec un mécanisme de détection et de correction d'erreur. Le preprocessing consiste à traiter l'image en renforçant les contrastes ou en éliminant le bruit, on en rend ainsi nles pixels mieux digestes pour `tesseract`. C'est ce à quoi s'attache le pakage `magick` qui offre un bouquet de fonctions à cette fin. Nous laissons le lecteur le tester par lui-même.
 
-Le preprocessing consiste à traiter l'image en renforçant les contrastes , en éliminant le bruit, on en rend les pixels mieux digestes pour tesseract. C'est ce à quoi s'attache le pakage magick qui offre un bouquet de fonctions à cette fin. Nous laissons le lecteur le tester seul.
+Le post-processing consiste à un introduire des mécanismes de correction d'erreurs au niveau des mots.Pour une idée de ce type de développement voir [Gabriel, Yadir, Xiaojie, Mingyu](https://gabriben.github.io/NLP.html) 
 
-Le post-processing un introduire des mécanismes de correction d'erreurs au niveau des mots.Pour une idée de ce type de développement voir [Gabriel, Yadir, Xiaojie, Mingyu](https://gabriben.github.io/NLP.html)
+Naturellement, un paramètre important est la vitesse de traitement des images. Dans un projet complet on peut être amener à traiter des centaines images en boucle. Dans notre exemple la durée est de ```r print(t)``` secondes, autrement dit 6 images à la minute ou 360 à l'heure...  
 
-Naturellement, un paramètre important est la vitesse de traitement des images. Dans un projet complet on peut être amener à traiter des centaines images en boucle. Dans notre exemple la durée est de ```t``` secondes, autrement dit 6 images à la minute ou 360 à l'heure...  
+Si le chercheur était face à des document manuscrits, il faudra sans doute se pencher sur des services plus industriels et sans doute des trainings beacoups plus spécifiques. Nous avons tester tesseract sur ce manuscrit, et avouons le , il a été totalement désemparé par la graphie de voltaire.
+
+![Voltaire](images/voltaire.jpg) 
 
 
-## Les contenus vocaux
+## Les contenus vocaux (speech-to-text)
 
-La tradition méthodologique de la sociologie est celle de l'entretien, avec toute sorte d'acteur. Elle aboutit à la production de transcriptions, plus ou moins détaillées et précise. Mais des textes
+La tradition méthodologique de la sociologie est celle de l'entretien, avec toute sorte d'acteurs. Elle aboutit à la production de transcriptions, plus ou moins détaillées et précises. Mais généralement opérées manuellement, ce qui est coûteux. Le rêve de tout enquêteur est d'aller du microphone au texte. Il rêve d'un système qui reconnaise la voix, même plusieurs, et puisse retranscrire ce qui se dit de manière plus ou moins structurée : identifier des locuteaur, leur attribuer une parôle, noter les silences, et borborigme. 
 
-On peut désormais enregistré des réaction par des interfaces vocales. le speech to text est de plus en plus efficace, voir l'API de google.
+Dans cette direction les technologies évoluent vivement dans une direction souhaitable.
 
-Il existe déja des packages sur r qui permettent d'accéder aux solutions de google langage qui necessite une clé d'API. 
+Google devient un des principaux fournisseur de ces solutions. Elles sont coûteuses. La bonne nouvelle c'est qu'il existe déja des packages sur r qui permettent d'accéder aux solutions de google langage. Ils nécessitent dans leur emploi une clé d'API. 
+
+Nous ne les avons pas testées, fidèle au principle de n'explorer dans ce manuel que des solutions ouvertes et gratuites.
+
+Il aurait été cependant regrettable de ne pas signaler cette perspective. Espérons que vite des solutions open soient proposées.
+
 
 https://cran.r-project.org/web/packages/googleLanguageR/vignettes/setup.html
 
-## Echantillonner le texte
 
-Un corpus reste un échantillon. Dans ce chapitre nous avons appris comment faire la cueillette dans les sources de textes et constituer matériellement un corpus.  Il reste à traiter la question de la représentativité. La collecte doit rester raisonnée.
+En évoquant cette voie, profitons en pour signaler une dimension fondamentale du langage. Le texte qui se dit apporte au texte qui se lit une autre dimensions. Celle de la prosodie.
 
-Les unités de texte. Une unité de texte : un chaine de caractère intégrée dans un document. Celui ci peut être un livre un article, une note, une transcription, 
+
+## Echantillonner les textes
+
+Un corpus reste un échantillon. Dans ce chapitre nous avons appris comment faire la cueillette dans les sources de textes et constituer matériellement un corpus.  Il reste à traiter la question de la représentativité.  
+
+La collecte doit rester raisonnée.
+
+Les unités de texte. Une unité de texte : un chaine de caractères intégrée dans un document. Celui ci peut être un livre un article, une note, une transcription, 
 
  * Un document
  * Un ou des auteurs du document
  * Une date
  * Un endroit
- * Un contexte : les unités précedente, et subséquentes. 
+ * Un contexte : les unités précedentes, et subséquentes. 
 
-Unités de production et de reception, Un texte est produit et puis il est lu, peut-être.Analyser le texte peut se faire dans deux perspectives, celle de la production et celle de la réception. Les corpus doivent être construit en fonction de ce critère. 
+Unités de production et de reception, Un texte est produit et puis il est lu, peut-être. Analyser le texte peut se faire dans deux perspectives, celle de la production et celle de la réception. Les corpus doivent être construits en fonction de ce critère. 
 
 Examiner la question de l'engagement dans ce cadre est essentiel, certains acteurs sur un sujet donnée sont amenés à parler plus que les autres et développent un surcroit de voix. la question du biais de selection
 
-Un corpus est un ensemble de documents.  Ils peuvent être courts, les tweets, pas trop long - abstract articles court - long ( article de recherche, ou très long (livres).
+Un corpus est un ensemble de documents.  Ils peuvent être courts, les tweets par exemples, pas trop long - abstract articles court - long ( article de recherche, ou très longs (livres). 
 
-La collecte peut se faire d'abord sur des matériaux primaires, numérisés sous forme d'images, et dans lesquels en analysant les pixels on peut reconnaitre un texte. 
+Le moyen le plus simple d'analyser ce problème est de s'appuyer sur une typologie de méthode d'analyse
+
+ * comparer le discours d 'acteurs distincts
+ * examiner les évolutions du discours au cours du temps
+ * Analyser un dialogue
+ * Etudier une narration
+ 
+### approche intra-discursive.
+
+Un seul auteur, ou groupe d'auteurs et une production discursive relative à une période donnée. Deux grands problèmes d'analyses :
+
+ *  interne : il s'agit identifier des thématiques et la manière dont elles s'articulent.
+
+ * externe : il s'agit de relier les éléments précédents à son environnement. 
+ 
+### approche comparative
+
+L'approche comparative est la plus simple, 
+
+
+### approche temporelle
+ 
+ Une grande masse de textes se distribue dans le temps : les posts des réseaux sociaux, les dépêches d'agence de presse en sont un autre exemple. Ce type de donnée présente l'avantage que sa fréquence par période permet des mesures précises. 
+ 
+
+
+### approche dialogique
+
+Le discours dialogique se produit dès lors que plusieurs locuteurs interagissent. Il se noue dans différente situations
+
+ * chat bot : un agent électronique répond à des questions naturelles.
+ * théatre : des acteurs échangent des assertions
+ * entretien
+ * table ronde
+ * ...
+
+### approche narrative
+
+
 
 
 ## Conclusion
@@ -489,22 +532,28 @@ Dans ce chapitre nous aurons égratigné des sujets techniques de constitution d
  
 # Visualiser et réduire le corpus
 
+Maintenant que nous disposons de l'ensemble du corpus, il est intéressant, de s'en donner un aperçu général. On examine ici quelques outils :
+
+ * corpora explorer
+ * les fonctions keyness et kwicks
+ * text réduction : avec textrank
+ 
+
 
 ## Explorer le corpus
  
- (attention, c'est un chapitre qui doit être par la suite détaché)
+(attention, c'est un chapitre qui doit être par la suite détaché)
  
-Avant de procéder aux analyses du corpus, il est souvent utile de le représenter. On va utiliser le package Corpora explore à cette fin. Il permet de préparer un corpus et de le visualiser de manière interactive avec la génération d'une app shiny. Malheuresuement nous ne savons pas rendre compte de la dynamique de l'outil. On peut naviguer aisement dans l'ensemble de texte.
+Avant de procéder aux analyses du corpus, il est souvent utile de le représenter. On va utiliser le package Corpora explore à cette fin. Il permet de préparer un corpus et de le visualiser de manière interactive avec la génération d'une app shiny. Malheureusement nous ne savons pas rendre compte de la dynamique de l'outil. On peut naviguer aisément dans l'ensemble de texte.
 
-On va utiliser une collection de donnée préparée avec Manel Benzarafa de l'Université paris Nanterre, et qui comprend l'intégralité des résumés, auteurs etc.. relatifs aux articles publiés dans PMP. Une base bibliographique intégrale. 1025 articles la compose.
+On va utiliser une collection de données préparée avec Manel Benzarafa de l'Université Paris Nanterre, et qui comprend l'intégralité des résumés, auteurs etc.. relatifs aux articles publiés par la revue [Politiques et Management] public () PMP. Une base bibliographique intégrale composée de 1025 articles.
 
-```{r 212, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
-library(readr)
+
+```{r 213, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
 #install.packages("corporaexplorer")
 library(corporaexplorer)
 
 
-library(readr)
 PMP <- read_csv("data/PMPLast.csv")
 
 PMP<-PMP %>% 
@@ -523,7 +572,7 @@ corpus <- prepare_data(PMP,
  tile_length_range = c(2, 10),
     use_matrix = FALSE
 )
-#explore(corpus)
+#explore(corpus) #on n'execute pas car diagramme interactif.
 
 
 ```
@@ -531,4 +580,86 @@ corpus <- prepare_data(PMP,
 Dans la photo d'écran suivante, on teste les termes " politique" et "management". Chaque tuile ( tile) représente un des 1025 abstracts qui composent le corpus. Les couleurs correspondent à la fréquence des deux termes. 
 
 ![Exploration des abstracts de PMP](./images/Corporaexplore.jpg)
+
+Un autre exemple avec David  Bowie ( Nous aurons l'occasion d'exploiter ces corpus dans les chapitres suivants, alors donnons nous un second panorama de corpus). C'est un corpus constitué par Elisa Benavent pour un mémoire d'histoire contemporaine dans l'idée simple d'étudier comment la novation se définit dans le temps.
+
+```{r 214, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
+library(tidyverse)
+library(shiny)
+df <- read_csv("data/bowie_txt_analysis.csv")
+df<-df %>% mutate(Annee=substr(date,7,8))%>%
+  rename(Text=texte, Data=date)%>%
+  filter(!is.na(Text))
+
+library(corporaexplorer)
+
+corpus <- prepare_data(df,
+    date_based_corpus =FALSE,
+    grouping_variable = "Annee",      # change grouping variable
+ within_group_identifier = "titre",
+ columns_doc_info =
+        colnames(df)[2:3],
+ tile_length_range = c(1,4),
+    use_matrix = TRUE
+)
+#explore(corpus) #la fonction lance une app interactive
+```
+## Keyness index
+
+C'est un des outils les plus basiques et fondamentaux. Il est destiné à identifier rapidement les mots clés qui distinguent une partie du corpus des autres parties.
+
+
+Quanteda fournit une solution https://quanteda.io/reference/textstat_keyness.html avec quanteda statistics. 
+
+https://www.researchgate.net/publication/319208347_Keyness_analysis_Nature_metrics_and_techniques
+
+### quickindex
+
+
+### keyness index
+
+```{r 215, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
+
+df$Annee<-as.numeric(df$Annee)
+
+
+df<-df %>%
+  mutate(group=ifelse(Annee >90,"cible","index" ))
+
+corpus <- corpus(df, text_field = "Text")
+
+toks <- tokens(corpus,remove_punct = TRUE, remove_numbers = TRUE)%>% 
+    tokens_remove(pattern = stopwords("en"))
+
+dfm<-dfm(toks) 
+
+dfm1 <- dfm_group(dfm, groups = group) 
+
+tstat <- textstat_keyness(dfm1)
+
+foo <- tstat %>% filter(n_target+n_reference>50) %>%
+  as.data.frame() %>%
+  select(-p)
+
+ft<-flextable(foo) %>%
+  theme_vanilla()%>%
+  add_footer_lines("La période cible se caractèrise ")
+ft <- color(ft, part = "footer", color = "#666666")
+ft <- set_caption(ft, caption = "Keyness index ( chi²>10")
+ft
+ggplot(foo, aes(x=n_target, y=n_reference))+geom_point(aes(size=chi2))+geom_text(aes(label=feature))+
+  #scale_y_log10()+
+  #scale_x_log10()+
+  geom_abline(intercept = 0, slope=1)
+```
+
+
+## Textrank
+
+Quand le corpus de texte est important et que la taille des textes l'est aussi. Par exemple des compte-rendus d'entretiens de trente pages, ou des rapports d'activités d'entreprises, on peut souhaiter les réduire à des documents d'une page dans laquelles les arguments principaux sont résumés. 
+
+Dans le projet d'aller à la découverte du contenu du corpus, un tel outil est un rêve.
+
+Une solution est proposée depuis XXX avec l'algorithme Textrank
+
 

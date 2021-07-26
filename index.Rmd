@@ -73,8 +73,10 @@ En voici la présentation  systématique.
  * Confinement Jour J
  * Citations : un recueil de citations littéraires pour de petits exemples et ponctuer le texte aride d'un peu de littérature et de poésie.
  * Trip advisor Polynésie, un extrait d'un corpus établi par Pierre Ghewy et Sebastien de l'UPF
- * Airbnb
+ * Airbnb 
  * Covid
+ * PMP
+ * David Bowie : comp
 
 disponibles dans le [repositery](https://benaventc.github.io/NLPBook/) avec le code du book. Les amendements et améliorations sont souhaitées et attendues. 
 
@@ -145,19 +147,22 @@ library(colorspace) #pour les couleurs
 library(revtools)
 library(rvest)
 
+library(readr)
+
 
 ```
 
 
+
 ## Disponibilité
 
-L'ensemble du code est disponible [sur github](https://github.com/BenaventC/NLPBook). A ce stade c'est encore très embryonnaire. Les proches pourrons cependant y voir l'évolution du projet et de la [progression](https://benaventc.github.io/NLPBook/)
+L'ensemble du code est disponible [sur github](https://github.com/BenaventC/NLPBook). A ce stade, c'est encore embryonnaire. Les proches pourrons cependant y voir l'évolution du projet et de la [progression](https://benaventc.github.io/NLPBook/)
 
 ## conventions
 
-Quelques conventions d'écriture du code r
+Quelques conventions d'écriture du code r : 
 
- * On appele les dataframes  de manière générale `df`, les tableaux intermédiaires sont appelé systématiquement `foo`
+ * On appele les dataframes de manière générale `df`, les tableaux intermédiaires sont appelé systématiquement `foo`
  * Gestion des palettes de couleurs
   ** une couleur :" royalblue"
   ** deux couleurs
