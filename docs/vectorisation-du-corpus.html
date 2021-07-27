@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapitre 11 Vectorisation du corpus | NLP avec r et en français - un Manuel synthétique</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
-  <meta name="generator" content="bookdown 0.22.3 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapitre 11 Vectorisation du corpus | NLP avec r et en français - un Manuel synthétique" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Sophie Balech et Christophe Benavent et al" />
 
 
-<meta name="date" content="2021-07-20" />
+<meta name="date" content="2021-07-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,15 +50,16 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -67,14 +68,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -83,9 +86,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -215,32 +218,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#conclusion-2"><i class="fa fa-check"></i><b>6.4</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="tokenisation.html"><a href="tokenisation.html"><i class="fa fa-check"></i><b>7</b> Tokenisation</a><ul>
-<li class="chapter" data-level="7.1" data-path="tokenisation.html"><a href="tokenisation.html#les-outils"><i class="fa fa-check"></i><b>7.1</b> Les outils</a></li>
-<li class="chapter" data-level="7.2" data-path="tokenisation.html"><a href="tokenisation.html#ngrams"><i class="fa fa-check"></i><b>7.2</b> Ngrams</a><ul>
-<li class="chapter" data-level="7.2.1" data-path="tokenisation.html"><a href="tokenisation.html#les-lettres"><i class="fa fa-check"></i><b>7.2.1</b> Les lettres</a></li>
-<li class="chapter" data-level="7.2.2" data-path="tokenisation.html"><a href="tokenisation.html#les-mots"><i class="fa fa-check"></i><b>7.2.2</b> Les mots</a></li>
+<li class="chapter" data-level="7" data-path="token.html"><a href="token.html"><i class="fa fa-check"></i><b>7</b> Tokenisation</a><ul>
+<li class="chapter" data-level="7.1" data-path="token.html"><a href="token.html#objectifs-du-chapitre"><i class="fa fa-check"></i><b>7.1</b> <em>Objectifs du chapitre</em></a></li>
+<li class="chapter" data-level="7.2" data-path="token.html"><a href="token.html#les-outils"><i class="fa fa-check"></i><b>7.2</b> Les outils</a></li>
+<li class="chapter" data-level="7.3" data-path="token.html"><a href="token.html#introduction"><i class="fa fa-check"></i><b>7.3</b> Introduction</a></li>
+<li class="chapter" data-level="7.4" data-path="token.html"><a href="token.html#tokeniser-un-corpus"><i class="fa fa-check"></i><b>7.4</b> Tokeniser un corpus</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="token.html"><a href="token.html#les-lettres"><i class="fa fa-check"></i><b>7.4.1</b> Les lettres</a></li>
+<li class="chapter" data-level="7.4.2" data-path="token.html"><a href="token.html#les-mots"><i class="fa fa-check"></i><b>7.4.2</b> Les mots</a></li>
+<li class="chapter" data-level="7.4.3" data-path="token.html"><a href="token.html#les-phrases"><i class="fa fa-check"></i><b>7.4.3</b> Les phrases</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="tokenisation.html"><a href="tokenisation.html#choisir-des-n-grams-pertinents"><i class="fa fa-check"></i><b>7.3</b> Choisir des n grams pertinents</a></li>
-<li class="chapter" data-level="7.4" data-path="tokenisation.html"><a href="tokenisation.html#propriétés-statistiques-des-ngrams"><i class="fa fa-check"></i><b>7.4</b> Propriétés statistiques des ngrams</a></li>
+<li class="chapter" data-level="7.5" data-path="token.html"><a href="token.html#n-grammes"><i class="fa fa-check"></i><b>7.5</b> N-grammes</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="token.html"><a href="token.html#propriétés-statistiques-des-n-grammes"><i class="fa fa-check"></i><b>7.5.1</b> Propriétés statistiques des n-grammes</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html"><i class="fa fa-check"></i><b>8</b> Annotations lexicales et syntaxiques</a><ul>
-<li class="chapter" data-level="8.1" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#tokenization"><i class="fa fa-check"></i><b>8.1</b> Tokenization</a><ul>
-<li class="chapter" data-level="8.1.1" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#les-niveaux-de-tokenisation"><i class="fa fa-check"></i><b>8.1.1</b> Les niveaux de tokenisation</a></li>
-<li class="chapter" data-level="8.1.2" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#un-exemple-en-tidytext"><i class="fa fa-check"></i><b>8.1.2</b> Un exemple en tidytext</a></li>
+<li class="chapter" data-level="7.6" data-path="token.html"><a href="token.html#choisir-des-n-grammes-pertinents"><i class="fa fa-check"></i><b>7.6</b> Choisir des n-grammes pertinents</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="token.html"><a href="token.html#créer-les-tokens-avec-quanteda"><i class="fa fa-check"></i><b>7.6.1</b> Créer les <em>tokens</em> avec ‘quanteda’</a></li>
+<li class="chapter" data-level="7.6.2" data-path="token.html"><a href="token.html#identifier-les-noms-propres"><i class="fa fa-check"></i><b>7.6.2</b> Identifier les noms propres</a></li>
+<li class="chapter" data-level="7.6.3" data-path="token.html"><a href="token.html#composer-des-tokens-à-partir-dexpressions-multi-mots"><i class="fa fa-check"></i><b>7.6.3</b> Composer des <em>tokens</em> à partir d’expressions multi-mots</a></li>
+<li class="chapter" data-level="7.6.4" data-path="token.html"><a href="token.html#identifier-les-autres-concepts"><i class="fa fa-check"></i><b>7.6.4</b> Identifier les autres concepts</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#stemmatisation-lemmatisation-et-synonymisation"><i class="fa fa-check"></i><b>8.2</b> Stemmatisation, lemmatisation et synonymisation</a><ul>
-<li class="chapter" data-level="8.2.1" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#la-stemmatisation"><i class="fa fa-check"></i><b>8.2.1</b> la stemmatisation</a></li>
-<li class="chapter" data-level="8.2.2" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#la-lemmatisation"><i class="fa fa-check"></i><b>8.2.2</b> la lemmatisation</a></li>
-<li class="chapter" data-level="8.2.3" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#synonymisation"><i class="fa fa-check"></i><b>8.2.3</b> Synonymisation</a></li>
+<li class="chapter" data-level="7.7" data-path="token.html"><a href="token.html#conclusion-3"><i class="fa fa-check"></i><b>7.7</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#part-of-speech-pos"><i class="fa fa-check"></i><b>8.3</b> Part of Speech (POS)</a></li>
-<li class="chapter" data-level="8.4" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#dépendances-syntaxiques"><i class="fa fa-check"></i><b>8.4</b> Dépendances syntaxiques</a><ul>
-<li class="chapter" data-level="8.4.1" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#arbre-syntaxique"><i class="fa fa-check"></i><b>8.4.1</b> Arbre syntaxique</a></li>
-<li class="chapter" data-level="8.4.2" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#vers-des-application-plus-générale"><i class="fa fa-check"></i><b>8.4.2</b> Vers des application plus générale</a></li>
+<li class="chapter" data-level="8" data-path="annot.html"><a href="annot.html"><i class="fa fa-check"></i><b>8</b> Annotations lexicales et syntaxiques</a><ul>
+<li class="chapter" data-level="8.1" data-path="annot.html"><a href="annot.html#tokenization"><i class="fa fa-check"></i><b>8.1</b> Tokenization</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="annot.html"><a href="annot.html#les-niveaux-de-tokenisation"><i class="fa fa-check"></i><b>8.1.1</b> Les niveaux de tokenisation</a></li>
+<li class="chapter" data-level="8.1.2" data-path="annot.html"><a href="annot.html#un-exemple-en-tidytext"><i class="fa fa-check"></i><b>8.1.2</b> Un exemple en tidytext</a></li>
 </ul></li>
-<li class="chapter" data-level="8.5" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#reconnaissance-dentités-nommées"><i class="fa fa-check"></i><b>8.5</b> reconnaissance d’entités nommées</a></li>
-<li class="chapter" data-level="8.6" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#co-reférence"><i class="fa fa-check"></i><b>8.6</b> co-reférence</a></li>
+<li class="chapter" data-level="8.2" data-path="annot.html"><a href="annot.html#stemmatisation-lemmatisation-et-synonymisation"><i class="fa fa-check"></i><b>8.2</b> Stemmatisation, lemmatisation et synonymisation</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="annot.html"><a href="annot.html#la-stemmatisation"><i class="fa fa-check"></i><b>8.2.1</b> la stemmatisation</a></li>
+<li class="chapter" data-level="8.2.2" data-path="annot.html"><a href="annot.html#la-lemmatisation"><i class="fa fa-check"></i><b>8.2.2</b> la lemmatisation</a></li>
+<li class="chapter" data-level="8.2.3" data-path="annot.html"><a href="annot.html#synonymisation"><i class="fa fa-check"></i><b>8.2.3</b> Synonymisation</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="annot.html"><a href="annot.html#part-of-speech-pos"><i class="fa fa-check"></i><b>8.3</b> Part of Speech (POS)</a></li>
+<li class="chapter" data-level="8.4" data-path="annot.html"><a href="annot.html#dépendances-syntaxiques"><i class="fa fa-check"></i><b>8.4</b> Dépendances syntaxiques</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="annot.html"><a href="annot.html#arbre-syntaxique"><i class="fa fa-check"></i><b>8.4.1</b> Arbre syntaxique</a></li>
+<li class="chapter" data-level="8.4.2" data-path="annot.html"><a href="annot.html#vers-des-application-plus-générale"><i class="fa fa-check"></i><b>8.4.2</b> Vers des application plus générale</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="annot.html"><a href="annot.html#reconnaissance-dentités-nommées"><i class="fa fa-check"></i><b>8.5</b> reconnaissance d’entités nommées</a></li>
+<li class="chapter" data-level="8.6" data-path="annot.html"><a href="annot.html#co-reférence"><i class="fa fa-check"></i><b>8.6</b> co-reférence</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html"><i class="fa fa-check"></i><b>9</b> Analyse du sentiment</a><ul>
 <li class="chapter" data-level="9.1" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#un-exemple-avec-syuzhet"><i class="fa fa-check"></i><b>9.1</b> Un exemple avec syuzhet</a><ul>
