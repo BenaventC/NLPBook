@@ -147,17 +147,19 @@ Pour les chercheurs en sciences sociales (et en premier lieu pour les chercheurs
  
  * Un nouvel objet : on pourrait croire qu'avec des données massives et des techniques "intelligente" on assiste à un retour du positivisme qui bénéficierait enfin des instruments de mesure et de calculs qui ont permis aux les chercheur plus proches de la matière des succès majeurs. Sans doute, l'administration de la preuve va être faciliter par ces techniques et encourager l'evidence based policy (REF) et résoudre en partie la crise de la réplication et de la reproductibilité. Mais à mesure que ce développe l'appareillage de méthode et de données, moins on peut supposer que l'observateur est neutre. Les téléscopes géants, les synchrotron, n'affecte ni les galaxies lointaines ni les atomes proches. Le propre des données que l'ont est amené à étudier est de résulter de la confrontation d'un système d'observation (certains préfèrent de parler de surveillance), et d'un agent qui a des buts, une connaissance, et des ressources. Le dispositif de mesure est en lui-même performatif. L'exemple le plus évident est celui des  systèmes de notation, qui sous prétexte de transparence donne la distribution des répondants précédents. L'agent qui va noter choisit la valeur en fonction d'une norme apparente - la note majoritaire- et de sa propre intention - se manifester ou se confondre à la foule. 
  
- Pour se donner une idée plus précise de ce mouvement, examinons quelques publications récentes dans les champs qui nous concernent. 
+Pour se donner une idée plus précise de ce mouvement, examinons quelques publications récentes dans les champs qui nous concernent. 
 
 ### Sociologie et histoire
 
 classes sociales avec word to vec  en sociologie [@kozlowski_geometry_2019].
 
-
 L'article révolution française [PNAS)
 
-
 On citera cependant jean-baptiste Coulmont et son obstination à étudier les entités nommées, prénoms et autres marqueurs culturels de l'identité et des classes.
+
+
+ et au luxembourg
+ 
 
 ### Psychologie
 
@@ -165,7 +167,7 @@ Très tôt la psychogie s'est intéressée au langage, pas seulement comme produ
 
 Dans le champs de la psychologie de l'éducation et avec une forte motivation scientiste, dès les années 60 s'est posée la question de la mesure de la difficulté d'un texte pour un niveau d'éducation donné. La mesure de la lisibilité des texte s'est développée profitant à d'autre secteurs tels que ceux de la propagande. Dans cette même perspective, la richesse lexicographique comme représentant les compétences a a son tour développé de nouvelles instrumentations. 
 
-James W. Pennebaker a développé son approche à partir de l'étude des traumas; donnant une grande importance à la production discursive des patients. Sa contribution majeure est l'établissement d'un ensemble de dictionnaires destinés à mesurer des caractéristiques du discours. Un instrument qu'on présentatera dans les chapitre 7 (à vérifier). Auteur en 2011 d'un livre s'intéressant à l'usage des petits mots.  Son approche se poursuit en psychiatrie avec l'analyse des troubles du langage, et a connu un coup d'éclat avec la demonstration que l'analyse des messages sur les réseaux sociaux comme facebook permet de détecter des risques de depression.
+James W. Pennebaker a développé son approche à partir de l'étude des traumas; donnant une grande importance à la production discursive des patients. Sa contribution majeure est l'établissement d'un ensemble de dictionnaires destinés à mesurer des caractéristiques du discours. Un instrument qu'on présentera dans le chapitre 7 (à vérifier). Auteur en 2011 d'un livre s'intéressant à l'usage des petits mots.  Son approche se poursuit en psychiatrie avec l'analyse des troubles du langage, et a connu un coup d'éclat avec la demonstration que l'analyse des messages sur les réseaux sociaux comme facebook permet de détecter des risques de dépression.(!ref)
 
 
 ### Management
@@ -173,7 +175,7 @@ James W. Pennebaker a développé son approche à partir de l'étude des traumas
 La finance et l'analyse du sentiment
 
 
-Dans le champ du management, on trouvera des synthèses pour la recherche en éthique [@lock_quantitative_2015], en comportement du consommateur [@humphreys_automated_2018  en management public [@anastasopoulos_computational_2017] ou en organisation [@kobayashi_text_2018] ,
+Dans le champ du management, on trouvera des synthèses pour la recherche en éthique [@lock_quantitative_2015], en comportement du consommateur [@humphreys_automated_2018]  en management public [@anastasopoulos_computational_2017] ou en organisation [@kobayashi_text_2018] ,
 
 
 
@@ -181,9 +183,25 @@ Dans le champ du management, on trouvera des synthèses pour la recherche en ét
 
 economie des brevets
 intervention des institutions
+mesure de l'innovation
 
+## La matière du langage et la transparence de la langues
 
+La situation nouvelle qui est la notre est que lorsque la parole disparaissait avec le vent, elle laiise des traces et s'enregistre.
 
+Cette matière ne s'organise plus dans les papyrus et autres manuscrits, ni même dans des livres sués, elle s'incruste dans un édifice de plus en plus complexe.
+
+Le langage a acqui une dimension matérielle qu'il n'a presque jamais eu.
+
+l'histoire se définit pas une écriture, ce qui était des sociétés sans écriture sont devenues des sociétés  de pure parole dont des scribes machiniques remplissent les silos de leur prise de note.
+
+Une société de procès-verbal quifacilite le travail du sociologue et de l'économiste.
+
+Des siècles durant les philologues, Nitecteches en premier e*ou en dernier se sont acharnés
+ à trouver dans la langues des règles, à travers leur histoire. aujourd'hui c'est l'intelligence articielle qui est à l'oeuvre prenant en compte que le cumul des règles est propice aux lois de probabilité. 
+ 
+ 
+ 
 ## Conclusion
 
 des techniques
