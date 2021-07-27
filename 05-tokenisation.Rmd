@@ -1,30 +1,33 @@
-# Tokenisation {#token}
+# Tokenisation
 
 ## _Objectifs du chapitre_
 
 * Découper un texte en _tokens_
-* Visualiser les n-grammes du texte
-* Identifier les n-grammes pertinents et les transformer en _tokens_
+* 
+* Visualiser les ngrams du texte
+* Identifier les ngrams pertinents et les transformer en _tokens_
 
-## Les outils
+### Les outils
 
-* Jeu de données : une citation de Max Weber et le corpus des commentaires laissés sur TripAdvisor concernant les hôtels polynésiens.
+* Jeu de données : une citation de Max Weber et un extrait du corpus Airbnb
 * Packages utilisés : [`tokenizer`](https://cran.r-project.org/web/packages/tokenizers/vignettes/introduction-to-tokenizers.html) ; [`quanteda`](https://quanteda.io) ; ['stopwords'](https://github.com/quanteda/stopwords)
 
 ## Introduction
 
-L'étape intiale de toute analyse textuelle est de découper le texte en unités d'analyse, les _tokens_, ce qui transforme le texte écrit pour la compréhension humaine en données interprétables par l'ordinateur. Les _tokens_ utilisés peuvent varier selon les objectifs de l'analyse et la nature du corpus, la granularité peut être plus ou moins fine. Les _tokens_ peuvent ainsi être :
- 
- * des lettres : c'est l'unité insécable
- * des syllabes : ça permet de s'intéresser aux phonèmes
- * des mots : il s'agit du niveau le plus évident et le plus courant, que l'on privilégiera tout au long de ce livre
- * des phrases : c'est l'unité de langage, lui correpond un argument, une proposition ; l'usage du point suivi d'un espace et d'une majuscule est assez général pour les identifier
- * des paragraphes : c'est une unité plus générale, qui souvent développe une idée
- * des sections, des chapitres, ou des livres : selon la nature des documents, cela permet de découper le corpus en sous-unités.
+L'étape intiale de toute analyse textuelle est de découper le texte en unités d'analyse, les _tokens_, ce qui transforme le texte écrit pour la compréhension humaine en données interprétables par l'ordinateur. Les _tokens_ utilisés peuvent varier selon les objectifs de l'analyse et la nature du corpus, le texte peut ainsi être découpé en :
 
-Les _tokenizers_ sont les outils indispensables à cette tâche. Dans cet ouvrage, nous nous concentrons sur l'étude des mots. Lors de cette étude, un certain nombre de mots apparaissent de nombreuses fois, pour permettre de donner du sens au langage humain, mais ils ne portent pas en eux d'informations particulièrement pertinentes pour l'analyse : ce sont les _stopwords_, qu'il conviendra souvent d'éliminer.
+ * lettres
+ * syllabes
+ * mots
+ * phrases
+ * paragraphes
+ * sections
+ * chapitres
+ * livres
 
-Les n-grammes, quant à eux, représentent des suites de n _tokens_. Un unigramme est donc équivalent à un _token_, un bigramme est une suite de deux _tokens_, etc. L'identification des n-grammes permet de détecter des suites de _tokens_ qui reviennent plus souvent que leur probabilité d'occurrences. Si l'on se concentre sur les mots, nous sommes alors face à une unité sémantique, comme on le comprend facilement avec le bigramme 'Assemblée Nationale'.
+Les _tokenizers_ sont les outils indispensables à cette tâche. Dans cet ouvrage, nous nous concentrons sur l'étude des mots. Dans cette étude, un certain nombre de mots apparaissent de nombreuses fois, pour permettre de donner du sens au langage humain, mais ils ne portent pas en eux d'informations particulièrement pertinentes pour l'analyse : ce sont les _stopwords_, qu'il conviendra souvent d'éliminer.
+
+Les ngrams, quant à eux, représentent des suites de n _tokens_. Un unigramme est donc équivalent à un _token_, un bigramme est une suite de deux _tokens_, etc. L'identification des ngrams permet de détecter des suites de _tokens_ qui reviennent plus souvent que leur probabilité d'occurrences. Si l'on se concentre sur les mots, nous sommes alors face à une unité sémantique, comme on le comprend facilement avec le bigramme 'Assemblée Nationale'.
 
 ## Tokeniser un corpus
 
@@ -34,7 +37,7 @@ Commençons par un exemple simple, à l'aide d'une courte citation de Max Weber.
 
 ```{r 501, fig.cap='Distribution du nombre de lettres', out.width='80%', fig.asp=.75, fig.align='center'}
 #Les données
-MaxWeber <- paste0("Bureaucratie: le moyen le plus rationnel que l’on connaisse pour exercer un contrôle impératif sur des êtres humains.")
+MaxWeber <- paste0("Bureaucratie: le moyen le plus rationnel que l’on connaisse pour exercer un contrôle impératif sur des êtres humains. la bureaucratie est une forme d'organisation générale caractérisée par la prépondérance des règles et de procédures qui sont appliquées de façon impersonnelle par des agents spécialisés. Ces agents appliquent les règles sans discuter des objectifs ou des raisons qui les fondent. Ils doivent faire preuve de neutralité et oublier leurs propres intérêts personnels au profit de l’intérêt général")
 
 #On tokenise, plus on transforme en dataframe le résultat.
 toc_maxweber<-tokenize_characters(MaxWeber)%>%
@@ -69,7 +72,7 @@ toc_maxweber<-tokenize_words(MaxWeber)%>%
 #On compte pour chaque token sa fréquence d'apparition
 foo<-toc_maxweber %>%mutate(n=1) %>% 
         group_by(tokens)%>% 
-        summarise(n=sum(n))
+        summarise(n=sum(n))%>%filter(n>4)
 
 #On représente par un diagramme en barre cette distribution des occurrences, en classant les tokens par fréquence
 ggplot(foo, aes(x=reorder(tokens,n), y=n))+
@@ -79,6 +82,8 @@ ggplot(foo, aes(x=reorder(tokens,n), y=n))+
 ```
 
 On constate que les deux mots les plus fréquents de cette citation sont un article indéfini et une préposition. Ces mots sont souvent superflus pour les analyses menées, il convient alors de les supprimer. C'est ce qu'on fait par la suite, en utilisant le package 'stopwords' qui comprend des listes de stopwords dans différentes langues.
+
+### Les mots
 
 
 ```{r 503, fig.cap='Distribution du nombre de mots, sans les stopwords', out.width='80%', fig.asp=.75, fig.align='center'}
@@ -100,7 +105,7 @@ ggplot(foo, aes(x=reorder(tokens,n), y=n))+
                coord_flip()+labs(title = "Fréquence des tokens, unité = mots, stopwords éliminés", x="tokens", y="nombre d'occurences", caption =" 'Bureaucratie: le moyen le plus rationnel que l’on connaisse pour exercer un contrôle impératif sur des êtres humains.' ")
 ```
 
-On peut également constater que certains mots sont proches, par exemple les deux derniers sur le graphiques précédents qui sont des déclinaisons du verbe appliquer. Il peut alors être pertinent de regrouper ces différentes formes verbales (comme un mot au singulier et au pluriel, au féminin et au masculin, ou conjugué sous différentes formes), pour faciliter l'analyse. C'est ce qu'on fait avec les opérations de _stemming_ ou de lemmatisation, présentées au chapitre \@ref(annot).
+On peut également constater que certains mots sont proches, par exemple les deux derniers sur le graphiques précédents qui sont des déclinaisons du verbe appliquer. Il peut alors être pertinent de regrouper ces différentes formes verbales (comme un mot au singulier et au pluriel, au féminin et au masculin, ou conjugué sous différentes formes), pour faciliter l'analyse. C'est ce qu'on fait avec les opérations de _stemming_ ou de lemmatisation, présentées au chapitre XXX.
 
 ### Les phrases
 
@@ -111,148 +116,49 @@ tokenize_sentences(MaxWeber)%>%as.data.frame()%>%rename(tokens=1)%>%flextable(cw
 
 ```
 
-## N-grammes
+## Ngrams
 
-Les n-grammes sont des séquences de n _tokens_, généralement consécutifs. Voici tout de suite un exemple sur les lettres^[Le principe de 'textcat' est fondée sur ces n-grammes de lettre. Chaque langue se caractérise par une distribution particulière des n-grammes. Pour décider de l'appartenance d'un texte à une langue, si on dispose des profils de distribution, on compare la distribution des n-grammes du texte à ces références. On peut ainsi calculer une distance et attribuer le texte à la langue dont il est le plus proche.], allant de bigramme au trigramme :
+Les ngrams sont des séquences de n tokens.
+
+Il peuvent être consécutifs, ou être 
 
 
-```{r 505, fig.cap='Bigrammes et trigrammes de lettres', out.width='80%', fig.asp=.75, fig.align='center'}
-toc_maxweber<-tokenize_character_shingles(MaxWeber,n=3, n_min=2) %>%
+
+```{r 502, fig.cap='Distribution du nombre de mots par post', out.width='80%', fig.asp=.75, fig.align='center'}
+toc_maxweber<-tokenize_character_shingles(MaxWeber,n=3, n_min=1) %>%
         as.data.frame()%>%rename(tokens=1)
-flextable(head(toc_maxweber, n=20))
-
+ft<-flextable(head(toc_maxweber))
+ft
 foo<-toc_maxweber %>%mutate(n=1) %>% 
         group_by(tokens)%>% 
-        summarise(n=sum(n))%>%filter(n>3)
+        summarise(n=sum(n))%>%filter(n>1)
 
 ggplot(foo, aes(x=reorder(tokens,n), y=n))+
-               geom_bar(stat="identity", fill="royalblue")+annotate("text", x=5,y=11, label=paste("nombre de tokens =", nrow(toc_maxweber)))+
-               coord_flip()+labs(title = "Bigrammes et trigrammes des lettres", x="n-gramme", y="nombre d'occurences")
+               geom_bar(stat="identity", fill="royalblue")+
+               coord_flip()+labs(title = "unigram, bigram et trigram", x="ngram", y="nombre d'occurences")
 
 ```
 
+le principe de textcat est fondée sur ces ngram de lettre. Chaque langue se charactérise par une distribution particulière des ngrams. Pour décider de l'appartenance d'un text à une langue, si on dispose des profils de distribution, on comparera la distribution des ngrams du texte à ces références. On pourra ainsi calculer une distance et attribuer le texte à la langue dont il est le plus proche.
 
-On peut faire la même chose sur les mots, en éliminant les _stopwords_ :
 
 
-```{r 506 }
-toc_maxweber<-tokenize_ngrams(MaxWeber,n=3, n_min=2, stopwords = stopwords('fr')) %>%
-        as.data.frame()%>%rename(tokens=1)
-qflextable(head(toc_maxweber, n=19))
+## Choisir des n grams pertinents
 
-```
+Dans ce livre l'unité principales d'analyse restera le mot. Mais nous savons, au moins intuitivement que certaines combinaisons de mots représentent des expressions qui ont la valeur d'un mot, une valuer sémantique. Par exemple, l'expression " Assemblée Nationale". Ces deux mots réunis constituent un syntagme. Donc une unité de sens.
 
-On peut également s'intéresser aux n-grammes non directement consécutifs mais séparés par k _tokens_ :
+Comment les identifier dans le flot des caractères? 
 
-```{r 507 }
-toc_maxweber<-tokenize_skip_ngrams(MaxWeber,n=3, n_min=2, k=2, stopwords = stopwords('fr')) %>%
-        as.data.frame()%>%rename(tokens=1)
-qflextable(head(toc_maxweber, n=19))
+La technique est simple : si deux mots se retrouvent dans un ordre donné plus fréquemment que ce que le produit de leurs probabilités d'apparition laisse espérer, c'est qu'ils constituent une expression. On peut imaginer faire un test du chi² pour décider si un couple de mots constitue une unité sémantique ou non. 
 
-```
-Dans cet exemple, aucun n-gramme n'est répété, mais c'est rarement le cas avec des corpus plus importants. Dans ce cas, une forte répétition de n-grammes est un indice d'une unité sémantique composée de plusieurs _tokens_ que l'on peut alors regrouper en un seul et même _token_. C'est ce que l'on verra dans la section suivante, avec l'utilisation de 'quanteda'.
+Le package quanteda propose une bonne solution à ce problème avec la fonction collocation.
 
-### Propriétés statistiques des n-grammes
+## Propriétés statistiques des ngrams
 
-Sur la d'un base d'un corpus important on peut calculer les probabilité d'apparitions d'un n-gramme. C'est une ressource que fournit Google
+Sur d'un base d'un corpus importants on peut calculer les probabilité d'apparitions d'un ngram. C'est une ressource de fournit google
  avec son [Books Ngram Viewer](https://books.google.com/ngrams/).
  
  
 [Processus de markov](https://fr.wikipedia.org/wiki/N-gramme)
 
 application à la correction
-
-
-## Choisir des n-grammes pertinents
-
-Dans ce livre l'unité principales d'analyse restera le mot. Mais nous savons, au moins intuitivement que certaines combinaisons de mots représentent des expressions qui ont la valeur d'un mot, une valeur sémantique, par exemple, l'expression "Assemblée Nationale". Ces deux mots réunis constituent un syntagme, une unité de sens. La question qui se pose est alors de savoir comment les identifier dans le flot des n-grammes ? 
-
-La technique est simple : si deux mots se retrouvent dans un ordre donné plus fréquemment que ce que le produit de leurs probabilités d'apparition laisse espérer, c'est qu'ils constituent une expression. On peut imaginer faire un test du chi² pour décider si un couple de mots constitue une unité sémantique ou non. 
-
-Le package quanteda propose une bonne solution à ce problème avec la fonction collocation.
-
-### Créer les _tokens_ avec 'quanteda'
-
-À partir du corpus des commentaires de TripAdvisor concernant les hôtels de Polynésie Française, on crée un objet de format _token_, dans lequel on a enlevé les _stopwords_. Mais pour que les n-grammes très fréquents restent des syntagmes signifiants, on laisse apparent les positions des _stopwords_, avec l'option 'padding= TRUE'.
-
-```{r 508, fig.cap='Mots les plus fréquents du corpus', out.width='80%', fig.asp=.75, fig.align='center'}
-#les données
-AvisTripadvisor<-read_rds("data/AvisTripadvisor.rds")
-#création du corpus
-corpus<-corpus(AvisTripadvisor,docid_field = "ID",text_field = "Commetaire")
-head(corpus)
-#transformation en objet token
-tok<-tokens(corpus,remove_punct = TRUE, remove_symbols=TRUE, remove_numbers=TRUE)
-head(tok)
-#enlever les stopwords
-tok<-tokens_remove(tok,stopwords('fr'),padding=TRUE)
-head(tok)
-
-
-#on transforme en document-features matrix pour des représentations graphiques
-dfm<-dfm(tok,remove_padding=TRUE)
-head(dfm)
-#un nuage de mots rapide
-textplot_wordcloud(dfm, max_words = 200, color = rev(RColorBrewer::brewer.pal(6, "RdBu")))
-
-```
-
-### Identifier les noms propres
-
-On cherche ici à identifier les noms propres présents dans le corpus.
-
-```{r 509}
-#on sélectionne les mots commençant par une majuscule
-toks_cap <- tokens_select(tok, 
-                               pattern = "^[A-Z]",
-                               valuetype = "regex",
-                               case_insensitive = FALSE, 
-                               padding = TRUE)
-
-#on cherche les collocations
-tstat_col_cap <- textstat_collocations(toks_cap, min_count = 3, tolower = FALSE)
-flextable(head(as.data.frame(tstat_col_cap)))
-
-```
-
-### Composer des _tokens_ à partir d'expressions multi-mots
-Dans ce corpus, les noms propres correspondent aux noms des îles et des hôtels, et aux prénoms composés. La valeur du lambda montre la force de l'association entre les mots, on retiendra d'une manière générale un lambda au moins supérieur à 3 pour remplacer les _tokens_ d'origine par leurs n-grammes.
-
-```{r 510, fig.cap='Mots les plus fréquents du corpus', out.width='80%', fig.asp=.75, fig.align='center'}
-toks_comp <- tokens_compound(tok, pattern = tstat_col_cap[tstat_col_cap$z > 3], 
-                             case_insensitive = FALSE)
-
-head(toks_comp)
-
-
-dfm<-dfm(toks_comp, remove_padding=TRUE)
-textplot_wordcloud(dfm, max_words = 200, color = rev(RColorBrewer::brewer.pal(6, "RdBu")))
-
-```
-
-### Identifier les autres concepts
-
-Dans ce corpus, on peut aussi s'attendre à voir apparaître d'autres expressions multi-mots qui représentent des concepts, telles que "petit déjeuner".
-
-```{r 511}
-col<-textstat_collocations(toks_comp, min_count = 10)
-
-flextable(head(as.data.frame(col)))
-
-```
-Au vue de la diversité des collocations, on choisit un lambda supérieur à 7 pour retenir les concepts les plus pertinents.
-
-```{r 512, fig.cap='Mots les plus fréquents du corpus', out.width='80%', fig.asp=.75, fig.align='center'}
-toks_comp <- tokens_compound(tok, pattern = col[col$z > 7])
-
-head(toks_comp)
-
-
-dfm<-dfm(toks_comp, remove_padding=TRUE)
-textplot_wordcloud(dfm, max_words = 200, color = rev(RColorBrewer::brewer.pal(6, "RdBu")))
-
-
-```
-## Conclusion
-
-Dans ce chapitre, nous avons vu comment découper un corpus en unités, les _tokens_. Nous avons abordé le sujet des n-grammes, et vu comment composer des _tokens_ à partir de concepts multi-mots, identifiés par des n-grammes adjacents.

@@ -116,7 +116,6 @@ library(rtweet)  # une interface efficace pour interroger l'api de Twitter
 library(tokenizers)
 library(quanteda)
 library(quanteda.textstats)
-library(quanteda.textplots)
 library(udpipe) #annotation syntaxique
 library(tidytext)
 library(cleanNLP) #annotation syntaxique
