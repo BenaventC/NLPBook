@@ -60,32 +60,20 @@ p3 <- ggdraw() + draw_image("./images/topic1.png")
 p4 <- ggdraw() + draw_image("./images/topic5.png")
 
 plot_grid(p1, p2 , ncol=2)
-plot_grid(p3, p4 , ncol=2)
 
 ```
 
-Et pour illustrer les graphiques des termes les plus proches du topic 1 et du topic 5. L'un est relatif à l'actualité austrlienne, l'autre à l'actualité anglaise. 
+Et pour illustrer les graphiques des termes les plus proches du topic 1 et du topic 5. L'un est relatif à l'actualité australienne, l'autre à l'actualité anglaise. 
 
 ```{r 203, fig.cap='', out.width='80%',caption= "La description des topic 1 et 5", fig.asp=1, fig.align='center'}
 
 plot_grid(p3, p4 , ncol=1)
 
 ```
+
 La méthode est sympa, rapide, sur le pouce, mais pas suffisante pour aller audelà et noatmment comparer les lignes éditoriales des deux titres que nous avons choisis. A ce stade de l'analyse c'est déjà beaucoup.
 
-
-## Jouer avec les bases bibliographiques
-
-Fulltext
-
-https://books.ropensci.org/fulltext/data-sources.html
-
-
-
-
-
-
-
+On peut aller plus loin, et interroger les grandes bases bibliographiques avec [fulltext](https://books.ropensci.org/fulltext/data-sources.html) pour en extraire les références, les résumés ou encore les fulltext. Il faudra cependant obtenir le plus souvent une clé d'API, et surtout faire partie d'une organisation qui en à l'accès ( Universités, Centres de recherches ...). ces bases ne sont pas complètement ouvertes.
 
 ## Scrapping
 
@@ -110,30 +98,59 @@ Elle consiste à construire un robot capable de lire et d’enregistrer les info
 </body>
 `
 
-Ultérieurement on pourra définirs les propriété graphiques d'une balise par des CSS. par exemple avec ceci les paragraphes seront publiés en caractère bleu. 
-
+Ultérieurement on pourra définir les propriétés graphiques d'une balise par des CSS. par exemple avec ceci les paragraphes seront publiés en caractère bleu. 
 
 `p{
     color: blue;
 }
 `
 
-Ce qui nous intéresse n'est pas la décoration, mais le fait que les développeurs définissent des balises spécifiques pour chacun des éléments de leurs page web, et que si nous savons les repérer , nous avons le moyen de mieux lire le texte. Les balises sont la cible du scrapping
+Ce qui nous intéresse n'est pas la décoration, mais le fait que les développeurs définissent des balises spécifiques pour chacun des éléments de leurs page web, et que si nous savons les repérer, nous avons le moyen de mieux lire le texte. Les balises sont la cible du scrapping.
 
 ### rvest avec r
 
 
-De nombreuses ressources sont disponibles, mais pour en rester à r , le package rvest permet de réaliser des extractions simples mais suffisantes pour de nombreux usages. 
+Pour scrapper avec r , le package de référence est `rvest` permet de réaliser des extractions simples mais suffisantes pour de nombreux usages. 
 
 une application rvest 
 
 https://www.r-bloggers.com/2018/10/first-release-and-update-dates-of-r-packages-statistics/
+```{r 204, fig.cap='', out.width='80%', fig.asp=1, fig.align='center'}
+library(rvest)
 
-le package rvest est générique
+url = 'https://cran.r-project.org/web/packages/available_packages_by_date.html'
 
-https://community.rstudio.com/t/scraping-messages-in-forum-using-rvest/27846/2
+CRANpage <- read_html(url) 
+tbls <- html_nodes(CRANpage, "table") # since HTML is in table; no need to scrape td/tr elements
+table1 <- html_table(tbls[1], fill = TRUE)
+dd <- data.frame(table1[1])
 
-```{r 204, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
+#house cleaning
+dd$Date <- as.Date(dd$Date)
+
+library(lubridate)
+
+# updates by year
+dd_y <- dd %>%
+mutate( PYear= year(Date)) %>%
+select (PYear) %>%
+group_by(PYear) %>%
+summarise(
+  nof = n()
+)
+
+
+### simple graph
+ggplot(dd_y, aes(x=PYear, y=nof)) +geom_bar(stat="identity") + labs(x = NULL, y = "Nombre de packages par année de dernière mise à jour") +geom_smooth()
+```
+
+
+Voici un deuxième petit exemple qui cible un forum :  [Uberzone](https://community.rstudio.com/t/scraping-messages-in-forum-using-rvest/27846/2)
+
+Ici pour identifier les balises on emploie un utilitaire [selectorgadget](https://rvest.tidyverse.org/articles/selectorgadget.html) qui permet de manière interactive, de selectionner les balises cibles. 
+
+
+```{r 204b, fig.cap='Distribution des date de révision des packages du CRAN', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
 
 library(rvest)
 
@@ -165,7 +182,7 @@ rds_name<-paste0("./data/df_",substr(val,2,6),".rds")
 saveRDS(master_data,rds_name)
 }
 
-head(master_data)
+flextable(head(master_data,2))
 
 ```
 
@@ -212,8 +229,6 @@ La plus part des grandes plateformes offrent des API plus ou moins ouvertes, exa
 Twitter n'est pas qu'un réseau social, c'est une gigantesque base de données qui enregistre les engagements et les humeurs de 500 millions d'humains à travers la planète et les centres d'intérêt. Elle permet potentiellement de saisir les opinions à différentes échelles géeographique et temporelle, y compris les plus locales et les plus courtes. Elle a le défaut de souffrir fortement de biais de sélection, le premier étant le biais d'engagement. Les passionnés d'un sujets parlent plus que les autres, une parôle mieux contrôlée. 
 
 Le cas de Google maps est passionnant à plus d'un égard. le premier d'entre eux est que dans l'effort d'indicer chaque objet de la planête, la base de données devient un référentiel universel, plus qu'une représentation intéressée du monde. Quand l'utilisateur communs cherche un chemin optimal, l'analyste de donnée trouve un socle pour ordonner le monde.
-
-La Crunchbase construite par le média Techcrunch repertorie les créations de start-up et les levées de fonds qu'elles ont obtenues. Elle recence les dirigeants, les acquisitions, décrit les business model. 
 
 intégrité des bases de données, universalité des élément, interopérabilité, disponibilité
 
@@ -266,7 +281,7 @@ foo<-df %>% select(account_lang, geo_coords,country_code, country, account_lang,
 
 ```
 
-On laisse le lecteur explorer les différentes fonctionnalités du package. On aime cependant celle-ci qui sample le flux courrant au taux annoncé de 1%. Voici l'extraction de ce qui se dit en france pendant 10 mn (600s). La procédure peut donner une sorte de benchmark auquel on peut comparer une recherche plus spécifique. 
+On laisse le lecteur explorer les différentes fonctionnalités du package. On aime cependant celle-ci qui sample le flux courant au taux annoncé de 1%. Voici l'extraction de ce qui se dit en france pendant 10 mn (600s). La procédure peut donner une sorte de benchmark auquel on peut comparer une recherche plus spécifique. 
 
 
 ```{r 206, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9, eval=FALSE}
@@ -278,9 +293,63 @@ rt <- stream_tweets(lookup_coords("france"), timeout = 600)
 ```
 
 
+
+### Quelques apis et packages intéressants :
+
+ * le très récent [genius](https://github.com/josiahparry/genius) pour accéder aux lyrics de Genius est à tester pour des études de culture populaires.
+ * Google maps
+ * La [Crunchbase]() construite par le média Techcrunch repertorie les créations de start-up et les levées de fonds qu'elles ont obtenues. Elle recence les dirigeants, les acquisitions, décrit les business model. 
+
+ 
 ## La gestion des documents
 
+Les documents qui constituent le corpus peuvent se présenter de plusieurs manière. La question de la gestion des format est souvent importante mais laborieuse
+
+### tidy data, json
+
+L'approche tidy data est générique mais est mise en oeuvre parfaitement avec l'universel tidyverse. Tidy, signifie en anglais, propre ou rangé, celà donne l'esprit. Des données propres répondent à des caractéristiques précises
+
+voir : https://r4ds.had.co.nz/tidy-data.html
+
+
+Il existe trois règles interdépendantes qui permettent de mettre en ordre un ensemble de données :
+
+ * Chaque variable doit avoir sa propre colonne.
+ * Chaque observation doit avoir sa propre ligne.
+ * Chaque valeur doit avoir sa propre cellule.
+
+Pourquoi s'assurer que vos données sont ordonnées ? Il y a deux avantages principaux :
+
+ * Il y a un avantage général à choisir une façon cohérente de stocker les données. Si vous disposez d'une structure de données cohérente, il est plus facile d'apprendre les outils qui fonctionnent avec elle, car ils ont une uniformité sous-jacente.
+
+ * Il y a un avantage spécifique à placer les variables dans des colonnes car cela permet à la nature vectorielle de R de briller. Comme vous l'avez appris dans les fonctions mutate et summary, la plupart des fonctions R intégrées fonctionnent avec des vecteurs de valeurs. Cela rend la transformation de données ordonnées particulièrement naturelle.
+
+```{r 207, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9, eval=FALSE}
+#en attendant
+```
+Mettez chaque ensemble de données dans un tibble.
+Mettez chaque variable dans une colonne.
+Dans cet exemple, seul le tableau 1 est ordonné. C'est la seule représentation où chaque colonne est une variable.
+
+
+
+c'est le langage général des apis, il répond à une contrainte : dans un champs c'est une liste de valeur qui peut être contenue, On peut avoir ainsi des listes de liste. Prenons un livre, il a un ou plusieurs auteurs, un seul titre, le titre de plusieurs chapitres. Et on souhaite mettre en oeuvre dans un seul format. 
+
+permet de construire des structures aborescentes. 
+
+
+Jsonlite 
+
+https://cran.r-project.org/web/packages/jsonlite/vignettes/json-aaquickstart.html
+
 voir aussi 
+
+https://paldhous.github.io/NICAR/2019/r-text-analysis.html
+
+http://zevross.com/blog/2015/02/12/using-r-to-download-and-parse-json-an-example-using-data-from-an-open-data-portal/
+
+https://www.r-bloggers.com/2020/09/reading-json-file-from-web-and-preparing-data-for-analysis/
+
 
 https://cran.r-project.org/web/packages/fulltext/fulltext.pdf
 
@@ -300,7 +369,7 @@ Des fonctions simples extraient différents éléments du pdf :
  
 Chaque page est contenue dans une ligne. On comprendra que l'extraction va nous donner un texte en vrac!
 
-```{r 207, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
+```{r 208, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
 library(pdftools)
 
 info <- pdf_info("./pdf/2021neoliberalismegouverner_Meunier_Esprit.pdf") #les meta donnée du fichier
@@ -333,7 +402,7 @@ Le texte extrait n'est pas directement utilisable, Il va falloir le traiter en a
 On va utiliser des fonctions de traitement de chaines de caractère avec Stringret le recours à l'art (ici simple, voire minimal) des regex auxquels on consacre un développement dans le chapitre X. (il va falloir gérer les réferences internes !!!!) 
 
 
-```{r 208, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
+```{r 209, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
 tex<- as.data.frame(text)
 tex[1,]
 t_reg<-str_replace(tex$text,"[\\s+].*Meunier[\n]+", " ") # entete droite : on selectionne tout bloc de texte qui commence par un nombre indéterminée de blanc qui s'achève par n'importe quel caractère répétés mais terminé par la séquence Meunier suivie de sauts de ligne.
@@ -380,7 +449,7 @@ Plus les textes sont standardisés et plus facile est le processus d'importation
 Si l'on souhaite aller plus loin on recommande par exemple https://ropensci.org/blog/2018/12/14/pdftools-20/ pour extraire un tableau. ( à développer en 4 ou 5 lignes avec des références)
 
 
-### la numérisation et l'OCR
+### la numérisation et l'OCR :  La solution tesseract
 
 D'immenses archives sont numérisées, ce qui signifie qu'on en a prise une image. L'information est contenu dans les pixels, et l'enjeu est de reconnaitre parmis eux des formes caractéristiques : alphabet, ponctuation à travers de multiples variations. Les plus fortes sont celles manuscrites, mais l'écriture typographique est aussi très variables dans ses formes. C'est un enjeu industriel anciens. La reconnaissance optique des caractère a cependant fait d'immense progrès et atteint des niveau de performance élevé.( ref)
 
@@ -397,8 +466,6 @@ Mais la réalité ressemble souvent à celà :
 Dans un environnement en sciences sociales la situation est moins complexe, les documents analysés ne seront le plus souvent pas des documents manuscrits (sauf pour les médiévistes), mais le scan de documents plus structurés. Par exemple les jpg
 
 
-### La solution tesseract
-
 Une solution pour r est [tesseract](https://cran.r-project.org/web/packages/tesseract/vignettes/intro.html
 ). C'est un package qui permet d'accéder au programme du même nom, développé à l'origine chez Hewlett-Packard Laboratories entre 1985 et 1994, avec quelques modifications supplémentaires apportées en 1996 pour le portage sur Windows, et sur C en 1998.Tesseract a été mis en open Source par HP en 2005. Et de 2006 à novembre 2018, Google a continué a le développer. Il s'appuie sur des réseaux neuronaux de type LSTM (voir chpitre  deep for langage) . C'est une petite mais puissante intelligence artificielle qui supporte plus d'une centaine de langues.
 
@@ -406,7 +473,7 @@ Testons-le sans attendre avec le texte suivant : une lettre de motivation emprun
 
 ![Lettre de motivation](./images/LettreMotivation.jpg)
 
-```{r 209, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
+```{r 210, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
 
 library(tesseract)
 
@@ -437,21 +504,35 @@ Si le chercheur était face à des document manuscrits, il faudra sans doute se 
 
 ## Les contenus vocaux (speech-to-text)
 
-La tradition méthodologique de la sociologie est celle de l'entretien, avec toute sorte d'acteurs. Elle aboutit à la production de transcriptions, plus ou moins détaillées et précises. Mais généralement opérées manuellement, ce qui est coûteux. Le rêve de tout enquêteur est d'aller du microphone au texte. Il rêve d'un système qui reconnaise la voix, même plusieurs, et puisse retranscrire ce qui se dit de manière plus ou moins structurée : identifier des locuteaur, leur attribuer une parôle, noter les silences, et borborigme. 
+La tradition méthodologique de la sociologie est celle de l'entretien, avec toute sorte d'acteurs. Elle aboutit à la production de transcriptions, plus ou moins détaillées et précises. Mais généralement opérées manuellement, ce qui est coûteux. Le rêve de tout enquêteur est d'aller du microphone au texte. Il rêve d'un système qui reconnaise la voix, même plusieurs, et puisse retranscrire ce qui se dit de manière plus ou moins structurée : identifier des locuteurs, leur attribuer une parole, noter les silences, les interjection, les borborygmes. 
 
-Dans cette direction les technologies évoluent vivement dans une direction souhaitable.
+Dans cette direction les technologies évoluent rapidement dans une direction souhaitable.Google devient un des principaux fournisseur de ces solutions. Elles sont coûteuses. La bonne nouvelle c'est qu'il existe déja des packages sur r qui permettent d'accéder aux solutions de google langage :  [`googleLangageR`](https://cran.r-project.org/web/packages/googleLanguageR/vignettes/setup.html). Ils nécessitent une clé d'API payante. 
 
-Google devient un des principaux fournisseur de ces solutions. Elles sont coûteuses. La bonne nouvelle c'est qu'il existe déja des packages sur r qui permettent d'accéder aux solutions de google langage. Ils nécessitent dans leur emploi une clé d'API. 
+Nous ne les avons pas testées, fidèle au principle de n'explorer dans ce manuel que des solutions ouvertes et gratuites.Il aurait été cependant regrettable de ne pas signaler cette perspective. Espérons que vite des solutions open soient proposées.
 
-Nous ne les avons pas testées, fidèle au principle de n'explorer dans ce manuel que des solutions ouvertes et gratuites.
+En évoquant cette voie, profitons en pour signaler une dimension fondamentale du langage. Le texte qui se dit apporte au texte qui se lit une autre dimension, celle de la prosodie dont les éléments clés sont :
 
-Il aurait été cependant regrettable de ne pas signaler cette perspective. Espérons que vite des solutions open soient proposées.
+ * L’accent
+ * Le ton
+ * L’intonation
+ * La jointure
+ * La pause
+ * Le rythme
+ * Le tempo et le débit
+ 
+ Elle peut être utile pour saisir des éléments paratextuels et plus émotionnels ou pour annoter le texte de ces éléments. 
+
+.https://hal.archives-ouvertes.fr/hal-02181469/document
+
+https://hal.archives-ouvertes.fr/hal-01821214/document
 
 
-https://cran.r-project.org/web/packages/googleLanguageR/vignettes/setup.html
+https://rdrr.io/github/usagi5886/intonation/man/intonation.html
 
 
-En évoquant cette voie, profitons en pour signaler une dimension fondamentale du langage. Le texte qui se dit apporte au texte qui se lit une autre dimensions. Celle de la prosodie.
+
+https://ips-lmu.github.io/The-EMU-SDMS-Manual/
+
 
 
 ## Echantillonner les textes
@@ -470,7 +551,7 @@ Les unités de texte. Une unité de texte : un chaine de caractères intégrée 
 
 Unités de production et de reception, Un texte est produit et puis il est lu, peut-être. Analyser le texte peut se faire dans deux perspectives, celle de la production et celle de la réception. Les corpus doivent être construits en fonction de ce critère. 
 
-Examiner la question de l'engagement dans ce cadre est essentiel, certains acteurs sur un sujet donnée sont amenés à parler plus que les autres et développent un surcroit de voix. la question du biais de selection
+Examiner la question de l'engagement dans ce cadre est essentiel, certains acteurs sur un sujet donné sont amenés à parler plus que les autres et développent un surcroit de voix. la question du biais de selection
 
 Un corpus est un ensemble de documents.  Ils peuvent être courts, les tweets par exemples, pas trop long - abstract articles court - long ( article de recherche, ou très longs (livres). 
 
@@ -602,8 +683,9 @@ corpus <- prepare_data(df,
  tile_length_range = c(1,4),
     use_matrix = TRUE
 )
-#explore(corpus) #la fonction lance une app interactive
+explore(corpus) #la fonction lance une app interactive
 ```
+
 ## Keyness index
 
 C'est un des outils les plus basiques et fondamentaux. Il est destiné à identifier rapidement les mots clés qui distinguent une partie du corpus des autres parties.
@@ -613,7 +695,7 @@ Quanteda fournit une solution https://quanteda.io/reference/textstat_keyness.htm
 
 https://www.researchgate.net/publication/319208347_Keyness_analysis_Nature_metrics_and_techniques
 
-### quickindex
+### quick index
 
 
 ### keyness index

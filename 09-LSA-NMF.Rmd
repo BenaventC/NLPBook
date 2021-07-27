@@ -1,0 +1,41 @@
+# Le retour des méthodes factorielles
+
+D'un point de vue historique l'analyse factorielle est une idées de psychologue. D'ailleur un des meilleurs packages jamais développé est sans doute psych
+
+L'école française a choisit l'ACP, et ses dérivée appliquées à des données de comptage comme l'AFCM.
+
+Ces méthodes s'appuient sur des techniques de décomposition de matrice, et vise à réduire leur rang. Le problèmes qu'elle cherchent à résoudre est de réduire l'espace d'information. 
+
+
+## Retour sur l'ACP
+
+L'ACP a été longtemps la méthode reine, elle est toujours fréquemmment utilisées.Elle vise à un but simple : représenter un ensemble de donnée comportant k variable à un petit nombre de combinaisons de ces variables qui représentent une grandes part de l'information.
+
+Historiquement elle a été développée pour analyser des matrices de corrélations multiples où X est une matrice de n individus et k variables ou mesure. Dans le domain textuel ce tableau correspond au dtm où les individus sont les documents et les colonnes les termes.  
+
+$\Sigma=X*X^\top$
+
+L'idée principale est de trouver des combinaisons linéaires des variables qui capture succéssivement une part maximale de la variance. La solution à ce problème revient à décomposer cette matrice en fonction d'un matrice de poids qui est determinée comme la matrice des valeur propre de $\Sigma$.
+
+$\Sigma=F*V*F^\top$
+
+
+
+https://fr.wikipedia.org/wiki/Jean-Paul_Benz%C3%A9cri
+
+https://www.math3ma.com/blog/understanding-entanglement-with-svd
+
+X=FSF
+
+## SVD
+
+quelle différence avec PCA
+
+https://stats.stackexchange.com/questions/134282/relationship-between-svd-and-pca-how-to-use-svd-to-perform-pca
+
+## LSA
+
+
+## NLM
+
+

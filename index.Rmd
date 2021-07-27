@@ -92,7 +92,7 @@ Le code s'appuie très largement sur **tidyverse** et emploie largement les ress
  * stringer
  
 
-###les packages 
+### Les packages 
 
 
 Les packages seront introduits au fur et à mesure. En voici la liste complète.

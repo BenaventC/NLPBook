@@ -14,6 +14,7 @@ cours-et-séminaires
 la-structure-du-livre
 les-jeux-de-données
 les-ressources
+les-packages
 disponibilité
 conventions
 a-faire
@@ -37,7 +38,6 @@ la-matière-du-langage-et-la-transparence-de-la-langues
 conclusion
 constitution-du-corpus
 lexploitation-de-base-de-données-textuelles
-jouer-avec-les-bases-bibliographiques
 scrapping
 rvest-avec-r
 des-problèmes-pratiques-juridiques-et-éthiques
@@ -45,10 +45,11 @@ les-api
 un-tour-dhorizon-des-api
 un-point-de-vue-plus-technique
 un-exemple-avec-rtweet
+quelques-apis-et-packages-intéressants
 la-gestion-des-documents
+tidy-data-json
 extraire-du-texte-des-pdf
-la-numérisation-et-locr
-la-solution-tesseract
+la-numérisation-et-locr-la-solution-tesseract
 les-contenus-vocaux-speech-to-text
 echantillonner-les-textes
 approche-intra-discursive.
@@ -60,7 +61,7 @@ conclusion-1
 visualiser-et-réduire-le-corpus
 explorer-le-corpus
 keyness-index
-quickindex
+quick-index
 keyness-index-1
 textrank
 préparation-des-données
@@ -123,6 +124,11 @@ retour-sur-lacp
 svd
 lsa
 nlm
+le-retour-des-méthodes-factorielles-1
+retour-sur-lacp-1
+svd-1
+lsa-1
+nlm-1
 vectorisation-du-corpus
 word2vec
 vectorisation-pipe
@@ -162,13 +168,13 @@ la-detection-des-trolls
 détection-des-sophismes-et-autres-fallacies
 la-détection-du-sarcasme-et-de-lironie
 lextraction-dargumennts
-translation
+modèles-génératifs
 simples-models-1
 naives-bayes-1
 elastic-net-1
 rf-1
 art-of-featuring-1
-modèles-génératifs
+translation
 simples-models-2
 naives-bayes-2
 elastic-net-2
