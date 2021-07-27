@@ -1,4 +1,4 @@
-# Annotations lexicales et syntaxiques
+# Annotations lexicales et syntaxiques {#annot}
 
 Pour aller au-delà de l'analyse du seul lexique et de l'analyse de la cooccurence des termes à travers les textes, comme le font les méthodes de typologie et d'analyse factorielle des correspondance depuis longtemps, il est néçessaire d'analyser le texte en tenant compte de ses propriétés syntaxiques. Depuis une dizaine d'années, des outils puissants, les annotateurs, sont proposés de manière accessible.
 
@@ -192,7 +192,7 @@ summary(bg)
 # Plot the network
 shape = ifelse(V(bg)$type, "circle", "square") # assign shape by node type
 col = ifelse(V(bg)$type, "peachpuff", "darkolivegreen1") # assign color by node type
-plot(bg, vertex.shape = shape, vertex.label.cex=.9,vertex.label.color="black",vertex.color = col,edge.color="azure2",vertex.frame.color=col,vertex.label.family="TT Arial", vertex.size=0.5*igraph::degree(bg),layout=layout_with_fr,edge.width=1*E(bg)$weight,edge.curved=0.5)
+plot(bg, vertex.shape = shape, vertex.label.cex=.9,vertex.label.color="black",vertex.color = col,edge.color="azure2",vertex.frame.color=col, vertex.size=0.5*igraph::degree(bg),layout=layout_with_fr,edge.width=1*E(bg)$weight,edge.curved=0.5)
 ```
 
  
