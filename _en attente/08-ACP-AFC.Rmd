@@ -1,9 +1,4 @@
----
-bibliography: references.bib
-output:
-  html_document:
-    df_print: paged
----
+
 
 # Le retour des méthodes factorielles
 
@@ -256,6 +251,11 @@ fviz_famd_ind(res.famd, col.ind = "cos2",
 ```
 
 On peut donc obtenir sur le même modèle que précedemment, les eigen composants des variables quantitatives et qualitatives. La visualisation est similaire à celle obtenue par l'ACP, mais l'on peut faire de même avec la visualisation des modalités de notre variable qualitative, où l'on peut observer un positionnement légèrement différents en terme de contribution aux dimensions.
+
+
+
+# SVD et LSA 
+
 
 ### Analyse Sémantique Latente (ASL/LSA)
 

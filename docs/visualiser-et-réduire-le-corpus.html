@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapitre 4 Visualiser et réduire le corpus | NLP avec r et en français - un Manuel synthétique</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22.3 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapitre 4 Visualiser et réduire le corpus | NLP avec r et en français - un Manuel synthétique" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Sophie Balech et Christophe Benavent et al" />
 
 
-<meta name="date" content="2021-07-22" />
+<meta name="date" content="2021-08-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,16 +50,15 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -68,16 +67,14 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -86,9 +83,9 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  {  }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+a.sourceLine::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -142,29 +139,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#cours-et-séminaires"><i class="fa fa-check"></i><b>1.1</b> Cours et séminaires</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#la-structure-du-livre"><i class="fa fa-check"></i><b>1.2</b> La structure du livre</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#les-jeux-de-données"><i class="fa fa-check"></i><b>1.3</b> Les jeux de données</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#les-ressources"><i class="fa fa-check"></i><b>1.4</b> Les ressources</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#les-ressources"><i class="fa fa-check"></i><b>1.4</b> Les ressources</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#les-packages"><i class="fa fa-check"></i><b>1.4.1</b> Les packages</a></li>
+</ul></li>
 <li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#disponibilité"><i class="fa fa-check"></i><b>1.5</b> Disponibilité</a></li>
 <li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#conventions"><i class="fa fa-check"></i><b>1.6</b> conventions</a></li>
 <li class="chapter" data-level="1.7" data-path="index.html"><a href="index.html#a-faire"><i class="fa fa-check"></i><b>1.7</b> A faire</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
 <li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#une-réflexion-ancienne-et-un-nouveau-champ-méthodologique"><i class="fa fa-check"></i><b>2.1</b> Une réflexion ancienne et un nouveau champ méthodologique</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="intro.html"><a href="intro.html#lhéritage-linguistique"><i class="fa fa-check"></i><b>2.1.1</b> L’héritage linguistique</a></li>
-<li class="chapter" data-level="2.1.2" data-path="intro.html"><a href="intro.html#la-tradition-lexicologique"><i class="fa fa-check"></i><b>2.1.2</b> la tradition lexicologique</a></li>
-<li class="chapter" data-level="2.1.3" data-path="intro.html"><a href="intro.html#la-linguistique-computationnelle"><i class="fa fa-check"></i><b>2.1.3</b> la linguistique computationnelle</a></li>
+<li class="chapter" data-level="2.1.1" data-path="intro.html"><a href="intro.html#langue-langage-et-texte-parole"><i class="fa fa-check"></i><b>2.1.1</b> Langue, langage et texte parole</a></li>
+<li class="chapter" data-level="2.1.2" data-path="intro.html"><a href="intro.html#syntaxe-et-grammaire-générative"><i class="fa fa-check"></i><b>2.1.2</b> Syntaxe et grammaire générative</a></li>
+<li class="chapter" data-level="2.1.3" data-path="intro.html"><a href="intro.html#sémantique-la-conception-distributionnelle"><i class="fa fa-check"></i><b>2.1.3</b> Sémantique : La conception distributionnelle</a></li>
+<li class="chapter" data-level="2.1.4" data-path="intro.html"><a href="intro.html#pragmatique-les-fonctions-et-acte-du-langage"><i class="fa fa-check"></i><b>2.1.4</b> Pragmatique les fonctions et acte du langage</a></li>
+<li class="chapter" data-level="2.1.5" data-path="intro.html"><a href="intro.html#la-linguistique-computationnelle"><i class="fa fa-check"></i><b>2.1.5</b> la linguistique computationnelle</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#les-facteurs-de-développement"><i class="fa fa-check"></i><b>2.2</b> Les facteurs de développement</a><ul>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#les-facteurs-de-développement-de-lusage-en-science-sociale"><i class="fa fa-check"></i><b>2.2</b> Les facteurs de développement de l’usage en science sociale</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="intro.html"><a href="intro.html#une-lingua-franca"><i class="fa fa-check"></i><b>2.2.1</b> Une lingua franca</a></li>
 <li class="chapter" data-level="2.2.2" data-path="intro.html"><a href="intro.html#la-multiplication-des-sources-de-données."><i class="fa fa-check"></i><b>2.2.2</b> La multiplication des sources de données.</a></li>
 <li class="chapter" data-level="2.2.3" data-path="intro.html"><a href="intro.html#une-communauté"><i class="fa fa-check"></i><b>2.2.3</b> Une communauté</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#de-nouvelles-méthodologies-pour-les-sciences-sociales"><i class="fa fa-check"></i><b>2.3</b> De nouvelles méthodologies pour les sciences sociales</a><ul>
-<li class="chapter" data-level="2.3.1" data-path="intro.html"><a href="intro.html#sociologie-et-histoire"><i class="fa fa-check"></i><b>2.3.1</b> Sociologie et histoire</a></li>
-<li class="chapter" data-level="2.3.2" data-path="intro.html"><a href="intro.html#psychologie"><i class="fa fa-check"></i><b>2.3.2</b> Psychologie</a></li>
-<li class="chapter" data-level="2.3.3" data-path="intro.html"><a href="intro.html#management"><i class="fa fa-check"></i><b>2.3.3</b> Management</a></li>
-<li class="chapter" data-level="2.3.4" data-path="intro.html"><a href="intro.html#economie"><i class="fa fa-check"></i><b>2.3.4</b> Economie</a></li>
+<li class="chapter" data-level="2.3.1" data-path="intro.html"><a href="intro.html#nouveaux-terrains"><i class="fa fa-check"></i><b>2.3.1</b> Nouveaux terrains :</a></li>
+<li class="chapter" data-level="2.3.2" data-path="intro.html"><a href="intro.html#nouvelles-méthodes"><i class="fa fa-check"></i><b>2.3.2</b> Nouvelles méthodes :</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#conclusion"><i class="fa fa-check"></i><b>2.4</b> Conclusion</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#un-nouvel-objet"><i class="fa fa-check"></i><b>2.4</b> Un nouvel objet :</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="intro.html"><a href="intro.html#sociologie-et-histoire"><i class="fa fa-check"></i><b>2.4.1</b> Sociologie et histoire</a></li>
+<li class="chapter" data-level="2.4.2" data-path="intro.html"><a href="intro.html#psychologie"><i class="fa fa-check"></i><b>2.4.2</b> Psychologie</a></li>
+<li class="chapter" data-level="2.4.3" data-path="intro.html"><a href="intro.html#management"><i class="fa fa-check"></i><b>2.4.3</b> Management</a></li>
+<li class="chapter" data-level="2.4.4" data-path="intro.html"><a href="intro.html#economie"><i class="fa fa-check"></i><b>2.4.4</b> Economie</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#des-comptable-à-lindustrie-de-la-langue"><i class="fa fa-check"></i><b>2.5</b> Des comptable à l’industrie de la langue</a></li>
+<li class="chapter" data-level="2.6" data-path="intro.html"><a href="intro.html#conclusion"><i class="fa fa-check"></i><b>2.6</b> Conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html"><i class="fa fa-check"></i><b>3</b> Constitution du corpus</a><ul>
 <li class="chapter" data-level="3.1" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#lexploitation-de-base-de-données-textuelles"><i class="fa fa-check"></i><b>3.1</b> L’exploitation de base de données textuelles</a></li>
@@ -216,7 +222,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3.1" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#les-indices-de-lisibilité"><i class="fa fa-check"></i><b>6.3.1</b> Les indices de lisibilité</a></li>
 <li class="chapter" data-level="6.3.2" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#les-indices-de-complexité-lexicale"><i class="fa fa-check"></i><b>6.3.2</b> Les indices de complexité lexicale</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#conclusion-2"><i class="fa fa-check"></i><b>6.4</b> Conclusion</a></li>
+<li class="chapter" data-level="6.4" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#comptons-les-mots-1"><i class="fa fa-check"></i><b>6.4</b> Comptons les mots</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#les-nuages-de-mots"><i class="fa fa-check"></i><b>6.4.1</b> Les nuages de mots</a></li>
+<li class="chapter" data-level="6.4.2" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#des-lollyplots"><i class="fa fa-check"></i><b>6.4.2</b> Des lollyplots</a></li>
+<li class="chapter" data-level="6.4.3" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#la-mesure-de-la-concentration-des-termes"><i class="fa fa-check"></i><b>6.4.3</b> La mesure de la concentration des termes</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#le-cas-de-sources-multiples"><i class="fa fa-check"></i><b>6.5</b> Le cas de sources multiples</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#mesure-de-la-concentration"><i class="fa fa-check"></i><b>6.5.1</b> Mesure de la concentration</a></li>
+<li class="chapter" data-level="6.5.2" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#ou-par-segmentation"><i class="fa fa-check"></i><b>6.5.2</b> ou par segmentation</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#conclusion-2"><i class="fa fa-check"></i><b>6.6</b> Conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="token.html"><a href="token.html"><i class="fa fa-check"></i><b>7</b> Tokenisation</a><ul>
 <li class="chapter" data-level="7.1" data-path="token.html"><a href="token.html#objectifs-du-chapitre"><i class="fa fa-check"></i><b>7.1</b> <em>Objectifs du chapitre</em></a></li>
@@ -264,85 +279,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#encore-dautres-généralisations"><i class="fa fa-check"></i><b>9.3</b> Encore d’autres généralisations</a></li>
 <li class="chapter" data-level="9.4" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#construire-son-propre-dictionnaire"><i class="fa fa-check"></i><b>9.4</b> construire son propre dictionnaire</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html"><i class="fa fa-check"></i><b>10</b> Le retour des méthodes factorielles</a><ul>
-<li class="chapter" data-level="10.1" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#retour-sur-lacp"><i class="fa fa-check"></i><b>10.1</b> Retour sur l’ACP</a></li>
-<li class="chapter" data-level="10.2" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#svd"><i class="fa fa-check"></i><b>10.2</b> SVD</a></li>
-<li class="chapter" data-level="10.3" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#lsa"><i class="fa fa-check"></i><b>10.3</b> LSA</a></li>
-<li class="chapter" data-level="10.4" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#nlm"><i class="fa fa-check"></i><b>10.4</b> NLM</a></li>
+<li class="chapter" data-level="10" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html"><i class="fa fa-check"></i><b>10</b> Annexes : quelques problèmes très techniques</a><ul>
+<li class="chapter" data-level="10.1" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#la-question-de-lencodage"><i class="fa fa-check"></i><b>10.1</b> La question de l’encodage</a></li>
+<li class="chapter" data-level="10.2" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#jouer-avec-les-formats-de-données"><i class="fa fa-check"></i><b>10.2</b> Jouer avec les formats de données</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#des-formats-exotiques"><i class="fa fa-check"></i><b>10.2.1</b> des formats exotiques</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html"><i class="fa fa-check"></i><b>11</b> Vectorisation du corpus</a><ul>
-<li class="chapter" data-level="11.1" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#word2vec"><i class="fa fa-check"></i><b>11.1</b> Word2vec</a><ul>
-<li class="chapter" data-level="11.1.1" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#vectorisation-pipe"><i class="fa fa-check"></i><b>11.1.1</b> vectorisation pipe</a></li>
-<li class="chapter" data-level="11.1.2" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#closest2"><i class="fa fa-check"></i><b>11.1.2</b> closest2</a></li>
-<li class="chapter" data-level="11.1.3" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#map-with-tsne"><i class="fa fa-check"></i><b>11.1.3</b> map with tsne</a></li>
-</ul></li>
-<li class="chapter" data-level="11.2" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#paragraph2vec"><i class="fa fa-check"></i><b>11.2</b> paragraph2vec</a></li>
-<li class="chapter" data-level="11.3" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#lavenir-des-modèles-pré-entrainés"><i class="fa fa-check"></i><b>11.3</b> l’avenir des modèles pré-entrainés</a></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="topic-analysis.html"><a href="topic-analysis.html"><i class="fa fa-check"></i><b>12</b> Topic Analysis</a><ul>
-<li class="chapter" data-level="12.1" data-path="topic-analysis.html"><a href="topic-analysis.html#lda"><i class="fa fa-check"></i><b>12.1</b> LDA</a><ul>
-<li class="chapter" data-level="12.1.1" data-path="topic-analysis.html"><a href="topic-analysis.html#le-modèle-de-blei"><i class="fa fa-check"></i><b>12.1.1</b> le modèle de blei</a></li>
-<li class="chapter" data-level="12.1.2" data-path="topic-analysis.html"><a href="topic-analysis.html#implementation-avec-wor2vec"><i class="fa fa-check"></i><b>12.1.2</b> implementation avec wor2vec</a></li>
-<li class="chapter" data-level="12.1.3" data-path="topic-analysis.html"><a href="topic-analysis.html#représentation-graphique"><i class="fa fa-check"></i><b>12.1.3</b> Représentation graphique</a></li>
-<li class="chapter" data-level="12.1.4" data-path="topic-analysis.html"><a href="topic-analysis.html#la"><i class="fa fa-check"></i><b>12.1.4</b> La</a></li>
-</ul></li>
-<li class="chapter" data-level="12.2" data-path="topic-analysis.html"><a href="topic-analysis.html#stm"><i class="fa fa-check"></i><b>12.2</b> STM</a><ul>
-<li class="chapter" data-level="12.2.1" data-path="topic-analysis.html"><a href="topic-analysis.html#section"><i class="fa fa-check"></i><b>12.2.1</b> </a></li>
-<li class="chapter" data-level="12.2.2" data-path="topic-analysis.html"><a href="topic-analysis.html#section-1"><i class="fa fa-check"></i><b>12.2.2</b> </a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="machine-learning-with-text.html"><a href="machine-learning-with-text.html"><i class="fa fa-check"></i><b>13</b> Machine learning with text</a><ul>
-<li class="chapter" data-level="13.1" data-path="machine-learning-with-text.html"><a href="machine-learning-with-text.html#simples-models"><i class="fa fa-check"></i><b>13.1</b> simples models</a><ul>
-<li class="chapter" data-level="13.1.1" data-path="machine-learning-with-text.html"><a href="machine-learning-with-text.html#naives-bayes"><i class="fa fa-check"></i><b>13.1.1</b> Naives bayes</a></li>
-<li class="chapter" data-level="13.1.2" data-path="machine-learning-with-text.html"><a href="machine-learning-with-text.html#elastic-net"><i class="fa fa-check"></i><b>13.1.2</b> elastic net</a></li>
-<li class="chapter" data-level="13.1.3" data-path="machine-learning-with-text.html"><a href="machine-learning-with-text.html#rf"><i class="fa fa-check"></i><b>13.1.3</b> RF</a></li>
-</ul></li>
-<li class="chapter" data-level="13.2" data-path="machine-learning-with-text.html"><a href="machine-learning-with-text.html#art-of-featuring"><i class="fa fa-check"></i><b>13.2</b> art of featuring</a></li>
-</ul></li>
-<li class="chapter" data-level="14" data-path="deep-learning.html"><a href="deep-learning.html"><i class="fa fa-check"></i><b>14</b> Deep Learning</a><ul>
-<li class="chapter" data-level="14.1" data-path="deep-learning.html"><a href="deep-learning.html#lenvironnement-keras"><i class="fa fa-check"></i><b>14.1</b> L’environnement keras</a><ul>
-<li class="chapter" data-level="14.1.1" data-path="deep-learning.html"><a href="deep-learning.html#les-fonctions-principales"><i class="fa fa-check"></i><b>14.1.1</b> Les fonctions principales</a></li>
-<li class="chapter" data-level="14.1.2" data-path="deep-learning.html"><a href="deep-learning.html#un-premier-exemple"><i class="fa fa-check"></i><b>14.1.2</b> Un premier exemple</a></li>
-<li class="chapter" data-level="14.1.3" data-path="deep-learning.html"><a href="deep-learning.html#un-deuxième-exemple"><i class="fa fa-check"></i><b>14.1.3</b> Un deuxième exemple</a></li>
-</ul></li>
-<li class="chapter" data-level="14.2" data-path="deep-learning.html"><a href="deep-learning.html#les-architectures-du-texte-rnn-ltsm-transformer-et-reformer"><i class="fa fa-check"></i><b>14.2</b> Les architectures du texte : RNN, LTSM, Transformer et reformer</a><ul>
-<li class="chapter" data-level="14.2.1" data-path="deep-learning.html"><a href="deep-learning.html#rnn"><i class="fa fa-check"></i><b>14.2.1</b> rnn</a></li>
-<li class="chapter" data-level="14.2.2" data-path="deep-learning.html"><a href="deep-learning.html#ltsm"><i class="fa fa-check"></i><b>14.2.2</b> ltsm</a></li>
-<li class="chapter" data-level="14.2.3" data-path="deep-learning.html"><a href="deep-learning.html#transformer"><i class="fa fa-check"></i><b>14.2.3</b> transformer</a></li>
-<li class="chapter" data-level="14.2.4" data-path="deep-learning.html"><a href="deep-learning.html#reformer"><i class="fa fa-check"></i><b>14.2.4</b> reformer</a></li>
-</ul></li>
-<li class="chapter" data-level="14.3" data-path="deep-learning.html"><a href="deep-learning.html#les-cas-dapplications-remarquables"><i class="fa fa-check"></i><b>14.3</b> Les cas d’applications remarquables</a><ul>
-<li class="chapter" data-level="14.3.1" data-path="deep-learning.html"><a href="deep-learning.html#detection-dintention"><i class="fa fa-check"></i><b>14.3.1</b> Detection d’intention</a></li>
-<li class="chapter" data-level="14.3.2" data-path="deep-learning.html"><a href="deep-learning.html#détection-de-toxicité-des-contenus"><i class="fa fa-check"></i><b>14.3.2</b> détection de toxicité des contenus</a></li>
-<li class="chapter" data-level="14.3.3" data-path="deep-learning.html"><a href="deep-learning.html#la-detection-des-trolls"><i class="fa fa-check"></i><b>14.3.3</b> la detection des trolls</a></li>
-<li class="chapter" data-level="14.3.4" data-path="deep-learning.html"><a href="deep-learning.html#détection-des-sophismes-et-autres-fallacies"><i class="fa fa-check"></i><b>14.3.4</b> détection des sophismes et autres fallacies</a></li>
-<li class="chapter" data-level="14.3.5" data-path="deep-learning.html"><a href="deep-learning.html#la-détection-du-sarcasme-et-de-lironie"><i class="fa fa-check"></i><b>14.3.5</b> La détection du sarcasme et de l’ironie</a></li>
-<li class="chapter" data-level="14.3.6" data-path="deep-learning.html"><a href="deep-learning.html#lextraction-dargumennts"><i class="fa fa-check"></i><b>14.3.6</b> L’extraction d’argumennts</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="15" data-path="translation.html"><a href="translation.html"><i class="fa fa-check"></i><b>15</b> Translation</a><ul>
-<li class="chapter" data-level="15.1" data-path="translation.html"><a href="translation.html#simples-models-1"><i class="fa fa-check"></i><b>15.1</b> simples models</a><ul>
-<li class="chapter" data-level="15.1.1" data-path="translation.html"><a href="translation.html#naives-bayes-1"><i class="fa fa-check"></i><b>15.1.1</b> Naives bayes</a></li>
-<li class="chapter" data-level="15.1.2" data-path="translation.html"><a href="translation.html#elastic-net-1"><i class="fa fa-check"></i><b>15.1.2</b> elastic net</a></li>
-<li class="chapter" data-level="15.1.3" data-path="translation.html"><a href="translation.html#rf-1"><i class="fa fa-check"></i><b>15.1.3</b> RF</a></li>
-</ul></li>
-<li class="chapter" data-level="15.2" data-path="translation.html"><a href="translation.html#art-of-featuring-1"><i class="fa fa-check"></i><b>15.2</b> art of featuring</a></li>
-</ul></li>
-<li class="chapter" data-level="16" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html"><i class="fa fa-check"></i><b>16</b> Modèles génératifs</a><ul>
-<li class="chapter" data-level="16.1" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html#simples-models-2"><i class="fa fa-check"></i><b>16.1</b> simples models</a><ul>
-<li class="chapter" data-level="16.1.1" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html#naives-bayes-2"><i class="fa fa-check"></i><b>16.1.1</b> Naives bayes</a></li>
-<li class="chapter" data-level="16.1.2" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html#elastic-net-2"><i class="fa fa-check"></i><b>16.1.2</b> elastic net</a></li>
-<li class="chapter" data-level="16.1.3" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html#rf-2"><i class="fa fa-check"></i><b>16.1.3</b> RF</a></li>
-</ul></li>
-<li class="chapter" data-level="16.2" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html#art-of-featuring-2"><i class="fa fa-check"></i><b>16.2</b> art of featuring</a></li>
-</ul></li>
-<li class="chapter" data-level="17" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html"><i class="fa fa-check"></i><b>17</b> Annexes : quelques problèmes très techniques</a><ul>
-<li class="chapter" data-level="17.1" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#la-question-de-lencodage"><i class="fa fa-check"></i><b>17.1</b> La question de l’encodage</a></li>
-<li class="chapter" data-level="17.2" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#jouer-avec-les-formats-de-données"><i class="fa fa-check"></i><b>17.2</b> Jouer avec les formats de données</a><ul>
-<li class="chapter" data-level="17.2.1" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#des-formats-exotiques"><i class="fa fa-check"></i><b>17.2.1</b> des formats exotiques</a></li>
-</ul></li>
-<li class="chapter" data-level="17.3" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#adopter-des-formats-propres-tidy"><i class="fa fa-check"></i><b>17.3</b> Adopter des formats “propres” (tidy)</a></li>
-<li class="chapter" data-level="17.4" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#les-limites-du-calcul"><i class="fa fa-check"></i><b>17.4</b> Les limites du calcul</a></li>
+<li class="chapter" data-level="10.3" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#adopter-des-formats-propres-tidy"><i class="fa fa-check"></i><b>10.3</b> Adopter des formats “propres” (tidy)</a></li>
+<li class="chapter" data-level="10.4" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#les-limites-du-calcul"><i class="fa fa-check"></i><b>10.4</b> Les limites du calcul</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -372,34 +315,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>(attention, c’est un chapitre qui doit être par la suite détaché)</p>
 <p>Avant de procéder aux analyses du corpus, il est souvent utile de le représenter. On va utiliser le package Corpora explore à cette fin. Il permet de préparer un corpus et de le visualiser de manière interactive avec la génération d’une app shiny. Malheuresuement nous ne savons pas rendre compte de la dynamique de l’outil. On peut naviguer aisement dans l’ensemble de texte.</p>
 <p>On va utiliser une collection de donnée préparée avec Manel Benzarafa de l’Université paris Nanterre, et qui comprend l’intégralité des résumés, auteurs etc.. relatifs aux articles publiés dans PMP. Une base bibliographique intégrale. 1025 articles la compose.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="visualiser-et-réduire-le-corpus.html#cb26-1"></a><span class="kw">library</span>(readr)</span>
-<span id="cb26-2"><a href="visualiser-et-réduire-le-corpus.html#cb26-2"></a><span class="co">#install.packages(&quot;corporaexplorer&quot;)</span></span>
-<span id="cb26-3"><a href="visualiser-et-réduire-le-corpus.html#cb26-3"></a><span class="kw">library</span>(corporaexplorer)</span>
-<span id="cb26-4"><a href="visualiser-et-réduire-le-corpus.html#cb26-4"></a></span>
-<span id="cb26-5"><a href="visualiser-et-réduire-le-corpus.html#cb26-5"></a></span>
-<span id="cb26-6"><a href="visualiser-et-réduire-le-corpus.html#cb26-6"></a><span class="kw">library</span>(readr)</span>
-<span id="cb26-7"><a href="visualiser-et-réduire-le-corpus.html#cb26-7"></a>PMP &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/PMPLast.csv&quot;</span>)</span>
-<span id="cb26-8"><a href="visualiser-et-réduire-le-corpus.html#cb26-8"></a></span>
-<span id="cb26-9"><a href="visualiser-et-réduire-le-corpus.html#cb26-9"></a>PMP&lt;-PMP <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb26-10"><a href="visualiser-et-réduire-le-corpus.html#cb26-10"></a><span class="st">  </span><span class="kw">select</span>(Key, Author, Title, Issue, <span class="dv">3</span>, <span class="dv">11</span>)</span>
-<span id="cb26-11"><a href="visualiser-et-réduire-le-corpus.html#cb26-11"></a>PMP&lt;-PMP<span class="op">%&gt;%</span><span class="st"> </span><span class="kw">rename</span>(<span class="dt">Text=</span><span class="dv">6</span>, <span class="dt">Annee=</span><span class="dv">5</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb26-12"><a href="visualiser-et-réduire-le-corpus.html#cb26-12"></a><span class="st">  </span><span class="kw">filter</span>(Text<span class="op">!=</span><span class="st">&quot;Null&quot;</span> <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(Annee))</span>
-<span id="cb26-13"><a href="visualiser-et-réduire-le-corpus.html#cb26-13"></a></span>
-<span id="cb26-14"><a href="visualiser-et-réduire-le-corpus.html#cb26-14"></a></span>
-<span id="cb26-15"><a href="visualiser-et-réduire-le-corpus.html#cb26-15"></a></span>
-<span id="cb26-16"><a href="visualiser-et-réduire-le-corpus.html#cb26-16"></a>corpus &lt;-<span class="st"> </span><span class="kw">prepare_data</span>(PMP,</span>
-<span id="cb26-17"><a href="visualiser-et-réduire-le-corpus.html#cb26-17"></a>    <span class="dt">date_based_corpus =</span><span class="ot">FALSE</span>,</span>
-<span id="cb26-18"><a href="visualiser-et-réduire-le-corpus.html#cb26-18"></a>    <span class="dt">grouping_variable =</span> <span class="st">&quot;Annee&quot;</span>,                <span class="co"># change grouping variable</span></span>
-<span id="cb26-19"><a href="visualiser-et-réduire-le-corpus.html#cb26-19"></a> <span class="dt">within_group_identifier =</span> <span class="st">&quot;Title&quot;</span>,</span>
-<span id="cb26-20"><a href="visualiser-et-réduire-le-corpus.html#cb26-20"></a> <span class="dt">columns_doc_info =</span></span>
-<span id="cb26-21"><a href="visualiser-et-réduire-le-corpus.html#cb26-21"></a>        <span class="kw">colnames</span>(df)[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>],</span>
-<span id="cb26-22"><a href="visualiser-et-réduire-le-corpus.html#cb26-22"></a> <span class="dt">tile_length_range =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">10</span>),</span>
-<span id="cb26-23"><a href="visualiser-et-réduire-le-corpus.html#cb26-23"></a>    <span class="dt">use_matrix =</span> <span class="ot">FALSE</span></span>
-<span id="cb26-24"><a href="visualiser-et-réduire-le-corpus.html#cb26-24"></a>)</span>
-<span id="cb26-25"><a href="visualiser-et-réduire-le-corpus.html#cb26-25"></a><span class="co">#explore(corpus)</span></span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1"><span class="kw">library</span>(readr)</a>
+<a class="sourceLine" id="cb27-2" title="2"><span class="co">#install.packages(&quot;corporaexplorer&quot;)</span></a>
+<a class="sourceLine" id="cb27-3" title="3"><span class="kw">library</span>(corporaexplorer)</a>
+<a class="sourceLine" id="cb27-4" title="4"></a>
+<a class="sourceLine" id="cb27-5" title="5"></a>
+<a class="sourceLine" id="cb27-6" title="6"><span class="kw">library</span>(readr)</a>
+<a class="sourceLine" id="cb27-7" title="7">PMP &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/PMPLast.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb27-8" title="8"></a>
+<a class="sourceLine" id="cb27-9" title="9">PMP&lt;-PMP <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb27-10" title="10"><span class="st">  </span><span class="kw">select</span>(Key, Author, Title, Issue, <span class="dv">3</span>, <span class="dv">11</span>)</a>
+<a class="sourceLine" id="cb27-11" title="11">PMP&lt;-PMP<span class="op">%&gt;%</span><span class="st"> </span><span class="kw">rename</span>(<span class="dt">Text=</span><span class="dv">6</span>, <span class="dt">Annee=</span><span class="dv">5</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb27-12" title="12"><span class="st">  </span><span class="kw">filter</span>(Text<span class="op">!=</span><span class="st">&quot;Null&quot;</span> <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(Annee))</a>
+<a class="sourceLine" id="cb27-13" title="13"></a>
+<a class="sourceLine" id="cb27-14" title="14"></a>
+<a class="sourceLine" id="cb27-15" title="15"></a>
+<a class="sourceLine" id="cb27-16" title="16">corpus &lt;-<span class="st"> </span><span class="kw">prepare_data</span>(PMP,</a>
+<a class="sourceLine" id="cb27-17" title="17">    <span class="dt">date_based_corpus =</span><span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb27-18" title="18">    <span class="dt">grouping_variable =</span> <span class="st">&quot;Annee&quot;</span>,                <span class="co"># change grouping variable</span></a>
+<a class="sourceLine" id="cb27-19" title="19"> <span class="dt">within_group_identifier =</span> <span class="st">&quot;Title&quot;</span>,</a>
+<a class="sourceLine" id="cb27-20" title="20"> <span class="dt">columns_doc_info =</span></a>
+<a class="sourceLine" id="cb27-21" title="21">        <span class="kw">colnames</span>(df)[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>],</a>
+<a class="sourceLine" id="cb27-22" title="22"> <span class="dt">tile_length_range =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">10</span>),</a>
+<a class="sourceLine" id="cb27-23" title="23">    <span class="dt">use_matrix =</span> <span class="ot">FALSE</span></a>
+<a class="sourceLine" id="cb27-24" title="24">)</a>
+<a class="sourceLine" id="cb27-25" title="25"><span class="co">#explore(corpus)</span></a></code></pre></div>
 <p>Dans la photo d’écran suivante, on teste les termes " politique" et “management”. Chaque tuile ( tile) représente un des 1025 abstracts qui composent le corpus. Les couleurs correspondent à la fréquence des deux termes.</p>
 <div class="figure">
-<img src="images/Corporaexplore.JPG" alt="" />
+<img src="images/Corporaexplore.JPG" alt="Exploration des abstracts de PMP" />
 <p class="caption">Exploration des abstracts de PMP</p>
 </div>
 

@@ -140,25 +140,27 @@ Pour la mise en oeuvre on passe par quanteda.
 
 ( attention un pb de log dans le calcul)
 
-```{r 405, fig.cap='Evolution de la lisibilité moyenne des tweets de Trump', out.width='80%', fig.asp=.75, fig.align='center'}
-foo<-foo %>%filter(nb_mots>1)
+```{r 405, fig.cap='Evolution de la diversité lexicale des tweets de Trump', out.width='80%', fig.asp=.75, fig.align='center'}
+#on retient les tweets de plus de 5 mots
+foo<-foo %>%filter(nb_mots>5)
+
 #la fonction de calcul de diversité
 t1=Sys.time()
 lexdiv<-tokens(foo$text)%>%
-  textstat_lexdiv(foo$text, measure = c("CTTR", "Maas","MATTR"),remove_numbers = TRUE,
-  remove_punct = TRUE,
-  remove_symbols = TRUE,
-  remove_hyphens = TRUE) 
+  textstat_lexdiv(foo$text, measure = c("CTTR", "Maas"),  log.base = 10,
+                  remove_numbers = TRUE,  
+                  remove_punct = TRUE,  
+                  remove_symbols = TRUE,
+                  remove_hyphens = TRUE) 
 t2=Sys.time()
 t<- t2-t1
-foo<-foo[,1:14]
+t
 #On combine les données et on aggrège sur l'année
 foo<-cbind(foo,lexdiv[,2:3])
 foo1<-foo %>% 
   group_by(Year) %>%
   summarise(CTTR=mean(CTTR, na.rm=TRUE), 
-            Maas=mean(Maas, na.rm=TRUE),
-            MATTR=mean(MATTR, na.rm=TRUE)) %>%
+            Maas=mean(Maas, na.rm=TRUE)) %>%
   gather(variable, value, -Year)
 
 ggplot(foo1,aes(x=Year, y=value, group=variable))+
@@ -181,36 +183,54 @@ Ils sont devenu extrêmement populaire même si l'effet esthétique est plus imp
 
 Le cas influenceurs pourrait être bien pour illustrer
 
-```{r 405, fig.cap='Evolution de la lisibilité moyenne des tweets de Trump', out.width='80%', fig.asp=.75, fig.align='center'}
+[`ggwordcloud`](https://cran.r-project.org/web/packages/ggwordcloud/vignettes/ggwordcloud.html)
+
+
+```{r 406, fig.cap='Evolution de la lisibilité moyenne des tweets de Trump', out.width='80%', fig.asp=.75, fig.align='center'}
+foo<-df %>% filter(isRetweet==FALSE) %>%
+  filter( Year %in% c("2016","2018","2020"))#) on ne prend pas en compte les RT
 
 toks<- tokens(foo$text) %>% 
-  dfm(remove_punct = TRUE,  remove = stopwords("english"))%>% 
-  dfm_remove(c("couleur", "to"))
-
-docvars(toks,"influenceur")<-df$influenceur
+  dfm(remove_punct = TRUE,  remove = stopwords("english"))
+docvars(toks,"Year")<-foo$Year
 
 toks
 
+#on se concentre du les termes utilisés 100 fois.  
 
 foo<-toks %>% 
-    dfm_trim(min_termfreq = 5, verbose = FALSE)
+    dfm_trim(min_termfreq = 250, verbose = FALSE)
 
 freq <- textstat_frequency(foo)
 
+
+
+
+library(ggwordcloud)
 ggplot(freq, aes(label = feature)) +
   geom_text_wordcloud(aes(size=frequency, color=rank)) +
   theme_minimal() +  scale_size_area(max_size = 10) + 
   scale_color_gradient(low = "darkblue", high = "red")
 
-ggsave("g0.jpg", plot=last_plot(), width = 27, height = 19, units = "cm")
+ggsave("./Images/g0.jpg", plot=last_plot(), width = 27, height = 19, units = "cm")
+
+
+```
+
+Et pour faire des comparaisons .....
+
+année 2016 qui le conduit à être élu, une année de mid term en 2018 et 2020 année de sa défaite.
+
+
+```{r 407, fig.cap='Evolution de la lisibilité moyenne des tweets de Trump', out.width='80%', fig.asp=.75, fig.align='center'}
 
 
 foo<-toks %>% 
-  dfm_group(groups = influenceur) %>%
-    dfm_trim(min_termfreq = 5, verbose = FALSE)
+  dfm_group(groups = Year) %>%
+    dfm_trim(min_termfreq = 250, verbose = FALSE)
 
 
-freq <- textstat_frequency(foo, group =influenceur)
+freq <- textstat_frequency(foo, group =Year)
 
 set.seed(42)
 library(ggwordcloud)
@@ -220,7 +240,7 @@ ggplot(freq, aes(label = feature)) +
   scale_color_gradient(low = "darkblue", high = "red")
 
 
-ggsave("g1.jpg", plot=last_plot(), width = 27, height = 19, units = "cm")
+ggsave("./Images/g1.jpg", plot=last_plot(), width = 27, height = 19, units = "cm")
 
 ```
 
@@ -232,12 +252,17 @@ la notion de densité, quelle échelle?
 
 ### La mesure de la concentration des termes
 
+
+https://www.tidytextmining.com/tfidf.html
+
+
+
 Le langage d'un point de vue quantitatif a été caractérisé depuis bien longtemps et zipf est un des premier à avoir proposé la loi de distribution qui porte son nom mais aussi celle de mandelbrot qui en a proposé un affinement. 
 
 Celle-ci s'exprime de la manière suivante : si on classe les termes par ordre de fréquence r
 
 $$f(r)=\frac{K}{r} $$
-Mandelbrot la généralisé
+Mandelbrot la généralise
 
 les études empiriques
 
@@ -245,7 +270,7 @@ On peut encore débattre de sa signification. Une économie cognitive? Une cons�
 
 Zipf distribution 1949
 
-```{r 405, fig.cap=' ', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 408, fig.cap=' ', out.width='80%', fig.asp=.75, fig.align='center'}
 ```
 
 
@@ -261,7 +286,7 @@ Qui produit combien? c'est la première question quand on analyse des données s
 
 Illustrons.
 
-```{r 406, fig.cap=' ', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 409, fig.cap=' ', out.width='80%', fig.asp=.75, fig.align='center'}
 ```
 
 ### ou par segmentation
@@ -269,11 +294,11 @@ Illustrons.
 Il est souvent plus simple de représenter des catégories ordonnée plutôt qu'un gradient : les grous, les moyens et les petits producteurs. 
 
 
-```{r 407, fig.cap=' ', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 410, fig.cap=' ', out.width='80%', fig.asp=.75, fig.align='center'}
 ```
 
 ## Conclusion
-0
+
 Nous aurons appris à 
 
  * Compter le nombre de documents et leurs longueurs
@@ -290,6 +315,6 @@ Ces mesures n'ont ne sens que si elles peuvent être l'objet de comparaison :
  
 Elles participent à un premier niveau d'analyse du texte, en surface, visant à apprécier la dynamique de sa production, à établir les échelles d'analyse, à repérer les éléments structurels.
 
-Le texte est une matière qui a un poids (le nombre de mot), une variétés (le nombre d'expression), une complexité (les règle qui l'organisent). nous veons de nous doter des premiers outils d'analyse, il est temps de passer à la suite. 
+Le texte est une matière qui a un poids (le nombre de mot), une variété (le nombre d'expressions), une complexité (les règles qui l'organisent). nous venons de nous doter des premiers outils d'analyse, il est temps de passer à la suite. 
  
 
