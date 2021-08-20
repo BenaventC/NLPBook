@@ -402,39 +402,31 @@ La réalité ressemble souvent à celà
 Dans un environnement en science sociale la situation est moins complexe, les documents analysés ne seront le plus souvent pas des documents mansuscrits ( sauf pour les médiévistes), mais le scan de document plus structurés. Par exemple les jpg
 
 
-Une solution pour r est [tesseract](https://cran.r-project.org/web/packages/tesseract/vignettes/intro.html
-). C'est un package qui permet d'accéder au programme du même nom,développé à l'origine Chez Hewlett-Packard Laboratories entre 1985 et 1994, avec quelques modifications supplémentaires apportées en 1996 pour le portage sur Windows, et sur C en 1998.Tesseract a été mis en open Source par HP  En 2005. Et de 2006 à novembre 2018, Google a continué a le développer.Il s'appuie sur des réseaux neuronaux de type LSTM. C'est une petite mais puissante intelligence artificielle qui supporte plus d'une centaine de langues.
+Une solution pour r est [tesseract](https://cran.r-project.org/web/packages/tesseract/vignettes/intro.html). C'est un package qui permet d'accéder au programme du même nom, développé à l'origine Chez Hewlett-Packard Laboratories entre 1985 et 1994, avec quelques modifications supplémentaires apportées en 1996 pour le portage sur Windows, et sur C en 1998.Tesseract a été mis en open Source par HP  En 2005. Et de 2006 à novembre 2018, Google a continué à le développer. Il s'appuie sur des réseaux neuronaux de type LSTM. C'est une petite mais puissante intelligence artificielle qui supporte plus d'une centaine de langues.
 
-Testons-le sans attendre avec le texte suivant. 
+Testons-le sans attendre avec le texte suivant. Extrait du premier article du premier numéro de la revue " Etalages" Publiée en France de 1909 à 1938. L'image est un extrait du document numérisé fournit par la BNF.
 
-![Lettre de motivation](./images/LettreMotivation.jpg)
+![Lettre de motivation](./images/N1_avril1909b.jpeg)
 
 https://gabriben.github.io/NLP.html#introduction
 
 
 
 ```{r 209, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
-
-library(tesseract)
-
-#library(magick)#pour pré-traiter l'image et améliorer la reconnaissance
-
+#library(tesseract)
 tesseract_download("fra") #pour télécharger le modèle de langage
 
 t1<-Sys.time()
-text <- tesseract::ocr("./images/LettreMotivation.jpg", engine = "fra")
+text <- tesseract::ocr("./images/N1_avril1909b.jpeg", engine = "fra")
 t2<-Sys.time()
-t<- t2-t1
-cat(text)
-
+t<- t2-t1 #pour compter le temps de calcul
+cat(text) #pour afficher le texte avec sa mise en page
 
 #tesseract_info() #voir les langues disponibles
-
+t
 ```
 
-Pour améliorer la performance qui peut se mesurer au niveau des lettres mais doit surtout l'être au niveau des mots, deux stratégies sont possibles, la première de préprocessing, la seconde de postprocessing avec un mécanisme de détection et de correction d'erreur. 
-
-Le preprocessing consiste à traiter l'image en renforçant les contrastes , en éliminant le bruit, on en rend les pixels mieux digestes pour tesseract. C'est ce à quoi s'attache le pakage magick qui offre un bouquet de fonctions à cette fin. Nous laissons le lecteur le tester seul.
+Pour améliorer la performance qui peut se mesurer au niveau des lettres mais doit surtout l'être au niveau des mots, deux stratégies sont possibles, la première de préprocessing, la seconde de postprocessing avec un mécanisme de détection et de correction d'erreur.  Le preprocessing consiste à traiter l'image en renforçant les contrastes , en éliminant le bruit, on en rend les pixels mieux digestes pour tesseract. C'est ce à quoi s'attache le pakage magick qui offre un bouquet de fonctions à cette fin. Nous laissons le lecteur le tester seul.
 
 Le post-processing un introduire des mécanismes de correction d'erreurs au niveau des mots.Pour une idée de ce type de développement voir [Gabriel, Yadir, Xiaojie, Mingyu](https://gabriben.github.io/NLP.html)
 

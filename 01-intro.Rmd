@@ -1,78 +1,121 @@
 # Introduction {#intro}
 
 
-Le texte connaît une double révolution. la première est celle de son système de production, il se produit désormais tant de textes que personne ne peut plus tous les lire, même en réduisant son effort à sa propre sphère d’intérêt et de compétence, la seconde est celle de sa lecture, c'est une lecture conditionnée et recommandée.. 
+Le texte connaît une double révolution. la première est celle de son système de production, il se produit désormais tant de textes que personne ne peut plus tous les lire, même en réduisant son effort à sa propre sphère d’intérêt et de compétence, la seconde est celle de sa lecture, c'est une lecture conditionnée et recommandée. 
 
-La production primaire de textes voit son volume croître exponentiellement. Prenons quelques exemples :
+La production primaire de textes voit son volume croître exponentiellement. Elle doit être comparée à des époques pas si éloignées ou le texte était copiés, puis imprimés. Ce qui était destiné à être reproduit était le résultats d'un processus long et exigeant qui permettait à un petit groupe de léttrés et d'imprimeur de produire l'essentiel de ce qui sera lu. La révolution digitale fait que quiconque via des interfaces simples peut confier sous forme d'écrit ses états d'âme.Elle se soumet ensuite à ceux qui en contrôlent les flux et en exploitent les contenus, qui les mettent en avant ou les écartent, définissant la composition de ce que chacun va lire. La diffusion de cette production suit des lois puissances, c'est ainsi que la révolution de la lecture est venue avec les moteurs de recherche, et les pratiques de curations (ref), c’est une lecture sélectionnée et digérée par les moteurs de recommandation. (ref). 
 
+S’il ne fallait qu’un exemple on pourrait évoquer la transformation radicale de la littérature dite scientifique dont la production double presque tout les dix ans .http://blogs.nature.com/news/2014/05/global-scientific-output-doubles-every-nine-years.html
 
-La production se soumet ensuite à ceux qui en contrôlent les flux et en exploitent les contenus, qui les mettent en avant ou les écartent, définissant la composition de ce que chacun va lire. La diffusion de cette production suit des loi puissances, c'est ainsi que la révolution de la lecture est venue avec les moteurs de recherche, et les pratiques de curations (ref), c’est une lecture sélectionnée et digérée par les moteurs de recommandation. (ref). 
+A cette production exponentiellement croissante s'ajoute un effort d'inventaire, des standards sont proposés, l’indexation a donné naissance à l’immatriculation de la moindre note, l’interopérabilité est de mise, le réseau des co-citations est maintenu en temps réel. Les scores qualifient autant les articles que leurs auteurs et les revues qui les accueillent. Le monde de la recherche, celui qui va vers l'inconnu est désormais totalement balisé et quantifié. Le volume est si grand que la production automatique de résumés, et de synthèses va être indispensable.
 
-S’il ne fallait qu’un exemple on pourrait évoquer la transformation radicale de la littérature dite scientifique sur le plan technique. La recherche par mots clés est complétée de plus en plus par des outils de veille, l’indexation a donné naissance à l’immatriculation de la moindre note, les fichiers ont adopté des standards, l’interopérabilité est de mise, le réseau des co-citations est maintenu en temps réel. Les scores qualifient autant les articles que leurs auteurs et les revues qui les accueillent. 
+Le NLP ( en français le TAL) est au coeur de ces technologies, il se nourrit de plus en plus d'intelligence artificielle. Nous en verrons de nombreux exemples à tout les stades du traitement : identifier la langue, mesurer le sentiment, isoler des sujets, calculer une relation syntaxique.
 
-Elle risque de ce poursuivre par la production de résumés, la transcription automatique (speech2tex) etc.
+Le NLP est aussi une nouvelle ressource pour les chercheurs en sciences sociales à la fois par les matériaux empiriques et les méthodes d'analyse. C'est une mouvemennt qui affecte toutes les shs. L'emballement de la production de texte génère une nouvelle matière d'étude pour le sociologues, les gestionnaires, les économistes, les psychologues.  
 
-Le NLP est au coeur de ces technologies, il se nourrit de plus en plus d'intelligence artificielle. Nous en verrons de nombreux exemple à tout les stades du traitement : identifier la langue, mesurer le sentiment, isoler des sujets. 
-
-Le NLP est aussi une nouvelle ressource pour les chercheurs en sciences sociales à la fois par les matériaux empiriques et les méthodes d'analyse. C'est une mouvemenjt qui affecte toutes les shs. L'emballement de la production de texte génère une nouvelle matière d'étude pour le sociologues, le gestionnaire, l'économiste, le psychologue pour n'évoquer que quelques disciplines.  
+Si dans ce manuel, on choisit de présenter les différentes facettes de ce qui s'appelle TAl, NPL, Text Mining,  dans une approche procédurale qui suit les principales étapes du traitement des données. On rendra compte à chaque étape des techniques disponibles, et on illustre d’exemples. Nous suivrons ici une approche plus fidèle au processus de traitement des données, lequel peut connaître une stratégie inférentielle et exploratoire - quelles informations sont utiles au sein d’un corpus de texte -, tout aussi bien qu’une stratégie hypothético-déductive. Nous resterons agnostique sur cette question, restant délibérément à un niveau technique et procédural.
 
 
 ## Une réflexion ancienne et un nouveau champ méthodologique
 
-On se doit pas se faire aveugler par l'éclat de la nouveauté, les techniques d'aujourd'hui dépendent d'idées semées depuis longtemps dans au moins deux champs disciplinaire la linguistique et l'informatique
+On se doit pas se faire aveugler par l'éclat de la nouveauté, les techniques d'aujourd'hui dépendent d'idées semées depuis longtemps dans au moins deux champs disciplinaires : la linguistique et l'informatique. On peut en synthétiser l'idée avec ce mème et son annotation. Il expriment deux idées. La première est une tension du champs entre la langue comme structure et le langage comme capacité et usage.
+
+![linguistique](.\images\linguistique.jpg)
+
+Les pratiques et techniques que nous allons étudier ne tombent pas de mars mais résultent de plusieurs flux de pensées qui se croisent se confortent et amène l'énergie pour créer un nouveau bras dans le champs  étendu de l'étude de la langue et du langage. 
+
+Penser la langue est un effort constant qui a commencé il y a fort longtemps, certainement avec les sophistes, et l'idée qu'en maniant le langage il est possible de convaincre. Les sophistes : plier le langage à ses intérêt est une première sciences du langage qui produit une connaissances des dispositifs les plus efficaces. Pas sur que cette discipline aie trouvé un chemin de vérité; mais elle reste commune et actuelle, c'est l'oeuvre de la publicité. La rhétorique n'est pas une discipline morte, elle se développe de manière concrète dans toute les agences publicitaires.
+
+Donnons quelques points de repère en commençant par des définition, puis en évoquant trois idées essentielles qui vont prospérer avec le développement de la linguistique computationnelle et de l'intelligence artificielle. Ces trois idées se relatives aux principales branches de la linguistique : à savoir la syntaxe, la sémantique et la pragmatique. Nous serons silencieux sur la phonologie (étude de la formation des sons et de la phonétiques) dont l'importance est considérable quand il s'agit de traiter la production et les interactions orales. Pour ne donner qu'un exemple, la prosodie (le rythme données aux phrases) est un objet essentiel dans l'informatique affective. 
 
 
-Les pratiques et techniques que nous allons étudier ne tombent pas de mars mais résultent de plusieurs flux de pensées qui se croisent se confortent et amène l'energie pour créer un nouveau bras dans le champs immensement étendu de l'étude de la langue et du langage. Et c'ets sans doute par celà qu'il faut commencer. La langue c'est l'ensemble des règle formelles et moins formelle qui constitue une parole, ce qu'on se dit de l'un à l'autre ou de l'un à aux autres. Le langage est la production de cette parole. L'inscription de cette parole par l'écriture constitue le texte. Le miracle du passage de la parole au signe est celui du symbole.
+### Langue, langage et texte parole
 
-Si dans ce manuel, on choisit de présenter les différentes facettes de ce qui s'appelle TAl, NPL, Text Mining,  dans une approche procédurale qui suit les principales étapes du traitement des données. On rendra compte à chaque étape des techniques disponibles, et on illustre d’exemples. Nous suivrons ici une approche plus fidèle au processus de traitement des données, lequel peut connaître une stratégie inférentielle et exploratoire - quelles informations sont utiles au sein d’un corpus de texte -, tout aussi bien qu’une stratégie hypothético-déductive. Nous resterons agnostique sur cette question, restant délibérément à un niveau technique et procédural.
+Et c'ets sans doute par celà qu'il faut commencer. La langue c'est l'ensemble des règles formelles et moins formelles qui constituent une parole, ce qu'on se dit de l'un à l'autre ou de l'un à aux autres. Le langage est la capacité à produire cette parole. L'inscription de cette parole par l'écriture constitue le texte. Le miracle du passage de la parole au signe est celui du symbole.
 
-### L'héritage linguistique
+Parmi les distinctions terminologiques proposées par Ferdinand de Saussure au début de siècle dernier, celles de langue, langage et de parole se sont révélées particulièrement pertinentes et elles sont toujours utilisées de nos jours.
 
-la convergence de deux grands mouvements. 
+Langage: faculté inhérente et universelle de l'humain de construire des langues (des codes) pour communiquer. (Leclerc 1989:15) Le langage réfère à des facultés psychologique permettant de communiquer à l’aide d’un système de communication quelconque. Le langage est inné.
 
-Sans en faire l'histoire minutieuse que ce domaine réclame, nous pouvons au moins rappeler un certains nombre d'étapes  et de contributeurs clés. 
+Langue: système de communication conventionnel particulier. Par « système », il faut comprendre que ce n'est pas seulement une collection d'éléments mais bien un ensemble structuré composé d'éléments et de règles permettant de décrire un comportement régulier (pensez à la conjugaison de verbes en français par exemple). La langue est acquise.
+
+Le langage et la langue s'opposent donc par le fait que l'un (la langue) est la manifestation d'une faculté propre à l'humain (le langage).
+
+Parole: une des deux composantes du langage qui consiste en l'utilisation de la langue. La parole est en fait le résultat de l’utilisation de la langue et du langage, et constitue ce qui est produit lorsque l'on communique avec nos pairs.
+
+Le texte : Il est la transcription de la parole,même si le plus souvent,  sa production est directe sans traduction du langage oral.
+
+### Syntaxe et grammaire générative
+
+Chomsky et sa grammaire générative. En dépit de leur très grande diversité. Le projet s'appuit sur l'idée qu'un nombre de règles finies doit produire une infinité d'ennoncés. Une grammaire est générative dans la mesure où elle possède cette propriété. L'analyse est ainsi tournée vers la compétence, et le linguiste s'interresse à l'idéal qu'un locuteur qui connaissant ces règles seraient en mesure de produit toute forme de discours. 
+
+Observant que les enfants apprennent enracinant le phénomène linguistique dans la cortalisation du langage, il apporte une idée forte et structuraliste d'une équivalence des langues.
+ 
+
+Tesnière et les arbres syntaxiques. 
+
+les treebanks contemporains  s'inscrivent dans cette perspective et nourrissent les analyseurs ( parser) syntaxiques du langage naturel qui constituent désormais la première couche d'un traitement de données textuelles.
 
 
-La langue et le langage sont l'objet d'une interrogation millénaire mais quelques auteurs clés ont mis à jour les idées essentielles qui justifient l'usage des méthodes actuelles. Donnons en un aperçu rapide de manière historique, en bornant un champs de connaissance que nous ne pouvons qu'affleurer.
+La grammaire générative a conduit la linguistique dans un tournant formel où la langue est étudiée indépendemment de ses locuteurs. On pourra méditer le pourquoi les algorithmes génératifs de deep learning contemporains (le fameux GPT3) peuvent former des  phrases syntaxiquement correcte mais absurde. 
 
- * les sophistes : plier le langage à ses intérêy est une première sciences du langege qui produit une connaissances des dispositifs les plus efficaces. Par sur que cette displines aient trouvé un chemine de vérité,; mais elle ereste commune, c'est l'oeuvre de la publicité.L
- * Saussure : il apporte une idée fondamentale que dans le symbole, le signe et le signifiant sont les deux face d'une même monaiie, qu'il existe une relation entre l'artefact et l'idée. Qu'un signe particulier puisse signifier une idée. c'est un penseur de la correspondance.
- * Frith et l'idée distributionnelle. un mot trouve son sens dans ceux qui lui sont le plus associés
- * Zipf
- * Tesnière et les arbres syntaxiques. 
- * Chomsky et sa grammaire génératitive. enracinant le phénomène linguistique dans la cortalisation du langage, il apporte une idée forte et structuraliste d'un équivalence des langues. 
- * Genette et l'intertextualité, le palimpseste. c'est une question de sens, le sens d'un texte vient de ses prédecesssurs de ceux à qui ils se réfèrent. Les textes se parlent l'un l'autre,  et ce n'est pas dans leur contenu qu'on trouvera une vérité dans dans le rapport qu'ils établissent avec leur prédecesseur par l'appareil des notes et des bibliographies. 
- * Austin et l'idée que le langage n'est ^pas que communication mais performation . ce qu'on dirt agit sur le monde
-  * La narrativité
 
-### la tradition lexicologique
+### Sémantique : La conception distributionnelle
+
+la tradition lexicologique
 
 le lexique est affaire ancienne, le français est aidé par des expériences les fondamentales :  le littré,  l'académie française et les dictionnaires des éditeurs. pour étudier un lanage il faut se rapporter à des formes stables, les dictionnaires les fournissent et fournisse les normes pour les coder. 
 
-L'idée de quantifier le langage n'est pas nouvelle. Encore moins s'il faut compter les occurences et les cooccurences des mots.Un vaste mouvement s'est formé dans les années soixante autour de la lexicologiue stimulée par l'école française d'analyse de données. Le descendant de ce mouvement se retrouve dans l'excellent iramutek de l'équipe de toulouse, il a été précedé par le fameur Alceste.
+Un moment clé a été de penser le signe, Saussure apporte une idée fondamentale que dans le symbole, le signe et le signifiant sont les deux faces d'une même monnaie, qu'il existe une relation entre l'artefact et l'idée. Qu'un signe particulier puisse signifier une idée. c'est un penseur de la correspondance.
 
-Nous y consacrerons un chapitre plein sur le plan technique. Mais il est important de souligner que cette école française de l'analyse textuelle ne se limite pas au comptage. Un logiciel comme trope qui d'ailleurs ne connait aucun équivalent dans l'écosystème que nous allons explorer manifeste aussi cette inventivité. 
+Selon Saussure, la langue est le résultat d’une convention sociale transmise par la société à l'individu et sur laquelle ce dernier n'a qu'un rôle accessoire. Par opposition, la parole est l'utilisation personnelle de la langue (toutes les variantes personnelles possibles: style, rythme, syntaxe, prononciation, etc.).Le changement de la langue relève d'un individu mais son acceptation relève de la communauté et des institutions. ex.: le verbe « jouer » conjugué «jousent » est pour l'instant considéré comme une variante individuelle (parole), une exception, et il le demeurera tant qu'il ne sera pas accepté dans la communauté (les locuteurs du français dans ce cas-ci). Sa conception du signe répond à cette approche conventionnelle : la dualité du signe comme signifiant et signifié est opérée. 
 
-S'y exprime pleinement la logique distributionnelle. 
+Dans le traitement des données textuelle le signifié est le terme cible de l'analyse, pour en découvrir son signifié on se tourne vers son contexte : l'ensemble des signifiés. C'est une idée ancienne qu'a proposé Firth dans les années 30. [@firth_synopsis_1957] et l'idée distributionnelle. un mot trouve son sens dans ceux qui lui sont le plus associés. c'est le contexte qui donne le sens
+
+L'idée de quantifier le langage n'est pas nouvelle  Zipf. Encore moins s'il faut compter les occurences et les cooccurences des mots.Un vaste mouvement s'est formé dans les années soixante autour de la lexicologiue stimulée par l'école française d'analyse de données. Le descendant de ce mouvement se retrouve dans l'excellent iramutek de l'équipe de toulouse, il a été précedé par le fameur Alceste.
+
+Nous y consacrerons un chapitre plein sur le plan technique. Mais il est important de souligner que cette école française de l'analyse textuelle ne se limite pas au comptage. Un logiciel comme trope qui d'ailleurs ne connait aucun équivalent dans l'écosystème que nous allons explorer manifeste aussi cette inventivité. S'y exprime pleinement la logique distributionnelle. 
+ 
+### Pragmatique les fonctions et acte du langage
+
+Si la grammaire générative se tourne délibéremment vers la compétence et ignore la performance, c'est à dire la production d'énnoncés par les humains en situation d'interaction, un autre courrant de la linguistique s'est emparé de la question, le courrant pragmatique.
+
+Le grand classique est la théorie des fonctions du language, qui sous-tendent la production du message, l'acte de parole,proposée par Jakobson. Inspiré par la cybernétique la structure de son modèle est celle d'un acte de communication. Jackobson identifie les éléments de l'évènement discursif (speech event) et les fonctions qui lui sont associée. Pour le paraphraser, un DESTINATEUR envoie un MESSAGE à un DESTINATEUR mais pour être compris il requiet un CONTEXTE dont les acteurs acteurs  de l'évenement discursif sont capables de se saisir et de verbaliser , d'un CODE au moins partiellement commun et d'un CONTACT, un canal physique et une connection psychologique. [@jakobson_linguistics_1981][àlire ici](https://pure.mpg.de/rest/items/item_2350615/component/file_2350614/content)
+
+ * la fonction référentielle ou représentative (aussi dénommée sémiotique ou symbolique), où l'énoncé donne l'état des choses , où le message dénote un contexte ;J emploie aussi les termes de dénotatif ou cognitive.
+ * la fonction expressive ( emotive), où le sujet exprime son attitude propre à l'égard de ce dont il parle ;
+ * la fonction conative, lorsque l'énoncé vise à agir sur le destinataire; elle s'exprime grammaticalement par l'impératif ou le vocatif.
+ * la fonction phatique,empruntée à Malinoswki où l'énoncé révèle les liens ou maintient les contacts entre le locuteur et l'interlocuteur ;
+ * la fonction métalinguistique ou métacommunicative, qui fait référence au code linguistique lui-même ;qu'il soit théorisé ou internalisé par le locuteur comme la prose de Mr Jourdain. 
+ * la fonction poétique, où l'énoncé est doté d'une valeur en tant que tel, valeur apportant un pouvoir créateur et dont Jakobson illustre avec l'exemple que la jeune fille qui a l'habitude de désigner Harry par "Horrible harry" sans pouvoir expliquer pourquoi il ne serait pas l'odieux, le dégoûtant, ou le terrible Harry alors que sans s'en rendre compte elle emploie une paronomasie/alliteration : la ressemblance des mots produit un effet poétique. 
+ 
+John Langshaw Austin s'intéressant  à la fonction conative développe le concept d'acte de langage, introduisant l'idée fondamentale que les actes de langage (la production d'un énoncé) n'ont pas destinés à décrire le monde tel qu'il est mais à agir sur le monde par le bias du destinataire. Parler c'est aussi faire.  La théorie des actes de langage est d'abord une catégorisation des actes.  
+
+La fonction illocutoire d'un acte de langage est, dans la théorie linguistique de John Langshaw Austin, le message convoyé par un énoncé au-delà de son sens immédiat, celui que traduit sa fonction locutoire. Par exemple, le fait, à table, de prononcer la phrase « Est-ce qu'il y a du sel ? » n'a pas, du seul fait de sa formulation, seulement pour fonction de s'informer sur la présence de sel dans la maison (ou dans le plat, contenu locutoire de l'énoncé) mais exprime plutôt que l'on voudrait saler son plat (fonction illocutoire) et se traduit généralement par le fait que l'un des convives réagit, par exemple en passant la salière au locuteur, ce qui est la fonction perlocutoire de l'énoncé1.
+ *  Locutoire
+ *  Illocutoire
+ *  Perlocutoire C'est cette idée qui est au sousbassement de la théorie des actes de langages.
 
 
+ * Genette et l'intertextualité, le palimpseste. c'est une question de sens, le sens d'un texte vient de ses prédecesseurs de ceux à qui ils se réfèrent. Les textes se parlent l'un l'autre,  et ce n'est pas dans leur contenu qu'on trouvera une vérité dans dans le rapport qu'ils établissent avec leur prédecesseur par l'appareil des notes et des bibliographies. 
+ * Austin et l'idée que le langage n'est ^pas que communication mais performation . ce qu'on dirt agit sur le monde
+  * La narrativité
 
 ### la linguistique computationnelle
 
 le frottement de la linguistique et de l'informatique se produit à propos de questions pratiques. 
 
-#### la question de la fouille de données
+Les apports de la fouille de données
+
 
 les nomenclatures
 
 une convergence nécessaire
 
-#### la question du classement des documents
-
 Le monde des bibliothèques et celui de la GED.
 
 
-## Les facteurs de développement
+## Les facteurs de développement de l'usage en science sociale
 
 Ces développements sont favorisés par un environnement fertile dont trois facteurs se renforcent mutuellement. Ils conduisent à l'élaboration de nouvelles méthodes.
 
@@ -84,7 +127,7 @@ Ces développements sont favorisés par un environnement fertile dont trois fact
 
 Le premier est l’expansion de deux langages, proprement statistique pour r et plus généraliste pour Python. Le propre de ces langages est, prenons le cas de r, de permettre d’élaborer des fonctions, dont un ensemble cohérent pour réaliser certaines tâches peut être rassemblé dans une bibliothèque appelée package (et chargé par library(nomdupackage)). On dispose désormais de milliers de packages (17 788 sur le CRAN) destinés à résoudre un nombre incalculable de tâches. 
 
-![hornik](number_CRAN_packages.png)
+![hornik](./Images/number_CRAN_packages.png)
 
 Coder une analyse revient ainsi à jouer avec un immense jeu de lego, dont de nombreuses pièces sont déjà pré-assemblées. D’un point de vue pratique, les lignes d’écriture sont fortement simplifiées permettant à un chercheur sans grande compétence de codage d’effectuer simplement des opérations complexes.  En retour, cette facilitation de l'analyse abonde le stock de solutions.
 
@@ -130,7 +173,7 @@ La seconde est le maintien d'une éthique du partage qui encourage à partager l
 
 Toutes les conditions sont réunies pour  engendrer une effervescence créative. Python ou r, sont dans cet univers en rapide expansion, les langues véhiculaires qui favorise une innovation constante. Les statistiques de github en témoigne : près de 50 millions d'utiliseurs, 128 millions de " repositories" et 23 millions de propriétaires.
 
-![source](github.png)
+![source](./Images/github.png)
 
 voir aussi
 https://towardsdatascience.com/githubs-path-to-128m-public-repositories-f6f656ab56b1
@@ -138,14 +181,23 @@ https://towardsdatascience.com/githubs-path-to-128m-public-repositories-f6f656ab
 
 ## De nouvelles méthodologies pour les sciences sociales
 
-Pour les chercheurs en sciences sociales (et en premier lieu pour les chercheurs en gestion où toutes les sciences sociales se croisent) cette révolution textuelle offre de nouvelles opportunités d’obtenir et d’analyser des données pour vérifier ses hypothèses et mener son enquête. Ce sont de nouveaux terrains, de nouvelles méthodes et un nouvel objet de recherche.
+Pour les chercheurs en sciences sociales (et en premier lieu pour les chercheurs en gestion où toutes les sciences sociales se croisent) cette révolution textuelle offre de nouvelles opportunités d’obtenir et d’analyser des données solides pour vérifier ses hypothèses et mener l'enquête. Ce sont de nouveaux terrains, de nouvelles méthodes et un nouvel objet de recherche qui se dessine dans le foisonnement du champs.
 
 
- * Nouveaux terrains : La multiplication des sources de données, associée à leur normalisation  rencontre une multiplication de techniques provenant de mulpliples discplinaire et qui convergent dans un langage commun. . production abondante d’avis de consommateurs, de discours de dirigeants, de compte-rendus de conseils, d’articles techniques,la linguistique computationnelle, de la fouille de données, des moteurs de recommandation, de la traduction automatique, et des ressources nouvelles et précieuses pour traiter l’abondance des données
+### Nouveaux terrains : 
 
- * Nouvelles méthodes : Un nouveau paradigme méthodologique se construit à la croisée de données abondantes et de techniques de traitement intelligentes. Il permet d’aller plus loin que l’analyse lexicale traditionnelle en incorporant des éléments syntaxiques, sémantiques, et pragmatiques, proposés par l’ensemble des outils des techniques de traitement du langage naturel. Il se dessine surtout une nouvelle approche méthodologique qui prend place entre l’analyse qualitative, et les traditionnelles enquêtes par questionnaires capables de traiter des corpus d’une taille inédite. Le travail de [@humphreys_automated_2018] en donne une première synthèse dans le cadre d’un processus qui s’articule autour des différentes phases d’une recherche : la formulation de la question de recherche, la définition des construits, la récolte des données, l’opérationnalisation des construits, et enfin l'interprétation, l’analyse et la validation des résultats obtenus. 
+La multiplication des sources de données, associée à leur normalisation  rencontre une multiplication de techniques provenant de multiples disciplinaires et qui convergent dans un langage commun. . production abondante d’avis de consommateurs, de discours de dirigeants, de compte-rendus de conseils, d’articles techniques,la linguistique computationnelle, de la fouille de données, des moteurs de recommandation, de la traduction automatique, et des ressources nouvelles et précieuses pour traiter l’abondance des données
+
+### Nouvelles méthodes : 
+
+Un nouveau paradigme méthodologique se construit à la croisée de données abondantes et de techniques de traitement intelligentes. Il permet d’aller plus loin que l’analyse lexicale traditionnelle en incorporant des éléments syntaxiques, sémantiques, et pragmatiques, proposés par l’ensemble des outils des techniques de traitement du langage naturel. Il se dessine surtout une nouvelle approche méthodologique qui prend place entre l’analyse qualitative, et les traditionnelles enquêtes par questionnaires capables de traiter des corpus d’une taille inédite. 
+Le travail de [@humphreys_automated_2018] en donne une première synthèse dans le cadre d’un processus qui s’articule autour des différentes phases d’une recherche : la formulation de la question de recherche, la définition des construits, la récolte des données, l’opérationnalisation des construits, et enfin l'interprétation, l’analyse et la validation des résultats obtenus. 
  
- * Un nouvel objet : on pourrait croire qu'avec des données massives et des techniques "intelligente" on assiste à un retour du positivisme qui bénéficierait enfin des instruments de mesure et de calculs qui ont permis aux les chercheur plus proches de la matière des succès majeurs. Sans doute, l'administration de la preuve va être faciliter par ces techniques et encourager l'evidence based policy (REF) et résoudre en partie la crise de la réplication et de la reproductibilité. Mais à mesure que ce développe l'appareillage de méthode et de données, moins on peut supposer que l'observateur est neutre. Les téléscopes géants, les synchrotron, n'affecte ni les galaxies lointaines ni les atomes proches. Le propre des données que l'ont est amené à étudier est de résulter de la confrontation d'un système d'observation (certains préfèrent de parler de surveillance), et d'un agent qui a des buts, une connaissance, et des ressources. Le dispositif de mesure est en lui-même performatif. L'exemple le plus évident est celui des  systèmes de notation, qui sous prétexte de transparence donne la distribution des répondants précédents. L'agent qui va noter choisit la valeur en fonction d'une norme apparente - la note majoritaire- et de sa propre intention - se manifester ou se confondre à la foule. 
+## Un nouvel objet : 
+
+On pourrait croire qu'avec des données massives et des techniques "intelligente" on assiste à un retour du positivisme qui bénéficierait enfin des instruments de mesure et de calculs qui ont permis aux les chercheur plus proches de la matière des succès majeurs. Sans doute, l'administration de la preuve va être faciliter par ces techniques et encourager l'evidence based policy (REF) et résoudre en partie la crise de la réplication et de la reproductibilité. 
+
+Mais à mesure que ce développe l'appareillage de méthode et de données, moins on peut supposer que l'observateur est neutre. Les téléscopes géants, les synchrotron, n'affecte ni les galaxies lointaines ni les atomes proches. Le propre des données que l'ont est amené à étudier est de résulter de la confrontation d'un système d'observation (certains préfèrent de parler de surveillance), et d'un agent qui a des buts, une connaissance, et des ressources. Le dispositif de mesure est en lui-même performatif. L'exemple le plus évident est celui des  systèmes de notation, qui sous prétexte de transparence donne la distribution des répondants précédents. L'agent qui va noter choisit la valeur en fonction d'une norme apparente - la note majoritaire- et de sa propre intention - se manifester ou se confondre à la foule. 
  
 Pour se donner une idée plus précise de ce mouvement, examinons quelques publications récentes dans les champs qui nous concernent. 
 
@@ -165,9 +217,11 @@ On citera cependant jean-baptiste Coulmont et son obstination à étudier les en
 
 Très tôt la psychogie s'est intéressée au langage, pas seulement comme produit des processus psychologiques, mais comme expression de ceux-ci. 
 
-Dans le champs de la psychologie de l'éducation et avec une forte motivation scientiste, dès les années 60 s'est posée la question de la mesure de la difficulté d'un texte pour un niveau d'éducation donné. La mesure de la lisibilité des texte s'est développée profitant à d'autre secteurs tels que ceux de la propagande. Dans cette même perspective, la richesse lexicographique comme représentant les compétences a a son tour développé de nouvelles instrumentations. 
+Dans le champs de la psychologie de l'éducation et avec une forte motivation positiviste, dès les années 60 s'est posée la question de la mesure de la difficulté d'un texte pour un niveau d'éducation donné. La mesure de la lisibilité des texte s'est développée profitant à d'autre secteurs tels que ceux de la propagande. Dans cette même perspective, la richesse lexicographique comme représentant les compétences a a son tour développé de nouvelles instrumentations. 
 
-James W. Pennebaker a développé son approche à partir de l'étude des traumas; donnant une grande importance à la production discursive des patients. Sa contribution majeure est l'établissement d'un ensemble de dictionnaires destinés à mesurer des caractéristiques du discours. Un instrument qu'on présentera dans le chapitre 7 (à vérifier). Auteur en 2011 d'un livre s'intéressant à l'usage des petits mots.  Son approche se poursuit en psychiatrie avec l'analyse des troubles du langage, et a connu un coup d'éclat avec la demonstration que l'analyse des messages sur les réseaux sociaux comme facebook permet de détecter des risques de dépression.(!ref)
+James W. Pennebaker a développé son approche à partir de l'étude des traumas; donnant une grande importance à la production discursive des patients. Sa contribution majeure est l'établissement d'un ensemble de dictionnaires destinés à mesurer des caractéristiques du discours. Un instrument qu'on présentera dans le chapitre 7 (à vérifier)[@tausczik_psychological_2010].
+
+Son approche se poursuit en psychiatrie avec l'analyse des troubles du langage, et a connu un coup d'éclat avec la demonstration que l'analyse des messages sur les réseaux sociaux comme facebook permet de détecter des risques de dépression.[@eichstaedt_facebook_2018].
 
 
 ### Management
@@ -185,25 +239,30 @@ economie des brevets
 intervention des institutions
 mesure de l'innovation
 
-## La matière du langage et la transparence de la langues
 
-La situation nouvelle qui est la notre est que lorsque la parole disparaissait avec le vent, elle laiise des traces et s'enregistre.
+## Des comptable à l'industrie de la langue
 
-Cette matière ne s'organise plus dans les papyrus et autres manuscrits, ni même dans des livres sués, elle s'incruste dans un édifice de plus en plus complexe.
 
-Le langage a acqui une dimension matérielle qu'il n'a presque jamais eu.
+La situation nouvelle qui est la notre est que lorsque la parole disparaissait avec le vent, elle laisse désormais des traces et s'enregistre. L'ironie est qu'au titre de la protection de la vie privée, cet enregistrement systèmatique doit être mis à notre disposition. On a le choix : rien n'en faire, les détruire, les donner pour bénéficier de son potentiel de connaissance. Nous sommes passé de la parole au texte.  Si seule la prole de dieux et celle des champs étaient transcrites, c'est désormais aussi celle du vulgum. Si sa précision est incertaine, son volume a gagné de nombreuses échelles.
 
-l'histoire se définit pas une écriture, ce qui était des sociétés sans écriture sont devenues des sociétés  de pure parole dont des scribes machiniques remplissent les silos de leur prise de note.
+Cette matière ne s'organise plus dans les papyrus et autres manuscrits, ni même dans les livres sués par les callygraphieurs, elle s'incruste dans un édifice de plus en plus complexe d'interfaces textuelles et vocales. La parole est comme absorbée par les machines. Elle ne s'envolent plus avec le vent, elle sédimente dans les data center. Le langage a acquis une dimension matérielle qu'il n'a presque jamais connu. Il gagne de l'autonomie avec les systèmes génératifs : chat bot, transciption, traduction, résumés. 
 
-Une société de procès-verbal quifacilite le travail du sociologue et de l'économiste.
+l'histoire se définit son écriture. l'écriture est le produit d'une  société de procès-verbal, de comptabilité et ça se poursuit. Voilà  qui facilite le travail de l'historien, du sociologue et de l'économiste. 
 
-Des siècles durant les philologues, Nitecteches en premier e*ou en dernier se sont acharnés
- à trouver dans la langues des règles, à travers leur histoire. aujourd'hui c'est l'intelligence articielle qui est à l'oeuvre prenant en compte que le cumul des règles est propice aux lois de probabilité. 
- 
- 
- 
+Dans les années 90 s'est dessinée une société de l'information, sauvage jusqu' à Napters, et le rêve du peer to peer, elle s'est  socialisée dans les années 2000, platformisée dans les années 2010, généralisée pour la décennie qui nous concerne. Toute cette architecture s'appuie sur les données qu'on y injecte, et en premier le texte. la transcription de la parole, une recodification. Et des traitements très concentrés. 
+
+
 ## Conclusion
 
-des techniques
+le point d'entrée de la technique est privilégié dans ce manuel. Mais on se donnera des espaces de réflexion, d'interrogation, des espaces epistémologiques (Comment étudier le langage par le langage ?) et anthropologique (quelle est l'origine et la spécificité du langage humain en dépit de ses innombrables variétés ?).
 
-des méthodes
+
+Une première parenthèse est expérientielle, c'est en faisant que nous avons découvert une autre écriture. L'expérience de ce livre, qu'on partage avec de nombreux utilisateurs de ces nouveaux outils, est celle d'une écriture programmatique, performative. Ecrire c'est faire, les meta-langage transforme la transcription de la parole en une nouvelle connaissance.On peut agir sur la parole, sur le texte, le tordre, le presser, le décoder . On peut lire les foules. 
+
+Les langages tels que la linguistique les étudie sont verbaux, d'autres sont iconiques, architecturaux, graphiques, chorégraphiques, musicaux. Elles se rencontre dans le flux d'une parole qui associe le texte à l'image dans des rapports d'illustation ou de commentaire, jouant du contrepoint à travers les médias. 
+
+par le texte, le sociologue, l'économiste ou le gestionnaire veulent coprendre la génèse et la détermination des choix. Etudions le texte. 
+
+L'acte de parole se réalise dans un lieu à un moment avec des protagonistes, dans une atmosphère, avec une histoire, les mots qui s'en échappent ne sont que des traces, autant que des photographies. Ces données se sédimentent dans les grands bassins du cloud et dans les corpus constitués méthodiquement. 
+
+

@@ -1,12 +1,8 @@
 # Une première analyse quantitative
 
-Avant tout un texte doit être analyser de manière volumétrique. Comment de texte? Quelle longueur ? combien de mots ? quelles variations? 
+Une première manière d'aborder un texte ou un corpus est volumétrique. Quel volume de texte? Quelle longueur ? Combien de mots ? quelles variations? A cette fin on utilise le cas des tweets de Donald Trump. Des premiers aux derniers, jusqu'au moment de son banissement en Janvier 2021, après sa défaite aux élections présidentielles. Chargeons le fichier de données. 
 
-Dans ce chapitre nous allons analyser le flux des tweets produit par donald Trump, jusqu'au moment de son banissement en Janvier 2021, àprès sa défaite.
-
-Chargeons le fichier de données. On en profite pour compter le nombre de posts et de variables
-
-```{r chap01_00}
+```{r 101}
 
 df <- read_csv("./data/TrumpTwitterArchive01-08-2021.csv")
 nrow<-nrow(df) #nombre de ligne
@@ -16,7 +12,7 @@ ncol<-ncol(df) #nombre de colonne
 
 ## Comptons les mots
 
-Il y `r nrow` tweets et `r ncol` variables. On peut vouloir compter le nombre de mots. A cette fin on emploie une fonction de `stringr :  `str_count`. ( On reviendra sur la question de la manipulation des chaines de caractères dans un chapitre ad hoc)
+Il y `r nrow` tweets et `r ncol` variables. On peut vouloir compter le nombre de mots. A cette fin on emploie une fonction de stringr :  `str_count`. (On reviendra sur la question de la manipulation des chaines de caractères dans un chapitre ad hoc)
 
 
 ```{r 1, fig.cap='Distribution du nombre de mots par post', out.width='80%', fig.asp=.75, fig.align='center'}
@@ -29,13 +25,18 @@ ggplot(df, aes(x=nb_mots))+
 
 ```
 
-La bimodalité provient surement du changement de taille maximum effectué en septembre 2017, le passage de 180 caractères max à 280. On peut le vérifier en examinant cette même distribution - par les courbes de densité - pour chacune des années, avec cette technique rendue fameuse par la pochette de l'album de Joy Division : un graphique en crêtes (ridges plot) avec [ggridges](https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html)
+La bimodalité provient surement du changement de taille maximum effectué en septembre 2017, le passage de 180 caractères max à 280. On peut le vérifier en examinant cette même distribution - par les courbes de densité - pour chacune des années, avec cette technique rendue fameuse par la pochette de l'album de Joy Division : un graphique en crêtes (ridges plot) avec [ggridges](https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html).
+
+Le résultat remarquable est que si Trump dans un premier temps exploite cette nouvel fonctionnalité, il en revient avec un phrasé de 20 mots en moyenne, gardant cependant à l'occasion d'autre contenu en 50 mots environ.
+
 
 ```{r 2, fig.cap=' Evolution de la distribution du nombre de mots', out.width='80%', fig.asp=.75, fig.align='center'}
 
 df$Year<-format(df$date, format = "%Y") #on extrait l'année de la date
+foo<- df %>% 
+  filter(Year!="2021")
 
-ggplot(df,aes(x = nb_mots, y = Year, group = Year)) +
+  ggplot(foo,aes(x = nb_mots, y = Year, group = Year)) +
   geom_density_ridges(scale = 3, fill="peachpuff")+
   theme_ridges() +
   scale_x_continuous(limits = c(1, 70), expand = c(0, 0)) +
@@ -44,32 +45,33 @@ ggplot(df,aes(x = nb_mots, y = Year, group = Year)) +
 
 ## la production dans le temps
 
+Concluons en examinant le nombre de tweets produit au cours du temps.
 
-Le résultat remarquable est que si Trump dans un premier temps exploite cette nouvel fonctionnalité, il en revient avec un phrasé de 20 mots en moyenne, gardant cependant à l'occasion d'autre contenu en 50 mots environ.
-
-Concluons en examiner le nombre de tweets produit au cours du temps
+La fonction `ts_plot` employée viens de `rtweet` que nous avons employée au chapitre 2. Elle emploie ggplot, et permet de représenter les évolutions selon différentes échelles de temps. On se rapplera qu'après une carrrière immobilière menée dans les casinos, le golf et les hôtels, l'appétit médiatique de trump s'est réalisé dans the apprenctice, de 2004 à 2015. C'est un pro de la TV, il a une formation de popstar. Il sera élu en Décembre 2016 pour prendre le pouvoir en Janvier. 
 
 ```{r 3, fig.cap='Evolution de la production mensuelle des tweets de Trump', out.width='80%', fig.asp=.75, fig.align='center'}
 
 ## plot time series of tweets
-ts_plot(df, "1 month", color="darkblue") + theme(plot.title = element_text(face = "bold")) + 
+ts_plot( foo, "1 month", color="darkblue", size=1.1) + 
+  theme(plot.title = element_text(face = "bold")) + 
   labs( x = NULL, y = "Nombre de tweets par mois",title = "Fréquence des posts twitters Donald Trump")+
   scale_x_datetime(date_breaks = "1 year", labels = scales::label_date_short())
+
 #raf : labeliser avec les dates clés
 ```
 
 
 ## Lisibilité et complexité lexicale
 
-Pour aller un peu plus loin, dans les comptages, introduisons deux quantifications utiles du texte : la lisibilité et la complexité lexicale. On gardera le principe d'une analyse longitudinale
+Pour aller un peu plus loin - nous savons désormais que trump aime une forme courte en 21 mots, et que son expérience de twtitter est longue, on peut s'intéresser à des paramètres clés relatifs aux conditions de la reception: les textes sont-ils aisés à lire ? sont-ils sophistiqués ?
 
-https://fr.wikipedia.org/wiki/Covfefe
+Introduisons deux quantifications utiles du texte : la lisibilité et la complexité lexicale. Ce sont des classiques, les critères initiaux de l'analyse quantitative du texte. Ils sont toujours utiles. 
 
 ### Les indices de lisibilité
 
-La lisibilité est une vieille notion autant que sa mesure (par exemple @coleman_computer_1975). Il s'agit d'évaluer la complexité d'un texte à partir de deux critères : la complexité des mots capturée par le nombre moyen de syllabes par mot, et la complexité des phrases mesurée par le nombre de mots. 
+La lisibilité est une notion aussi ancienne que sa mesure (par exemple @coleman_computer_1975). Elle répond à la question du degré de maitrise requis pour lire un texte en s'appyant sur les caractéristique objective du texte plutôt que sur sa perception. Il s'agissait  donc d'évaluer la complexité d'un texte. Deux critères principaux sont généralement considérés : la complexité des mots capturée par le nombre moyen de syllabes par mot, et la complexité des phrases mesurée par le nombre de mots. 
 
-Le nombre d'indicateurs est considérable et le package compagnon de quanteda , `[quanteda.textstats](https://quanteda.io/reference/textstat_readability.html)` , en fournit au moins des dizaines. Dans l'exemple suivant, on se contente d'un grand classique, le plus ancien, l'indice de Flesch [@flesch_new_1948] et de ses constituants: le nombre moyen de syllabes par mot et le nombre moyen de mots par phrase.  
+Le nombre d'indicateurs est considérable et le package compagnon de quanteda , `[quanteda.textstats](https://quanteda.io/reference/textstat_readability.html)` , en fournit des dizaines. Dans l'exemple suivant, on se contente d'un grand classique, le plus ancien, l'indice de Flesch [@flesch_new_1948] et de ses constituants: le nombre moyen de syllabes par mot et le nombre moyen de mots par phrase.  
 
 ```{r 404, fig.cap='Evolution de la lisibilité moyenne des tweets de Trump', out.width='80%', fig.asp=.75, fig.align='center'}
 
@@ -92,7 +94,12 @@ ggplot(foo1,aes(x=Year, y=value, group=variable))+
   labs(title = "Evolution de la lisibilité des tweets de Trump", x=NULL, y=NULL)
 ```
 
-Pour aider le lecteur à donner un sens, voici l'abaque proposée par [Flesch](http://www.appstate.edu/~steelekm/classes/psy2664/Flesch.htm)lui-même. [Flesch](ReadabilityFlesch.JPG). On peut aussi prendre pour références les éléments suivants: "All Plain English examples in this book score at least 60. Here are the scores of some reading materials I've tested. These are average scores of random samples."
+Pour aider le lecteur à donner un sens, voici l'abaque proposée par [Flesch](http://www.appstate.edu/~steelekm/classes/psy2664/Flesch.htm) lui-même. 
+
+![Flesch](./images/ReadabilityFlesch.JPG)
+
+
+On peut aussi prendre pour références les éléments suivants: "All Plain English examples in this book score at least 60. Here are the scores of some reading materials I've tested. These are average scores of random samples." ( source ?)
 
 Comics                      92
 Consumer ads in magazines   82
@@ -103,37 +110,55 @@ Harvard Business Review     43
 Harvard Law Review          32
 Auto insurance policy       10
 
-Trump ne parait pas être sa caricature, non niveau de lisibilité correspond à la Licence. Il est moins simple que le Reader's Digest mais plus compliqué à lire que la Harvard Business Review !  
+Trump ne parait pas être sa caricature, non niveau de lisibilité correspond à la Licence. Reader's Digest est beaucoup plus simple, il se situe au dessus de la Harvard Business Review !  
 
 ### Les indices de complexité lexicale
 
-La complexité lexicale rend compte de la diversité du vocabulaire, elle consiste à rapporter le nombre de mot uniques sur le nombre total de mots. La difficulté est que la taille des corpus joue fortement sur cette mesure et que l'orsque cette taille est hétérogène, l'indicateur marque plus cette variété que les variations de complexité lexicale.[@tweedie_how_1998] 
+La complexité lexicale rend compte de la diversité du vocabulaire, elle consiste à rapporter le nombre de mot uniques sur le nombre total de mots. La difficulté est que la taille des corpus joue fortement sur cette mesure et que lorsque cette taille est hétérogène, l'indicateur marque plus cette variété que les variations de complexité lexicale.[@tweedie_how_1998] 
 
-https://quanteda.io/reference/textstat_lexdiv.html
+Dans notre univers trumpesque, ce n'est pas trop sensible, d'autant plus que nous allons moyenner les tweets par période.Notons au passage que si nous moyennons la diversité lexicale de chaque tweet, une autre approche pourrait être de concatener l'ensemble des tweets d'une période (un jour, une semaine) pour approcher cette variable à une autre échelle, qui couvre l'ensemble des sujets d'intérêt de trump, que les tweets fractionnent nécessairement. Ce qui en en question dans la mise en pratique n'est pas seulement la question du choix de l'indice mais aussi la définition de l'unité de calcul. La diversité lexicale concerne sans doute plus le discours que la phrase. 
 
-Une manière plus fine sera de considérer chaque période comme un texte, 
+On poursuite avec quanteda https://quanteda.io/reference/textstat_lexdiv.html
 
-un pb est que l'allongement des tweets peut expliquer l'accroissement de diversité
+On choisit de ne travailler sur deux des multiples indicateurs disponibles : 
 
-Dans notre univers trumpesque, ce n'est pas trop sensible, d'autant plus que nous allons moyenner les tweets par période.Notons au passage que si nous moyennons la diversité lexicale de chaque tweets , une autre approche pourrait être de concatener l'ensemble des tweets d'une période ( un jour, une semaine) pour approcher cette variable à une autre échelle, qui couvrent l'ensemble des sujets d'intérêt de trump, que les tweets fractionnenet nécessairement. Ce qui en en question dans la mise en pratique n'est pas seulement la question du choix de l'indice mais aussi la définition de l'unité de calcul. La diversité lexical concerne sans doute plus le discours que la phrase. 
+ * le CTTR de caroll qui rapporte le nombre de mots distincts ( V) sur le nombre de mots exprimés. Avec ce critère la diversité maximale est obtenue quand le nombre de mot différents est égal au nombre de mots exprimés. 
 
+$$
+CTTR = \frac{V}{\sqrt{2N}}
+$$
 
-là, encore la nécessité d'avoir des points de repère, des échelles.
+ * le Mass supposé être moins sensible à la longueur des textes. (voir Torruella et Capsada 2013 ou )
 
+$$
+M = \frac{log(n) - log(t)}{log² (n)}
+$$
 
-```{r 4, fig.cap='Evolution de la lisibilité moyenne des tweets de Trump', out.width='80%', fig.asp=.75, fig.align='center'}
+ * Le problème de la longueur de text a confuit à des approches segmentées, où la mesure de diversité est une moyenne des moyenne pour chacun des segments. On emploie ici le MATTR, dont le MA signifie moyenne mobile (moving average), et le TTR le token/type ratio.
 
+Pour la mise en oeuvre on passe par quanteda. 
 
-lexdiv<-tokens(foo$text) %>% 
-  textstat_lexdiv(foo$text, measure = c("CTTR"),remove_numbers = TRUE,
+( attention un pb de log dans le calcul)
+
+```{r 405, fig.cap='Evolution de la lisibilité moyenne des tweets de Trump', out.width='80%', fig.asp=.75, fig.align='center'}
+foo<-foo %>%filter(nb_mots>1)
+#la fonction de calcul de diversité
+t1=Sys.time()
+lexdiv<-tokens(foo$text)%>%
+  textstat_lexdiv(foo$text, measure = c("CTTR", "Maas","MATTR"),remove_numbers = TRUE,
   remove_punct = TRUE,
   remove_symbols = TRUE,
-  remove_hyphens = FALSE) #la fonction de calcul de diversité
-
-foo<-cbind(foo,lexdiv[,2])
+  remove_hyphens = TRUE) 
+t2=Sys.time()
+t<- t2-t1
+foo<-foo[,1:14]
+#On combine les données et on aggrège sur l'année
+foo<-cbind(foo,lexdiv[,2:3])
 foo1<-foo %>% 
   group_by(Year) %>%
-  summarise(CTTR=mean(CTTR, na.rm=TRUE)) %>%
+  summarise(CTTR=mean(CTTR, na.rm=TRUE), 
+            Maas=mean(Maas, na.rm=TRUE),
+            MATTR=mean(MATTR, na.rm=TRUE)) %>%
   gather(variable, value, -Year)
 
 ggplot(foo1,aes(x=Year, y=value, group=variable))+
@@ -142,17 +167,129 @@ ggplot(foo1,aes(x=Year, y=value, group=variable))+
   labs(title = "Evolution de la diversité lexicale des tweets de Trump", x=NULL, y=NULL)
 ```
 
-## Conclusion
+## Comptons les mots
 
+Il est temps de compter les mots, chacun d'entre eux, de se faire une idée une idée de leurs fréquences, de leur distribution. 
+
+Souvent on éliminera ceux qui apparaissent de manière occasionnelle, mais aussi ceux qui apparaissent systématiquement dans tous les textes. Une fois ces deux filtrages effectués, le lexique est généralement de l'ordre de 500 à 10000 mots. 
+
+Deux outils sont disponibles: les nuages de mots et les lollyplots. Les premiers donnent une idée immédiates, les seconds se prêtent mieux à une analyse systématique
+
+### Les nuages de mots
+
+Ils sont devenu extrêmement populaire même si l'effet esthétique est plus important de leur utilité analytique.
+
+Le cas influenceurs pourrait être bien pour illustrer
+
+```{r 405, fig.cap='Evolution de la lisibilité moyenne des tweets de Trump', out.width='80%', fig.asp=.75, fig.align='center'}
+
+toks<- tokens(foo$text) %>% 
+  dfm(remove_punct = TRUE,  remove = stopwords("english"))%>% 
+  dfm_remove(c("couleur", "to"))
+
+docvars(toks,"influenceur")<-df$influenceur
+
+toks
+
+
+foo<-toks %>% 
+    dfm_trim(min_termfreq = 5, verbose = FALSE)
+
+freq <- textstat_frequency(foo)
+
+ggplot(freq, aes(label = feature)) +
+  geom_text_wordcloud(aes(size=frequency, color=rank)) +
+  theme_minimal() +  scale_size_area(max_size = 10) + 
+  scale_color_gradient(low = "darkblue", high = "red")
+
+ggsave("g0.jpg", plot=last_plot(), width = 27, height = 19, units = "cm")
+
+
+foo<-toks %>% 
+  dfm_group(groups = influenceur) %>%
+    dfm_trim(min_termfreq = 5, verbose = FALSE)
+
+
+freq <- textstat_frequency(foo, group =influenceur)
+
+set.seed(42)
+library(ggwordcloud)
+ggplot(freq, aes(label = feature)) +
+  geom_text_wordcloud(aes(size=frequency, color=rank)) +
+  theme_minimal()+facet_wrap(vars(group)) +  scale_size_area(max_size = 10) + 
+  scale_color_gradient(low = "darkblue", high = "red")
+
+
+ggsave("g1.jpg", plot=last_plot(), width = 27, height = 19, units = "cm")
+
+```
+
+### Des lollyplots
+
+Plus utile sont des diagrammes d'un format loliplot qui quantifie de manière plus précise la fréquence des termes.
+
+la notion de densité, quelle échelle? 
+
+### La mesure de la concentration des termes
+
+Le langage d'un point de vue quantitatif a été caractérisé depuis bien longtemps et zipf est un des premier à avoir proposé la loi de distribution qui porte son nom mais aussi celle de mandelbrot qui en a proposé un affinement. 
+
+Celle-ci s'exprime de la manière suivante : si on classe les termes par ordre de fréquence r
+
+$$f(r)=\frac{K}{r} $$
+Mandelbrot la généralisé
+
+les études empiriques
+
+On peut encore débattre de sa signification. Une économie cognitive? Une conséquence de la théorie de l'information ? Un signature pour identifier un discours
+
+Zipf distribution 1949
+
+```{r 405, fig.cap=' ', out.width='80%', fig.asp=.75, fig.align='center'}
+```
+
+
+## Le cas de sources multiples
+
+le cas dy corpus de Trump est passionnant car il donne toute la production d'un locuteur au cours du temps. Le plus souvent les corpus sont constitués de locuteurs multiples dont les niveaux d'engagement sont très variables, un petit nombre publie souvent, et la majorité de manière épisodique.
+
+Il est important de quantifier ces rapports de production. 
+
+### Mesure de la concentration
+
+Qui produit combien? c'est la première question quand on analyse des données sociales. Les vieilles courbes de Lorenz sont à ce titre précieuses, tout autant que les indices de concentration, celui de Gini pour prendre un grand classsique. Le lecteur, avec un peu de curiosité, en trouvera facilement d'autres plus modernes ou mieux adaptés à nos besoins.
+
+Illustrons.
+
+```{r 406, fig.cap=' ', out.width='80%', fig.asp=.75, fig.align='center'}
+```
+
+### ou par segmentation
+
+Il est souvent plus simple de représenter des catégories ordonnée plutôt qu'un gradient : les grous, les moyens et les petits producteurs. 
+
+
+```{r 407, fig.cap=' ', out.width='80%', fig.asp=.75, fig.align='center'}
+```
+
+## Conclusion
+0
 Nous aurons appris à 
 
-* compter le nombre de document
-* mesurer la complexité du langage
-* mesurer la diversité de son vocabulaire.
+ * Compter le nombre de documents et leurs longueurs
+ * Mesurer la complexité du langage
+ * Mesurer la diversité de son vocabulaire.
+ * A évaluer la concentration des sources
+ * A se donner une première idée de la lexicographie
+ 
 
-Ces mesures n'ont ne sens que si elles peuvent être comparées
+Ces mesures n'ont ne sens que si elles peuvent être l'objet de comparaison :
 
-de manière interne
+ * De manière interne la comparaison se fait dans dans le temps et à travers des segments. On s'intéresse moins au niveau, qu'aux différences entre les niveaux.
+ * De manière externe elle requiert un étalonnage. Comparer par rapport au français courant, à un niveau de langue soutenu, ou relâché. L'étalonnage revient à caractériser des types de corpus : presses, écriture savante, réseaux sociaux, publications officielles etc. On ne peut que souhaiter que des comparaisons systèmatiques soient engagées et compilées pour donner des points de repère précis quand on étudie un corpus particulier. 
+ 
+Elles participent à un premier niveau d'analyse du texte, en surface, visant à apprécier la dynamique de sa production, à établir les échelles d'analyse, à repérer les éléments structurels.
 
-de manière externe
+Le texte est une matière qui a un poids (le nombre de mot), une variétés (le nombre d'expression), une complexité (les règle qui l'organisent). nous veons de nous doter des premiers outils d'analyse, il est temps de passer à la suite. 
+ 
 

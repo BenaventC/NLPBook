@@ -32,7 +32,7 @@ Il sera dynamique, modifié à mesure de nos cours, séminaires, ateliers et obs
 
 La liste des cours et séminaires où il sera présenté et utilisé. 
 
- * Colloque Marketing digital 1-2 septembre 2021
+ * Colloque Marketing digital 2-3 septembre 2021
  * AFM decembre 2021
  * Ed Sorbonne - février 2022
  * Dauphine master 204 - octobre 2021
@@ -43,11 +43,11 @@ La liste des cours et séminaires où il sera présenté et utilisé.
 
 ## La structure du livre
 
-L analyse NLP peut être analysée comme un processus qui va de la production jusqu' à la diffusion des analyses. Elle est aussi traversée par des évolutions profondes de méthodes qui ont complexifié au sens formel les modèles initiaux. L'apprentissage submerge le comptage,et les catégorisations....
+L analyse NLP peut être analysée comme un processus qui va de la production jusqu'à la diffusion des analyses. Elle est aussi traversée par des évolutions profondes de méthodes qui ont complexifié au sens formel les modèles initiaux. Ce sont ces techniques que nous introduisons ici. 
 
-Rappelons nous que les modèles de langages désormais distribués par les grands acteurs, comprennent des dizaines, voir des centaines de milliards de paramètres. 
+Cependant, l'apprentissage automatique appliqué à des milliards de données submerge la statistique. Les modèles de langage distribués par les grands acteurs d gidital, comprennent des dizaines, voir des centaines de milliards de paramètres. On les évoquerons dans les derniers chapîtres.
 
-Le plan suit une logique qui va du simple au très compliqué, et de l'acquisition des données, de leur traitement et leur modélisation, jusqu'à la propagation....
+Le plan suit une logique qui va du simple au très compliqué, et de l'acquisition des données, de leur traitement et leur modélisation, jusqu'à la propagation ...
 
 
  * acquisition des données : directe, api et scrapping
@@ -73,8 +73,10 @@ En voici la présentation  systématique.
  * Confinement Jour J
  * Citations : un recueil de citations littéraires pour de petits exemples et ponctuer le texte aride d'un peu de littérature et de poésie.
  * Trip advisor Polynésie, un extrait d'un corpus établi par Pierre Ghewy et Sebastien de l'UPF
- * Airbnb
+ * Airbnb 
  * Covid
+ * PMP
+ * David Bowie : comp
 
 disponibles dans le [repositery](https://benaventc.github.io/NLPBook/) avec le code du book. Les amendements et améliorations sont souhaitées et attendues. 
 
@@ -82,18 +84,26 @@ disponibles dans le [repositery](https://benaventc.github.io/NLPBook/) avec le c
 
 Ce  _livre_ est écrit en **Markdown** [@allaire_rmarkdown_2021] et  avec le package **Bookdown** [@R-bookdown]
 
-Le code s'appuie très largement sur **tidyverse** et emploie largement les ressources de **ggplot** et **dplyr** . On recommande au lecteur de consulter donc les ouvrages suivants quand il s'interroge sur la construction des graphiques. On part du parti-pris que les lecteurs ont une connaissance satisfaisantes de ces outils génériques. Une mention particulère doit être faite sur la question du traitement du texte, **stringr** est aussi un des outils fondamentaux, 
+ * rmardown : c'est le langage de surface, celui qui nous permet de publier ce manuel.
 
- * rmardown
- * ggplot
- * dplyr
- * stringer
+
+Le code s'appuie très largement sur **tidyverse** et emploie largement les ressources de **ggplot** et **dplyr** . On recommande au lecteur de consulter les ouvrages suivants.  Une mention particulière doit être faite sur la question du traitement du texte, **stringr** est aussi un des outils fondamentaux. 
+
+D'autres outils traverserons le manuels. Par exemples pour les tableaux, nous opterons la plus part du temps pour les soclution de flextable. 
+
+On supposera que les lecteurs ont une connaissance satisfaisante de ces outils génériques, mais à chaque fois qu'on les introduira, on les expliquera.
+
+ 
+ * ggplot : une image vaut mieux que mille mots, 
+ * [dplyr]() est essentiel, c'est avec cet outil qu'on construit des pipeline de données. Le maitriser est une garantie d'efficacité.  
+ * [stringr](https://stringr.tidyverse.org/articles/stringr.html) est un package ardu. Ils propose une multitude de fonctions pour traiter les chaînes de caractères. Son étude est recommandée de concert avec la connaissance des [regex](https://stringr.tidyverse.org/articles/regular-expressions.html). 
+ * quand le temps s'en mêle, lubridate est indispensable. 
  
 
-###les packages 
+### Les packages 
 
 
-Les packages seront introduits au fur et à mesure. En voici la liste complète.
+Les packages seront introduits au fur et à mesure de leur première utilisation. On le signale par `#library(lib) `. En voici la liste complète.
 
 
 ```{r pack, echo = TRUE, message=FALSE, warning=FALSE}
@@ -101,16 +111,25 @@ knitr::opts_chunk$set(echo = TRUE, message=FALSE,warning=FALSE)
 
 #boite à outils et viz
 library(tidyverse) # inclut ggplot pour la viz, readr et 
+library(readr)
+
+#Vizualisation 
 library(cowplot) #pour créer des graphiques composés
-library(ggridges) # le joy division touch
-library(citr)
+library(ggridges) # le joy division touch de ggplot
+library(pheatmap)
+library(flextable)
 
 #networks
-library(igraph)
-library(ggraph)
+library(igraph) #le standard pour les représentations de réseaux
+library(ggraph) #un complément compatible ggplot du précédent
 
 # Accéder aux données
 library(rtweet)  # une interface efficace pour interroger l'api de Twitter
+
+
+# OCR et pdf
+library(tesseract) #reconnaissance de caractère
+
 
 # NLP
 library(tokenizers)
@@ -121,13 +140,19 @@ library(udpipe) #annotation syntaxique
 library(tidytext)
 library(cleanNLP) #annotation syntaxique
 
-#sentiment
-library(syuzhet)             #analyse du sentimeent
+##reconnaissance de langue
+library(cld3)
+library(textcat)
+
+#Analyse du sentiment
+library(syuzhet)            
+
+
 #mise en page des tableaux
-library(flextable)
+library(flextable) # 
 
 
-#statistiques et modèles
+#Statistiques et modèles
 library(lme4)
 library(jtools)
 library(interactions)
@@ -135,30 +160,38 @@ library(interactions)
 #ML
 library(caret)
 
-#graphismes
+#Template pour ggplot
 theme_set(theme_bw())
 
 
-#palettes
+#Palettes
 library(colorspace) #pour les couleurs
+library(viridis)
+library(viridisLite)
+
+
+
+#utilitaires
+library(citr) # un outil interactif pour insérer des références 
+
 
 # chapitre II
-library(revtools)
+library(revtools) 
 library(rvest)
-
 
 ```
 
 
+
 ## Disponibilité
 
-L'ensemble du code est disponible [sur github](https://github.com/BenaventC/NLPBook). A ce stade c'est encore très embryonnaire. Les proches pourrons cependant y voir l'évolution du projet et de la [progression](https://benaventc.github.io/NLPBook/)
+L'ensemble du code est disponible [sur github](https://github.com/BenaventC/NLPBook). A ce stade, c'est encore embryonnaire. Les proches pourrons cependant y voir l'évolution du projet et de la [progression](https://benaventc.github.io/NLPBook/)
 
 ## conventions
 
-Quelques conventions d'écriture du code r
+Quelques conventions d'écriture du code r : 
 
- * On appele les dataframes  de manière générale `df`, les tableaux intermédiaires sont appelé systématiquement `foo`
+ * On appele les dataframes de manière générale `df`, les tableaux intermédiaires sont appelé systématiquement `foo`
  * Gestion des palettes de couleurs
   ** une couleur :" royalblue"
   ** deux couleurs
@@ -184,78 +217,121 @@ todo list :
 # Introduction {#intro}
 
 
-Le texte connaît une double révolution. la première est celle de son système de production, il se produit désormais tant de textes que personne ne peut plus tous les lire, même en réduisant son effort à sa propre sphère d’intérêt et de compétence, la seconde est celle de sa lecture, c'est une lecture conditionnée et recommandée.. 
+Le texte connaît une double révolution. la première est celle de son système de production, il se produit désormais tant de textes que personne ne peut plus tous les lire, même en réduisant son effort à sa propre sphère d’intérêt et de compétence, la seconde est celle de sa lecture, c'est une lecture conditionnée et recommandée. 
 
-La production primaire de textes voit son volume croître exponentiellement. Prenons quelques exemples :
+La production primaire de textes voit son volume croître exponentiellement. Elle doit être comparée à des époques pas si éloignées ou le texte était copiés, puis imprimés. Ce qui était destiné à être reproduit était le résultats d'un processus long et exigeant qui permettait à un petit groupe de léttrés et d'imprimeur de produire l'essentiel de ce qui sera lu. La révolution digitale fait que quiconque via des interfaces simples peut confier sous forme d'écrit ses états d'âme.Elle se soumet ensuite à ceux qui en contrôlent les flux et en exploitent les contenus, qui les mettent en avant ou les écartent, définissant la composition de ce que chacun va lire. La diffusion de cette production suit des lois puissances, c'est ainsi que la révolution de la lecture est venue avec les moteurs de recherche, et les pratiques de curations (ref), c’est une lecture sélectionnée et digérée par les moteurs de recommandation. (ref). 
 
+S’il ne fallait qu’un exemple on pourrait évoquer la transformation radicale de la littérature dite scientifique dont la production double presque tout les dix ans .http://blogs.nature.com/news/2014/05/global-scientific-output-doubles-every-nine-years.html
 
-La production se soumet ensuite à ceux qui en contrôlent les flux et en exploitent les contenus, qui les mettent en avant ou les écartent, définissant la composition de ce que chacun va lire. La diffusion de cette production suit des loi puissances, c'est ainsi que la révolution de la lecture est venue avec les moteurs de recherche, et les pratiques de curations (ref), c’est une lecture sélectionnée et digérée par les moteurs de recommandation. (ref). 
+A cette production exponentiellement croissante s'ajoute un effort d'inventaire, des standards sont proposés, l’indexation a donné naissance à l’immatriculation de la moindre note, l’interopérabilité est de mise, le réseau des co-citations est maintenu en temps réel. Les scores qualifient autant les articles que leurs auteurs et les revues qui les accueillent. Le monde de la recherche, celui qui va vers l'inconnu est désormais totalement balisé et quantifié. Le volume est si grand que la production automatique de résumés, et de synthèses va être indispensable.
 
-S’il ne fallait qu’un exemple on pourrait évoquer la transformation radicale de la littérature dite scientifique sur le plan technique. La recherche par mots clés est complétée de plus en plus par des outils de veille, l’indexation a donné naissance à l’immatriculation de la moindre note, les fichiers ont adopté des standards, l’interopérabilité est de mise, le réseau des co-citations est maintenu en temps réel. Les scores qualifient autant les articles que leurs auteurs et les revues qui les accueillent. 
+Le NLP ( en français le TAL) est au coeur de ces technologies, il se nourrit de plus en plus d'intelligence artificielle. Nous en verrons de nombreux exemples à tout les stades du traitement : identifier la langue, mesurer le sentiment, isoler des sujets, calculer une relation syntaxique.
 
-Elle risque de ce poursuivre par la production de résumés, la transcription automatique (speech2tex) etc.
+Le NLP est aussi une nouvelle ressource pour les chercheurs en sciences sociales à la fois par les matériaux empiriques et les méthodes d'analyse. C'est une mouvemennt qui affecte toutes les shs. L'emballement de la production de texte génère une nouvelle matière d'étude pour le sociologues, les gestionnaires, les économistes, les psychologues.  
 
-Le NLP est au coeur de ces technologies, il se nourrit de plus en plus d'intelligence artificielle. Nous en verrons de nombreux exemple à tout les stades du traitement : identifier la langue, mesurer le sentiment, isoler des sujets. 
-
-Le NLP est aussi une nouvelle ressource pour les chercheurs en sciences sociales à la fois par les matériaux empiriques et les méthodes d'analyse. C'est une mouvemenjt qui affecte toutes les shs. L'emballement de la production de texte génère une nouvelle matière d'étude pour le sociologues, le gestionnaire, l'économiste, le psychologue pour n'évoquer que quelques disciplines.  
+Si dans ce manuel, on choisit de présenter les différentes facettes de ce qui s'appelle TAl, NPL, Text Mining,  dans une approche procédurale qui suit les principales étapes du traitement des données. On rendra compte à chaque étape des techniques disponibles, et on illustre d’exemples. Nous suivrons ici une approche plus fidèle au processus de traitement des données, lequel peut connaître une stratégie inférentielle et exploratoire - quelles informations sont utiles au sein d’un corpus de texte -, tout aussi bien qu’une stratégie hypothético-déductive. Nous resterons agnostique sur cette question, restant délibérément à un niveau technique et procédural.
 
 
 ## Une réflexion ancienne et un nouveau champ méthodologique
 
-On se doit pas se faire aveugler par l'éclat de la nouveauté, les techniques d'aujourd'hui dépendent d'idées semées depuis longtemps dans au moins deux champs disciplinaire la linguistique et l'informatique
+On se doit pas se faire aveugler par l'éclat de la nouveauté, les techniques d'aujourd'hui dépendent d'idées semées depuis longtemps dans au moins deux champs disciplinaires : la linguistique et l'informatique. On peut en synthétiser l'idée avec ce mème et son annotation. Il expriment deux idées. La première est une tension du champs entre la langue comme structure et le langage comme capacité et usage.
+
+![linguistique](.\images\linguistique.jpg)
+
+Les pratiques et techniques que nous allons étudier ne tombent pas de mars mais résultent de plusieurs flux de pensées qui se croisent se confortent et amène l'énergie pour créer un nouveau bras dans le champs  étendu de l'étude de la langue et du langage. 
+
+Penser la langue est un effort constant qui a commencé il y a fort longtemps, certainement avec les sophistes, et l'idée qu'en maniant le langage il est possible de convaincre. Les sophistes : plier le langage à ses intérêt est une première sciences du langage qui produit une connaissances des dispositifs les plus efficaces. Pas sur que cette discipline aie trouvé un chemin de vérité; mais elle reste commune et actuelle, c'est l'oeuvre de la publicité. La rhétorique n'est pas une discipline morte, elle se développe de manière concrète dans toute les agences publicitaires.
+
+Donnons quelques points de repère en commençant par des définition, puis en évoquant trois idées essentielles qui vont prospérer avec le développement de la linguistique computationnelle et de l'intelligence artificielle. Ces trois idées se relatives aux principales branches de la linguistique : à savoir la syntaxe, la sémantique et la pragmatique. Nous serons silencieux sur la phonologie (étude de la formation des sons et de la phonétiques) dont l'importance est considérable quand il s'agit de traiter la production et les interactions orales. Pour ne donner qu'un exemple, la prosodie (le rythme données aux phrases) est un objet essentiel dans l'informatique affective. 
 
 
-Les pratiques et techniques que nous allons étudier ne tombent pas de mars mais résultent de plusieurs flux de pensées qui se croisent se confortent et amène l'energie pour créer un nouveau bras dans le champs immensement étendu de l'étude de la langue et du langage. Et c'ets sans doute par celà qu'il faut commencer. La langue c'est l'ensemble des règle formelles et moins formelle qui constitue une parole, ce qu'on se dit de l'un à l'autre ou de l'un à aux autres. Le langage est la production de cette parole. L'inscription de cette parole par l'écriture constitue le texte. Le miracle du passage de la parole au signe est celui du symbole.
+### Langue, langage et texte parole
 
-Si dans ce manuel, on choisit de présenter les différentes facettes de ce qui s'appelle TAl, NPL, Text Mining,  dans une approche procédurale qui suit les principales étapes du traitement des données. On rendra compte à chaque étape des techniques disponibles, et on illustre d’exemples. Nous suivrons ici une approche plus fidèle au processus de traitement des données, lequel peut connaître une stratégie inférentielle et exploratoire - quelles informations sont utiles au sein d’un corpus de texte -, tout aussi bien qu’une stratégie hypothético-déductive. Nous resterons agnostique sur cette question, restant délibérément à un niveau technique et procédural.
+Et c'ets sans doute par celà qu'il faut commencer. La langue c'est l'ensemble des règles formelles et moins formelles qui constituent une parole, ce qu'on se dit de l'un à l'autre ou de l'un à aux autres. Le langage est la capacité à produire cette parole. L'inscription de cette parole par l'écriture constitue le texte. Le miracle du passage de la parole au signe est celui du symbole.
 
-### L'héritage linguistique
+Parmi les distinctions terminologiques proposées par Ferdinand de Saussure au début de siècle dernier, celles de langue, langage et de parole se sont révélées particulièrement pertinentes et elles sont toujours utilisées de nos jours.
 
-la convergence de deux grands mouvements. 
+Langage: faculté inhérente et universelle de l'humain de construire des langues (des codes) pour communiquer. (Leclerc 1989:15) Le langage réfère à des facultés psychologique permettant de communiquer à l’aide d’un système de communication quelconque. Le langage est inné.
 
-Sans en faire l'histoire minutieuse que ce domaine réclame, nous pouvons au moins rappeler un certains nombre d'étapes  et de contributeurs clés. 
+Langue: système de communication conventionnel particulier. Par « système », il faut comprendre que ce n'est pas seulement une collection d'éléments mais bien un ensemble structuré composé d'éléments et de règles permettant de décrire un comportement régulier (pensez à la conjugaison de verbes en français par exemple). La langue est acquise.
+
+Le langage et la langue s'opposent donc par le fait que l'un (la langue) est la manifestation d'une faculté propre à l'humain (le langage).
+
+Parole: une des deux composantes du langage qui consiste en l'utilisation de la langue. La parole est en fait le résultat de l’utilisation de la langue et du langage, et constitue ce qui est produit lorsque l'on communique avec nos pairs.
+
+Le texte : Il est la transcription de la parole,même si le plus souvent,  sa production est directe sans traduction du langage oral.
+
+### Syntaxe et grammaire générative
+
+Chomsky et sa grammaire générative. En dépit de leur très grande diversité. Le projet s'appuit sur l'idée qu'un nombre de règles finies doit produire une infinité d'ennoncés. Une grammaire est générative dans la mesure où elle possède cette propriété. L'analyse est ainsi tournée vers la compétence, et le linguiste s'interresse à l'idéal qu'un locuteur qui connaissant ces règles seraient en mesure de produit toute forme de discours. 
+
+Observant que les enfants apprennent enracinant le phénomène linguistique dans la cortalisation du langage, il apporte une idée forte et structuraliste d'une équivalence des langues.
+ 
+
+Tesnière et les arbres syntaxiques. 
+
+les treebanks contemporains  s'inscrivent dans cette perspective et nourrissent les analyseurs ( parser) syntaxiques du langage naturel qui constituent désormais la première couche d'un traitement de données textuelles.
 
 
-La langue et le langage sont l'objet d'une interrogation millénaire mais quelques auteurs clés ont mis à jour les idées essentielles qui justifient l'usage des méthodes actuelles. Donnons en un aperçu rapide de manière historique, en bornant un champs de connaissance que nous ne pouvons qu'affleurer.
+La grammaire générative a conduit la linguistique dans un tournant formel où la langue est étudiée indépendemment de ses locuteurs. On pourra méditer le pourquoi les algorithmes génératifs de deep learning contemporains (le fameux GPT3) peuvent former des  phrases syntaxiquement correcte mais absurde. 
 
- * les sophistes : plier le langage à ses intérêy est une première sciences du langege qui produit une connaissances des dispositifs les plus efficaces. Par sur que cette displines aient trouvé un chemine de vérité,; mais elle ereste commune, c'est l'oeuvre de la publicité.L
- * Saussure : il apporte une idée fondamentale que dans le symbole, le signe et le signifiant sont les deux face d'une même monaiie, qu'il existe une relation entre l'artefact et l'idée. Qu'un signe particulier puisse signifier une idée. c'est un penseur de la correspondance.
- * Frith et l'idée distributionnelle. un mot trouve son sens dans ceux qui lui sont le plus associés
- * Zipf
- * Tesnière et les arbres syntaxiques. 
- * Chomsky et sa grammaire génératitive. enracinant le phénomène linguistique dans la cortalisation du langage, il apporte une idée forte et structuraliste d'un équivalence des langues. 
- * Genette et l'intertextualité, le palimpseste. c'est une question de sens, le sens d'un texte vient de ses prédecesssurs de ceux à qui ils se réfèrent. Les textes se parlent l'un l'autre,  et ce n'est pas dans leur contenu qu'on trouvera une vérité dans dans le rapport qu'ils établissent avec leur prédecesseur par l'appareil des notes et des bibliographies. 
- * Austin et l'idée que le langage n'est ^pas que communication mais performation . ce qu'on dirt agit sur le monde
-  * La narrativité
 
-### la tradition lexicologique
+### Sémantique : La conception distributionnelle
+
+la tradition lexicologique
 
 le lexique est affaire ancienne, le français est aidé par des expériences les fondamentales :  le littré,  l'académie française et les dictionnaires des éditeurs. pour étudier un lanage il faut se rapporter à des formes stables, les dictionnaires les fournissent et fournisse les normes pour les coder. 
 
-L'idée de quantifier le langage n'est pas nouvelle. Encore moins s'il faut compter les occurences et les cooccurences des mots.Un vaste mouvement s'est formé dans les années soixante autour de la lexicologiue stimulée par l'école française d'analyse de données. Le descendant de ce mouvement se retrouve dans l'excellent iramutek de l'équipe de toulouse, il a été précedé par le fameur Alceste.
+Un moment clé a été de penser le signe, Saussure apporte une idée fondamentale que dans le symbole, le signe et le signifiant sont les deux faces d'une même monnaie, qu'il existe une relation entre l'artefact et l'idée. Qu'un signe particulier puisse signifier une idée. c'est un penseur de la correspondance.
 
-Nous y consacrerons un chapitre plein sur le plan technique. Mais il est important de souligner que cette école française de l'analyse textuelle ne se limite pas au comptage. Un logiciel comme trope qui d'ailleurs ne connait aucun équivalent dans l'écosystème que nous allons explorer manifeste aussi cette inventivité. 
+Selon Saussure, la langue est le résultat d’une convention sociale transmise par la société à l'individu et sur laquelle ce dernier n'a qu'un rôle accessoire. Par opposition, la parole est l'utilisation personnelle de la langue (toutes les variantes personnelles possibles: style, rythme, syntaxe, prononciation, etc.).Le changement de la langue relève d'un individu mais son acceptation relève de la communauté et des institutions. ex.: le verbe « jouer » conjugué «jousent » est pour l'instant considéré comme une variante individuelle (parole), une exception, et il le demeurera tant qu'il ne sera pas accepté dans la communauté (les locuteurs du français dans ce cas-ci). Sa conception du signe répond à cette approche conventionnelle : la dualité du signe comme signifiant et signifié est opérée. 
 
-S'y exprime pleinement la logique distributionnelle. 
+Dans le traitement des données textuelle le signifié est le terme cible de l'analyse, pour en découvrir son signifié on se tourne vers son contexte : l'ensemble des signifiés. C'est une idée ancienne qu'a proposé Firth dans les années 30. [@firth_synopsis_1957] et l'idée distributionnelle. un mot trouve son sens dans ceux qui lui sont le plus associés. c'est le contexte qui donne le sens
+
+L'idée de quantifier le langage n'est pas nouvelle  Zipf. Encore moins s'il faut compter les occurences et les cooccurences des mots.Un vaste mouvement s'est formé dans les années soixante autour de la lexicologiue stimulée par l'école française d'analyse de données. Le descendant de ce mouvement se retrouve dans l'excellent iramutek de l'équipe de toulouse, il a été précedé par le fameur Alceste.
+
+Nous y consacrerons un chapitre plein sur le plan technique. Mais il est important de souligner que cette école française de l'analyse textuelle ne se limite pas au comptage. Un logiciel comme trope qui d'ailleurs ne connait aucun équivalent dans l'écosystème que nous allons explorer manifeste aussi cette inventivité. S'y exprime pleinement la logique distributionnelle. 
+ 
+### Pragmatique les fonctions et acte du langage
+
+Si la grammaire générative se tourne délibéremment vers la compétence et ignore la performance, c'est à dire la production d'énnoncés par les humains en situation d'interaction, un autre courrant de la linguistique s'est emparé de la question, le courrant pragmatique.
+
+Le grand classique est la théorie des fonctions du language, qui sous-tendent la production du message, l'acte de parole,proposée par Jakobson. Inspiré par la cybernétique la structure de son modèle est celle d'un acte de communication. Jackobson identifie les éléments de l'évènement discursif (speech event) et les fonctions qui lui sont associée. Pour le paraphraser, un DESTINATEUR envoie un MESSAGE à un DESTINATEUR mais pour être compris il requiet un CONTEXTE dont les acteurs acteurs  de l'évenement discursif sont capables de se saisir et de verbaliser , d'un CODE au moins partiellement commun et d'un CONTACT, un canal physique et une connection psychologique. [@jakobson_linguistics_1981][àlire ici](https://pure.mpg.de/rest/items/item_2350615/component/file_2350614/content)
+
+ * la fonction référentielle ou représentative (aussi dénommée sémiotique ou symbolique), où l'énoncé donne l'état des choses , où le message dénote un contexte ;J emploie aussi les termes de dénotatif ou cognitive.
+ * la fonction expressive ( emotive), où le sujet exprime son attitude propre à l'égard de ce dont il parle ;
+ * la fonction conative, lorsque l'énoncé vise à agir sur le destinataire; elle s'exprime grammaticalement par l'impératif ou le vocatif.
+ * la fonction phatique,empruntée à Malinoswki où l'énoncé révèle les liens ou maintient les contacts entre le locuteur et l'interlocuteur ;
+ * la fonction métalinguistique ou métacommunicative, qui fait référence au code linguistique lui-même ;qu'il soit théorisé ou internalisé par le locuteur comme la prose de Mr Jourdain. 
+ * la fonction poétique, où l'énoncé est doté d'une valeur en tant que tel, valeur apportant un pouvoir créateur et dont Jakobson illustre avec l'exemple que la jeune fille qui a l'habitude de désigner Harry par "Horrible harry" sans pouvoir expliquer pourquoi il ne serait pas l'odieux, le dégoûtant, ou le terrible Harry alors que sans s'en rendre compte elle emploie une paronomasie/alliteration : la ressemblance des mots produit un effet poétique. 
+ 
+John Langshaw Austin s'intéressant  à la fonction conative développe le concept d'acte de langage, introduisant l'idée fondamentale que les actes de langage (la production d'un énoncé) n'ont pas destinés à décrire le monde tel qu'il est mais à agir sur le monde par le bias du destinataire. Parler c'est aussi faire.  La théorie des actes de langage est d'abord une catégorisation des actes.  
+
+La fonction illocutoire d'un acte de langage est, dans la théorie linguistique de John Langshaw Austin, le message convoyé par un énoncé au-delà de son sens immédiat, celui que traduit sa fonction locutoire. Par exemple, le fait, à table, de prononcer la phrase « Est-ce qu'il y a du sel ? » n'a pas, du seul fait de sa formulation, seulement pour fonction de s'informer sur la présence de sel dans la maison (ou dans le plat, contenu locutoire de l'énoncé) mais exprime plutôt que l'on voudrait saler son plat (fonction illocutoire) et se traduit généralement par le fait que l'un des convives réagit, par exemple en passant la salière au locuteur, ce qui est la fonction perlocutoire de l'énoncé1.
+ *  Locutoire
+ *  Illocutoire
+ *  Perlocutoire C'est cette idée qui est au sousbassement de la théorie des actes de langages.
 
 
+ * Genette et l'intertextualité, le palimpseste. c'est une question de sens, le sens d'un texte vient de ses prédecesseurs de ceux à qui ils se réfèrent. Les textes se parlent l'un l'autre,  et ce n'est pas dans leur contenu qu'on trouvera une vérité dans dans le rapport qu'ils établissent avec leur prédecesseur par l'appareil des notes et des bibliographies. 
+ * Austin et l'idée que le langage n'est ^pas que communication mais performation . ce qu'on dirt agit sur le monde
+  * La narrativité
 
 ### la linguistique computationnelle
 
 le frottement de la linguistique et de l'informatique se produit à propos de questions pratiques. 
 
-#### la question de la fouille de données
+Les apports de la fouille de données
+
 
 les nomenclatures
 
 une convergence nécessaire
 
-#### la question du classement des documents
-
 Le monde des bibliothèques et celui de la GED.
 
 
-## Les facteurs de développement
+## Les facteurs de développement de l'usage en science sociale
 
 Ces développements sont favorisés par un environnement fertile dont trois facteurs se renforcent mutuellement. Ils conduisent à l'élaboration de nouvelles méthodes.
 
@@ -267,7 +343,7 @@ Ces développements sont favorisés par un environnement fertile dont trois fact
 
 Le premier est l’expansion de deux langages, proprement statistique pour r et plus généraliste pour Python. Le propre de ces langages est, prenons le cas de r, de permettre d’élaborer des fonctions, dont un ensemble cohérent pour réaliser certaines tâches peut être rassemblé dans une bibliothèque appelée package (et chargé par library(nomdupackage)). On dispose désormais de milliers de packages (17 788 sur le CRAN) destinés à résoudre un nombre incalculable de tâches. 
 
-![hornik](number_CRAN_packages.png)
+![hornik](./Images/number_CRAN_packages.png)
 
 Coder une analyse revient ainsi à jouer avec un immense jeu de lego, dont de nombreuses pièces sont déjà pré-assemblées. D’un point de vue pratique, les lignes d’écriture sont fortement simplifiées permettant à un chercheur sans grande compétence de codage d’effectuer simplement des opérations complexes.  En retour, cette facilitation de l'analyse abonde le stock de solutions.
 
@@ -313,7 +389,7 @@ La seconde est le maintien d'une éthique du partage qui encourage à partager l
 
 Toutes les conditions sont réunies pour  engendrer une effervescence créative. Python ou r, sont dans cet univers en rapide expansion, les langues véhiculaires qui favorise une innovation constante. Les statistiques de github en témoigne : près de 50 millions d'utiliseurs, 128 millions de " repositories" et 23 millions de propriétaires.
 
-![source](github.png)
+![source](./Images/github.png)
 
 voir aussi
 https://towardsdatascience.com/githubs-path-to-128m-public-repositories-f6f656ab56b1
@@ -321,34 +397,47 @@ https://towardsdatascience.com/githubs-path-to-128m-public-repositories-f6f656ab
 
 ## De nouvelles méthodologies pour les sciences sociales
 
-Pour les chercheurs en sciences sociales (et en premier lieu pour les chercheurs en gestion où toutes les sciences sociales se croisent) cette révolution textuelle offre de nouvelles opportunités d’obtenir et d’analyser des données pour vérifier ses hypothèses et mener son enquête. Ce sont de nouveaux terrains, de nouvelles méthodes et un nouvel objet de recherche.
+Pour les chercheurs en sciences sociales (et en premier lieu pour les chercheurs en gestion où toutes les sciences sociales se croisent) cette révolution textuelle offre de nouvelles opportunités d’obtenir et d’analyser des données solides pour vérifier ses hypothèses et mener l'enquête. Ce sont de nouveaux terrains, de nouvelles méthodes et un nouvel objet de recherche qui se dessine dans le foisonnement du champs.
 
 
- * Nouveaux terrains : La multiplication des sources de données, associée à leur normalisation  rencontre une multiplication de techniques provenant de mulpliples discplinaire et qui convergent dans un langage commun. . production abondante d’avis de consommateurs, de discours de dirigeants, de compte-rendus de conseils, d’articles techniques,la linguistique computationnelle, de la fouille de données, des moteurs de recommandation, de la traduction automatique, et des ressources nouvelles et précieuses pour traiter l’abondance des données
+### Nouveaux terrains : 
 
- * Nouvelles méthodes : Un nouveau paradigme méthodologique se construit à la croisée de données abondantes et de techniques de traitement intelligentes. Il permet d’aller plus loin que l’analyse lexicale traditionnelle en incorporant des éléments syntaxiques, sémantiques, et pragmatiques, proposés par l’ensemble des outils des techniques de traitement du langage naturel. Il se dessine surtout une nouvelle approche méthodologique qui prend place entre l’analyse qualitative, et les traditionnelles enquêtes par questionnaires capables de traiter des corpus d’une taille inédite. Le travail de [@humphreys_automated_2018] en donne une première synthèse dans le cadre d’un processus qui s’articule autour des différentes phases d’une recherche : la formulation de la question de recherche, la définition des construits, la récolte des données, l’opérationnalisation des construits, et enfin l'interprétation, l’analyse et la validation des résultats obtenus. 
+La multiplication des sources de données, associée à leur normalisation  rencontre une multiplication de techniques provenant de multiples disciplinaires et qui convergent dans un langage commun. . production abondante d’avis de consommateurs, de discours de dirigeants, de compte-rendus de conseils, d’articles techniques,la linguistique computationnelle, de la fouille de données, des moteurs de recommandation, de la traduction automatique, et des ressources nouvelles et précieuses pour traiter l’abondance des données
+
+### Nouvelles méthodes : 
+
+Un nouveau paradigme méthodologique se construit à la croisée de données abondantes et de techniques de traitement intelligentes. Il permet d’aller plus loin que l’analyse lexicale traditionnelle en incorporant des éléments syntaxiques, sémantiques, et pragmatiques, proposés par l’ensemble des outils des techniques de traitement du langage naturel. Il se dessine surtout une nouvelle approche méthodologique qui prend place entre l’analyse qualitative, et les traditionnelles enquêtes par questionnaires capables de traiter des corpus d’une taille inédite. 
+Le travail de [@humphreys_automated_2018] en donne une première synthèse dans le cadre d’un processus qui s’articule autour des différentes phases d’une recherche : la formulation de la question de recherche, la définition des construits, la récolte des données, l’opérationnalisation des construits, et enfin l'interprétation, l’analyse et la validation des résultats obtenus. 
  
- * Un nouvel objet : on pourrait croire qu'avec des données massives et des techniques "intelligente" on assiste à un retour du positivisme qui bénéficierait enfin des instruments de mesure et de calculs qui ont permis aux les chercheur plus proches de la matière des succès majeurs. Sans doute, l'administration de la preuve va être faciliter par ces techniques et encourager l'evidence based policy (REF) et résoudre en partie la crise de la réplication et de la reproductibilité. Mais à mesure que ce développe l'appareillage de méthode et de données, moins on peut supposer que l'observateur est neutre. Les téléscopes géants, les synchrotron, n'affecte ni les galaxies lointaines ni les atomes proches. Le propre des données que l'ont est amené à étudier est de résulter de la confrontation d'un système d'observation (certains préfèrent de parler de surveillance), et d'un agent qui a des buts, une connaissance, et des ressources. Le dispositif de mesure est en lui-même performatif. L'exemple le plus évident est celui des  systèmes de notation, qui sous prétexte de transparence donne la distribution des répondants précédents. L'agent qui va noter choisit la valeur en fonction d'une norme apparente - la note majoritaire- et de sa propre intention - se manifester ou se confondre à la foule. 
+## Un nouvel objet : 
+
+On pourrait croire qu'avec des données massives et des techniques "intelligente" on assiste à un retour du positivisme qui bénéficierait enfin des instruments de mesure et de calculs qui ont permis aux les chercheur plus proches de la matière des succès majeurs. Sans doute, l'administration de la preuve va être faciliter par ces techniques et encourager l'evidence based policy (REF) et résoudre en partie la crise de la réplication et de la reproductibilité. 
+
+Mais à mesure que ce développe l'appareillage de méthode et de données, moins on peut supposer que l'observateur est neutre. Les téléscopes géants, les synchrotron, n'affecte ni les galaxies lointaines ni les atomes proches. Le propre des données que l'ont est amené à étudier est de résulter de la confrontation d'un système d'observation (certains préfèrent de parler de surveillance), et d'un agent qui a des buts, une connaissance, et des ressources. Le dispositif de mesure est en lui-même performatif. L'exemple le plus évident est celui des  systèmes de notation, qui sous prétexte de transparence donne la distribution des répondants précédents. L'agent qui va noter choisit la valeur en fonction d'une norme apparente - la note majoritaire- et de sa propre intention - se manifester ou se confondre à la foule. 
  
- Pour se donner une idée plus précise de ce mouvement, examinons quelques publications récentes dans les champs qui nous concernent. 
+Pour se donner une idée plus précise de ce mouvement, examinons quelques publications récentes dans les champs qui nous concernent. 
 
 ### Sociologie et histoire
 
 classes sociales avec word to vec  en sociologie [@kozlowski_geometry_2019].
 
-
 L'article révolution française [PNAS)
 
-
 On citera cependant jean-baptiste Coulmont et son obstination à étudier les entités nommées, prénoms et autres marqueurs culturels de l'identité et des classes.
+
+
+ et au luxembourg
+ 
 
 ### Psychologie
 
 Très tôt la psychogie s'est intéressée au langage, pas seulement comme produit des processus psychologiques, mais comme expression de ceux-ci. 
 
-Dans le champs de la psychologie de l'éducation et avec une forte motivation scientiste, dès les années 60 s'est posée la question de la mesure de la difficulté d'un texte pour un niveau d'éducation donné. La mesure de la lisibilité des texte s'est développée profitant à d'autre secteurs tels que ceux de la propagande. Dans cette même perspective, la richesse lexicographique comme représentant les compétences a a son tour développé de nouvelles instrumentations. 
+Dans le champs de la psychologie de l'éducation et avec une forte motivation positiviste, dès les années 60 s'est posée la question de la mesure de la difficulté d'un texte pour un niveau d'éducation donné. La mesure de la lisibilité des texte s'est développée profitant à d'autre secteurs tels que ceux de la propagande. Dans cette même perspective, la richesse lexicographique comme représentant les compétences a a son tour développé de nouvelles instrumentations. 
 
-James W. Pennebaker a développé son approche à partir de l'étude des traumas; donnant une grande importance à la production discursive des patients. Sa contribution majeure est l'établissement d'un ensemble de dictionnaires destinés à mesurer des caractéristiques du discours. Un instrument qu'on présentatera dans les chapitre 7 (à vérifier). Auteur en 2011 d'un livre s'intéressant à l'usage des petits mots.  Son approche se poursuit en psychiatrie avec l'analyse des troubles du langage, et a connu un coup d'éclat avec la demonstration que l'analyse des messages sur les réseaux sociaux comme facebook permet de détecter des risques de depression.
+James W. Pennebaker a développé son approche à partir de l'étude des traumas; donnant une grande importance à la production discursive des patients. Sa contribution majeure est l'établissement d'un ensemble de dictionnaires destinés à mesurer des caractéristiques du discours. Un instrument qu'on présentera dans le chapitre 7 (à vérifier)[@tausczik_psychological_2010].
+
+Son approche se poursuit en psychiatrie avec l'analyse des troubles du langage, et a connu un coup d'éclat avec la demonstration que l'analyse des messages sur les réseaux sociaux comme facebook permet de détecter des risques de dépression.[@eichstaedt_facebook_2018].
 
 
 ### Management
@@ -356,7 +445,7 @@ James W. Pennebaker a développé son approche à partir de l'étude des traumas
 La finance et l'analyse du sentiment
 
 
-Dans le champ du management, on trouvera des synthèses pour la recherche en éthique [@lock_quantitative_2015], en comportement du consommateur [@humphreys_automated_2018  en management public [@anastasopoulos_computational_2017] ou en organisation [@kobayashi_text_2018] ,
+Dans le champ du management, on trouvera des synthèses pour la recherche en éthique [@lock_quantitative_2015], en comportement du consommateur [@humphreys_automated_2018]  en management public [@anastasopoulos_computational_2017] ou en organisation [@kobayashi_text_2018] ,
 
 
 
@@ -364,14 +453,35 @@ Dans le champ du management, on trouvera des synthèses pour la recherche en ét
 
 economie des brevets
 intervention des institutions
+mesure de l'innovation
 
+
+## Des comptable à l'industrie de la langue
+
+
+La situation nouvelle qui est la notre est que lorsque la parole disparaissait avec le vent, elle laisse désormais des traces et s'enregistre. L'ironie est qu'au titre de la protection de la vie privée, cet enregistrement systèmatique doit être mis à notre disposition. On a le choix : rien n'en faire, les détruire, les donner pour bénéficier de son potentiel de connaissance. Nous sommes passé de la parole au texte.  Si seule la prole de dieux et celle des champs étaient transcrites, c'est désormais aussi celle du vulgum. Si sa précision est incertaine, son volume a gagné de nombreuses échelles.
+
+Cette matière ne s'organise plus dans les papyrus et autres manuscrits, ni même dans les livres sués par les callygraphieurs, elle s'incruste dans un édifice de plus en plus complexe d'interfaces textuelles et vocales. La parole est comme absorbée par les machines. Elle ne s'envolent plus avec le vent, elle sédimente dans les data center. Le langage a acquis une dimension matérielle qu'il n'a presque jamais connu. Il gagne de l'autonomie avec les systèmes génératifs : chat bot, transciption, traduction, résumés. 
+
+l'histoire se définit son écriture. l'écriture est le produit d'une  société de procès-verbal, de comptabilité et ça se poursuit. Voilà  qui facilite le travail de l'historien, du sociologue et de l'économiste. 
+
+Dans les années 90 s'est dessinée une société de l'information, sauvage jusqu' à Napters, et le rêve du peer to peer, elle s'est  socialisée dans les années 2000, platformisée dans les années 2010, généralisée pour la décennie qui nous concerne. Toute cette architecture s'appuie sur les données qu'on y injecte, et en premier le texte. la transcription de la parole, une recodification. Et des traitements très concentrés. 
 
 
 ## Conclusion
 
-des techniques
+le point d'entrée de la technique est privilégié dans ce manuel. Mais on se donnera des espaces de réflexion, d'interrogation, des espaces epistémologiques (Comment étudier le langage par le langage ?) et anthropologique (quelle est l'origine et la spécificité du langage humain en dépit de ses innombrables variétés ?).
 
-des méthodes
+
+Une première parenthèse est expérientielle, c'est en faisant que nous avons découvert une autre écriture. L'expérience de ce livre, qu'on partage avec de nombreux utilisateurs de ces nouveaux outils, est celle d'une écriture programmatique, performative. Ecrire c'est faire, les meta-langage transforme la transcription de la parole en une nouvelle connaissance.On peut agir sur la parole, sur le texte, le tordre, le presser, le décoder . On peut lire les foules. 
+
+Les langages tels que la linguistique les étudie sont verbaux, d'autres sont iconiques, architecturaux, graphiques, chorégraphiques, musicaux. Elles se rencontre dans le flux d'une parole qui associe le texte à l'image dans des rapports d'illustation ou de commentaire, jouant du contrepoint à travers les médias. 
+
+par le texte, le sociologue, l'économiste ou le gestionnaire veulent coprendre la génèse et la détermination des choix. Etudions le texte. 
+
+L'acte de parole se réalise dans un lieu à un moment avec des protagonistes, dans une atmosphère, avec une histoire, les mots qui s'en échappent ne sont que des traces, autant que des photographies. Ces données se sédimentent dans les grands bassins du cloud et dans les corpus constitués méthodiquement. 
+
+
 
 <!--chapter:end:01-intro.Rmd-->
 
@@ -779,39 +889,31 @@ La réalité ressemble souvent à celà
 Dans un environnement en science sociale la situation est moins complexe, les documents analysés ne seront le plus souvent pas des documents mansuscrits ( sauf pour les médiévistes), mais le scan de document plus structurés. Par exemple les jpg
 
 
-Une solution pour r est [tesseract](https://cran.r-project.org/web/packages/tesseract/vignettes/intro.html
-). C'est un package qui permet d'accéder au programme du même nom,développé à l'origine Chez Hewlett-Packard Laboratories entre 1985 et 1994, avec quelques modifications supplémentaires apportées en 1996 pour le portage sur Windows, et sur C en 1998.Tesseract a été mis en open Source par HP  En 2005. Et de 2006 à novembre 2018, Google a continué a le développer.Il s'appuie sur des réseaux neuronaux de type LSTM. C'est une petite mais puissante intelligence artificielle qui supporte plus d'une centaine de langues.
+Une solution pour r est [tesseract](https://cran.r-project.org/web/packages/tesseract/vignettes/intro.html). C'est un package qui permet d'accéder au programme du même nom, développé à l'origine Chez Hewlett-Packard Laboratories entre 1985 et 1994, avec quelques modifications supplémentaires apportées en 1996 pour le portage sur Windows, et sur C en 1998.Tesseract a été mis en open Source par HP  En 2005. Et de 2006 à novembre 2018, Google a continué à le développer. Il s'appuie sur des réseaux neuronaux de type LSTM. C'est une petite mais puissante intelligence artificielle qui supporte plus d'une centaine de langues.
 
-Testons-le sans attendre avec le texte suivant. 
+Testons-le sans attendre avec le texte suivant. Extrait du premier article du premier numéro de la revue " Etalages" Publiée en France de 1909 à 1938. L'image est un extrait du document numérisé fournit par la BNF.
 
-![Lettre de motivation](./images/LettreMotivation.jpg)
+![Lettre de motivation](./images/N1_avril1909b.jpeg)
 
 https://gabriben.github.io/NLP.html#introduction
 
 
 
 ```{r 209, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
-
-library(tesseract)
-
-#library(magick)#pour pré-traiter l'image et améliorer la reconnaissance
-
+#library(tesseract)
 tesseract_download("fra") #pour télécharger le modèle de langage
 
 t1<-Sys.time()
-text <- tesseract::ocr("./images/LettreMotivation.jpg", engine = "fra")
+text <- tesseract::ocr("./images/N1_avril1909b.jpeg", engine = "fra")
 t2<-Sys.time()
-t<- t2-t1
-cat(text)
-
+t<- t2-t1 #pour compter le temps de calcul
+cat(text) #pour afficher le texte avec sa mise en page
 
 #tesseract_info() #voir les langues disponibles
-
+t
 ```
 
-Pour améliorer la performance qui peut se mesurer au niveau des lettres mais doit surtout l'être au niveau des mots, deux stratégies sont possibles, la première de préprocessing, la seconde de postprocessing avec un mécanisme de détection et de correction d'erreur. 
-
-Le preprocessing consiste à traiter l'image en renforçant les contrastes , en éliminant le bruit, on en rend les pixels mieux digestes pour tesseract. C'est ce à quoi s'attache le pakage magick qui offre un bouquet de fonctions à cette fin. Nous laissons le lecteur le tester seul.
+Pour améliorer la performance qui peut se mesurer au niveau des lettres mais doit surtout l'être au niveau des mots, deux stratégies sont possibles, la première de préprocessing, la seconde de postprocessing avec un mécanisme de détection et de correction d'erreur.  Le preprocessing consiste à traiter l'image en renforçant les contrastes , en éliminant le bruit, on en rend les pixels mieux digestes pour tesseract. C'est ce à quoi s'attache le pakage magick qui offre un bouquet de fonctions à cette fin. Nous laissons le lecteur le tester seul.
 
 Le post-processing un introduire des mécanismes de correction d'erreurs au niveau des mots.Pour une idée de ce type de développement voir [Gabriel, Yadir, Xiaojie, Mingyu](https://gabriben.github.io/NLP.html)
 
@@ -1041,31 +1143,32 @@ exemple des gestes barières dans le flux twitter
 
 ## Identifier les sources
 
-Dans l'analyse des contenus sociaux, les textes viennent de sources multiples et confuses. Elles peuvent être aisément multilingue. Analyser un corpus d'entretien, une collection de discours, posent peu la questions des locuteurs car ils sont bien identifiés. Ce n'est pas le cas dans les réseaux sociaux où les buts sont multiples et plus ou moins avoués. 
-
 Les acteurs :
 
-- des professionnels de la politiques et les institutions qu'ils dirigent
+- Des professionnels de la politiques et les institutions qu'ils dirigent
 - Journaliste et professionnels de la communication
 - Experts et universitaires
 - les marques et leur community manager
 - les bots
 - les trolls
 - les activistes
+- les acteurs de la vie politique
+
 
 ### Identifier la langue
 
-Dans les points précedents on suppose que la langue est homogène, mais les corpus peuvent être multi-langues. Par exemple, dans les corpus d'avis d'hôtes sur Airbnb, les avis sont formulés dans une large variété de langues. Il va falloir en tenir compte et une tâche préliminaire sera de détecter les langues pour séparer les corpus.
+Dans l'analyse des contenus sociaux, les textes viennent de sources multiples et confuses. Elles peuvent être aisément multilingue. Analyser un corpus d'entretien, une collection de discours, pose peu la questions des locuteurs car ils sont bien identifiés. Ce n'est pas le cas dans les réseaux sociaux où les buts sont multiples et plus ou moins avoués. Les corpus peuvent être multi-langues. Par exemple, dans les corpus d'avis d'hôtes sur Airbnb, les avis sont formulés dans une large variété de langues. Il va falloir en tenir compte et une tâche préliminaire sera de détecter les langues pour séparer les corpus.
 
-Le package textcat offre une solution basée sur la fréquence des ngrams (voir chapitre x). et compare la distribution du texte ciblée avec les distributions typiques des langues. Google propose un algo cpd3(https://github.com/google/cld3) plus sophistiqués dans la mesure où c'est un réseau de neurones qui fait le travail. Comparons les. 
+Le package `textcat` offre une solution basée sur la fréquence des ngrams (des suites de 2, 3, ... n motsqu'on étudiera dans le Chapitre 4) et qui compare la distribution du texte ciblé avec celles des distributions typiques des langues. 
 
-On utilise un jeu de donnée Airbnb sur Bruxelles qui accueillant les institutions européennnes est une des villes les plus cosmopolite qui soit avec des fonctionnaires venant de toutes l'europe et s'exprimant dans une large variété de langue, sans compter les représentations des autres pays du monde. 
-
-En terme de durée de calcul, la différence en temps de calcul est faramineuse 7 secondes contre 7 minutes, ce qui s'explique car texcat s'appuyant sur la distribution des ngrams doit les calculer pour les 36000 observations que nous avons retenues. 
-
-Faisons un test sur un extrait du corpus Airbnb.
+(insérer le schema)
 
 
+Google propose un algo plus sophistiqué : [cld3](https://github.com/google/cld3),  car fondé sur un réseau de neurones assez profond. 
+
+Comparons les. On utilise un jeu de donnée Airbnb à Bruxelles (été 2020), ville qui accueillant les institutions européennnes est une des plus cosmopolite qui soit avec des fonctionnaires venant de toute l'Europe, s'exprimant dans une large variété de langue, sans compter les représentations des autres pays du monde, publiques et privées. 
+
+En terme de durée de calcul, la différence en temps de calcul est faramineuse :  7 secondes contre 7 minutes, ce qui s'explique car texcat s'appuyant sur la distribution des ngrammes doit les calculer pour les 36000 observations que nous avons retenues. 
 
 ```{r 301, fig.cap='', out.width='80%', fig.asp=1, fig.align='center'}
 BXL2021 <- read_csv("./data/reviewsBXL2021.csv")
@@ -1073,7 +1176,7 @@ BXL2021$Year<- as.numeric(format(as.Date(BXL2021$date, format="%Y-%m-%d"),"%Y"))
 
 BXL2021<- BXL2021 %>% filter(Year>2019) # on filtre sur la période de confinement
 
-library(cld3)
+#library(cld3)
 
 t1<-Sys.time()
 
@@ -1082,7 +1185,7 @@ t2<-Sys.time()
 
 t_cld3<-t2-t1 #on calcule la durée de l'opération en faisant la différence du temps de départ et d'arrivée
 
-library(textcat)
+#library(textcat)
 t1<-Sys.time()
 textcat<-textcat(BXL2021$comments)
 t2<-Sys.time()
@@ -1138,8 +1241,6 @@ ggplot(foo1, aes(reorder(Var1, Freq),Var2)) +
 
 ```{r 304, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
 
-library(pheatmap)
-library(viridis)
 
 table2<-as.data.frame(table) %>%
   mutate(Freq=log10(Freq+1))  %>% 
@@ -1197,13 +1298,9 @@ detecter les fakes https://blogs.rstudio.com/ai/posts/2020-08-18-deepfake/
 
 # Une première analyse quantitative
 
-Avant tout un texte doit être analyser de manière volumétrique. Comment de texte? Quelle longueur ? combien de mots ? quelles variations? 
+Une première manière d'aborder un texte ou un corpus est volumétrique. Quel volume de texte? Quelle longueur ? Combien de mots ? quelles variations? A cette fin on utilise le cas des tweets de Donald Trump. Des premiers aux derniers, jusqu'au moment de son banissement en Janvier 2021, après sa défaite aux élections présidentielles. Chargeons le fichier de données. 
 
-Dans ce chapitre nous allons analyser le flux des tweets produit par donald Trump, jusqu'au moment de son banissement en Janvier 2021, àprès sa défaite.
-
-Chargeons le fichier de données. On en profite pour compter le nombre de posts et de variables
-
-```{r chap01_00}
+```{r 101}
 
 df <- read_csv("./data/TrumpTwitterArchive01-08-2021.csv")
 nrow<-nrow(df) #nombre de ligne
@@ -1213,7 +1310,7 @@ ncol<-ncol(df) #nombre de colonne
 
 ## Comptons les mots
 
-Il y `r nrow` tweets et `r ncol` variables. On peut vouloir compter le nombre de mots. A cette fin on emploie une fonction de `stringr :  `str_count`. ( On reviendra sur la question de la manipulation des chaines de caractères dans un chapitre ad hoc)
+Il y `r nrow` tweets et `r ncol` variables. On peut vouloir compter le nombre de mots. A cette fin on emploie une fonction de stringr :  `str_count`. (On reviendra sur la question de la manipulation des chaines de caractères dans un chapitre ad hoc)
 
 
 ```{r 1, fig.cap='Distribution du nombre de mots par post', out.width='80%', fig.asp=.75, fig.align='center'}
@@ -1226,13 +1323,18 @@ ggplot(df, aes(x=nb_mots))+
 
 ```
 
-La bimodalité provient surement du changement de taille maximum effectué en septembre 2017, le passage de 180 caractères max à 280. On peut le vérifier en examinant cette même distribution - par les courbes de densité - pour chacune des années, avec cette technique rendue fameuse par la pochette de l'album de Joy Division : un graphique en crêtes (ridges plot) avec [ggridges](https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html)
+La bimodalité provient surement du changement de taille maximum effectué en septembre 2017, le passage de 180 caractères max à 280. On peut le vérifier en examinant cette même distribution - par les courbes de densité - pour chacune des années, avec cette technique rendue fameuse par la pochette de l'album de Joy Division : un graphique en crêtes (ridges plot) avec [ggridges](https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html).
+
+Le résultat remarquable est que si Trump dans un premier temps exploite cette nouvel fonctionnalité, il en revient avec un phrasé de 20 mots en moyenne, gardant cependant à l'occasion d'autre contenu en 50 mots environ.
+
 
 ```{r 2, fig.cap=' Evolution de la distribution du nombre de mots', out.width='80%', fig.asp=.75, fig.align='center'}
 
 df$Year<-format(df$date, format = "%Y") #on extrait l'année de la date
+foo<- df %>% 
+  filter(Year!="2021")
 
-ggplot(df,aes(x = nb_mots, y = Year, group = Year)) +
+  ggplot(foo,aes(x = nb_mots, y = Year, group = Year)) +
   geom_density_ridges(scale = 3, fill="peachpuff")+
   theme_ridges() +
   scale_x_continuous(limits = c(1, 70), expand = c(0, 0)) +
@@ -1241,32 +1343,33 @@ ggplot(df,aes(x = nb_mots, y = Year, group = Year)) +
 
 ## la production dans le temps
 
+Concluons en examinant le nombre de tweets produit au cours du temps.
 
-Le résultat remarquable est que si Trump dans un premier temps exploite cette nouvel fonctionnalité, il en revient avec un phrasé de 20 mots en moyenne, gardant cependant à l'occasion d'autre contenu en 50 mots environ.
-
-Concluons en examiner le nombre de tweets produit au cours du temps
+La fonction `ts_plot` employée viens de `rtweet` que nous avons employée au chapitre 2. Elle emploie ggplot, et permet de représenter les évolutions selon différentes échelles de temps. On se rapplera qu'après une carrrière immobilière menée dans les casinos, le golf et les hôtels, l'appétit médiatique de trump s'est réalisé dans the apprenctice, de 2004 à 2015. C'est un pro de la TV, il a une formation de popstar. Il sera élu en Décembre 2016 pour prendre le pouvoir en Janvier. 
 
 ```{r 3, fig.cap='Evolution de la production mensuelle des tweets de Trump', out.width='80%', fig.asp=.75, fig.align='center'}
 
 ## plot time series of tweets
-ts_plot(df, "1 month", color="darkblue") + theme(plot.title = element_text(face = "bold")) + 
+ts_plot( foo, "1 month", color="darkblue", size=1.1) + 
+  theme(plot.title = element_text(face = "bold")) + 
   labs( x = NULL, y = "Nombre de tweets par mois",title = "Fréquence des posts twitters Donald Trump")+
   scale_x_datetime(date_breaks = "1 year", labels = scales::label_date_short())
+
 #raf : labeliser avec les dates clés
 ```
 
 
 ## Lisibilité et complexité lexicale
 
-Pour aller un peu plus loin, dans les comptages, introduisons deux quantifications utiles du texte : la lisibilité et la complexité lexicale. On gardera le principe d'une analyse longitudinale
+Pour aller un peu plus loin - nous savons désormais que trump aime une forme courte en 21 mots, et que son expérience de twtitter est longue, on peut s'intéresser à des paramètres clés relatifs aux conditions de la reception: les textes sont-ils aisés à lire ? sont-ils sophistiqués ?
 
-https://fr.wikipedia.org/wiki/Covfefe
+Introduisons deux quantifications utiles du texte : la lisibilité et la complexité lexicale. Ce sont des classiques, les critères initiaux de l'analyse quantitative du texte. Ils sont toujours utiles. 
 
 ### Les indices de lisibilité
 
-La lisibilité est une vieille notion autant que sa mesure (par exemple @coleman_computer_1975). Il s'agit d'évaluer la complexité d'un texte à partir de deux critères : la complexité des mots capturée par le nombre moyen de syllabes par mot, et la complexité des phrases mesurée par le nombre de mots. 
+La lisibilité est une notion aussi ancienne que sa mesure (par exemple @coleman_computer_1975). Elle répond à la question du degré de maitrise requis pour lire un texte en s'appyant sur les caractéristique objective du texte plutôt que sur sa perception. Il s'agissait  donc d'évaluer la complexité d'un texte. Deux critères principaux sont généralement considérés : la complexité des mots capturée par le nombre moyen de syllabes par mot, et la complexité des phrases mesurée par le nombre de mots. 
 
-Le nombre d'indicateurs est considérable et le package compagnon de quanteda , `[quanteda.textstats](https://quanteda.io/reference/textstat_readability.html)` , en fournit au moins des dizaines. Dans l'exemple suivant, on se contente d'un grand classique, le plus ancien, l'indice de Flesch [@flesch_new_1948] et de ses constituants: le nombre moyen de syllabes par mot et le nombre moyen de mots par phrase.  
+Le nombre d'indicateurs est considérable et le package compagnon de quanteda , `[quanteda.textstats](https://quanteda.io/reference/textstat_readability.html)` , en fournit des dizaines. Dans l'exemple suivant, on se contente d'un grand classique, le plus ancien, l'indice de Flesch [@flesch_new_1948] et de ses constituants: le nombre moyen de syllabes par mot et le nombre moyen de mots par phrase.  
 
 ```{r 404, fig.cap='Evolution de la lisibilité moyenne des tweets de Trump', out.width='80%', fig.asp=.75, fig.align='center'}
 
@@ -1289,7 +1392,12 @@ ggplot(foo1,aes(x=Year, y=value, group=variable))+
   labs(title = "Evolution de la lisibilité des tweets de Trump", x=NULL, y=NULL)
 ```
 
-Pour aider le lecteur à donner un sens, voici l'abaque proposée par [Flesch](http://www.appstate.edu/~steelekm/classes/psy2664/Flesch.htm)lui-même. [Flesch](ReadabilityFlesch.JPG). On peut aussi prendre pour références les éléments suivants: "All Plain English examples in this book score at least 60. Here are the scores of some reading materials I've tested. These are average scores of random samples."
+Pour aider le lecteur à donner un sens, voici l'abaque proposée par [Flesch](http://www.appstate.edu/~steelekm/classes/psy2664/Flesch.htm) lui-même. 
+
+![Flesch](./images/ReadabilityFlesch.JPG)
+
+
+On peut aussi prendre pour références les éléments suivants: "All Plain English examples in this book score at least 60. Here are the scores of some reading materials I've tested. These are average scores of random samples."
 
 Comics                      92
 Consumer ads in magazines   82
@@ -1304,33 +1412,46 @@ Trump ne parait pas être sa caricature, non niveau de lisibilité correspond à
 
 ### Les indices de complexité lexicale
 
-La complexité lexicale rend compte de la diversité du vocabulaire, elle consiste à rapporter le nombre de mot uniques sur le nombre total de mots. La difficulté est que la taille des corpus joue fortement sur cette mesure et que l'orsque cette taille est hétérogène, l'indicateur marque plus cette variété que les variations de complexité lexicale.[@tweedie_how_1998] 
+La complexité lexicale rend compte de la diversité du vocabulaire, elle consiste à rapporter le nombre de mot uniques sur le nombre total de mots. La difficulté est que la taille des corpus joue fortement sur cette mesure et que lorsque cette taille est hétérogène, l'indicateur marque plus cette variété que les variations de complexité lexicale.[@tweedie_how_1998] 
 
-https://quanteda.io/reference/textstat_lexdiv.html
+Dans notre univers trumpesque, ce n'est pas trop sensible, d'autant plus que nous allons moyenner les tweets par période.Notons au passage que si nous moyennons la diversité lexicale de chaque tweet, une autre approche pourrait être de concatener l'ensemble des tweets d'une période (un jour, une semaine) pour approcher cette variable à une autre échelle, qui couvre l'ensemble des sujets d'intérêt de trump, que les tweets fractionnent nécessairement. Ce qui en en question dans la mise en pratique n'est pas seulement la question du choix de l'indice mais aussi la définition de l'unité de calcul. La diversité lexicale concerne sans doute plus le discours que la phrase. 
 
-Une manière plus fine sera de considérer chaque période comme un texte, 
+On poursuite avec quanteda https://quanteda.io/reference/textstat_lexdiv.html
 
-un pb est que l'allongement des tweets peut expliquer l'accroissement de diversité
+On choisit de ne travailler sur deux des multiples indicateurs disponibles : 
 
-Dans notre univers trumpesque, ce n'est pas trop sensible, d'autant plus que nous allons moyenner les tweets par période.Notons au passage que si nous moyennons la diversité lexicale de chaque tweets , une autre approche pourrait être de concatener l'ensemble des tweets d'une période ( un jour, une semaine) pour approcher cette variable à une autre échelle, qui couvrent l'ensemble des sujets d'intérêt de trump, que les tweets fractionnenet nécessairement. Ce qui en en question dans la mise en pratique n'est pas seulement la question du choix de l'indice mais aussi la définition de l'unité de calcul. La diversité lexical concerne sans doute plus le discours que la phrase. 
+ * le CTTR de caroll qui rapporte le nombre de mots distincts ( V) sur le nombre de mots exprimés. Avec ce critère la diversité maximale est obtenue quand le nombre de mot différents est égal au nombre de mots exprimés. 
+
+$$
+CTTR = \frac{V}{\sqrt{2N}}
+$$
+
+ * le Mass supposé être moins sensible à la longueur des textes. (voir Torruella et Capsada 2013)
+
+$$
+M = \frac{log(n) - log(t)}{log² (n)}
+$$
 
 
-là, encore la nécessité d'avoir des points de repère, des échelles.
+Pour la mise en oeuvre on passe par quanteda. 
 
+( attention un pb de log dans le calcul)
 
 ```{r 4, fig.cap='Evolution de la lisibilité moyenne des tweets de Trump', out.width='80%', fig.asp=.75, fig.align='center'}
 
-
+#la fonction de calcul de diversité
 lexdiv<-tokens(foo$text) %>% 
-  textstat_lexdiv(foo$text, measure = c("CTTR"),remove_numbers = TRUE,
+  textstat_lexdiv(foo$text, measure = c("CTTR", "Maas"),remove_numbers = TRUE,
   remove_punct = TRUE,
-  remove_symbols = TRUE,
-  remove_hyphens = FALSE) #la fonction de calcul de diversité
+  remove_symbols = FALSE,
+  remove_hyphens = TRUE) 
 
+#On combine les données et on aggrège sur l'année
 foo<-cbind(foo,lexdiv[,2])
 foo1<-foo %>% 
   group_by(Year) %>%
-  summarise(CTTR=mean(CTTR, na.rm=TRUE)) %>%
+  summarise(CTTR=mean(CTTR, na.rm=TRUE),
+            Maas=mean(Maas)) %>%
   gather(variable, value, -Year)
 
 ggplot(foo1,aes(x=Year, y=value, group=variable))+
@@ -1339,19 +1460,51 @@ ggplot(foo1,aes(x=Year, y=value, group=variable))+
   labs(title = "Evolution de la diversité lexicale des tweets de Trump", x=NULL, y=NULL)
 ```
 
+## Comptons les mots
+
+Il est temps de compter les mots, de s'en faire une idée
+
+deux outils : nuages et lollyplot
+
+### Le nuages de mot
+
+le cas influenceurs pourrait être bien pour illustrer
+
+### Des lollyplot
+
+la notion de densité, quelle échelle? 
+
+## Le cas de sources multiples
+
+le cas de trump est passionnant car il donne toute la production d'un individu au cours du temps, mais le plus souvent les corpus sont constitués de sources multiples dont les niveaux d'engagement sont très variables. Un petit nombre publie beaucoup, et la majorité ne fait rien.
+
+### la mesure de la concentration des producteur
+
+les vieilles courbes de lorenz
+
+### La mesure de la concentration des termes
+
+Zipf distribution
+
+
 ## Conclusion
 
 Nous aurons appris à 
 
-* compter le nombre de document
-* mesurer la complexité du langage
-* mesurer la diversité de son vocabulaire.
+ * Compter le nombre de documents et leurs longueurs
+ * Mesurer la complexité du langage
+ * Mesurer la diversité de son vocabulaire.
+ * A évaluer la concentration des sources
+ * A se donner une première idée de la lexicographie
+ 
 
-Ces mesures n'ont ne sens que si elles peuvent être comparées
+Ces mesures n'ont ne sens que si elles peuvent être l'objet de comparaison :
 
-de manière interne
-
-de manière externe
+ * De manière interne la comparaison se fait dans dans le temps et à travers des segments. On s'intéresse moins au niveau, qu'aux différences de niveaux.
+ * De manière externe elle requiert un étalonnage. Comparer par rapport au français courant, à un niveau de langue soutenu, ou relâché. L'étalonnage revient à caractériser des types de corpus : presses, écriture savante, réseaux sociaux, publications officielles etc. On ne peut que souaiter que de telles comparaisons systèmatiques soient engagées et compilées pour donner des points de repère précis quand on étudie un corpus particulier. 
+ 
+ Elles participent à un premier niveau d'analyse du texte, en surface, visant à apprécier la dynamique de sa production, à établir les échelles d'analyses, à repérer les éléments structurels.
+ 
 
 
 <!--chapter:end:04-Analyse-quantitative-du-corpus.Rmd-->
@@ -2001,7 +2154,51 @@ https://stats.stackexchange.com/questions/134282/relationship-between-svd-and-pc
 
 
 
-<!--chapter:end:08-LSA-NMF.Rmd-->
+<!--chapter:end:08-ACP-AFC.Rmd-->
+
+# Le retour des méthodes factorielles
+
+D'un point de vue historique l'analyse factorielle est une idées de psychologue. D'ailleur un des meilleurs packages jamais développé est sans doute psych
+
+L'école française a choisit l'ACP, et ses dérivée appliquées à des données de comptage comme l'AFCM.
+
+Ces méthodes s'appuient sur des techniques de décomposition de matrice, et vise à réduire leur rang. Le problèmes qu'elle cherchent à résoudre est de réduire l'espace d'information. 
+
+
+## Retour sur l'ACP
+
+L'ACP a été longtemps la méthode reine, elle est toujours fréquemmment utilisées.Elle vise à un but simple : représenter un ensemble de donnée comportant k variable à un petit nombre de combinaisons de ces variables qui représentent une grandes part de l'information.
+
+Historiquement elle a été développée pour analyser des matrices de corrélations multiples où X est une matrice de n individus et k variables ou mesure. Dans le domain textuel ce tableau correspond au dtm où les individus sont les documents et les colonnes les termes.  
+
+$\Sigma=X*X^\top$
+
+L'idée principale est de trouver des combinaisons linéaires des variables qui capture succéssivement une part maximale de la variance. La solution à ce problème revient à décomposer cette matrice en fonction d'un matrice de poids qui est determinée comme la matrice des valeur propre de $\Sigma$.
+
+$\Sigma=F*V*F^\top$
+
+
+
+https://fr.wikipedia.org/wiki/Jean-Paul_Benz%C3%A9cri
+
+https://www.math3ma.com/blog/understanding-entanglement-with-svd
+
+X=FSF
+
+## SVD
+
+quelle différence avec PCA
+
+https://stats.stackexchange.com/questions/134282/relationship-between-svd-and-pca-how-to-use-svd-to-perform-pca
+
+## LSA
+
+
+## NLM
+
+
+
+<!--chapter:end:09-LSA-NMF.Rmd-->
 
 # Vectorisation du corpus
 
@@ -2027,7 +2224,7 @@ https://stats.stackexchange.com/questions/134282/relationship-between-svd-and-pc
 
 
 
-<!--chapter:end:09-Vectorisation.Rmd-->
+<!--chapter:end:10-Vectorisation.Rmd-->
 
 # Topic  Analysis
 
@@ -2052,7 +2249,7 @@ https://stats.stackexchange.com/questions/134282/relationship-between-svd-and-pc
 
 
 
-<!--chapter:end:10-Topic-analysis.Rmd-->
+<!--chapter:end:11-Topic-analysis.Rmd-->
 
 # Machine learning with text
 
@@ -2072,7 +2269,7 @@ utiliser les plongements
 
 
 
-<!--chapter:end:11-ML-with-text.Rmd-->
+<!--chapter:end:12-ML-with-text.Rmd-->
 
 # Deep Learning
 
@@ -2154,27 +2351,7 @@ triplet
 
 
 
-<!--chapter:end:12-deep-Learning-with-text.Rmd-->
-
-# Translation
-
-## simples models
-
-
-### Naives bayes
-
-### elastic net
-
-### RF
-
-## art of featuring
-
-utiliser les plongements
-
-
-
-
-<!--chapter:end:13-Translation.Rmd-->
+<!--chapter:end:13-deep-Learning-with-text.Rmd-->
 
 # Modèles génératifs
 
@@ -2195,6 +2372,26 @@ utiliser les plongements
 
 
 <!--chapter:end:14-Generative-model.Rmd-->
+
+# Translation
+
+## simples models
+
+
+### Naives bayes
+
+### elastic net
+
+### RF
+
+## art of featuring
+
+utiliser les plongements
+
+
+
+
+<!--chapter:end:15-Translation.Rmd-->
 
 # Annexes : quelques problèmes très techniques
 
@@ -2237,11 +2434,11 @@ optimisation
 
 
 
-<!--chapter:end:15-Annexes.Rmd-->
+<!--chapter:end:16-Annexes.Rmd-->
 
 `r if (knitr:::is_html_output()) '
 # References {-}
 '`
 
-<!--chapter:end:16-References.Rmd-->
+<!--chapter:end:17-References.Rmd-->
 

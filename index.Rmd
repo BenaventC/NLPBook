@@ -32,7 +32,7 @@ Il sera dynamique, modifié à mesure de nos cours, séminaires, ateliers et obs
 
 La liste des cours et séminaires où il sera présenté et utilisé. 
 
- * Colloque Marketing digital 1-2 septembre 2021
+ * Colloque Marketing digital 2-3 septembre 2021
  * AFM decembre 2021
  * Ed Sorbonne - février 2022
  * Dauphine master 204 - octobre 2021
@@ -43,11 +43,11 @@ La liste des cours et séminaires où il sera présenté et utilisé.
 
 ## La structure du livre
 
-L analyse NLP peut être analysée comme un processus qui va de la production jusqu' à la diffusion des analyses. Elle est aussi traversée par des évolutions profondes de méthodes qui ont complexifié au sens formel les modèles initiaux. L'apprentissage submerge le comptage,et les catégorisations....
+L analyse NLP peut être analysée comme un processus qui va de la production jusqu'à la diffusion des analyses. Elle est aussi traversée par des évolutions profondes de méthodes qui ont complexifié au sens formel les modèles initiaux. Ce sont ces techniques que nous introduisons ici. 
 
-Rappelons nous que les modèles de langages désormais distribués par les grands acteurs, comprennent des dizaines, voir des centaines de milliards de paramètres. 
+Cependant, l'apprentissage automatique appliqué à des milliards de données submerge la statistique. Les modèles de langage distribués par les grands acteurs d gidital, comprennent des dizaines, voir des centaines de milliards de paramètres. On les évoquerons dans les derniers chapîtres.
 
-Le plan suit une logique qui va du simple au très compliqué, et de l'acquisition des données, de leur traitement et leur modélisation, jusqu'à la propagation....
+Le plan suit une logique qui va du simple au très compliqué, et de l'acquisition des données, de leur traitement et leur modélisation, jusqu'à la propagation ...
 
 
  * acquisition des données : directe, api et scrapping
@@ -84,18 +84,26 @@ disponibles dans le [repositery](https://benaventc.github.io/NLPBook/) avec le c
 
 Ce  _livre_ est écrit en **Markdown** [@allaire_rmarkdown_2021] et  avec le package **Bookdown** [@R-bookdown]
 
-Le code s'appuie très largement sur **tidyverse** et emploie largement les ressources de **ggplot** et **dplyr** . On recommande au lecteur de consulter donc les ouvrages suivants quand il s'interroge sur la construction des graphiques. On part du parti-pris que les lecteurs ont une connaissance satisfaisantes de ces outils génériques. Une mention particulère doit être faite sur la question du traitement du texte, **stringr** est aussi un des outils fondamentaux, 
+ * rmardown : c'est le langage de surface, celui qui nous permet de publier ce manuel.
 
- * rmardown
- * ggplot
- * dplyr
- * stringer
+
+Le code s'appuie très largement sur **tidyverse** et emploie largement les ressources de **ggplot** et **dplyr** . On recommande au lecteur de consulter les ouvrages suivants.  Une mention particulière doit être faite sur la question du traitement du texte, **stringr** est aussi un des outils fondamentaux. 
+
+D'autres outils traverserons le manuels. Par exemples pour les tableaux, nous opterons la plus part du temps pour les soclution de flextable. 
+
+On supposera que les lecteurs ont une connaissance satisfaisante de ces outils génériques, mais à chaque fois qu'on les introduira, on les expliquera.
+
+ 
+ * ggplot : une image vaut mieux que mille mots, 
+ * [dplyr]() est essentiel, c'est avec cet outil qu'on construit des pipeline de données. Le maitriser est une garantie d'efficacité.  
+ * [stringr](https://stringr.tidyverse.org/articles/stringr.html) est un package ardu. Ils propose une multitude de fonctions pour traiter les chaînes de caractères. Son étude est recommandée de concert avec la connaissance des [regex](https://stringr.tidyverse.org/articles/regular-expressions.html). 
+ * quand le temps s'en mêle, lubridate est indispensable. 
  
 
 ### Les packages 
 
 
-Les packages seront introduits au fur et à mesure. En voici la liste complète.
+Les packages seront introduits au fur et à mesure de leur première utilisation. On le signale par `#library(lib) `. En voici la liste complète.
 
 
 ```{r pack, echo = TRUE, message=FALSE, warning=FALSE}
@@ -103,16 +111,25 @@ knitr::opts_chunk$set(echo = TRUE, message=FALSE,warning=FALSE)
 
 #boite à outils et viz
 library(tidyverse) # inclut ggplot pour la viz, readr et 
+library(readr)
+
+#Vizualisation 
 library(cowplot) #pour créer des graphiques composés
-library(ggridges) # le joy division touch
-library(citr)
+library(ggridges) # le joy division touch de ggplot
+library(pheatmap)
+library(flextable)
 
 #networks
-library(igraph)
-library(ggraph)
+library(igraph) #le standard pour les représentations de réseaux
+library(ggraph) #un complément compatible ggplot du précédent
 
 # Accéder aux données
 library(rtweet)  # une interface efficace pour interroger l'api de Twitter
+
+
+# OCR et pdf
+library(tesseract) #reconnaissance de caractère
+
 
 # NLP
 library(tokenizers)
@@ -123,13 +140,19 @@ library(udpipe) #annotation syntaxique
 library(tidytext)
 library(cleanNLP) #annotation syntaxique
 
-#sentiment
-library(syuzhet)             #analyse du sentimeent
+##reconnaissance de langue
+library(cld3)
+library(textcat)
+
+#Analyse du sentiment
+library(syuzhet)            
+
+
 #mise en page des tableaux
-library(flextable)
+library(flextable) # 
 
 
-#statistiques et modèles
+#Statistiques et modèles
 library(lme4)
 library(jtools)
 library(interactions)
@@ -137,19 +160,24 @@ library(interactions)
 #ML
 library(caret)
 
-#graphismes
+#Template pour ggplot
 theme_set(theme_bw())
 
 
-#palettes
+#Palettes
 library(colorspace) #pour les couleurs
+library(viridis)
+library(viridisLite)
+
+
+
+#utilitaires
+library(citr) # un outil interactif pour insérer des références 
+
 
 # chapitre II
-library(revtools)
+library(revtools) 
 library(rvest)
-
-library(readr)
-
 
 ```
 

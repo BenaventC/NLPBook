@@ -127,31 +127,32 @@ exemple des gestes barières dans le flux twitter
 
 ## Identifier les sources
 
-Dans l'analyse des contenus sociaux, les textes viennent de sources multiples et confuses. Elles peuvent être aisément multilingue. Analyser un corpus d'entretien, une collection de discours, posent peu la questions des locuteurs car ils sont bien identifiés. Ce n'est pas le cas dans les réseaux sociaux où les buts sont multiples et plus ou moins avoués. 
-
 Les acteurs :
 
-- des professionnels de la politiques et les institutions qu'ils dirigent
+- Des professionnels de la politiques et les institutions qu'ils dirigent
 - Journaliste et professionnels de la communication
 - Experts et universitaires
 - les marques et leur community manager
 - les bots
 - les trolls
 - les activistes
+- les acteurs de la vie politique
+
 
 ### Identifier la langue
 
-Dans les points précedents on suppose que la langue est homogène, mais les corpus peuvent être multi-langues. Par exemple, dans les corpus d'avis d'hôtes sur Airbnb, les avis sont formulés dans une large variété de langues. Il va falloir en tenir compte et une tâche préliminaire sera de détecter les langues pour séparer les corpus.
+Dans l'analyse des contenus sociaux, les textes viennent de sources multiples et confuses. Elles peuvent être aisément multilingue. Analyser un corpus d'entretien, une collection de discours, pose peu la questions des locuteurs car ils sont bien identifiés. Ce n'est pas le cas dans les réseaux sociaux où les buts sont multiples et plus ou moins avoués. Les corpus peuvent être multi-langues. Par exemple, dans les corpus d'avis d'hôtes sur Airbnb, les avis sont formulés dans une large variété de langues. Il va falloir en tenir compte et une tâche préliminaire sera de détecter les langues pour séparer les corpus.
 
-Le package textcat offre une solution basée sur la fréquence des ngrams (voir chapitre x). et compare la distribution du texte ciblée avec les distributions typiques des langues. Google propose un algo cpd3(https://github.com/google/cld3) plus sophistiqués dans la mesure où c'est un réseau de neurones qui fait le travail. Comparons les. 
+Le package `textcat` offre une solution basée sur la fréquence des ngrams (des suites de 2, 3, ... n motsqu'on étudiera dans le Chapitre 4) et qui compare la distribution du texte ciblé avec celles des distributions typiques des langues. 
 
-On utilise un jeu de donnée Airbnb sur Bruxelles qui accueillant les institutions européennnes est une des villes les plus cosmopolite qui soit avec des fonctionnaires venant de toutes l'europe et s'exprimant dans une large variété de langue, sans compter les représentations des autres pays du monde. 
-
-En terme de durée de calcul, la différence en temps de calcul est faramineuse 7 secondes contre 7 minutes, ce qui s'explique car texcat s'appuyant sur la distribution des ngrams doit les calculer pour les 36000 observations que nous avons retenues. 
-
-Faisons un test sur un extrait du corpus Airbnb.
+(insérer le schema)
 
 
+Google propose un algo plus sophistiqué : [cld3](https://github.com/google/cld3),  car fondé sur un réseau de neurones assez profond. 
+
+Comparons les. On utilise un jeu de donnée Airbnb à Bruxelles (été 2020), ville qui accueillant les institutions européennnes est une des plus cosmopolite qui soit avec des fonctionnaires venant de toute l'Europe, s'exprimant dans une large variété de langue, sans compter les représentations des autres pays du monde, publiques et privées. 
+
+En terme de durée de calcul, la différence en temps de calcul est faramineuse :  7 secondes contre 7 minutes, ce qui s'explique car texcat s'appuyant sur la distribution des ngrammes doit les calculer pour les 36000 observations que nous avons retenues. 
 
 ```{r 301, fig.cap='', out.width='80%', fig.asp=1, fig.align='center'}
 BXL2021 <- read_csv("./data/reviewsBXL2021.csv")
@@ -159,7 +160,7 @@ BXL2021$Year<- as.numeric(format(as.Date(BXL2021$date, format="%Y-%m-%d"),"%Y"))
 
 BXL2021<- BXL2021 %>% filter(Year>2019) # on filtre sur la période de confinement
 
-library(cld3)
+#library(cld3)
 
 t1<-Sys.time()
 
@@ -168,7 +169,7 @@ t2<-Sys.time()
 
 t_cld3<-t2-t1 #on calcule la durée de l'opération en faisant la différence du temps de départ et d'arrivée
 
-library(textcat)
+#library(textcat)
 t1<-Sys.time()
 textcat<-textcat(BXL2021$comments)
 t2<-Sys.time()
@@ -224,8 +225,6 @@ ggplot(foo1, aes(reorder(Var1, Freq),Var2)) +
 
 ```{r 304, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
 
-library(pheatmap)
-library(viridis)
 
 table2<-as.data.frame(table) %>%
   mutate(Freq=log10(Freq+1))  %>% 
