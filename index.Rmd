@@ -179,6 +179,26 @@ library(citr) # un outil interactif pour insérer des références
 library(revtools) 
 library(rvest)
 
+library(dplyr)
+library(ggplot2)
+library(knitr)
+library(lubridate)
+library(FactoMineR)
+library(factoextra)
+library("corrplot")
+library(ade4)
+library(ExPosition)
+library(syuzhet)
+library(udpipe)
+library(quanteda)
+library(quanteda.textmodels)
+library(quanteda.textplots)
+library(quanteda.textstats)
+library(Biobase)
+library(BiocManager)
+library(cowplot)
+library(NMF)
+
 ```
 
 

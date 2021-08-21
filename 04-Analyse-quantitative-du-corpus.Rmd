@@ -40,7 +40,8 @@ foo<- df %>%
   geom_density_ridges(scale = 3, fill="peachpuff")+
   theme_ridges() +
   scale_x_continuous(limits = c(1, 70), expand = c(0, 0)) +
-  coord_cartesian(clip = "off")+labs(x="Nombre de mots par post", y=NULL)
+  coord_cartesian(clip = "off")+
+    labs(x="Nombre de mots par post", y=NULL)
 ```
 
 ## la production dans le temps
@@ -71,7 +72,7 @@ Introduisons deux quantifications utiles du texte : la lisibilité et la complex
 
 La lisibilité est une notion aussi ancienne que sa mesure (par exemple @coleman_computer_1975). Elle répond à la question du degré de maitrise requis pour lire un texte en s'appyant sur les caractéristique objective du texte plutôt que sur sa perception. Il s'agissait  donc d'évaluer la complexité d'un texte. Deux critères principaux sont généralement considérés : la complexité des mots capturée par le nombre moyen de syllabes par mot, et la complexité des phrases mesurée par le nombre de mots. 
 
-Le nombre d'indicateurs est considérable et le package compagnon de quanteda , `[quanteda.textstats](https://quanteda.io/reference/textstat_readability.html)` , en fournit des dizaines. Dans l'exemple suivant, on se contente d'un grand classique, le plus ancien, l'indice de Flesch [@flesch_new_1948] et de ses constituants: le nombre moyen de syllabes par mot et le nombre moyen de mots par phrase.  
+Le nombre d'indicateurs est considérable et le package compagnon de quanteda , [`quanteda.textstats`](https://quanteda.io/reference/textstat_readability.html) , en fournit des dizaines. Dans l'exemple suivant, on se contente d'un grand classique, le plus ancien, l'indice de Flesch [@flesch_new_1948] et de ses constituants: le nombre moyen de syllabes par mot et le nombre moyen de mots par phrase.  
 
 ```{r 404, fig.cap='Evolution de la lisibilité moyenne des tweets de Trump', out.width='80%', fig.asp=.75, fig.align='center'}
 
@@ -179,31 +180,32 @@ Deux outils sont disponibles: les nuages de mots et les lollyplots. Les premiers
 
 ### Les nuages de mots
 
-Ils sont devenu extrêmement populaire même si l'effet esthétique est plus important de leur utilité analytique.
+Ils sont devenus extrêmement populaires même si l'effet esthétique est plus important que leur utilité analytique.
 
-Le cas influenceurs pourrait être bien pour illustrer
 
 [`ggwordcloud`](https://cran.r-project.org/web/packages/ggwordcloud/vignettes/ggwordcloud.html)
 
+Pour l'application on prépare les données avec quanteda : on tokenise et on construit le dfm ( pour le détail voir chapitre tokenization), ce qui nous permets notamment d'éliminer la ponctuation et les mots courants (articles, déterminant etc) qui apportent peu de signification. 
 
-```{r 406, fig.cap='Evolution de la lisibilité moyenne des tweets de Trump', out.width='80%', fig.asp=.75, fig.align='center'}
+
+```{r 406, fig.cap='Nuage de mots - Trump 2016, 2018, 2020', out.width='80%', fig.asp=.75, fig.align='center'}
+
 foo<-df %>% filter(isRetweet==FALSE) %>%
-  filter( Year %in% c("2016","2018","2020"))#) on ne prend pas en compte les RT
+  filter( Year %in% c("2016","2018","2020"))# on ne prend pas en compte les RT
 
 toks<- tokens(foo$text) %>% 
   dfm(remove_punct = TRUE,  remove = stopwords("english"))
+
 docvars(toks,"Year")<-foo$Year
 
 toks
 
-#on se concentre du les termes utilisés 100 fois.  
+#on se concentre du les termes utilisés 300 fois.  
 
 foo<-toks %>% 
-    dfm_trim(min_termfreq = 250, verbose = FALSE)
+    dfm_trim(min_termfreq = 300, verbose = FALSE)
 
 freq <- textstat_frequency(foo)
-
-
 
 
 library(ggwordcloud)
@@ -217,19 +219,17 @@ ggsave("./Images/g0.jpg", plot=last_plot(), width = 27, height = 19, units = "cm
 
 ```
 
-Et pour faire des comparaisons .....
-
-année 2016 qui le conduit à être élu, une année de mid term en 2018 et 2020 année de sa défaite.
+Et pour faire des comparaisons, entre l'année 2016 qui le conduit à être élu, 2018 une année de mid term et 2020 année de sa défaite, on utilise la même procédure mais on distingue un comptage de fréquence de mot par période. Le ggplot est identique aux précédents mais comprend en plus une géométrie "facet_wrap" qui éclate le nuages de mot selon les 3 périodes étudiées.
 
 
-```{r 407, fig.cap='Evolution de la lisibilité moyenne des tweets de Trump', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 407, fig.cap='Nuage de mots - Trump 2016, 2018, 2020', out.width='80%', fig.asp=.75, fig.align='center'}
 
 
 foo<-toks %>% 
   dfm_group(groups = Year) %>%
     dfm_trim(min_termfreq = 250, verbose = FALSE)
 
-
+#pour compter la fréquence des mots par année
 freq <- textstat_frequency(foo, group =Year)
 
 set.seed(42)
@@ -270,13 +270,79 @@ On peut encore débattre de sa signification. Une économie cognitive? Une cons�
 
 Zipf distribution 1949
 
+On reprend la procédure de comptage des mots par groupe, mais sans filtrer sur la fréquence de ces mots. On en obtient  ```n_w``` mots distincts. 
+En examinant avec plus de détail il y a 5 élément d'information  : a ) le trait ( feature), c'est à dire ici le mot étudié, 2) le nombre de fois où il apparait dans le corpus, 3)le rank qui lui correspond, 4)le nombre de document dans lesquel il apparait, et enfin 5) la période du corpus. 
+
+
+
+
 ```{r 408, fig.cap=' ', out.width='80%', fig.asp=.75, fig.align='center'}
+foo<-toks
+
+freq <- textstat_frequency(foo)
+
+freq <- textstat_frequency(foo, group =Year)
+head(freq)
+n_w<-dim(freq)
+#ft<-flextable(head(freq)) ## pb affichage
+ft
+
+
+freq<-freq %>% 
+  group_by(group)%>%
+  mutate(rank_rel=rank/max(rank), #on normalise le classement de 0 , mauvais classement à 1, bon classement. 
+         freq_prop=frequency/sum(frequency),
+         freq_density=docfreq/sum(docfreq))
+
+ggplot(freq, aes(x=rank_rel, fill = group)) +
+  geom_histogram(show.legend = FALSE, binwidth = 0.05) +
+  facet_wrap(~group, ncol = 3, scales = "fixed")
+
+
+ggplot(freq, aes(x=freq_prop, fill = group)) +
+  geom_histogram(show.legend = FALSE, binwidth = 0.0001) +
+  facet_wrap(~group, ncol = 3, scales = "fixed")+ scale_y_log10()
+
+
+g<-freq %>% 
+  ggplot(aes(rank_rel, freq_prop,color = group)) + 
+  geom_line(size = 1, alpha = 1, show.legend = FALSE) + 
+  scale_y_log10()+  geom_smooth(method="lm", alpha=0.5, color="grey80")+ scale_x_continuous(labels = scales::percent_format(accuracy = 1))
+g
+
+
+```
+
+On essaye d'ajuster avec deux fonctions linéaires, et on s'aperçoit de suite que l'ajustement est largement meilleure. Une première loi régit les 3000 mots les plus fréquents, une autre, beaucoup plus pentue régit les mots les moins fréquents, essentiellement ce qui n'apparaissent qu'une seul fois. 
+
+
+
+```{r 409, fig.cap=' ', out.width='80%', fig.asp=.75, fig.align='center'}
+#on coup à .1 car c'est là où se trouve le " coude"
+
+foo1<-freq %>%
+  filter(rank_rel<0.1)
+
+
+fit1<- lm(log10(freq_prop+0.0001)~log10(rank_rel+0.0000001),data= foo1)
+a<-fit1$coefficients
+g<-g+ geom_abline(intercept=a[1], slope=a[2], color="grey80")
+g
+
+foo2<-freq %>%
+  filter(rank_rel>0.09999999)
+
+
+fit2<- lm(log10(freq_prop+0.0000001)~log10(rank_rel+0.0000001),data= foo2)
+b<-fit2$coefficients
+g<-g+ geom_abline(intercept=b[1], slope=b[2], color="grey80")
+g
 ```
 
 
-## Le cas de sources multiples
+# Le cas de sources multiples
 
-le cas dy corpus de Trump est passionnant car il donne toute la production d'un locuteur au cours du temps. Le plus souvent les corpus sont constitués de locuteurs multiples dont les niveaux d'engagement sont très variables, un petit nombre publie souvent, et la majorité de manière épisodique.
+le cas du corpus de Trump est passionnant car il donne toute la production d'un locuteur au cours du temps. Le plus souvent les corpus sont constitués de locuteurs multiples dont les niveaux d'engagement sont très variables, un petit nombre publie souvent, et la majorité de manière épisodique.
 
 Il est important de quantifier ces rapports de production. 
 
