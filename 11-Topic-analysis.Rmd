@@ -1,0 +1,100 @@
+---
+bibliography: references.bib
+---
+
+# Topic Analysis
+
+L'analyse thématique s'attache à résumer de grands ensembles plus ou moins structurés de données textuelles en principaux thèmes probables. Les données d'entrées sont des éléments textuels constituant une *collection* de *documents*, eux-mêmes composés de mots, le tout est alors à considérer comme une *mixture*, ou un *mélange* de thèmes à générer.
+
+![](images/melange_lda.jpg)
+
+Ces algorithmes entraînés reposent sur des méthodes de calculs empruntent aux domaines du machine learning et de l'intelligence artificielle. Les différentes variantes de sa mise en oeuvre tiennent compte :
+
+-   Du plongement lexical
+
+-   Du rôle de potentielles métadonnées à intégrer
+
+## Outils
+
+Les packages, [[`Word2Vec`](https://CRAN.R-project.org/package=word2vec)] et [[`stm`](https://cran.r-project.org/web/packages/stm/index.html)] seront utilisés ci-dessous afin de mener les analyses.
+
+## LDA
+
+### Le modèle original de Blei
+
+Le rôle de cet algorithme est donc, à un corpus donné, établir un modèle possible de mixture thématique, en lisant et reliant successivement les mots entre eux. Cela est rendu possible quand les variables sont dîtes interchangeables.[@blei]
+
+Nous avons donc, au sens de Blei :
+
+-   Un vocabulaire $V$ indexant tous les mots,
+-   De documents composé d'une séquence de $N$ mots
+-   Un Corpus $D$, collection $M$ de documents
+-   Un ensemble $Z$ de topics potentiels
+-   Définir un réel $k$ égal au nombre de topic souhaité
+
+Chaque mot $w$ se voit donc associer des coefficients $\beta_{i,j}$ et $\alpha_{i}$ dans un espace $\theta_{i}$ de distribution au sein des documents, obtenu par une allocation de Dirichlet. Ainsi, on a successivement :
+
+```{=tex}
+\begin{align}
+ p(\theta|\alpha) = \frac{\Gamma(\sum_{i=1}^k \alpha_{i}}{\prod_{i = 1}^{k}\Gamma(\alpha_{i})}\theta_{1}^{\alpha_{1}-1}...\theta_{k}^{\alpha_{k}-1}
+\end{align}
+```
+et l'ensemble des éléments prédéfinis reliés de la manière suivante :
+
+```{=tex}
+\begin{align}
+p(\theta,z,w\|\alpha,\beta)=p(\theta\|\alpha)\prod_{n=1}^{N}p(z_{n}\|\theta)p(w\_{n}\|z\_{n},{\beta})
+\end{align}
+```
+Un schéma explictif est proposé par [H. Naushan](https://towardsdatascience.com/topic-modeling-with-latent-dirichlet-allocation-e7ff75290f8), en 2020.
+
+![](images/lda_scheme.jpeg)
+
+D'après le théorème de Finetti, lorsque les variables sont échangeables, il est possible de les visualiser selon une infinité de mixtures. La probabilité d'une séquence de mots/topics peut donc s'exprimer de la sorte :
+
+```{=tex}
+\begin{align}
+p(w|z)=\int{} p(\theta) (\prod_{n=1}^{N}p(z_{n}|\theta)p(w_{n}|z_{n})d\theta
+\end{align}
+```
+Cela se considère comme une mixture continue d'unigrammes ou la probabilité de rencontrer un mot se résume à sa distribution $p(w|\theta,\beta)$ :
+
+```{=tex}
+\begin{align}
+p(w|\theta,\beta)=\sum_{z}p(w|z,\beta)p(z|\theta)
+\end{align}
+```
+La distribution marginale $p(w|\alpha,\beta)$ de chaque document, est donc intrinsèque à cette idée de mixture de thématique, et s'obtient ainsi :
+
+```{=tex}
+\begin{align}
+p(w|\alpha,\beta)= \int p(\theta,\alpha)(\prod_{n=1}^{N}p(w_{n}|\theta,\beta))d\theta
+\end{align}
+```
+### Implementation avec wor2vec
+
+Ces techniques se sont développées sous l'angle de l'hypothèse, ou contrainte de Harris, dont le postulat propose que les mots apparaissants dans des contextes similaires soient de sens identiques. Le développement des techniques d'analyses traitant le mot comme un vecteur avec un ensemble de coordonnées dans un reprère propre à un corpus entièrement vectorisé permet de tester cette hypothèse originelle en sémantique distributionnelle.
+
+En ce sens, l'approche par l'intégration des mots permet de réinduire une certaine dépendance, contrainte, linéarité et ordonnancement naturel du corpus au sein d'une mixture, donc le principe même temps à avoir une infinité de représentation.
+
+![](images/vector.jpg)
+
+La structure de cette approche s'appuie sur différentes couches de réseaux de neurones venant travailler réciproquement sur des obervations et des prédictions :
+
+-   Les mots observés, dont on peut prédire le contexte (Skip-gram)
+
+-   Les éléments du contexte observés, dont on peut prédire le mot (CBOW)
+
+L'idée de plongement lexical tient alors dans cette dynamique double d'identification et de rattachament des éléments textuels ensembles, selon différentes méthodes de vraisemblance/mesure.
+
+#### Skip-gram
+
+#### Continus Bag-Of-Words
+
+### Représentation graphique
+
+## STM
+
+La Modélisation Thématique Structurelle est un prolongement du modèle LDA développé ci-dessus. Permettant de parvenir aux mêmes types de résultats de regroupements thématiques par plongement lexical, cette dernière se distingue dans le sens où elle permet d'associer d'autres variables, ou méta-données, au corpus traité afin de prendre en compte les relations de leurs modalités au contenu. Ainsi, elle crée la notion de prévalence d'un topic, qui permet de prendre en compte sa fluctuation en fonction de la propre évolution de la covariance des éléments d'une même mixture. [@roberts2016]
+
+![](images/Stm.PNG)
