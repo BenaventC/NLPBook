@@ -133,3 +133,14 @@ jouer-avec-les-formats-de-données
 des-formats-exotiques
 adopter-des-formats-propres-tidy
 les-limites-du-calcul
+topic-analysis
+outils
+lda
+le-modèle-original-de-blei
+implementation-avec-wor2vec
+skip-gram
+continus-bag-of-words
+représentation-graphique
+stm
+json
+xml
