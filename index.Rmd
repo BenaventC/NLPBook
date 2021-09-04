@@ -11,18 +11,6 @@ link-citations: yes
 github-repo: rstudio/bookdown-demo
 description: " Un manuel pratique de NLP en français"
 ---
-<head>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SWDGQMKQTP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-SWDGQMKQTP');
-</script>
-
-</head> 
 
 # Préface
 

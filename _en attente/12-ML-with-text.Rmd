@@ -1,10 +1,15 @@
----
-title: "trump  : les mots qui boostent les retweets"
-author: "MIrM2020"
-date: "07/11/2020"
-output: html_document
-bibliography : MIrM.bib
----
+# Machine learning et NLP
+
+
+
+## le principe et ses applications
+
+
+Les méthodes de machine learning, notamment celles qu'on appele classificateurs, peuvent être utile pour résoudre des problèmes de prédiction d'une variable à partir du contenu textuel. 
+
+L'exemple évident est quand on veut prédire la note à partir de commentaire du consommateur. Dans le même domaine on peut désirer connaitre ce qui détermine l'utilité d'un tel commentaire. Pour des données sociales on s'intéressera par exemple à la popularité d'un tweet. Et dans des usages plus sophistiqués on peut imaginer construire des catégories spécifiques , par exemple le caractère phatique ou nom d'un contenu, le ton employé. Dans ce cas, il faudra au préalable annoter manuellement un échantillon de ces contenus pour développer le classificateur et l'employer opérationnnement pour le codage de l'ensemble du corpus.
+
+
 
 Dans cette analyse, l'objectif va être de comprendre quel sont les mots, ou les expressions, qui sont les ressorts de leurs partages.
 
@@ -14,26 +19,25 @@ L'objectif va être de prédire à partir des termes, les chances qu'un tweet so
 
 le processus va se dérouler selon les étapes suivantes
 
-1 - on constitue les corpus de donnée. Un fichier d'entrainement et un de test. Le fichier d'entraineemet est labellisé, etiqueté, annotés. Ce sont des termes équivalents qui déssignent un processus plus ou moins objectifs qui qualifie une chaine de caractère. Tel tweet est positif, tel autre ne l'est pas, tel tweets proteste, tel autre informe. Telle chaine de caractère est associée à un nombre de retweet élevé, tel autre à un nombre bas. 
+1 - on constitue les corpus de donnée. Un fichier d'entrainement et un de test. Le fichier d'entraineemet est labellisé, etiqueté, annotés. Ce sont des termes équivalents qui désignent un processus plus ou moins objectifs qui qualifie une chaine de caractère. Tel tweet est positif, tel autre ne l'est pas, tel tweets proteste, tel autre informe. Telle chaine de caractère est associée à un nombre de retweet élevé, tel autre à un nombre bas. 
 2 - on nettoie le texte, on limite les signes candidats
 
 inspiré de https://www.hvitfeldt.me/blog/binary-text-classification-with-tidytext-and-caret/
 
 
-
+## Une première application
 # Initiation
 
 Les packages et les données
 
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, cache=TRUE, message=FALSE,warning=FALSE)
 library(tidyverse)
 library(tidytext)
 library(caret)
 
 
-df<-readRDS("df_nrcliwc.rds")
+df<-readRDS("./Data. ")
 ```
 
 ### constituer le dataset

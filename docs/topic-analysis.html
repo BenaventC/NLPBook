@@ -53,6 +53,15 @@
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7EKDD8SVH6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7EKDD8SVH6');
+</script>
 
 
 <style type="text/css">
@@ -410,8 +419,8 @@ p(w|\alpha,\beta)= \int p(\theta,\alpha)(\prod_{n=1}^{N}p(w_{n}|\theta,\beta))d\
 <a class="sourceLine" id="cb101-13" title="13">                          <span class="dt">convergence_tol =</span> <span class="fl">0.001</span>, </a>
 <a class="sourceLine" id="cb101-14" title="14">                          <span class="dt">n_check_convergence =</span> <span class="dv">25</span>, </a>
 <a class="sourceLine" id="cb101-15" title="15">                          <span class="dt">progressbar =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
-<pre><code>## INFO  [14:52:26.045] early stopping at 375 iteration 
-## INFO  [14:52:27.038] early stopping at 50 iteration</code></pre>
+<pre><code>## INFO  [17:50:47.947] early stopping at 375 iteration 
+## INFO  [17:50:48.914] early stopping at 50 iteration</code></pre>
 <p>description</p>
 <div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" title="1"><span class="co">#description des topic en fonction d&#39;un degré de pertinence de lamba ( lambda =1 probabilités)</span></a>
 <a class="sourceLine" id="cb103-2" title="2">lda_res&lt;-<span class="kw">as.data.frame</span>(lda_model<span class="op">$</span><span class="kw">get_top_words</span>())</a>
