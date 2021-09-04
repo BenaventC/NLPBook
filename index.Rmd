@@ -9,8 +9,20 @@ bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: rstudio/bookdown-demo
-description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
+description: " Un manuel pratique de NLP en français"
 ---
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SWDGQMKQTP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SWDGQMKQTP');
+</script>
+
+</head> 
 
 # Préface
 
@@ -20,9 +32,9 @@ description: "This is a minimal example of using the bookdown package to write a
 
 
 L'eco système r s'est enrichi ces dernière années à grande vitesse dans le domaine du traitement du langage naturel, l'objet de ce manuel a pour but d'en donner une synthèse. Sa vocation est pratique même si on y laissera germer quelques considérations plus méthodologiques, voire épistémologiques. 
-On ouvrira cependant chaque fois que c'est possibles aux questions théoriques et éthiques de ces méthodes. Leur réalisation computationnelle est le fruit souvent d'une longue histoire, au cours de laquelle les linguistes ont semé des idées essentielles qu'ont systématisé les informaticiens.
+On ouvrira cependant chaque fois que c'est possibles aux questions théoriques et éthiques de ces méthodes. Leur réalisation computationnelle est le fruit souvent d'une longue histoire, au cours de laquelle les linguistes ont semé des idées essentielles qu'ont systématisées les informaticiens.
 
-On soignera la bibliographie de manière synthétique pour en faire un état de l'art essentielet actualisée.
+On soignera la bibliographie de manière synthétique pour en faire un état de l'art essentiel et actualisée.
 
 La rédaction de l'ouvrage est mené avec une règle de reproductibilité et de transparence, c'est le pourquoi le choix de ce support et des jeux de données associés. 
 
@@ -35,7 +47,7 @@ La liste des cours et séminaires où il sera présenté et utilisé.
  * Colloque Marketing digital 2-3 septembre 2021
  * AFM decembre 2021
  * Ed Sorbonne - février 2022
- * Dauphine master 204 - octobre 2021
+ * Dauphine master 204 - decembre 2021
  * Master Siren - Dauphine - mai 2022
  * Toulouse
  * Lille master Data Science
@@ -113,7 +125,7 @@ knitr::opts_chunk$set(echo = TRUE, message=FALSE,warning=FALSE)
 library(tidyverse) # inclut ggplot pour la viz, readr et 
 library(readr)
 
-#Vizualisation 
+#Vizualisation souvent en développement de ggplot ( inclus dans tidyverse)
 library(cowplot) #pour créer des graphiques composés
 library(ggridges) # le joy division touch de ggplot
 library(pheatmap)
@@ -125,19 +137,21 @@ library(ggraph) #un complément compatible ggplot du précédent
 
 # Accéder aux données
 library(rtweet)  # une interface efficace pour interroger l'api de Twitter
-
+library(revtools) #acces aux bases bibliographiques
+library(rvest) #pour le scrapping
 
 # OCR et pdf
 library(tesseract) #reconnaissance de caractère
-
+library(pdftools)
 
 # NLP
 library(tokenizers)
 library(quanteda)
-library(quanteda.textstats)
+library(quanteda.textmodels)
 library(quanteda.textplots)
+library(quanteda.textstats)
 library(udpipe) #annotation syntaxique
-library(tidytext) #lda glove et 
+library(tidytext) #lda glove et autres
 library(cleanNLP) #annotation syntaxique
 
 ##reconnaissance de langue
@@ -176,27 +190,15 @@ library(citr) # un outil interactif pour insérer des références
 
 
 # chapitre II
-library(revtools) 
-library(rvest)
 
-library(dplyr)
-library(ggplot2)
-library(knitr)
-library(lubridate)
 library(FactoMineR)
 library(factoextra)
 library("corrplot")
 library(ade4)
 library(ExPosition)
 library(syuzhet)
-library(udpipe)
-library(quanteda)
-library(quanteda.textmodels)
-library(quanteda.textplots)
-library(quanteda.textstats)
 library(Biobase)
 library(BiocManager)
-library(cowplot)
 library(NMF)
 
 ```
@@ -205,7 +207,7 @@ library(NMF)
 
 ## Disponibilité
 
-L'ensemble du code est disponible [sur github](https://github.com/BenaventC/NLPBook). A ce stade, c'est encore embryonnaire. Les proches pourrons cependant y voir l'évolution du projet et de la [progression](https://benaventc.github.io/NLPBook/)
+L'ensemble du code est disponible [sur github](https://github.com/BenaventC/NLPBook). A ce stade, c'est encore embryonnaire. Les proches pourront cependant y voir l'évolution du projet et de la [progression](https://benaventc.github.io/NLPBook/)
 
 ## conventions
 
@@ -217,8 +219,8 @@ Quelques conventions d'écriture du code r :
   ** deux couleurs
   ** 3 à 7 couleurs
  * On emploie autant que possible le dialecte tidy.
- * Les chunks sont notés X, le chapitre, 01 à n, les jeux. 502 est le second chunk du chapitre 4.
- * On commente au maximum les lignes de code pour épargner le corps du texte et le rendre lisible
+ * Les chunks sont nommés par un numero, les deux dernier représant l'ordre du chunk, le premier le numéro du chapitre. Par exemple 1401, désigne le premier chunk du chapitre 14.
+ * On commente au maximum les lignes de code pour épargner le corps du texte et le rendre autolisible
 
 
 ## A faire
