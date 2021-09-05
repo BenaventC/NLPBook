@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapitre 12 Machine learning supervisé et NLP | NLP avec r et en français - un Manuel synthétique</title>
+  <meta name="description" content="Un manuel pratique de NLP en français" />
+  <meta name="generator" content="bookdown 0.22.3 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapitre 12 Machine learning supervisé et NLP | NLP avec r et en français - un Manuel synthétique" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Un manuel pratique de NLP en français" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapitre 12 Machine learning supervisé et NLP | NLP avec r et en français - un Manuel synthétique" />
+  
+  <meta name="twitter:description" content="Un manuel pratique de NLP en français" />
+  
+
+<meta name="author" content="Sophie Balech et Christophe Benavent et al" />
+
+
+<meta name="date" content="2021-09-05" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="topic-analysis.html"/>
+<link rel="next" href="annexes-quelques-problèmes-très-techniques.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7EKDD8SVH6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7EKDD8SVH6');
+</script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">NLP en r et en français</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Préambule</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#cours-et-séminaires"><i class="fa fa-check"></i><b>1.1</b> Cours et séminaires</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#la-structure-du-livre"><i class="fa fa-check"></i><b>1.2</b> La structure du livre</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#les-jeux-de-données"><i class="fa fa-check"></i><b>1.3</b> Les jeux de données</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#les-ressources"><i class="fa fa-check"></i><b>1.4</b> Les ressources</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#les-packages"><i class="fa fa-check"></i><b>1.4.1</b> Les packages</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#disponibilité"><i class="fa fa-check"></i><b>1.5</b> Disponibilité</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#une-réflexion-ancienne-et-un-nouveau-champ-méthodologique"><i class="fa fa-check"></i><b>2.1</b> Une réflexion ancienne et un nouveau champ méthodologique</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="intro.html"><a href="intro.html#langue-langage-et-texte-parole"><i class="fa fa-check"></i><b>2.1.1</b> Langue, langage et texte parole</a></li>
+<li class="chapter" data-level="2.1.2" data-path="intro.html"><a href="intro.html#syntaxe-et-grammaire-générative"><i class="fa fa-check"></i><b>2.1.2</b> Syntaxe et grammaire générative</a></li>
+<li class="chapter" data-level="2.1.3" data-path="intro.html"><a href="intro.html#sémantique-la-conception-distributionnelle"><i class="fa fa-check"></i><b>2.1.3</b> Sémantique : La conception distributionnelle</a></li>
+<li class="chapter" data-level="2.1.4" data-path="intro.html"><a href="intro.html#pragmatique-les-fonctions-et-acte-du-langage"><i class="fa fa-check"></i><b>2.1.4</b> Pragmatique les fonctions et acte du langage</a></li>
+<li class="chapter" data-level="2.1.5" data-path="intro.html"><a href="intro.html#la-linguistique-computationnelle"><i class="fa fa-check"></i><b>2.1.5</b> la linguistique computationnelle</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#les-facteurs-de-développement-de-lusage-en-science-sociale"><i class="fa fa-check"></i><b>2.2</b> Les facteurs de développement de l’usage en science sociale</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="intro.html"><a href="intro.html#une-lingua-franca"><i class="fa fa-check"></i><b>2.2.1</b> Une lingua franca</a></li>
+<li class="chapter" data-level="2.2.2" data-path="intro.html"><a href="intro.html#la-multiplication-des-sources-de-données."><i class="fa fa-check"></i><b>2.2.2</b> La multiplication des sources de données.</a></li>
+<li class="chapter" data-level="2.2.3" data-path="intro.html"><a href="intro.html#une-communauté"><i class="fa fa-check"></i><b>2.2.3</b> Une communauté</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#de-nouvelles-méthodologies-pour-les-sciences-sociales"><i class="fa fa-check"></i><b>2.3</b> De nouvelles méthodologies pour les sciences sociales</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="intro.html"><a href="intro.html#nouveaux-terrains"><i class="fa fa-check"></i><b>2.3.1</b> Nouveaux terrains :</a></li>
+<li class="chapter" data-level="2.3.2" data-path="intro.html"><a href="intro.html#nouvelles-méthodes"><i class="fa fa-check"></i><b>2.3.2</b> Nouvelles méthodes :</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#un-nouvel-objet"><i class="fa fa-check"></i><b>2.4</b> Un nouvel objet :</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="intro.html"><a href="intro.html#sociologie-et-histoire"><i class="fa fa-check"></i><b>2.4.1</b> Sociologie et histoire</a></li>
+<li class="chapter" data-level="2.4.2" data-path="intro.html"><a href="intro.html#psychologie"><i class="fa fa-check"></i><b>2.4.2</b> Psychologie</a></li>
+<li class="chapter" data-level="2.4.3" data-path="intro.html"><a href="intro.html#management"><i class="fa fa-check"></i><b>2.4.3</b> Management</a></li>
+<li class="chapter" data-level="2.4.4" data-path="intro.html"><a href="intro.html#economie"><i class="fa fa-check"></i><b>2.4.4</b> Economie</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#des-comptable-à-lindustrie-de-la-langue"><i class="fa fa-check"></i><b>2.5</b> Des comptable à l’industrie de la langue</a></li>
+<li class="chapter" data-level="2.6" data-path="intro.html"><a href="intro.html#conclusion"><i class="fa fa-check"></i><b>2.6</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html"><i class="fa fa-check"></i><b>3</b> Constitution du corpus</a><ul>
+<li class="chapter" data-level="3.1" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#lexploitation-de-base-de-données-textuelles"><i class="fa fa-check"></i><b>3.1</b> L’exploitation de base de données textuelles</a></li>
+<li class="chapter" data-level="3.2" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#jouer-avec-les-bases-bibliographiques"><i class="fa fa-check"></i><b>3.2</b> Jouer avec les bases bibliographiques</a></li>
+<li class="chapter" data-level="3.3" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#scrapping"><i class="fa fa-check"></i><b>3.3</b> Scrapping</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#rvest-avec-r"><i class="fa fa-check"></i><b>3.3.1</b> rvest avec r</a></li>
+<li class="chapter" data-level="3.3.2" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#des-problèmes-pratiques-juridiques-et-éthiques"><i class="fa fa-check"></i><b>3.3.2</b> Des problèmes pratiques, juridiques et éthiques</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#les-api"><i class="fa fa-check"></i><b>3.4</b> les API</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#un-tour-dhorizon-des-api"><i class="fa fa-check"></i><b>3.4.1</b> Un tour d’horizon des API</a></li>
+<li class="chapter" data-level="3.4.2" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#un-point-de-vue-plus-technique"><i class="fa fa-check"></i><b>3.4.2</b> un point de vue plus technique</a></li>
+<li class="chapter" data-level="3.4.3" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#un-exemple-avec-rtweet"><i class="fa fa-check"></i><b>3.4.3</b> Un exemple avec Rtweet</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#la-gestion-des-documents"><i class="fa fa-check"></i><b>3.5</b> La gestion des documents</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#extraire-du-texte-des-pdf"><i class="fa fa-check"></i><b>3.5.1</b> Extraire du texte des pdf</a></li>
+<li class="chapter" data-level="3.5.2" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#la-numérisation-et-locr"><i class="fa fa-check"></i><b>3.5.2</b> la numérisation et l’OCR</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#les-contenus-vocaux"><i class="fa fa-check"></i><b>3.6</b> Les contenus vocaux</a></li>
+<li class="chapter" data-level="3.7" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#echantillonner-le-texte"><i class="fa fa-check"></i><b>3.7</b> Echantillonner le texte</a></li>
+<li class="chapter" data-level="3.8" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#conclusion-1"><i class="fa fa-check"></i><b>3.8</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="visualiser-et-réduire-le-corpus.html"><a href="visualiser-et-réduire-le-corpus.html"><i class="fa fa-check"></i><b>4</b> Visualiser et réduire le corpus</a><ul>
+<li class="chapter" data-level="4.1" data-path="visualiser-et-réduire-le-corpus.html"><a href="visualiser-et-réduire-le-corpus.html#explorer-le-corpus"><i class="fa fa-check"></i><b>4.1</b> Explorer le corpus</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="préparation-des-données.html"><a href="préparation-des-données.html"><i class="fa fa-check"></i><b>5</b> Préparation des données</a><ul>
+<li class="chapter" data-level="5.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#manipuler-des-chaines-de-caractères"><i class="fa fa-check"></i><b>5.1</b> Manipuler des chaines de caractères</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#les-opérations-sur-les-chaînes-de-caractères"><i class="fa fa-check"></i><b>5.1.1</b> Les opérations sur les chaînes de caractères</a></li>
+<li class="chapter" data-level="5.1.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#la-technique-des-expressions-régulières-regex"><i class="fa fa-check"></i><b>5.1.2</b> La technique des expressions régulières (regex)</a></li>
+<li class="chapter" data-level="5.1.3" data-path="préparation-des-données.html"><a href="préparation-des-données.html#un-fondement-profond-et-ancien"><i class="fa fa-check"></i><b>5.1.3</b> Un fondement profond et ancien</a></li>
+<li class="chapter" data-level="5.1.4" data-path="préparation-des-données.html"><a href="préparation-des-données.html#des-applications-très-pratiques"><i class="fa fa-check"></i><b>5.1.4</b> Des applications très pratiques</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#nettoyer-le-texte"><i class="fa fa-check"></i><b>5.2</b> Nettoyer le texte</a></li>
+<li class="chapter" data-level="5.3" data-path="préparation-des-données.html"><a href="préparation-des-données.html#corriger-le-texte"><i class="fa fa-check"></i><b>5.3</b> Corriger le texte</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#la-correction-orthographique-automatique"><i class="fa fa-check"></i><b>5.3.1</b> La correction orthographique automatique</a></li>
+<li class="chapter" data-level="5.3.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#analyse-ciblée-par-les-regex"><i class="fa fa-check"></i><b>5.3.2</b> Analyse ciblée par les regex</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-sources"><i class="fa fa-check"></i><b>5.4</b> Identifier les sources</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-la-langue"><i class="fa fa-check"></i><b>5.4.1</b> Identifier la langue</a></li>
+<li class="chapter" data-level="5.4.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-plagiats-et-réutilisations"><i class="fa fa-check"></i><b>5.4.2</b> Identifier les plagiats et réutilisations</a></li>
+<li class="chapter" data-level="5.4.3" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-fakes"><i class="fa fa-check"></i><b>5.4.3</b> Identifier les fakes</a></li>
+<li class="chapter" data-level="5.4.4" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-trolls"><i class="fa fa-check"></i><b>5.4.4</b> Identifier les trolls</a></li>
+<li class="chapter" data-level="5.4.5" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-bots"><i class="fa fa-check"></i><b>5.4.5</b> Identifier les bots</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html"><i class="fa fa-check"></i><b>6</b> Une première analyse quantitative</a><ul>
+<li class="chapter" data-level="6.1" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#comptons-les-mots"><i class="fa fa-check"></i><b>6.1</b> Comptons les mots</a></li>
+<li class="chapter" data-level="6.2" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#la-production-dans-le-temps"><i class="fa fa-check"></i><b>6.2</b> la production dans le temps</a></li>
+<li class="chapter" data-level="6.3" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#lisibilité-et-complexité-lexicale"><i class="fa fa-check"></i><b>6.3</b> Lisibilité et complexité lexicale</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#les-indices-de-lisibilité"><i class="fa fa-check"></i><b>6.3.1</b> Les indices de lisibilité</a></li>
+<li class="chapter" data-level="6.3.2" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#les-indices-de-complexité-lexicale"><i class="fa fa-check"></i><b>6.3.2</b> Les indices de complexité lexicale</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#comptons-les-mots-1"><i class="fa fa-check"></i><b>6.4</b> Comptons les mots</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#les-nuages-de-mots"><i class="fa fa-check"></i><b>6.4.1</b> Les nuages de mots</a></li>
+<li class="chapter" data-level="6.4.2" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#des-lollyplots"><i class="fa fa-check"></i><b>6.4.2</b> Des lollyplots</a></li>
+<li class="chapter" data-level="6.4.3" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#la-mesure-de-la-concentration-des-termes"><i class="fa fa-check"></i><b>6.4.3</b> La mesure de la concentration des termes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="le-cas-de-sources-multiples.html"><a href="le-cas-de-sources-multiples.html"><i class="fa fa-check"></i><b>7</b> Le cas de sources multiples</a><ul>
+<li class="chapter" data-level="7.0.1" data-path="le-cas-de-sources-multiples.html"><a href="le-cas-de-sources-multiples.html#mesure-de-la-concentration"><i class="fa fa-check"></i><b>7.0.1</b> Mesure de la concentration</a></li>
+<li class="chapter" data-level="7.0.2" data-path="le-cas-de-sources-multiples.html"><a href="le-cas-de-sources-multiples.html#ou-par-segmentation"><i class="fa fa-check"></i><b>7.0.2</b> ou par segmentation</a></li>
+<li class="chapter" data-level="7.1" data-path="le-cas-de-sources-multiples.html"><a href="le-cas-de-sources-multiples.html#conclusion-2"><i class="fa fa-check"></i><b>7.1</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="token.html"><a href="token.html"><i class="fa fa-check"></i><b>8</b> Tokenisation</a><ul>
+<li class="chapter" data-level="8.1" data-path="token.html"><a href="token.html#objectifs-du-chapitre"><i class="fa fa-check"></i><b>8.1</b> <em>Objectifs du chapitre</em></a></li>
+<li class="chapter" data-level="8.2" data-path="token.html"><a href="token.html#les-outils"><i class="fa fa-check"></i><b>8.2</b> Les outils</a></li>
+<li class="chapter" data-level="8.3" data-path="token.html"><a href="token.html#introduction"><i class="fa fa-check"></i><b>8.3</b> Introduction</a></li>
+<li class="chapter" data-level="8.4" data-path="token.html"><a href="token.html#tokeniser-un-corpus"><i class="fa fa-check"></i><b>8.4</b> Tokeniser un corpus</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="token.html"><a href="token.html#les-lettres"><i class="fa fa-check"></i><b>8.4.1</b> Les lettres</a></li>
+<li class="chapter" data-level="8.4.2" data-path="token.html"><a href="token.html#les-mots"><i class="fa fa-check"></i><b>8.4.2</b> Les mots</a></li>
+<li class="chapter" data-level="8.4.3" data-path="token.html"><a href="token.html#les-phrases"><i class="fa fa-check"></i><b>8.4.3</b> Les phrases</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="token.html"><a href="token.html#n-grammes"><i class="fa fa-check"></i><b>8.5</b> N-grammes</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="token.html"><a href="token.html#propriétés-statistiques-des-n-grammes"><i class="fa fa-check"></i><b>8.5.1</b> Propriétés statistiques des n-grammes</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="token.html"><a href="token.html#choisir-des-n-grammes-pertinents"><i class="fa fa-check"></i><b>8.6</b> Choisir des n-grammes pertinents</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="token.html"><a href="token.html#créer-les-tokens-avec-quanteda"><i class="fa fa-check"></i><b>8.6.1</b> Créer les <em>tokens</em> avec ‘quanteda’</a></li>
+<li class="chapter" data-level="8.6.2" data-path="token.html"><a href="token.html#identifier-les-noms-propres"><i class="fa fa-check"></i><b>8.6.2</b> Identifier les noms propres</a></li>
+<li class="chapter" data-level="8.6.3" data-path="token.html"><a href="token.html#composer-des-tokens-à-partir-dexpressions-multi-mots"><i class="fa fa-check"></i><b>8.6.3</b> Composer des <em>tokens</em> à partir d’expressions multi-mots</a></li>
+<li class="chapter" data-level="8.6.4" data-path="token.html"><a href="token.html#identifier-les-autres-concepts"><i class="fa fa-check"></i><b>8.6.4</b> Identifier les autres concepts</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="token.html"><a href="token.html#conclusion-3"><i class="fa fa-check"></i><b>8.7</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="annot.html"><a href="annot.html"><i class="fa fa-check"></i><b>9</b> Annotations lexicales et syntaxiques</a><ul>
+<li class="chapter" data-level="9.1" data-path="annot.html"><a href="annot.html#tokenization"><i class="fa fa-check"></i><b>9.1</b> Tokenization</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="annot.html"><a href="annot.html#les-niveaux-de-tokenisation"><i class="fa fa-check"></i><b>9.1.1</b> Les niveaux de tokenisation</a></li>
+<li class="chapter" data-level="9.1.2" data-path="annot.html"><a href="annot.html#un-exemple-en-tidytext"><i class="fa fa-check"></i><b>9.1.2</b> Un exemple en tidytext</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="annot.html"><a href="annot.html#stemmatisation-lemmatisation-et-synonymisation"><i class="fa fa-check"></i><b>9.2</b> Stemmatisation, lemmatisation et synonymisation</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="annot.html"><a href="annot.html#la-stemmatisation"><i class="fa fa-check"></i><b>9.2.1</b> la stemmatisation</a></li>
+<li class="chapter" data-level="9.2.2" data-path="annot.html"><a href="annot.html#la-lemmatisation"><i class="fa fa-check"></i><b>9.2.2</b> la lemmatisation</a></li>
+<li class="chapter" data-level="9.2.3" data-path="annot.html"><a href="annot.html#synonymisation"><i class="fa fa-check"></i><b>9.2.3</b> Synonymisation</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="annot.html"><a href="annot.html#part-of-speech-pos"><i class="fa fa-check"></i><b>9.3</b> Part of Speech (POS)</a></li>
+<li class="chapter" data-level="9.4" data-path="annot.html"><a href="annot.html#dépendances-syntaxiques"><i class="fa fa-check"></i><b>9.4</b> Dépendances syntaxiques</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="annot.html"><a href="annot.html#arbre-syntaxique"><i class="fa fa-check"></i><b>9.4.1</b> Arbre syntaxique</a></li>
+<li class="chapter" data-level="9.4.2" data-path="annot.html"><a href="annot.html#vers-des-application-plus-générale"><i class="fa fa-check"></i><b>9.4.2</b> Vers des application plus générale</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="annot.html"><a href="annot.html#reconnaissance-dentités-nommées"><i class="fa fa-check"></i><b>9.5</b> reconnaissance d’entités nommées</a></li>
+<li class="chapter" data-level="9.6" data-path="annot.html"><a href="annot.html#co-reférence"><i class="fa fa-check"></i><b>9.6</b> co-reférence</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html"><i class="fa fa-check"></i><b>10</b> Analyse du sentiment</a><ul>
+<li class="chapter" data-level="10.1" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#un-exemple-avec-syuzhet"><i class="fa fa-check"></i><b>10.1</b> Un exemple avec syuzhet</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#valence-et-expression"><i class="fa fa-check"></i><b>10.1.1</b> Valence et expression</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#la-généralisation-par-le-liwc"><i class="fa fa-check"></i><b>10.2</b> La généralisation par le Liwc</a></li>
+<li class="chapter" data-level="10.3" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#encore-dautres-généralisations"><i class="fa fa-check"></i><b>10.3</b> Encore d’autres généralisations</a></li>
+<li class="chapter" data-level="10.4" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#construire-son-propre-dictionnaire"><i class="fa fa-check"></i><b>10.4</b> construire son propre dictionnaire</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="topic-analysis.html"><a href="topic-analysis.html"><i class="fa fa-check"></i><b>11</b> Topic Analysis</a><ul>
+<li class="chapter" data-level="11.1" data-path="topic-analysis.html"><a href="topic-analysis.html#lda"><i class="fa fa-check"></i><b>11.1</b> LDA</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="topic-analysis.html"><a href="topic-analysis.html#le-modèle-original-de-blei"><i class="fa fa-check"></i><b>11.1.1</b> Le modèle original de Blei</a></li>
+<li class="chapter" data-level="11.1.2" data-path="topic-analysis.html"><a href="topic-analysis.html#une-application-aux-commentaires-trip-advisor"><i class="fa fa-check"></i><b>11.1.2</b> Une application aux commentaires trip advisor</a></li>
+<li class="chapter" data-level="11.1.3" data-path="topic-analysis.html"><a href="topic-analysis.html#la-determination-du-nombre-optimal-de-topics"><i class="fa fa-check"></i><b>11.1.3</b> la determination du nombre optimal de topics</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="topic-analysis.html"><a href="topic-analysis.html#stm"><i class="fa fa-check"></i><b>11.2</b> STM</a></li>
+<li class="chapter" data-level="11.3" data-path="topic-analysis.html"><a href="topic-analysis.html#implementation-avec-wor2vec-regarder-la-place-de-la-vectorisation"><i class="fa fa-check"></i><b>11.3</b> Implementation avec wor2vec ( regarder la place de la vectorisation)</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="topic-analysis.html"><a href="topic-analysis.html#représentation-graphique"><i class="fa fa-check"></i><b>11.3.1</b> Représentation graphique</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html"><i class="fa fa-check"></i><b>12</b> Machine learning supervisé et NLP</a><ul>
+<li class="chapter" data-level="12.1" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#le-principe-et-ses-applications"><i class="fa fa-check"></i><b>12.1</b> Le principe et ses applications</a></li>
+<li class="chapter" data-level="12.2" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#une-première-application"><i class="fa fa-check"></i><b>12.2</b> Une première application</a><ul>
+<li class="chapter" data-level="12.2.1" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#constituer-le-dataset"><i class="fa fa-check"></i><b>12.2.1</b> Constituer le dataset</a></li>
+<li class="chapter" data-level="12.2.2" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#on-va-nettoyer-le-texte"><i class="fa fa-check"></i><b>12.2.2</b> On va nettoyer le texte</a></li>
+<li class="chapter" data-level="12.2.3" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#caret-sur-la-scène"><i class="fa fa-check"></i><b>12.2.3</b> caret sur la scène</a></li>
+<li class="chapter" data-level="12.2.4" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#un-modèle-naive-bayes"><i class="fa fa-check"></i><b>12.2.4</b> Un modèle naive bayes</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#passons-à-un-réseau-de-neurones-et-un-rf"><i class="fa fa-check"></i><b>12.3</b> Passons à un réseau de neurones et un RF</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#neuralnetwook"><i class="fa fa-check"></i><b>12.3.1</b> neuralnetwook</a></li>
+<li class="chapter" data-level="12.3.2" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#multilayer"><i class="fa fa-check"></i><b>12.3.2</b> multilayer</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#comparons-les-modèles"><i class="fa fa-check"></i><b>12.4</b> Comparons les modèles</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#une-analyse-plus-précise-de-la-performance"><i class="fa fa-check"></i><b>12.4.1</b> Une analyse plus précise de la performance</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#mais-il-faut-expliquer"><i class="fa fa-check"></i><b>12.5</b> Mais il faut expliquer</a></li>
+<li class="chapter" data-level="12.6" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#pour-finir-un-exercice-de-fine-tuning"><i class="fa fa-check"></i><b>12.6</b> Pour finir un exercice de fine tuning</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html"><i class="fa fa-check"></i><b>13</b> Annexes : quelques problèmes très techniques</a><ul>
+<li class="chapter" data-level="13.1" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#la-question-de-lencodage"><i class="fa fa-check"></i><b>13.1</b> La question de l’encodage</a></li>
+<li class="chapter" data-level="13.2" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#jouer-avec-les-formats-de-données"><i class="fa fa-check"></i><b>13.2</b> Jouer avec les formats de données</a><ul>
+<li class="chapter" data-level="13.2.1" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#des-formats-exotiques"><i class="fa fa-check"></i><b>13.2.1</b> des formats exotiques</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#adopter-des-formats-propres-tidy"><i class="fa fa-check"></i><b>13.3</b> Adopter des formats “propres” (tidy)</a></li>
+<li class="chapter" data-level="13.4" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#les-limites-du-calcul"><i class="fa fa-check"></i><b>13.4</b> Les limites du calcul</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">NLP avec r et en français - un Manuel synthétique</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="machine-learning-supervisé-et-nlp" class="section level1">
+<h1><span class="header-section-number">Chapitre 12</span> Machine learning supervisé et NLP</h1>
+<p>les techniques de machine learning supervisées ont pour but de trouver une fonction f qui associe une variable y, à un ensemble de variables x. Leur évaluation se fait en examinant la qualité de prédiction sur un échantillon nouveau.</p>
+<p><img src="images/ml01.JPG" /></p>
+<div id="le-principe-et-ses-applications" class="section level2">
+<h2><span class="header-section-number">12.1</span> Le principe et ses applications</h2>
+<p>Les méthodes de machine learning, notamment celles qu’on appele classificateurs, peuvent être utile pour résoudre des problèmes de prédiction d’une variable à partir du contenu textuel.</p>
+<p>L’exemple évident est quand on veut prédire la note à partir de commentaire du consommateur. Dans le même domaine on peut désirer connaitre ce qui détermine l’utilité d’un tel commentaire. Pour des données sociales on s’intéressera par exemple à la popularité d’un tweet. Et dans des usages plus sophistiqués on peut imaginer construire des catégories spécifiques , par exemple le caractère phatique ou nom d’un contenu, le ton employé. Dans ce cas, il faudra au préalable annoter manuellement un échantillon de ces contenus pour développer le classificateur et l’employer opérationnnement pour le codage de l’ensemble du corpus.</p>
+<p>e processus va se dérouler selon les étapes suivantes</p>
+<p>1 - on constitue les corpus de donnée. Un fichier d’entrainement et un de test.
+2 - Le fichier d’entrainement est labellisé, etiqueté, annoté. Ce sont des termes équivalents qui désignent un processus plus ou moins objectif qui qualifie une chaine de caractère. Cette annotation peut être exogène ou endogène. Une annotation endogène est un jugement sur le contenu qui doit être annoté. Contient-il des élément toxiques ou non ?</p>
+<p>Tel tweet est positif, tel autre ne l’est pas, tel tweets proteste, tel autre informe. Telle chaine de caractère est associée à un nombre de retweet élevé, tel autre à un nombre bas.
+2 - on nettoie le texte, on limite les signes candidats</p>
+<p>inspiré de <a href="https://www.hvitfeldt.me/blog/binary-text-classification-with-tidytext-and-caret/" class="uri">https://www.hvitfeldt.me/blog/binary-text-classification-with-tidytext-and-caret/</a></p>
+</div>
+<div id="une-première-application" class="section level2">
+<h2><span class="header-section-number">12.2</span> Une première application</h2>
+<p>Dans cette analyse, l’objectif va être de comprendre quel sont les mots, ou les expressions, qui sont determinent la popularité des tweets de Trump.</p>
+<p>L’objectif va être de prédire à partir des termes, les chances qu’un tweet soit largement retwitté, et de comprendre quels sont les éléments qui contribuent le plus à expliquer la qualité des prédictions.</p>
+<p>On va employer <code>caret</code>, qui est un cadre général pour mener des projets de machine-learning, et de <code>tidytext</code> pour manipuler le corpus de tweets.</p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" title="1"><span class="co">#library(caret)</span></a>
+<a class="sourceLine" id="cb106-2" title="2"></a>
+<a class="sourceLine" id="cb106-3" title="3"></a>
+<a class="sourceLine" id="cb106-4" title="4">df&lt;-<span class="kw">read.csv</span>(<span class="st">&quot;./data/TrumpTwitterArchive01-08-2021.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb106-5" title="5">df<span class="op">$</span>Year&lt;-<span class="kw">str_sub</span>(df<span class="op">$</span>date,<span class="dv">1</span>,<span class="dv">4</span>)</a></code></pre></div>
+<div id="constituer-le-dataset" class="section level3">
+<h3><span class="header-section-number">12.2.1</span> Constituer le dataset</h3>
+<p>On prend les données du mandat (après 2016) pour ne pas mettre de confusion et rester dans un domaine homogène. (On peut déjà envisager une extension en jouant du temps, et en répétant l’analyse selon une fenêtre de temps - on reste dans le code statique)</p>
+<p>On classe les tweets en deux catégories : ceux avec beaucoups de retweets et ceux qui en on moins. On prend le critère de la médiane pour avoir des annotations équilibrées. On envisagera plus tard ue approche en terme de régression. La dichotomisation est ici une première approche, un première approximation.</p>
+<p>On choisit de se concentrer sur la période présidentielle pour que le nombre de followers soit à peu près constant.</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" title="1"><span class="co">#sélection du corpus</span></a>
+<a class="sourceLine" id="cb107-2" title="2">data&lt;-df <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb107-3" title="3"><span class="st">  </span><span class="kw">select</span>(text, retweets,Year) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb107-4" title="4"><span class="st">  </span><span class="kw">filter</span>(Year<span class="op">&gt;</span><span class="dv">2018</span>)</a>
+<a class="sourceLine" id="cb107-5" title="5"></a>
+<a class="sourceLine" id="cb107-6" title="6"><span class="co">#calcul de la mediane du nombre de retweets</span></a>
+<a class="sourceLine" id="cb107-7" title="7"></a>
+<a class="sourceLine" id="cb107-8" title="8">median&lt;-<span class="kw">round</span>(<span class="kw">median</span>(data<span class="op">$</span>retweets),<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb107-9" title="9"></a>
+<a class="sourceLine" id="cb107-10" title="10"><span class="co"># codage des tweets au dessus et en dessous de la médiane</span></a>
+<a class="sourceLine" id="cb107-11" title="11">data&lt;-data <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb107-12" title="12"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">retweets_cl=</span><span class="kw">ifelse</span>(retweets<span class="op">&gt;</span>median, <span class="st">&quot;yes&quot;</span>,<span class="st">&quot;no&quot;</span>))</a>
+<a class="sourceLine" id="cb107-13" title="13"></a>
+<a class="sourceLine" id="cb107-14" title="14"><span class="co">#représentatio de la distribution</span></a>
+<a class="sourceLine" id="cb107-15" title="15"><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(retweets))<span class="op">+</span></a>
+<a class="sourceLine" id="cb107-16" title="16"><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="fl">0.1</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb107-17" title="17"><span class="st">  </span><span class="kw">theme_minimal</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb107-18" title="18"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="kw">paste0</span>(<span class="st">&quot;médiane = &quot;</span>,median))<span class="op">+</span></a>
+<a class="sourceLine" id="cb107-19" title="19"><span class="st">  </span><span class="kw">scale_x_log10</span>()</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/1202-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" title="1">data<span class="op">$</span>id&lt;-<span class="kw">row.names</span>(data) </a>
+<a class="sourceLine" id="cb108-2" title="2"></a>
+<a class="sourceLine" id="cb108-3" title="3"><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(retweets_cl))<span class="op">+</span><span class="kw">geom_bar</span>()</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/1202-2.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="on-va-nettoyer-le-texte" class="section level3">
+<h3><span class="header-section-number">12.2.2</span> On va nettoyer le texte</h3>
+<ul>
+<li>supprimer les liens</li>
+<li>identifier les ngrams</li>
+<li>éliminer des stopword</li>
+<li>éliminer les termes utilisés moins de k fois (ce sera 20)</li>
+<li>on crée un tableau dfm en calculant les tf-idf ( on pondère la préquence d’un terme par l’inverse de la fréquence des documents dans lesquels il apparait)</li>
+<li></li>
+</ul>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" title="1"><span class="co">#nettoyage des données</span></a>
+<a class="sourceLine" id="cb109-2" title="2"><span class="co">##les liens</span></a>
+<a class="sourceLine" id="cb109-3" title="3"></a>
+<a class="sourceLine" id="cb109-4" title="4">data_clean &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb109-5" title="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">top =</span> retweets_cl,</a>
+<a class="sourceLine" id="cb109-6" title="6">         <span class="dt">text =</span> <span class="kw">str_replace_all</span>(text, <span class="st">&quot; ?(f|ht)tp(s?)://(.*)[.][a-z]+&quot;</span>, <span class="st">&quot;&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb109-7" title="7"><span class="st">  </span><span class="kw">select</span>(id, top, text)</a>
+<a class="sourceLine" id="cb109-8" title="8"></a>
+<a class="sourceLine" id="cb109-9" title="9"></a>
+<a class="sourceLine" id="cb109-10" title="10"><span class="co">## les stop_word</span></a>
+<a class="sourceLine" id="cb109-11" title="11"></a>
+<a class="sourceLine" id="cb109-12" title="12">data_counts &lt;-<span class="st"> </span><span class="kw">map_df</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>,</a>
+<a class="sourceLine" id="cb109-13" title="13">                      <span class="op">~</span><span class="st"> </span><span class="kw">unnest_tokens</span>(data_clean, word, text, </a>
+<a class="sourceLine" id="cb109-14" title="14">                                      <span class="dt">token =</span> <span class="st">&quot;ngrams&quot;</span>, <span class="dt">n =</span> .x)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb109-15" title="15"><span class="st">  </span><span class="kw">anti_join</span>(stop_words, <span class="dt">by =</span> <span class="st">&quot;word&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb109-16" title="16"><span class="st">  </span><span class="kw">count</span>(id, word, <span class="dt">sort =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb109-17" title="17"></a>
+<a class="sourceLine" id="cb109-18" title="18"></a>
+<a class="sourceLine" id="cb109-19" title="19"><span class="co">## mots assez frequents</span></a>
+<a class="sourceLine" id="cb109-20" title="20">words_<span class="dv">10</span> &lt;-<span class="st"> </span>data_counts <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb109-21" title="21"><span class="st">  </span><span class="kw">group_by</span>(word) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb109-22" title="22"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb109-23" title="23"><span class="st">  </span><span class="kw">filter</span>(n <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb109-24" title="24"><span class="st">  </span><span class="kw">select</span>(word)<span class="op">%&gt;%</span><span class="kw">drop_na</span>()</a>
+<a class="sourceLine" id="cb109-25" title="25"></a>
+<a class="sourceLine" id="cb109-26" title="26"><span class="co">#we will right-join this to our data.frame before we will calculate the tf_idf and cast it to a document term matrix.</span></a>
+<a class="sourceLine" id="cb109-27" title="27"></a>
+<a class="sourceLine" id="cb109-28" title="28">data_dtm &lt;-<span class="st"> </span>data_counts <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb109-29" title="29"><span class="st">  </span><span class="kw">right_join</span>(words_<span class="dv">10</span>, <span class="dt">by =</span> <span class="st">&quot;word&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb109-30" title="30"><span class="st">  </span><span class="kw">bind_tf_idf</span>(word, id, n) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb109-31" title="31"><span class="st">  </span><span class="kw">cast_dtm</span>(id, word, tf_idf)</a>
+<a class="sourceLine" id="cb109-32" title="32"></a>
+<a class="sourceLine" id="cb109-33" title="33"></a>
+<a class="sourceLine" id="cb109-34" title="34"><span class="co">#We create this meta data.frame which acts as a intermediate from our first data set since some tweets might have disappeared completely after the reduction.</span></a>
+<a class="sourceLine" id="cb109-35" title="35"></a>
+<a class="sourceLine" id="cb109-36" title="36">meta &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">id =</span> <span class="kw">as.character</span>(<span class="kw">dimnames</span>(data_dtm)[[<span class="dv">1</span>]])) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb109-37" title="37"><span class="st">  </span><span class="kw">left_join</span>(data_clean[<span class="op">!</span><span class="kw">duplicated</span>(data_clean<span class="op">$</span>id), ], <span class="dt">by =</span> <span class="st">&quot;id&quot;</span>)</a></code></pre></div>
+</div>
+<div id="caret-sur-la-scène" class="section level3">
+<h3><span class="header-section-number">12.2.3</span> caret sur la scène</h3>
+<p>On commence à employer les fonction de <code>caret</code> qui permettent de distinguer les sets d’entrainement et de test, mais aussi, de tester l’efficacité des combinaisons d’hyper-paramètres propres à chaque modèle. <code>Caret</code> donne accès à plusieurs dizaienes de modèles différents. Voir : xxx</p>
+<p>Nous allons tester trois types de modèles classiques : un naive bayes qui est le classique de la classification textuelle, un simple réseau de neurones. nnet. et un outil très populaire de Random forest.</p>
+<p>les données du processus d’apprentissage. Le corpus est partitionné en un corpus d’entrainement et un corpus de texte.Le processus d’apprentissage est controllé par une méthode de crossvalidation en trois blocs.</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" title="1">trainIndex &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(meta<span class="op">$</span>top, <span class="dt">p =</span> <span class="fl">0.7</span>, <span class="dt">list =</span> <span class="ot">FALSE</span>, <span class="dt">times =</span> <span class="dv">1</span>) <span class="co">#on partitionne</span></a>
+<a class="sourceLine" id="cb110-2" title="2">data_df_train &lt;-<span class="st"> </span>data_dtm[trainIndex, ] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">as.matrix</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">as.data.frame</span>() <span class="co">#on definit le training set</span></a>
+<a class="sourceLine" id="cb110-3" title="3">data_df_test &lt;-<span class="st"> </span>data_dtm[<span class="op">-</span>trainIndex, ] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">as.matrix</span>() <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">as.data.frame</span>() <span class="co">#on définit le test set</span></a>
+<a class="sourceLine" id="cb110-4" title="4"></a>
+<a class="sourceLine" id="cb110-5" title="5">response_train &lt;-<span class="st"> </span>meta<span class="op">$</span>top[trainIndex] <span class="co">#on définit l&#39;annotation</span></a>
+<a class="sourceLine" id="cb110-6" title="6"></a>
+<a class="sourceLine" id="cb110-7" title="7">trctrl &lt;-<span class="st"> </span><span class="kw">trainControl</span>(<span class="dt">method =</span> <span class="st">&quot;cv&quot;</span>,<span class="dv">5</span>, <span class="dt">classProbs=</span><span class="ot">TRUE</span>, <span class="dt">savePredictions =</span> <span class="ot">TRUE</span>) <span class="co"># on définit la stratégie d&#39;entrainement. Ici on utilise une méthode de cross validation fondée sur un découpage en 5 échantillons. </span></a></code></pre></div>
+</div>
+<div id="un-modèle-naive-bayes" class="section level3">
+<h3><span class="header-section-number">12.2.4</span> Un modèle naive bayes</h3>
+<p>Le modèle naive bayes est populaire car simple. Il calcule une probabilité conditionnelle : celle d’avoir un succès (s) en fonction d’une série de n termes <span class="math inline">\(t_{i}\)</span> .</p>
+<p><span class="math display">\[p(S\mid t_{1},...,t_{n}) =p(S)\frac{p(t_{1},...,t_{n}\mid S)}{p(t_{1},...,t_{n})} \]</span>
+On retrouve la très classique équation de Bayes. En faisant l’hypothèse de l’indépendance des probabilités conditionnelles, et en négligeant le numérateur, elle se simplifie sous la forme suivante. <span class="math inline">\(c\)</span> est une constante d’échelle, et la probabilité a priori d’être un succès est pondérée par le produit des probabilité conditionnelle d’observer le terme <span class="math inline">\(t_{i}\)</span> sachant que le tweet est un succès.</p>
+<p><span class="math display">\[p(S\mid t_{1},...,t_{n}) =\frac{1}{c}p(S) \prod_{x = i}^{n} p(t_{i}\mid S)\]</span></p>
+<p>On entraine le modèle avec un <a href="">lissage de Laplace</a>[<a href="https://towardsdatascience.com/laplace-smoothing-in-na%C3%AFve-bayes-algorithm-9c237a8bdece" class="uri">https://towardsdatascience.com/laplace-smoothing-in-na%C3%AFve-bayes-algorithm-9c237a8bdece</a>) pour éviter le problème des probabilités nulles qui résultent du fait qu’un mot, peut ne pas appartenir à l’ensemble d’entrainement.</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" title="1">nb_mod &lt;-<span class="st"> </span><span class="kw">train</span>(<span class="dt">x =</span> data_df_train,</a>
+<a class="sourceLine" id="cb111-2" title="2">                <span class="dt">y =</span> <span class="kw">as.factor</span>(response_train),</a>
+<a class="sourceLine" id="cb111-3" title="3">                <span class="dt">method =</span> <span class="st">&quot;naive_bayes&quot;</span>,</a>
+<a class="sourceLine" id="cb111-4" title="4">                <span class="dt">trControl =</span> trctrl,</a>
+<a class="sourceLine" id="cb111-5" title="5">                <span class="dt">tuneGrid =</span> <span class="kw">data.frame</span>(<span class="dt">laplace =</span> <span class="dv">1</span>,       </a>
+<a class="sourceLine" id="cb111-6" title="6">                                      <span class="dt">usekernel =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb111-7" title="7">                                      <span class="dt">adjust =</span> <span class="ot">FALSE</span>))</a>
+<a class="sourceLine" id="cb111-8" title="8">nb_mod</a></code></pre></div>
+<pre><code>## Naive Bayes 
+## 
+## 13173 samples
+##  2861 predictor
+##     2 classes: &#39;no&#39;, &#39;yes&#39; 
+## 
+## No pre-processing
+## Resampling: Cross-Validated (5 fold) 
+## Summary of sample sizes: 10539, 10539, 10538, 10538, 10538 
+## Resampling results:
+## 
+##   Accuracy   Kappa    
+##   0.5918174  0.1846606
+## 
+## Tuning parameter &#39;laplace&#39; was held constant at a value of 1
+## Tuning
+##  parameter &#39;usekernel&#39; was held constant at a value of FALSE
+## Tuning
+##  parameter &#39;adjust&#39; was held constant at a value of FALSE</code></pre>
+<p>Examinons les résultats. La précision est de 0.59, autrement dit on prédit correctement les succès et les échecs dans 59% des cas, une prédiction aléatoire est de 50%, compte-tenu du caractère bien balancé de notre échantillon d’apprentissage. L’indice kappa est un indice de concordance qui compare la répartition des classes par rapport à une répartition aléatoire. Sa valeur ici est plutôt faible.</p>
+<p>la qualité interne n’est pas suffisante, on va donc évaluer le modèle ( ou clafficateur) en prédisant les valeurs sur de l’échantillon test.</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" title="1"><span class="kw">library</span>(MLeval)</a>
+<a class="sourceLine" id="cb113-2" title="2">nb_mod<span class="op">$</span>results</a></code></pre></div>
+<pre><code>##   laplace usekernel adjust  Accuracy     Kappa  AccuracySD    KappaSD
+## 1       1     FALSE  FALSE 0.5918174 0.1846606 0.005244401 0.01047934</code></pre>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" title="1">nb_pred &lt;-<span class="st"> </span><span class="kw">predict</span>(nb_mod,</a>
+<a class="sourceLine" id="cb115-2" title="2">                   <span class="dt">newdata =</span> data_df_test, <span class="dt">prob=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb115-3" title="3">nb_cm &lt;-<span class="st"> </span><span class="kw">confusionMatrix</span>(nb_pred, <span class="kw">as.factor</span>(meta[<span class="op">-</span>trainIndex, ]<span class="op">$</span>top))</a>
+<a class="sourceLine" id="cb115-4" title="4">nb_cm</a></code></pre></div>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction   no  yes
+##        no  1531  880
+##        yes 1316 1918
+##                                           
+##                Accuracy : 0.611           
+##                  95% CI : (0.5981, 0.6237)
+##     No Information Rate : 0.5043          
+##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
+##                                           
+##                   Kappa : 0.2229          
+##                                           
+##  Mcnemar&#39;s Test P-Value : &lt; 2.2e-16       
+##                                           
+##             Sensitivity : 0.5378          
+##             Specificity : 0.6855          
+##          Pos Pred Value : 0.6350          
+##          Neg Pred Value : 0.5931          
+##              Prevalence : 0.5043          
+##          Detection Rate : 0.2712          
+##    Detection Prevalence : 0.4271          
+##       Balanced Accuracy : 0.6116          
+##                                           
+##        &#39;Positive&#39; Class : no              
+## </code></pre>
+<p>Pour être concrêt pensons aux tests covid. Ils peuvent rendre compte de la présence du virus à raison, ce sont les vrais positifs et symétriquement rendre compte de l’absence de trace virale: les vrais négatifs. Ce sont les prédictions correctes. Les prédictions incorrecte sont de deux types : dans le premier on annonce une contamination alors qu’il n’y en a pas : ce sont les faux positifs. Ils alertent sans raison et peuvent obliger un sujet sain à s’isoler. Leurs symétriques sont les faux négatifs : ils annoncent que le virus est absent alors qu’il est tapi dans nos cellules. Les deux erreurs n’ont pas le même poids : la première génère de fausses peurs, la seconde la maladie.</p>
+<p>Les indicateurs de qualité du modèle sont calculés à partir du tableau de contingence suivant.</p>
+<pre><code>         Réalité 
+         Echec    Succès</code></pre>
+<p>Prédiction<br />
+Echec TN FP
+Succès FN TP</p>
+<ul>
+<li>la précision (accuracy) représentent le % de bonnes prédictions : Accuracy=TP+TN/TP+TN+FP+FN.</li>
+<li>le recall ( ousensibility) : TPR=TP/TP+FN (sensitivity/ recall)</li>
+<li>TNR=TN/TN+FP (specificity)</li>
+<li>PPV=TP/TP+FP (precision/ positive predictive value)</li>
+<li>NPV=TN/TN+FN (negative predictive value)</li>
+<li>Informedness=TPR+TNR-1</li>
+<li>Markedness=PPV+NPV-1</li>
+</ul>
+</div>
+</div>
+<div id="passons-à-un-réseau-de-neurones-et-un-rf" class="section level2">
+<h2><span class="header-section-number">12.3</span> Passons à un réseau de neurones et un RF</h2>
+<div id="neuralnetwook" class="section level3">
+<h3><span class="header-section-number">12.3.1</span> neuralnetwook</h3>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" title="1"><span class="co">##rdf</span></a>
+<a class="sourceLine" id="cb118-2" title="2">trctrl &lt;-<span class="st"> </span><span class="kw">trainControl</span>(<span class="dt">method =</span> <span class="st">&quot;cv&quot;</span>, <span class="dv">3</span>,<span class="dt">classProbs=</span><span class="ot">TRUE</span>, <span class="dt">savePredictions =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb118-3" title="3">model_grid &lt;-<span class="st"> </span><span class="kw">expand.grid</span>(</a>
+<a class="sourceLine" id="cb118-4" title="4">   <span class="dt">mtry =</span> <span class="dv">20</span>                                    <span class="co"># mtry specified here</span></a>
+<a class="sourceLine" id="cb118-5" title="5">   ,<span class="dt">splitrule =</span> <span class="st">&quot;gini&quot;</span></a>
+<a class="sourceLine" id="cb118-6" title="6">   ,<span class="dt">min.node.size =</span> <span class="dv">20</span></a>
+<a class="sourceLine" id="cb118-7" title="7"> )</a>
+<a class="sourceLine" id="cb118-8" title="8"></a>
+<a class="sourceLine" id="cb118-9" title="9">ranger_mod &lt;-<span class="st"> </span><span class="kw">train</span>(<span class="dt">x =</span> data_df_train,</a>
+<a class="sourceLine" id="cb118-10" title="10">                    <span class="dt">y =</span> <span class="kw">as.factor</span>(response_train),</a>
+<a class="sourceLine" id="cb118-11" title="11">                    <span class="dt">method =</span> <span class="st">&quot;ranger&quot;</span>,</a>
+<a class="sourceLine" id="cb118-12" title="12">                    <span class="dt">trControl =</span> trctrl,<span class="dt">tuneGrid =</span> model_grid,</a>
+<a class="sourceLine" id="cb118-13" title="13">                    <span class="dt">importance=</span><span class="st">&quot;impurity&quot;</span>)</a></code></pre></div>
+<pre><code>## Growing trees.. Progress: 67%. Estimated remaining time: 15 seconds.
+## Growing trees.. Progress: 66%. Estimated remaining time: 15 seconds.
+## Growing trees.. Progress: 67%. Estimated remaining time: 15 seconds.
+## Growing trees.. Progress: 39%. Estimated remaining time: 49 seconds.
+## Growing trees.. Progress: 77%. Estimated remaining time: 18 seconds.</code></pre>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" title="1">ranger_mod<span class="op">$</span>results</a></code></pre></div>
+<pre><code>##   mtry splitrule min.node.size  Accuracy     Kappa  AccuracySD    KappaSD
+## 1   20      gini            20 0.7749934 0.5501054 0.006563857 0.01308362</code></pre>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" title="1">ranger_pred &lt;-<span class="st"> </span><span class="kw">predict</span>(ranger_mod,</a>
+<a class="sourceLine" id="cb122-2" title="2">                     <span class="dt">newdata =</span> data_df_test, <span class="dt">prob=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb122-3" title="3">ranger_cm &lt;-<span class="st"> </span><span class="kw">confusionMatrix</span>(ranger_pred, <span class="kw">as.factor</span>(meta[<span class="op">-</span>trainIndex, ]<span class="op">$</span>top))</a>
+<a class="sourceLine" id="cb122-4" title="4">ranger_cm</a></code></pre></div>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction   no  yes
+##        no  2180  563
+##        yes  667 2235
+##                                           
+##                Accuracy : 0.7821          
+##                  95% CI : (0.7711, 0.7928)
+##     No Information Rate : 0.5043          
+##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
+##                                           
+##                   Kappa : 0.5643          
+##                                           
+##  Mcnemar&#39;s Test P-Value : 0.003315        
+##                                           
+##             Sensitivity : 0.7657          
+##             Specificity : 0.7988          
+##          Pos Pred Value : 0.7948          
+##          Neg Pred Value : 0.7702          
+##              Prevalence : 0.5043          
+##          Detection Rate : 0.3862          
+##    Detection Prevalence : 0.4859          
+##       Balanced Accuracy : 0.7823          
+##                                           
+##        &#39;Positive&#39; Class : no              
+## </code></pre>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" title="1"><span class="co">##nn</span></a>
+<a class="sourceLine" id="cb124-2" title="2">trctrl &lt;-<span class="st"> </span><span class="kw">trainControl</span>(<span class="dt">method =</span> <span class="st">&quot;cv&quot;</span>, <span class="dv">3</span>,<span class="dt">classProbs=</span><span class="ot">TRUE</span>, <span class="dt">savePredictions =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb124-3" title="3"></a>
+<a class="sourceLine" id="cb124-4" title="4">nnet_mod &lt;-<span class="st"> </span><span class="kw">train</span>(<span class="dt">x =</span> data_df_train,</a>
+<a class="sourceLine" id="cb124-5" title="5">                    <span class="dt">y =</span> <span class="kw">as.factor</span>(response_train),</a>
+<a class="sourceLine" id="cb124-6" title="6">                    <span class="dt">method =</span> <span class="st">&quot;nnet&quot;</span>,</a>
+<a class="sourceLine" id="cb124-7" title="7">                    <span class="dt">trControl =</span> trctrl,</a>
+<a class="sourceLine" id="cb124-8" title="8">                    <span class="dt">tuneGrid =</span> <span class="kw">data.frame</span>(<span class="dt">size =</span> <span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb124-9" title="9">                                          <span class="dt">decay =</span> <span class="fl">0.001</span>),</a>
+<a class="sourceLine" id="cb124-10" title="10">                    <span class="dt">MaxNWts =</span> <span class="dv">15000</span>, <span class="dt">importance=</span><span class="st">&quot;impurity&quot;</span>)</a></code></pre></div>
+<pre><code>## # weights:  5727
+## initial  value 6595.145896 
+## iter  10 value 4263.945550
+## iter  20 value 2722.265759
+## iter  30 value 2287.497303
+## iter  40 value 2006.802644
+## iter  50 value 1808.268813
+## iter  60 value 1662.489980
+## iter  70 value 1577.450484
+## iter  80 value 1543.618040
+## iter  90 value 1507.127942
+## iter 100 value 1477.934694
+## final  value 1477.934694 
+## stopped after 100 iterations
+## # weights:  5727
+## initial  value 6329.790523 
+## iter  10 value 5486.595431
+## iter  20 value 4326.998789
+## iter  30 value 2604.610663
+## iter  40 value 1933.675116
+## iter  50 value 1475.067023
+## iter  60 value 1261.763428
+## iter  70 value 1138.893026
+## iter  80 value 1039.801379
+## iter  90 value 986.882715
+## iter 100 value 951.148867
+## final  value 951.148867 
+## stopped after 100 iterations
+## # weights:  5727
+## initial  value 6290.557932 
+## iter  10 value 5047.523814
+## iter  20 value 3365.279376
+## iter  30 value 2476.541269
+## iter  40 value 2126.268015
+## iter  50 value 1823.316281
+## iter  60 value 1698.347647
+## iter  70 value 1697.793436
+## iter  70 value 1697.793424
+## iter  70 value 1697.793419
+## final  value 1697.793419 
+## converged
+## # weights:  5727
+## initial  value 9536.840093 
+## iter  10 value 9085.718838
+## iter  20 value 8121.131963
+## iter  30 value 7342.864843
+## iter  40 value 6871.762288
+## iter  50 value 6442.312919
+## iter  60 value 5696.964973
+## iter  70 value 4967.174932
+## iter  80 value 4431.369645
+## iter  90 value 3985.407644
+## iter 100 value 3740.458677
+## final  value 3740.458677 
+## stopped after 100 iterations</code></pre>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" title="1">nnet_pred &lt;-<span class="st"> </span><span class="kw">predict</span>(nnet_mod,</a>
+<a class="sourceLine" id="cb126-2" title="2">                     <span class="dt">newdata =</span> data_df_test, <span class="dt">prob=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb126-3" title="3">nnet_cm &lt;-<span class="st"> </span><span class="kw">confusionMatrix</span>(nnet_pred, <span class="kw">as.factor</span>(meta[<span class="op">-</span>trainIndex, ]<span class="op">$</span>top))</a>
+<a class="sourceLine" id="cb126-4" title="4">nnet_cm</a></code></pre></div>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction   no  yes
+##        no  2267 1103
+##        yes  580 1695
+##                                           
+##                Accuracy : 0.7019          
+##                  95% CI : (0.6897, 0.7138)
+##     No Information Rate : 0.5043          
+##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
+##                                           
+##                   Kappa : 0.4027          
+##                                           
+##  Mcnemar&#39;s Test P-Value : &lt; 2.2e-16       
+##                                           
+##             Sensitivity : 0.7963          
+##             Specificity : 0.6058          
+##          Pos Pred Value : 0.6727          
+##          Neg Pred Value : 0.7451          
+##              Prevalence : 0.5043          
+##          Detection Rate : 0.4016          
+##    Detection Prevalence : 0.5970          
+##       Balanced Accuracy : 0.7010          
+##                                           
+##        &#39;Positive&#39; Class : no              
+## </code></pre>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" title="1"><span class="co">#nnet_mod$finalModel</span></a></code></pre></div>
+</div>
+<div id="multilayer" class="section level3">
+<h3><span class="header-section-number">12.3.2</span> multilayer</h3>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" title="1">trctrl &lt;-<span class="st"> </span><span class="kw">trainControl</span>(<span class="dt">method =</span> <span class="st">&quot;cv&quot;</span>, <span class="dv">3</span> ,<span class="dt">classProbs =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb129-2" title="2"></a>
+<a class="sourceLine" id="cb129-3" title="3">neuralGrid &lt;-<span class="kw">expand.grid</span>(</a>
+<a class="sourceLine" id="cb129-4" title="4">  <span class="dt">layer1 =</span> <span class="dv">3</span>,</a>
+<a class="sourceLine" id="cb129-5" title="5">  <span class="dt">layer2 =</span> <span class="dv">3</span>,</a>
+<a class="sourceLine" id="cb129-6" title="6">  <span class="dt">layer3 =</span> <span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb129-7" title="7">  <span class="dt">decay=</span><span class="fl">0.0005</span></a>
+<a class="sourceLine" id="cb129-8" title="8">)</a>
+<a class="sourceLine" id="cb129-9" title="9">neural_mod &lt;-<span class="st"> </span><span class="kw">train</span>(<span class="dt">x=</span>data_df_train,<span class="dt">y =</span> response_train,</a>
+<a class="sourceLine" id="cb129-10" title="10">    <span class="dt">method =</span> <span class="st">&quot;mlpWeightDecayML&quot;</span>,</a>
+<a class="sourceLine" id="cb129-11" title="11">    <span class="dt">tuneGrid =</span> neuralGrid, <span class="co"># cannot pass parameter hidden directly!!</span></a>
+<a class="sourceLine" id="cb129-12" title="12">    <span class="dt">trControl =</span> <span class="kw">trainControl</span>(<span class="dt">method =</span> <span class="st">&quot;none&quot;</span>))</a>
+<a class="sourceLine" id="cb129-13" title="13">    </a>
+<a class="sourceLine" id="cb129-14" title="14">neural_pred &lt;-<span class="st"> </span><span class="kw">predict</span>(neural_mod,</a>
+<a class="sourceLine" id="cb129-15" title="15">                     <span class="dt">newdata =</span> data_df_test, <span class="dt">prob=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb129-16" title="16">neural_cm &lt;-<span class="st"> </span><span class="kw">confusionMatrix</span>(neural_pred, <span class="kw">as.factor</span>(meta[<span class="op">-</span>trainIndex, ]<span class="op">$</span>top))</a>
+<a class="sourceLine" id="cb129-17" title="17">neural_cm</a></code></pre></div>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction   no  yes
+##        no     0    0
+##        yes 2847 2798
+##                                           
+##                Accuracy : 0.4957          
+##                  95% CI : (0.4825, 0.5088)
+##     No Information Rate : 0.5043          
+##     P-Value [Acc &gt; NIR] : 0.9062          
+##                                           
+##                   Kappa : 0               
+##                                           
+##  Mcnemar&#39;s Test P-Value : &lt;2e-16          
+##                                           
+##             Sensitivity : 0.0000          
+##             Specificity : 1.0000          
+##          Pos Pred Value :    NaN          
+##          Neg Pred Value : 0.4957          
+##              Prevalence : 0.5043          
+##          Detection Rate : 0.0000          
+##    Detection Prevalence : 0.0000          
+##       Balanced Accuracy : 0.5000          
+##                                           
+##        &#39;Positive&#39; Class : no              
+## </code></pre>
+</div>
+</div>
+<div id="comparons-les-modèles" class="section level2">
+<h2><span class="header-section-number">12.4</span> Comparons les modèles</h2>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" title="1"><span class="co">#comparaison des modèles</span></a>
+<a class="sourceLine" id="cb131-2" title="2"></a>
+<a class="sourceLine" id="cb131-3" title="3">mod_results &lt;-<span class="st"> </span><span class="kw">rbind</span>(</a>
+<a class="sourceLine" id="cb131-4" title="4">  nb_cm<span class="op">$</span>overall,</a>
+<a class="sourceLine" id="cb131-5" title="5">  nnet_cm<span class="op">$</span>overall,</a>
+<a class="sourceLine" id="cb131-6" title="6">  ranger_cm<span class="op">$</span>overall</a>
+<a class="sourceLine" id="cb131-7" title="7">  ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb131-8" title="8"><span class="st">  </span><span class="kw">as.data.frame</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb131-9" title="9"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">model =</span> <span class="kw">c</span>(<span class="st">&quot;Naive-Bayes&quot;</span>, <span class="st">&quot;Neural network&quot;</span>,<span class="st">&quot;RF&quot;</span>))</a>
+<a class="sourceLine" id="cb131-10" title="10"></a>
+<a class="sourceLine" id="cb131-11" title="11">mod_results <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb131-12" title="12"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(model, Accuracy)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb131-13" title="13"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb131-14" title="14"><span class="st">  </span><span class="kw">ylim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb131-15" title="15"><span class="st">  </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> mod_results<span class="op">$</span>AccuracyNull[<span class="dv">1</span>],</a>
+<a class="sourceLine" id="cb131-16" title="16">             <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>)</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/1210-1.png" width="80%" style="display: block; margin: auto;" /></p>
+<div id="une-analyse-plus-précise-de-la-performance" class="section level3">
+<h3><span class="header-section-number">12.4.1</span> Une analyse plus précise de la performance</h3>
+<p><a href="https://rvprasad.medium.com/informedness-and-markedness-20e3f54d63bc" class="uri">https://rvprasad.medium.com/informedness-and-markedness-20e3f54d63bc</a></p>
+<p>avec <code>MLeval</code> qui fournit 4 graphes</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" title="1"><span class="kw">library</span>(plotROC)</a>
+<a class="sourceLine" id="cb132-2" title="2"><span class="kw">library</span>(MLeval)</a>
+<a class="sourceLine" id="cb132-3" title="3"></a>
+<a class="sourceLine" id="cb132-4" title="4"></a>
+<a class="sourceLine" id="cb132-5" title="5">res &lt;-<span class="st"> </span><span class="kw">evalm</span>(<span class="kw">list</span>(nnet_mod,nb_mod, ranger_mod),<span class="dt">gnames=</span><span class="kw">c</span>(<span class="st">&#39;nn&#39;</span>,<span class="st">&#39;nb&#39;</span>, <span class="st">&#39;rf&#39;</span>))</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/1211-1.png" width="80%" style="display: block; margin: auto;" /><img src="bookdown-demo_files/figure-html/1211-2.png" width="80%" style="display: block; margin: auto;" /><img src="bookdown-demo_files/figure-html/1211-3.png" width="80%" style="display: block; margin: auto;" /><img src="bookdown-demo_files/figure-html/1211-4.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="mais-il-faut-expliquer" class="section level2">
+<h2><span class="header-section-number">12.5</span> Mais il faut expliquer</h2>
+<p>Prédire est une chose, encore faut-il pouvoir expliquer. Les spécialistes du machines learning ont développé des outils à cette fin L’un entre eux est vip</p>
+<p>Un principe général est d’examiner comment le modèle se comporte si on enlève la variable, quel sera l’accroissement de l’erreur. Une variable qui contribue fortement risque d’affecter fortement ce paramètre. En prenant les variables une à une ont peut alors établir leur importance relative.</p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" title="1"><span class="co">#explication</span></a>
+<a class="sourceLine" id="cb133-2" title="2"><span class="kw">library</span>(vip)</a>
+<a class="sourceLine" id="cb133-3" title="3"></a>
+<a class="sourceLine" id="cb133-4" title="4">vip1&lt;-<span class="kw">vip</span>(nnet_mod, <span class="dt">num_features =</span> <span class="dv">40</span>, <span class="dt">geom =</span> <span class="st">&quot;point&quot;</span>, <span class="dt">horizontal =</span> <span class="ot">TRUE</span>, </a>
+<a class="sourceLine" id="cb133-5" title="5">    <span class="dt">aesthetics =</span> <span class="kw">list</span>(<span class="dt">color =</span> <span class="st">&quot;firebrick&quot;</span>, <span class="dt">shape =</span> <span class="dv">1</span>, <span class="dt">size =</span> <span class="dv">3</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb133-6" title="6"><span class="st">  </span><span class="kw">theme_minimal</span>()</a>
+<a class="sourceLine" id="cb133-7" title="7">vip1</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/1212-1.png" width="672" /></p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" title="1">vip3&lt;-<span class="kw">vip</span>(ranger_mod, <span class="dt">num_features =</span> <span class="dv">40</span>, <span class="dt">geom =</span> <span class="st">&quot;point&quot;</span>, <span class="dt">horizontal =</span> <span class="ot">TRUE</span>, </a>
+<a class="sourceLine" id="cb134-2" title="2">    <span class="dt">aesthetics =</span> <span class="kw">list</span>(<span class="dt">color =</span> <span class="st">&quot;firebrick&quot;</span>, <span class="dt">shape =</span> <span class="dv">1</span>, <span class="dt">size =</span> <span class="dv">3</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb134-3" title="3"><span class="st">  </span><span class="kw">theme_minimal</span>()</a>
+<a class="sourceLine" id="cb134-4" title="4">vip3</a></code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/1212-2.png" width="672" /></p>
+</div>
+<div id="pour-finir-un-exercice-de-fine-tuning" class="section level2">
+<h2><span class="header-section-number">12.6</span> Pour finir un exercice de fine tuning</h2>
+<p>Si un modèle est bon, peut il être encore meilleur ? Oui si on en contrôle les hyperparamètres par une grille de valeurs.
+Avec le modèle nnet on peut jouer sur le nombre d’unités cachées, et de taux de decay.</p>
+<p>Attention ca peut être time intensive (plus d’une dizaine d’heures pour le code suivant sans parallélisation). On essaye d’accélerer le processus avec le package <code>doParallel</code> qui va répartir les calculs sur 3 des 4 processeurs de la machine (On en garde un pour l’OS).</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" title="1">t1&lt;-<span class="kw">Sys.time</span>()</a>
+<a class="sourceLine" id="cb135-2" title="2">t1</a>
+<a class="sourceLine" id="cb135-3" title="3"><span class="kw">library</span>(doParallel)</a>
+<a class="sourceLine" id="cb135-4" title="4">cl &lt;-<span class="st"> </span><span class="kw">makePSOCKcluster</span>(<span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb135-5" title="5"><span class="kw">registerDoParallel</span>(cl)</a>
+<a class="sourceLine" id="cb135-6" title="6"></a>
+<a class="sourceLine" id="cb135-7" title="7"><span class="co">#tuning</span></a>
+<a class="sourceLine" id="cb135-8" title="8"></a>
+<a class="sourceLine" id="cb135-9" title="9">trctrl &lt;-<span class="st"> </span><span class="kw">trainControl</span>(<span class="dt">method =</span> <span class="st">&quot;cv&quot;</span>, <span class="dv">5</span>,<span class="dt">classProbs =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb135-10" title="10"></a>
+<a class="sourceLine" id="cb135-11" title="11"><span class="co">#grille de paramètres</span></a>
+<a class="sourceLine" id="cb135-12" title="12"></a>
+<a class="sourceLine" id="cb135-13" title="13">nnetGrid &lt;-<span class="st">  </span><span class="kw">expand.grid</span>(<span class="dt">size =</span> <span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">4</span>, <span class="dt">by =</span> <span class="dv">1</span>),</a>
+<a class="sourceLine" id="cb135-14" title="14">                        <span class="dt">decay =</span> <span class="kw">seq</span>(<span class="dt">from =</span> <span class="fl">0.003</span>, <span class="dt">to =</span> <span class="fl">0.030</span>, <span class="dt">by =</span> <span class="fl">0.002</span>))</a>
+<a class="sourceLine" id="cb135-15" title="15"><span class="co">#train </span></a>
+<a class="sourceLine" id="cb135-16" title="16">nnet_mod_t &lt;-<span class="st"> </span><span class="kw">train</span>(<span class="dt">x=</span>data_df_train,</a>
+<a class="sourceLine" id="cb135-17" title="17">                   <span class="dt">y =</span> response_train,</a>
+<a class="sourceLine" id="cb135-18" title="18">                    <span class="dt">method =</span> <span class="st">&quot;nnet&quot;</span>,</a>
+<a class="sourceLine" id="cb135-19" title="19">                    <span class="dt">trControl =</span> trctrl, <span class="dt">tuneGrid=</span>nnetGrid, <span class="dt">MaxNWts =</span> <span class="dv">10000</span>)</a>
+<a class="sourceLine" id="cb135-20" title="20"><span class="kw">plot</span>(nnet_mod_t)</a>
+<a class="sourceLine" id="cb135-21" title="21"><span class="kw">stopCluster</span>(cl)</a>
+<a class="sourceLine" id="cb135-22" title="22">t2&lt;-<span class="kw">Sys.time</span>()</a>
+<a class="sourceLine" id="cb135-23" title="23">t2<span class="op">-</span>t1</a></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="topic-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="annexes-quelques-problèmes-très-techniques.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/12-ML-with-text.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
