@@ -19,33 +19,34 @@ description: " Un manuel pratique de NLP en français"
 
 
 
-L'eco système r s'est enrichi ces dernière années à grande vitesse dans le domaine du traitement du langage naturel, l'objet de ce manuel a pour but d'en donner une synthèse. 
+L'écosystème r s'est enrichi ces dernières années à grande vitesse dans le domaine du traitement du langage naturel, l'objet de ce manuel a pour but de donner une synthèse des méthodes et des modèles disponibles à chacune des étapes de traitement : collecte, pré-processing, modélisation, visualisation.  
 
-Sa vocation est pratique même si on y laissera germer quelques considérations plus méthodologiques, voire épistémologiques. On ouvrira cependant chaque fois que c'est possibls aux questions théoriques et éthiques de ces méthodes. Leur réalisation computationnelle est le fruit souvent d'une longue histoire, au cours de laquelle les linguistes ont semé des idées essentielles qu'ont systématisées les informaticiens.
+Sa vocation est pratique, on s'appuie sur des corpus caractéristiques, et les scripts sont totalement reproductible. 
 
-On soignera la bibliographie de manière synthétique pour en faire un état de l'art essentiel et actualisée.
+On y laissera germer quelques considérations plus méthodologiques, voire épistémologiques. On ouvrira chaque fois que c'est possible et nécessaire la discussions aux questions théoriques et éthiques de ces méthodes. Leur réalisation computationnelle est le fruit souvent d'une longue histoire, au cours de laquelle les linguistes ont semé des idées essentielles qu'ont systématisées les informaticiens.
 
-La rédaction de l'ouvrage est mené avec une règle de reproductibilité et de transparence, c'est le pourquoi le choix de ce support et des jeux de données associés. Il sera dynamique, modifié à mesure de nos cours, séminaires, ateliers et observations des lecteurs.
+On soignera la bibliographie de manière synthétique pour en faire un état de l'art essentiel et actualisé. La rédaction de l'ouvrage est mené avec une règle de reproductibilité et de transparence, c'est le pourquoi le choix de ce support et des jeux de données associés. Il sera dynamique, modifié à mesure de nos cours, séminaires, ateliers et observations des lecteurs.
 
 ## Cours et séminaires
 
 La liste des cours et séminaires où il sera présenté et utilisé en 2021-2022.
 
- * Colloque Marketing digital 2-3 septembre 2021 _ "NLP : un panorama"
- * AFM 1er Décembre 2021  : 
- * Ecole doctorale de gestion à la Sorbonne - février 2022, "NLP pour la recherche en gestion"
- * Dauphine master 204 - cours  " Analyse textuelle", Novembre 2021
- * Master Siren - Dauphine - mai 2022
+ * [Colloque Marketing digital 2-3 septembre 2021](https://www.colloquemarketingdigital.com/) : "NLP : un panorama"
+ * [AFM 1er Décembre 2021](https://www.afm-marketing.org/fr/content/rencontres-2021) : 
+ * Ecole Doctorale de Gestion à la Sorbonne - février 2022, "cours : NLP pour la recherche en gestion"
+ * [Dauphine master 204](https://dauphine.psl.eu/formations/masters/marketing-et-strategie/m2-chef-de-produit-et-etudes-marketing) - Cours ["Text Analytics"](https://dauphine.psl.eu/formations/masters/marketing-et-strategie/m2-chef-de-produit-et-etudes-marketing/formation), Novembre 2021
+ * [Master Siren - Dauphine](https://dauphine.psl.eu/formations/masters/systemes-information-reseaux-et-numerique) : intoduction aux Datasciences - mai 2022
  * Lille Master Data Science
+ * [Ecole Doctorals EOS Nanterre]() : intoduction aux méthodes NLP 
 
 
 ## La structure du livre
 
 L analyse NLP peut être analysée comme un processus qui va de la production jusqu'à la diffusion des analyses. Elle est aussi traversée par des évolutions profondes de méthodes qui ont complexifié au sens formel les modèles initiaux. Ce sont ces techniques que nous introduisons ici. 
 
-Cependant, l'apprentissage automatique appliqué à des milliards de données submerge la statistique. Les modèles de langage distribués par les grands acteurs d gidital, comprennent des dizaines, voir des centaines de milliards de paramètres. On les évoquerons dans les derniers chapîtres.
+Cependant, l'apprentissage automatique appliqué à des milliards de données submerge la statistique. Les modèles de langage distribués par les grands acteurs du gidital, comprennent des dizaines, voir des centaines de milliards de paramètres. On les évoquerons dans les derniers chapîtres.
 
-Le plan suit une logique qui va du simple au très compliqué, et de l'acquisition des données, de leur traitement et leur modélisation, jusqu'à la propagation ...
+Le plan suit une logique progresse qui va du simple au très compliqué, et de l'acquisition des données à leur traitement et leur modélisation. 
 
 
  * Acquisition des données : directe, api et scrapping
@@ -62,7 +63,7 @@ Le plan suit une logique qui va du simple au très compliqué, et de l'acquisiti
 
 ## Les jeux de données 
 
-Au cours du développement, plusieurs cas pratiques - souvent réduit en volume pour rester exemplaires, seront employés. Les donées seront partagées.
+Au cours du développement, plusieurs cas pratiques - souvent réduits en volume pour rester exemplaires, seront employés. Les données sont partagées dans le répertoire `.\data\` du repository ``
 
 En voici la présentation  systématique.
 
@@ -70,10 +71,11 @@ En voici la présentation  systématique.
  * Confinement Jour J
  * Citations : un recueil de citations littéraires pour de petits exemples et ponctuer le texte aride d'un peu de littérature et de poésie.
  * Trip advisor Polynésie, un extrait d'un corpus établi par Pierre Ghewy et Sebastien de l'UPF
- * Airbnb 
- * Covid
- * PMP
- * David Bowie : comp
+ * Airbnb : paris 2019, bruxelles 2020 à partir de [InsideAirbnb - adding data to the debate](http://insideairbnb.com/get-the-data.html)
+ * Covid : le corpus confinement jour, ainsi que celui de Banda.
+ * PMP : titre et abstract de tout les article de la revue "Politique et Management Public" de 1982 à 2020. Le corpus a été constitué à l'inititive de Manel Benzarafa avec le soutien de la revue et des ses éditeurs.
+ * David Bowie : Les articles des magazines musicaux relatif à ,la sortie des 23 album de l'artiste. Constitué par Elias Benavent.
+ 
  * Appli de fitness
  * Langages / Julien
 
@@ -81,24 +83,19 @@ L'ensemble des codes et données sont disponibles dans le [repositery NLP Book](
 
 ## Les ressources
 
-Ce  _livre_ est écrit en **Markdown** [@allaire_rmarkdown_2021] et  avec le package **Bookdown** [@R-bookdown]
+Ce  _livre_ est écrit en **Markdown** [@allaire_rmarkdown_2021] et construit avec le package **Bookdown** [@R-bookdown].
 
-Le code s'appuie très largement sur **tidyverse** et emploie largement les ressources de **ggplot** et **dplyr** . On recommande au lecteur de consulter les ouvrages suivants.  Une mention particulière doit être faite sur la question du traitement du texte, **stringr** est aussi un des outils fondamentaux. 
+Le code s'appuie très largement sur **tidyverse** et emploie largement les ressources de [**`ggplot`**](https://ggplot2.tidyverse.org/reference/index.html) et de [**`dplyr`**](https://dplyr.tidyverse.org/) . On recommande d'étudier ces deux ressources en parallèle.
 
-D'autres outils traverserons le manuels. Par exemples pour les tableaux, nous opterons la plus part du temps pour les solution de flextable. 
+Une mention particulière doit être faite sur la question du traitement du texte dont [`stringr`](https://stringr.tidyverse.org/articles/stringr.html) est un des outils fondamentaux, même si ardu. Il propose une multitude de fonctions pour traiter les chaînes de caractères. Son étude est recommandée de concert avec la connaissance des [regex](https://stringr.tidyverse.org/articles/regular-expressions.html). 
+
+D'autres outils transersaux sont utilisés dans le manuel. Pour les tableaux, nous opterons la plus part du temps pour les solutions de `flextable`. 
 
 On supposera que les lecteurs ont une connaissance satisfaisante de ces outils génériques, mais à chaque fois qu'on les introduira, on les expliquera.
 
- 
- * [dplyr]() est essentiel, c'est avec cet outil qu'on construit des pipeline de données. Le maitriser est une garantie d'efficacité.  
- * [stringr](https://stringr.tidyverse.org/articles/stringr.html) est un package ardu. Ils propose une multitude de fonctions pour traiter les chaînes de caractères. Son étude est recommandée de concert avec la connaissance des [regex](https://stringr.tidyverse.org/articles/regular-expressions.html). 
- * quand le temps s'en mêle, lubridate est indispensable. 
- 
-
 ### Les packages 
 
-
-Les packages seront introduits au fur et à mesure de leur première utilisation. On le signale par `#library(lib) `. En voici la liste complète.
+Les data sciences sont devenue un jeu de lego. Les briques de base sont les bibliothèques, des packages qui rassemblent un jeu plus ou moins étendu et cohérent de fonctions. On en utilise dans ce manuel un grand nombre. Les packages seront introduits au fur et à mesure de leur première utilisation. On le signale par un commentaire `#library(lib) `. En voici la liste complète, pour reproduire les exemples il est recommandé des les installer tous.
 
 
 ```{r pack, echo = TRUE, message=FALSE, warning=FALSE}
@@ -106,13 +103,13 @@ knitr::opts_chunk$set(echo = TRUE, message=FALSE,warning=FALSE)
 
 #boite à outils et viz
 library(tidyverse) # inclut ggplot pour la viz, readr et 
-library(readr)
+library(readr) #lecture de fichier csv
 
 #Vizualisation souvent en développement de ggplot ( inclus dans tidyverse)
 library(cowplot) #pour créer des graphiques composés
 library(ggridges) # le joy division touch de ggplot
-library(pheatmap)
-library(flextable)
+library(pheatmap) #carte de chaleur
+library(flextable) #mise en forme de tableaux
 
 #networks
 library(igraph) #le standard pour les représentations de réseaux
@@ -125,10 +122,10 @@ library(rvest) #pour le scrapping
 
 # OCR et pdf
 library(tesseract) #reconnaissance de caractère
-library(pdftools)
+library(pdftools) #gérer la lecture des pdf
 
 # Analyse de donnée
-library(FactoMineR)
+library(FactoMineR) #le classique de l'AF et ses variantes
 library(factoextra)
 
 # NLP
@@ -144,14 +141,14 @@ library(ade4)
 library(ExPosition)
 library(Biobase)
 library(BiocManager)
-library(NMF)
+library(NMF) #non negative factoring
 
 ##reconnaissance de langue
-library(cld3)
-library(textcat)
+library(cld3) # c'est google qui gère
+library(textcat) #ngram based
 
 #Analyse du sentiment
-library(syuzhet)            
+library(syuzhet)   #des sentiments , des émotions         
 
 #mise en page des tableaux
 library(flextable) # 
@@ -190,7 +187,7 @@ theme_set(theme_bw())
 
 L'ensemble du code est disponible [sur github](https://github.com/BenaventC/NLPBook).
 
-Sous licence creative common
+Sous licence creative common ( comment met-on le badge ?)
 
-citation. 
+citation. ( un doi serait bien, au mini un bib)
 
