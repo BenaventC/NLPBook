@@ -15,11 +15,11 @@
 
 L'étape intiale de toute analyse textuelle est de découper le texte en unités d'analyse, les _tokens_, ce qui transforme le texte écrit pour la compréhension humaine en données interprétables par l'ordinateur. Les _tokens_ utilisés peuvent varier selon les objectifs de l'analyse et la nature du corpus, la granularité peut être plus ou moins fine. Les _tokens_ peuvent ainsi être :
  
- * des lettres : c'est l'unité insécable
- * des syllabes : ça permet de s'intéresser aux phonèmes
+ * des lettres : c'est l'unité insécable.
+ * des syllabes : ça permet de s'intéresser aux phonèmes.mais aussi d'extraire d'un mot les suffixes et préfixes, ainsi que les radicaux ( la racine du mot, ex : dés-espéré-ment).
  * des mots : il s'agit du niveau le plus évident et le plus courant, que l'on privilégiera tout au long de ce livre
- * des phrases : c'est l'unité de langage, lui correpond un argument, une proposition ; l'usage du point suivi d'un espace et d'une majuscule est assez général pour les identifier
- * des paragraphes : c'est une unité plus générale, qui souvent développe une idée
+ * des phrases : c'est l'unité de langage, lui correpond un argument, une proposition ; l'usage du point suivi d'un espace et d'une majuscule est assez général pour les identifier.
+ * des paragraphes : c'est une unité plus générale, qui souvent développe une idée.
  * des sections, des chapitres, ou des livres : selon la nature des documents, cela permet de découper le corpus en sous-unités.
 
 Les _tokenizers_ sont les outils indispensables à cette tâche. Dans cet ouvrage, nous nous concentrons sur l'étude des mots. Lors de cette étude, un certain nombre de mots apparaissent de nombreuses fois, pour permettre de donner du sens au langage humain, mais ils ne portent pas en eux d'informations particulièrement pertinentes pour l'analyse : ce sont les _stopwords_, qu'il conviendra souvent d'éliminer.
@@ -43,12 +43,17 @@ toc_maxweber<-tokenize_characters(MaxWeber)%>%
 #On compte pour chaque token sa fréquence d'apparition
 foo<-toc_maxweber %>%mutate(n=1) %>% 
         group_by(tokens)%>% 
-        summarise(n=sum(n))%>%filter(n>0)
+        summarise(n=sum(n))%>%
+        filter(n>0)
 #On représente par un diagramme en barre cette distribution des occuences d'apparition, en classant les tokens par fréquence
 ggplot(foo, aes(x=reorder(tokens,n), y=n))+
                geom_bar(stat="identity", fill="royalblue")+
         annotate("text", x=10,y=10, label=paste("nombre de tokens =", nrow(toc_maxweber)))+
-               coord_flip()+labs(title = "Fréquence des tokens, unité = lettres", x="tokens", y="nombre d'occurences", caption =" 'Bureaucratie: le moyen le plus rationnel que l’on connaisse pour exercer un contrôle impératif sur des êtres humains.' ")
+               coord_flip()+
+        labs(title = "Fréquence des tokens, unité = lettres", 
+             x="tokens", 
+             y="nombre d'occurences", 
+             caption =" 'Bureaucratie: le moyen le plus rationnel que l’on connaisse pour exercer un contrôle impératif sur des êtres humains.' ")
 ```
 
 ### Les mots
@@ -150,6 +155,7 @@ toc_maxweber<-tokenize_skip_ngrams(MaxWeber,n=3, n_min=2, k=2, stopwords = stopw
 qflextable(head(toc_maxweber, n=19))
 
 ```
+
 Dans cet exemple, aucun n-gramme n'est répété, mais c'est rarement le cas avec des corpus plus importants. Dans ce cas, une forte répétition de n-grammes est un indice d'une unité sémantique composée de plusieurs _tokens_ que l'on peut alors regrouper en un seul et même _token_. C'est ce que l'on verra dans la section suivante, avec l'utilisation de 'quanteda'.
 
 ### Propriétés statistiques des n-grammes
@@ -256,3 +262,4 @@ textplot_wordcloud(dfm, max_words = 200, color = rev(RColorBrewer::brewer.pal(6,
 ## Conclusion
 
 Dans ce chapitre, nous avons vu comment découper un corpus en unités, les _tokens_. Nous avons abordé le sujet des n-grammes, et vu comment composer des _tokens_ à partir de concepts multi-mots, identifiés par des n-grammes adjacents.
+

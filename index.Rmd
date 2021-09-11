@@ -1,6 +1,6 @@
 --- 
 title: "NLP avec r et en français - un Manuel synthétique"
-author: "Sophie Balech et Christophe Benavent et al"
+author: "Sophie Balech, Julien Monnot, Christophe Benavent"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
@@ -19,11 +19,13 @@ description: " Un manuel pratique de NLP en français"
 
 
 
-L'écosystème r s'est enrichi ces dernières années à grande vitesse dans le domaine du traitement du langage naturel, l'objet de ce manuel a pour but de donner une synthèse des méthodes et des modèles disponibles à chacune des étapes de traitement : collecte, pré-processing, modélisation, visualisation.  
+L'écosystème r s'est enrichi ces dernières années à grande vitesse dans le domaine du traitement du langage naturel. 
+
+Le but de ce manuel est de donner une synthèse des méthodes et des modèles disponibles à chacune des étapes de traitement des données textuelles : collecte, pré-processing, modélisation, visualisation.  
 
 Sa vocation est pratique, on s'appuie sur des corpus caractéristiques, et les scripts sont totalement reproductible. 
 
-On y laissera germer quelques considérations plus méthodologiques, voire épistémologiques. On ouvrira chaque fois que c'est possible et nécessaire la discussions aux questions théoriques et éthiques de ces méthodes. Leur réalisation computationnelle est le fruit souvent d'une longue histoire, au cours de laquelle les linguistes ont semé des idées essentielles qu'ont systématisées les informaticiens.
+On y laissera germer quelques considérations plus méthodologiques, voire épistémologiques. On ouvrira chaque fois que c'est possible et nécessaire la discussion aux questions théoriques et éthiques de ces méthodes. Leur réalisation computationnelle est le fruit souvent d'une longue histoire, au cours de laquelle les linguistes ont semé des idées essentielles qu'ont systématisées les informaticiens. Si ce champs est désormais désigné par l'acronyme NLP, pour "Natural Langage Processing" auquel correspond en français le TAL (Traitement Dutomatique du Langage naturel), l'expression de linguistique computationnelle convient peut-être mieux.
 
 On soignera la bibliographie de manière synthétique pour en faire un état de l'art essentiel et actualisé. La rédaction de l'ouvrage est mené avec une règle de reproductibilité et de transparence, c'est le pourquoi le choix de ce support et des jeux de données associés. Il sera dynamique, modifié à mesure de nos cours, séminaires, ateliers et observations des lecteurs.
 

@@ -1,4 +1,4 @@
-# Annotations lexicales et syntaxiques {#annot}
+# Annotations lexicales et syntaxiques
 
 Pour aller au-delà de l'analyse du seul lexique et de l'analyse de la cooccurence des termes à travers les textes, comme le font les méthodes de typologie et d'analyse factorielle des correspondance depuis longtemps, il est néçessaire d'analyser le texte en tenant compte de ses propriétés syntaxiques. Depuis une dizaine d'années, des outils puissants, les annotateurs, sont proposés de manière accessible.
 
@@ -17,36 +17,21 @@ Ils réalisent souvent plusieurs tâches dont les principales sont les suivantes
 - Identifier les parts of speech
 - Identifier les dépendances syntaxiques
 - Identifier les entités nommées. 
-- identifier les co-reférence
+- identifier les co-reférences.
 
 
-## Tokenization
-
-
-### Les niveaux de tokenisation
-
-Un token est une unité d'analyse dont la granularité est plus ou moins fine
-
- * Le paragraphe est sans l'unité l'unité la plus générale, quand un texte est correctement rédigé, un paragraphe développe une idée.
- * La phrase est l'unité de langage, lui correpond un argument, une proposition. L'usage du point suivi d'un espace est assez général pour les identifier. C'est l'objet de tokenizers qui feront mieux en analysant le contexte de la phrase pour décider plus précisément si le point sépare bien deux phrase distinctes. Cette unité de phrase elle essentielle.
- * Le mot est la fois le niveau le plus évident et le plus courant.
- * On peut aussi souhaiter extraire d'un mot les suffixe et préfixe 
- * On peut pour certains problème descendre au niveau de la syllabe et donc du phonème. 
- * La lettre reste l'unité insécable. 
- 
-### Un exemple en tidytext
 
 ## Stemmatisation,  lemmatisation et synonymisation
 
 Les mots prennent des formes variées, il peut être intéressant dans certains cas de réduire cette variété et ne considérer que l'idée des mots. Deux techniques sont disponibles
 
-### la stemmatisation
+### la stemmatisation et la lemmatisation
 
-c'est un
 
-### la lemmatisation
+c'est le fait de ne conserver que le radical des mots, pour regrouper sous le même radical toutes les variétés morphologique d'un même mot. Il s'affit dont d'enlever les syllabes qui correspondent aux suffixes et aux flexions du mot (mode singulier ou pluriel, genre, desinences : conjugaison et déclinaison etc..). On parle aussi de racinisation.
 
-Un lemme est un mot racine, sans inflexions de genre, de nombre ou de conjugaison. C'est généralement celui qu'on trouve dans les dictionnaire.
+Un lemme est un mot racine (ne pas confondre avec le radical), san inflexions de genre, de mode, de conjugaison ou de déclinaison. C'est généralement celui qu'on trouve dans les dictionnaires. Il s'agit de ramener un terme, à sa forme la plus simple qui en français est l'infinitif/masculin-singulier).
+
 
 ### Synonymisation
 
@@ -109,7 +94,7 @@ C'est à [Lucien Tesnière](https://www.ac-sciences-lettres-montpellier.fr/acade
 
 ### Arbre syntaxique
 
-L'arbre syntaxique est obtenue en analysant les relations entre les termes. Nous poursuivons avec UPpipe, l'annovation précédente a déjà fait le travail. A chaque mot deux informations sont associée : la première est l'index du mot auxquel il se rapporte, la seconde est la nature de la relation.
+L'arbre syntaxique est obtenu en analysant les relations entre les termes. Nous poursuivons avec UDpipe, l'annotation précédente a déjà fait le travail. A chaque mot deux informations sont associées : la première est l'index du mot auxquel il se rapporte, la seconde est la nature de la relation.
 
 Onn utilise ici une fonction écrite par (bnosac](http://www.bnosac.be/index.php/blog/93-dependency-parsing-with-udpipe) pour donner une représentation graphique de l'arbre.
 

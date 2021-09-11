@@ -1,0 +1,66 @@
+# Gestion des données textuelles
+
+## Jouer avec les tokens
+
+Dans le chapitre 8 nous avons détaillé la manière dont un texte qui se présente en terme de donnée sous la forme d'une chaine de caractère peut être décomposée en unités élémentaires, les termes (ou tokens). Dans le Chapitre 9, on a appris à étiqueter ces termes (ou les annoter, ou les taguer - ce sont des synonymes).
+
+[de la chaine de caractère au fichier des termes]()
+
+Cette première transformation, permet de jouer avec les données et l'outil de base pourra être DPLYR dans tidyverse dont voici quelques petites applications :
+
+ * Comparer la fréquence des verbes sur plusieurs périodes
+ * Une petite matrice de markov pour compléter une phrase
+ * ...
+
+## Les DTM
+
+Généralement une seconde opération est conduites en représentant le corps sous la forme d'un tableau rectangulaire où les lignes représentent les textes, et les colonnes les termes ou réciproquement et l'on partela de tdm.
+
+### codage
+
+Le codage de ce tableau peut prendre deux formes : 
+
+ * présence / absence et c'est alors un tableau disjonbctif complet parfait pour une AFC (chapitre 11)
+ * fréquence : nombre de fois ou le mot apparait 
+
+Revenir aux nuages de mots
+
+Le nombre de fois où un mot est cité, le nombre de document dans lesquels il est présent.
+
+
+### TF - IDF
+
+La distinction sur laquelle nous avons conclu la section précédente entre "fréquence des termes" (Term frequency) et "fréquence des documents (document frequency) peut être approfondie. Un terme peut être très fréquents, mais s'il est présent dans tous les documents, cette fréquence est peu informative, le mot ne caractérise aucun document ou groupe de documents. S'il est rare, si rare qu'il n'apparait qu'un unique fois ( hapax), il risque ne ne pas apporter plus d'information. 
+
+Un mot devient caractéristique s'il est fréquent et concentré dans peu de documents. Pour obtenir un indicateur de cette qualité, et pouvoir la mesurer, il faut donc pondérer la fréquence par une certaine quantité qui la minore quand le terme se distribiton dans l'ensemble des document. Ce poids est obtenu en prenant l'inverse de la fréquence des documents.
+
+
+$$
+idf=\frac{n}{n_j}
+$$
+
+jkhkjh
+
+$$ 
+x=\sum_{i=1}^n X_i 
+$$
+
+du texte
+la formule
+
+## Les ctm
+
+### cooccurence
+
+Une troisième transformation résulte d'un calcul de coocurrences. Les coocuurences sont l'information fondamentale, on peut en faire des matrices de coorélation, ou de distance. 
+
+### une application à l'analyse des similarités
+
+On en profite pour introduire tsne avec un exemple où les mots de sont pas trop fréquents. Par exemple les données apps, qui sont un texte réduit à sa plus petite dimension : l'élicitation d'un nombre de mots. 
+
+### une application au clustering
+
+
+De la même manière cette même opération peut être faite sur le document et se prêtéra aisement à un travail de typologie (ou clustering)
+
+un exemple

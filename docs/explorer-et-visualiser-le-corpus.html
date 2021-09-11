@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapitre 9 Analyse du sentiment | NLP avec r et en français - un Manuel synthétique</title>
+  <title>Chapitre 5 Explorer et visualiser le corpus | NLP avec r et en français - un Manuel synthétique</title>
   <meta name="description" content="Un manuel pratique de NLP en français" />
   <meta name="generator" content="bookdown 0.22.3 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapitre 9 Analyse du sentiment | NLP avec r et en français - un Manuel synthétique" />
+  <meta property="og:title" content="Chapitre 5 Explorer et visualiser le corpus | NLP avec r et en français - un Manuel synthétique" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapitre 9 Analyse du sentiment | NLP avec r et en français - un Manuel synthétique" />
+  <meta name="twitter:title" content="Chapitre 5 Explorer et visualiser le corpus | NLP avec r et en français - un Manuel synthétique" />
   
   <meta name="twitter:description" content="Un manuel pratique de NLP en français" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="le-cas-de-sources-multiples.html"/>
-<link rel="next" href="token.html"/>
+<link rel="prev" href="constitution-du-corpus.html"/>
+<link rel="next" href="préparation-des-données.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -383,111 +383,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="analyse-du-sentiment" class="section level1">
-<h1><span class="header-section-number">Chapitre 9</span> Analyse du sentiment</h1>
-<p>A vrai dire l’analyse du sentiment telle qu’on va la développer dans ce chapitre est une méthode d’annotation comme celle qu’on a examinée précèdemment. Son principe est simple : on compte la fréquence de mots qui appartiennent à un dictionnaire de réfrences. Les différentes méthodes dépendent de la constitution de ces dictionnaires. Dans certains cas on peut nuancer en prenant en compte les modificateurs (notamment les négation et double négation) qui pourront pondérer le sentiment primaire des mots.</p>
-<p>liu ping est le fondateur de l’analyse du sentiment et dès 2012 en donne une synthèse complète <span class="citation">(Liu <a href="#ref-liu_sentiment_2012" role="doc-biblioref">2012</a>)</span> . Depuis des développement considérables ont été apportée par des méthodes de deep learning, et notamment les modèles transformer qui renouvelent consirablement le domaine.</p>
-<p>On restera ici à un niveau classique ou compositionnel et On travaillera sur un corpus d’avis trip advisor, sur la période avant covid. Un premier exemple se concentrera sur le comptage des termes positifs, négatifs et neutres. Dans un second on montre une généralisation avec le LIWC qui propose 80 catégories.</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" title="1">df&lt;-<span class="kw">readRDS</span>(<span class="st">&quot;./data/AvisTripadvisor.rds&quot;</span>)</a></code></pre></div>
-<div id="un-exemple-avec-syuzhet" class="section level2">
-<h2><span class="header-section-number">9.1</span> Un exemple avec syuzhet</h2>
-<p>On utilise le package <a href="https://www.rdocumentation.org/packages/syuzhet/versions/1.0.4">syuzhet</a> et en particulier le dictionnaire “nrc” developpé et traduit par <span class="citation">Mohammad and Turney (<a href="#ref-mohammad_crowdsourcing_2013" role="doc-biblioref">2013</a>)</span> ( Index Feel)</p>
-<p>Le même outil fournit un autre systéme d’annotation qui compte les mentions d’éléments positifs ou négatifs, ainsi que d’émotions définies sur la base de l’inventaire de <span class="citation">Plutchik (<a href="#ref-plutchik_psychoevolutionary_1982" role="doc-biblioref">1982</a>)</span> on utilise simplement la fonction <code>get_nrc_sentiment</code>, en précisant le dictionnaire adéquat. L’échelle comprend en fait deux éléments : les 8 émotion de base *au sens de pluchik, et deux indicateurs de polarité.
-L’opérationnalisation réalisée par <span class="citation">Mohammad and Turney (<a href="#ref-mohammad_crowdsourcing_2013" role="doc-biblioref">2013</a>)</span> s’inscrit dans une tradition de la recherche en marketing, se souvenir de <span class="citation">(<span class="citeproc-not-found" data-reference-id="havlena_varieties_1986"><strong>???</strong></span>)</span> et de <span class="citation">(<span class="citeproc-not-found" data-reference-id="westbrook_dimensionality_1991"><strong>???</strong></span>)</span>.</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" title="1"><span class="kw">library</span>(syuzhet)             <span class="co">#analyse du sentimeent</span></a>
-<a class="sourceLine" id="cb60-2" title="2"></a>
-<a class="sourceLine" id="cb60-3" title="3"><span class="co">#paramétres</span></a>
-<a class="sourceLine" id="cb60-4" title="4">method &lt;-<span class="st"> &quot;nrc&quot;</span></a>
-<a class="sourceLine" id="cb60-5" title="5">lang &lt;-<span class="st"> &quot;french&quot;</span></a>
-<a class="sourceLine" id="cb60-6" title="6">phrase&lt;-<span class="kw">as.character</span>(<span class="kw">paste0</span>(df<span class="op">$</span>Titre,<span class="st">&quot; &quot;</span>,df<span class="op">$</span>Commetaire))</a>
-<a class="sourceLine" id="cb60-7" title="7"><span class="co">#extraction</span></a>
-<a class="sourceLine" id="cb60-8" title="8"></a>
-<a class="sourceLine" id="cb60-9" title="9">emotions &lt;-<span class="st"> </span><span class="kw">get_nrc_sentiment</span>(phrase,<span class="dt">language =</span> <span class="st">&quot;french&quot;</span>)</a>
-<a class="sourceLine" id="cb60-10" title="10">polarity&lt;-<span class="kw">subset</span>(emotions,<span class="dt">select=</span><span class="kw">c</span>(positive, negative))</a>
-<a class="sourceLine" id="cb60-11" title="11">df&lt;-<span class="kw">cbind</span>(df,polarity)</a></code></pre></div>
-<p>On s’intéresse surtout aux mentions positives et négatives (les émotions c’est pour plus tard. (la mesure permet ainsi une dissymétrie des deux polarités, il y a le bien, le mal, le mal et le bien, mais aussi si qui n’est ni mal ni bien).
-Les textes étant inégaux en taille on va ramener l’indicateur de polarité au nombre de caractéres (sur une base de 500 c) de chaque contribution. En effet l’algo compte les valence et leur intensité est proportionnel à la longueur du texte. Ce qui est clairement démontré par la seconde figure.</p>
-<p>A partir de ces deux mesures, 4 indicateurs peuvent étre construits
-* Positivité : nombre de termes positifs pour 500 signes.
-* Négativitivé : nombre de termes négatifs pour 500 signes.
-* Valence : rapport du nombre de termes positifs sur les négatifs.
-* Expressivité : nombre de termes positifs et négatifs.
-le dernier graphe nous apprend que les jugements plutôt positifs sont aussi les plus expressifs. La “froideur” des avis les plus négatifs refléte-t-elle une crainte de la désaprobation sociale. C’est une piste de recherche à poursuivre, on pourrait s’attendre à ce que les avis les plus négatifs surgissent plus facilement si la densité des négatives est plus importante et observer une sorte d’autocorrélation.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" title="1">G1&lt;-<span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x=</span>positive))<span class="op">+</span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">1</span>, <span class="dt">fill=</span><span class="st">&quot;darkred&quot;</span>)<span class="op">+</span><span class="kw">theme_minimal</span>()</a>
-<a class="sourceLine" id="cb61-2" title="2">G1</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/63-1.png" width="672" /></p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" title="1">G2&lt;-<span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x=</span>negative))<span class="op">+</span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">1</span>,<span class="dt">fill=</span><span class="st">&quot;Royalblue&quot;</span>)<span class="op">+</span><span class="kw">theme_minimal</span>()</a>
-<a class="sourceLine" id="cb62-2" title="2">G2</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/63-2.png" width="672" /></p>
-<div id="valence-et-expression" class="section level3">
-<h3><span class="header-section-number">9.1.1</span> Valence et expression</h3>
-<p>la linguistique donne aux mots une valence : elle peut être positive (bonheur), négative (malheur) ou neutre ( tranquité).</p>
-<p>C’est un régime ternaire. Chaque mot d’une phrase est neutre, positif ou négatif.</p>
-<p>On peut doser les effets</p>
-<p>On a des dictionnaires</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" title="1">df<span class="op">$</span>text&lt;-<span class="kw">as.character</span>(<span class="kw">paste0</span>(df<span class="op">$</span>Titre,<span class="st">&quot; &quot;</span>,df<span class="op">$</span>Commetaire))</a>
-<a class="sourceLine" id="cb63-2" title="2">df<span class="op">$</span>WC&lt;-<span class="kw">str_count</span>(df<span class="op">$</span>text, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">S+&quot;</span>)</a>
-<a class="sourceLine" id="cb63-3" title="3"></a>
-<a class="sourceLine" id="cb63-4" title="4">df<span class="op">$</span>positivity&lt;-(df<span class="op">$</span>positive)<span class="op">/</span>(df<span class="op">$</span>WC)</a>
-<a class="sourceLine" id="cb63-5" title="5">df<span class="op">$</span>negativity&lt;-(df<span class="op">$</span>negative)<span class="op">/</span>(df<span class="op">$</span>WC)</a>
-<a class="sourceLine" id="cb63-6" title="6">df<span class="op">$</span>valence&lt;-df<span class="op">$</span>positivity<span class="op">-</span>df<span class="op">$</span>negativity</a>
-<a class="sourceLine" id="cb63-7" title="7">df<span class="op">$</span>expressivity&lt;-df<span class="op">$</span>positivity<span class="op">+</span>df<span class="op">$</span>negativity</a>
-<a class="sourceLine" id="cb63-8" title="8"></a>
-<a class="sourceLine" id="cb63-9" title="9">G11&lt;-<span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x=</span>valence,<span class="dt">y=</span>expressivity ))<span class="op">+</span><span class="kw">geom_point</span>(<span class="dt">color=</span><span class="st">&quot;grey&quot;</span>)<span class="op">+</span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;gam&quot;</span>, <span class="dt">formula =</span> y <span class="op">~</span><span class="st"> </span><span class="kw">s</span>(x, <span class="dt">bs =</span> <span class="st">&quot;cs&quot;</span>))<span class="op">+</span><span class="kw">theme_minimal</span>()</a>
-<a class="sourceLine" id="cb63-10" title="10">G12&lt;-<span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x=</span>negativity,<span class="dt">y=</span>positivity ))<span class="op">+</span><span class="kw">geom_point</span>(<span class="dt">color=</span><span class="st">&quot;grey&quot;</span>)<span class="op">+</span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;gam&quot;</span>, <span class="dt">formula =</span> y <span class="op">~</span><span class="st"> </span><span class="kw">s</span>(x, <span class="dt">bs =</span> <span class="st">&quot;cs&quot;</span>))<span class="op">+</span><span class="kw">theme_minimal</span>()</a>
-<a class="sourceLine" id="cb63-11" title="11">G13&lt;-<span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x=</span>negativity,<span class="dt">y=</span> expressivity))<span class="op">+</span><span class="kw">geom_point</span>(<span class="dt">color=</span><span class="st">&quot;grey&quot;</span>)<span class="op">+</span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;gam&quot;</span>, <span class="dt">formula =</span> y <span class="op">~</span><span class="st"> </span><span class="kw">s</span>(x, <span class="dt">bs =</span> <span class="st">&quot;cs&quot;</span>))<span class="op">+</span><span class="kw">theme_minimal</span>()</a>
-<a class="sourceLine" id="cb63-12" title="12">G14&lt;-<span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x=</span>positivity,<span class="dt">y=</span> expressivity))<span class="op">+</span><span class="kw">geom_point</span>(<span class="dt">color=</span><span class="st">&quot;grey&quot;</span>)<span class="op">+</span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;gam&quot;</span>, <span class="dt">formula =</span> y <span class="op">~</span><span class="st"> </span><span class="kw">s</span>(x, <span class="dt">bs =</span> <span class="st">&quot;cs&quot;</span>))<span class="op">+</span><span class="kw">theme_minimal</span>()</a>
-<a class="sourceLine" id="cb63-13" title="13"></a>
-<a class="sourceLine" id="cb63-14" title="14"><span class="kw">plot_grid</span>(G11, G12, G13,G14, <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;C&#39;</span>,<span class="st">&#39;D&#39;</span>))</a></code></pre></div>
-<p><img src="bookdown-demo_files/figure-html/64-1.png" width="672" /></p>
+<div id="explorer-et-visualiser-le-corpus" class="section level1">
+<h1><span class="header-section-number">Chapitre 5</span> Explorer et visualiser le corpus</h1>
+<p>Un des meilleur conseils qu’on puisse donner, est de lire soi-même le texte avant de le confier aux machines.Comme dans le cas de grand corpus, il est difficile d’en lire l’ensemble, certains outils plus ou moins interactif, permettent de se donner rapidement une idée des contenus.</p>
+<div id="kwic" class="section level2">
+<h2><span class="header-section-number">5.1</span> Kwic</h2>
+<p>Le premier réflexe dans la lecture d’un corpus est de chercher dans quels contextes sont utilisé des mots cibles. C’est l’objet d’une vieille technique les : Key word in context.</p>
+<p>exemple</p>
 </div>
+<div id="explorer-le-corpus" class="section level2">
+<h2><span class="header-section-number">5.2</span> Explorer le corpus</h2>
+<p>Avant de procéder aux analyses du corpus, il est souvent utile de le représenter. On va utiliser le package Corpora explore à cette fin. Il permet de préparer un corpus et de le visualiser de manière interactive avec la génération d’une app shiny. Malheuresuement nous ne savons pas rendre compte de la dynamique de l’outil. On peut naviguer aisement dans l’ensemble de texte.</p>
+<p>On va utiliser une collection de donnée préparée avec Manel Benzarafa de l’Université paris Nanterre, et qui comprend l’intégralité des résumés, auteurs etc.. relatifs aux articles publiés dans PMP. Une base bibliographique intégrale. 1025 articles la compose.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1"><span class="kw">library</span>(readr)</a>
+<a class="sourceLine" id="cb27-2" title="2"><span class="co">#install.packages(&quot;corporaexplorer&quot;)</span></a>
+<a class="sourceLine" id="cb27-3" title="3"><span class="kw">library</span>(corporaexplorer)</a>
+<a class="sourceLine" id="cb27-4" title="4"></a>
+<a class="sourceLine" id="cb27-5" title="5"></a>
+<a class="sourceLine" id="cb27-6" title="6"><span class="kw">library</span>(readr)</a>
+<a class="sourceLine" id="cb27-7" title="7">PMP &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/PMPLast.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb27-8" title="8"></a>
+<a class="sourceLine" id="cb27-9" title="9">PMP&lt;-PMP <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb27-10" title="10"><span class="st">  </span><span class="kw">select</span>(Key, Author, Title, Issue, <span class="dv">3</span>, <span class="dv">11</span>)</a>
+<a class="sourceLine" id="cb27-11" title="11">PMP&lt;-PMP<span class="op">%&gt;%</span><span class="st"> </span><span class="kw">rename</span>(<span class="dt">Text=</span><span class="dv">6</span>, <span class="dt">Annee=</span><span class="dv">5</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb27-12" title="12"><span class="st">  </span><span class="kw">filter</span>(Text<span class="op">!=</span><span class="st">&quot;Null&quot;</span> <span class="op">&amp;</span><span class="st"> </span><span class="op">!</span><span class="kw">is.na</span>(Annee))</a>
+<a class="sourceLine" id="cb27-13" title="13"></a>
+<a class="sourceLine" id="cb27-14" title="14"></a>
+<a class="sourceLine" id="cb27-15" title="15"></a>
+<a class="sourceLine" id="cb27-16" title="16">corpus &lt;-<span class="st"> </span><span class="kw">prepare_data</span>(PMP,</a>
+<a class="sourceLine" id="cb27-17" title="17">    <span class="dt">date_based_corpus =</span><span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb27-18" title="18">    <span class="dt">grouping_variable =</span> <span class="st">&quot;Annee&quot;</span>,                <span class="co"># change grouping variable</span></a>
+<a class="sourceLine" id="cb27-19" title="19"> <span class="dt">within_group_identifier =</span> <span class="st">&quot;Title&quot;</span>,</a>
+<a class="sourceLine" id="cb27-20" title="20"> <span class="dt">columns_doc_info =</span></a>
+<a class="sourceLine" id="cb27-21" title="21">        <span class="kw">colnames</span>(df)[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>],</a>
+<a class="sourceLine" id="cb27-22" title="22"> <span class="dt">tile_length_range =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">10</span>),</a>
+<a class="sourceLine" id="cb27-23" title="23">    <span class="dt">use_matrix =</span> <span class="ot">FALSE</span></a>
+<a class="sourceLine" id="cb27-24" title="24">)</a>
+<a class="sourceLine" id="cb27-25" title="25"><span class="co">#explore(corpus)</span></a></code></pre></div>
+<p>Dans la photo d’écran suivante, on teste les termes " politique" et “management”. Chaque tuile ( tile) représente un des 1025 abstracts qui composent le corpus. Les couleurs correspondent à la fréquence des deux termes.</p>
+<div class="figure">
+<img src="images/Corporaexplore.JPG" alt="Exploration des abstracts de PMP" />
+<p class="caption">Exploration des abstracts de PMP</p>
 </div>
-<div id="la-généralisation-par-le-liwc" class="section level2">
-<h2><span class="header-section-number">9.2</span> La généralisation par le Liwc</h2>
-<p>Le liwc vient de l’idée simple d’un psychiatre qui a souhaité faire des diagnoistics de trauma craniens à partir des entretiens menés avec lmes patients atteints. <span class="citation">(Tausczik and Pennebaker <a href="#ref-tausczik_psychological_2010" role="doc-biblioref">2010</a>)</span></p>
-<p>Le LIWC permet d’obtenir d’autres indicateurs du sentiment, une partie des 80 indicateurs proposés est relatif à des dimensions topicales dont trois groupes vont retenir notre attention dans la mesure où ils décrivent une partie de l’expérience relatée dans les commentaires.
-* La sensorialité ( voir, entendre, sentir)
-* L’orientation temporelle ( passé, présent, futur)
-* les émotions négatives (tristesse, colére, )</p>
-<p>La procédure pour extraire ces notions est fort simple . On utilise l’infrasturure de quanteda et une version francophone du dictionnaire <span class="citation">(Piolat et al. <a href="#ref-piolat_version_2011" role="doc-biblioref">2011</a>)</span></p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1"><span class="co"># the devtools package needs to be installed for this to work</span></a>
-<a class="sourceLine" id="cb64-2" title="2"><span class="co">#devtools::install_github(&quot;kbenoit/quanteda.dictionaries&quot;)</span></a>
-<a class="sourceLine" id="cb64-3" title="3"><span class="kw">library</span>(cleanNLP)</a>
-<a class="sourceLine" id="cb64-4" title="4"><span class="kw">library</span>(<span class="st">&quot;quanteda.dictionaries&quot;</span>)</a>
-<a class="sourceLine" id="cb64-5" title="5">dict_liwc_french &lt;-<span class="st"> </span><span class="kw">dictionary</span>(<span class="dt">file =</span> <span class="st">&quot;FrenchLIWCDictionary.dic&quot;</span>,</a>
-<a class="sourceLine" id="cb64-6" title="6">                             <span class="dt">format =</span> <span class="st">&quot;LIWC&quot;</span>)</a>
-<a class="sourceLine" id="cb64-7" title="7">test&lt;-<span class="kw">liwcalike</span>(df<span class="op">$</span>Commetaire,<span class="dt">dictionary =</span> dict_liwc_french)</a>
-<a class="sourceLine" id="cb64-8" title="8">df&lt;-<span class="kw">cbind</span>(df,test)</a></code></pre></div>
-</div>
-<div id="encore-dautres-généralisations" class="section level2">
-<h2><span class="header-section-number">9.3</span> Encore d’autres généralisations</h2>
-<p>L’approche par dictionnaire s’est déplacée vers l’identification d’autre catégorie</p>
-<ul>
-<li>les valeurs morales</li>
-</ul>
-</div>
-<div id="construire-son-propre-dictionnaire" class="section level2">
-<h2><span class="header-section-number">9.4</span> construire son propre dictionnaire</h2>
-<p>faire des listes de lmots</p>
+<div id="reprendre-le-topic-de-revtools" class="section level3">
+<h3><span class="header-section-number">5.2.1</span> reprendre le topic de revtools</h3>
 
 </div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-liu_sentiment_2012">
-<p>Liu, Bing. 2012. “Sentiment Analysis and Opinion Mining.” <em>Synthesis Lectures on Human Language Technologies</em> 5 (1): 1–167. <a href="https://doi.org/10.2200/S00416ED1V01Y201204HLT016">https://doi.org/10.2200/S00416ED1V01Y201204HLT016</a>.</p>
-</div>
-<div id="ref-mohammad_crowdsourcing_2013">
-<p>Mohammad, Saif M., and Peter D. Turney. 2013. “CROWDSOURCING A WORD-EMOTION ASSOCIATION LEXICON.” <em>Computational Intelligence</em> 29 (3): 436–65. <a href="https://doi.org/10.1111/j.1467-8640.2012.00460.x">https://doi.org/10.1111/j.1467-8640.2012.00460.x</a>.</p>
-</div>
-<div id="ref-piolat_version_2011">
-<p>Piolat, A., R. J. Booth, C. K. Chung, M. Davids, and J. W. Pennebaker. 2011. “La Version Française Du Dictionnaire Pour Le LIWC : Modalités de Construction et Exemples d’utilisation.” <em>Psychologie Française</em> 56 (3): 145–59. <a href="https://doi.org/10.1016/j.psfr.2011.07.002">https://doi.org/10.1016/j.psfr.2011.07.002</a>.</p>
-</div>
-<div id="ref-plutchik_psychoevolutionary_1982">
-<p>Plutchik, Robert. 1982. “A Psychoevolutionary Theory of Emotions.” <em>Social Science Information</em> 21 (4-5): 529–53. <a href="https://doi.org/10.1177/053901882021004003">https://doi.org/10.1177/053901882021004003</a>.</p>
-</div>
-<div id="ref-tausczik_psychological_2010">
-<p>Tausczik, Yla R., and James W. Pennebaker. 2010. “The Psychological Meaning of Words: LIWC and Computerized Text Analysis Methods.” <em>Journal of Language and Social Psychology</em> 29 (1): 24–54. <a href="https://doi.org/10.1177/0261927X09351676">https://doi.org/10.1177/0261927X09351676</a>.</p>
 </div>
 </div>
             </section>
@@ -495,8 +436,8 @@ le dernier graphe nous apprend que les jugements plutôt positifs sont aussi les
           </div>
         </div>
       </div>
-<a href="le-cas-de-sources-multiples.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="token.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="constitution-du-corpus.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="préparation-des-données.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -528,7 +469,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/07-Analyse-du-sentiment.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/04-explorer-visualiser.Rmd",
 "text": "Edit"
 },
 "history": {

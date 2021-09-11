@@ -340,29 +340,6 @@ g
 ```
 
 
-# Le cas de sources multiples
-
-le cas du corpus de Trump est passionnant car il donne toute la production d'un locuteur au cours du temps. Le plus souvent les corpus sont constitués de locuteurs multiples dont les niveaux d'engagement sont très variables, un petit nombre publie souvent, et la majorité de manière épisodique.
-
-Il est important de quantifier ces rapports de production. 
-
-### Mesure de la concentration
-
-Qui produit combien? c'est la première question quand on analyse des données sociales. Les vieilles courbes de Lorenz sont à ce titre précieuses, tout autant que les indices de concentration, celui de Gini pour prendre un grand classsique. Le lecteur, avec un peu de curiosité, en trouvera facilement d'autres plus modernes ou mieux adaptés à nos besoins.
-
-Illustrons.
-
-```{r 409, fig.cap=' ', out.width='80%', fig.asp=.75, fig.align='center'}
-```
-
-### ou par segmentation
-
-Il est souvent plus simple de représenter des catégories ordonnée plutôt qu'un gradient : les grous, les moyens et les petits producteurs. 
-
-
-```{r 410, fig.cap=' ', out.width='80%', fig.asp=.75, fig.align='center'}
-```
-
 ## Conclusion
 
 Nous aurons appris à 

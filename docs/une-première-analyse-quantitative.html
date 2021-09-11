@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapitre 6 Une première analyse quantitative | NLP avec r et en français - un Manuel synthétique</title>
+  <title>Chapitre 7 Une première analyse quantitative | NLP avec r et en français - un Manuel synthétique</title>
   <meta name="description" content="Un manuel pratique de NLP en français" />
   <meta name="generator" content="bookdown 0.22.3 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapitre 6 Une première analyse quantitative | NLP avec r et en français - un Manuel synthétique" />
+  <meta property="og:title" content="Chapitre 7 Une première analyse quantitative | NLP avec r et en français - un Manuel synthétique" />
   <meta property="og:type" content="book" />
   
   
@@ -16,15 +16,15 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapitre 6 Une première analyse quantitative | NLP avec r et en français - un Manuel synthétique" />
+  <meta name="twitter:title" content="Chapitre 7 Une première analyse quantitative | NLP avec r et en français - un Manuel synthétique" />
   
   <meta name="twitter:description" content="Un manuel pratique de NLP en français" />
   
 
-<meta name="author" content="Sophie Balech et Christophe Benavent et al" />
+<meta name="author" content="Sophie Balech, Julien Monnot, Christophe Benavent" />
 
 
-<meta name="date" content="2021-09-05" />
+<meta name="date" content="2021-09-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -179,149 +179,188 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#des-comptable-à-lindustrie-de-la-langue"><i class="fa fa-check"></i><b>2.5</b> Des comptable à l’industrie de la langue</a></li>
 <li class="chapter" data-level="2.6" data-path="intro.html"><a href="intro.html#conclusion"><i class="fa fa-check"></i><b>2.6</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html"><i class="fa fa-check"></i><b>3</b> Constitution du corpus</a><ul>
-<li class="chapter" data-level="3.1" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#lexploitation-de-base-de-données-textuelles"><i class="fa fa-check"></i><b>3.1</b> L’exploitation de base de données textuelles</a></li>
-<li class="chapter" data-level="3.2" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#jouer-avec-les-bases-bibliographiques"><i class="fa fa-check"></i><b>3.2</b> Jouer avec les bases bibliographiques</a></li>
-<li class="chapter" data-level="3.3" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#scrapping"><i class="fa fa-check"></i><b>3.3</b> Scrapping</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#rvest-avec-r"><i class="fa fa-check"></i><b>3.3.1</b> rvest avec r</a></li>
-<li class="chapter" data-level="3.3.2" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#des-problèmes-pratiques-juridiques-et-éthiques"><i class="fa fa-check"></i><b>3.3.2</b> Des problèmes pratiques, juridiques et éthiques</a></li>
+<li class="chapter" data-level="3" data-path="la-diversité-et-la-nature-des-corpus.html"><a href="la-diversité-et-la-nature-des-corpus.html"><i class="fa fa-check"></i><b>3</b> La diversité et la nature des Corpus</a><ul>
+<li class="chapter" data-level="3.1" data-path="la-diversité-et-la-nature-des-corpus.html"><a href="la-diversité-et-la-nature-des-corpus.html#des-types-de-corpus"><i class="fa fa-check"></i><b>3.1</b> Des types de corpus</a></li>
+<li class="chapter" data-level="3.2" data-path="la-diversité-et-la-nature-des-corpus.html"><a href="la-diversité-et-la-nature-des-corpus.html#problèmes-déchantillon"><i class="fa fa-check"></i><b>3.2</b> Problèmes d’échantillon</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#les-api"><i class="fa fa-check"></i><b>3.4</b> les API</a><ul>
-<li class="chapter" data-level="3.4.1" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#un-tour-dhorizon-des-api"><i class="fa fa-check"></i><b>3.4.1</b> Un tour d’horizon des API</a></li>
-<li class="chapter" data-level="3.4.2" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#un-point-de-vue-plus-technique"><i class="fa fa-check"></i><b>3.4.2</b> un point de vue plus technique</a></li>
-<li class="chapter" data-level="3.4.3" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#un-exemple-avec-rtweet"><i class="fa fa-check"></i><b>3.4.3</b> Un exemple avec Rtweet</a></li>
+<li class="chapter" data-level="4" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html"><i class="fa fa-check"></i><b>4</b> Constitution du corpus</a><ul>
+<li class="chapter" data-level="4.1" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#la-gestion-des-documents-numériques"><i class="fa fa-check"></i><b>4.1</b> La gestion des documents numériques</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#extraire-du-texte-des-pdf"><i class="fa fa-check"></i><b>4.1.1</b> Extraire du texte des pdf</a></li>
+<li class="chapter" data-level="4.1.2" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#la-numérisation-et-locr"><i class="fa fa-check"></i><b>4.1.2</b> la numérisation et l’OCR</a></li>
+<li class="chapter" data-level="4.1.3" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#du-speech-au-texte"><i class="fa fa-check"></i><b>4.1.3</b> Du speech au texte</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#la-gestion-des-documents"><i class="fa fa-check"></i><b>3.5</b> La gestion des documents</a><ul>
-<li class="chapter" data-level="3.5.1" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#extraire-du-texte-des-pdf"><i class="fa fa-check"></i><b>3.5.1</b> Extraire du texte des pdf</a></li>
-<li class="chapter" data-level="3.5.2" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#la-numérisation-et-locr"><i class="fa fa-check"></i><b>3.5.2</b> la numérisation et l’OCR</a></li>
+<li class="chapter" data-level="4.2" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#lexploitation-de-base-de-données-textuelles"><i class="fa fa-check"></i><b>4.2</b> L’exploitation de base de données textuelles</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#le-cas-europresse"><i class="fa fa-check"></i><b>4.2.1</b> le cas europresse</a></li>
+<li class="chapter" data-level="4.2.2" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#jouer-avec-les-bases-bibliographiques"><i class="fa fa-check"></i><b>4.2.2</b> Jouer avec les bases bibliographiques</a></li>
 </ul></li>
-<li class="chapter" data-level="3.6" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#les-contenus-vocaux"><i class="fa fa-check"></i><b>3.6</b> Les contenus vocaux</a></li>
-<li class="chapter" data-level="3.7" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#echantillonner-le-texte"><i class="fa fa-check"></i><b>3.7</b> Echantillonner le texte</a></li>
-<li class="chapter" data-level="3.8" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#conclusion-1"><i class="fa fa-check"></i><b>3.8</b> Conclusion</a></li>
+<li class="chapter" data-level="4.3" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#lire-le-web-scrapping"><i class="fa fa-check"></i><b>4.3</b> Lire le web : Scrapping</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#rvest-avec-r"><i class="fa fa-check"></i><b>4.3.1</b> rvest avec r</a></li>
+<li class="chapter" data-level="4.3.2" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#des-problèmes-pratiques-juridiques-et-éthiques"><i class="fa fa-check"></i><b>4.3.2</b> Des problèmes pratiques, juridiques et éthiques</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="visualiser-et-réduire-le-corpus.html"><a href="visualiser-et-réduire-le-corpus.html"><i class="fa fa-check"></i><b>4</b> Visualiser et réduire le corpus</a><ul>
-<li class="chapter" data-level="4.1" data-path="visualiser-et-réduire-le-corpus.html"><a href="visualiser-et-réduire-le-corpus.html#explorer-le-corpus"><i class="fa fa-check"></i><b>4.1</b> Explorer le corpus</a></li>
+<li class="chapter" data-level="4.4" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#limportance-croissante-des-api"><i class="fa fa-check"></i><b>4.4</b> L’importance croissante des API</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#un-tour-dhorizon"><i class="fa fa-check"></i><b>4.4.1</b> Un tour d’horizon</a></li>
+<li class="chapter" data-level="4.4.2" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#un-point-de-vue-plus-technique"><i class="fa fa-check"></i><b>4.4.2</b> un point de vue plus technique</a></li>
+<li class="chapter" data-level="4.4.3" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#un-exemple-avec-rtweet"><i class="fa fa-check"></i><b>4.4.3</b> Un exemple avec Rtweet</a></li>
+<li class="chapter" data-level="4.4.4" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#un-autre-exemple"><i class="fa fa-check"></i><b>4.4.4</b> Un autre exemple</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="préparation-des-données.html"><a href="préparation-des-données.html"><i class="fa fa-check"></i><b>5</b> Préparation des données</a><ul>
-<li class="chapter" data-level="5.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#manipuler-des-chaines-de-caractères"><i class="fa fa-check"></i><b>5.1</b> Manipuler des chaines de caractères</a><ul>
-<li class="chapter" data-level="5.1.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#les-opérations-sur-les-chaînes-de-caractères"><i class="fa fa-check"></i><b>5.1.1</b> Les opérations sur les chaînes de caractères</a></li>
-<li class="chapter" data-level="5.1.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#la-technique-des-expressions-régulières-regex"><i class="fa fa-check"></i><b>5.1.2</b> La technique des expressions régulières (regex)</a></li>
-<li class="chapter" data-level="5.1.3" data-path="préparation-des-données.html"><a href="préparation-des-données.html#un-fondement-profond-et-ancien"><i class="fa fa-check"></i><b>5.1.3</b> Un fondement profond et ancien</a></li>
-<li class="chapter" data-level="5.1.4" data-path="préparation-des-données.html"><a href="préparation-des-données.html#des-applications-très-pratiques"><i class="fa fa-check"></i><b>5.1.4</b> Des applications très pratiques</a></li>
+<li class="chapter" data-level="4.5" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#conclusion-1"><i class="fa fa-check"></i><b>4.5</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#nettoyer-le-texte"><i class="fa fa-check"></i><b>5.2</b> Nettoyer le texte</a></li>
-<li class="chapter" data-level="5.3" data-path="préparation-des-données.html"><a href="préparation-des-données.html#corriger-le-texte"><i class="fa fa-check"></i><b>5.3</b> Corriger le texte</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#la-correction-orthographique-automatique"><i class="fa fa-check"></i><b>5.3.1</b> La correction orthographique automatique</a></li>
-<li class="chapter" data-level="5.3.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#analyse-ciblée-par-les-regex"><i class="fa fa-check"></i><b>5.3.2</b> Analyse ciblée par les regex</a></li>
-</ul></li>
-<li class="chapter" data-level="5.4" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-sources"><i class="fa fa-check"></i><b>5.4</b> Identifier les sources</a><ul>
-<li class="chapter" data-level="5.4.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-la-langue"><i class="fa fa-check"></i><b>5.4.1</b> Identifier la langue</a></li>
-<li class="chapter" data-level="5.4.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-plagiats-et-réutilisations"><i class="fa fa-check"></i><b>5.4.2</b> Identifier les plagiats et réutilisations</a></li>
-<li class="chapter" data-level="5.4.3" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-fakes"><i class="fa fa-check"></i><b>5.4.3</b> Identifier les fakes</a></li>
-<li class="chapter" data-level="5.4.4" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-trolls"><i class="fa fa-check"></i><b>5.4.4</b> Identifier les trolls</a></li>
-<li class="chapter" data-level="5.4.5" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-bots"><i class="fa fa-check"></i><b>5.4.5</b> Identifier les bots</a></li>
+<li class="chapter" data-level="5" data-path="explorer-et-visualiser-le-corpus.html"><a href="explorer-et-visualiser-le-corpus.html"><i class="fa fa-check"></i><b>5</b> Explorer et visualiser le corpus</a><ul>
+<li class="chapter" data-level="5.1" data-path="explorer-et-visualiser-le-corpus.html"><a href="explorer-et-visualiser-le-corpus.html#kwic"><i class="fa fa-check"></i><b>5.1</b> Kwic</a></li>
+<li class="chapter" data-level="5.2" data-path="explorer-et-visualiser-le-corpus.html"><a href="explorer-et-visualiser-le-corpus.html#explorer-le-corpus"><i class="fa fa-check"></i><b>5.2</b> Explorer le corpus</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="explorer-et-visualiser-le-corpus.html"><a href="explorer-et-visualiser-le-corpus.html#reprendre-le-topic-de-revtools"><i class="fa fa-check"></i><b>5.2.1</b> reprendre le topic de revtools</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html"><i class="fa fa-check"></i><b>6</b> Une première analyse quantitative</a><ul>
-<li class="chapter" data-level="6.1" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#comptons-les-mots"><i class="fa fa-check"></i><b>6.1</b> Comptons les mots</a></li>
-<li class="chapter" data-level="6.2" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#la-production-dans-le-temps"><i class="fa fa-check"></i><b>6.2</b> la production dans le temps</a></li>
-<li class="chapter" data-level="6.3" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#lisibilité-et-complexité-lexicale"><i class="fa fa-check"></i><b>6.3</b> Lisibilité et complexité lexicale</a><ul>
-<li class="chapter" data-level="6.3.1" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#les-indices-de-lisibilité"><i class="fa fa-check"></i><b>6.3.1</b> Les indices de lisibilité</a></li>
-<li class="chapter" data-level="6.3.2" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#les-indices-de-complexité-lexicale"><i class="fa fa-check"></i><b>6.3.2</b> Les indices de complexité lexicale</a></li>
+<li class="chapter" data-level="6" data-path="préparation-des-données.html"><a href="préparation-des-données.html"><i class="fa fa-check"></i><b>6</b> Préparation des données</a><ul>
+<li class="chapter" data-level="6.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#manipuler-des-chaines-de-caractères"><i class="fa fa-check"></i><b>6.1</b> Manipuler des chaines de caractères</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#les-opérations-sur-les-chaînes-de-caractères"><i class="fa fa-check"></i><b>6.1.1</b> Les opérations sur les chaînes de caractères</a></li>
+<li class="chapter" data-level="6.1.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#la-technique-des-expressions-régulières-regex"><i class="fa fa-check"></i><b>6.1.2</b> La technique des expressions régulières (regex)</a></li>
+<li class="chapter" data-level="6.1.3" data-path="préparation-des-données.html"><a href="préparation-des-données.html#un-fondement-profond-et-ancien"><i class="fa fa-check"></i><b>6.1.3</b> Un fondement profond et ancien</a></li>
+<li class="chapter" data-level="6.1.4" data-path="préparation-des-données.html"><a href="préparation-des-données.html#des-applications-très-pratiques"><i class="fa fa-check"></i><b>6.1.4</b> Des applications très pratiques</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#comptons-les-mots-1"><i class="fa fa-check"></i><b>6.4</b> Comptons les mots</a><ul>
-<li class="chapter" data-level="6.4.1" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#les-nuages-de-mots"><i class="fa fa-check"></i><b>6.4.1</b> Les nuages de mots</a></li>
-<li class="chapter" data-level="6.4.2" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#des-lollyplots"><i class="fa fa-check"></i><b>6.4.2</b> Des lollyplots</a></li>
-<li class="chapter" data-level="6.4.3" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#la-mesure-de-la-concentration-des-termes"><i class="fa fa-check"></i><b>6.4.3</b> La mesure de la concentration des termes</a></li>
+<li class="chapter" data-level="6.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#nettoyer-le-texte"><i class="fa fa-check"></i><b>6.2</b> Nettoyer le texte</a></li>
+<li class="chapter" data-level="6.3" data-path="préparation-des-données.html"><a href="préparation-des-données.html#corriger-le-texte"><i class="fa fa-check"></i><b>6.3</b> Corriger le texte</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#la-correction-orthographique-automatique"><i class="fa fa-check"></i><b>6.3.1</b> La correction orthographique automatique</a></li>
+<li class="chapter" data-level="6.3.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#analyse-ciblée-par-les-regex"><i class="fa fa-check"></i><b>6.3.2</b> Analyse ciblée par les regex</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="le-cas-de-sources-multiples.html"><a href="le-cas-de-sources-multiples.html"><i class="fa fa-check"></i><b>7</b> Le cas de sources multiples</a><ul>
-<li class="chapter" data-level="7.0.1" data-path="le-cas-de-sources-multiples.html"><a href="le-cas-de-sources-multiples.html#mesure-de-la-concentration"><i class="fa fa-check"></i><b>7.0.1</b> Mesure de la concentration</a></li>
-<li class="chapter" data-level="7.0.2" data-path="le-cas-de-sources-multiples.html"><a href="le-cas-de-sources-multiples.html#ou-par-segmentation"><i class="fa fa-check"></i><b>7.0.2</b> ou par segmentation</a></li>
-<li class="chapter" data-level="7.1" data-path="le-cas-de-sources-multiples.html"><a href="le-cas-de-sources-multiples.html#conclusion-2"><i class="fa fa-check"></i><b>7.1</b> Conclusion</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="token.html"><a href="token.html"><i class="fa fa-check"></i><b>8</b> Tokenisation</a><ul>
-<li class="chapter" data-level="8.1" data-path="token.html"><a href="token.html#objectifs-du-chapitre"><i class="fa fa-check"></i><b>8.1</b> <em>Objectifs du chapitre</em></a></li>
-<li class="chapter" data-level="8.2" data-path="token.html"><a href="token.html#les-outils"><i class="fa fa-check"></i><b>8.2</b> Les outils</a></li>
-<li class="chapter" data-level="8.3" data-path="token.html"><a href="token.html#introduction"><i class="fa fa-check"></i><b>8.3</b> Introduction</a></li>
-<li class="chapter" data-level="8.4" data-path="token.html"><a href="token.html#tokeniser-un-corpus"><i class="fa fa-check"></i><b>8.4</b> Tokeniser un corpus</a><ul>
-<li class="chapter" data-level="8.4.1" data-path="token.html"><a href="token.html#les-lettres"><i class="fa fa-check"></i><b>8.4.1</b> Les lettres</a></li>
-<li class="chapter" data-level="8.4.2" data-path="token.html"><a href="token.html#les-mots"><i class="fa fa-check"></i><b>8.4.2</b> Les mots</a></li>
-<li class="chapter" data-level="8.4.3" data-path="token.html"><a href="token.html#les-phrases"><i class="fa fa-check"></i><b>8.4.3</b> Les phrases</a></li>
-</ul></li>
-<li class="chapter" data-level="8.5" data-path="token.html"><a href="token.html#n-grammes"><i class="fa fa-check"></i><b>8.5</b> N-grammes</a><ul>
-<li class="chapter" data-level="8.5.1" data-path="token.html"><a href="token.html#propriétés-statistiques-des-n-grammes"><i class="fa fa-check"></i><b>8.5.1</b> Propriétés statistiques des n-grammes</a></li>
-</ul></li>
-<li class="chapter" data-level="8.6" data-path="token.html"><a href="token.html#choisir-des-n-grammes-pertinents"><i class="fa fa-check"></i><b>8.6</b> Choisir des n-grammes pertinents</a><ul>
-<li class="chapter" data-level="8.6.1" data-path="token.html"><a href="token.html#créer-les-tokens-avec-quanteda"><i class="fa fa-check"></i><b>8.6.1</b> Créer les <em>tokens</em> avec ‘quanteda’</a></li>
-<li class="chapter" data-level="8.6.2" data-path="token.html"><a href="token.html#identifier-les-noms-propres"><i class="fa fa-check"></i><b>8.6.2</b> Identifier les noms propres</a></li>
-<li class="chapter" data-level="8.6.3" data-path="token.html"><a href="token.html#composer-des-tokens-à-partir-dexpressions-multi-mots"><i class="fa fa-check"></i><b>8.6.3</b> Composer des <em>tokens</em> à partir d’expressions multi-mots</a></li>
-<li class="chapter" data-level="8.6.4" data-path="token.html"><a href="token.html#identifier-les-autres-concepts"><i class="fa fa-check"></i><b>8.6.4</b> Identifier les autres concepts</a></li>
-</ul></li>
-<li class="chapter" data-level="8.7" data-path="token.html"><a href="token.html#conclusion-3"><i class="fa fa-check"></i><b>8.7</b> Conclusion</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="annot.html"><a href="annot.html"><i class="fa fa-check"></i><b>9</b> Annotations lexicales et syntaxiques</a><ul>
-<li class="chapter" data-level="9.1" data-path="annot.html"><a href="annot.html#tokenization"><i class="fa fa-check"></i><b>9.1</b> Tokenization</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="annot.html"><a href="annot.html#les-niveaux-de-tokenisation"><i class="fa fa-check"></i><b>9.1.1</b> Les niveaux de tokenisation</a></li>
-<li class="chapter" data-level="9.1.2" data-path="annot.html"><a href="annot.html#un-exemple-en-tidytext"><i class="fa fa-check"></i><b>9.1.2</b> Un exemple en tidytext</a></li>
-</ul></li>
-<li class="chapter" data-level="9.2" data-path="annot.html"><a href="annot.html#stemmatisation-lemmatisation-et-synonymisation"><i class="fa fa-check"></i><b>9.2</b> Stemmatisation, lemmatisation et synonymisation</a><ul>
-<li class="chapter" data-level="9.2.1" data-path="annot.html"><a href="annot.html#la-stemmatisation"><i class="fa fa-check"></i><b>9.2.1</b> la stemmatisation</a></li>
-<li class="chapter" data-level="9.2.2" data-path="annot.html"><a href="annot.html#la-lemmatisation"><i class="fa fa-check"></i><b>9.2.2</b> la lemmatisation</a></li>
-<li class="chapter" data-level="9.2.3" data-path="annot.html"><a href="annot.html#synonymisation"><i class="fa fa-check"></i><b>9.2.3</b> Synonymisation</a></li>
-</ul></li>
-<li class="chapter" data-level="9.3" data-path="annot.html"><a href="annot.html#part-of-speech-pos"><i class="fa fa-check"></i><b>9.3</b> Part of Speech (POS)</a></li>
-<li class="chapter" data-level="9.4" data-path="annot.html"><a href="annot.html#dépendances-syntaxiques"><i class="fa fa-check"></i><b>9.4</b> Dépendances syntaxiques</a><ul>
-<li class="chapter" data-level="9.4.1" data-path="annot.html"><a href="annot.html#arbre-syntaxique"><i class="fa fa-check"></i><b>9.4.1</b> Arbre syntaxique</a></li>
-<li class="chapter" data-level="9.4.2" data-path="annot.html"><a href="annot.html#vers-des-application-plus-générale"><i class="fa fa-check"></i><b>9.4.2</b> Vers des application plus générale</a></li>
-</ul></li>
-<li class="chapter" data-level="9.5" data-path="annot.html"><a href="annot.html#reconnaissance-dentités-nommées"><i class="fa fa-check"></i><b>9.5</b> reconnaissance d’entités nommées</a></li>
-<li class="chapter" data-level="9.6" data-path="annot.html"><a href="annot.html#co-reférence"><i class="fa fa-check"></i><b>9.6</b> co-reférence</a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html"><i class="fa fa-check"></i><b>10</b> Analyse du sentiment</a><ul>
-<li class="chapter" data-level="10.1" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#un-exemple-avec-syuzhet"><i class="fa fa-check"></i><b>10.1</b> Un exemple avec syuzhet</a><ul>
-<li class="chapter" data-level="10.1.1" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#valence-et-expression"><i class="fa fa-check"></i><b>10.1.1</b> Valence et expression</a></li>
-</ul></li>
-<li class="chapter" data-level="10.2" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#la-généralisation-par-le-liwc"><i class="fa fa-check"></i><b>10.2</b> La généralisation par le Liwc</a></li>
-<li class="chapter" data-level="10.3" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#encore-dautres-généralisations"><i class="fa fa-check"></i><b>10.3</b> Encore d’autres généralisations</a></li>
-<li class="chapter" data-level="10.4" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#construire-son-propre-dictionnaire"><i class="fa fa-check"></i><b>10.4</b> construire son propre dictionnaire</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="topic-analysis.html"><a href="topic-analysis.html"><i class="fa fa-check"></i><b>11</b> Topic Analysis</a><ul>
-<li class="chapter" data-level="11.1" data-path="topic-analysis.html"><a href="topic-analysis.html#lda"><i class="fa fa-check"></i><b>11.1</b> LDA</a><ul>
-<li class="chapter" data-level="11.1.1" data-path="topic-analysis.html"><a href="topic-analysis.html#le-modèle-original-de-blei"><i class="fa fa-check"></i><b>11.1.1</b> Le modèle original de Blei</a></li>
-<li class="chapter" data-level="11.1.2" data-path="topic-analysis.html"><a href="topic-analysis.html#une-application-aux-commentaires-trip-advisor"><i class="fa fa-check"></i><b>11.1.2</b> Une application aux commentaires trip advisor</a></li>
-<li class="chapter" data-level="11.1.3" data-path="topic-analysis.html"><a href="topic-analysis.html#la-determination-du-nombre-optimal-de-topics"><i class="fa fa-check"></i><b>11.1.3</b> la determination du nombre optimal de topics</a></li>
-</ul></li>
-<li class="chapter" data-level="11.2" data-path="topic-analysis.html"><a href="topic-analysis.html#stm"><i class="fa fa-check"></i><b>11.2</b> STM</a></li>
-<li class="chapter" data-level="11.3" data-path="topic-analysis.html"><a href="topic-analysis.html#implementation-avec-wor2vec-regarder-la-place-de-la-vectorisation"><i class="fa fa-check"></i><b>11.3</b> Implementation avec wor2vec ( regarder la place de la vectorisation)</a><ul>
-<li class="chapter" data-level="11.3.1" data-path="topic-analysis.html"><a href="topic-analysis.html#représentation-graphique"><i class="fa fa-check"></i><b>11.3.1</b> Représentation graphique</a></li>
+<li class="chapter" data-level="6.4" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-sources"><i class="fa fa-check"></i><b>6.4</b> Identifier les sources</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-la-langue"><i class="fa fa-check"></i><b>6.4.1</b> Identifier la langue</a></li>
+<li class="chapter" data-level="6.4.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-plagiats-et-réutilisations"><i class="fa fa-check"></i><b>6.4.2</b> Identifier les plagiats et réutilisations</a></li>
+<li class="chapter" data-level="6.4.3" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-fakes"><i class="fa fa-check"></i><b>6.4.3</b> Identifier les fakes</a></li>
+<li class="chapter" data-level="6.4.4" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-trolls"><i class="fa fa-check"></i><b>6.4.4</b> Identifier les trolls</a></li>
+<li class="chapter" data-level="6.4.5" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-bots"><i class="fa fa-check"></i><b>6.4.5</b> Identifier les bots</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html"><i class="fa fa-check"></i><b>12</b> Machine learning supervisé et NLP</a><ul>
-<li class="chapter" data-level="12.1" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#le-principe-et-ses-applications"><i class="fa fa-check"></i><b>12.1</b> Le principe et ses applications</a></li>
-<li class="chapter" data-level="12.2" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#une-première-application"><i class="fa fa-check"></i><b>12.2</b> Une première application</a><ul>
-<li class="chapter" data-level="12.2.1" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#constituer-le-dataset"><i class="fa fa-check"></i><b>12.2.1</b> Constituer le dataset</a></li>
-<li class="chapter" data-level="12.2.2" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#on-va-nettoyer-le-texte"><i class="fa fa-check"></i><b>12.2.2</b> On va nettoyer le texte</a></li>
-<li class="chapter" data-level="12.2.3" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#caret-sur-la-scène"><i class="fa fa-check"></i><b>12.2.3</b> caret sur la scène</a></li>
-<li class="chapter" data-level="12.2.4" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#un-modèle-naive-bayes"><i class="fa fa-check"></i><b>12.2.4</b> Un modèle naive bayes</a></li>
+<li class="chapter" data-level="7" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html"><i class="fa fa-check"></i><b>7</b> Une première analyse quantitative</a><ul>
+<li class="chapter" data-level="7.1" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#comptons-les-mots"><i class="fa fa-check"></i><b>7.1</b> Comptons les mots</a></li>
+<li class="chapter" data-level="7.2" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#la-production-dans-le-temps"><i class="fa fa-check"></i><b>7.2</b> la production dans le temps</a></li>
+<li class="chapter" data-level="7.3" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#lisibilité-et-complexité-lexicale"><i class="fa fa-check"></i><b>7.3</b> Lisibilité et complexité lexicale</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#les-indices-de-lisibilité"><i class="fa fa-check"></i><b>7.3.1</b> Les indices de lisibilité</a></li>
+<li class="chapter" data-level="7.3.2" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#les-indices-de-complexité-lexicale"><i class="fa fa-check"></i><b>7.3.2</b> Les indices de complexité lexicale</a></li>
 </ul></li>
-<li class="chapter" data-level="12.3" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#passons-à-un-réseau-de-neurones-et-un-rf"><i class="fa fa-check"></i><b>12.3</b> Passons à un réseau de neurones et un RF</a><ul>
-<li class="chapter" data-level="12.3.1" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#neuralnetwook"><i class="fa fa-check"></i><b>12.3.1</b> neuralnetwook</a></li>
-<li class="chapter" data-level="12.3.2" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#multilayer"><i class="fa fa-check"></i><b>12.3.2</b> multilayer</a></li>
+<li class="chapter" data-level="7.4" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#comptons-les-mots-1"><i class="fa fa-check"></i><b>7.4</b> Comptons les mots</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#les-nuages-de-mots"><i class="fa fa-check"></i><b>7.4.1</b> Les nuages de mots</a></li>
+<li class="chapter" data-level="7.4.2" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#des-lollyplots"><i class="fa fa-check"></i><b>7.4.2</b> Des lollyplots</a></li>
+<li class="chapter" data-level="7.4.3" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#la-mesure-de-la-concentration-des-termes"><i class="fa fa-check"></i><b>7.4.3</b> La mesure de la concentration des termes</a></li>
 </ul></li>
-<li class="chapter" data-level="12.4" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#comparons-les-modèles"><i class="fa fa-check"></i><b>12.4</b> Comparons les modèles</a><ul>
-<li class="chapter" data-level="12.4.1" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#une-analyse-plus-précise-de-la-performance"><i class="fa fa-check"></i><b>12.4.1</b> Une analyse plus précise de la performance</a></li>
 </ul></li>
-<li class="chapter" data-level="12.5" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#mais-il-faut-expliquer"><i class="fa fa-check"></i><b>12.5</b> Mais il faut expliquer</a></li>
-<li class="chapter" data-level="12.6" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#pour-finir-un-exercice-de-fine-tuning"><i class="fa fa-check"></i><b>12.6</b> Pour finir un exercice de fine tuning</a></li>
+<li class="chapter" data-level="8" data-path="le-cas-de-sources-multiples.html"><a href="le-cas-de-sources-multiples.html"><i class="fa fa-check"></i><b>8</b> Le cas de sources multiples</a><ul>
+<li class="chapter" data-level="8.0.1" data-path="le-cas-de-sources-multiples.html"><a href="le-cas-de-sources-multiples.html#mesure-de-la-concentration"><i class="fa fa-check"></i><b>8.0.1</b> Mesure de la concentration</a></li>
+<li class="chapter" data-level="8.0.2" data-path="le-cas-de-sources-multiples.html"><a href="le-cas-de-sources-multiples.html#ou-par-segmentation"><i class="fa fa-check"></i><b>8.0.2</b> ou par segmentation</a></li>
+<li class="chapter" data-level="8.1" data-path="le-cas-de-sources-multiples.html"><a href="le-cas-de-sources-multiples.html#conclusion-2"><i class="fa fa-check"></i><b>8.1</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html"><i class="fa fa-check"></i><b>13</b> Annexes : quelques problèmes très techniques</a><ul>
-<li class="chapter" data-level="13.1" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#la-question-de-lencodage"><i class="fa fa-check"></i><b>13.1</b> La question de l’encodage</a></li>
-<li class="chapter" data-level="13.2" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#jouer-avec-les-formats-de-données"><i class="fa fa-check"></i><b>13.2</b> Jouer avec les formats de données</a><ul>
-<li class="chapter" data-level="13.2.1" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#des-formats-exotiques"><i class="fa fa-check"></i><b>13.2.1</b> des formats exotiques</a></li>
+<li class="chapter" data-level="9" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html"><i class="fa fa-check"></i><b>9</b> Analyse du sentiment</a><ul>
+<li class="chapter" data-level="9.1" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#un-exemple-avec-syuzhet"><i class="fa fa-check"></i><b>9.1</b> Un exemple avec syuzhet</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#valence-et-expression"><i class="fa fa-check"></i><b>9.1.1</b> Valence et expression</a></li>
 </ul></li>
-<li class="chapter" data-level="13.3" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#adopter-des-formats-propres-tidy"><i class="fa fa-check"></i><b>13.3</b> Adopter des formats “propres” (tidy)</a></li>
-<li class="chapter" data-level="13.4" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#les-limites-du-calcul"><i class="fa fa-check"></i><b>13.4</b> Les limites du calcul</a></li>
+<li class="chapter" data-level="9.2" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#la-généralisation-par-le-liwc"><i class="fa fa-check"></i><b>9.2</b> La généralisation par le Liwc</a></li>
+<li class="chapter" data-level="9.3" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#encore-dautres-généralisations"><i class="fa fa-check"></i><b>9.3</b> Encore d’autres généralisations</a></li>
+<li class="chapter" data-level="9.4" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#construire-son-propre-dictionnaire"><i class="fa fa-check"></i><b>9.4</b> construire son propre dictionnaire</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="token.html"><a href="token.html"><i class="fa fa-check"></i><b>10</b> Tokenisation</a><ul>
+<li class="chapter" data-level="10.1" data-path="token.html"><a href="token.html#objectifs-du-chapitre"><i class="fa fa-check"></i><b>10.1</b> <em>Objectifs du chapitre</em></a></li>
+<li class="chapter" data-level="10.2" data-path="token.html"><a href="token.html#les-outils"><i class="fa fa-check"></i><b>10.2</b> Les outils</a></li>
+<li class="chapter" data-level="10.3" data-path="token.html"><a href="token.html#introduction"><i class="fa fa-check"></i><b>10.3</b> Introduction</a></li>
+<li class="chapter" data-level="10.4" data-path="token.html"><a href="token.html#tokeniser-un-corpus"><i class="fa fa-check"></i><b>10.4</b> Tokeniser un corpus</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="token.html"><a href="token.html#les-lettres"><i class="fa fa-check"></i><b>10.4.1</b> Les lettres</a></li>
+<li class="chapter" data-level="10.4.2" data-path="token.html"><a href="token.html#les-mots"><i class="fa fa-check"></i><b>10.4.2</b> Les mots</a></li>
+<li class="chapter" data-level="10.4.3" data-path="token.html"><a href="token.html#les-phrases"><i class="fa fa-check"></i><b>10.4.3</b> Les phrases</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="token.html"><a href="token.html#n-grammes"><i class="fa fa-check"></i><b>10.5</b> N-grammes</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="token.html"><a href="token.html#propriétés-statistiques-des-n-grammes"><i class="fa fa-check"></i><b>10.5.1</b> Propriétés statistiques des n-grammes</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="token.html"><a href="token.html#choisir-des-n-grammes-pertinents"><i class="fa fa-check"></i><b>10.6</b> Choisir des n-grammes pertinents</a><ul>
+<li class="chapter" data-level="10.6.1" data-path="token.html"><a href="token.html#créer-les-tokens-avec-quanteda"><i class="fa fa-check"></i><b>10.6.1</b> Créer les <em>tokens</em> avec ‘quanteda’</a></li>
+<li class="chapter" data-level="10.6.2" data-path="token.html"><a href="token.html#identifier-les-noms-propres"><i class="fa fa-check"></i><b>10.6.2</b> Identifier les noms propres</a></li>
+<li class="chapter" data-level="10.6.3" data-path="token.html"><a href="token.html#composer-des-tokens-à-partir-dexpressions-multi-mots"><i class="fa fa-check"></i><b>10.6.3</b> Composer des <em>tokens</em> à partir d’expressions multi-mots</a></li>
+<li class="chapter" data-level="10.6.4" data-path="token.html"><a href="token.html#identifier-les-autres-concepts"><i class="fa fa-check"></i><b>10.6.4</b> Identifier les autres concepts</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="token.html"><a href="token.html#conclusion-3"><i class="fa fa-check"></i><b>10.7</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html"><i class="fa fa-check"></i><b>11</b> Annotations lexicales et syntaxiques</a><ul>
+<li class="chapter" data-level="11.1" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#stemmatisation-lemmatisation-et-synonymisation"><i class="fa fa-check"></i><b>11.1</b> Stemmatisation, lemmatisation et synonymisation</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#la-stemmatisation-et-la-lemmatisation"><i class="fa fa-check"></i><b>11.1.1</b> la stemmatisation et la lemmatisation</a></li>
+<li class="chapter" data-level="11.1.2" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#synonymisation"><i class="fa fa-check"></i><b>11.1.2</b> Synonymisation</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#part-of-speech-pos"><i class="fa fa-check"></i><b>11.2</b> Part of Speech (POS)</a></li>
+<li class="chapter" data-level="11.3" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#dépendances-syntaxiques"><i class="fa fa-check"></i><b>11.3</b> Dépendances syntaxiques</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#arbre-syntaxique"><i class="fa fa-check"></i><b>11.3.1</b> Arbre syntaxique</a></li>
+<li class="chapter" data-level="11.3.2" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#vers-des-application-plus-générale"><i class="fa fa-check"></i><b>11.3.2</b> Vers des application plus générale</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#reconnaissance-dentités-nommées"><i class="fa fa-check"></i><b>11.4</b> reconnaissance d’entités nommées</a></li>
+<li class="chapter" data-level="11.5" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#co-reférence"><i class="fa fa-check"></i><b>11.5</b> co-reférence</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="gestion-des-données-textuelles.html"><a href="gestion-des-données-textuelles.html"><i class="fa fa-check"></i><b>12</b> Gestion des données textuelles</a><ul>
+<li class="chapter" data-level="12.1" data-path="gestion-des-données-textuelles.html"><a href="gestion-des-données-textuelles.html#jouer-avec-les-tokens"><i class="fa fa-check"></i><b>12.1</b> Jouer avec les tokens</a></li>
+<li class="chapter" data-level="12.2" data-path="gestion-des-données-textuelles.html"><a href="gestion-des-données-textuelles.html#les-dtm"><i class="fa fa-check"></i><b>12.2</b> Les DTM</a><ul>
+<li class="chapter" data-level="12.2.1" data-path="gestion-des-données-textuelles.html"><a href="gestion-des-données-textuelles.html#codage"><i class="fa fa-check"></i><b>12.2.1</b> codage</a></li>
+<li class="chapter" data-level="12.2.2" data-path="gestion-des-données-textuelles.html"><a href="gestion-des-données-textuelles.html#tf---idf"><i class="fa fa-check"></i><b>12.2.2</b> TF - IDF</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="gestion-des-données-textuelles.html"><a href="gestion-des-données-textuelles.html#les-ctm"><i class="fa fa-check"></i><b>12.3</b> Les ctm</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="gestion-des-données-textuelles.html"><a href="gestion-des-données-textuelles.html#cooccurence"><i class="fa fa-check"></i><b>12.3.1</b> cooccurence</a></li>
+<li class="chapter" data-level="12.3.2" data-path="gestion-des-données-textuelles.html"><a href="gestion-des-données-textuelles.html#une-application-à-lanalyse-des-similarités"><i class="fa fa-check"></i><b>12.3.2</b> une application à l’analyse des similarités</a></li>
+<li class="chapter" data-level="12.3.3" data-path="gestion-des-données-textuelles.html"><a href="gestion-des-données-textuelles.html#une-application-au-clustering"><i class="fa fa-check"></i><b>12.3.3</b> une application au clustering</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html"><i class="fa fa-check"></i><b>13</b> Réseaux sémantiques</a><ul>
+<li class="chapter" data-level="13.1" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#des-analyses-de-proximités"><i class="fa fa-check"></i><b>13.1</b> Des analyses de proximités</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#les-classiques"><i class="fa fa-check"></i><b>13.1.1</b> les classiques</a></li>
+<li class="chapter" data-level="13.1.2" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#modèles-de-force"><i class="fa fa-check"></i><b>13.1.2</b> modèles de force</a></li>
+<li class="chapter" data-level="13.1.3" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#tsne"><i class="fa fa-check"></i><b>13.1.3</b> tsne</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#igraph-et-les-cartes-sémantiques"><i class="fa fa-check"></i><b>13.2</b> igraph et les cartes sémantiques</a><ul>
+<li class="chapter" data-level="13.2.1" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#gérer-les-liens"><i class="fa fa-check"></i><b>13.2.1</b> gérer les liens</a></li>
+<li class="chapter" data-level="13.2.2" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#gérer-les-noeuds"><i class="fa fa-check"></i><b>13.2.2</b> gérer les noeuds</a></li>
+<li class="chapter" data-level="13.2.3" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#gérer-les-labels"><i class="fa fa-check"></i><b>13.2.3</b> gérer les labels</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#propriétés-des-graphes-et-détection-de-communauté"><i class="fa fa-check"></i><b>13.3</b> propriétés des graphes et détection de communauté</a></li>
+<li class="chapter" data-level="13.4" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#la-question-du-temps"><i class="fa fa-check"></i><b>13.4</b> la question du temps</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html"><i class="fa fa-check"></i><b>14</b> Vectorisation du corpus</a><ul>
+<li class="chapter" data-level="14.1" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#word2vec"><i class="fa fa-check"></i><b>14.1</b> Word2vec</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#vectorisation-pipe"><i class="fa fa-check"></i><b>14.1.1</b> vectorisation pipe</a></li>
+<li class="chapter" data-level="14.1.2" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#closest2"><i class="fa fa-check"></i><b>14.1.2</b> closest2</a></li>
+<li class="chapter" data-level="14.1.3" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#map-with-tsne"><i class="fa fa-check"></i><b>14.1.3</b> map with tsne</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#paragraph2vec"><i class="fa fa-check"></i><b>14.2</b> paragraph2vec</a></li>
+<li class="chapter" data-level="14.3" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#lavenir-des-modèles-pré-entrainés"><i class="fa fa-check"></i><b>14.3</b> l’avenir des modèles pré-entrainés</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="topic-analysis.html"><a href="topic-analysis.html"><i class="fa fa-check"></i><b>15</b> Topic Analysis</a><ul>
+<li class="chapter" data-level="15.1" data-path="topic-analysis.html"><a href="topic-analysis.html#lda"><i class="fa fa-check"></i><b>15.1</b> LDA</a><ul>
+<li class="chapter" data-level="15.1.1" data-path="topic-analysis.html"><a href="topic-analysis.html#le-modèle-original-de-blei"><i class="fa fa-check"></i><b>15.1.1</b> Le modèle original de Blei</a></li>
+<li class="chapter" data-level="15.1.2" data-path="topic-analysis.html"><a href="topic-analysis.html#une-application-aux-commentaires-trip-advisor"><i class="fa fa-check"></i><b>15.1.2</b> Une application aux commentaires trip advisor</a></li>
+<li class="chapter" data-level="15.1.3" data-path="topic-analysis.html"><a href="topic-analysis.html#la-determination-du-nombre-optimal-de-topics"><i class="fa fa-check"></i><b>15.1.3</b> la determination du nombre optimal de topics</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="topic-analysis.html"><a href="topic-analysis.html#stm"><i class="fa fa-check"></i><b>15.2</b> STM</a></li>
+<li class="chapter" data-level="15.3" data-path="topic-analysis.html"><a href="topic-analysis.html#implementation-avec-wor2vec-regarder-la-place-de-la-vectorisation"><i class="fa fa-check"></i><b>15.3</b> Implementation avec wor2vec ( regarder la place de la vectorisation)</a><ul>
+<li class="chapter" data-level="15.3.1" data-path="topic-analysis.html"><a href="topic-analysis.html#représentation-graphique"><i class="fa fa-check"></i><b>15.3.1</b> Représentation graphique</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html"><i class="fa fa-check"></i><b>16</b> Machine learning supervisé et NLP</a><ul>
+<li class="chapter" data-level="16.1" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#le-principe-et-ses-applications"><i class="fa fa-check"></i><b>16.1</b> Le principe et ses applications</a></li>
+<li class="chapter" data-level="16.2" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#une-première-application"><i class="fa fa-check"></i><b>16.2</b> Une première application</a><ul>
+<li class="chapter" data-level="16.2.1" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#constituer-le-dataset"><i class="fa fa-check"></i><b>16.2.1</b> Constituer le dataset</a></li>
+<li class="chapter" data-level="16.2.2" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#on-va-nettoyer-le-texte"><i class="fa fa-check"></i><b>16.2.2</b> On va nettoyer le texte</a></li>
+<li class="chapter" data-level="16.2.3" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#caret-sur-la-scène"><i class="fa fa-check"></i><b>16.2.3</b> caret sur la scène</a></li>
+<li class="chapter" data-level="16.2.4" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#un-modèle-naive-bayes"><i class="fa fa-check"></i><b>16.2.4</b> Un modèle naive bayes</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#passons-à-un-réseau-de-neurones-et-un-rf"><i class="fa fa-check"></i><b>16.3</b> Passons à un réseau de neurones et un RF</a><ul>
+<li class="chapter" data-level="16.3.1" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#neuralnetwook"><i class="fa fa-check"></i><b>16.3.1</b> neuralnetwook</a></li>
+<li class="chapter" data-level="16.3.2" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#multilayer"><i class="fa fa-check"></i><b>16.3.2</b> multilayer</a></li>
+</ul></li>
+<li class="chapter" data-level="16.4" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#comparons-les-modèles"><i class="fa fa-check"></i><b>16.4</b> Comparons les modèles</a><ul>
+<li class="chapter" data-level="16.4.1" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#une-analyse-plus-précise-de-la-performance"><i class="fa fa-check"></i><b>16.4.1</b> Une analyse plus précise de la performance</a></li>
+</ul></li>
+<li class="chapter" data-level="16.5" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#mais-il-faut-expliquer"><i class="fa fa-check"></i><b>16.5</b> Mais il faut expliquer</a></li>
+<li class="chapter" data-level="16.6" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#pour-finir-un-exercice-de-fine-tuning"><i class="fa fa-check"></i><b>16.6</b> Pour finir un exercice de fine tuning</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html"><i class="fa fa-check"></i><b>17</b> Annexes : quelques problèmes très techniques</a><ul>
+<li class="chapter" data-level="17.1" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#la-question-de-lencodage"><i class="fa fa-check"></i><b>17.1</b> La question de l’encodage</a></li>
+<li class="chapter" data-level="17.2" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#jouer-avec-les-formats-de-données"><i class="fa fa-check"></i><b>17.2</b> Jouer avec les formats de données</a><ul>
+<li class="chapter" data-level="17.2.1" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#des-formats-exotiques"><i class="fa fa-check"></i><b>17.2.1</b> des formats exotiques</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#adopter-des-formats-propres-tidy"><i class="fa fa-check"></i><b>17.3</b> Adopter des formats “propres” (tidy)</a></li>
+<li class="chapter" data-level="17.4" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#les-limites-du-calcul"><i class="fa fa-check"></i><b>17.4</b> Les limites du calcul</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -345,13 +384,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="une-première-analyse-quantitative" class="section level1">
-<h1><span class="header-section-number">Chapitre 6</span> Une première analyse quantitative</h1>
+<h1><span class="header-section-number">Chapitre 7</span> Une première analyse quantitative</h1>
 <p>Une première manière d’aborder un texte ou un corpus est volumétrique. Quel volume de texte? Quelle longueur ? Combien de mots ? quelles variations? A cette fin on utilise le cas des tweets de Donald Trump. Des premiers aux derniers, jusqu’au moment de son banissement en Janvier 2021, après sa défaite aux élections présidentielles. Chargeons le fichier de données.</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1">df &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;./data/TrumpTwitterArchive01-08-2021.csv&quot;</span>)</a>
 <a class="sourceLine" id="cb34-2" title="2">nrow&lt;-<span class="kw">nrow</span>(df) <span class="co">#nombre de ligne</span></a>
 <a class="sourceLine" id="cb34-3" title="3">ncol&lt;-<span class="kw">ncol</span>(df) <span class="co">#nombre de colonne</span></a></code></pre></div>
 <div id="comptons-les-mots" class="section level2">
-<h2><span class="header-section-number">6.1</span> Comptons les mots</h2>
+<h2><span class="header-section-number">7.1</span> Comptons les mots</h2>
 <p>Il y 56571 tweets et 9 variables. On peut vouloir compter le nombre de mots. A cette fin on emploie une fonction de stringr : <code>str_count</code>. (On reviendra sur la question de la manipulation des chaines de caractères dans un chapitre ad hoc)</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1">df<span class="op">$</span>nb_mots&lt;-<span class="kw">str_count</span>(df<span class="op">$</span>text, <span class="st">&quot; &quot;</span>)<span class="op">+</span><span class="dv">1</span> <span class="co"># l&#39;astuce : compter les espaces et ajouter 1, pour compter les mots</span></a>
 <a class="sourceLine" id="cb35-2" title="2">sum_mots&lt;-<span class="kw">sum</span>(df<span class="op">$</span>nb_mots)             <span class="co">#ON COMPTE LE NOMBRE DE MOTS</span></a>
@@ -361,7 +400,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:1"></span>
 <img src="bookdown-demo_files/figure-html/1-1.png" alt="Distribution du nombre de mots par post" width="80%" />
 <p class="caption">
-Figure 6.1: Distribution du nombre de mots par post
+Figure 7.1: Distribution du nombre de mots par post
 </p>
 </div>
 <p>La bimodalité provient surement du changement de taille maximum effectué en septembre 2017, le passage de 180 caractères max à 280. On peut le vérifier en examinant cette même distribution - par les courbes de densité - pour chacune des années, avec cette technique rendue fameuse par la pochette de l’album de Joy Division : un graphique en crêtes (ridges plot) avec <a href="https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html">ggridges</a>.</p>
@@ -379,12 +418,12 @@ Figure 6.1: Distribution du nombre de mots par post
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:2"></span>
 <img src="bookdown-demo_files/figure-html/2-1.png" alt=" Evolution de la distribution du nombre de mots" width="80%" />
 <p class="caption">
-Figure 6.2:  Evolution de la distribution du nombre de mots
+Figure 7.2:  Evolution de la distribution du nombre de mots
 </p>
 </div>
 </div>
 <div id="la-production-dans-le-temps" class="section level2">
-<h2><span class="header-section-number">6.2</span> la production dans le temps</h2>
+<h2><span class="header-section-number">7.2</span> la production dans le temps</h2>
 <p>Concluons en examinant le nombre de tweets produit au cours du temps.</p>
 <p>La fonction <code>ts_plot</code> employée viens de <code>rtweet</code> que nous avons employée au chapitre 2. Elle emploie ggplot, et permet de représenter les évolutions selon différentes échelles de temps. On se rapplera qu’après une carrrière immobilière menée dans les casinos, le golf et les hôtels, l’appétit médiatique de trump s’est réalisé dans the apprenctice, de 2004 à 2015. C’est un pro de la TV, il a une formation de popstar. Il sera élu en Décembre 2016 pour prendre le pouvoir en Janvier.</p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1"><span class="co">## plot time series of tweets</span></a>
@@ -395,17 +434,17 @@ Figure 6.2:  Evolution de la distribution du nombre de mots
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:3"></span>
 <img src="bookdown-demo_files/figure-html/3-1.png" alt="Evolution de la production mensuelle des tweets de Trump" width="80%" />
 <p class="caption">
-Figure 6.3: Evolution de la production mensuelle des tweets de Trump
+Figure 7.3: Evolution de la production mensuelle des tweets de Trump
 </p>
 </div>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1"><span class="co">#raf : labeliser avec les dates clés</span></a></code></pre></div>
 </div>
 <div id="lisibilité-et-complexité-lexicale" class="section level2">
-<h2><span class="header-section-number">6.3</span> Lisibilité et complexité lexicale</h2>
+<h2><span class="header-section-number">7.3</span> Lisibilité et complexité lexicale</h2>
 <p>Pour aller un peu plus loin - nous savons désormais que trump aime une forme courte en 21 mots, et que son expérience de twtitter est longue, on peut s’intéresser à des paramètres clés relatifs aux conditions de la reception: les textes sont-ils aisés à lire ? sont-ils sophistiqués ?</p>
 <p>Introduisons deux quantifications utiles du texte : la lisibilité et la complexité lexicale. Ce sont des classiques, les critères initiaux de l’analyse quantitative du texte. Ils sont toujours utiles.</p>
 <div id="les-indices-de-lisibilité" class="section level3">
-<h3><span class="header-section-number">6.3.1</span> Les indices de lisibilité</h3>
+<h3><span class="header-section-number">7.3.1</span> Les indices de lisibilité</h3>
 <p>La lisibilité est une notion aussi ancienne que sa mesure (par exemple <span class="citation">Coleman and Liau (<a href="#ref-coleman_computer_1975" role="doc-biblioref">1975</a>)</span>). Elle répond à la question du degré de maitrise requis pour lire un texte en s’appyant sur les caractéristique objective du texte plutôt que sur sa perception. Il s’agissait donc d’évaluer la complexité d’un texte. Deux critères principaux sont généralement considérés : la complexité des mots capturée par le nombre moyen de syllabes par mot, et la complexité des phrases mesurée par le nombre de mots.</p>
 <p>Le nombre d’indicateurs est considérable et le package compagnon de quanteda , <a href="https://quanteda.io/reference/textstat_readability.html"><code>quanteda.textstats</code></a> , en fournit des dizaines. Dans l’exemple suivant, on se contente d’un grand classique, le plus ancien, l’indice de Flesch <span class="citation">(Flesch <a href="#ref-flesch_new_1948" role="doc-biblioref">1948</a>)</span> et de ses constituants: le nombre moyen de syllabes par mot et le nombre moyen de mots par phrase.</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1">foo&lt;-df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(isRetweet<span class="op">==</span><span class="ot">FALSE</span>) <span class="co"># on ne prend pas en compte les RT</span></a>
@@ -428,7 +467,7 @@ Figure 6.3: Evolution de la production mensuelle des tweets de Trump
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:404"></span>
 <img src="bookdown-demo_files/figure-html/404-1.png" alt="Evolution de la lisibilité moyenne des tweets de Trump" width="80%" />
 <p class="caption">
-Figure 6.4: Evolution de la lisibilité moyenne des tweets de Trump
+Figure 7.4: Evolution de la lisibilité moyenne des tweets de Trump
 </p>
 </div>
 <p>Pour aider le lecteur à donner un sens, voici l’abaque proposée par <a href="http://www.appstate.edu/~steelekm/classes/psy2664/Flesch.htm">Flesch</a> lui-même.</p>
@@ -448,7 +487,7 @@ Auto insurance policy 10</p>
 <p>Trump ne parait pas être sa caricature, non niveau de lisibilité correspond à la Licence. Reader’s Digest est beaucoup plus simple, il se situe au dessus de la Harvard Business Review !</p>
 </div>
 <div id="les-indices-de-complexité-lexicale" class="section level3">
-<h3><span class="header-section-number">6.3.2</span> Les indices de complexité lexicale</h3>
+<h3><span class="header-section-number">7.3.2</span> Les indices de complexité lexicale</h3>
 <p>La complexité lexicale rend compte de la diversité du vocabulaire, elle consiste à rapporter le nombre de mot uniques sur le nombre total de mots. La difficulté est que la taille des corpus joue fortement sur cette mesure et que lorsque cette taille est hétérogène, l’indicateur marque plus cette variété que les variations de complexité lexicale.<span class="citation">(Tweedie and Baayen <a href="#ref-tweedie_how_1998" role="doc-biblioref">1998</a>)</span></p>
 <p>Dans notre univers trumpesque, ce n’est pas trop sensible, d’autant plus que nous allons moyenner les tweets par période.Notons au passage que si nous moyennons la diversité lexicale de chaque tweet, une autre approche pourrait être de concatener l’ensemble des tweets d’une période (un jour, une semaine) pour approcher cette variable à une autre échelle, qui couvre l’ensemble des sujets d’intérêt de trump, que les tweets fractionnent nécessairement. Ce qui en en question dans la mise en pratique n’est pas seulement la question du choix de l’indice mais aussi la définition de l’unité de calcul. La diversité lexicale concerne sans doute plus le discours que la phrase.</p>
 <p>On poursuite avec quanteda <a href="https://quanteda.io/reference/textstat_lexdiv.html" class="uri">https://quanteda.io/reference/textstat_lexdiv.html</a></p>
@@ -484,7 +523,7 @@ M = \frac{log(n) - log(t)}{log² (n)}
 <a class="sourceLine" id="cb40-12" title="12">t2=<span class="kw">Sys.time</span>()</a>
 <a class="sourceLine" id="cb40-13" title="13">t&lt;-<span class="st"> </span>t2<span class="op">-</span>t1</a>
 <a class="sourceLine" id="cb40-14" title="14">t</a></code></pre></div>
-<pre><code>## Time difference of 6.187707 secs</code></pre>
+<pre><code>## Time difference of 6.085728 secs</code></pre>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1"><span class="co">#On combine les données et on aggrège sur l&#39;année</span></a>
 <a class="sourceLine" id="cb42-2" title="2">foo&lt;-<span class="kw">cbind</span>(foo,lexdiv[,<span class="dv">2</span><span class="op">:</span><span class="dv">3</span>])</a>
 <a class="sourceLine" id="cb42-3" title="3">foo1&lt;-foo <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -500,18 +539,18 @@ M = \frac{log(n) - log(t)}{log² (n)}
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:405"></span>
 <img src="bookdown-demo_files/figure-html/405-1.png" alt="Evolution de la diversité lexicale des tweets de Trump" width="80%" />
 <p class="caption">
-Figure 6.5: Evolution de la diversité lexicale des tweets de Trump
+Figure 7.5: Evolution de la diversité lexicale des tweets de Trump
 </p>
 </div>
 </div>
 </div>
 <div id="comptons-les-mots-1" class="section level2">
-<h2><span class="header-section-number">6.4</span> Comptons les mots</h2>
+<h2><span class="header-section-number">7.4</span> Comptons les mots</h2>
 <p>Il est temps de compter les mots, chacun d’entre eux, de se faire une idée une idée de leurs fréquences, de leur distribution.</p>
 <p>Souvent on éliminera ceux qui apparaissent de manière occasionnelle, mais aussi ceux qui apparaissent systématiquement dans tous les textes. Une fois ces deux filtrages effectués, le lexique est généralement de l’ordre de 500 à 10000 mots.</p>
 <p>Deux outils sont disponibles: les nuages de mots et les lollyplots. Les premiers donnent une idée immédiates, les seconds se prêtent mieux à une analyse systématique</p>
 <div id="les-nuages-de-mots" class="section level3">
-<h3><span class="header-section-number">6.4.1</span> Les nuages de mots</h3>
+<h3><span class="header-section-number">7.4.1</span> Les nuages de mots</h3>
 <p>Ils sont devenus extrêmement populaires même si l’effet esthétique est plus important que leur utilité analytique.</p>
 <p><a href="https://cran.r-project.org/web/packages/ggwordcloud/vignettes/ggwordcloud.html"><code>ggwordcloud</code></a></p>
 <p>Pour l’application on prépare les données avec quanteda : on tokenise et on construit le dfm ( pour le détail voir chapitre tokenization), ce qui nous permets notamment d’éliminer la ponctuation et les mots courants (articles, déterminant etc) qui apportent peu de signification.</p>
@@ -558,7 +597,7 @@ Figure 6.5: Evolution de la diversité lexicale des tweets de Trump
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:406"></span>
 <img src="bookdown-demo_files/figure-html/406-1.png" alt="Nuage de mots - Trump 2016, 2018, 2020" width="80%" />
 <p class="caption">
-Figure 6.6: Nuage de mots - Trump 2016, 2018, 2020
+Figure 7.6: Nuage de mots - Trump 2016, 2018, 2020
 </p>
 </div>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1"><span class="kw">ggsave</span>(<span class="st">&quot;./Images/g0.jpg&quot;</span>, <span class="dt">plot=</span><span class="kw">last_plot</span>(), <span class="dt">width =</span> <span class="dv">27</span>, <span class="dt">height =</span> <span class="dv">19</span>, <span class="dt">units =</span> <span class="st">&quot;cm&quot;</span>)</a></code></pre></div>
@@ -579,18 +618,18 @@ Figure 6.6: Nuage de mots - Trump 2016, 2018, 2020
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:407"></span>
 <img src="bookdown-demo_files/figure-html/407-1.png" alt="Nuage de mots - Trump 2016, 2018, 2020" width="80%" />
 <p class="caption">
-Figure 6.7: Nuage de mots - Trump 2016, 2018, 2020
+Figure 7.7: Nuage de mots - Trump 2016, 2018, 2020
 </p>
 </div>
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1"><span class="kw">ggsave</span>(<span class="st">&quot;./Images/g1.jpg&quot;</span>, <span class="dt">plot=</span><span class="kw">last_plot</span>(), <span class="dt">width =</span> <span class="dv">27</span>, <span class="dt">height =</span> <span class="dv">19</span>, <span class="dt">units =</span> <span class="st">&quot;cm&quot;</span>)</a></code></pre></div>
 </div>
 <div id="des-lollyplots" class="section level3">
-<h3><span class="header-section-number">6.4.2</span> Des lollyplots</h3>
+<h3><span class="header-section-number">7.4.2</span> Des lollyplots</h3>
 <p>Plus utile sont des diagrammes d’un format loliplot qui quantifie de manière plus précise la fréquence des termes.</p>
 <p>la notion de densité, quelle échelle?</p>
 </div>
 <div id="la-mesure-de-la-concentration-des-termes" class="section level3">
-<h3><span class="header-section-number">6.4.3</span> La mesure de la concentration des termes</h3>
+<h3><span class="header-section-number">7.4.3</span> La mesure de la concentration des termes</h3>
 <p><a href="https://www.tidytextmining.com/tfidf.html" class="uri">https://www.tidytextmining.com/tfidf.html</a></p>
 <p>Le langage d’un point de vue quantitatif a été caractérisé depuis bien longtemps et zipf est un des premier à avoir proposé la loi de distribution qui porte son nom mais aussi celle de mandelbrot qui en a proposé un affinement.</p>
 <p>Celle-ci s’exprime de la manière suivante : si on classe les termes par ordre de fréquence r</p>
@@ -617,7 +656,7 @@ En examinant avec plus de détail il y a 5 élément d’information : a ) le tr
 <div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1">n_w&lt;-<span class="kw">dim</span>(freq)</a>
 <a class="sourceLine" id="cb51-2" title="2"><span class="co">#ft&lt;-flextable(head(freq)) ## pb affichage</span></a>
 <a class="sourceLine" id="cb51-3" title="3">ft</a></code></pre></div>
-<template id="03b511de-9e93-43d3-a010-c6d9c7a2577c"><style>
+<template id="c2343740-7b9f-4d37-8bbf-e5bba7623459"><style>
 .tabwid table{
   border-collapse:collapse;
   line-height:1;
@@ -651,12 +690,12 @@ En examinant avec plus de détail il y a 5 élément d’information : a ) le tr
 .tabwid table tr {
 background-color: transparent;
 }
-</style><div class="tabwid"><style>.cl-3cf158d6{border-collapse:collapse;}.cl-3ce74d8c{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-3ce7747e{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-3ce7747f{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-3ce7c276{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3ce7c277{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3ce7c278{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3ce7c279{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3ce7c27a{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-3ce7c27b{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-3cf158d6'>
-<thead><tr style="overflow-wrap:break-word;"><td class="cl-3ce7c27a"><p class="cl-3ce7747e"><span class="cl-3ce74d8c">feature</span></p></td><td class="cl-3ce7c27b"><p class="cl-3ce7747f"><span class="cl-3ce74d8c">frequency</span></p></td><td class="cl-3ce7c27b"><p class="cl-3ce7747f"><span class="cl-3ce74d8c">rank</span></p></td><td class="cl-3ce7c27b"><p class="cl-3ce7747f"><span class="cl-3ce74d8c">docfreq</span></p></td><td class="cl-3ce7c27a"><p class="cl-3ce7747e"><span class="cl-3ce74d8c">group</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-3ce7c277"><p class="cl-3ce7747e"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c277"><p class="cl-3ce7747e"><span class="cl-3ce74d8c"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3ce7c277"><p class="cl-3ce7747e"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c277"><p class="cl-3ce7747e"><span class="cl-3ce74d8c"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3ce7c277"><p class="cl-3ce7747e"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c277"><p class="cl-3ce7747e"><span class="cl-3ce74d8c"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3ce7c277"><p class="cl-3ce7747e"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c277"><p class="cl-3ce7747e"><span class="cl-3ce74d8c"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3ce7c277"><p class="cl-3ce7747e"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c277"><p class="cl-3ce7747e"><span class="cl-3ce74d8c"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3ce7c277"><p class="cl-3ce7747e"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c277"><p class="cl-3ce7747e"><span class="cl-3ce74d8c"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3ce7c277"><p class="cl-3ce7747e"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c277"><p class="cl-3ce7747e"><span class="cl-3ce74d8c"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3ce7c277"><p class="cl-3ce7747e"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c277"><p class="cl-3ce7747e"><span class="cl-3ce74d8c"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3ce7c277"><p class="cl-3ce7747e"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c277"><p class="cl-3ce7747e"><span class="cl-3ce74d8c"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3ce7c277"><p class="cl-3ce7747e"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c277"><p class="cl-3ce7747e"><span class="cl-3ce74d8c"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3ce7c277"><p class="cl-3ce7747e"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c277"><p class="cl-3ce7747e"><span class="cl-3ce74d8c"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3ce7c277"><p class="cl-3ce7747e"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c277"><p class="cl-3ce7747e"><span class="cl-3ce74d8c"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3ce7c277"><p class="cl-3ce7747e"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c277"><p class="cl-3ce7747e"><span class="cl-3ce74d8c"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3ce7c277"><p class="cl-3ce7747e"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c276"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c277"><p class="cl-3ce7747e"><span class="cl-3ce74d8c"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-3ce7c278"><p class="cl-3ce7747e"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c279"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c279"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c279"><p class="cl-3ce7747f"><span class="cl-3ce74d8c"></span></p></td><td class="cl-3ce7c278"><p class="cl-3ce7747e"><span class="cl-3ce74d8c"></span></p></td></tr></tbody></table></div></template>
-<div class="flextable-shadow-host" id="fa0a7093-51b8-4775-912b-96d5d504f5a0"></div>
+</style><div class="tabwid"><style>.cl-151ce608{border-collapse:collapse;}.cl-15106b76{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-15106b77{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-15106b78{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-1510b964{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1510b965{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1510b966{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1510b967{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1510b968{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-1510b969{width:54pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-151ce608'>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-1510b968"><p class="cl-15106b77"><span class="cl-15106b76">feature</span></p></td><td class="cl-1510b969"><p class="cl-15106b78"><span class="cl-15106b76">frequency</span></p></td><td class="cl-1510b969"><p class="cl-15106b78"><span class="cl-15106b76">rank</span></p></td><td class="cl-1510b969"><p class="cl-15106b78"><span class="cl-15106b76">docfreq</span></p></td><td class="cl-1510b968"><p class="cl-15106b77"><span class="cl-15106b76">group</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-1510b965"><p class="cl-15106b77"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b965"><p class="cl-15106b77"><span class="cl-15106b76"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-1510b965"><p class="cl-15106b77"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b965"><p class="cl-15106b77"><span class="cl-15106b76"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-1510b965"><p class="cl-15106b77"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b965"><p class="cl-15106b77"><span class="cl-15106b76"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-1510b965"><p class="cl-15106b77"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b965"><p class="cl-15106b77"><span class="cl-15106b76"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-1510b965"><p class="cl-15106b77"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b965"><p class="cl-15106b77"><span class="cl-15106b76"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-1510b965"><p class="cl-15106b77"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b965"><p class="cl-15106b77"><span class="cl-15106b76"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-1510b965"><p class="cl-15106b77"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b965"><p class="cl-15106b77"><span class="cl-15106b76"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-1510b965"><p class="cl-15106b77"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b965"><p class="cl-15106b77"><span class="cl-15106b76"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-1510b965"><p class="cl-15106b77"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b965"><p class="cl-15106b77"><span class="cl-15106b76"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-1510b965"><p class="cl-15106b77"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b965"><p class="cl-15106b77"><span class="cl-15106b76"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-1510b965"><p class="cl-15106b77"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b965"><p class="cl-15106b77"><span class="cl-15106b76"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-1510b965"><p class="cl-15106b77"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b965"><p class="cl-15106b77"><span class="cl-15106b76"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-1510b965"><p class="cl-15106b77"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b965"><p class="cl-15106b77"><span class="cl-15106b76"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-1510b965"><p class="cl-15106b77"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b964"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b965"><p class="cl-15106b77"><span class="cl-15106b76"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-1510b966"><p class="cl-15106b77"><span class="cl-15106b76"></span></p></td><td class="cl-1510b967"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b967"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b967"><p class="cl-15106b78"><span class="cl-15106b76"></span></p></td><td class="cl-1510b966"><p class="cl-15106b77"><span class="cl-15106b76"></span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="0fc28280-dd48-4603-a1a3-f278199394b1"></div>
 <script>
-var dest = document.getElementById("fa0a7093-51b8-4775-912b-96d5d504f5a0");
-var template = document.getElementById("03b511de-9e93-43d3-a010-c6d9c7a2577c");
+var dest = document.getElementById("0fc28280-dd48-4603-a1a3-f278199394b1");
+var template = document.getElementById("c2343740-7b9f-4d37-8bbf-e5bba7623459");
 var caption = template.content.querySelector("caption");
 if(caption) {
   caption.style.cssText = "display:block;text-align:center;";
@@ -783,7 +822,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/04-Analyse-quantitative-du-corpus.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/06-Analyse-quantitative-du-corpus.Rmd",
 "text": "Edit"
 },
 "history": {

@@ -1,0 +1,43 @@
+# Réseaux sémantiques
+
+
+## Des analyses de proximités
+
+### les classiques
+
+le bon vieux mds
+
+
+### modèles de force
+
+des modèles inspirés par la physique ont démontré leur efficacité, ils consiste à attribuer à chaque objet une force attractive et une force repulsive. L'algo est iteratif et converge à une situation d'équilibre. 
+
+kk fr
+
+
+### tsne
+
+tsne est un nouvelle génération de représentation spatiale réduite, son asctuce est de considérer un espace réduit déformé par la masse de la concentration des objets représentés. 
+
+
+
+## igraph et les cartes sémantiques
+
+
+
+### gérer les liens
+
+### gérer les noeuds
+
+### gérer les labels
+
+
+## propriétés des graphes et détection de communauté
+
+## la question du temps
+
+
+ vers un graphisme dynamique
+ 
+ chercher quelques liens
+

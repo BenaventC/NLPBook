@@ -1,8 +1,10 @@
 # Analyse du sentiment
 
-liu ping est le fondateur de l'analyse du sentiment et dès 2012 en donne une synthèse complète [@liu_sentiment_2012] . Depuis des développement considérables ont été apportée par des méthodes de deep learning, et notamment les modèles transformer et renouvvelent consirablement le domaine. On restra ici à un niveau classique ou compositionnel.
+A vrai dire l'analyse du sentiment telle qu'on va la développer dans ce chapitre est une méthode d'annotation comme celle qu'on a examinée précèdemment. Son principe est simple : on compte la fréquence de mots qui appartiennent à un dictionnaire de réfrences. Les différentes méthodes dépendent de la constitution de ces dictionnaires. Dans certains cas on peut nuancer en prenant en compte les modificateurs (notamment les négation et double négation) qui pourront pondérer le sentiment primaire des mots.
 
-On travaillera sur un corpus d'avis trip advisor, sur la période avant co
+liu ping est le fondateur de l'analyse du sentiment et dès 2012 en donne une synthèse complète [@liu_sentiment_2012] . Depuis des développement considérables ont été apportée par des méthodes de deep learning, et notamment les modèles transformer qui renouvelent consirablement le domaine. 
+
+On restera ici à un niveau classique ou compositionnel et On travaillera sur un corpus d'avis trip advisor, sur la période avant covid. Un premier exemple se concentrera sur le comptage des termes positifs, négatifs et neutres. Dans un second on montre une généralisation avec le LIWC qui propose 80 catégories.
 
 ```{r 61, echo=TRUE}
 df<-readRDS("./data/AvisTripadvisor.rds")
