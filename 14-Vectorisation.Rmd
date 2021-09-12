@@ -1,23 +1,302 @@
 # Vectorisation du corpus
 
 
-## Word2vec
+C'est sans doute l'idée la plus novatrice que l'approche computationnelle du langage a apporté ces 10 dernières années. Le modèle word2vec de Mikolov(2013) en est une première version, d'autres ont apporté des amélioration comme le modèle Glove.
 
+L'idée fondamentale est qu'on peut représenter des mots dans un espace de grande dimension par des vecteurs. Ce qui importe c'est de conserver la relation entre mots dans cet espace. Deux mots très corrélés, au sens de leur cooccurences, doivent l'être avec la même intensité dans cet espace. Admettant que le cosinus de l'angle entre deux vecteurs est équivalent à leur corrélation, on comprend aisément que la vectorisation consiste à identifier un jeu de coordonnées, les paramètres des vecteurs mots, en connaissant les angles qu'is forment entre eux. 
 
+De manière imaginée, il s'agit de représenter le vocabulaire d'un corpus ( et si ce corpus est celui de tous les corpus, d'une langue) sous la forme d'un oursin. Mais dans un espace à de 100 à 1000 dimensions. Si les oursins pointent leurs aiguilles dans toutes les directions, celles-ci sont contraintes à trois dimensions.
 
-### vectorisation pipe
-
-### closest2
-
-### map with tsne
+![Oursin](./images/oursin.jpg)
 
 
 
 
-## paragraph2vec
+Pour estimer les coordonnée des vecteurs deux méthodes peuvent être employée simultanéement.
+
+-   Les mots observés, dont on peut prédire le contexte (Skip-gram)
+
+-   Les éléments du contexte observés, dont on peut prédire le mot (CBOW)
+
+L'idée de plongement lexical tient alors dans cette dynamique double d'identification et de rattachament des éléments textuels ensembles, selon différentes méthodes de vraisemblance/mesure.
+
+![](.\images\skipgramCbow.png)
+
+
+Le caractère remarquable de la méthode c'est qu'il est posible d'opérer des opérations algébriques, l'exemple canonique est celui de 
+
+reine = Roi+Homme - Femme
+
+
+![vecteur](./images/wordvector.png)
+
+
+## Application avec Word2vec
+
+
+pour la mise en oeuvre on emploie le package [WordVec](https://github.com/bmschmidt/wordVectors) de BenJamin Schmidt sur le corpus Trump. 
+
+Dans un premier temps on exploite les éléments présentés dans les chapitre précédents pour pré-processer le texte et le transformer en une séquence de termes bien tempérés : on va transformer les tweets en une séquences de lemmes, en ne gardant que les unités pleinement signifiantes : noms communs, adjectifs et adverbes, verbes. En quelque sorte un excercice de condensation du langage sur ses unités les plus signifiantes.
+
+C'est aussi l'occasion de rappeler que ce qui importe dans le traitement du langage est de réduire les variations de formes pour mieux capturer les significations.  
+
+
+### Préparer et annoter grammaticalement les données
+
+On prépare les données en "résumant" les tweets à leur plus simple expression
+
+d'abord on tokenize, et on réduit les tokens en suprrimant les symbole, les nombre, en mettant en minuscules etc 
+
+```{r 1401,fig.cap='', out.width='80%', fig.asp=.75, fig.align='center'}
+df_trump<- read_csv("./data/TrumpTwitterArchive01-08-2021.csv")
+#lecture de l'ensemble de nos tweets
+obj<-df_trump$text 
+foo<-tokens(obj, remove_punct = TRUE,
+  remove_symbols = TRUE,
+  remove_numbers = TRUE,
+  remove_url = TRUE,
+  remove_separators = TRUE,
+  split_hyphens = FALSE,
+  padding = FALSE) %>%
+  tokens_remove(pattern = c("*.tt", "*.uk", "*.com", "rt", "#*", "@*","amp", "RT")) %>%
+  tokens_select(pattern="<U+.*",  selection = "remove", valuetype = "regex")%>%
+  tokens_tolower() 
+#on reconstitue la chaine de caractère à partir des tokens transformés
+foo1<-data.frame(
+  id = seq_along(foo),
+  text = sapply(foo, paste, collapse = " "),
+  row.names = NULL
+)
+```
+
+et on fait de l'annotations POS, comme étudié dans le chapitre X. attention ç a peut prendre du temps. 35 mn sur notre machine. c'est pourquoi nous ajoutons un petit dispositif de calcul de temps pour se donner une maitrise des ajustements. le traitement du texte consomme parfois beaucoups de ressources, et il est utile d'en contrôler l'usage. 
 
 
 
-## l'avenir des modèles pré-entrainés
+```{r 1402,fig.cap='', out.width='80%', fig.asp=.75, fig.align='center', eval=FALSE}
+library(cleanNLP) #pour les POS et Dépendences syntaxiques
+
+# initialisation du modèle , ici udpipe, mais aussi spacy corenlp ou stringi
+#(un travail devrait être de comprer ces méthodes par le taux de couvrement!!!!)
+cnlp_init_udpipe(model_name  = "english")
+
+
+#Annotation des tweets afin de pouvoir identifier les stopwords
+t0<-Sys.time() #date de départ
+Vocab<-cnlp_annotate(foo1$text,verbose=10000) #le verbose fixe la notification du nombre d'éléments traités, c'est utiles pour savoir si on va juste prendre un café ou aller déjeuner
+t1<-Sys.time() #date de fin.... juste pour controler une opération qui peut prendre 40 mn sur un processeur 4 coeurs à 3.6ghz et 32go de ram.
+#on conseille d'échantillonner d'abord
+t<-t1-t0
+t
+write_rds(Vocab,"./data/Vocab.rds")
+```
+
+donc l'opération aura pris ```t``` minutes.
+
+
+Et un peu de filtrage sur les POS afin de se contreer sur les unités signifiantes.
+
+```{r 1403,fig.cap='', out.width='80%', fig.asp=.75, fig.align='center'}
+Vocab <-readRDS ("./data/Vocab.rds")
+
+foo<-as.data.frame(Vocab[c("token")]) # il faut changer de format
+
+#on filtre adverbes adjectifs verb et non communs
+updated_vocab <- foo %>%  filter(token.upos %in% c('ADV','ADJ','VERB', 'NOUN'))
+
+#on crée une chaine de caractère qui concatène les lemmes filtrés
+all_tweets <- paste(updated_vocab['token.lemma'], sep= " ")
+
+#on génère le fichier de ces tweets "purifiés"
+write.table(all_tweets, file="./data/tweets.txt")
+```
+
+### WordVectors au travail
+
+deux étapes
+
+ * un preprocessing, qui permet de prendre en compte les ngrams
+ * l'entrainement du modèle
+
+```{r 1404,fig.cap='', out.width='80%', fig.asp=.75, fig.align='center', eval=FALSE}
+#install.packages("remotes")
+#remotes::install_github("bmschmidt/wordVectors")
+library(wordVectors)
+
+#Nettoyage des tweets et identification des n-grammes en vue d'entraîner le modèle
+prep_word2vec(origin="./data/tweets.txt",destination="./data/trump_vec.txt",lowercase=T,bundle_ngrams=4)
+
+#Création et entraînement du modèle vectoriel
+
+model = train_word2vec("./data/trump_vec.txt",
+                       "./data/trump.bin",
+                       vectors=200,threads=2,
+                       window=5,
+                       iter=10,negative_samples=0,
+                       force=TRUE, 
+                       min_count=30)
+
+mod<-model@.Data
+```
+
+La taille du vocabulaire est de 2306 pour 401445 mots dans le fichier d'entraînement. Ils se présente sous la forme d'un tableau de 2306 termes, et de 200 colonnes. 
+
+## Exploiter le modèle
+
+Le résultat de ce traitement est un tableau comprenant $m$ termes, et $k$ dimensions. l'espace du langage qui était un tableau de coocurrence de taille $m.m$ a été réduit à un tableau de $m.k$ dimension. Si nous avions 1000 mots dans le vocabulaire et que nous le représentant en 100 dimensions, alors qu'il fallait $m*(m-1)/2)$ paramètres, soit presque 500k,  l'information est réduite à $m*k$ paramètres soit 100k. d'une certaine manière la vectorisation compresse les données. 
+
+pour exploiter cette représentation, une première manière de faire est de rechercher dans le corpus les termes les plus associés à un terme cible. Quel est son contexte le plus proche? La cible de Trump, on n'en doute pas est Biden. 
+
+Pour exploiter ce tableau des fonctions pratiques sont proposées dans le package. la principale `closest_to` qui permet de selectionner les termes les plus proches, en termes de cosinus, du vecteur cible. 
+
+Dans l'exemple suivant, on cherche à mieux saisir le concept de "biden", dans le discours de Trump. On examine les trentes termes les plus proches. On constate un procédé général de disqualification, peut-être même d'infra-humanisation. Une diabolisation certainement : "crooked", "sleepy"... 
+
+
+
+```{r, 1405,fig.cap='', out.width='80%', fig.asp=.75, fig.align='center'}
+foo<-model %>% 
+  closest_to(~"biden",30)%>%
+  filter(word!="biden") #on choisit les 30 termes les plus proches, sauf biden
+
+foo$Similarity<-foo[,2] #juste pour renommer la variable
+g1<-ggplot(foo, aes(x=reorder(word,Similarity),y=Similarity))+
+  geom_point(col="black",size=3)+
+  coord_flip()+
+  ggtitle("N-grammes similaires à Biden")
+g1
+```
+
+Répétons l'expérience sur Trump lui- même. Cute, awsome, clairement un narcissiste.
+
+```{r 1406,fig.cap='', out.width='80%', fig.asp=.75, fig.align='center'}
+foo<-model %>% 
+  closest_to(~"trump",30)%>%
+  filter(word!="trump") #on choisit les 30 termes les plus proches, sauf biden
+
+foo$Similarity<-foo[,2] #juste pour renommer la variable
+g1<-ggplot(foo, aes(x=reorder(word,Similarity),y=Similarity))+
+  geom_point(col="black",size=3)+
+  coord_flip()+
+  ggtitle("N-grammes similaires à trump")
+g1
+
+```
+
+On peut affiner le concept de -trump en faisant la somme de ses noms. On laisse le lecteur faire son interprétation.
+
+
+```{r 1407,fig.cap='', out.width='80%', fig.asp=.75, fig.align='center'}
+foo<-model %>% wordVectors::closest_to(~("trump"+"donald_trump"+"mr.trump"+"donald"),30)
+foo$Similarity<-foo[,2]
+g1<-ggplot(foo, aes(x=reorder(word,Similarity),y=Similarity))+
+  geom_point(col="black",size=3)+coord_flip()+theme_minimal()+
+  ggtitle("N-grammes proches de la trump+biden")
+g1
+```
+
+Quand on soustrait "Biden" du concept de "president trump", c'est Melania qui apparait. 
+
+```{r1408,fig.cap='', out.width='80%', fig.asp=.75, fig.align='center' }
+foo<-model %>% wordVectors::closest_to(~("trump"+ "president"-"biden"),30)
+foo$Similarity<-foo[,2]
+g1<-ggplot(foo, aes(x=reorder(word,Similarity),y=Similarity))+geom_point(col="black",size=3)+
+  coord_flip()+
+  theme_minimal()+
+  scale_y_log10()+ggtitle("N-grammes proches de trump-Biden")
+g1
+```
+## Un clustering et une projection  tsne
+
+
+
+```{r 1409,fig.cap='', out.width='80%', fig.asp=.75, fig.align='center'}
+q_words = c("trump", "biden")
+term_set = lapply(q_words, 
+                  function(q_word) {
+                    nearest_words = model %>% closest_to(model[[q_word]],80)
+                    nearest_words$word
+                  }) %>% unlist
+subset = model[[term_set,average=F]]
+
+subset1<-as.data.frame(subset@.Data)
+```
+
+
+calculer tous  les cosinus
+
+
+```{r 1410,fig.cap='', out.width='80%', fig.asp=.75, fig.align='center'}
+
+# un calcul de dissimilarité sur la base des cosinus
+#la fonction habituel dist ne le permetpas
+Matrix <- as.matrix(subset1)
+sim <- Matrix / sqrt(rowSums(Matrix * Matrix))
+sim <- sim %*% t(sim)
+#on transforme en distance la similarité cosinus, celle ci varie de 0 à 2.
+D_sim <- as.dist(1 - sim)
+
+
+```
+clustering
+
+```{r 1411,fig.cap='', out.width='80%', fig.asp=.75, fig.align='center'}
+
+
+#un clustering hiérarchique avec 10 groupes
+
+clus<-hclust(D_sim)
+groupes<- cutree(clus,k=10)
+library(ggdendro)
+ggdendrogram(clus, rotate=TRUE ,type = "triangle")
+ddata <- dendro_data(clus, type = "triangle")
+ggplot(segment(ddata)) + 
+  geom_segment(aes(x = x, y = y, xend = xend, yend = yend)) + 
+  coord_flip()+
+    geom_text(data = ddata$labels, 
+              aes(x = x, y = y, label = label), size = 2, vjust = 0)
+
+```
+
+un tsne
+
+
+```{r 1412,fig.cap='', out.width='80%', fig.asp=.75, fig.align='center'}
+
+library(Rtsne)
+library(RColorBrewer)
+# run Rtsne with default parameters
+set.seed(57)
+rtsne_out <- Rtsne(as.matrix(subset), perplexity=25)
+# plot the output of Rtsne
+#jpeg("fig.jpg", width=2400, height=1800)
+color.vec = c("#556270", "#4ECDC4", "#1B676B", "#FF6B6B", "#C44D58", "seagreen1", "seagreen4", "slateblue4", "firebrick", "Royalblue")
+
+#des manip pour associer les groupe du clustering aux termes et à la leur coordonnée dans tsne.
+groupes<-as.data.frame(groupes)
+groupes$word<-rownames(groupes)
+terms<-as.data.frame(rownames(subset))
+terms$word<-terms[,1] 
+terms<-terms %>% left_join(groupes, by = "word")
+plot(rtsne_out$Y, t='n')
+#count(terms, clus)$n[2]
+text(rtsne_out$Y, labels=rownames(subset),cex=0.8,col=color.vec[terms$groupes])
+```
+
+
+
+
+## les perspectives
+
+
+des cas d'applications
+
+
+ *  paragraph2vec
+
+ * pas que les termes mais des position s ou les pos.
+ 
+ * l'avenir des modèles pré-entrainés qu'on examiné dans le chapitre deep-learning
+ 
+ 
 
 

@@ -187,24 +187,3 @@ La Modélisation Thématique Structurelle est un prolongement du modèle LDA dé
 ![](images/Stm.PNG)
 
 
-## Implementation avec wor2vec ( regarder la place de la vectorisation)
-
-Ces techniques se sont développées sous l'angle de l'hypothèse, ou contrainte de Harris, dont le postulat propose que les mots apparaissants dans des contextes similaires soient de sens identiques. Le développement des techniques d'analyses traitant le mot comme un vecteur avec un ensemble de coordonnées dans un reprère propre à un corpus entièrement vectorisé permet de tester cette hypothèse originelle en sémantique distributionnelle.
-
-En ce sens, l'approche par l'intégration des mots permet de réinduire une certaine dépendance, contrainte, linéarité et ordonnancement naturel du corpus au sein d'une mélange, donc le principe même temps à avoir une infinité de représentation.
-
-![](images/vector.jpg)
-
-La structure de cette approche s'appuie sur différentes couches de réseaux de neurones venant travailler réciproquement sur des obervations et des prédictions :
-
--   Les mots observés, dont on peut prédire le contexte (Skip-gram)
-
--   Les éléments du contexte observés, dont on peut prédire le mot (CBOW)
-
-L'idée de plongement lexical tient alors dans cette dynamique double d'identification et de rattachament des éléments textuels ensembles, selon différentes méthodes de vraisemblance/mesure.
-
-#### Skip-gram
-
-#### Continus Bag-Of-Words
-
-### Représentation graphique

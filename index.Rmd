@@ -106,6 +106,7 @@ knitr::opts_chunk$set(echo = TRUE, message=FALSE,warning=FALSE)
 #boite à outils et viz
 library(tidyverse) # inclut ggplot pour la viz, readr et 
 library(readr) #lecture de fichier csv
+library(scales) # pour affiner les échelles de ggplot
 
 #Vizualisation souvent en développement de ggplot ( inclus dans tidyverse)
 library(cowplot) #pour créer des graphiques composés
@@ -132,6 +133,7 @@ library(factoextra)
 
 # NLP
 library(tokenizers)
+
 library(quanteda)
 library(quanteda.textmodels)
 library(quanteda.textplots)
@@ -139,6 +141,13 @@ library(quanteda.textstats)
 library(udpipe) #annotation syntaxique
 library(tidytext) #lda glove et autres
 library(cleanNLP) #annotation syntaxique
+
+library(syuzhet) #analyse du sentiment
+
+#install.packages("remotes")
+#remotes::install_github("bmschmidt/wordVectors") 
+library(wordVectors)
+
 library(ade4)
 library(ExPosition)
 library(Biobase)
@@ -180,7 +189,6 @@ library(doParallel)
 
 #Template pour ggplot
 theme_set(theme_bw())
-
 
 ```
 
