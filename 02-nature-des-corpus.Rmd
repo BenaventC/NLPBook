@@ -1,43 +1,43 @@
-# La diversité et la nature des Corpus
+# La diversité et la nature des corpus
 
+## Différents types de corpus
 
+Les critères de classement :
 
-## Des types de corpus
+-   Le nombre de documents
 
+-   La taille des documents : courts vs documents longs : le twitt vs le livre
 
-Les critères :
+-   Le niveau de langue : texte vernaculaire - langue soutenue
 
-* Nombre de documents
+-   La configuration : locuteur unique ou locuteurs multiples
 
- * des document court vs documents long : le twitt vs le livre
+-   interaction ou nom des locuteurs
 
- * Texte vernaculaire - langue soutenue
-
- * locuteur unique ou multiples
-
- * interaction ou nom des locuteurs
-
- * degré de structuration : séquentielle, plan  spatiale ( ex = le curriculum viate, la fiche de brevet,...)
-
+-   Le degré de structuration : séquentielle, plan spatiale ( ex = le curriculum viate, la fiche de brevet,...)
 
 ## Problèmes d'échantillon
 
-Un corpus reste un échantillon. Dans ce chapitre nous avons appris comment faire la cueillette dans les sources de textes et constituer matériellement un corpus.  Il reste à traiter la question de la représentativité. La collecte doit rester raisonnée.
+Un corpus reste un échantillon. Dans ce chapitre nous avons appris comment faire la cueillette dans les sources de textes et constituer matériellement un corpus. Il reste à traiter la question de la représentativité. La collecte doit rester raisonnée.
 
-Les unités de texte. Une unité de texte : un chaine de caractère intégrée dans un document. Celui ci peut être un livre un article, une note, une transcription, 
+Les unités de texte. Une unité de texte se définit comme une chaine de caractères intégrée dans un document. Celui ci peut être de forme quelconque : un livre un article, une note, une transcription,
 
- * Un document
- * Un ou des auteurs du document
- * Une date
- * Un endroit
- * Un contexte : les unités précedente, et subséquentes. 
+-   Un document
+-   Un ou des auteurs du document
+-   Une date
+-   Un endroit
+-   Un contexte : les unités précedente, et subséquentes.
 
-Unités de production et de reception, Un texte est produit et puis il est lu, peut-être.Analyser le texte peut se faire dans deux perspectives, celle de la production et celle de la réception. Les corpus doivent être construit en fonction de ce critère. 
+Unités de production et de reception, Un texte est produit et puis, peut-être, lu. Analyser le texte peut se faire dans deux perspectives, celle de la production et celle de la réception. Les corpus doivent être construit en fonction de ce critère.
 
-Examiner la question de l'engagement dans ce cadre est essentiel, certains acteurs sur un sujet donnée sont amenés à parler plus que les autres et développent un surcroit de voix. la question du biais de selection
+Examiner la question de l'engagement dans ce cadre est essentiel, certains acteurs sur un sujet donné sont amenés à produire plus que les autres, et participent donc de surcroit à une surreprésentation statistique. La question du biais de selection
 
-Un corpus est un ensemble de documents.  Ils peuvent être courts, les tweets, pas trop long - abstract articles court - long ( article de recherche, ou très long (livres).
+Un corpus est un ensemble de documents. Ils peuvent être entendus comme :
 
-La collecte peut se faire d'abord sur des matériaux primaires, numérisés sous forme d'images, et dans lesquels en analysant les pixels on peut reconnaitre un texte. 
+-   Courts à l'image des tweets,
 
+-   Modérés - abstract articles court -
 
+-   Longs ( article de recherche, ou très long (livres).
+
+La collecte peut également se faire sur des matériaux primaires et picturaux, numérisés sous forme d'images, dans lesquels il est possible de détecter automatiquement des éléments textuels, en analysant leurs pixels.
