@@ -15,7 +15,7 @@ Avant de procéder aux analyses du corpus, il est souvent utile de le représent
 
 On va utiliser une collection de donnée préparée avec Manel Benzarafa de l'Université paris Nanterre, et qui comprend l'intégralité des résumés, auteurs etc.. relatifs aux articles publiés dans PMP. Une base bibliographique intégrale. 1025 articles la compose.
 
-```{r 212, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
+```{r 401, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
 library(readr)
 #install.packages("corporaexplorer")
 library(corporaexplorer)

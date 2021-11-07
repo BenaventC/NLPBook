@@ -1,7 +1,3 @@
----
-bibliography: references.bib
----
-
 # Analyse Sémantique Latente (ASL/LSA)
 
 ```{r 900,include=FALSE}

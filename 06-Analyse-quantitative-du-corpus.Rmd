@@ -2,7 +2,7 @@
 
 Une première manière d'aborder un texte ou un corpus est volumétrique. Quel volume de texte? Quelle longueur ? Combien de mots ? quelles variations? A cette fin on utilise le cas des tweets de Donald Trump. Des premiers aux derniers, jusqu'au moment de son banissement en Janvier 2021, après sa défaite aux élections présidentielles. Chargeons le fichier de données. 
 
-```{r 101}
+```{r 601}
 
 df <- read_csv("./data/TrumpTwitterArchive01-08-2021.csv")
 nrow<-nrow(df) #nombre de ligne
@@ -15,7 +15,7 @@ ncol<-ncol(df) #nombre de colonne
 Il y `r nrow` tweets et `r ncol` variables. On peut vouloir compter le nombre de mots. A cette fin on emploie une fonction de stringr :  `str_count`. (On reviendra sur la question de la manipulation des chaines de caractères dans un chapitre ad hoc)
 
 
-```{r 1, fig.cap='Distribution du nombre de mots par post', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 602, fig.cap='Distribution du nombre de mots par post', out.width='80%', fig.asp=.75, fig.align='center'}
 
 df$nb_mots<-str_count(df$text, " ")+1 # l'astuce : compter les espaces et ajouter 1, pour compter les mots
 sum_mots<-sum(df$nb_mots)             #ON COMPTE LE NOMBRE DE MOTS
@@ -30,7 +30,7 @@ La bimodalité provient surement du changement de taille maximum effectué en se
 Le résultat remarquable est que si Trump dans un premier temps exploite cette nouvel fonctionnalité, il en revient avec un phrasé de 20 mots en moyenne, gardant cependant à l'occasion d'autre contenu en 50 mots environ.
 
 
-```{r 2, fig.cap=' Evolution de la distribution du nombre de mots', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 603, fig.cap=' Evolution de la distribution du nombre de mots', out.width='80%', fig.asp=.75, fig.align='center'}
 
 df$Year<-format(df$date, format = "%Y") #on extrait l'année de la date
 foo<- df %>% 
@@ -50,7 +50,7 @@ Concluons en examinant le nombre de tweets produit au cours du temps.
 
 La fonction `ts_plot` employée viens de `rtweet` que nous avons employée au chapitre 2. Elle emploie ggplot, et permet de représenter les évolutions selon différentes échelles de temps. On se rapplera qu'après une carrrière immobilière menée dans les casinos, le golf et les hôtels, l'appétit médiatique de trump s'est réalisé dans the apprenctice, de 2004 à 2015. C'est un pro de la TV, il a une formation de popstar. Il sera élu en Décembre 2016 pour prendre le pouvoir en Janvier. 
 
-```{r 3, fig.cap='Evolution de la production mensuelle des tweets de Trump', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 604, fig.cap='Evolution de la production mensuelle des tweets de Trump', out.width='80%', fig.asp=.75, fig.align='center'}
 
 ## plot time series of tweets
 ts_plot( foo, "1 month", color="darkblue", size=1.1) + 
@@ -74,7 +74,7 @@ La lisibilité est une notion aussi ancienne que sa mesure (par exemple @coleman
 
 Le nombre d'indicateurs est considérable et le package compagnon de quanteda , [`quanteda.textstats`](https://quanteda.io/reference/textstat_readability.html) , en fournit des dizaines. Dans l'exemple suivant, on se contente d'un grand classique, le plus ancien, l'indice de Flesch [@flesch_new_1948] et de ses constituants: le nombre moyen de syllabes par mot et le nombre moyen de mots par phrase.  
 
-```{r 404, fig.cap='Evolution de la lisibilité moyenne des tweets de Trump', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 605, fig.cap='Evolution de la lisibilité moyenne des tweets de Trump', out.width='80%', fig.asp=.75, fig.align='center'}
 
 foo<-df %>% filter(isRetweet==FALSE) # on ne prend pas en compte les RT
 
@@ -141,7 +141,7 @@ Pour la mise en oeuvre on passe par quanteda.
 
 ( attention un pb de log dans le calcul)
 
-```{r 405, fig.cap='Evolution de la diversité lexicale des tweets de Trump', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 607, fig.cap='Evolution de la diversité lexicale des tweets de Trump', out.width='80%', fig.asp=.75, fig.align='center'}
 #on retient les tweets de plus de 5 mots
 foo<-foo %>%filter(nb_mots>5)
 
@@ -188,7 +188,7 @@ Ils sont devenus extrêmement populaires même si l'effet esthétique est plus i
 Pour l'application on prépare les données avec quanteda : on tokenise et on construit le dfm ( pour le détail voir chapitre tokenization), ce qui nous permets notamment d'éliminer la ponctuation et les mots courants (articles, déterminant etc) qui apportent peu de signification. 
 
 
-```{r 406, fig.cap='Nuage de mots - Trump 2016, 2018, 2020', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 608, fig.cap='Nuage de mots - Trump 2016, 2018, 2020', out.width='80%', fig.asp=.75, fig.align='center'}
 
 foo<-df %>% filter(isRetweet==FALSE) %>%
   filter( Year %in% c("2016","2018","2020"))# on ne prend pas en compte les RT
@@ -222,7 +222,7 @@ ggsave("./Images/g0.jpg", plot=last_plot(), width = 27, height = 19, units = "cm
 Et pour faire des comparaisons, entre l'année 2016 qui le conduit à être élu, 2018 une année de mid term et 2020 année de sa défaite, on utilise la même procédure mais on distingue un comptage de fréquence de mot par période. Le ggplot est identique aux précédents mais comprend en plus une géométrie "facet_wrap" qui éclate le nuages de mot selon les 3 périodes étudiées.
 
 
-```{r 407, fig.cap='Nuage de mots - Trump 2016, 2018, 2020', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 609, fig.cap='Nuage de mots - Trump 2016, 2018, 2020', out.width='80%', fig.asp=.75, fig.align='center'}
 
 
 foo<-toks %>% 
@@ -276,7 +276,7 @@ En examinant avec plus de détail il y a 5 élément d'information  : a ) le tra
 
 
 
-```{r 408, fig.cap=' ', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 611, fig.cap=' ', out.width='80%', fig.asp=.75, fig.align='center'}
 foo<-toks
 
 freq <- textstat_frequency(foo)
@@ -317,7 +317,7 @@ On essaye d'ajuster avec deux fonctions linéaires, et on s'aperçoit de suite q
 
 
 
-```{r 409, fig.cap=' ', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 612, fig.cap=' ', out.width='80%', fig.asp=.75, fig.align='center'}
 #on coup à .1 car c'est là où se trouve le " coude"
 
 foo1<-freq %>%

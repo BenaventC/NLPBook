@@ -85,7 +85,7 @@ Le cas qu'on analyse est celui des commentaires déposés par les clients des h�
 
 On commence par charger le corpus, puis par l'annoter de ses formes morpho-syntaxiques, dont on visualise la distribution :
 
-```{r 1101}
+```{r 1501}
 df<-readRDS("./data/Polynesie2020.rds")
 
 #library(cleanNLP)
@@ -110,7 +110,7 @@ g1
 
 On filtre les _tokens_ en fonction des UPOS "noms", "adjectifs" et "verbes", puis on écarte les termes les plus ou les moins fréquents (apparaissent dans plus de 95% des documents ou dans moins de 5% des documents). Le sens est toujours dans les termes médians, pas trop rares et pas trop génériques.  
 
-```{r 1102}
+```{r 1502}
 tf <- obj$token %>%
   filter(upos %in% c("ADJ", "NOUN","VERB")) %>%
   cnlp_utils_tfidf(min_df = 0.05, max_df = 0.95, tf_weight = "raw")
@@ -119,7 +119,7 @@ tf <- obj$token %>%
 De multiple solutions sont proposée dans r pour le modèle LDA, nous choisissons ici le package tex2vec qui offre d'autres modèles (glove, lsa). On commence par définir le modèle (nombre de _topics_ à estimer, les probabilités d'appartenance), puis on applique le modèle à notre corpus en précisant les paramètres d'estimation (nombre d'itérations, seuil de convergence). On applique ensuite le modèle à notre corpus.
 
 
-```{r 1103}
+```{r 1503}
 #on commence par définir le modèle avec trois hyperparamètres :
 ##n_topics = le nombre de topics
 ##doc_topic_prior = la probabilité a priori qu'un document appartienne à un document
@@ -142,7 +142,7 @@ doc_topic_distr =
 On fait une représentation des _topics_ pour pouvoir les analyser et les renommer si on le souhaite.
 
 
-```{r 1104}
+```{r 1504}
 
 #description des topics en fonction d'un degré de pertinence = lamba ( lambda =1 probabilité d'obtenir le terme sachant le topic)
 
@@ -164,16 +164,16 @@ L'analyse n'est pas toujours évidente et le travail interprétatif est facilit�
 
 La pertinence pondère la probabilité et la saillance. Voici un exemple :
 
-```{r 1105}
+```{r 1505}
 
 library(LDAvis)
-lda_model$plot()
+#lda_model$plot() mode interactif
 
 ```
 
 On réintègre les _topics_ dans le fichier géneral et on pourra en profiter pour leur donner des noms explicites (avec la fonction *'rename()'*) afin de faciliter de prochaines analyses. 
 
-```{r 1106}
+```{r 1506}
 
 topic<- as.data.frame(doc_topic_distr)
 df<-cbind(df,topic)
@@ -199,7 +199,7 @@ Avec
 
 L'objectif est ici de minimiser la perplexité :
 
-```{r 1107}
+```{r 1507}
 lda_model3 = LDA$new(n_topics = 3, doc_topic_prior = 0.1, topic_word_prior = 0.01)
 doc_topic_distr3 = 
   lda_model3$fit_transform(x = tf, n_iter = 1000, 
@@ -260,7 +260,7 @@ Un autre moyen de trouver un nombre de _topics_ optimal pour l'analyse est de co
 L'idée est donc de calculer les modèles pour un grand nombre de _topics_, et de choisir environ 5 solutions à étudier de plus près. Pour cela, on utilise les packages 'topicmodels' et 'ldatuning', qui vont nous permettre d'observer différents indicateurs que l'on va chercher soit à maximiser, soit à minimiser.
 Tout d'abord, il faut créer un jeu de données qui sera interprétable par 'topicmodels'. On utilise la procédure habituel via 'quanteda', on élimine les termes trop et pas assez fréquents, puis on convertit au format DocumentTermMatrix nécessaire à 'topicmodels'.
 
-```{r 1108}
+```{r 1508}
 
 text2<-tok%>%filter(upos %in% c("ADJ","VERB","NOUN"))%>%group_by(doc_id)%>%summarise(text=paste(lemma , collapse = " "))
 
@@ -294,7 +294,7 @@ Maintenant, on généralise à un grand nombre de _topics_ dans l'objectif de :
   * maximiser Deveaud2014 et Griffiths2004 (cf. [[`vignette`](https://cran.r-project.org/web/packages/ldatuning/vignettes/topics.html)])
   
 
-```{r 1109}
+```{r 1509}
 library(topicmodels)
 library(ldatuning)
 
@@ -305,7 +305,7 @@ result <- FindTopicsNumber(dtm, #le jeu de données
                            control = list(seed = 0:4,
                                           nstart = 5,
                                           best = TRUE), #les paramètres de contrôle
-                           mc.cores = NA, #pour la parallélisation
+                           mc.cores = 3, #pour la parallélisation
                            verbose = TRUE
                            )
 
@@ -315,7 +315,7 @@ FindTopicsNumber_plot(result)
 
 On peut voir qu'une solution à 8, 9 ou 10 topics semblent assez optimale. On compare donc les résultats de la liste réduite de modèles, pour déterminer lequel a la meilleure distribution des topics entre les documents. La distribution recherchée est celle qui distingue le plus les documents en fonction des topics, tout en étant à droite de l’estimation d’une répartition uniforme des documents entre les topics. Le critère de parcimonie nous invite à choisir la solution avec le moins grand nombre de topics, en cas de résultats comparables.
 
-```{r 1110}
+```{r 1510}
 
 para <- tibble(k = c(7,3,8,9,10)) #les nombres de topics retenus
 
@@ -361,7 +361,7 @@ lemma_tm %>%
 
 On arrive ici a une solution optimale à 9 _topics_, ce qui mérite une représentation graphique :
 
-```{r 1111}
+```{r 1511}
 
 lda <- LDA(dtm, k = 9) #le modèle optimal
 
@@ -384,7 +384,7 @@ L'idée est ici de conduire une analyse LDA mais d'un point de vue semi-supervis
 
 On commence par rédiger un dictionnaire :
 
-```{r 1112}
+```{r 1512}
 
 dict <- dictionary(list(repas = c("restaurant", "petit_déjeuner", "cuisine","plat"),
                           paradis = c("paradis","motu", "paradi*", "vue","lagon","rêve"),
@@ -401,7 +401,7 @@ head(dfm_lookup(dfm,dict))
 
 Ensuite, il ne nous reste plus qu'à faire tourner le modèle sur notre dfm travaillée, en prenant en compte nos _topics_ prédéfinis par le dictionnaire, et on en fait une représentation graphique :
 
-```{r 1113}
+```{r 1513}
 # devtools::install_github("koheiw/seededlda") 
 library(seededlda)
 set.seed(1234)
@@ -431,7 +431,7 @@ On va utiliser ici le corpus PMP, qui regroupe tous les *abstracts* de la revue 
 
 Comme toujours, on commence par charger les données, puis on les prépare (annotations POS, reconstitution des textes, transformations en corpus, *tokens* avec collocations, puis en dfm) et on les transforme au format utilisé par le package 'stm'.
 
-```{r 1114}
+```{r 1514}
 data<-read_csv("data/PMPLast.csv")
 pmp<-data%>%
   rename(year=`Publication Year`)%>%
@@ -499,7 +499,7 @@ Le package 'stm' propose la fonction 'searchK' et deux manières d'estimer le no
 
 Ici, on utilise la fonction 'searchK' en fixant le paramètre K à 0 pour recourir à l'algorithme de 'Rtsne'. L'initialisation du modèle doit être 'Spectral' (implémenté par défaut dans le modèle).
 
-```{r 1115}
+```{r 1515}
 kresult <- searchK(dfm_stm$documents, dfm_stm$vocab, K = 0, prevalence =~ s(year), data = dfm_stm$meta)
 
 plot(kresult)
@@ -518,7 +518,7 @@ Tout d'abord, on teste plusieurs modèles pour découvrir le nombre de _topics_ 
   
 On lance l'estimation sur 3 modèles différents, puis on compare les métriques.
 
-```{r 1116}
+```{r 1516}
 
 #test de différents modèles
 kresult2 <- searchK(dfm_stm$documents, dfm_stm$vocab, K = c(25,100,122), prevalence =~ s(year), data = dfm_stm$meta)
@@ -541,7 +541,7 @@ Une fois le nombre de *topics* choisi, il ne reste plus qu'à lancer le modèle 
 
 Pour des raisons pédagogiques, nous testons ici une solution à 15 *topics*. Tout d'abord, nous lançons le modèle et nous regardons la distribution des *topics* en fonction de leur cohérence sémantique et de leur exclusivité (à partir de la mesure FREX, voir \@ref(int_topic)).
 
-```{r 1117}
+```{r 1517}
 
 #nb de topics retenu
 k=15
@@ -571,7 +571,7 @@ La première étape de l'exploration consiste à analyser les mots les plus asso
   
 Ici, on affiche les résultats pour les *topics* 1, 8 et 13 et on représente les différentes métriques graphiquement :
 
-```{r 1118}
+```{r 1518}
 labelTopics(model.stm, c(1,8,13))
 #les 4 scores
 plot(model.stm, type = "summary", labeltype="prob",text.cex = 0.7,n=7)
@@ -583,7 +583,7 @@ plot(model.stm, type = "summary", labeltype="frex",text.cex = 0.7,n=5)
 
 On peut également représenter les *topics* sous forme de nuage de mots. La première proposition, ci-dessous en bleu, repose sur la probabilité d'appartenance des termes aux *topics*, la seconde, en rouge, représente les mots en fonction de l'occurrence des *topics* dans les documents.  
 
-```{r 1119}
+```{r 1519}
 par(mfrow = c(3,5) , mar = c(0,0,0,0))
 for (i in seq_along((1:k)))
 {
@@ -603,7 +603,7 @@ cloud(model.stm, topic = i,scale=c(2,.25) ,type = c("model","documents"), dfm,th
 
 On peut aussi s'intéresser à représenter les contrastes dans les *topics* :
 
-```{r 1120}
+```{r 1520}
 
 plot(model.stm, type="perspectives", topics=c(10,13))
 
@@ -611,7 +611,7 @@ plot(model.stm, type="perspectives", topics=c(10,13))
 Enfin, on peut s'intéresser aux documents qui contribuent aux *topics*, à travers la fonction 'findThoughts', et à les représenter graphiquement. Pour cela, on a besoin d'un vecteur contenant les textes, dans le même ordre que celui fournit au modèle STM. Ici, on utilise le vecteur 'title' créé dans les premières manipulations des données.
 
 
-```{r 1123}
+```{r 1521}
 
 thoughts3 <- findThoughts(model.stm,texts=pmp$title ,n = 4,
  topics = 6)$docs[[1]]
@@ -629,7 +629,7 @@ plotQuote(thoughts20, width = 50,text.cex = 0.8, main = "Topic 15")
 
 Ici, on représente l'évolution de la présence des *topics* en fonction de notre variable de prévalence, l'année de parution. D'abord, on calcule l'effet de l'année pour chaque *topic*, et ensuite on fait notre représentation graphique.
 
-```{r 1122}
+```{r 1522}
 
 model.stm.labels <- labelTopics(model.stm, 1:k) #on récupère la description des topics pour les titres des graphiques
 dfm_stm$meta$datum <- as.numeric(dfm_stm$meta$year) #on transforme l'année en variable continue
@@ -652,7 +652,7 @@ On peut constater que le topic 13 perd en importance au cours du temps, à l'inv
 
 Pour finir, on s'intéresse à la corrélation entre les *topics*. 
 
-```{r 1123}
+```{r 1523}
 #On crée les titres/noms des topics
 b<-NULL
 for (i in seq_along((1:k)))
@@ -689,7 +689,7 @@ plot(g,layout=layout_with_fr,  margin = c(0, 0, 0, 0),
 
 Et en bonus, un petit graphique pour représenter les mots les plus contributifs aux *topics* :
 
-```{r 1124}
+```{r 1524}
 td_beta <- tidy(model.stm,log=FALSE)
 
 td_beta<-td_beta%>%mutate(topic=as.factor(topic))%>%

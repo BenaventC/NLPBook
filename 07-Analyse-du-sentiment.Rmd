@@ -6,7 +6,7 @@ liu ping est le fondateur de l'analyse du sentiment et dès 2012 en donne une sy
 
 On restera ici à un niveau classique ou compositionnel et On travaillera sur un corpus d'avis trip advisor, sur la période avant covid. Un premier exemple se concentrera sur le comptage des termes positifs, négatifs et neutres. Dans un second on montre une généralisation avec le LIWC qui propose 80 catégories.
 
-```{r 61, echo=TRUE}
+```{r 701, echo=TRUE}
 df<-readRDS("./data/AvisTripadvisor.rds")
 ```
 
@@ -18,7 +18,7 @@ Le même outil fournit un autre systéme d'annotation qui compte les mentions d'
 L'opérationnalisation réalisée par @mohammad_crowdsourcing_2013 s'inscrit dans une tradition de la recherche en marketing, se souvenir de @havlena_varieties_1986 et de @westbrook_dimensionality_1991.
 
 
-```{r 62, echo=TRUE}
+```{r 702, echo=TRUE}
 library(syuzhet)             #analyse du sentimeent
 
 #paramétres
@@ -43,7 +43,7 @@ A partir de ces deux mesures,  4 indicateurs peuvent étre construits
  *  Expressivité : nombre de termes positifs et négatifs.
 le dernier graphe nous apprend que les jugements plutôt positifs sont aussi les plus expressifs. La "froideur" des avis les plus négatifs refléte-t-elle une crainte de la désaprobation sociale. C'est une piste de recherche à poursuivre, on pourrait s'attendre à ce que les avis les plus négatifs surgissent plus facilement si la densité des négatives est plus importante et observer une sorte d'autocorrélation.
 
-```{r 63}
+```{r 703}
 
 G1<-ggplot(df, aes(x=positive))+geom_histogram(binwidth = 1, fill="darkred")+theme_minimal()
 G1
@@ -65,7 +65,7 @@ On peut doser les effets
 
 On a des dictionnaires
 
-```{r 64}
+```{r 704}
 df$text<-as.character(paste0(df$Titre," ",df$Commetaire))
 df$WC<-str_count(df$text, "\\S+")
 
@@ -96,7 +96,7 @@ Le LIWC permet d'obtenir d'autres indicateurs du sentiment, une partie des 80 in
 
 La procédure pour extraire ces notions est fort simple . On utilise l'infrasturure de quanteda et une version francophone du dictionnaire [@piolat_version_2011]
 
-```{r 65, fig.width=8, fig.height=4.5, caption =""}
+```{r 705, fig.width=8, fig.height=4.5, caption =""}
 # the devtools package needs to be installed for this to work
 #devtools::install_github("kbenoit/quanteda.dictionaries")
 library(cleanNLP)

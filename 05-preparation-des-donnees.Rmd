@@ -154,7 +154,7 @@ Comparons les. On utilise un jeu de donnée Airbnb à Bruxelles (été 2020), vi
 
 En terme de durée de calcul, la différence en temps de calcul est faramineuse :  7 secondes contre 7 minutes, ce qui s'explique car texcat s'appuyant sur la distribution des ngrammes doit les calculer pour les 36000 observations que nous avons retenues. 
 
-```{r 301, fig.cap='', out.width='80%', fig.asp=1, fig.align='center'}
+```{r 501, fig.cap='', out.width='80%', fig.asp=1, fig.align='center'}
 BXL2021 <- read_csv("./data/reviewsBXL2021.csv")
 BXL2021$Year<- as.numeric(format(as.Date(BXL2021$date, format="%Y-%m-%d"),"%Y"))
 
@@ -181,7 +181,7 @@ foo<-cbind(cld3, textcat)
 Examinons les résultats et la distribution des langues identifiées par les deux systèmes. Si l'ordre est respecté, des différences s'observent, `cld3` identifie du chinois qui ne fait pas partie du répertoire de texcat. 
 
 
-```{r 302, fig.cap='', out.width='80%', fig.asp=1, fig.align='center'}
+```{r 502, fig.cap='', out.width='80%', fig.asp=1, fig.align='center'}
 
 g1<-foo%>%mutate(n=1)%>%group_by(textcat)%>%summarise(n=sum(n))%>%
   ggplot(aes(x=reorder(textcat,n), y=n))+geom_bar(stat="identity")+coord_flip()+scale_y_log10()
@@ -196,7 +196,7 @@ plot_grid(g1, g2, labels = c('Texcat','Cld3'), label_size = 12)
 
 Examions maintenant la convergence des méthodes en représentant la répartition du résultat d'un système dans les langue de l'autre. Si la convergence est parfaite 1000% des textes classé en Français par Textact devrait se retrouver dans 100% de ces textes classé par cld3 et réciproquement.
 
-```{r 303, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
+```{r 503, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
 
 foo1 <-foo %>% mutate(n=1)%>%group_by(textcat) %>%summarise(n=sum(n))
 foo1<-foo%>% left_join(foo1) %>% filter(n>10)
@@ -223,7 +223,7 @@ ggplot(foo1, aes(reorder(Var1, Freq),Var2)) +
   theme_bw()+ theme(axis.text.x=element_text(angle = 45, hjust =1))+coord_flip()
 ```
 
-```{r 304, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
+```{r 504, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
 
 
 table2<-as.data.frame(table) %>%

@@ -32,7 +32,7 @@ Les n-grammes, quant à eux, représentent des suites de n _tokens_. Un unigramm
 
 Commençons par un exemple simple, à l'aide d'une courte citation de Max Weber. On choisit les lettres pour unité de découpe, et l'on utilise le package 'tokenizer'. Automatiquement, 'tokenizer' met le texte en minuscule et élimine la ponctuation
 
-```{r 501, fig.cap='Distribution du nombre de lettres', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 801, fig.cap='Distribution du nombre de lettres', out.width='80%', fig.asp=.75, fig.align='center'}
 #Les données
 MaxWeber <- paste0("Bureaucratie: le moyen le plus rationnel que l’on connaisse pour exercer un contrôle impératif sur des êtres humains.")
 
@@ -61,7 +61,7 @@ ggplot(foo, aes(x=reorder(tokens,n), y=n))+
 
 On refait la même opération, mais avec un texte complété. Il y a bien moins de mots que de lettres !
 
-```{r 502, fig.cap='Distribution du nombre de mots', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 802, fig.cap='Distribution du nombre de mots', out.width='80%', fig.asp=.75, fig.align='center'}
 #Les données
 
 MaxWeber <- paste0("Bureaucratie: le moyen le plus rationnel que l’on connaisse pour exercer un contrôle impératif sur des êtres humains. La bureaucratie est une forme d'organisation générale caractérisée par la prépondérance des règles et de procédures qui sont appliquées de façon impersonnelle par des agents spécialisés. Ces agents appliquent les règles sans discuter des objectifs ou des raisons qui les fondent. Ils doivent faire preuve de neutralité et oublier leurs propres intérêts personnels au profit de l’intérêt général.")
@@ -86,7 +86,7 @@ ggplot(foo, aes(x=reorder(tokens,n), y=n))+
 On constate que les deux mots les plus fréquents de cette citation sont un article indéfini et une préposition. Ces mots sont souvent superflus pour les analyses menées, il convient alors de les supprimer. C'est ce qu'on fait par la suite, en utilisant le package 'stopwords' qui comprend des listes de stopwords dans différentes langues.
 
 
-```{r 503, fig.cap='Distribution du nombre de mots, sans les stopwords', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 803, fig.cap='Distribution du nombre de mots, sans les stopwords', out.width='80%', fig.asp=.75, fig.align='center'}
 
 #On tokenise et on enlève les stopwords, puis on transforme en dataframe le résultat.
 toc_maxweber<-tokenize_words(MaxWeber, stopwords = stopwords("fr"))%>%
@@ -111,7 +111,7 @@ On peut également constater que certains mots sont proches, par exemple les deu
 
 On reproduit les mêmes opérations, mais cette fois sur les phrases de l'exemple précédent.
 
-```{r 504}
+```{r 804}
 tokenize_sentences(MaxWeber)%>%as.data.frame()%>%rename(tokens=1)%>%flextable(cwidth = 5)
 
 ```
@@ -121,7 +121,7 @@ tokenize_sentences(MaxWeber)%>%as.data.frame()%>%rename(tokens=1)%>%flextable(cw
 Les n-grammes sont des séquences de n _tokens_, généralement consécutifs. Voici tout de suite un exemple sur les lettres^[Le principe de 'textcat' est fondée sur ces n-grammes de lettre. Chaque langue se caractérise par une distribution particulière des n-grammes. Pour décider de l'appartenance d'un texte à une langue, si on dispose des profils de distribution, on compare la distribution des n-grammes du texte à ces références. On peut ainsi calculer une distance et attribuer le texte à la langue dont il est le plus proche.], allant de bigramme au trigramme :
 
 
-```{r 505, fig.cap='Bigrammes et trigrammes de lettres', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 805, fig.cap='Bigrammes et trigrammes de lettres', out.width='80%', fig.asp=.75, fig.align='center'}
 toc_maxweber<-tokenize_character_shingles(MaxWeber,n=3, n_min=2) %>%
         as.data.frame()%>%rename(tokens=1)
 flextable(head(toc_maxweber, n=20))
@@ -140,7 +140,7 @@ ggplot(foo, aes(x=reorder(tokens,n), y=n))+
 On peut faire la même chose sur les mots, en éliminant les _stopwords_ :
 
 
-```{r 506 }
+```{r 806 }
 toc_maxweber<-tokenize_ngrams(MaxWeber,n=3, n_min=2, stopwords = stopwords('fr')) %>%
         as.data.frame()%>%rename(tokens=1)
 qflextable(head(toc_maxweber, n=19))
@@ -149,7 +149,7 @@ qflextable(head(toc_maxweber, n=19))
 
 On peut également s'intéresser aux n-grammes non directement consécutifs mais séparés par k _tokens_ :
 
-```{r 507 }
+```{r 807 }
 toc_maxweber<-tokenize_skip_ngrams(MaxWeber,n=3, n_min=2, k=2, stopwords = stopwords('fr')) %>%
         as.data.frame()%>%rename(tokens=1)
 qflextable(head(toc_maxweber, n=19))
@@ -181,7 +181,7 @@ Le package quanteda propose une bonne solution à ce problème avec la fonction 
 
 À partir du corpus des commentaires de TripAdvisor concernant les hôtels de Polynésie Française, on crée un objet de format _token_, dans lequel on a enlevé les _stopwords_. Mais pour que les n-grammes très fréquents restent des syntagmes signifiants, on laisse apparent les positions des _stopwords_, avec l'option 'padding= TRUE'.
 
-```{r 508, fig.cap='Mots les plus fréquents du corpus', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 808, fig.cap='Mots les plus fréquents du corpus', out.width='80%', fig.asp=.75, fig.align='center'}
 #les données
 AvisTripadvisor<-read_rds("data/AvisTripadvisor.rds")
 #création du corpus
@@ -207,7 +207,7 @@ textplot_wordcloud(dfm, max_words = 200, color = rev(RColorBrewer::brewer.pal(6,
 
 On cherche ici à identifier les noms propres présents dans le corpus.
 
-```{r 509}
+```{r 809}
 #on sélectionne les mots commençant par une majuscule
 toks_cap <- tokens_select(tok, 
                                pattern = "^[A-Z]",
@@ -224,7 +224,7 @@ flextable(head(as.data.frame(tstat_col_cap)))
 ### Composer des _tokens_ à partir d'expressions multi-mots
 Dans ce corpus, les noms propres correspondent aux noms des îles et des hôtels, et aux prénoms composés. La valeur du lambda montre la force de l'association entre les mots, on retiendra d'une manière générale un lambda au moins supérieur à 3 pour remplacer les _tokens_ d'origine par leurs n-grammes.
 
-```{r 510, fig.cap='Mots les plus fréquents du corpus', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 810, fig.cap='Mots les plus fréquents du corpus', out.width='80%', fig.asp=.75, fig.align='center'}
 toks_comp <- tokens_compound(tok, pattern = tstat_col_cap[tstat_col_cap$z > 3], 
                              case_insensitive = FALSE)
 
@@ -240,7 +240,7 @@ textplot_wordcloud(dfm, max_words = 200, color = rev(RColorBrewer::brewer.pal(6,
 
 Dans ce corpus, on peut aussi s'attendre à voir apparaître d'autres expressions multi-mots qui représentent des concepts, telles que "petit déjeuner".
 
-```{r 511}
+```{r 811}
 col<-textstat_collocations(toks_comp, min_count = 10)
 
 flextable(head(as.data.frame(col)))
@@ -248,7 +248,7 @@ flextable(head(as.data.frame(col)))
 ```
 Au vue de la diversité des collocations, on choisit un lambda supérieur à 7 pour retenir les concepts les plus pertinents.
 
-```{r 512, fig.cap='Mots les plus fréquents du corpus', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 812, fig.cap='Mots les plus fréquents du corpus', out.width='80%', fig.asp=.75, fig.align='center'}
 toks_comp <- tokens_compound(tok, pattern = col[col$z > 7])
 
 head(toks_comp)

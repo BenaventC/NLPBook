@@ -1,6 +1,6 @@
 # Deep Learning
 
-Pour l'utilisateur en sciences sociales même si le deep learning est accessible dans un environnement r, et nous examinerons les possibilités offerte par kera, constuire son modèle de langage est sans doute hors de portée. Il s'agira donc le plus souvent d'employer des modèles pré-entrainés, et éventuellement de les réentrainer sur nos coprus de données.
+Pour l'utilisateur en sciences sociales même si le deep learning est accessible dans un environnement r, et nous examinerons les possibilités offertes par keras, construire son modèle de langage est sans doute hors de portée. Il s'agira donc le plus souvent d'employer des modèles pré-entrainés, et éventuellement de les réentrainer sur nos coprus de données.
 
 
 ## L'environnement keras
@@ -23,7 +23,7 @@ Lequel?
 
 
 
-## Les architectures du texte : RNN, LTSM, Transformer et reformer
+## Les architectures du texte : RNN, LTSM, Transformer et Reformer
 
 Les évolutions de ces 10 dernières années se caractèreisent par la recherche d'architectures qui prennent en comptent la structure du texte : il y a un ordre séquentiel : les mots font sens quand on les lis ou les entends après une succision d'ordre mots dont on connait les règles de composition. 
 
@@ -69,7 +69,8 @@ la lutte anti fake
 
 
 
-### L'extraction d'argumennts
+### L'extraction d'arguments
+
 triplet 
 
 

@@ -40,7 +40,7 @@ Le package [pdftools](https://ropensci.org/blog/2016/03/01/pdftools-and-jeroen/)
 
 Chaque page est contenue dans une ligne.
 
-```{r 207, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
+```{r 301, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
 library(pdftools)
 
 info <- pdf_info("./pdf/2021neoliberalismegouverner_Meunier_Esprit.pdf")
@@ -70,7 +70,7 @@ Il va falloir traiter ce texte en analysant précisément sa composition. Pour c
 
 On va utiliser des fonctions de traitement de chaines de caractère avec Stringret le recours à l'art ( ici simple) des regex auxquels on consacre un développement dans le chapitres X.
 
-```{r 208, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
+```{r 302, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
 tex<- as.data.frame(text)
 tex[1,]
 t_reg<-str_replace(tex$text,"[\\s+].*Meunier[\n]+", " ") # entete droite
@@ -142,7 +142,7 @@ Testons-le sans attendre avec le texte suivant. Extrait du premier article du pr
 
 <https://gabriben.github.io/NLP.html#introduction>
 
-```{r 209, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
+```{r 303, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
 #library(tesseract)
 tesseract_download("fra") #pour télécharger le modèle de langage
 
@@ -184,7 +184,7 @@ Dans europresse , nous avons fait une recherche sur les articles comprenant le t
 
 On utilise [revtools](https://revtools.net/data.html#importing-to-r) pour sa fonction d'importation des fichiers au format .ris et de transformation en data frame structuré
 
-```{r 201, fig.cap='', out.width='80%',caption= "le traitement de la vaccination dans la presse nationale française", fig.asp=1, fig.align='center'}
+```{r 304, fig.cap='', out.width='80%',caption= "le traitement de la vaccination dans la presse nationale française", fig.asp=1, fig.align='center'}
 library(revtools)
 
 
@@ -216,7 +216,7 @@ On l'applique sur nos données. L'allure de l'interface est la suivante.
 
 L'interface n'étant pas programmatique, on exporte quelques images en jpeg (un bouton dans l'interface permet de faire celà sans effort) et on les récupère avec `cowplot`, le package qui permet d'assembler des visualisations et que nous utiliserons systématiquement dans ce cours.
 
-```{r 202, fig.cap='', out.width='80%',caption= "Disctribution des topics et des document dans leur espace (ACP)", fig.asp=1, fig.align='center'}
+```{r 305, fig.cap='', out.width='80%',caption= "Disctribution des topics et des document dans leur espace (ACP)", fig.asp=1, fig.align='center'}
 p1 <- ggdraw() + draw_image("./images/topic_espace.png")
 p2 <- ggdraw() + draw_image("./images/topic_topic.png")
 p3 <- ggdraw() + draw_image("./images/topic1.png")
@@ -227,7 +227,7 @@ plot_grid(p1, p2 , ncol=2)
 
 Pour illustrer les graphiques des termes les plus proches du topic 1 et du topic 5. L'un est relatif à l'actualité australienne, l'autre à l'actualité anglaise.
 
-```{r 203, fig.cap='', out.width='80%',caption= "La description des topic 1 et 5", fig.asp=1, fig.align='center'}
+```{r 306, fig.cap='', out.width='80%',caption= "La description des topic 1 et 5", fig.asp=1, fig.align='center'}
 
 plot_grid(p3, p4 , ncol=1)
 
@@ -299,7 +299,7 @@ Le package rvest est générique :
 
 <https://community.rstudio.com/t/scraping-messages-in-forum-using-rvest/27846/2>
 
-```{r 204, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
+```{r 307, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
 
 library(rvest)
 
@@ -403,7 +403,7 @@ L'authentification ne nécesssite pas de clé d'API, il suffit d'avoir son compt
 
 <https://developer.twitter.com/en/docs/tutorials/getting-started-with-r-and-v2-of-the-twitter-api>
 
-```{r 205, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9, eval=FALSE }
+```{r 308, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9, eval=FALSE }
 #une boucle pour multiplier les hashtag 
 
 x<-c("#getaround","#Uber", "#heetch")
@@ -428,7 +428,7 @@ foo<-df %>% select(account_lang, geo_coords,country_code, country, account_lang,
 
 On laisse le lecteur explorer les différentes fonctionnalités du package. On aime cependant celle-ci qui échantillone le flux courant au taux annoncé de 1%. Voici l'extraction de ce qui se dit en France pendant 10 mn (600s). La procédure peut s'apparenter à une sorte de benchmark auquel on peut comparer une recherche plus spécifique.
 
-```{r 206, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9, eval=FALSE}
+```{r 309, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9, eval=FALSE}
 
 
 rt <- stream_tweets(lookup_coords("france"), timeout = 600)

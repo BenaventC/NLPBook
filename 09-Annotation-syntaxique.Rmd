@@ -53,7 +53,7 @@ Une catégorisation en 17 éléments est proposée. En voici les [éléments et 
 
 Un petit exemple avec le package `UDpipe`. 
 
-```{r 71, fig.cap='p', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 901, fig.cap='p', out.width='80%', fig.asp=.75, fig.align='center'}
 
 library(udpipe)
 fr <- udpipe_download_model(language = "french")
@@ -98,7 +98,7 @@ L'arbre syntaxique est obtenu en analysant les relations entre les termes. Nous 
 
 Onn utilise ici une fonction écrite par (bnosac](http://www.bnosac.be/index.php/blog/93-dependency-parsing-with-udpipe) pour donner une représentation graphique de l'arbre.
 
-```{r 72, fig.cap='arbre de dépendance', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 902, fig.cap='arbre de dépendance', out.width='80%', fig.asp=.75, fig.align='center'}
 
 plot_annotation <- function(x, size = 3){
   stopifnot(is.data.frame(x) & all(c("doc_id","paragraph_id", "sentence_id", "token_id","token","lemma","head_token_id", "upos","feats", "dep_rel") %in% colnames(x)))
@@ -129,7 +129,7 @@ Dans la phrase precédente on note que funèbre est l'adjectif de journée. On p
 
 L'exemple va être court : un poème de Maupassant
  
-```{r 73, fig.cap='p', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 903, fig.cap='p', out.width='80%', fig.asp=.75, fig.align='center'}
 
 Maupassant<-Citations %>%
   dplyr::filter(doc==2)
@@ -144,7 +144,7 @@ foo<- foo %>% select(paragraph_id,sentence_id, token_id,lemma,upos,head_token_id
 
 On va donc construires un tableau lemme_cible x lemmes_associés, les premiers risqueront d'êtres les noms communs, les seconds leurs adjectifs. 
 
-```{r 74}
+```{r 904}
 # selection de la relation.
 res <- foo %>% filter(dep_rel == "amod")
 #on y joint les dependences
@@ -166,7 +166,7 @@ le tableau obtenu est en fait la structure d'un graphe bipartite. la représenta
  
 Dessiner le réseau
 
-```{r 75, fig.width=8, fig.height=7, caption ="Réseaux sémantiques"}
+```{r 905, fig.width=8, fig.height=7, caption ="Réseaux sémantiques"}
 bg <-graph_from_incidence_matrix(table, weighted=TRUE)
 summary(bg)
 
