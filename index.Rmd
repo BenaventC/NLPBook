@@ -190,6 +190,24 @@ library(doParallel)
 #Template pour ggplot
 theme_set(theme_bw())
 
+
+library(udpipe)
+library(quanteda)
+library(quanteda.textmodels)
+library(Rtsne)
+library(NMF)
+library(ggrepel)
+library(ggplot2)
+library(flextable)
+library(FactoMineR)
+library(factoextra)
+library(frequency)
+library(Rcpp)
+library(rainette)
+library(explor)
+library(quanteda)
+
+
 ```
 
 
@@ -197,7 +215,7 @@ theme_set(theme_bw())
 
 L'ensemble du code est disponible [sur github](https://github.com/BenaventC/NLPBook).
 
-Sous licence creative common ( comment met-on le badge ?)
+Sous licence creative common (comment met-on le badge ?)
 
-citation. ( un doi serait bien, au mini un bib)
+citation. (un doi serait bien, au mini un bib)
 

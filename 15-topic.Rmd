@@ -315,7 +315,7 @@ FindTopicsNumber_plot(result)
 
 On peut voir qu'une solution à 8, 9 ou 10 topics semblent assez optimale. On compare donc les résultats de la liste réduite de modèles, pour déterminer lequel a la meilleure distribution des topics entre les documents. La distribution recherchée est celle qui distingue le plus les documents en fonction des topics, tout en étant à droite de l’estimation d’une répartition uniforme des documents entre les topics. Le critère de parcimonie nous invite à choisir la solution avec le moins grand nombre de topics, en cas de résultats comparables.
 
-```{r 1510}
+#```{r 1510}
 
 para <- tibble(k = c(7,3,8,9,10)) #les nombres de topics retenus
 
@@ -339,33 +339,35 @@ lemma_tm <- lemma_tm %>%
   mutate(lda_gamma = map(.x=lda,
                          .f=tidytext::tidy,
                          matrix="gamma"))
-# library(magrittr)
+library(magrittr)
 #on fait une représentation graphique de la distribution des topics dans les documents
-lemma_tm %>%
+
+#```
+
+foo<-lemma_tm %>%
   unnest(lda_gamma) %>%
   group_by(k, document) %>%
   arrange(desc(gamma)) %>%
   slice(1) %>%
-  #top_n(1, gamma) %>%
-  ungroup() %>%
-  ggplot(aes(x=gamma, fill=factor(k))) +
+  top_n(1, gamma) %>%
+  ungroup() %>% ggplot(foo,aes(x=gamma, fill=factor(k))) +
   geom_histogram(bins = 20) +
   scale_fill_discrete(name = "Number of\nTopics") +
   xlab("maximum gamma per document") +
   facet_wrap(~k) +
   geom_vline(aes(xintercept = 1/k),
-             tibble(k=lemma_tm %$% unique(k)),
+             tibble(k=lemma_tm %>% unique(k)),
              color="darkred")
 
-```
 
 On arrive ici a une solution optimale à 9 _topics_, ce qui mérite une représentation graphique :
 
 ```{r 1511}
+library(reshape2)
 
 lda <- LDA(dtm, k = 9) #le modèle optimal
 
-lda_res<-as.data.frame(terms(lda, 25))
+lda_res<-as.data.frame(lda_model$get_top_words(n = 15, lambda = 0.30))
 lda_res$rank<-as.numeric(row.names(lda_res))
 lda_res<-melt(lda_res,id.vars = c("rank"))
 
@@ -653,6 +655,7 @@ On peut constater que le topic 13 perd en importance au cours du temps, à l'inv
 Pour finir, on s'intéresse à la corrélation entre les *topics*. 
 
 ```{r 1523}
+library(reshape2)
 #On crée les titres/noms des topics
 b<-NULL
 for (i in seq_along((1:k)))
@@ -692,8 +695,9 @@ Et en bonus, un petit graphique pour représenter les mots les plus contributifs
 ```{r 1524}
 td_beta <- tidy(model.stm,log=FALSE)
 
-td_beta<-td_beta%>%mutate(topic=as.factor(topic))%>%
-  mutate(topic=`levels<-.factor`(td$topic,label$V1))
+td_beta<-td_beta %>% 
+  mutate(topic=as.factor(topic))%>%
+  mutate(topic=`levels<-.factor`(td_beta$topic,label$V1))
 
 td_beta %>%
     group_by(topic) %>%

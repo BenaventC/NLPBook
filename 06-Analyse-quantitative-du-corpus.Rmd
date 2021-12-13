@@ -285,7 +285,6 @@ freq <- textstat_frequency(foo, group =Year)
 head(freq)
 n_w<-dim(freq)
 #ft<-flextable(head(freq)) ## pb affichage
-ft
 
 
 freq<-freq %>% 

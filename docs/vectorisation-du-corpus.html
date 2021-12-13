@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapitre 13 Vectorisation du corpus | NLP avec r et en français - un Manuel synthétique</title>
+  <title>Chapitre 15 Vectorisation du corpus | NLP avec r et en français - un Manuel synthétique</title>
   <meta name="description" content="Un manuel pratique de NLP en français" />
   <meta name="generator" content="bookdown 0.22.3 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapitre 13 Vectorisation du corpus | NLP avec r et en français - un Manuel synthétique" />
+  <meta property="og:title" content="Chapitre 15 Vectorisation du corpus | NLP avec r et en français - un Manuel synthétique" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapitre 13 Vectorisation du corpus | NLP avec r et en français - un Manuel synthétique" />
+  <meta name="twitter:title" content="Chapitre 15 Vectorisation du corpus | NLP avec r et en français - un Manuel synthétique" />
   
   <meta name="twitter:description" content="Un manuel pratique de NLP en français" />
   
@@ -24,15 +24,15 @@
 <meta name="author" content="Sophie Balech, Julien Monnot, Christophe Benavent" />
 
 
-<meta name="date" content="2021-09-12" />
+<meta name="date" content="2021-12-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="réseaux-sémantiques.html"/>
-<link rel="next" href="topic-analysis.html"/>
+<link rel="prev" href="analyse-sémantique-latente-asllsa.html"/>
+<link rel="next" href="topic.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -158,8 +158,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1.1" data-path="intro.html"><a href="intro.html#langue-langage-et-texte-parole"><i class="fa fa-check"></i><b>2.1.1</b> Langue, langage et texte parole</a></li>
 <li class="chapter" data-level="2.1.2" data-path="intro.html"><a href="intro.html#syntaxe-et-grammaire-générative"><i class="fa fa-check"></i><b>2.1.2</b> Syntaxe et grammaire générative</a></li>
 <li class="chapter" data-level="2.1.3" data-path="intro.html"><a href="intro.html#sémantique-la-conception-distributionnelle"><i class="fa fa-check"></i><b>2.1.3</b> Sémantique : La conception distributionnelle</a></li>
-<li class="chapter" data-level="2.1.4" data-path="intro.html"><a href="intro.html#pragmatique-les-fonctions-et-acte-du-langage"><i class="fa fa-check"></i><b>2.1.4</b> Pragmatique les fonctions et acte du langage</a></li>
-<li class="chapter" data-level="2.1.5" data-path="intro.html"><a href="intro.html#la-linguistique-computationnelle"><i class="fa fa-check"></i><b>2.1.5</b> la linguistique computationnelle</a></li>
+<li class="chapter" data-level="2.1.4" data-path="intro.html"><a href="intro.html#lapproche-pragmatique-les-fonctions-et-acte-du-langage"><i class="fa fa-check"></i><b>2.1.4</b> L’approche pragmatique : les fonctions et acte du langage</a></li>
+<li class="chapter" data-level="2.1.5" data-path="intro.html"><a href="intro.html#la-linguistique-computationnelle"><i class="fa fa-check"></i><b>2.1.5</b> La linguistique computationnelle</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#les-facteurs-de-développement-de-lusage-en-science-sociale"><i class="fa fa-check"></i><b>2.2</b> Les facteurs de développement de l’usage en science sociale</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="intro.html"><a href="intro.html#une-lingua-franca"><i class="fa fa-check"></i><b>2.2.1</b> Une lingua franca</a></li>
@@ -176,17 +176,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4.3" data-path="intro.html"><a href="intro.html#management"><i class="fa fa-check"></i><b>2.4.3</b> Management</a></li>
 <li class="chapter" data-level="2.4.4" data-path="intro.html"><a href="intro.html#economie"><i class="fa fa-check"></i><b>2.4.4</b> Economie</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#des-comptable-à-lindustrie-de-la-langue"><i class="fa fa-check"></i><b>2.5</b> Des comptable à l’industrie de la langue</a></li>
+<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#des-comptables-à-lindustrie-de-la-langue"><i class="fa fa-check"></i><b>2.5</b> Des comptables à l’industrie de la langue</a></li>
 <li class="chapter" data-level="2.6" data-path="intro.html"><a href="intro.html#conclusion"><i class="fa fa-check"></i><b>2.6</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="la-diversité-et-la-nature-des-corpus.html"><a href="la-diversité-et-la-nature-des-corpus.html"><i class="fa fa-check"></i><b>3</b> La diversité et la nature des Corpus</a><ul>
-<li class="chapter" data-level="3.1" data-path="la-diversité-et-la-nature-des-corpus.html"><a href="la-diversité-et-la-nature-des-corpus.html#des-types-de-corpus"><i class="fa fa-check"></i><b>3.1</b> Des types de corpus</a></li>
+<li class="chapter" data-level="3" data-path="la-diversité-et-la-nature-des-corpus.html"><a href="la-diversité-et-la-nature-des-corpus.html"><i class="fa fa-check"></i><b>3</b> La diversité et la nature des corpus</a><ul>
+<li class="chapter" data-level="3.1" data-path="la-diversité-et-la-nature-des-corpus.html"><a href="la-diversité-et-la-nature-des-corpus.html#différents-types-de-corpus"><i class="fa fa-check"></i><b>3.1</b> Différents types de corpus</a></li>
 <li class="chapter" data-level="3.2" data-path="la-diversité-et-la-nature-des-corpus.html"><a href="la-diversité-et-la-nature-des-corpus.html#problèmes-déchantillon"><i class="fa fa-check"></i><b>3.2</b> Problèmes d’échantillon</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html"><i class="fa fa-check"></i><b>4</b> Constitution du corpus</a><ul>
 <li class="chapter" data-level="4.1" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#la-gestion-des-documents-numériques"><i class="fa fa-check"></i><b>4.1</b> La gestion des documents numériques</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#extraire-du-texte-des-pdf"><i class="fa fa-check"></i><b>4.1.1</b> Extraire du texte des pdf</a></li>
-<li class="chapter" data-level="4.1.2" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#la-numérisation-et-locr"><i class="fa fa-check"></i><b>4.1.2</b> la numérisation et l’OCR</a></li>
+<li class="chapter" data-level="4.1.2" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#la-numérisation-et-locr"><i class="fa fa-check"></i><b>4.1.2</b> La numérisation et l’OCR</a></li>
 <li class="chapter" data-level="4.1.3" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#du-speech-au-texte"><i class="fa fa-check"></i><b>4.1.3</b> Du speech au texte</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#lexploitation-de-base-de-données-textuelles"><i class="fa fa-check"></i><b>4.2</b> L’exploitation de base de données textuelles</a><ul>
@@ -289,8 +289,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11" data-path="gestion-des-données-textuelles.html"><a href="gestion-des-données-textuelles.html"><i class="fa fa-check"></i><b>11</b> Gestion des données textuelles</a><ul>
 <li class="chapter" data-level="11.1" data-path="gestion-des-données-textuelles.html"><a href="gestion-des-données-textuelles.html#jouer-avec-les-tokens"><i class="fa fa-check"></i><b>11.1</b> Jouer avec les tokens</a></li>
 <li class="chapter" data-level="11.2" data-path="gestion-des-données-textuelles.html"><a href="gestion-des-données-textuelles.html#les-dtm"><i class="fa fa-check"></i><b>11.2</b> Les DTM</a><ul>
-<li class="chapter" data-level="11.2.1" data-path="gestion-des-données-textuelles.html"><a href="gestion-des-données-textuelles.html#codage"><i class="fa fa-check"></i><b>11.2.1</b> codage</a></li>
-<li class="chapter" data-level="11.2.2" data-path="gestion-des-données-textuelles.html"><a href="gestion-des-données-textuelles.html#tf---idf"><i class="fa fa-check"></i><b>11.2.2</b> TF - IDF</a></li>
+<li class="chapter" data-level="11.2.1" data-path="gestion-des-données-textuelles.html"><a href="gestion-des-données-textuelles.html#codage"><i class="fa fa-check"></i><b>11.2.1</b> Codage</a></li>
+<li class="chapter" data-level="11.2.2" data-path="gestion-des-données-textuelles.html"><a href="gestion-des-données-textuelles.html#des-représentations-tidy"><i class="fa fa-check"></i><b>11.2.2</b> Des représentations tidy</a></li>
 </ul></li>
 <li class="chapter" data-level="11.3" data-path="gestion-des-données-textuelles.html"><a href="gestion-des-données-textuelles.html#les-ctm"><i class="fa fa-check"></i><b>11.3</b> Les ctm</a><ul>
 <li class="chapter" data-level="11.3.1" data-path="gestion-des-données-textuelles.html"><a href="gestion-des-données-textuelles.html#cooccurence"><i class="fa fa-check"></i><b>11.3.1</b> cooccurence</a></li>
@@ -298,63 +298,136 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.3.3" data-path="gestion-des-données-textuelles.html"><a href="gestion-des-données-textuelles.html#une-application-au-clustering"><i class="fa fa-check"></i><b>11.3.3</b> une application au clustering</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html"><i class="fa fa-check"></i><b>12</b> Réseaux sémantiques</a><ul>
-<li class="chapter" data-level="12.1" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#des-analyses-de-proximités"><i class="fa fa-check"></i><b>12.1</b> Des analyses de proximités</a><ul>
-<li class="chapter" data-level="12.1.1" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#les-classiques"><i class="fa fa-check"></i><b>12.1.1</b> les classiques</a></li>
-<li class="chapter" data-level="12.1.2" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#modèles-de-force"><i class="fa fa-check"></i><b>12.1.2</b> modèles de force</a></li>
-<li class="chapter" data-level="12.1.3" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#tsne"><i class="fa fa-check"></i><b>12.1.3</b> tsne</a></li>
+<li class="chapter" data-level="12" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html"><i class="fa fa-check"></i><b>12</b> Le retour des méthodes factorielles</a><ul>
+<li class="chapter" data-level="12.1" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#objectifs-du-chapitre-1"><i class="fa fa-check"></i><b>12.1</b> <em>Objectifs du chapitre</em></a></li>
+<li class="chapter" data-level="12.2" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#les-outils-1"><i class="fa fa-check"></i><b>12.2</b> Les outils</a></li>
+<li class="chapter" data-level="12.3" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#introduction-1"><i class="fa fa-check"></i><b>12.3</b> Introduction</a></li>
+<li class="chapter" data-level="12.4" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#méthodes-données"><i class="fa fa-check"></i><b>12.4</b> Méthodes &amp; Données</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#principes-généraux"><i class="fa fa-check"></i><b>12.4.1</b> Principes généraux</a></li>
+<li class="chapter" data-level="12.4.2" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#données"><i class="fa fa-check"></i><b>12.4.2</b> Données</a></li>
 </ul></li>
-<li class="chapter" data-level="12.2" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#igraph-et-les-cartes-sémantiques"><i class="fa fa-check"></i><b>12.2</b> igraph et les cartes sémantiques</a><ul>
-<li class="chapter" data-level="12.2.1" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#gérer-les-liens"><i class="fa fa-check"></i><b>12.2.1</b> gérer les liens</a></li>
-<li class="chapter" data-level="12.2.2" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#gérer-les-noeuds"><i class="fa fa-check"></i><b>12.2.2</b> gérer les noeuds</a></li>
-<li class="chapter" data-level="12.2.3" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#gérer-les-labels"><i class="fa fa-check"></i><b>12.2.3</b> gérer les labels</a></li>
+<li class="chapter" data-level="12.5" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#analyse-par-composantes-principales-acppca"><i class="fa fa-check"></i><b>12.5</b> Analyse par Composantes Principales (ACP/PCA)</a></li>
+<li class="chapter" data-level="12.6" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#analyse-des-correspondances"><i class="fa fa-check"></i><b>12.6</b> Analyse des Correspondances</a><ul>
+<li class="chapter" data-level="12.6.1" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#table-de-contingence"><i class="fa fa-check"></i><b>12.6.1</b> Table de contingence</a></li>
+<li class="chapter" data-level="12.6.2" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#modèle"><i class="fa fa-check"></i><b>12.6.2</b> Modèle</a></li>
+<li class="chapter" data-level="12.6.3" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#explor"><i class="fa fa-check"></i><b>12.6.3</b> explor</a></li>
 </ul></li>
-<li class="chapter" data-level="12.3" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#propriétés-des-graphes-et-détection-de-communauté"><i class="fa fa-check"></i><b>12.3</b> propriétés des graphes et détection de communauté</a></li>
-<li class="chapter" data-level="12.4" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#la-question-du-temps"><i class="fa fa-check"></i><b>12.4</b> la question du temps</a></li>
+<li class="chapter" data-level="12.7" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#classification-hiérarchique"><i class="fa fa-check"></i><b>12.7</b> Classification Hiérarchique</a><ul>
+<li class="chapter" data-level="12.7.1" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#classification-hiérarchique-ascendante"><i class="fa fa-check"></i><b>12.7.1</b> Classification Hiérarchique Ascendante</a></li>
+<li class="chapter" data-level="12.7.2" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#classification-hiérarchique-ascendante-double"><i class="fa fa-check"></i><b>12.7.2</b> Classification Hiérarchique Ascendante Double</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html"><i class="fa fa-check"></i><b>13</b> Vectorisation du corpus</a><ul>
-<li class="chapter" data-level="13.1" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#application-avec-word2vec"><i class="fa fa-check"></i><b>13.1</b> Application avec Word2vec</a><ul>
-<li class="chapter" data-level="13.1.1" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#préparer-et-annoter-grammaticalement-les-données"><i class="fa fa-check"></i><b>13.1.1</b> Préparer et annoter grammaticalement les données</a></li>
-<li class="chapter" data-level="13.1.2" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#wordvectors-au-travail"><i class="fa fa-check"></i><b>13.1.2</b> WordVectors au travail</a></li>
+<li class="chapter" data-level="12.8" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#classification-hiérarchique-descendante-wordfish"><i class="fa fa-check"></i><b>12.8</b> Classification Hiérarchique Descendante : Wordfish</a></li>
 </ul></li>
-<li class="chapter" data-level="13.2" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#exploiter-le-modèle"><i class="fa fa-check"></i><b>13.2</b> Exploiter le modèle</a></li>
-<li class="chapter" data-level="13.3" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#un-clustering-et-une-projection-tsne"><i class="fa fa-check"></i><b>13.3</b> Un clustering et une projection tsne</a></li>
-<li class="chapter" data-level="13.4" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#les-perspectives"><i class="fa fa-check"></i><b>13.4</b> les perspectives</a></li>
+<li class="chapter" data-level="13" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html"><i class="fa fa-check"></i><b>13</b> Réseaux sémantiques</a><ul>
+<li class="chapter" data-level="13.1" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#des-analyses-de-proximités"><i class="fa fa-check"></i><b>13.1</b> Des analyses de proximités</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#les-classiques"><i class="fa fa-check"></i><b>13.1.1</b> les classiques</a></li>
+<li class="chapter" data-level="13.1.2" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#modèles-de-force"><i class="fa fa-check"></i><b>13.1.2</b> modèles de force</a></li>
+<li class="chapter" data-level="13.1.3" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#tsne"><i class="fa fa-check"></i><b>13.1.3</b> tsne</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="topic-analysis.html"><a href="topic-analysis.html"><i class="fa fa-check"></i><b>14</b> Topic Analysis</a><ul>
-<li class="chapter" data-level="14.1" data-path="topic-analysis.html"><a href="topic-analysis.html#lda"><i class="fa fa-check"></i><b>14.1</b> LDA</a><ul>
-<li class="chapter" data-level="14.1.1" data-path="topic-analysis.html"><a href="topic-analysis.html#le-modèle-original-de-blei"><i class="fa fa-check"></i><b>14.1.1</b> Le modèle original de Blei</a></li>
-<li class="chapter" data-level="14.1.2" data-path="topic-analysis.html"><a href="topic-analysis.html#une-application-aux-commentaires-trip-advisor"><i class="fa fa-check"></i><b>14.1.2</b> Une application aux commentaires trip advisor</a></li>
-<li class="chapter" data-level="14.1.3" data-path="topic-analysis.html"><a href="topic-analysis.html#la-determination-du-nombre-optimal-de-topics"><i class="fa fa-check"></i><b>14.1.3</b> la determination du nombre optimal de topics</a></li>
+<li class="chapter" data-level="13.2" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#igraph-et-les-cartes-sémantiques"><i class="fa fa-check"></i><b>13.2</b> igraph et les cartes sémantiques</a><ul>
+<li class="chapter" data-level="13.2.1" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#gérer-les-liens"><i class="fa fa-check"></i><b>13.2.1</b> gérer les liens</a></li>
+<li class="chapter" data-level="13.2.2" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#gérer-les-noeuds"><i class="fa fa-check"></i><b>13.2.2</b> gérer les noeuds</a></li>
+<li class="chapter" data-level="13.2.3" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#gérer-les-labels"><i class="fa fa-check"></i><b>13.2.3</b> gérer les labels</a></li>
 </ul></li>
-<li class="chapter" data-level="14.2" data-path="topic-analysis.html"><a href="topic-analysis.html#stm"><i class="fa fa-check"></i><b>14.2</b> STM</a></li>
+<li class="chapter" data-level="13.3" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#propriétés-des-graphes-et-détection-de-communauté"><i class="fa fa-check"></i><b>13.3</b> propriétés des graphes et détection de communauté</a></li>
+<li class="chapter" data-level="13.4" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#la-question-du-temps"><i class="fa fa-check"></i><b>13.4</b> la question du temps</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html"><i class="fa fa-check"></i><b>15</b> Machine learning supervisé et NLP</a><ul>
-<li class="chapter" data-level="15.1" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#le-principe-et-ses-applications"><i class="fa fa-check"></i><b>15.1</b> Le principe et ses applications</a></li>
-<li class="chapter" data-level="15.2" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#une-première-application"><i class="fa fa-check"></i><b>15.2</b> Une première application</a><ul>
-<li class="chapter" data-level="15.2.1" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#constituer-le-dataset"><i class="fa fa-check"></i><b>15.2.1</b> Constituer le dataset</a></li>
-<li class="chapter" data-level="15.2.2" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#on-va-nettoyer-le-texte"><i class="fa fa-check"></i><b>15.2.2</b> On va nettoyer le texte</a></li>
-<li class="chapter" data-level="15.2.3" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#caret-sur-la-scène"><i class="fa fa-check"></i><b>15.2.3</b> caret sur la scène</a></li>
-<li class="chapter" data-level="15.2.4" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#un-modèle-naive-bayes"><i class="fa fa-check"></i><b>15.2.4</b> Un modèle naive bayes</a></li>
+<li class="chapter" data-level="14" data-path="analyse-sémantique-latente-asllsa.html"><a href="analyse-sémantique-latente-asllsa.html"><i class="fa fa-check"></i><b>14</b> Analyse Sémantique Latente (ASL/LSA)</a><ul>
+<li class="chapter" data-level="14.0.1" data-path="analyse-sémantique-latente-asllsa.html"><a href="analyse-sémantique-latente-asllsa.html#non-negative-matrix-factorization"><i class="fa fa-check"></i><b>14.0.1</b> Non-negative Matrix Factorization</a></li>
+<li class="chapter" data-level="14.1" data-path="analyse-sémantique-latente-asllsa.html"><a href="analyse-sémantique-latente-asllsa.html#conclusion-4"><i class="fa fa-check"></i><b>14.1</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="15.3" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#passons-à-un-réseau-de-neurones-et-un-rf"><i class="fa fa-check"></i><b>15.3</b> Passons à un réseau de neurones et un RF</a><ul>
-<li class="chapter" data-level="15.3.1" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#neuralnetwook"><i class="fa fa-check"></i><b>15.3.1</b> neuralnetwook</a></li>
-<li class="chapter" data-level="15.3.2" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#multilayer"><i class="fa fa-check"></i><b>15.3.2</b> multilayer</a></li>
+<li class="chapter" data-level="15" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html"><i class="fa fa-check"></i><b>15</b> Vectorisation du corpus</a><ul>
+<li class="chapter" data-level="15.1" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#application-avec-word2vec"><i class="fa fa-check"></i><b>15.1</b> Application avec Word2vec</a><ul>
+<li class="chapter" data-level="15.1.1" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#préparer-et-annoter-grammaticalement-les-données"><i class="fa fa-check"></i><b>15.1.1</b> Préparer et annoter grammaticalement les données</a></li>
+<li class="chapter" data-level="15.1.2" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#wordvectors-au-travail"><i class="fa fa-check"></i><b>15.1.2</b> WordVectors au travail</a></li>
 </ul></li>
-<li class="chapter" data-level="15.4" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#comparons-les-modèles"><i class="fa fa-check"></i><b>15.4</b> Comparons les modèles</a><ul>
-<li class="chapter" data-level="15.4.1" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#une-analyse-plus-précise-de-la-performance"><i class="fa fa-check"></i><b>15.4.1</b> Une analyse plus précise de la performance</a></li>
+<li class="chapter" data-level="15.2" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#exploiter-le-modèle"><i class="fa fa-check"></i><b>15.2</b> Exploiter le modèle</a></li>
+<li class="chapter" data-level="15.3" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#un-clustering-et-une-projection-tsne"><i class="fa fa-check"></i><b>15.3</b> Un clustering et une projection tsne</a></li>
+<li class="chapter" data-level="15.4" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#les-perspectives"><i class="fa fa-check"></i><b>15.4</b> les perspectives</a></li>
 </ul></li>
-<li class="chapter" data-level="15.5" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#mais-il-faut-expliquer"><i class="fa fa-check"></i><b>15.5</b> Mais il faut expliquer</a></li>
-<li class="chapter" data-level="15.6" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#pour-finir-un-exercice-de-fine-tuning"><i class="fa fa-check"></i><b>15.6</b> Pour finir un exercice de fine tuning</a></li>
+<li class="chapter" data-level="16" data-path="topic.html"><a href="topic.html"><i class="fa fa-check"></i><b>16</b> Topic Analysis</a><ul>
+<li class="chapter" data-level="16.1" data-path="topic.html"><a href="topic.html#objectifs-du-chapitre-2"><i class="fa fa-check"></i><b>16.1</b> <em>Objectifs du chapitre</em></a></li>
+<li class="chapter" data-level="16.2" data-path="topic.html"><a href="topic.html#les-outils-2"><i class="fa fa-check"></i><b>16.2</b> Les outils</a></li>
+<li class="chapter" data-level="16.3" data-path="topic.html"><a href="topic.html#introduction-2"><i class="fa fa-check"></i><b>16.3</b> Introduction</a><ul>
+<li class="chapter" data-level="16.3.1" data-path="topic.html"><a href="topic.html#latent-dirichlet-allocation-le-modèle-original-de-blei"><i class="fa fa-check"></i><b>16.3.1</b> Latent Dirichlet Allocation : Le modèle original de Blei</a></li>
+<li class="chapter" data-level="16.3.2" data-path="topic.html"><a href="topic.html#structural-topic-modeling"><i class="fa fa-check"></i><b>16.3.2</b> Structural Topic Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="16.4" data-path="topic.html"><a href="topic.html#lda-une-application-aux-commentaires-trip-advisor"><i class="fa fa-check"></i><b>16.4</b> LDA : Une application aux commentaires trip advisor</a><ul>
+<li class="chapter" data-level="16.4.1" data-path="topic.html"><a href="topic.html#la-détermination-du-nombre-optimal-de-topics"><i class="fa fa-check"></i><b>16.4.1</b> La détermination du nombre optimal de topics</a></li>
+<li class="chapter" data-level="16.4.2" data-path="topic.html"><a href="topic.html#lda-theory-driven"><i class="fa fa-check"></i><b>16.4.2</b> LDA <em>theory driven</em></a></li>
+</ul></li>
+<li class="chapter" data-level="16.5" data-path="topic.html"><a href="topic.html#stm"><i class="fa fa-check"></i><b>16.5</b> STM</a><ul>
+<li class="chapter" data-level="16.5.1" data-path="topic.html"><a href="topic.html#préparation-des-données-1"><i class="fa fa-check"></i><b>16.5.1</b> Préparation des données</a></li>
+<li class="chapter" data-level="16.5.2" data-path="topic.html"><a href="topic.html#identification-du-nombre-de-topics-optimal"><i class="fa fa-check"></i><b>16.5.2</b> Identification du nombre de <em>topics</em> optimal</a></li>
+</ul></li>
+<li class="chapter" data-level="16.6" data-path="topic.html"><a href="topic.html#interprétation-du-modèle-retenu"><i class="fa fa-check"></i><b>16.6</b> Interprétation du modèle retenu</a><ul>
+<li class="chapter" data-level="16.6.1" data-path="topic.html"><a href="topic.html#le-modèle-retenu"><i class="fa fa-check"></i><b>16.6.1</b> Le modèle retenu</a></li>
+<li class="chapter" data-level="16.6.2" data-path="topic.html"><a href="topic.html#corrélation-entre-les-topics"><i class="fa fa-check"></i><b>16.6.2</b> Corrélation entre les <em>topics</em></a></li>
+</ul></li>
+<li class="chapter" data-level="16.7" data-path="topic.html"><a href="topic.html#conclusion-5"><i class="fa fa-check"></i><b>16.7</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html"><i class="fa fa-check"></i><b>17</b> Machine learning supervisé et NLP</a><ul>
+<li class="chapter" data-level="17.1" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#le-principe-et-ses-applications"><i class="fa fa-check"></i><b>17.1</b> Le principe et ses applications</a></li>
+<li class="chapter" data-level="17.2" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#une-première-application"><i class="fa fa-check"></i><b>17.2</b> Une première application</a><ul>
+<li class="chapter" data-level="17.2.1" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#constituer-le-dataset"><i class="fa fa-check"></i><b>17.2.1</b> Constituer le dataset</a></li>
+<li class="chapter" data-level="17.2.2" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#on-va-nettoyer-le-texte"><i class="fa fa-check"></i><b>17.2.2</b> On va nettoyer le texte</a></li>
+<li class="chapter" data-level="17.2.3" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#caret-sur-la-scène"><i class="fa fa-check"></i><b>17.2.3</b> caret sur la scène</a></li>
+<li class="chapter" data-level="17.2.4" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#un-modèle-naive-bayes"><i class="fa fa-check"></i><b>17.2.4</b> Un modèle naive bayes</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#passons-à-un-réseau-de-neurones-et-un-rf"><i class="fa fa-check"></i><b>17.3</b> Passons à un réseau de neurones et un RF</a><ul>
+<li class="chapter" data-level="17.3.1" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#neuralnetwook"><i class="fa fa-check"></i><b>17.3.1</b> neuralnetwook</a></li>
+<li class="chapter" data-level="17.3.2" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#multilayer"><i class="fa fa-check"></i><b>17.3.2</b> multilayer</a></li>
+</ul></li>
+<li class="chapter" data-level="17.4" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#comparons-les-modèles"><i class="fa fa-check"></i><b>17.4</b> Comparons les modèles</a><ul>
+<li class="chapter" data-level="17.4.1" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#une-analyse-plus-précise-de-la-performance"><i class="fa fa-check"></i><b>17.4.1</b> Une analyse plus précise de la performance</a></li>
+</ul></li>
+<li class="chapter" data-level="17.5" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#mais-il-faut-expliquer"><i class="fa fa-check"></i><b>17.5</b> Mais il faut expliquer</a></li>
+<li class="chapter" data-level="17.6" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#pour-finir-un-exercice-de-fine-tuning"><i class="fa fa-check"></i><b>17.6</b> Pour finir un exercice de fine tuning</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="deep-learning.html"><a href="deep-learning.html"><i class="fa fa-check"></i><b>18</b> Deep Learning</a><ul>
+<li class="chapter" data-level="18.1" data-path="deep-learning.html"><a href="deep-learning.html#lenvironnement-keras"><i class="fa fa-check"></i><b>18.1</b> L’environnement keras</a><ul>
+<li class="chapter" data-level="18.1.1" data-path="deep-learning.html"><a href="deep-learning.html#les-fonctions-principales"><i class="fa fa-check"></i><b>18.1.1</b> Les fonctions principales</a></li>
+<li class="chapter" data-level="18.1.2" data-path="deep-learning.html"><a href="deep-learning.html#un-premier-exemple"><i class="fa fa-check"></i><b>18.1.2</b> Un premier exemple</a></li>
+<li class="chapter" data-level="18.1.3" data-path="deep-learning.html"><a href="deep-learning.html#un-deuxième-exemple"><i class="fa fa-check"></i><b>18.1.3</b> Un deuxième exemple</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="deep-learning.html"><a href="deep-learning.html#les-architectures-du-texte-rnn-ltsm-transformer-et-reformer"><i class="fa fa-check"></i><b>18.2</b> Les architectures du texte : RNN, LTSM, Transformer et Reformer</a><ul>
+<li class="chapter" data-level="18.2.1" data-path="deep-learning.html"><a href="deep-learning.html#rnn"><i class="fa fa-check"></i><b>18.2.1</b> rnn</a></li>
+<li class="chapter" data-level="18.2.2" data-path="deep-learning.html"><a href="deep-learning.html#ltsm"><i class="fa fa-check"></i><b>18.2.2</b> ltsm</a></li>
+<li class="chapter" data-level="18.2.3" data-path="deep-learning.html"><a href="deep-learning.html#transformer"><i class="fa fa-check"></i><b>18.2.3</b> transformer</a></li>
+<li class="chapter" data-level="18.2.4" data-path="deep-learning.html"><a href="deep-learning.html#reformer"><i class="fa fa-check"></i><b>18.2.4</b> reformer</a></li>
+</ul></li>
+<li class="chapter" data-level="18.3" data-path="deep-learning.html"><a href="deep-learning.html#les-cas-dapplications-remarquables"><i class="fa fa-check"></i><b>18.3</b> Les cas d’applications remarquables</a><ul>
+<li class="chapter" data-level="18.3.1" data-path="deep-learning.html"><a href="deep-learning.html#detection-dintention"><i class="fa fa-check"></i><b>18.3.1</b> Detection d’intention</a></li>
+<li class="chapter" data-level="18.3.2" data-path="deep-learning.html"><a href="deep-learning.html#détection-de-toxicité-des-contenus"><i class="fa fa-check"></i><b>18.3.2</b> détection de toxicité des contenus</a></li>
+<li class="chapter" data-level="18.3.3" data-path="deep-learning.html"><a href="deep-learning.html#la-detection-des-trolls"><i class="fa fa-check"></i><b>18.3.3</b> la detection des trolls</a></li>
+<li class="chapter" data-level="18.3.4" data-path="deep-learning.html"><a href="deep-learning.html#détection-des-sophismes-et-autres-fallacies"><i class="fa fa-check"></i><b>18.3.4</b> détection des sophismes et autres fallacies</a></li>
+<li class="chapter" data-level="18.3.5" data-path="deep-learning.html"><a href="deep-learning.html#la-détection-du-sarcasme-et-de-lironie"><i class="fa fa-check"></i><b>18.3.5</b> La détection du sarcasme et de l’ironie</a></li>
+<li class="chapter" data-level="18.3.6" data-path="deep-learning.html"><a href="deep-learning.html#lextraction-darguments"><i class="fa fa-check"></i><b>18.3.6</b> L’extraction d’arguments</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html"><i class="fa fa-check"></i><b>19</b> Modèles génératifs</a><ul>
+<li class="chapter" data-level="19.1" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html#simples-models"><i class="fa fa-check"></i><b>19.1</b> simples models</a><ul>
+<li class="chapter" data-level="19.1.1" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html#naives-bayes"><i class="fa fa-check"></i><b>19.1.1</b> Naives bayes</a></li>
+<li class="chapter" data-level="19.1.2" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html#elastic-net"><i class="fa fa-check"></i><b>19.1.2</b> elastic net</a></li>
+<li class="chapter" data-level="19.1.3" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html#rf"><i class="fa fa-check"></i><b>19.1.3</b> RF</a></li>
+</ul></li>
+<li class="chapter" data-level="19.2" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html#art-of-featuring"><i class="fa fa-check"></i><b>19.2</b> art of featuring</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
-<li class="chapter" data-level="16" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html"><i class="fa fa-check"></i><b>16</b> Annexes : quelques problèmes très techniques</a><ul>
-<li class="chapter" data-level="16.1" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#la-question-de-lencodage"><i class="fa fa-check"></i><b>16.1</b> La question de l’encodage</a></li>
-<li class="chapter" data-level="16.2" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#jouer-avec-les-formats-de-données"><i class="fa fa-check"></i><b>16.2</b> Jouer avec les formats de données</a><ul>
-<li class="chapter" data-level="16.2.1" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#des-formats-exotiques"><i class="fa fa-check"></i><b>16.2.1</b> des formats exotiques</a></li>
+<li class="chapter" data-level="20" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html"><i class="fa fa-check"></i><b>20</b> Annexes : quelques problèmes très techniques</a><ul>
+<li class="chapter" data-level="20.1" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#la-question-de-lencodage"><i class="fa fa-check"></i><b>20.1</b> La question de l’encodage</a></li>
+<li class="chapter" data-level="20.2" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#jouer-avec-les-formats-de-données"><i class="fa fa-check"></i><b>20.2</b> Jouer avec les formats de données</a><ul>
+<li class="chapter" data-level="20.2.1" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#des-formats-exotiques"><i class="fa fa-check"></i><b>20.2.1</b> des formats exotiques</a></li>
 </ul></li>
-<li class="chapter" data-level="16.3" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#adopter-des-formats-propres-tidy"><i class="fa fa-check"></i><b>16.3</b> Adopter des formats “propres” (tidy)</a></li>
-<li class="chapter" data-level="16.4" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#les-limites-du-calcul"><i class="fa fa-check"></i><b>16.4</b> Les limites du calcul</a></li>
+<li class="chapter" data-level="20.3" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#adopter-des-formats-propres-tidy"><i class="fa fa-check"></i><b>20.3</b> Adopter des formats “propres” (tidy)</a></li>
+<li class="chapter" data-level="20.4" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#les-limites-du-calcul"><i class="fa fa-check"></i><b>20.4</b> Les limites du calcul</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="etudes-de-cas.html"><a href="etudes-de-cas.html"><i class="fa fa-check"></i><b>21</b> Etudes de cas</a><ul>
+<li class="chapter" data-level="21.1" data-path="etudes-de-cas.html"><a href="etudes-de-cas.html#sommaire"><i class="fa fa-check"></i><b>21.1</b> Sommaire</a><ul>
+<li class="chapter" data-level="21.1.1" data-path="etudes-de-cas.html"><a href="etudes-de-cas.html#cas-1"><i class="fa fa-check"></i><b>21.1.1</b> Cas 1</a></li>
+<li class="chapter" data-level="21.1.2" data-path="etudes-de-cas.html"><a href="etudes-de-cas.html#cas-2"><i class="fa fa-check"></i><b>21.1.2</b> Cas 2</a></li>
+<li class="chapter" data-level="21.1.3" data-path="etudes-de-cas.html"><a href="etudes-de-cas.html#cas-3"><i class="fa fa-check"></i><b>21.1.3</b> Cas 3</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -377,7 +450,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="vectorisation-du-corpus" class="section level1">
-<h1><span class="header-section-number">Chapitre 13</span> Vectorisation du corpus</h1>
+<h1><span class="header-section-number">Chapitre 15</span> Vectorisation du corpus</h1>
 <p>C’est sans doute l’idée la plus novatrice que l’approche computationnelle du langage a apporté ces 10 dernières années. Le modèle word2vec de Mikolov(2013) en est une première version, d’autres ont apporté des amélioration comme le modèle Glove.</p>
 <p>L’idée fondamentale est qu’on peut représenter des mots dans un espace de grande dimension par des vecteurs. Ce qui importe c’est de conserver la relation entre mots dans cet espace. Deux mots très corrélés, au sens de leur cooccurences, doivent l’être avec la même intensité dans cet espace. Admettant que le cosinus de l’angle entre deux vecteurs est équivalent à leur corrélation, on comprend aisément que la vectorisation consiste à identifier un jeu de coordonnées, les paramètres des vecteurs mots, en connaissant les angles qu’is forment entre eux.</p>
 <p>De manière imaginée, il s’agit de représenter le vocabulaire d’un corpus ( et si ce corpus est celui de tous les corpus, d’une langue) sous la forme d’un oursin. Mais dans un espace à de 100 à 1000 dimensions. Si les oursins pointent leurs aiguilles dans toutes les directions, celles-ci sont contraintes à trois dimensions.</p>
@@ -399,128 +472,502 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p class="caption">vecteur</p>
 </div>
 <div id="application-avec-word2vec" class="section level2">
-<h2><span class="header-section-number">13.1</span> Application avec Word2vec</h2>
+<h2><span class="header-section-number">15.1</span> Application avec Word2vec</h2>
 <p>pour la mise en oeuvre on emploie le package <a href="https://github.com/bmschmidt/wordVectors">WordVec</a> de BenJamin Schmidt sur le corpus Trump.</p>
 <p>Dans un premier temps on exploite les éléments présentés dans les chapitre précédents pour pré-processer le texte et le transformer en une séquence de termes bien tempérés : on va transformer les tweets en une séquences de lemmes, en ne gardant que les unités pleinement signifiantes : noms communs, adjectifs et adverbes, verbes. En quelque sorte un excercice de condensation du langage sur ses unités les plus signifiantes.</p>
 <p>C’est aussi l’occasion de rappeler que ce qui importe dans le traitement du langage est de réduire les variations de formes pour mieux capturer les significations.</p>
 <div id="préparer-et-annoter-grammaticalement-les-données" class="section level3">
-<h3><span class="header-section-number">13.1.1</span> Préparer et annoter grammaticalement les données</h3>
+<h3><span class="header-section-number">15.1.1</span> Préparer et annoter grammaticalement les données</h3>
 <p>On prépare les données en “résumant” les tweets à leur plus simple expression</p>
 <p>d’abord on tokenize, et on réduit les tokens en suprrimant les symbole, les nombre, en mettant en minuscules etc</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" title="1">df_trump&lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;./data/TrumpTwitterArchive01-08-2021.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb95-2" title="2"><span class="co">#lecture de l&#39;ensemble de nos tweets</span></a>
-<a class="sourceLine" id="cb95-3" title="3">obj&lt;-df_trump<span class="op">$</span>text </a>
-<a class="sourceLine" id="cb95-4" title="4">foo&lt;-<span class="kw">tokens</span>(obj, <span class="dt">remove_punct =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb95-5" title="5">  <span class="dt">remove_symbols =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb95-6" title="6">  <span class="dt">remove_numbers =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb95-7" title="7">  <span class="dt">remove_url =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb95-8" title="8">  <span class="dt">remove_separators =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb95-9" title="9">  <span class="dt">split_hyphens =</span> <span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb95-10" title="10">  <span class="dt">padding =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb95-11" title="11"><span class="st">  </span><span class="kw">tokens_remove</span>(<span class="dt">pattern =</span> <span class="kw">c</span>(<span class="st">&quot;*.tt&quot;</span>, <span class="st">&quot;*.uk&quot;</span>, <span class="st">&quot;*.com&quot;</span>, <span class="st">&quot;rt&quot;</span>, <span class="st">&quot;#*&quot;</span>, <span class="st">&quot;@*&quot;</span>,<span class="st">&quot;amp&quot;</span>, <span class="st">&quot;RT&quot;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb95-12" title="12"><span class="st">  </span><span class="kw">tokens_select</span>(<span class="dt">pattern=</span><span class="st">&quot;&lt;U+.*&quot;</span>,  <span class="dt">selection =</span> <span class="st">&quot;remove&quot;</span>, <span class="dt">valuetype =</span> <span class="st">&quot;regex&quot;</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb95-13" title="13"><span class="st">  </span><span class="kw">tokens_tolower</span>() </a>
-<a class="sourceLine" id="cb95-14" title="14"><span class="co">#on reconstitue la chaine de caractère à partir des tokens transformés</span></a>
-<a class="sourceLine" id="cb95-15" title="15">foo1&lt;-<span class="kw">data.frame</span>(</a>
-<a class="sourceLine" id="cb95-16" title="16">  <span class="dt">id =</span> <span class="kw">seq_along</span>(foo),</a>
-<a class="sourceLine" id="cb95-17" title="17">  <span class="dt">text =</span> <span class="kw">sapply</span>(foo, paste, <span class="dt">collapse =</span> <span class="st">&quot; &quot;</span>),</a>
-<a class="sourceLine" id="cb95-18" title="18">  <span class="dt">row.names =</span> <span class="ot">NULL</span></a>
-<a class="sourceLine" id="cb95-19" title="19">)</a></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" title="1">df_trump&lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;./data/TrumpTwitterArchive01-08-2021.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb127-2" title="2"><span class="co">#lecture de l&#39;ensemble de nos tweets</span></a>
+<a class="sourceLine" id="cb127-3" title="3">obj&lt;-df_trump<span class="op">$</span>text </a>
+<a class="sourceLine" id="cb127-4" title="4">foo&lt;-<span class="kw">tokens</span>(obj, <span class="dt">remove_punct =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb127-5" title="5">  <span class="dt">remove_symbols =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb127-6" title="6">  <span class="dt">remove_numbers =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb127-7" title="7">  <span class="dt">remove_url =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb127-8" title="8">  <span class="dt">remove_separators =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb127-9" title="9">  <span class="dt">split_hyphens =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb127-10" title="10">  <span class="dt">padding =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb127-11" title="11"><span class="st">  </span><span class="kw">tokens_remove</span>(<span class="dt">pattern =</span> <span class="kw">c</span>(<span class="st">&quot;*.tt&quot;</span>, <span class="st">&quot;*.uk&quot;</span>, <span class="st">&quot;*.com&quot;</span>, <span class="st">&quot;rt&quot;</span>, <span class="st">&quot;#*&quot;</span>, <span class="st">&quot;@*&quot;</span>,<span class="st">&quot;amp&quot;</span>, <span class="st">&quot;RT&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb127-12" title="12"><span class="st">  </span><span class="kw">tokens_select</span>(<span class="dt">pattern=</span><span class="st">&quot;&lt;U+.*&quot;</span>,  <span class="dt">selection =</span> <span class="st">&quot;remove&quot;</span>, <span class="dt">valuetype =</span> <span class="st">&quot;regex&quot;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb127-13" title="13"><span class="st">  </span><span class="kw">tokens_tolower</span>() </a>
+<a class="sourceLine" id="cb127-14" title="14"><span class="co">#on reconstitue la chaine de caractère à partir des tokens transformés</span></a>
+<a class="sourceLine" id="cb127-15" title="15">foo1&lt;-<span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb127-16" title="16">  <span class="dt">id =</span> <span class="kw">seq_along</span>(foo),</a>
+<a class="sourceLine" id="cb127-17" title="17">  <span class="dt">text =</span> <span class="kw">sapply</span>(foo, paste, <span class="dt">collapse =</span> <span class="st">&quot; &quot;</span>),</a>
+<a class="sourceLine" id="cb127-18" title="18">  <span class="dt">row.names =</span> <span class="ot">NULL</span></a>
+<a class="sourceLine" id="cb127-19" title="19">)</a></code></pre></div>
 <p>et on fait de l’annotations POS, comme étudié dans le chapitre X. attention ç a peut prendre du temps. 35 mn sur notre machine. c’est pourquoi nous ajoutons un petit dispositif de calcul de temps pour se donner une maitrise des ajustements. le traitement du texte consomme parfois beaucoups de ressources, et il est utile d’en contrôler l’usage.</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" title="1"><span class="kw">library</span>(cleanNLP) <span class="co">#pour les POS et Dépendences syntaxiques</span></a>
-<a class="sourceLine" id="cb96-2" title="2"></a>
-<a class="sourceLine" id="cb96-3" title="3"><span class="co"># initialisation du modèle , ici udpipe, mais aussi spacy corenlp ou stringi</span></a>
-<a class="sourceLine" id="cb96-4" title="4"><span class="co">#(un travail devrait être de comprer ces méthodes par le taux de couvrement!!!!)</span></a>
-<a class="sourceLine" id="cb96-5" title="5"><span class="kw">cnlp_init_udpipe</span>(<span class="dt">model_name  =</span> <span class="st">&quot;english&quot;</span>)</a>
-<a class="sourceLine" id="cb96-6" title="6"></a>
-<a class="sourceLine" id="cb96-7" title="7"></a>
-<a class="sourceLine" id="cb96-8" title="8"><span class="co">#Annotation des tweets afin de pouvoir identifier les stopwords</span></a>
-<a class="sourceLine" id="cb96-9" title="9">t0&lt;-<span class="kw">Sys.time</span>() <span class="co">#date de départ</span></a>
-<a class="sourceLine" id="cb96-10" title="10">Vocab&lt;-<span class="kw">cnlp_annotate</span>(foo1<span class="op">$</span>text,<span class="dt">verbose=</span><span class="dv">10000</span>) <span class="co">#le verbose fixe la notification du nombre d&#39;éléments traités, c&#39;est utiles pour savoir si on va juste prendre un café ou aller déjeuner</span></a>
-<a class="sourceLine" id="cb96-11" title="11">t1&lt;-<span class="kw">Sys.time</span>() <span class="co">#date de fin.... juste pour controler une opération qui peut prendre 40 mn sur un processeur 4 coeurs à 3.6ghz et 32go de ram.</span></a>
-<a class="sourceLine" id="cb96-12" title="12"><span class="co">#on conseille d&#39;échantillonner d&#39;abord</span></a>
-<a class="sourceLine" id="cb96-13" title="13">t&lt;-t1<span class="op">-</span>t0</a>
-<a class="sourceLine" id="cb96-14" title="14">t</a>
-<a class="sourceLine" id="cb96-15" title="15"><span class="kw">write_rds</span>(Vocab,<span class="st">&quot;./data/Vocab.rds&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" title="1"><span class="kw">library</span>(cleanNLP) <span class="co">#pour les POS et Dépendences syntaxiques</span></a>
+<a class="sourceLine" id="cb128-2" title="2"></a>
+<a class="sourceLine" id="cb128-3" title="3"><span class="co"># initialisation du modèle , ici udpipe, mais aussi spacy corenlp ou stringi</span></a>
+<a class="sourceLine" id="cb128-4" title="4"><span class="co">#(un travail devrait être de comparer ces méthodes par le taux de couvrement!!!!)</span></a>
+<a class="sourceLine" id="cb128-5" title="5"><span class="kw">cnlp_init_udpipe</span>(<span class="dt">model_name  =</span> <span class="st">&quot;english&quot;</span>)</a>
+<a class="sourceLine" id="cb128-6" title="6"></a>
+<a class="sourceLine" id="cb128-7" title="7"></a>
+<a class="sourceLine" id="cb128-8" title="8"><span class="co">#Annotation des tweets afin de pouvoir identifier les stopwords</span></a>
+<a class="sourceLine" id="cb128-9" title="9">t0&lt;-<span class="kw">Sys.time</span>() <span class="co">#date de départ</span></a>
+<a class="sourceLine" id="cb128-10" title="10">Vocab&lt;-<span class="kw">cnlp_annotate</span>(foo1<span class="op">$</span>text,<span class="dt">verbose=</span><span class="dv">10000</span>) <span class="co">#le verbose fixe la notification du nombre d&#39;éléments traités, c&#39;est utiles pour savoir si on va juste prendre un café ou aller déjeuner</span></a>
+<a class="sourceLine" id="cb128-11" title="11">t1&lt;-<span class="kw">Sys.time</span>() <span class="co">#date de fin.... juste pour controler une opération qui peut prendre 40 mn sur un processeur 4 coeurs à 3.6ghz et 32go de ram.</span></a>
+<a class="sourceLine" id="cb128-12" title="12"><span class="co">#on conseille d&#39;échantillonner d&#39;abord</span></a>
+<a class="sourceLine" id="cb128-13" title="13">t&lt;-t1<span class="op">-</span>t0</a>
+<a class="sourceLine" id="cb128-14" title="14">t</a>
+<a class="sourceLine" id="cb128-15" title="15"><span class="kw">write_rds</span>(Vocab,<span class="st">&quot;./data/Vocab.rds&quot;</span>)</a></code></pre></div>
 <p>donc l’opération aura pris <code>t</code> minutes.</p>
 <p>Et un peu de filtrage sur les POS afin de se contreer sur les unités signifiantes.</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" title="1">Vocab &lt;-<span class="kw">readRDS</span> (<span class="st">&quot;./data/Vocab.rds&quot;</span>)</a>
-<a class="sourceLine" id="cb97-2" title="2"></a>
-<a class="sourceLine" id="cb97-3" title="3">foo&lt;-<span class="kw">as.data.frame</span>(Vocab[<span class="kw">c</span>(<span class="st">&quot;token&quot;</span>)]) <span class="co"># il faut changer de format</span></a>
-<a class="sourceLine" id="cb97-4" title="4"></a>
-<a class="sourceLine" id="cb97-5" title="5"><span class="co">#on filtre adverbes adjectifs verb et non communs</span></a>
-<a class="sourceLine" id="cb97-6" title="6">updated_vocab &lt;-<span class="st"> </span>foo <span class="op">%&gt;%</span><span class="st">  </span><span class="kw">filter</span>(token.upos <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;ADV&#39;</span>,<span class="st">&#39;ADJ&#39;</span>,<span class="st">&#39;VERB&#39;</span>, <span class="st">&#39;NOUN&#39;</span>))</a>
-<a class="sourceLine" id="cb97-7" title="7"></a>
-<a class="sourceLine" id="cb97-8" title="8"><span class="co">#on crée une chaine de caractère qui concatène les lemmes filtrés</span></a>
-<a class="sourceLine" id="cb97-9" title="9">all_tweets &lt;-<span class="st"> </span><span class="kw">paste</span>(updated_vocab[<span class="st">&#39;token.lemma&#39;</span>], <span class="dt">sep=</span> <span class="st">&quot; &quot;</span>)</a>
-<a class="sourceLine" id="cb97-10" title="10"></a>
-<a class="sourceLine" id="cb97-11" title="11"><span class="co">#on génère le fichier de ces tweets &quot;purifiés&quot;</span></a>
-<a class="sourceLine" id="cb97-12" title="12"><span class="kw">write.table</span>(all_tweets, <span class="dt">file=</span><span class="st">&quot;./data/tweets.txt&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" title="1">Vocab &lt;-<span class="kw">readRDS</span> (<span class="st">&quot;./data/Vocab.rds&quot;</span>)</a>
+<a class="sourceLine" id="cb129-2" title="2"></a>
+<a class="sourceLine" id="cb129-3" title="3">foo&lt;-<span class="kw">as.data.frame</span>(Vocab[<span class="kw">c</span>(<span class="st">&quot;token&quot;</span>)]) <span class="co"># il faut changer de format</span></a>
+<a class="sourceLine" id="cb129-4" title="4"></a>
+<a class="sourceLine" id="cb129-5" title="5"><span class="co">#on filtre adverbes adjectifs verb et non communs</span></a>
+<a class="sourceLine" id="cb129-6" title="6">updated_vocab &lt;-<span class="st"> </span>foo <span class="op">%&gt;%</span><span class="st">  </span><span class="kw">filter</span>(token.upos <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;ADV&#39;</span>,<span class="st">&#39;ADJ&#39;</span>,<span class="st">&#39;VERB&#39;</span>, <span class="st">&#39;NOUN&#39;</span>))</a>
+<a class="sourceLine" id="cb129-7" title="7"></a>
+<a class="sourceLine" id="cb129-8" title="8"><span class="co">#on crée une chaine de caractère qui concatène les lemmes filtrés</span></a>
+<a class="sourceLine" id="cb129-9" title="9">all_tweets &lt;-<span class="st"> </span><span class="kw">paste</span>(updated_vocab[<span class="st">&#39;token.lemma&#39;</span>], <span class="dt">sep=</span> <span class="st">&quot; &quot;</span>)</a>
+<a class="sourceLine" id="cb129-10" title="10"></a>
+<a class="sourceLine" id="cb129-11" title="11"><span class="co">#on génère le fichier de ces tweets &quot;purifiés&quot;</span></a>
+<a class="sourceLine" id="cb129-12" title="12"><span class="kw">write.table</span>(all_tweets, <span class="dt">file=</span><span class="st">&quot;./data/tweets.txt&quot;</span>)</a></code></pre></div>
 </div>
 <div id="wordvectors-au-travail" class="section level3">
-<h3><span class="header-section-number">13.1.2</span> WordVectors au travail</h3>
-<p>deux étapes</p>
+<h3><span class="header-section-number">15.1.2</span> WordVectors au travail</h3>
+<p>Deux étapes</p>
 <ul>
 <li>un preprocessing, qui permet de prendre en compte les ngrams</li>
 <li>l’entrainement du modèle</li>
 </ul>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" title="1"><span class="co">#install.packages(&quot;remotes&quot;)</span></a>
-<a class="sourceLine" id="cb98-2" title="2"><span class="co">#remotes::install_github(&quot;bmschmidt/wordVectors&quot;)</span></a>
-<a class="sourceLine" id="cb98-3" title="3"><span class="kw">library</span>(wordVectors)</a>
-<a class="sourceLine" id="cb98-4" title="4"></a>
-<a class="sourceLine" id="cb98-5" title="5"><span class="co">#Nettoyage des tweets et identification des n-grammes en vue d&#39;entraîner le modèle</span></a>
-<a class="sourceLine" id="cb98-6" title="6"><span class="kw">prep_word2vec</span>(<span class="dt">origin=</span><span class="st">&quot;./data/tweets.txt&quot;</span>,<span class="dt">destination=</span><span class="st">&quot;./data/trump_vec.txt&quot;</span>,<span class="dt">lowercase=</span>T,<span class="dt">bundle_ngrams=</span><span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb98-7" title="7"></a>
-<a class="sourceLine" id="cb98-8" title="8"><span class="co">#Création et entraînement du modèle vectoriel</span></a>
-<a class="sourceLine" id="cb98-9" title="9"></a>
-<a class="sourceLine" id="cb98-10" title="10">model =<span class="st"> </span><span class="kw">train_word2vec</span>(<span class="st">&quot;./data/trump_vec.txt&quot;</span>,</a>
-<a class="sourceLine" id="cb98-11" title="11">                       <span class="st">&quot;./data/trump.bin&quot;</span>,</a>
-<a class="sourceLine" id="cb98-12" title="12">                       <span class="dt">vectors=</span><span class="dv">200</span>,<span class="dt">threads=</span><span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb98-13" title="13">                       <span class="dt">window=</span><span class="dv">5</span>,</a>
-<a class="sourceLine" id="cb98-14" title="14">                       <span class="dt">iter=</span><span class="dv">10</span>,<span class="dt">negative_samples=</span><span class="dv">0</span>,</a>
-<a class="sourceLine" id="cb98-15" title="15">                       <span class="dt">force=</span><span class="ot">TRUE</span>, </a>
-<a class="sourceLine" id="cb98-16" title="16">                       <span class="dt">min_count=</span><span class="dv">30</span>)</a>
-<a class="sourceLine" id="cb98-17" title="17"></a>
-<a class="sourceLine" id="cb98-18" title="18">mod&lt;-model<span class="op">@</span>.Data</a></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" title="1"><span class="co">#install.packages(&quot;remotes&quot;)</span></a>
+<a class="sourceLine" id="cb130-2" title="2"><span class="co">#remotes::install_github(&quot;bmschmidt/wordVectors&quot;)</span></a>
+<a class="sourceLine" id="cb130-3" title="3"><span class="kw">library</span>(wordVectors)</a>
+<a class="sourceLine" id="cb130-4" title="4"></a>
+<a class="sourceLine" id="cb130-5" title="5"><span class="co">#Nettoyage des tweets et identification des n-grammes en vue d&#39;entraîner le modèle</span></a>
+<a class="sourceLine" id="cb130-6" title="6"><span class="kw">prep_word2vec</span>(<span class="dt">origin=</span><span class="st">&quot;./data/tweets.txt&quot;</span>,<span class="dt">destination=</span><span class="st">&quot;./data/trump_vec.txt&quot;</span>,<span class="dt">lowercase=</span>T,<span class="dt">bundle_ngrams=</span><span class="dv">3</span>)</a></code></pre></div>
+<pre><code>## Starting training using file ./data/trump_vec.txt
+## Words processed: 100K     Vocab size: 78K  
+Words processed: 200K     Vocab size: 144K  
+Words processed: 300K     Vocab size: 202K  
+Words processed: 400K     Vocab size: 253K  
+Words processed: 500K     Vocab size: 302K  
+## Vocab size (unigrams + bigrams): 177244
+## Words in train file: 566121
+## Words written: 100K
+Words written: 200K
+Words written: 300K
+Words written: 400K
+Words written: 500K
+Starting training using file ./data/trump_vec.txt_
+## Words processed: 600K     Vocab size: 32K  
+Words processed: 700K     Vocab size: 108K  
+Words processed: 800K     Vocab size: 178K  
+Words processed: 900K     Vocab size: 235K  
+Words processed: 1000K     Vocab size: 290K  
+## Vocab size (unigrams + bigrams): 181767
+## Words in train file: 1098545
+## Words written: 100K
+Words written: 200K
+Words written: 300K
+Words written: 400K
+Words written: 500K</code></pre>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" title="1"><span class="co">#Création et entraînement du modèle vectoriel</span></a>
+<a class="sourceLine" id="cb132-2" title="2"></a>
+<a class="sourceLine" id="cb132-3" title="3">model =<span class="st"> </span><span class="kw">train_word2vec</span>(<span class="st">&quot;./data/trump_vec.txt&quot;</span>,</a>
+<a class="sourceLine" id="cb132-4" title="4">                       <span class="st">&quot;./data/trump.bin&quot;</span>,</a>
+<a class="sourceLine" id="cb132-5" title="5">                       <span class="dt">vectors=</span><span class="dv">200</span>,<span class="dt">threads=</span><span class="dv">3</span>,</a>
+<a class="sourceLine" id="cb132-6" title="6">                       <span class="dt">window=</span><span class="dv">5</span>,</a>
+<a class="sourceLine" id="cb132-7" title="7">                       <span class="dt">iter=</span><span class="dv">10</span>,<span class="dt">negative_samples=</span><span class="dv">0</span>,</a>
+<a class="sourceLine" id="cb132-8" title="8">                       <span class="dt">force=</span><span class="ot">TRUE</span>, </a>
+<a class="sourceLine" id="cb132-9" title="9">                       <span class="dt">min_count=</span><span class="dv">30</span>)</a></code></pre></div>
+<pre><code>## Starting training using file C:/Users/33623/Documents/_bibliographie/MethodologieQuantitative/Chapitre20NLP/_BookdownNLP/NLPBook/data/trump_vec.txt
+## 100K
+200K
+300K
+400K
+500K
+Vocab size: 2270
+## Words in train file: 416630
+## 
+  |                                                                            
+  |                                                                      |   0%
+  |                                                                            
+  |                                                                      |   1%
+  |                                                                            
+  |=                                                                     |   1%
+  |                                                                            
+  |=                                                                     |   2%
+  |                                                                            
+  |==                                                                    |   2%
+  |                                                                            
+  |==                                                                    |   3%
+  |                                                                            
+  |==                                                                    |   4%
+  |                                                                            
+  |===                                                                   |   4%
+  |                                                                            
+  |===                                                                   |   5%
+  |                                                                            
+  |====                                                                  |   5%
+  |                                                                            
+  |====                                                                  |   6%
+  |                                                                            
+  |=====                                                                 |   6%
+  |                                                                            
+  |=====                                                                 |   7%
+  |                                                                            
+  |=====                                                                 |   8%
+  |                                                                            
+  |======                                                                |   8%
+  |                                                                            
+  |======                                                                |   9%
+  |                                                                            
+  |=======                                                               |   9%
+  |                                                                            
+  |=======                                                               |  10%
+  |                                                                            
+  |=======                                                               |  11%
+  |                                                                            
+  |========                                                              |  11%
+  |                                                                            
+  |========                                                              |  12%
+  |                                                                            
+  |=========                                                             |  12%
+  |                                                                            
+  |=========                                                             |  13%
+  |                                                                            
+  |=========                                                             |  14%
+  |                                                                            
+  |==========                                                            |  14%
+  |                                                                            
+  |==========                                                            |  15%
+  |                                                                            
+  |===========                                                           |  15%
+  |                                                                            
+  |===========                                                           |  16%
+  |                                                                            
+  |============                                                          |  16%
+  |                                                                            
+  |============                                                          |  17%
+  |                                                                            
+  |============                                                          |  18%
+  |                                                                            
+  |=============                                                         |  18%
+  |                                                                            
+  |=============                                                         |  19%
+  |                                                                            
+  |==============                                                        |  19%
+  |                                                                            
+  |==============                                                        |  20%
+  |                                                                            
+  |==============                                                        |  21%
+  |                                                                            
+  |===============                                                       |  21%
+  |                                                                            
+  |===============                                                       |  22%
+  |                                                                            
+  |================                                                      |  22%
+  |                                                                            
+  |================                                                      |  23%
+  |                                                                            
+  |================                                                      |  24%
+  |                                                                            
+  |=================                                                     |  24%
+  |                                                                            
+  |=================                                                     |  25%
+  |                                                                            
+  |==================                                                    |  25%
+  |                                                                            
+  |==================                                                    |  26%
+  |                                                                            
+  |===================                                                   |  26%
+  |                                                                            
+  |===================                                                   |  27%
+  |                                                                            
+  |===================                                                   |  28%
+  |                                                                            
+  |====================                                                  |  28%
+  |                                                                            
+  |====================                                                  |  29%
+  |                                                                            
+  |=====================                                                 |  29%
+  |                                                                            
+  |=====================                                                 |  30%
+  |                                                                            
+  |=====================                                                 |  31%
+  |                                                                            
+  |======================                                                |  31%
+  |                                                                            
+  |======================                                                |  32%
+  |                                                                            
+  |=======================                                               |  32%
+  |                                                                            
+  |=======================                                               |  33%
+  |                                                                            
+  |=======================                                               |  34%
+  |                                                                            
+  |========================                                              |  34%
+  |                                                                            
+  |========================                                              |  35%
+  |                                                                            
+  |=========================                                             |  35%
+  |                                                                            
+  |=========================                                             |  36%
+  |                                                                            
+  |==========================                                            |  36%
+  |                                                                            
+  |==========================                                            |  37%
+  |                                                                            
+  |==========================                                            |  38%
+  |                                                                            
+  |===========================                                           |  38%
+  |                                                                            
+  |===========================                                           |  39%
+  |                                                                            
+  |============================                                          |  39%
+  |                                                                            
+  |============================                                          |  40%
+  |                                                                            
+  |============================                                          |  41%
+  |                                                                            
+  |=============================                                         |  41%
+  |                                                                            
+  |=============================                                         |  42%
+  |                                                                            
+  |==============================                                        |  42%
+  |                                                                            
+  |==============================                                        |  43%
+  |                                                                            
+  |==============================                                        |  44%
+  |                                                                            
+  |===============================                                       |  44%
+  |                                                                            
+  |===============================                                       |  45%
+  |                                                                            
+  |================================                                      |  45%
+  |                                                                            
+  |================================                                      |  46%
+  |                                                                            
+  |=================================                                     |  46%
+  |                                                                            
+  |=================================                                     |  47%
+  |                                                                            
+  |=================================                                     |  48%
+  |                                                                            
+  |==================================                                    |  48%
+  |                                                                            
+  |==================================                                    |  49%
+  |                                                                            
+  |===================================                                   |  49%
+  |                                                                            
+  |===================================                                   |  50%
+  |                                                                            
+  |===================================                                   |  51%
+  |                                                                            
+  |====================================                                  |  51%
+  |                                                                            
+  |====================================                                  |  52%
+  |                                                                            
+  |=====================================                                 |  52%
+  |                                                                            
+  |=====================================                                 |  53%
+  |                                                                            
+  |=====================================                                 |  54%
+  |                                                                            
+  |======================================                                |  54%
+  |                                                                            
+  |======================================                                |  55%
+  |                                                                            
+  |=======================================                               |  55%
+  |                                                                            
+  |=======================================                               |  56%
+  |                                                                            
+  |========================================                              |  56%
+  |                                                                            
+  |========================================                              |  57%
+  |                                                                            
+  |========================================                              |  58%
+  |                                                                            
+  |=========================================                             |  58%
+  |                                                                            
+  |=========================================                             |  59%
+  |                                                                            
+  |==========================================                            |  59%
+  |                                                                            
+  |==========================================                            |  60%
+  |                                                                            
+  |==========================================                            |  61%
+  |                                                                            
+  |===========================================                           |  61%
+  |                                                                            
+  |===========================================                           |  62%
+  |                                                                            
+  |============================================                          |  62%
+  |                                                                            
+  |============================================                          |  63%
+  |                                                                            
+  |============================================                          |  64%
+  |                                                                            
+  |=============================================                         |  64%
+  |                                                                            
+  |=============================================                         |  65%
+  |                                                                            
+  |==============================================                        |  65%
+  |                                                                            
+  |==============================================                        |  66%
+  |                                                                            
+  |===============================================                       |  66%
+  |                                                                            
+  |===============================================                       |  67%
+  |                                                                            
+  |===============================================                       |  68%
+  |                                                                            
+  |================================================                      |  68%
+  |                                                                            
+  |================================================                      |  69%
+  |                                                                            
+  |=================================================                     |  69%
+  |                                                                            
+  |=================================================                     |  70%
+  |                                                                            
+  |=================================================                     |  71%
+  |                                                                            
+  |==================================================                    |  71%
+  |                                                                            
+  |==================================================                    |  72%
+  |                                                                            
+  |===================================================                   |  72%
+  |                                                                            
+  |===================================================                   |  73%
+  |                                                                            
+  |===================================================                   |  74%
+  |                                                                            
+  |====================================================                  |  74%
+  |                                                                            
+  |====================================================                  |  75%
+  |                                                                            
+  |=====================================================                 |  75%
+  |                                                                            
+  |=====================================================                 |  76%
+  |                                                                            
+  |======================================================                |  76%
+  |                                                                            
+  |======================================================                |  77%
+  |                                                                            
+  |======================================================                |  78%
+  |                                                                            
+  |=======================================================               |  78%
+  |                                                                            
+  |=======================================================               |  79%
+  |                                                                            
+  |========================================================              |  79%
+  |                                                                            
+  |========================================================              |  80%
+  |                                                                            
+  |========================================================              |  81%
+  |                                                                            
+  |=========================================================             |  81%
+  |                                                                            
+  |=========================================================             |  82%
+  |                                                                            
+  |==========================================================            |  82%
+  |                                                                            
+  |==========================================================            |  83%
+  |                                                                            
+  |==========================================================            |  84%
+  |                                                                            
+  |===========================================================           |  84%
+  |                                                                            
+  |===========================================================           |  85%
+  |                                                                            
+  |============================================================          |  85%
+  |                                                                            
+  |============================================================          |  86%
+  |                                                                            
+  |=============================================================         |  86%
+  |                                                                            
+  |=============================================================         |  87%
+  |                                                                            
+  |=============================================================         |  88%
+  |                                                                            
+  |==============================================================        |  88%
+  |                                                                            
+  |==============================================================        |  89%
+  |                                                                            
+  |===============================================================       |  89%
+  |                                                                            
+  |===============================================================       |  90%
+  |                                                                            
+  |===============================================================       |  91%
+  |                                                                            
+  |================================================================      |  91%
+  |                                                                            
+  |================================================================      |  92%
+  |                                                                            
+  |=================================================================     |  92%
+  |                                                                            
+  |=================================================================     |  93%
+  |                                                                            
+  |=================================================================     |  94%
+  |                                                                            
+  |==================================================================    |  94%
+  |                                                                            
+  |==================================================================    |  95%
+  |                                                                            
+  |===================================================================   |  95%
+  |                                                                            
+  |===================================================================   |  96%
+  |                                                                            
+  |====================================================================  |  96%
+  |                                                                            
+  |====================================================================  |  97%
+  |                                                                            
+  |====================================================================  |  98%
+  |                                                                            
+  |===================================================================== |  98%
+  |                                                                            
+  |===================================================================== |  99%
+  |                                                                            
+  |======================================================================|  99%
+  |                                                                            
+  |======================================================================| 100%</code></pre>
 <p>La taille du vocabulaire est de 2306 pour 401445 mots dans le fichier d’entraînement. Ils se présente sous la forme d’un tableau de 2306 termes, et de 200 colonnes.</p>
 </div>
 </div>
 <div id="exploiter-le-modèle" class="section level2">
-<h2><span class="header-section-number">13.2</span> Exploiter le modèle</h2>
+<h2><span class="header-section-number">15.2</span> Exploiter le modèle</h2>
 <p>Le résultat de ce traitement est un tableau comprenant <span class="math inline">\(m\)</span> termes, et <span class="math inline">\(k\)</span> dimensions. l’espace du langage qui était un tableau de coocurrence de taille <span class="math inline">\(m.m\)</span> a été réduit à un tableau de <span class="math inline">\(m.k\)</span> dimension. Si nous avions 1000 mots dans le vocabulaire et que nous le représentant en 100 dimensions, alors qu’il fallait <span class="math inline">\(m*(m-1)/2)\)</span> paramètres, soit presque 500k, l’information est réduite à <span class="math inline">\(m*k\)</span> paramètres soit 100k. d’une certaine manière la vectorisation compresse les données.</p>
-<p>pour exploiter cette représentation, une première manière de faire est de rechercher dans le corpus les termes les plus associé à un terme cible.</p>
-<p>La cible de trump, on n’en doute pas est biden.</p>
-<p>Pour exploiter ce tableau des fonctions pratiques sont proposées dans le package. la principale closest_to</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" title="1">foo&lt;-model <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb99-2" title="2"><span class="st">  </span><span class="kw">closest_to</span>(<span class="op">~</span><span class="st">&quot;biden&quot;</span>,<span class="dv">30</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb99-3" title="3"><span class="st">  </span><span class="kw">filter</span>(word<span class="op">!=</span><span class="st">&quot;biden&quot;</span>) <span class="co">#on choisit les 30 termes les plus proches, sauf biden</span></a>
-<a class="sourceLine" id="cb99-4" title="4"></a>
-<a class="sourceLine" id="cb99-5" title="5">foo<span class="op">$</span>Similarity&lt;-foo[,<span class="dv">2</span>] <span class="co">#juste pour renommer la variable</span></a>
-<a class="sourceLine" id="cb99-6" title="6">g1&lt;-<span class="kw">ggplot</span>(foo, <span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">reorder</span>(word,Similarity),<span class="dt">y=</span>Similarity))<span class="op">+</span></a>
-<a class="sourceLine" id="cb99-7" title="7"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">col=</span><span class="st">&quot;black&quot;</span>,<span class="dt">size=</span><span class="dv">3</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb99-8" title="8"><span class="st">  </span><span class="kw">coord_flip</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb99-9" title="9"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;N-grammes similaires à Biden&quot;</span>)</a>
-<a class="sourceLine" id="cb99-10" title="10">g1</a></code></pre></div>
+<p>pour exploiter cette représentation, une première manière de faire est de rechercher dans le corpus les termes les plus associés à un terme cible. Quel est son contexte le plus proche? La cible de Trump, on n’en doute pas est Biden.</p>
+<p>Pour exploiter ce tableau des fonctions pratiques sont proposées dans le package. la principale <code>closest_to</code> qui permet de selectionner les termes les plus proches, en termes de cosinus, du vecteur cible.</p>
+<p>Dans l’exemple suivant, on cherche à mieux saisir le concept de “biden”, dans le discours de Trump. On examine les trentes termes les plus proches. On constate un procédé général de disqualification, peut-être même d’infra-humanisation. Une diabolisation certainement : “crooked”, “sleepy”…</p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" title="1">foo&lt;-model <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb134-2" title="2"><span class="st">  </span><span class="kw">closest_to</span>(<span class="op">~</span><span class="st">&quot;biden&quot;</span>,<span class="dv">30</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb134-3" title="3"><span class="st">  </span><span class="kw">filter</span>(word<span class="op">!=</span><span class="st">&quot;biden&quot;</span>) <span class="co">#on choisit les 30 termes les plus proches, sauf biden</span></a>
+<a class="sourceLine" id="cb134-4" title="4"></a>
+<a class="sourceLine" id="cb134-5" title="5">foo<span class="op">$</span>Similarity&lt;-foo[,<span class="dv">2</span>] <span class="co">#juste pour renommer la variable</span></a>
+<a class="sourceLine" id="cb134-6" title="6">g1&lt;-<span class="kw">ggplot</span>(foo, <span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">reorder</span>(word,Similarity),<span class="dt">y=</span>Similarity))<span class="op">+</span></a>
+<a class="sourceLine" id="cb134-7" title="7"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">col=</span><span class="st">&quot;black&quot;</span>,<span class="dt">size=</span><span class="dv">3</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb134-8" title="8"><span class="st">  </span><span class="kw">coord_flip</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb134-9" title="9"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;N-grammes similaires à Biden&quot;</span>)</a>
+<a class="sourceLine" id="cb134-10" title="10">g1</a></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/1405-1.png" width="80%" style="display: block; margin: auto;" /></p>
-<p>même chose pour Trump</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" title="1">foo&lt;-model <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb100-2" title="2"><span class="st">  </span><span class="kw">closest_to</span>(<span class="op">~</span><span class="st">&quot;trump&quot;</span>,<span class="dv">30</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb100-3" title="3"><span class="st">  </span><span class="kw">filter</span>(word<span class="op">!=</span><span class="st">&quot;trump&quot;</span>) <span class="co">#on choisit les 30 termes les plus proches, sauf biden</span></a>
-<a class="sourceLine" id="cb100-4" title="4"></a>
-<a class="sourceLine" id="cb100-5" title="5">foo<span class="op">$</span>Similarity&lt;-foo[,<span class="dv">2</span>] <span class="co">#juste pour renommer la variable</span></a>
-<a class="sourceLine" id="cb100-6" title="6">g1&lt;-<span class="kw">ggplot</span>(foo, <span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">reorder</span>(word,Similarity),<span class="dt">y=</span>Similarity))<span class="op">+</span></a>
-<a class="sourceLine" id="cb100-7" title="7"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">col=</span><span class="st">&quot;black&quot;</span>,<span class="dt">size=</span><span class="dv">3</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb100-8" title="8"><span class="st">  </span><span class="kw">coord_flip</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb100-9" title="9"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;N-grammes similaires à trump&quot;</span>)</a>
-<a class="sourceLine" id="cb100-10" title="10">g1</a></code></pre></div>
+<p>Répétons l’expérience sur Trump lui- même. Cute, awsome, clairement un narcissiste.</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" title="1">foo&lt;-model <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb135-2" title="2"><span class="st">  </span><span class="kw">closest_to</span>(<span class="op">~</span><span class="st">&quot;trump&quot;</span>,<span class="dv">30</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb135-3" title="3"><span class="st">  </span><span class="kw">filter</span>(word<span class="op">!=</span><span class="st">&quot;trump&quot;</span>) <span class="co">#on choisit les 30 termes les plus proches, sauf biden</span></a>
+<a class="sourceLine" id="cb135-4" title="4"></a>
+<a class="sourceLine" id="cb135-5" title="5">foo<span class="op">$</span>Similarity&lt;-foo[,<span class="dv">2</span>] <span class="co">#juste pour renommer la variable</span></a>
+<a class="sourceLine" id="cb135-6" title="6">g1&lt;-<span class="kw">ggplot</span>(foo, <span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">reorder</span>(word,Similarity),<span class="dt">y=</span>Similarity))<span class="op">+</span></a>
+<a class="sourceLine" id="cb135-7" title="7"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">col=</span><span class="st">&quot;black&quot;</span>,<span class="dt">size=</span><span class="dv">3</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb135-8" title="8"><span class="st">  </span><span class="kw">coord_flip</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb135-9" title="9"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;N-grammes similaires à trump&quot;</span>)</a>
+<a class="sourceLine" id="cb135-10" title="10">g1</a></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/1406-1.png" width="80%" style="display: block; margin: auto;" /></p>
-<p>On peut affiner le concept de trumpe en faisant la somme de ses noms. On laisse le lecteur faire son interprétation.</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" title="1">foo&lt;-model <span class="op">%&gt;%</span><span class="st"> </span>wordVectors<span class="op">::</span><span class="kw">closest_to</span>(<span class="op">~</span>(<span class="st">&quot;trump&quot;</span><span class="op">+</span><span class="st">&quot;donald_trump&quot;</span><span class="op">+</span><span class="st">&quot;mr.trump&quot;</span><span class="op">+</span><span class="st">&quot;donald&quot;</span>),<span class="dv">30</span>)</a>
-<a class="sourceLine" id="cb101-2" title="2">foo<span class="op">$</span>Similarity&lt;-foo[,<span class="dv">2</span>]</a>
-<a class="sourceLine" id="cb101-3" title="3">g1&lt;-<span class="kw">ggplot</span>(foo, <span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">reorder</span>(word,Similarity),<span class="dt">y=</span>Similarity))<span class="op">+</span></a>
-<a class="sourceLine" id="cb101-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">col=</span><span class="st">&quot;black&quot;</span>,<span class="dt">size=</span><span class="dv">3</span>)<span class="op">+</span><span class="kw">coord_flip</span>()<span class="op">+</span><span class="kw">theme_minimal</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb101-5" title="5"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;N-grammes proches de la trump+biden&quot;</span>)</a>
-<a class="sourceLine" id="cb101-6" title="6">g1</a></code></pre></div>
+<p>On peut affiner le concept de -trump en faisant la somme de ses noms. On laisse le lecteur faire son interprétation.</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" title="1">foo&lt;-model <span class="op">%&gt;%</span><span class="st"> </span>wordVectors<span class="op">::</span><span class="kw">closest_to</span>(<span class="op">~</span>(<span class="st">&quot;trump&quot;</span><span class="op">+</span><span class="st">&quot;donald_trump&quot;</span><span class="op">+</span><span class="st">&quot;mr.trump&quot;</span><span class="op">+</span><span class="st">&quot;donald&quot;</span>),<span class="dv">30</span>)</a>
+<a class="sourceLine" id="cb136-2" title="2">foo<span class="op">$</span>Similarity&lt;-foo[,<span class="dv">2</span>]</a>
+<a class="sourceLine" id="cb136-3" title="3">g1&lt;-<span class="kw">ggplot</span>(foo, <span class="kw">aes</span>(<span class="dt">x=</span><span class="kw">reorder</span>(word,Similarity),<span class="dt">y=</span>Similarity))<span class="op">+</span></a>
+<a class="sourceLine" id="cb136-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">col=</span><span class="st">&quot;black&quot;</span>,<span class="dt">size=</span><span class="dv">3</span>)<span class="op">+</span><span class="kw">coord_flip</span>()<span class="op">+</span><span class="kw">theme_minimal</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb136-5" title="5"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;N-grammes proches de la trump+biden&quot;</span>)</a>
+<a class="sourceLine" id="cb136-6" title="6">g1</a></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/1407-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>Quand on soustrait “Biden” du concept de “president trump”, c’est Melania qui apparait.</p>
 <pre class="r1408"><code>foo&lt;-model %&gt;% wordVectors::closest_to(~(&quot;trump&quot;+ &quot;president&quot;-&quot;biden&quot;),30)
@@ -532,62 +979,62 @@ g1&lt;-ggplot(foo, aes(x=reorder(word,Similarity),y=Similarity))+geom_point(col=
 g1</code></pre>
 </div>
 <div id="un-clustering-et-une-projection-tsne" class="section level2">
-<h2><span class="header-section-number">13.3</span> Un clustering et une projection tsne</h2>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" title="1">q_words =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;trump&quot;</span>, <span class="st">&quot;biden&quot;</span>)</a>
-<a class="sourceLine" id="cb103-2" title="2">term_set =<span class="st"> </span><span class="kw">lapply</span>(q_words, </a>
-<a class="sourceLine" id="cb103-3" title="3">                  <span class="cf">function</span>(q_word) {</a>
-<a class="sourceLine" id="cb103-4" title="4">                    nearest_words =<span class="st"> </span>model <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">closest_to</span>(model[[q_word]],<span class="dv">80</span>)</a>
-<a class="sourceLine" id="cb103-5" title="5">                    nearest_words<span class="op">$</span>word</a>
-<a class="sourceLine" id="cb103-6" title="6">                  }) <span class="op">%&gt;%</span><span class="st"> </span>unlist</a>
-<a class="sourceLine" id="cb103-7" title="7">subset =<span class="st"> </span>model[[term_set,average=F]]</a>
-<a class="sourceLine" id="cb103-8" title="8"></a>
-<a class="sourceLine" id="cb103-9" title="9">subset1&lt;-<span class="kw">as.data.frame</span>(subset<span class="op">@</span>.Data)</a></code></pre></div>
+<h2><span class="header-section-number">15.3</span> Un clustering et une projection tsne</h2>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" title="1">q_words =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;trump&quot;</span>, <span class="st">&quot;biden&quot;</span>)</a>
+<a class="sourceLine" id="cb138-2" title="2">term_set =<span class="st"> </span><span class="kw">lapply</span>(q_words, </a>
+<a class="sourceLine" id="cb138-3" title="3">                  <span class="cf">function</span>(q_word) {</a>
+<a class="sourceLine" id="cb138-4" title="4">                    nearest_words =<span class="st"> </span>model <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">closest_to</span>(model[[q_word]],<span class="dv">80</span>)</a>
+<a class="sourceLine" id="cb138-5" title="5">                    nearest_words<span class="op">$</span>word</a>
+<a class="sourceLine" id="cb138-6" title="6">                  }) <span class="op">%&gt;%</span><span class="st"> </span>unlist</a>
+<a class="sourceLine" id="cb138-7" title="7">subset =<span class="st"> </span>model[[term_set,average=F]]</a>
+<a class="sourceLine" id="cb138-8" title="8"></a>
+<a class="sourceLine" id="cb138-9" title="9">subset1&lt;-<span class="kw">as.data.frame</span>(subset<span class="op">@</span>.Data)</a></code></pre></div>
 <p>calculer tous les cosinus</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" title="1"><span class="co"># un calcul de dissimilarité sur la base des cosinus</span></a>
-<a class="sourceLine" id="cb104-2" title="2"><span class="co">#la fonction habituel dist ne le permetpas</span></a>
-<a class="sourceLine" id="cb104-3" title="3">Matrix &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(subset1)</a>
-<a class="sourceLine" id="cb104-4" title="4">sim &lt;-<span class="st"> </span>Matrix <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">rowSums</span>(Matrix <span class="op">*</span><span class="st"> </span>Matrix))</a>
-<a class="sourceLine" id="cb104-5" title="5">sim &lt;-<span class="st"> </span>sim <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(sim)</a>
-<a class="sourceLine" id="cb104-6" title="6"><span class="co">#on transforme en distance la similarité cosinus, celle ci varie de 0 à 2.</span></a>
-<a class="sourceLine" id="cb104-7" title="7">D_sim &lt;-<span class="st"> </span><span class="kw">as.dist</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>sim)</a></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" title="1"><span class="co"># un calcul de dissimilarité sur la base des cosinus</span></a>
+<a class="sourceLine" id="cb139-2" title="2"><span class="co">#la fonction habituel dist ne le permetpas</span></a>
+<a class="sourceLine" id="cb139-3" title="3">Matrix &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(subset1)</a>
+<a class="sourceLine" id="cb139-4" title="4">sim &lt;-<span class="st"> </span>Matrix <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="kw">rowSums</span>(Matrix <span class="op">*</span><span class="st"> </span>Matrix))</a>
+<a class="sourceLine" id="cb139-5" title="5">sim &lt;-<span class="st"> </span>sim <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(sim)</a>
+<a class="sourceLine" id="cb139-6" title="6"><span class="co">#on transforme en distance la similarité cosinus, celle ci varie de 0 à 2.</span></a>
+<a class="sourceLine" id="cb139-7" title="7">D_sim &lt;-<span class="st"> </span><span class="kw">as.dist</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>sim)</a></code></pre></div>
 <p>clustering</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" title="1"><span class="co">#un clustering hiérarchique avec 10 groupes</span></a>
-<a class="sourceLine" id="cb105-2" title="2"></a>
-<a class="sourceLine" id="cb105-3" title="3">clus&lt;-<span class="kw">hclust</span>(D_sim)</a>
-<a class="sourceLine" id="cb105-4" title="4">groupes&lt;-<span class="st"> </span><span class="kw">cutree</span>(clus,<span class="dt">k=</span><span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb105-5" title="5"><span class="kw">library</span>(ggdendro)</a>
-<a class="sourceLine" id="cb105-6" title="6"><span class="kw">ggdendrogram</span>(clus, <span class="dt">rotate=</span><span class="ot">TRUE</span> ,<span class="dt">type =</span> <span class="st">&quot;triangle&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" title="1"><span class="co">#un clustering hiérarchique avec 10 groupes</span></a>
+<a class="sourceLine" id="cb140-2" title="2"></a>
+<a class="sourceLine" id="cb140-3" title="3">clus&lt;-<span class="kw">hclust</span>(D_sim)</a>
+<a class="sourceLine" id="cb140-4" title="4">groupes&lt;-<span class="st"> </span><span class="kw">cutree</span>(clus,<span class="dt">k=</span><span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb140-5" title="5"><span class="kw">library</span>(ggdendro)</a>
+<a class="sourceLine" id="cb140-6" title="6"><span class="kw">ggdendrogram</span>(clus, <span class="dt">rotate=</span><span class="ot">TRUE</span> ,<span class="dt">type =</span> <span class="st">&quot;triangle&quot;</span>)</a></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/1411-1.png" width="80%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" title="1">ddata &lt;-<span class="st"> </span><span class="kw">dendro_data</span>(clus, <span class="dt">type =</span> <span class="st">&quot;triangle&quot;</span>)</a>
-<a class="sourceLine" id="cb106-2" title="2"><span class="kw">ggplot</span>(<span class="kw">segment</span>(ddata)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb106-3" title="3"><span class="st">  </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">xend =</span> xend, <span class="dt">yend =</span> yend)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb106-4" title="4"><span class="st">  </span><span class="kw">coord_flip</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb106-5" title="5"><span class="st">    </span><span class="kw">geom_text</span>(<span class="dt">data =</span> ddata<span class="op">$</span>labels, </a>
-<a class="sourceLine" id="cb106-6" title="6">              <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">label =</span> label), <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">vjust =</span> <span class="dv">0</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" title="1">ddata &lt;-<span class="st"> </span><span class="kw">dendro_data</span>(clus, <span class="dt">type =</span> <span class="st">&quot;triangle&quot;</span>)</a>
+<a class="sourceLine" id="cb141-2" title="2"><span class="kw">ggplot</span>(<span class="kw">segment</span>(ddata)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb141-3" title="3"><span class="st">  </span><span class="kw">geom_segment</span>(<span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">xend =</span> xend, <span class="dt">yend =</span> yend)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb141-4" title="4"><span class="st">  </span><span class="kw">coord_flip</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb141-5" title="5"><span class="st">    </span><span class="kw">geom_text</span>(<span class="dt">data =</span> ddata<span class="op">$</span>labels, </a>
+<a class="sourceLine" id="cb141-6" title="6">              <span class="kw">aes</span>(<span class="dt">x =</span> x, <span class="dt">y =</span> y, <span class="dt">label =</span> label), <span class="dt">size =</span> <span class="dv">2</span>, <span class="dt">vjust =</span> <span class="dv">0</span>)</a></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/1411-2.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>un tsne</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" title="1"><span class="kw">library</span>(Rtsne)</a>
-<a class="sourceLine" id="cb107-2" title="2"><span class="kw">library</span>(RColorBrewer)</a>
-<a class="sourceLine" id="cb107-3" title="3"><span class="co"># run Rtsne with default parameters</span></a>
-<a class="sourceLine" id="cb107-4" title="4"><span class="kw">set.seed</span>(<span class="dv">57</span>)</a>
-<a class="sourceLine" id="cb107-5" title="5">rtsne_out &lt;-<span class="st"> </span><span class="kw">Rtsne</span>(<span class="kw">as.matrix</span>(subset), <span class="dt">perplexity=</span><span class="dv">25</span>)</a>
-<a class="sourceLine" id="cb107-6" title="6"><span class="co"># plot the output of Rtsne</span></a>
-<a class="sourceLine" id="cb107-7" title="7"><span class="co">#jpeg(&quot;fig.jpg&quot;, width=2400, height=1800)</span></a>
-<a class="sourceLine" id="cb107-8" title="8">color.vec =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;#556270&quot;</span>, <span class="st">&quot;#4ECDC4&quot;</span>, <span class="st">&quot;#1B676B&quot;</span>, <span class="st">&quot;#FF6B6B&quot;</span>, <span class="st">&quot;#C44D58&quot;</span>, <span class="st">&quot;seagreen1&quot;</span>, <span class="st">&quot;seagreen4&quot;</span>, <span class="st">&quot;slateblue4&quot;</span>, <span class="st">&quot;firebrick&quot;</span>, <span class="st">&quot;Royalblue&quot;</span>)</a>
-<a class="sourceLine" id="cb107-9" title="9"></a>
-<a class="sourceLine" id="cb107-10" title="10"><span class="co">#des manip pour associer les groupe du clustering aux termes et à la leur coordonnée dans tsne.</span></a>
-<a class="sourceLine" id="cb107-11" title="11">groupes&lt;-<span class="kw">as.data.frame</span>(groupes)</a>
-<a class="sourceLine" id="cb107-12" title="12">groupes<span class="op">$</span>word&lt;-<span class="kw">rownames</span>(groupes)</a>
-<a class="sourceLine" id="cb107-13" title="13">terms&lt;-<span class="kw">as.data.frame</span>(<span class="kw">rownames</span>(subset))</a>
-<a class="sourceLine" id="cb107-14" title="14">terms<span class="op">$</span>word&lt;-terms[,<span class="dv">1</span>] </a>
-<a class="sourceLine" id="cb107-15" title="15">terms&lt;-terms <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(groupes, <span class="dt">by =</span> <span class="st">&quot;word&quot;</span>)</a>
-<a class="sourceLine" id="cb107-16" title="16"><span class="kw">plot</span>(rtsne_out<span class="op">$</span>Y, <span class="dt">t=</span><span class="st">&#39;n&#39;</span>)</a>
-<a class="sourceLine" id="cb107-17" title="17"><span class="co">#count(terms, clus)$n[2]</span></a>
-<a class="sourceLine" id="cb107-18" title="18"><span class="kw">text</span>(rtsne_out<span class="op">$</span>Y, <span class="dt">labels=</span><span class="kw">rownames</span>(subset),<span class="dt">cex=</span><span class="fl">0.8</span>,<span class="dt">col=</span>color.vec[terms<span class="op">$</span>groupes])</a></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" title="1"><span class="kw">library</span>(Rtsne)</a>
+<a class="sourceLine" id="cb142-2" title="2"><span class="kw">library</span>(RColorBrewer)</a>
+<a class="sourceLine" id="cb142-3" title="3"><span class="co"># run Rtsne with default parameters</span></a>
+<a class="sourceLine" id="cb142-4" title="4"><span class="kw">set.seed</span>(<span class="dv">57</span>)</a>
+<a class="sourceLine" id="cb142-5" title="5">rtsne_out &lt;-<span class="st"> </span><span class="kw">Rtsne</span>(<span class="kw">as.matrix</span>(subset), <span class="dt">perplexity=</span><span class="dv">25</span>)</a>
+<a class="sourceLine" id="cb142-6" title="6"><span class="co"># plot the output of Rtsne</span></a>
+<a class="sourceLine" id="cb142-7" title="7"><span class="co">#jpeg(&quot;fig.jpg&quot;, width=2400, height=1800)</span></a>
+<a class="sourceLine" id="cb142-8" title="8">color.vec =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;#556270&quot;</span>, <span class="st">&quot;#4ECDC4&quot;</span>, <span class="st">&quot;#1B676B&quot;</span>, <span class="st">&quot;#FF6B6B&quot;</span>, <span class="st">&quot;#C44D58&quot;</span>, <span class="st">&quot;seagreen1&quot;</span>, <span class="st">&quot;seagreen4&quot;</span>, <span class="st">&quot;slateblue4&quot;</span>, <span class="st">&quot;firebrick&quot;</span>, <span class="st">&quot;Royalblue&quot;</span>)</a>
+<a class="sourceLine" id="cb142-9" title="9"></a>
+<a class="sourceLine" id="cb142-10" title="10"><span class="co">#des manip pour associer les groupe du clustering aux termes et à la leur coordonnée dans tsne.</span></a>
+<a class="sourceLine" id="cb142-11" title="11">groupes&lt;-<span class="kw">as.data.frame</span>(groupes)</a>
+<a class="sourceLine" id="cb142-12" title="12">groupes<span class="op">$</span>word&lt;-<span class="kw">rownames</span>(groupes)</a>
+<a class="sourceLine" id="cb142-13" title="13">terms&lt;-<span class="kw">as.data.frame</span>(<span class="kw">rownames</span>(subset))</a>
+<a class="sourceLine" id="cb142-14" title="14">terms<span class="op">$</span>word&lt;-terms[,<span class="dv">1</span>] </a>
+<a class="sourceLine" id="cb142-15" title="15">terms&lt;-terms <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(groupes, <span class="dt">by =</span> <span class="st">&quot;word&quot;</span>)</a>
+<a class="sourceLine" id="cb142-16" title="16"><span class="kw">plot</span>(rtsne_out<span class="op">$</span>Y, <span class="dt">t=</span><span class="st">&#39;n&#39;</span>)</a>
+<a class="sourceLine" id="cb142-17" title="17"><span class="co">#count(terms, clus)$n[2]</span></a>
+<a class="sourceLine" id="cb142-18" title="18"><span class="kw">text</span>(rtsne_out<span class="op">$</span>Y, <span class="dt">labels=</span><span class="kw">rownames</span>(subset),<span class="dt">cex=</span><span class="fl">0.8</span>,<span class="dt">col=</span>color.vec[terms<span class="op">$</span>groupes])</a></code></pre></div>
 <p><img src="bookdown-demo_files/figure-html/1412-1.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="les-perspectives" class="section level2">
-<h2><span class="header-section-number">13.4</span> les perspectives</h2>
+<h2><span class="header-section-number">15.4</span> les perspectives</h2>
 <p>des cas d’applications</p>
 <ul>
 <li><p>paragraph2vec</p></li>
@@ -602,8 +1049,8 @@ g1</code></pre>
           </div>
         </div>
       </div>
-<a href="réseaux-sémantiques.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="topic-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="analyse-sémantique-latente-asllsa.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="topic.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

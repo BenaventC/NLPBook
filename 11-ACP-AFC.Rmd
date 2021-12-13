@@ -2,7 +2,9 @@
 
 ## *Objectifs du chapitre*
 
-L'objectif de cette partie est de comprendre le fonctionnement des différentes techniques de réduction de grands ensembles de données. Leur principe reste de réussir à exprimer sous forme de facteur(s), un ou plusieurs concepts non observés, latents, ou d'intérêt. Ces méthodes de calculs feront l'objet d'une description générale, abordant les sous-bassements statistiques puis utilisées dans un cas pratique avec un dataset de tweets scrappés pour l'exemple sur la thématique du marketing TIC & NTIC.
+L'objectif de cette partie est de revenir sur des méthodes traditionnelles mais toujours efficace d'analyse lexicale souvent combiné à des méthode de classification. 
+
+comprendre le fonctionnement des différentes techniques de réduction de grands ensembles de données. Leur principe reste de réussir à exprimer sous forme de facteur(s), un ou plusieurs concepts non observés, latents, ou d'intérêt. Ces méthodes de calculs feront l'objet d'une description générale, abordant les sous-bassements statistiques utilisées dans un cas pratique avec un dataset de tweets obtenu par rtweet ( voir chapitre 3).
 
 Trois algorithmes utilisés en analyse factorielle seront abordés :
 
@@ -14,72 +16,58 @@ Trois algorithmes utilisés en analyse factorielle seront abordés :
 
 ## Les outils
 
-Les packages permettant de mener les analyses ci-dessous sont [`FactoMineR`](https://cran.r-project.org/web/packages/FactoMineR/index.html) et [`factoextra`](https://cran.r-project.org/web/packages/factoextra/index.html). Les heat map utilisées pour parvenir au clustering de l'analyse des correspondances sont issues du packahe [[`NMF`](https://cran.r-project.org/web/packages/NMF/index.html)] ou encore [[`quanteda`](https://cran.r-project.org/web/packages/quanteda/index.html)]
+Les packages permettant de mener les analyses ci-dessous sont [`FactoMineR`](https://cran.r-project.org/web/packages/FactoMineR/index.html) et [`factoextra`](https://cran.r-project.org/web/packages/factoextra/index.html). Les heat map utilisées pour parvenir au clustering de l'analyse des correspondances sont issues du package [`NMF`](https://cran.r-project.org/web/packages/NMF/index.html) ou encore [`quanteda`](https://cran.r-project.org/web/packages/quanteda/index.html)
 
 ## Introduction
 
-Développées dès 1904 par le psychologue Charles Spearman dans une ambition plus confirmatoire et hiérarchique, les méthodes factorielles se sont popularisées sous les travaux de Benzecri, permettant un élargissement de son usage. [@beaudouin2016]
+Si les méthodes factorielles ont été développées dès 1904 par le psychologue Charles Spearman pour comprendre comment les variables dans une ambition plus confirmatoire et hiérarchique, les méthodes factorielles se sont popularisées sous les travaux de Benzecri, permettant un élargissement de son usage. [@beaudouin2016]
 
-Elles se sont progressivement diluées dans la "boîte à outils" des différentes disciplines académiques. Ses principes de fonctionnement et autres calculs originels ont été confrontés à diverses sources et structures de données, que notre environnement de plus en plus numérique à amener à générer. @benzecri2006
+Elles se sont progressivement diluées dans la "boîte à outils" des différentes disciplines académiques. Ces principes de fonctionnement et autres calculs originels ont été confrontés à diverses sources et structures de données, que notre environnement de plus en plus numérique à amener à générer. @benzecri2006
 
 ![](images/Analyse_factorielle.jpg)
 
-L'interaction avec ces interfaces mathématiques sont aujourd'hui largement informatisées, et le travail de d'analyste se complète également par le devoir de savoir expliciter ses "sorties logicielles".
+L'interaction avec ces interfaces mathématiques sont aujourd'hui largement informatisées, et le travail de l'analyste se complète également par le devoir de savoir expliciter ces "sorties logicielles".
 
 ## Méthodes & Données
 
 ### Principes généraux
 
-L'idée essentielle est qu'un objet peut-être décrit par un ensemble d'attributs observables et en ce sens, mesurables. Des relations peuvent exister entre les $p$ variables précitées, entre chaque individus $n$ observés dans une base de données.
+L'idée essentielle est qu'un objet peut-être décrit par un ensemble d'attributs observables et en ce sens, mesurables. Des relations peuvent exister entre les $p$ variables précitées, entre chaque individu $n$ observé, dans une base de données.
 
 ![](images/n_individus_p_attributs.jpg)
 
-Mathématiquement parlant, le développement accru des travaux de recherche repose sur des questions comme le caractère unique ou multiple des facteurs / concepts sous jacents que l'on souhaite utiliser pour résumer les données, ou bien encore sur les modalités de calculs, liéaires ou non, des combinaisons factorielles souhaitées.[@fodor2002a] Les Loi de distributions utilisées pour approcher ces différentes sources de données diffèrent et sont à l'origine de la diversification des algorithmes. [@buntine2002]
+Mathématiquement parlant, le développement accru des travaux de recherche repose sur des questions comme :
+
+-   Le caractère unique ou multiple des facteurs / concepts sous jacents que l'on souhaite utiliser pour résumer les données, ou bien encore sur les modalités de calculs, liéaires ou non, des combinaisons factorielles souhaitées.[@fodor2002a] Les Lois de distribution utilisées pour approcher ces différentes sources de données diffèrent et sont à l'origine de la diversification des algorithmes. [@buntine2002]
 
 L'idée principale est de trouver $k$ combinaisons linéaires des $p$ variables qui capturent succéssivement une part maximale de la variance, ce qui minimise réciproquement l'écart total d'erreurs, d'un effectif $n$ d'observations, tel que $k << p$. Cette mécanique de synthèse repose sur le théorème de la Décomposition en Valeurs Singulières des matrices (SVD), tels que pour toute $X_{(n,p)}$ :
 
-```{=tex}
-\begin{align*}
-X=\mathbf{U}\mathbf{D} \mathbf{V}^\top  avec, 
-\end{align*}
-```
-$U_{n}$ une matrice carrée tel que : $U=n$ x $n$ ; $v=p$ x $p$ et ; $D$ de dimensions $k$ x $k$, dont la diagonale $D_{(i,i)}$ comporte les valeurs des *eigenvectors* $\lambda_{n}$ calculés par les algorithmes factoriels.
+
+$$
+X=\mathbf{U}\mathbf{D} \mathbf{V}^\top 
+$$
+
+$U_{n}$ Une matrice carrée tel que : $U=n$ x $n$ ; $v=p$ x $p$ et ; $D$ de dimensions $k$ x $k$, dont la diagonale $D_{(i,i)}$ comporte les valeurs des *eigenvectors* $\lambda_{n}$ calculés par les algorithmes factoriels.
 
 Dans le domaine de l'analyse d'éléments textuels ce tableau correspond au *document-term-matrix* (dtm) et *document-feature-matrix* (dfm), où les "individus" sont alors considérés en tant que *documents* (tweets, reviews, litteratures...) auxquels nous rattachons en colonne, les termes, afin d'en compter chaque occurence.
 
 ### Données
 
-Nous avons scrappé via le package `rtweets` un ensemble de 4 marqueurs : javascript, Cobol, Python, Java, selon les méthodologies robustes de construction de corpus déjà éprouvées[@balech2019]
+Nous avons scrappé via le package `rtweets` un ensemble de 4 hashtags : javascript, Cobol, Python, Java, selon les méthodologies robustes de construction de corpus déjà éprouvées[@balech2019]
 
 > On peut supposer a priori que les communications autour des langages de programmation soient similaires et uniformes, dans une première proposition relevant du marketing des technologies N/TIC.[@benavent]
 
-```{r 800, include=FALSE}
-library(dplyr)
-library(flextable)
-library(FactoMineR)
-library(factoextra)
-library(corrplot)
-library(cowplot)
-library(frequency)
-library(stringi)
-library(stringr)
-library(NMF)
-library(Rcpp)
-library(rainette)
-library(explor)
-```
 
-```{r 801 reader}
+
+```{r 1102, out.width='80%', fig.asp=.75, fig.align='center'}
 ###LECTURE DES FICHIERS
-df <- readRDS("Df_langage_info.rds")
-df <- df%>%
-  filter(is_retweet=="FALSE")
-###On ajoute une nouvelle variable à df, qu'est la Durée en Jours entre la date du post et de création du compte de son auteur en jours
-df$DureeV <- as.integer(round((df$created_at-df$account_created_at)/(3600*24)))
-
+df <- readRDS("data/Data_info.rds")
+df <-df %>% mutate(filtre =ifelse(str_detect(text,"cocaine|shit"), 1, 0))
+table(df$filtre)
+df<-df%>% filter(filtre==0)
 ```
 
-![](images/Repartition_primaire.png){width="180"}
+![](images/Repartition_primaire.png){width="175"}
 
 La répartition des tweets primaires pour chaque langage varie de 70% à 15%. Cette première observation peut justifier que l'on souhaite étudier plus en détails le rôles de certaines variables dans les effets de diffusion.
 
@@ -89,20 +77,21 @@ Une première idée est que les communautés et les modes d'apparitions de ces l
 
 L'ACP et ses dérivées appliquées à des données de comptage comme l'AFCM sous l'influence de J. Benzecri, ont longtemps étés les méthodes "reines", et restent aujourd'hui, toujours les plus fréquemment utilisées.
 
-Historiquement elle a été développée pour analyser des matrices de corrélations multiples où $X$ est une matrice de $n$ individus et $p$ variables suivant une loi de distribution Gausienne.
+Historiquement elle a été développée pour analyser des matrices de corrélations multiples où, $X$ est une matrice de $n$ d'individus et $p$ de variables suivant une loi de distribution Gausienne.
 
 Notre travail ici est donc de chercher à savoir si les caractéristiques des comptes (Nombres de Tweets,followers,posts,Maturité,amis,Caractères produits) traduisent une éventuelle présence différenciée.
 
 On sélectionne un sous ensemble de données quantitatives et l'on calcule volontairement ici deux nouvelles variables dépendantes : le volume total de caractères produit sur la plateforme pour un internaute ainsi que la somme de ses tweets.
 
-```{r 802, fig.cap='Données quantitatives pour ACP', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 1103, fig.cap='Données quantitatives pour ACP', out.width='80%', fig.asp=.75, fig.align='center'}
 ###On crée un sous ensemble de données quantitatives, que l'on regroupe par Marque et Screen name
-df_pca <- select(df,Marque,DureeV,retweet_count,followers_count,friends_count,statuses_count,display_text_width)
+df_pca <- df %>%
+  select(Marque,screen_name,DureeV,retweet_count,followers_count,friends_count,statuses_count,display_text_width)
 df_pca$score <- 1
 
 ###On Crée deux nouvelles variables naturellement auto-corrélées : Total de caractère et total tweets sur la période.
 df_pca <- df_pca%>%
-  group_by(Marque)%>%
+  group_by(Marque,screen_name)%>%
   summarise(DureeV,followers_count,friends_count,statuses_count,Totalcr=sum(display_text_width),Totaltwt=sum(score),retweet_count)
 
 foo <- flextable(df_pca[sample(nrow(df_pca), 20), ])
@@ -110,14 +99,14 @@ foo <- add_footer_lines(foo, "Exemple de 20 lignes échantillonnées au hasard")
 foo
 ```
 
-Nous nous concentrons sur la population de comptes ayant produit des tweets retweetés au moins 19 fois. Cela représente un tableau de 2975 individus.On signale à l'ACP que la première colonne est qualitative afin qu'elle soit prise en compte dans les calculs
+Nous nous concentrons sur la population de comptes ayant produit des tweets retweetés au moins 19 fois. Cela représente un tableau de 2975 individus. On signale à l'ACP que la première colonne est qualitative afin qu'elle soit prise en compte dans les calculs
 
-```{r 803, fig.cap='Pourcentage de variance exprimée par les dimensions', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 1104, fig.cap='Pourcentage de variance exprimée par les dimensions', out.width='80%', fig.asp=.75, fig.align='center'}
 ###MODEL PCA
-df_pca_uf <- df_pca%>%filter(retweet_count>18)
+df_pca_uf <- df_pca#%>%filter(retweet_count>0)
 df_pca_uf$Marque <- as.factor(df_pca_uf$Marque)
 ###On execute le modèle
-res.pca <- PCA(df_pca_uf,quali.sup = 1,scale.unit = TRUE, graph = FALSE,ncp =7)
+res.pca <- PCA(df_pca_uf,quali.sup = 1:2,scale.unit = TRUE, graph = FALSE,ncp =7)
 
 ###Pour les corrplot
 var <- get_pca_var(res.pca = res.pca)
@@ -135,7 +124,7 @@ Sur cette représentation l'on voit que la somme des variances reste toujours é
 
 L'intérêt est donc de savoir quels facteurs extraire. L'on souhaite donc voir plus en détails leurs évolutions au sein de l'échantillon. On décide de réaliser des matrices de covariance, corrélation et contribution.
 
-```{r 804, fig.cap='Directions, Corrélations et Contribution des Variables aux dimensions', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 1105, fig.cap='Directions, Corrélations et Contribution des Variables aux dimensions', out.width='80%', fig.asp=.75, fig.align='center'}
 par(mfrow=c(1,3))
 corrplot(var$cos2, is.corr=FALSE,order = "hclust",sig.level = 0.01,insig = "blank")
 corrplot(var$cor, is.corr=TRUE,order = "hclust",sig.level = 0.01,insig = "blank")
@@ -143,7 +132,7 @@ corrplot(var$contrib, is.corr=FALSE,order = "hclust",sig.level = 0.01,insig = "b
 
 ```
 
-```{r 805,fig.cap='Représenter les variables', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 1106,fig.cap='Représenter les variables', out.width='80%', fig.asp=.75, fig.align='center'}
 my.cont.var <- rnorm (7)
 my.cont.var.fact <- as.factor(my.cont.var)
 fviz_pca_var(res.pca,
@@ -156,7 +145,7 @@ fviz_pca_var(res.pca,
 
 Les contributions des $p$ variables aux $k$ dimensions factorielles sont différenciées. A première vue, les deux variables auto-corrélées sont bien co-évolutives et presque orthogonales aux autres variables du set. On se concentre alors sur la ventilation des $n$ individus.
 
-```{r 806,fig.cap='Représenter les individus', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 1107,fig.cap='Représenter les individus', out.width='80%', fig.asp=.75, fig.align='center'}
 my.cont.var <- rnorm (7)
 my.cont.var.fact <- as.factor(my.cont.var)
 
@@ -171,9 +160,9 @@ fviz_pca_ind(res.pca,
 
 ```
 
-Quatre populations distinctes émergent mais restent très inégales dans leurs effectifs. En effet, les comptes mentionnant "cobol" sont nettement plus réduits.On représente alors le couple ensemble :
+Quatre populations émergent mais restent très inégales dans leurs effectifs. En effet, les comptes mentionnant "cobol" sont nettement plus réduits.On représente alors le couple variables/individus ensemble :
 
-```{r 807, fig.cap='Représenter les individus et variables', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 1108, fig.cap='Représenter les individus et variables', out.width='80%', fig.asp=.75, fig.align='center'}
 
 fviz_pca_biplot(res.pca,label = "var",
                 addEllipses=TRUE,
@@ -185,7 +174,7 @@ fviz_pca_biplot(res.pca,label = "var",
 
 ```
 
-Les coefficients ici visualisés peuvent être utilisés dans un modèle confirmatoire en tant que coefficients $\alpha_{ii}$ de régression. Ce sont les éléments présentés par ordre décroissants de la diagonale de la matrice $D$.
+Les coefficients ici visualisés peuvent être utilisés dans un modèle confirmatoire en tant que coefficients $\alpha_{ii}$ de régression. Ce sont les éléments présentés par ordre décroissant de la diagonale de la matrice $D$.
 
 ## Analyse des Correspondances
 
@@ -193,13 +182,14 @@ Les bases de données Twitter étant pauvre en variable qualitatives, on travail
 
 ### Table de contingence
 
-Le corpus est composé de 2147 tweets français et après annotations, fournissent 60 360 adjectifs, noms et verbes différents. On utilise quanteda pour regrouper les mots et produisons une *document-feature-matrix* que l'on transpose en *term-document-matrix*, considérant que les langages de programmations sont nos $p$ variables catégorielles et les mots, nos $n$observations. Différentes étapes de filtrage sont nécessaire ici : suppression de la ponctuation et des liens internet.
+Le corpus est composé de 2147 tweets français et après annotation, fournit 60 360 adjectifs, noms et verbes différents. L'annotation a été réalisée selon les procédures détaillées dans le chapitre précédent.
 
-```{r 810, fig.cap='Table de Contingence Mots/Langages', out.width='80%', fig.asp=.75, fig.align='center'}
-library(quanteda)
-library(stringi)
+On utilise quanteda pour regrouper les mots et produisons une *document-feature-matrix* que l'on transpose en *term-document-matrix*, considérant que les langages de programmation sont nos $p$ variables catégorielles et les mots, nos $n$observations. Différentes étapes de filtrage sont nécessaire ici : suppression de la ponctuation et des liens internet.
+
+```{r 1109, fig.cap='Table de Contingence Mots/Langages', out.width='80%', fig.asp=.75, fig.align='center'}
+
 ###On charge l'annotation car nous avons utiliser un filtrage POS sur ADJ,NOM,VERB
-df_trt_annot <- readRDS("annot_lsa_nmf.rds")
+df_trt_annot <- readRDS("data/annot_lsa_nmf.rds")
 
 ###On crée une dfm, groupant par langage et supprimant les stopwaords
 dfm <- dfm(df_trt_annot$lemma,
@@ -225,26 +215,17 @@ tdm <- tdm%>%
   filter(char>1,Off_Acc=="FALSE")%>%
   select(Mots,Cobol,Java,javascript,Python)
 
-###mMnipulations pour filter et représenter les mots les plus cités
+###Mnipulations pour filter et représenter les mots les plus cités pour cobol
 foo <- tdm%>%
-  mutate(Sum=Cobol+javascript+Java+Python)%>%arrange(desc(Sum))%>%head(20)
+  mutate(Sum=Cobol+javascript+Java+Python)%>%arrange(desc(Cobol))%>%head(20)
 
 ###Edition de la table de contingence
-flextable(foo)
-
+foo <- flextable(foo)
+foo <- set_caption(foo,"Mots triés par ordre croissant sur Cobol")
+foo
 ```
 
-Voici les mots les plus cités. On peut être amener à penser que deux mondes s'ignorent, et que des usages situés des langages s'apprécient ici via différents contextes qui leurs sont propres. On cherche à vérifier cette observation rapidement en proposant un graphique mosaïque afin de voir les disparités de distributions.
-
-```{r 811, fig.cap='Mosaïque pour voir les sur et sous représentations', out.width='80%', fig.asp=.75, fig.align='center'}
-#Visualisation de la table de contingence : écarts et distances à l'hypothèse d'indépendance
-foo <- foo%>%
-  select(Cobol,Java,javascript,Python)
-
-mosaicplot(foo,shade = T,main = "Visualisation d'une table de contingence")
-```
-
-La mosaïque nous renseigne très clairement sur l'usage d'un vocabulaire commun au 3 langages NTIC sur les mots les plus cités, traduisant la présence plus forte de ces derniers sur Twitter. A ce stade, il faudrait réaliser une mosaïque ave les 100 ou 200 premiers mots afin de voir si Cobol use également d'un vocabulaire spécifique, qui serait alors surreprésenté très nettement.
+On peut être amener à penser que deux mondes s'ignorent, et que des usages situés des langages s'apprécient ici via différents contextes qui leurs sont propres.
 
 ### Modèle
 
@@ -258,16 +239,13 @@ A l'aide de l'analyse factorielle des correspondances, nous allons réussir à o
 
 On utilise maintenant l'analyse des correspondances sur notre table de contingence :
 
-```{r 812, fig.cap='Analyse des Correspondances : Biplot Individus/variables', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 1110, fig.cap='Analyse des Correspondances : Biplot Individus/variables', out.width='80%', fig.asp=.75, fig.align='center'}
 ###On utilise les mots enn étiquettes des lignes
 tdm2 <- tdm[,-1]
 rownames(tdm2) <- tdm$Mots
-###Significativité
-chisq.test(tdm2)
 
 ###Modèle CA
-res.ca <- CA(tdm2, ncp = 3, graph = FALSE)
-#res.mca <- MCA(tdm, ncp = 3, graph = FALSE)
+res.ca <- CA(tdm2, ncp = 7, graph = FALSE)
 
 ###Extraction des n individus
 row <- res.ca$row
@@ -275,27 +253,27 @@ row <- res.ca$row
 ###Extraction des p variables
 col <- res.ca$col
 
-fviz_ca_biplot(res.ca, repel = TRUE,title = "Biplot des n Mots et  p Langages")
 ```
-
-On observe une forme en U inverse, ainsi qu'une déconcentration du lexique autour de la modalité "Cobol", dû à sa représentativité plus faible dans l'échantillon.
 
 ### explor
 
-[`explor`](https://cran.r-project.org/web/packages/explor/explor.pdf)] qui permet d'accélerer l'analyse exploratoire d'une fouille de données. Afin d'être représenté dans le livre, nous mettons execution dynamique de cette application [`shiny`](https://cran.r-project.org/web/packages/shiny/shiny.pdf)\`] en commentaire.
+L'accès aux vocabulaires reste limité par une visualisation statique. Afin de pouvoir explorer dynamiquement le corpus, on privilégie la solution fournie par le package présenté ci-dessous.
 
-```{r 831}
+```{r 1111, fig.cap='Analyse des Correspondances : Biplot Individus/variables', out.width='80%', fig.asp=.75, fig.align='center'}
 ###On récupère les mots de notre tdm2, filtrée et nettoyée
-foo <- df_trt_annot%>%select(lemma)
+fviz_ca_biplot(res.ca, repel = TRUE,title = "Biplot des n Mots et  p Langages")
+
 #explor::explor(res.ca)
 ```
-![](images/explor_1.PNG)
 
-On peut alors représenter les dimensions souhaitées, ainsi que disposer allégrement du nuage de points :
+[`explor`](https://cran.r-project.org/web/packages/explor/explor.pdf) qui permet d'accélerer l'analyse exploratoire d'une fouille de données. Afin d'être représenté dans le livre, nous mettons l'éxécution dynamique de cette application [`shiny`](https://cran.r-project.org/web/packages/shiny/shiny.pdf) en commentaire.
 
-![](images/explor_2.PNG)
+On peut alors représenter les dimensions souhaitées, ainsi que disposer du nuage de points :
 
-La multitude de mots ne facilite pas la lecture graphique, tout comme pour le cas des résultats pour l'ACP. Ma différence des effectifs recensés de nous permet pas de réduire leur échantillonage, tout en conservant les spécificités de chacun. On propose donc d'utiliser des techniques de clustering, que sont les classifications hiérarchiques de types acsendantes et descendantes :
+![exploration](images/explore1.PNG)
+
+
+La multitude de mots ne facilite pas la lecture graphique, tout comme pour le cas des résultats pour l'ACP. Les disparités des effectifs recensés ne nous permet pas de réduire leur échantillonage, tout en conservant les spécificités de chacun. On propose donc d'utiliser des techniques de clustering, que sont les classifications hiérarchiques de types acsendantes et descendantes :
 
 ## Classification Hiérarchique
 
@@ -305,8 +283,8 @@ Afin de répondre à ces problèmes de saturation, et pour permettre la créatio
 
 ### Classification Hiérarchique Ascendante
 
-```{r 813, fig.cap='Classification Hiérarchique Ascandante des tweets', out.width='80%', fig.asp=.75, fig.align='center'}
-cha <- HCPC(res.pca,graph = FALSE)
+```{r 1112, fig.cap='Classification Hiérarchique Ascendante des tweets', out.width='80%', fig.asp=.75, fig.align='center'}
+cha <- HCPC(res.ca,graph = FALSE)
 plot(cha,main=NULL)
 
 ```
@@ -315,35 +293,36 @@ Une synthèse plus lisible des clusters est présentée ici :
 
 ![](images/CAH.PNG)
 
-```{r 814, fig.cap='Représentation des groupes', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 1113, fig.cap='Représentation des groupes', out.width='80%', fig.asp=.75, fig.align='center'}
 # Individus
 fviz_cluster(cha, geom = "point", main = "Positionnement des groupes")
 ```
+
 ### Classification Hiérarchique Ascendante Double
 
 #### Théorème généralisé de la décomposition en valeurs singulières
 
 Si l'on y regarde de plus près, le résultat de l'analyse des correspondances contient deux matrices de résultats qui nous intéressent. La première, est celle des mots, associés aux dimensions.
 
-```{r 815, fig.cap='Heatmap des relations & contributions', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 1114, fig.cap='Heatmap des relations & contributions', out.width='80%', fig.asp=.75, fig.align='center'}
 aheatmap(row$cos2,labRow = "",main ="Heatmap des corrélation des Mots")
 ```
 
-On observe que les mots semblent bien reliés de manières différenciés aux facteurs. Les contributions varient et contrastent :
+On observe que les mots semblent bien reliés de manière différenciés aux facteurs. Les contributions varient et contrastent :
 
--   Les dimensions 3 et 1 semblent avoir le plus de mots corrélés dans des dimensions similaires.
+-   Les dimensions 2 et 1 semblent avoir le plus de mots corrélés dans des dimensions similaires.
 
--   La dimension 2 semble assez spécifique, et bien quelle soit corrélée de manière fabile avec les autres, une petite proportion de mots semble la refléter largement.
+-   La dimension 3 semble assez spécifique, et bien quelle soit corrélée de manière fabile avec les autres, une petite proportion de mots semble la refléter largement.
 
 Une seconde matrice suscitant alors notre intérêt, est celle des Langages, associés aux dimensions :
 
-```{r 816, fig.cap='Heatmap des langages corrélés aux dimensions', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 1115, fig.cap='Heatmap des langages corrélés aux dimensions', out.width='80%', fig.asp=.75, fig.align='center'}
 aheatmap(col$cos2,main = "Heatmap des corrélations des Langages")
 ```
 
 Sans surprise, le petit groupe de mots identifiés préalablement correspond à une corrélation forte entre Cobol et la deuxième dimension.
 
-```{r 817, fig.cap='Heatmap des contribution des langages', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 1116, fig.cap='Heatmap des contribution des langages', out.width='80%', fig.asp=.75, fig.align='center'}
 aheatmap(col$contrib)
 ```
 
@@ -351,12 +330,12 @@ Cobol est effectivement le langage qui semble le plus contribuer à la dimension
 
 ```{=tex}
 \begin{align*}
-S=\mathbf{U}\mathbf{D} \mathbf{V}^\top  avec, 
-\end{align*}
+S=\mathbf{U}\mathbf{D} \mathbf{V}^\top   
+\end{align*} 
 ```
-$U_{n}$ une matrice carrée tel que : $U=n$ x $k$ ; $v=k$ x $p$ cette fois...
+avec, $U_{n}$ une matrice carrée tel que : $U=n$ x $k$ ; $v=k$ x $p$ cette fois...
 
-```{r 818, fig.cap='Double Clustering des lignes et colonnes', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 1117, fig.cap='Double Clustering des lignes et colonnes', out.width='80%', fig.asp=.75, fig.align='center'}
 ###On cherche 
 u <- as.matrix(row$cos2)
 v <- as.matrix(col$cos2)
@@ -368,39 +347,36 @@ res <- as.data.frame(u%*%v)
 aheatmap(res,labRow = "")
 
 foo <- as.data.frame(res)
-foo <- foo[1:6992,]
+foo <- foo[1:3594,]
 
-foocob <- foo%>%arrange(desc(Cobol))%>%head(20)
+foocob <- foo%>%arrange(desc(Cobol))%>%head(30)
 foo_synth <- rownames(foocob)
 foo_synth <- as.data.frame(foo_synth)
 colnames(foo_synth) <- "Cobol"
 
-foojav <- foo%>%arrange(desc(javascript))%>%head(20)
+foojav <- foo%>%arrange(desc(javascript))%>%head(30)
 foo_synth$javascript <- rownames(foojav)
 
-fooJava <- foo%>%arrange(desc(Java))%>%head(20)
+fooJava <- foo%>%arrange(desc(Java))%>%head(30)
 foo_synth$Java <- rownames(fooJava)
 
-fooPyth <- foo%>%arrange(desc(Python))%>%head(20)
+fooPyth <- foo%>%arrange(desc(Python))%>%head(30)
 foo_synth$Python <- rownames(fooPyth)
 foo_synth <- flextable(foo_synth)
 
-foo_synth <- set_caption(foo_synth,"Mots les plus représentatifs des langages")
+foo_synth <- set_caption(foo_synth,"Mots les plus associés aux langages")
 foo_synth
-foo_synth<- save_as_image(foo_synth,"Parangons.pdf",webshot = "webshot")
 ```
 
 A cette étape, le double clustering ne nous renseigne que très peu. Il faut manipuler et filtrer les variables afin de récupérer les mots qui sont les plus représentatifs de chacun des langages. Le résultat épouse bien la réalité.
 
-![](images/Parangons_Langages.PNG)
-
 #### Le Modèle Rainette ou la méthode Reinert
 
-[`Rainette`](https://cran.r-project.org/web/packages/rainette/rainette.pdf)] est un package reposant sur le même principe qu'[`explor`](https://cran.r-project.org/web/packages/explor/explor.pdf)] ou encore [`LDAvis`](https://cran.r-project.org/web/packages/LDAvis/LDAvis.pdf)\`] et permet d'accélerer l'analyse exploratoire d'une fouille de texte. Afin d'être représenté dans le livre, nous mettons execution dynamique de cette application [`shiny`](https://cran.r-project.org/web/packages/shiny/shiny.pdf)\`]
+[`Rainette`](https://cran.r-project.org/web/packages/rainette/rainette.pdf) est un package reposant sur le même principe qu'[`explor`](https://cran.r-project.org/web/packages/explor/explor.pdf) ou encore [`LDAvis`](https://cran.r-project.org/web/packages/LDAvis/LDAvis.pdf) et permet d'accélerer l'analyse exploratoire d'une fouille de texte. Afin d'être représenté dans le livre, nous mettons execution dynamique de cette application [`shiny`](https://cran.r-project.org/web/packages/shiny/shiny.pdf)
 
 La méthode Reinert...
 
-```{r 830, fig.cap='Double Clustering des lignes et colonnes', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 1118, fig.cap='Double Clustering des lignes et colonnes', out.width='80%', fig.asp=.75, fig.align='center'}
 ###On récupère les mots de notre tdm2, filtrée et nettoyée
 vect_flt <- rownames(tdm2)
 vect_mrq <- c("Cobol","javascript")
@@ -416,10 +392,10 @@ tok <- tokens(foo, remove_punct = TRUE)
 ###On crée un corpus pour pouvoir visualiser les données avec une seule docvars
 dtm <- dfm(tok, tolower = TRUE)
 
-#res <- rainette(dtm, k = 4)
+res <- rainette(dtm, k = 4)
 #rainette_explor(res, dtm, foo)
 ```
 
-![](images/Rainette.PNG)
+![](images/reinette.png)
 
 ## Classification Hiérarchique Descendante : Wordfish

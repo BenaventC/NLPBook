@@ -14,25 +14,23 @@ Cette première transformation, permet de jouer avec les données et l'outil de 
 
 ## Les DTM
 
-Généralement une seconde opération est conduites en représentant le corps sous la forme d'un tableau rectangulaire où les lignes représentent les textes, et les colonnes les termes ou réciproquement et l'on partela de tdm.
+Généralement une seconde opération est conduite en représentant le corps de texte sous la forme d'un tableau rectangulaire où les lignes représentent les textes, et les colonnes les termes ou réciproquement. On appele généralement ces documents  "Document Term Matrix' ou de DFM ( document feature Matrix). La différence est que la notion de feature est un peu plus générale que celle de termes. Les premiers correspondent à des mots, les seconds englobent les expressions détectées par exemple par la méthode des collocations. 
 
-### codage
+### Codage
 
-Le codage de ce tableau peut prendre deux formes : 
+Le codage de ce tableau peut prendre fondamentalement deux formes : 
 
- * présence / absence et c'est alors un tableau disjonbctif complet parfait pour une AFC (chapitre 11)
- * fréquence : nombre de fois ou le mot apparait 
+ * présence / absence et c'est alors un tableau disjonctif complet parfait pour une AFC (chapitre 11)
+ * fréquence : nombre de fois où le mot j apparait dans le document i.
+ 
+On notera qu'un tel tableau possède une caractéristiques importante : c'est une "sparse matrix", un tableaux creux. Une très grande partie des cellules sont vides ( zero observations). Le taux de " sparcity" peut d'ailleurs être calculé. 
 
-Revenir aux nuages de mots
-
-Le nombre de fois où un mot est cité, le nombre de document dans lesquels il est présent.
+Il en résulte qu'un DFM peut avoir une très grande taille. Si nous avons 10 000 documents et que vocabulaire retenu est de 2000 ( ce qui est loin d'être excessif), ce tableau représente 2 000 x 10 000 = 2 millions de cellules et donc au moins autant d'octet, soit un ordre de grandeur d'un fichier de plus de 2 Mo. On laisse le soin au lecteur de calculer la taille de mémoire néçéssaire pour traiter un tableau de quelques centaines de milliers de lignes, et de l'ordre de dix mille features. On revient sur ce point un peu plus loin.
 
 
-### TF - IDF
+La distinction sur laquelle nous avons conclu la section précédente entre "fréquence des termes" (Term frequency) et "fréquence des documents (document frequency) peut être approfondie. Un terme peut être très fréquent, mais s'il est présent dans tous les documents, cette fréquence est peu informative, le mot ne caractérise aucun document particulier ou groupe de documents. S'il est rare, si rare qu'il n'apparait qu'un unique fois (hapax), il risque ne ne pas apporter plus d'information. 
 
-La distinction sur laquelle nous avons conclu la section précédente entre "fréquence des termes" (Term frequency) et "fréquence des documents (document frequency) peut être approfondie. Un terme peut être très fréquents, mais s'il est présent dans tous les documents, cette fréquence est peu informative, le mot ne caractérise aucun document ou groupe de documents. S'il est rare, si rare qu'il n'apparait qu'un unique fois ( hapax), il risque ne ne pas apporter plus d'information. 
-
-Un mot devient caractéristique s'il est fréquent et concentré dans peu de documents. Pour obtenir un indicateur de cette qualité, et pouvoir la mesurer, il faut donc pondérer la fréquence par une certaine quantité qui la minore quand le terme se distribiton dans l'ensemble des document. Ce poids est obtenu en prenant l'inverse de la fréquence des documents.
+Un mot devient caractéristique s'il est fréquent et concentré dans peu de documents. Pour obtenir un indicateur de cette qualité, et pouvoir la mesurer, il faut donc pondérer la fréquence par une certaine quantité qui la minore quand le terme se distribue dans l'ensemble des document. Ce poids est obtenu en prenant l'inverse de la fréquence des documents.
 
 
 $$
@@ -47,6 +45,37 @@ $$
 
 du texte
 la formule
+
+
+
+### Des représentations tidy
+
+https://www.tidytextmining.com/tidytext.html
+
+
+Pour économiser de l'espace, il peut être alors intéressant d'opter pour des structures de fichiers différentes et d'adopter l'approche tidy. Celle-ce concerne à organiser le tableau de donnée de manière propre.
+
+On définit les éléments d'un tel tableau : 
+
+* Une variable : une quantité, qualité ou propriété que l’on peut mesurer.
+* Une observation : un ensemble de valeurs qui coorespondent à une unité d'observation et aux variables mesurée. Pour constituer une observation, les valeurs doivent être mesurées dans des conditions similaires et généralement sur la même unité d'observation et au même moment.
+* Une valeur : l’état observé d’une variable au moment de la mesure.
+
+
+Le principe de tidy data repose sur les trois conditions suivantes :
+
+* Chaque variable possède sa propre colonne
+* Chaque observation possède sa propre ligne
+* Chaque valeur a sa propre cellule
+
+![/images/]()
+
+
+Cette approches tidytext est puissante. Examinons une petite application avec dplyr.
+
+
+
+
 
 ## Les ctm
 

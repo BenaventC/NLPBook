@@ -1,39 +1,27 @@
 # Analyse Sémantique Latente (ASL/LSA)
 
-```{r 900,include=FALSE}
-library(dplyr)
-library(udpipe)
-library(quanteda)
-library(quanteda.textmodels)
-library(stringr)
-library(Rtsne)
-library(NMF)
-library(ggrepel)
-library(ggplot2)
-```
 
 L'analyse sémantique latente s'est développée sous le travail des linguistiques, et la généralisation d'outils tels que les moteurs de recherche. [@evangelopoulos2012]
 
-![](images/christian-wiediger-zhZydTyNMPg-unsplash.jpg){width="546"}
+![](images/christian-wiediger-zhZydTyNMPg-unsplash.jpg)
 
-Le retour sur histoire que nous fait l'auteur, ainsi que sa description des différents principes de calculs et vigilances pour l'analyste à garder en mémoire, renseigne sur les heuristiques de cette méthode : Son principe fondateur est de réussir à retrouver dans une collection de documents, un ensemble de patterns présents ou absents, dans un système d'équations s'exprimant chacune en fonction des autres. Cette expression réciproque s'opère à l'aide de la décomposittion spectrale de chacun de ses mots. En ce sens, elle peut se comprendre comme un résultat de la recherche allant dans la quantisation des vecteurs, la régression multinomiale, ou bien encore la topologie, comme identifiée par Fodor en 2002 [@fodor2002] ou d'autres applications croisées. [@song2009]
+Le retour sur histoire que nous fait l'auteur, ainsi que sa description des différents principes de calculs et vigilances pour l'analyste à garder en mémoire, renseigne sur les heuristiques de cette méthode : Son principe fondateur est de réussir à retrouver dans une collection de documents, un ensemble de patterns présents ou absents, dans un système d'équations s'exprimant chacune en fonction des autres. Cette expression réciproque s'opère à l'aide de la décomposittion spectrale de chacun de ces mots. En ce sens, elle peut se comprendre comme un résultat de la recherche allant dans la quantisation des vecteurs, la régression multinomiale, ou bien encore la topologie, comme identifiée par Fodor en 2002 [@fodor2002] ou d'autres applications croisées. [@song2009]
 
 Nous supprimons les lemmes propres au entitées nommées étudiées.
 
-```{r 901}
-df_trt_annot <- readRDS("annot_lsa_nmf.rds")
+```{r 1301}
+df_trt_annot <- readRDS("data/annot_lsa_nmf.rds")
 ```
 
 Pour les détails et l'implémentations du code, se réferrer à [C. Benavent.](http://r.benavent.fr/text.html)
 
-```{r 902, fig.cap='Analyse de sémantique Latente sur Cobol', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 1302, fig.cap='Analyse de sémantique Latente sur Cobol', out.width='80%', fig.asp=.75, fig.align='center'}
 
 annot_udd <- df_trt_annot%>%filter(Marque=="Cobol")
 
 dfm_lsa <- dfm(annot_udd$lemma,
              tolower = TRUE,
-             what = "word",
-             docvars = "Marque")
+             what = "word")
 mylsa <- textmodel_lsa(dfm_lsa,2)
 
 proxD<-mylsa$docs[, 1:2]
@@ -50,8 +38,7 @@ x$Facteur_1<-x[,1]
 x$Facteur_2<-x[,2]
 x<-cbind(annot_udd,x)
 
-df<-subset(x) #pour un quartier
-ggplot(df,aes(x = Facteur_1,y=Facteur_2))+geom_point()
+df<-subset(x)
 
 prox<-mylsa$features[, 1:2]
 terms<-as.data.frame(prox)
@@ -76,7 +63,7 @@ ggplot(plot,aes(x = Facteur_1,y=Facteur_2))+geom_point()+geom_text(aes(label=ter
 
 Aucun filtrage sur la dfm n'est appliquée sur les mots associés à Cobol. Leur effectif est bien plus réduit que celui des mots de javascript, où l'on applique un filtrage afin de ne tenir compte que des termes supérieurs à 9.
 
-```{r 903, fig.cap='Analyse de sémantique Latente sur javascript', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 1303, fig.cap='Analyse de sémantique Latente sur javascript', out.width='80%', fig.asp=.75, fig.align='center'}
 ###
 
 annot_udd <- df_trt_annot%>%filter(Marque=="javascript")
@@ -106,9 +93,6 @@ x$Facteur_1<-x[,1]
 x$Facteur_2<-x[,2]
 x<-cbind(annot_udd,x)
 
-df<-subset(x) #pour un quartier
-
-ggplot(df,aes(x = Facteur_1,y=Facteur_2))+geom_point()
 
 prox<-mylsa$features[, 1:2]
 terms<-as.data.frame(prox)
@@ -140,9 +124,9 @@ Cependant, difféfentes variantes du modèle classique de LSA, plus ou moins pro
 
 ### Non-negative Matrix Factorization
 
-Le fonctionnement de cet algorithme de factorisation est de décomposer le fichier d'entrée $A$ en deux matrices, $W$, tel que $W= u$ x $k$ et H, tel que $H = k$ x $v$ ou $k$ est ici déterminé à l'aide d'une fonction intégrée au package R [`NMF`], et déterminé selon le corpus fourni à $k = 15$ dimensions. Lorsque cet algorithme opère une coefficientisation par approximation de la décomposition du fichier $A$, en deux fichiers $W$ & $H$ de rang $k$, il nous permet de réaliser le produit matriciel de ces deux fichiers de sorties, et donc de proposer une réorganisation du fichier $A$ selon $k$ facteurs sous-jacents, et d'ainsi obtenir le rang de factorisation non-négative. De manière naturelle, il serait intéressant de savoir si l'on peut observer un modèle théorique de vocabulaires spécifiques dans la réorganisation finale obtenue.Ici donc, la matrice d'entrée A est composée des 4 langages précités, et de 3641 mots retenus pour l'étude, composer des verbes, noms et adjectifs.
+Le fonctionnement de cet algorithme de factorisation est de décomposer le fichier d'entrée $A$ en deux matrices, $W$, tel que $W= u$ x $k$ et H, tel que $H = k$ x $v$ ou $k$ est ici déterminé à l'aide d'une fonction intégrée au package R [`NMF`], et déterminé selon le corpus fourni à $k = 15$ dimensions. Lorsque cet algorithme opère une coefficientisation par approximation de la décomposition du fichier $A$, en deux fichiers $W$ & $H$ de rang $k$, il nous permet de réaliser le produit matriciel de ces deux fichiers de sorties, et donc de proposer une réorganisation du fichier $A$ selon $k$ facteurs sous-jacents, et d'ainsi obtenir le rang de factorisation non-négative. De manière naturelle, il serait intéressant de savoir si l'on peut observer un modèle théorique de vocabulaires spécifiques dans la réorganisation finale obtenue.Ici donc, la matrice d'entrée A est composée des 4 langages précités, et de 3641 mots retenus pour l'étude, composés des verbes, noms et adjectifs.
 
-```{r 904, fig.cap='Nonnegative Matrix Factorization', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 1304, fig.cap='Nonnegative Matrix Factorization', out.width='80%', fig.asp=.75, fig.align='center'}
 
 mydfm_k <- dfm(df_trt_annot$lemma,
              tolower = TRUE,
@@ -182,13 +166,13 @@ rownames(tcob) <- NULL
 
 Afin de visualiser les résultats produits, nous utilisons des fonctions de type heatmap, adaptées à la représentations de matrices.
 
-```{r 905, fig.cap='Double clustering des colonnes/langages & 15 dimensions', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 1305, fig.cap='Double clustering des colonnes/langages & 15 dimensions', out.width='80%', fig.asp=.75, fig.align='center'}
 aheatmap(my.nmf@fit@W,main = "Double clustering des colonnes/langages & 15 dimensions")
 ```
 
 La probabilité qu'un langage appartienne aux dimensions, suivie de la probabilité qu'un mot appartienne aux dimensions.
 
-```{r 906, fig.cap='Double Clustering sur les Lignes/mots & 15 dimensions', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 1306, fig.cap='Double Clustering sur les Lignes/mots & 15 dimensions', out.width='80%', fig.asp=.75, fig.align='center'}
 aheatmap(my.nmf@fit@H,main = "Double Clustering sur les Lignes/mots & 15 dimensions")
 ```
 
@@ -198,19 +182,19 @@ En réalisant le produit matriciel de ces deux tableaux il est possible, d'obten
 
 Les matrices de coefficients représentent des résultats intermédiaires, permettant de cenraliser dans un tableau de données l'ensemble des expressions linéaires possibles d'un système en fonction de ses paramètres et positions. Le consensus, s'obtient suites aux différentes itérations demandées, ici fixées à 30.
 
-```{r 907, fig.cap='Contributions des colonnes aux dimensions', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 1307, fig.cap='Contributions des colonnes aux dimensions', out.width='80%', fig.asp=.75, fig.align='center'}
 basismap(my.nmf,main="Bases de contributions des colonnes aux dimensions")
 ```
 
-```{r 908, fig.cap='Coefficients des associations des mots aux dimensions', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 1308, fig.cap='Coefficients des associations des mots aux dimensions', out.width='80%', fig.asp=.75, fig.align='center'}
 coefmap(my.nmf,Colv="basis",main="Les coefficients des mots associés aux dimensions")
 ```
 
-```{r 909, fig.cap='Map de consensus entre  les 30 itérations', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r 1309, fig.cap='Map de consensus entre  les 30 itérations', out.width='80%', fig.asp=.75, fig.align='center'}
 consensusmap(my.nmf,Rowv=TRUE, Colv=TRUE, scale="none",main="Bases des composants")
 ```
 
-## Conclusions
+## Conclusion
 
 La branche mathématique appliquée au calcul matriciel développe depuis longtemps un important travail de recherche sur les propriétés mathématiques de cet objet, [@chen1984] dont les problèmes se classifient selon une échelle de difficulté NP. [@vavasis2007] Plusieurs questions ont été abordées, notamment sur l'interprétabilité des facteurs [@lee], l'ajustement de certains paramètres comme la co-entropie, [@li2014] la détection du nombre de composantes, [@shitov2017] ou encore la divergence *B.* [@votte] Un important travail de recherche faisant l'objet d'une thèse en 2014 documente historiquement et techniquement les diverses approches de factorisation matricielle et plus précisément, celles appliquées aux matrices de données non-négatives dont l'hypothèse méthodologique de calculs admettent "la positivité des composantes" ou se basent sur leur "non-négativité". [@limem] Aujourd'hui, la généralisation de son utilisation est possible pour les utilisateurs de différents langages de programmation,[@gaujoux2010] et plusieurs travaux témoignent de ses applications courantes à divers secteurs : l'analyse d'image, le text mining, [@zurada2013] l'analyse spectrophotométrique, [@gillis2014] ou bien encore l'analyse financière,[@cazalet] et la détection des fake news. [@shu2019]
 
@@ -218,4 +202,3 @@ Ces techniques se sont développées en se confrontant aux différentes structur
 
 Part ailleurs, d'autres modèles existent et permettre de comprendre les différentes équivalences entre les méthodes décrites ci-dessus. [@buntine2002] En ce sens, le travail de Pochon en 2020 dresse un panorama plus situé, des différentes techniques et de leurs enjeux, tant en termes d'accessibilité, que d'applicabilité. [@pochon]
 
-A vos claviers ?

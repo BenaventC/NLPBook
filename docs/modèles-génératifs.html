@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapitre 19 Modèles génératifs | NLP avec r et en français - un Manuel synthétique</title>
+  <meta name="description" content="Un manuel pratique de NLP en français" />
+  <meta name="generator" content="bookdown 0.22.3 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapitre 19 Modèles génératifs | NLP avec r et en français - un Manuel synthétique" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Un manuel pratique de NLP en français" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapitre 19 Modèles génératifs | NLP avec r et en français - un Manuel synthétique" />
+  
+  <meta name="twitter:description" content="Un manuel pratique de NLP en français" />
+  
+
+<meta name="author" content="Sophie Balech, Julien Monnot, Christophe Benavent" />
+
+
+<meta name="date" content="2021-12-13" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="deep-learning.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7EKDD8SVH6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7EKDD8SVH6');
+</script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">NLP en r et en français</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Préambule</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#cours-et-séminaires"><i class="fa fa-check"></i><b>1.1</b> Cours et séminaires</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#la-structure-du-livre"><i class="fa fa-check"></i><b>1.2</b> La structure du livre</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#les-jeux-de-données"><i class="fa fa-check"></i><b>1.3</b> Les jeux de données</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#les-ressources"><i class="fa fa-check"></i><b>1.4</b> Les ressources</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#les-packages"><i class="fa fa-check"></i><b>1.4.1</b> Les packages</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#disponibilité"><i class="fa fa-check"></i><b>1.5</b> Disponibilité</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#une-réflexion-ancienne-et-un-nouveau-champ-méthodologique"><i class="fa fa-check"></i><b>2.1</b> Une réflexion ancienne et un nouveau champ méthodologique</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="intro.html"><a href="intro.html#langue-langage-et-texte-parole"><i class="fa fa-check"></i><b>2.1.1</b> Langue, langage et texte parole</a></li>
+<li class="chapter" data-level="2.1.2" data-path="intro.html"><a href="intro.html#syntaxe-et-grammaire-générative"><i class="fa fa-check"></i><b>2.1.2</b> Syntaxe et grammaire générative</a></li>
+<li class="chapter" data-level="2.1.3" data-path="intro.html"><a href="intro.html#sémantique-la-conception-distributionnelle"><i class="fa fa-check"></i><b>2.1.3</b> Sémantique : La conception distributionnelle</a></li>
+<li class="chapter" data-level="2.1.4" data-path="intro.html"><a href="intro.html#lapproche-pragmatique-les-fonctions-et-acte-du-langage"><i class="fa fa-check"></i><b>2.1.4</b> L’approche pragmatique : les fonctions et acte du langage</a></li>
+<li class="chapter" data-level="2.1.5" data-path="intro.html"><a href="intro.html#la-linguistique-computationnelle"><i class="fa fa-check"></i><b>2.1.5</b> La linguistique computationnelle</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#les-facteurs-de-développement-de-lusage-en-science-sociale"><i class="fa fa-check"></i><b>2.2</b> Les facteurs de développement de l’usage en science sociale</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="intro.html"><a href="intro.html#une-lingua-franca"><i class="fa fa-check"></i><b>2.2.1</b> Une lingua franca</a></li>
+<li class="chapter" data-level="2.2.2" data-path="intro.html"><a href="intro.html#la-multiplication-des-sources-de-données."><i class="fa fa-check"></i><b>2.2.2</b> La multiplication des sources de données.</a></li>
+<li class="chapter" data-level="2.2.3" data-path="intro.html"><a href="intro.html#une-communauté"><i class="fa fa-check"></i><b>2.2.3</b> Une communauté</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#de-nouvelles-méthodologies-pour-les-sciences-sociales"><i class="fa fa-check"></i><b>2.3</b> De nouvelles méthodologies pour les sciences sociales</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="intro.html"><a href="intro.html#nouveaux-terrains"><i class="fa fa-check"></i><b>2.3.1</b> Nouveaux terrains :</a></li>
+<li class="chapter" data-level="2.3.2" data-path="intro.html"><a href="intro.html#nouvelles-méthodes"><i class="fa fa-check"></i><b>2.3.2</b> Nouvelles méthodes :</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#un-nouvel-objet"><i class="fa fa-check"></i><b>2.4</b> Un nouvel objet :</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="intro.html"><a href="intro.html#sociologie-et-histoire"><i class="fa fa-check"></i><b>2.4.1</b> Sociologie et histoire</a></li>
+<li class="chapter" data-level="2.4.2" data-path="intro.html"><a href="intro.html#psychologie"><i class="fa fa-check"></i><b>2.4.2</b> Psychologie</a></li>
+<li class="chapter" data-level="2.4.3" data-path="intro.html"><a href="intro.html#management"><i class="fa fa-check"></i><b>2.4.3</b> Management</a></li>
+<li class="chapter" data-level="2.4.4" data-path="intro.html"><a href="intro.html#economie"><i class="fa fa-check"></i><b>2.4.4</b> Economie</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#des-comptables-à-lindustrie-de-la-langue"><i class="fa fa-check"></i><b>2.5</b> Des comptables à l’industrie de la langue</a></li>
+<li class="chapter" data-level="2.6" data-path="intro.html"><a href="intro.html#conclusion"><i class="fa fa-check"></i><b>2.6</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="la-diversité-et-la-nature-des-corpus.html"><a href="la-diversité-et-la-nature-des-corpus.html"><i class="fa fa-check"></i><b>3</b> La diversité et la nature des corpus</a><ul>
+<li class="chapter" data-level="3.1" data-path="la-diversité-et-la-nature-des-corpus.html"><a href="la-diversité-et-la-nature-des-corpus.html#différents-types-de-corpus"><i class="fa fa-check"></i><b>3.1</b> Différents types de corpus</a></li>
+<li class="chapter" data-level="3.2" data-path="la-diversité-et-la-nature-des-corpus.html"><a href="la-diversité-et-la-nature-des-corpus.html#problèmes-déchantillon"><i class="fa fa-check"></i><b>3.2</b> Problèmes d’échantillon</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html"><i class="fa fa-check"></i><b>4</b> Constitution du corpus</a><ul>
+<li class="chapter" data-level="4.1" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#la-gestion-des-documents-numériques"><i class="fa fa-check"></i><b>4.1</b> La gestion des documents numériques</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#extraire-du-texte-des-pdf"><i class="fa fa-check"></i><b>4.1.1</b> Extraire du texte des pdf</a></li>
+<li class="chapter" data-level="4.1.2" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#la-numérisation-et-locr"><i class="fa fa-check"></i><b>4.1.2</b> La numérisation et l’OCR</a></li>
+<li class="chapter" data-level="4.1.3" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#du-speech-au-texte"><i class="fa fa-check"></i><b>4.1.3</b> Du speech au texte</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#lexploitation-de-base-de-données-textuelles"><i class="fa fa-check"></i><b>4.2</b> L’exploitation de base de données textuelles</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#le-cas-europresse"><i class="fa fa-check"></i><b>4.2.1</b> le cas europresse</a></li>
+<li class="chapter" data-level="4.2.2" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#jouer-avec-les-bases-bibliographiques"><i class="fa fa-check"></i><b>4.2.2</b> Jouer avec les bases bibliographiques</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#lire-le-web-scrapping"><i class="fa fa-check"></i><b>4.3</b> Lire le web : Scrapping</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#rvest-avec-r"><i class="fa fa-check"></i><b>4.3.1</b> rvest avec r</a></li>
+<li class="chapter" data-level="4.3.2" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#des-problèmes-pratiques-juridiques-et-éthiques"><i class="fa fa-check"></i><b>4.3.2</b> Des problèmes pratiques, juridiques et éthiques</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#limportance-croissante-des-api"><i class="fa fa-check"></i><b>4.4</b> L’importance croissante des API</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#un-tour-dhorizon"><i class="fa fa-check"></i><b>4.4.1</b> Un tour d’horizon</a></li>
+<li class="chapter" data-level="4.4.2" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#un-point-de-vue-plus-technique"><i class="fa fa-check"></i><b>4.4.2</b> un point de vue plus technique</a></li>
+<li class="chapter" data-level="4.4.3" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#un-exemple-avec-rtweet"><i class="fa fa-check"></i><b>4.4.3</b> Un exemple avec Rtweet</a></li>
+<li class="chapter" data-level="4.4.4" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#un-autre-exemple"><i class="fa fa-check"></i><b>4.4.4</b> Un autre exemple</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="constitution-du-corpus.html"><a href="constitution-du-corpus.html#conclusion-1"><i class="fa fa-check"></i><b>4.5</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="explorer-et-visualiser-le-corpus.html"><a href="explorer-et-visualiser-le-corpus.html"><i class="fa fa-check"></i><b>5</b> Explorer et visualiser le corpus</a><ul>
+<li class="chapter" data-level="5.1" data-path="explorer-et-visualiser-le-corpus.html"><a href="explorer-et-visualiser-le-corpus.html#kwic"><i class="fa fa-check"></i><b>5.1</b> Kwic</a></li>
+<li class="chapter" data-level="5.2" data-path="explorer-et-visualiser-le-corpus.html"><a href="explorer-et-visualiser-le-corpus.html#explorer-le-corpus"><i class="fa fa-check"></i><b>5.2</b> Explorer le corpus</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="explorer-et-visualiser-le-corpus.html"><a href="explorer-et-visualiser-le-corpus.html#reprendre-le-topic-de-revtools"><i class="fa fa-check"></i><b>5.2.1</b> reprendre le topic de revtools</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="préparation-des-données.html"><a href="préparation-des-données.html"><i class="fa fa-check"></i><b>6</b> Préparation des données</a><ul>
+<li class="chapter" data-level="6.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#manipuler-des-chaines-de-caractères"><i class="fa fa-check"></i><b>6.1</b> Manipuler des chaines de caractères</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#les-opérations-sur-les-chaînes-de-caractères"><i class="fa fa-check"></i><b>6.1.1</b> Les opérations sur les chaînes de caractères</a></li>
+<li class="chapter" data-level="6.1.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#la-technique-des-expressions-régulières-regex"><i class="fa fa-check"></i><b>6.1.2</b> La technique des expressions régulières (regex)</a></li>
+<li class="chapter" data-level="6.1.3" data-path="préparation-des-données.html"><a href="préparation-des-données.html#un-fondement-profond-et-ancien"><i class="fa fa-check"></i><b>6.1.3</b> Un fondement profond et ancien</a></li>
+<li class="chapter" data-level="6.1.4" data-path="préparation-des-données.html"><a href="préparation-des-données.html#des-applications-très-pratiques"><i class="fa fa-check"></i><b>6.1.4</b> Des applications très pratiques</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#nettoyer-le-texte"><i class="fa fa-check"></i><b>6.2</b> Nettoyer le texte</a></li>
+<li class="chapter" data-level="6.3" data-path="préparation-des-données.html"><a href="préparation-des-données.html#corriger-le-texte"><i class="fa fa-check"></i><b>6.3</b> Corriger le texte</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#la-correction-orthographique-automatique"><i class="fa fa-check"></i><b>6.3.1</b> La correction orthographique automatique</a></li>
+<li class="chapter" data-level="6.3.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#analyse-ciblée-par-les-regex"><i class="fa fa-check"></i><b>6.3.2</b> Analyse ciblée par les regex</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-sources"><i class="fa fa-check"></i><b>6.4</b> Identifier les sources</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-la-langue"><i class="fa fa-check"></i><b>6.4.1</b> Identifier la langue</a></li>
+<li class="chapter" data-level="6.4.2" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-plagiats-et-réutilisations"><i class="fa fa-check"></i><b>6.4.2</b> Identifier les plagiats et réutilisations</a></li>
+<li class="chapter" data-level="6.4.3" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-fakes"><i class="fa fa-check"></i><b>6.4.3</b> Identifier les fakes</a></li>
+<li class="chapter" data-level="6.4.4" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-trolls"><i class="fa fa-check"></i><b>6.4.4</b> Identifier les trolls</a></li>
+<li class="chapter" data-level="6.4.5" data-path="préparation-des-données.html"><a href="préparation-des-données.html#identifier-les-bots"><i class="fa fa-check"></i><b>6.4.5</b> Identifier les bots</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html"><i class="fa fa-check"></i><b>7</b> Une première analyse quantitative</a><ul>
+<li class="chapter" data-level="7.1" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#comptons-les-mots"><i class="fa fa-check"></i><b>7.1</b> Comptons les mots</a></li>
+<li class="chapter" data-level="7.2" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#la-production-dans-le-temps"><i class="fa fa-check"></i><b>7.2</b> la production dans le temps</a></li>
+<li class="chapter" data-level="7.3" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#lisibilité-et-complexité-lexicale"><i class="fa fa-check"></i><b>7.3</b> Lisibilité et complexité lexicale</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#les-indices-de-lisibilité"><i class="fa fa-check"></i><b>7.3.1</b> Les indices de lisibilité</a></li>
+<li class="chapter" data-level="7.3.2" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#les-indices-de-complexité-lexicale"><i class="fa fa-check"></i><b>7.3.2</b> Les indices de complexité lexicale</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#comptons-les-mots-1"><i class="fa fa-check"></i><b>7.4</b> Comptons les mots</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#les-nuages-de-mots"><i class="fa fa-check"></i><b>7.4.1</b> Les nuages de mots</a></li>
+<li class="chapter" data-level="7.4.2" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#des-lollyplots"><i class="fa fa-check"></i><b>7.4.2</b> Des lollyplots</a></li>
+<li class="chapter" data-level="7.4.3" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#la-mesure-de-la-concentration-des-termes"><i class="fa fa-check"></i><b>7.4.3</b> La mesure de la concentration des termes</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="une-première-analyse-quantitative.html"><a href="une-première-analyse-quantitative.html#conclusion-2"><i class="fa fa-check"></i><b>7.5</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html"><i class="fa fa-check"></i><b>8</b> Analyse du sentiment</a><ul>
+<li class="chapter" data-level="8.1" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#un-exemple-avec-syuzhet"><i class="fa fa-check"></i><b>8.1</b> Un exemple avec syuzhet</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#valence-et-expression"><i class="fa fa-check"></i><b>8.1.1</b> Valence et expression</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#la-généralisation-par-le-liwc"><i class="fa fa-check"></i><b>8.2</b> La généralisation par le Liwc</a></li>
+<li class="chapter" data-level="8.3" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#encore-dautres-généralisations"><i class="fa fa-check"></i><b>8.3</b> Encore d’autres généralisations</a></li>
+<li class="chapter" data-level="8.4" data-path="analyse-du-sentiment.html"><a href="analyse-du-sentiment.html#construire-son-propre-dictionnaire"><i class="fa fa-check"></i><b>8.4</b> construire son propre dictionnaire</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="token.html"><a href="token.html"><i class="fa fa-check"></i><b>9</b> Tokenisation</a><ul>
+<li class="chapter" data-level="9.1" data-path="token.html"><a href="token.html#objectifs-du-chapitre"><i class="fa fa-check"></i><b>9.1</b> <em>Objectifs du chapitre</em></a></li>
+<li class="chapter" data-level="9.2" data-path="token.html"><a href="token.html#les-outils"><i class="fa fa-check"></i><b>9.2</b> Les outils</a></li>
+<li class="chapter" data-level="9.3" data-path="token.html"><a href="token.html#introduction"><i class="fa fa-check"></i><b>9.3</b> Introduction</a></li>
+<li class="chapter" data-level="9.4" data-path="token.html"><a href="token.html#tokeniser-un-corpus"><i class="fa fa-check"></i><b>9.4</b> Tokeniser un corpus</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="token.html"><a href="token.html#les-lettres"><i class="fa fa-check"></i><b>9.4.1</b> Les lettres</a></li>
+<li class="chapter" data-level="9.4.2" data-path="token.html"><a href="token.html#les-mots"><i class="fa fa-check"></i><b>9.4.2</b> Les mots</a></li>
+<li class="chapter" data-level="9.4.3" data-path="token.html"><a href="token.html#les-phrases"><i class="fa fa-check"></i><b>9.4.3</b> Les phrases</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="token.html"><a href="token.html#n-grammes"><i class="fa fa-check"></i><b>9.5</b> N-grammes</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="token.html"><a href="token.html#propriétés-statistiques-des-n-grammes"><i class="fa fa-check"></i><b>9.5.1</b> Propriétés statistiques des n-grammes</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="token.html"><a href="token.html#choisir-des-n-grammes-pertinents"><i class="fa fa-check"></i><b>9.6</b> Choisir des n-grammes pertinents</a><ul>
+<li class="chapter" data-level="9.6.1" data-path="token.html"><a href="token.html#créer-les-tokens-avec-quanteda"><i class="fa fa-check"></i><b>9.6.1</b> Créer les <em>tokens</em> avec ‘quanteda’</a></li>
+<li class="chapter" data-level="9.6.2" data-path="token.html"><a href="token.html#identifier-les-noms-propres"><i class="fa fa-check"></i><b>9.6.2</b> Identifier les noms propres</a></li>
+<li class="chapter" data-level="9.6.3" data-path="token.html"><a href="token.html#composer-des-tokens-à-partir-dexpressions-multi-mots"><i class="fa fa-check"></i><b>9.6.3</b> Composer des <em>tokens</em> à partir d’expressions multi-mots</a></li>
+<li class="chapter" data-level="9.6.4" data-path="token.html"><a href="token.html#identifier-les-autres-concepts"><i class="fa fa-check"></i><b>9.6.4</b> Identifier les autres concepts</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="token.html"><a href="token.html#conclusion-3"><i class="fa fa-check"></i><b>9.7</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html"><i class="fa fa-check"></i><b>10</b> Annotations lexicales et syntaxiques</a><ul>
+<li class="chapter" data-level="10.1" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#stemmatisation-lemmatisation-et-synonymisation"><i class="fa fa-check"></i><b>10.1</b> Stemmatisation, lemmatisation et synonymisation</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#la-stemmatisation-et-la-lemmatisation"><i class="fa fa-check"></i><b>10.1.1</b> la stemmatisation et la lemmatisation</a></li>
+<li class="chapter" data-level="10.1.2" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#synonymisation"><i class="fa fa-check"></i><b>10.1.2</b> Synonymisation</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#part-of-speech-pos"><i class="fa fa-check"></i><b>10.2</b> Part of Speech (POS)</a></li>
+<li class="chapter" data-level="10.3" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#dépendances-syntaxiques"><i class="fa fa-check"></i><b>10.3</b> Dépendances syntaxiques</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#arbre-syntaxique"><i class="fa fa-check"></i><b>10.3.1</b> Arbre syntaxique</a></li>
+<li class="chapter" data-level="10.3.2" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#vers-des-application-plus-générale"><i class="fa fa-check"></i><b>10.3.2</b> Vers des application plus générale</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#reconnaissance-dentités-nommées"><i class="fa fa-check"></i><b>10.4</b> reconnaissance d’entités nommées</a></li>
+<li class="chapter" data-level="10.5" data-path="annotations-lexicales-et-syntaxiques.html"><a href="annotations-lexicales-et-syntaxiques.html#co-reférence"><i class="fa fa-check"></i><b>10.5</b> co-reférence</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="gestion-des-données-textuelles.html"><a href="gestion-des-données-textuelles.html"><i class="fa fa-check"></i><b>11</b> Gestion des données textuelles</a><ul>
+<li class="chapter" data-level="11.1" data-path="gestion-des-données-textuelles.html"><a href="gestion-des-données-textuelles.html#jouer-avec-les-tokens"><i class="fa fa-check"></i><b>11.1</b> Jouer avec les tokens</a></li>
+<li class="chapter" data-level="11.2" data-path="gestion-des-données-textuelles.html"><a href="gestion-des-données-textuelles.html#les-dtm"><i class="fa fa-check"></i><b>11.2</b> Les DTM</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="gestion-des-données-textuelles.html"><a href="gestion-des-données-textuelles.html#codage"><i class="fa fa-check"></i><b>11.2.1</b> Codage</a></li>
+<li class="chapter" data-level="11.2.2" data-path="gestion-des-données-textuelles.html"><a href="gestion-des-données-textuelles.html#des-représentations-tidy"><i class="fa fa-check"></i><b>11.2.2</b> Des représentations tidy</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="gestion-des-données-textuelles.html"><a href="gestion-des-données-textuelles.html#les-ctm"><i class="fa fa-check"></i><b>11.3</b> Les ctm</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="gestion-des-données-textuelles.html"><a href="gestion-des-données-textuelles.html#cooccurence"><i class="fa fa-check"></i><b>11.3.1</b> cooccurence</a></li>
+<li class="chapter" data-level="11.3.2" data-path="gestion-des-données-textuelles.html"><a href="gestion-des-données-textuelles.html#une-application-à-lanalyse-des-similarités"><i class="fa fa-check"></i><b>11.3.2</b> une application à l’analyse des similarités</a></li>
+<li class="chapter" data-level="11.3.3" data-path="gestion-des-données-textuelles.html"><a href="gestion-des-données-textuelles.html#une-application-au-clustering"><i class="fa fa-check"></i><b>11.3.3</b> une application au clustering</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html"><i class="fa fa-check"></i><b>12</b> Le retour des méthodes factorielles</a><ul>
+<li class="chapter" data-level="12.1" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#objectifs-du-chapitre-1"><i class="fa fa-check"></i><b>12.1</b> <em>Objectifs du chapitre</em></a></li>
+<li class="chapter" data-level="12.2" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#les-outils-1"><i class="fa fa-check"></i><b>12.2</b> Les outils</a></li>
+<li class="chapter" data-level="12.3" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#introduction-1"><i class="fa fa-check"></i><b>12.3</b> Introduction</a></li>
+<li class="chapter" data-level="12.4" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#méthodes-données"><i class="fa fa-check"></i><b>12.4</b> Méthodes &amp; Données</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#principes-généraux"><i class="fa fa-check"></i><b>12.4.1</b> Principes généraux</a></li>
+<li class="chapter" data-level="12.4.2" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#données"><i class="fa fa-check"></i><b>12.4.2</b> Données</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#analyse-par-composantes-principales-acppca"><i class="fa fa-check"></i><b>12.5</b> Analyse par Composantes Principales (ACP/PCA)</a></li>
+<li class="chapter" data-level="12.6" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#analyse-des-correspondances"><i class="fa fa-check"></i><b>12.6</b> Analyse des Correspondances</a><ul>
+<li class="chapter" data-level="12.6.1" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#table-de-contingence"><i class="fa fa-check"></i><b>12.6.1</b> Table de contingence</a></li>
+<li class="chapter" data-level="12.6.2" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#modèle"><i class="fa fa-check"></i><b>12.6.2</b> Modèle</a></li>
+<li class="chapter" data-level="12.6.3" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#explor"><i class="fa fa-check"></i><b>12.6.3</b> explor</a></li>
+</ul></li>
+<li class="chapter" data-level="12.7" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#classification-hiérarchique"><i class="fa fa-check"></i><b>12.7</b> Classification Hiérarchique</a><ul>
+<li class="chapter" data-level="12.7.1" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#classification-hiérarchique-ascendante"><i class="fa fa-check"></i><b>12.7.1</b> Classification Hiérarchique Ascendante</a></li>
+<li class="chapter" data-level="12.7.2" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#classification-hiérarchique-ascendante-double"><i class="fa fa-check"></i><b>12.7.2</b> Classification Hiérarchique Ascendante Double</a></li>
+</ul></li>
+<li class="chapter" data-level="12.8" data-path="le-retour-des-méthodes-factorielles.html"><a href="le-retour-des-méthodes-factorielles.html#classification-hiérarchique-descendante-wordfish"><i class="fa fa-check"></i><b>12.8</b> Classification Hiérarchique Descendante : Wordfish</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html"><i class="fa fa-check"></i><b>13</b> Réseaux sémantiques</a><ul>
+<li class="chapter" data-level="13.1" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#des-analyses-de-proximités"><i class="fa fa-check"></i><b>13.1</b> Des analyses de proximités</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#les-classiques"><i class="fa fa-check"></i><b>13.1.1</b> les classiques</a></li>
+<li class="chapter" data-level="13.1.2" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#modèles-de-force"><i class="fa fa-check"></i><b>13.1.2</b> modèles de force</a></li>
+<li class="chapter" data-level="13.1.3" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#tsne"><i class="fa fa-check"></i><b>13.1.3</b> tsne</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#igraph-et-les-cartes-sémantiques"><i class="fa fa-check"></i><b>13.2</b> igraph et les cartes sémantiques</a><ul>
+<li class="chapter" data-level="13.2.1" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#gérer-les-liens"><i class="fa fa-check"></i><b>13.2.1</b> gérer les liens</a></li>
+<li class="chapter" data-level="13.2.2" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#gérer-les-noeuds"><i class="fa fa-check"></i><b>13.2.2</b> gérer les noeuds</a></li>
+<li class="chapter" data-level="13.2.3" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#gérer-les-labels"><i class="fa fa-check"></i><b>13.2.3</b> gérer les labels</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#propriétés-des-graphes-et-détection-de-communauté"><i class="fa fa-check"></i><b>13.3</b> propriétés des graphes et détection de communauté</a></li>
+<li class="chapter" data-level="13.4" data-path="réseaux-sémantiques.html"><a href="réseaux-sémantiques.html#la-question-du-temps"><i class="fa fa-check"></i><b>13.4</b> la question du temps</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="analyse-sémantique-latente-asllsa.html"><a href="analyse-sémantique-latente-asllsa.html"><i class="fa fa-check"></i><b>14</b> Analyse Sémantique Latente (ASL/LSA)</a><ul>
+<li class="chapter" data-level="14.0.1" data-path="analyse-sémantique-latente-asllsa.html"><a href="analyse-sémantique-latente-asllsa.html#non-negative-matrix-factorization"><i class="fa fa-check"></i><b>14.0.1</b> Non-negative Matrix Factorization</a></li>
+<li class="chapter" data-level="14.1" data-path="analyse-sémantique-latente-asllsa.html"><a href="analyse-sémantique-latente-asllsa.html#conclusion-4"><i class="fa fa-check"></i><b>14.1</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html"><i class="fa fa-check"></i><b>15</b> Vectorisation du corpus</a><ul>
+<li class="chapter" data-level="15.1" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#application-avec-word2vec"><i class="fa fa-check"></i><b>15.1</b> Application avec Word2vec</a><ul>
+<li class="chapter" data-level="15.1.1" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#préparer-et-annoter-grammaticalement-les-données"><i class="fa fa-check"></i><b>15.1.1</b> Préparer et annoter grammaticalement les données</a></li>
+<li class="chapter" data-level="15.1.2" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#wordvectors-au-travail"><i class="fa fa-check"></i><b>15.1.2</b> WordVectors au travail</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#exploiter-le-modèle"><i class="fa fa-check"></i><b>15.2</b> Exploiter le modèle</a></li>
+<li class="chapter" data-level="15.3" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#un-clustering-et-une-projection-tsne"><i class="fa fa-check"></i><b>15.3</b> Un clustering et une projection tsne</a></li>
+<li class="chapter" data-level="15.4" data-path="vectorisation-du-corpus.html"><a href="vectorisation-du-corpus.html#les-perspectives"><i class="fa fa-check"></i><b>15.4</b> les perspectives</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="topic.html"><a href="topic.html"><i class="fa fa-check"></i><b>16</b> Topic Analysis</a><ul>
+<li class="chapter" data-level="16.1" data-path="topic.html"><a href="topic.html#objectifs-du-chapitre-2"><i class="fa fa-check"></i><b>16.1</b> <em>Objectifs du chapitre</em></a></li>
+<li class="chapter" data-level="16.2" data-path="topic.html"><a href="topic.html#les-outils-2"><i class="fa fa-check"></i><b>16.2</b> Les outils</a></li>
+<li class="chapter" data-level="16.3" data-path="topic.html"><a href="topic.html#introduction-2"><i class="fa fa-check"></i><b>16.3</b> Introduction</a><ul>
+<li class="chapter" data-level="16.3.1" data-path="topic.html"><a href="topic.html#latent-dirichlet-allocation-le-modèle-original-de-blei"><i class="fa fa-check"></i><b>16.3.1</b> Latent Dirichlet Allocation : Le modèle original de Blei</a></li>
+<li class="chapter" data-level="16.3.2" data-path="topic.html"><a href="topic.html#structural-topic-modeling"><i class="fa fa-check"></i><b>16.3.2</b> Structural Topic Modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="16.4" data-path="topic.html"><a href="topic.html#lda-une-application-aux-commentaires-trip-advisor"><i class="fa fa-check"></i><b>16.4</b> LDA : Une application aux commentaires trip advisor</a><ul>
+<li class="chapter" data-level="16.4.1" data-path="topic.html"><a href="topic.html#la-détermination-du-nombre-optimal-de-topics"><i class="fa fa-check"></i><b>16.4.1</b> La détermination du nombre optimal de topics</a></li>
+<li class="chapter" data-level="16.4.2" data-path="topic.html"><a href="topic.html#lda-theory-driven"><i class="fa fa-check"></i><b>16.4.2</b> LDA <em>theory driven</em></a></li>
+</ul></li>
+<li class="chapter" data-level="16.5" data-path="topic.html"><a href="topic.html#stm"><i class="fa fa-check"></i><b>16.5</b> STM</a><ul>
+<li class="chapter" data-level="16.5.1" data-path="topic.html"><a href="topic.html#préparation-des-données-1"><i class="fa fa-check"></i><b>16.5.1</b> Préparation des données</a></li>
+<li class="chapter" data-level="16.5.2" data-path="topic.html"><a href="topic.html#identification-du-nombre-de-topics-optimal"><i class="fa fa-check"></i><b>16.5.2</b> Identification du nombre de <em>topics</em> optimal</a></li>
+</ul></li>
+<li class="chapter" data-level="16.6" data-path="topic.html"><a href="topic.html#interprétation-du-modèle-retenu"><i class="fa fa-check"></i><b>16.6</b> Interprétation du modèle retenu</a><ul>
+<li class="chapter" data-level="16.6.1" data-path="topic.html"><a href="topic.html#le-modèle-retenu"><i class="fa fa-check"></i><b>16.6.1</b> Le modèle retenu</a></li>
+<li class="chapter" data-level="16.6.2" data-path="topic.html"><a href="topic.html#corrélation-entre-les-topics"><i class="fa fa-check"></i><b>16.6.2</b> Corrélation entre les <em>topics</em></a></li>
+</ul></li>
+<li class="chapter" data-level="16.7" data-path="topic.html"><a href="topic.html#conclusion-5"><i class="fa fa-check"></i><b>16.7</b> Conclusion</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html"><i class="fa fa-check"></i><b>17</b> Machine learning supervisé et NLP</a><ul>
+<li class="chapter" data-level="17.1" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#le-principe-et-ses-applications"><i class="fa fa-check"></i><b>17.1</b> Le principe et ses applications</a></li>
+<li class="chapter" data-level="17.2" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#une-première-application"><i class="fa fa-check"></i><b>17.2</b> Une première application</a><ul>
+<li class="chapter" data-level="17.2.1" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#constituer-le-dataset"><i class="fa fa-check"></i><b>17.2.1</b> Constituer le dataset</a></li>
+<li class="chapter" data-level="17.2.2" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#on-va-nettoyer-le-texte"><i class="fa fa-check"></i><b>17.2.2</b> On va nettoyer le texte</a></li>
+<li class="chapter" data-level="17.2.3" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#caret-sur-la-scène"><i class="fa fa-check"></i><b>17.2.3</b> caret sur la scène</a></li>
+<li class="chapter" data-level="17.2.4" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#un-modèle-naive-bayes"><i class="fa fa-check"></i><b>17.2.4</b> Un modèle naive bayes</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#passons-à-un-réseau-de-neurones-et-un-rf"><i class="fa fa-check"></i><b>17.3</b> Passons à un réseau de neurones et un RF</a><ul>
+<li class="chapter" data-level="17.3.1" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#neuralnetwook"><i class="fa fa-check"></i><b>17.3.1</b> neuralnetwook</a></li>
+<li class="chapter" data-level="17.3.2" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#multilayer"><i class="fa fa-check"></i><b>17.3.2</b> multilayer</a></li>
+</ul></li>
+<li class="chapter" data-level="17.4" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#comparons-les-modèles"><i class="fa fa-check"></i><b>17.4</b> Comparons les modèles</a><ul>
+<li class="chapter" data-level="17.4.1" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#une-analyse-plus-précise-de-la-performance"><i class="fa fa-check"></i><b>17.4.1</b> Une analyse plus précise de la performance</a></li>
+</ul></li>
+<li class="chapter" data-level="17.5" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#mais-il-faut-expliquer"><i class="fa fa-check"></i><b>17.5</b> Mais il faut expliquer</a></li>
+<li class="chapter" data-level="17.6" data-path="machine-learning-supervisé-et-nlp.html"><a href="machine-learning-supervisé-et-nlp.html#pour-finir-un-exercice-de-fine-tuning"><i class="fa fa-check"></i><b>17.6</b> Pour finir un exercice de fine tuning</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="deep-learning.html"><a href="deep-learning.html"><i class="fa fa-check"></i><b>18</b> Deep Learning</a><ul>
+<li class="chapter" data-level="18.1" data-path="deep-learning.html"><a href="deep-learning.html#lenvironnement-keras"><i class="fa fa-check"></i><b>18.1</b> L’environnement keras</a><ul>
+<li class="chapter" data-level="18.1.1" data-path="deep-learning.html"><a href="deep-learning.html#les-fonctions-principales"><i class="fa fa-check"></i><b>18.1.1</b> Les fonctions principales</a></li>
+<li class="chapter" data-level="18.1.2" data-path="deep-learning.html"><a href="deep-learning.html#un-premier-exemple"><i class="fa fa-check"></i><b>18.1.2</b> Un premier exemple</a></li>
+<li class="chapter" data-level="18.1.3" data-path="deep-learning.html"><a href="deep-learning.html#un-deuxième-exemple"><i class="fa fa-check"></i><b>18.1.3</b> Un deuxième exemple</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="deep-learning.html"><a href="deep-learning.html#les-architectures-du-texte-rnn-ltsm-transformer-et-reformer"><i class="fa fa-check"></i><b>18.2</b> Les architectures du texte : RNN, LTSM, Transformer et Reformer</a><ul>
+<li class="chapter" data-level="18.2.1" data-path="deep-learning.html"><a href="deep-learning.html#rnn"><i class="fa fa-check"></i><b>18.2.1</b> rnn</a></li>
+<li class="chapter" data-level="18.2.2" data-path="deep-learning.html"><a href="deep-learning.html#ltsm"><i class="fa fa-check"></i><b>18.2.2</b> ltsm</a></li>
+<li class="chapter" data-level="18.2.3" data-path="deep-learning.html"><a href="deep-learning.html#transformer"><i class="fa fa-check"></i><b>18.2.3</b> transformer</a></li>
+<li class="chapter" data-level="18.2.4" data-path="deep-learning.html"><a href="deep-learning.html#reformer"><i class="fa fa-check"></i><b>18.2.4</b> reformer</a></li>
+</ul></li>
+<li class="chapter" data-level="18.3" data-path="deep-learning.html"><a href="deep-learning.html#les-cas-dapplications-remarquables"><i class="fa fa-check"></i><b>18.3</b> Les cas d’applications remarquables</a><ul>
+<li class="chapter" data-level="18.3.1" data-path="deep-learning.html"><a href="deep-learning.html#detection-dintention"><i class="fa fa-check"></i><b>18.3.1</b> Detection d’intention</a></li>
+<li class="chapter" data-level="18.3.2" data-path="deep-learning.html"><a href="deep-learning.html#détection-de-toxicité-des-contenus"><i class="fa fa-check"></i><b>18.3.2</b> détection de toxicité des contenus</a></li>
+<li class="chapter" data-level="18.3.3" data-path="deep-learning.html"><a href="deep-learning.html#la-detection-des-trolls"><i class="fa fa-check"></i><b>18.3.3</b> la detection des trolls</a></li>
+<li class="chapter" data-level="18.3.4" data-path="deep-learning.html"><a href="deep-learning.html#détection-des-sophismes-et-autres-fallacies"><i class="fa fa-check"></i><b>18.3.4</b> détection des sophismes et autres fallacies</a></li>
+<li class="chapter" data-level="18.3.5" data-path="deep-learning.html"><a href="deep-learning.html#la-détection-du-sarcasme-et-de-lironie"><i class="fa fa-check"></i><b>18.3.5</b> La détection du sarcasme et de l’ironie</a></li>
+<li class="chapter" data-level="18.3.6" data-path="deep-learning.html"><a href="deep-learning.html#lextraction-darguments"><i class="fa fa-check"></i><b>18.3.6</b> L’extraction d’arguments</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html"><i class="fa fa-check"></i><b>19</b> Modèles génératifs</a><ul>
+<li class="chapter" data-level="19.1" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html#simples-models"><i class="fa fa-check"></i><b>19.1</b> simples models</a><ul>
+<li class="chapter" data-level="19.1.1" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html#naives-bayes"><i class="fa fa-check"></i><b>19.1.1</b> Naives bayes</a></li>
+<li class="chapter" data-level="19.1.2" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html#elastic-net"><i class="fa fa-check"></i><b>19.1.2</b> elastic net</a></li>
+<li class="chapter" data-level="19.1.3" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html#rf"><i class="fa fa-check"></i><b>19.1.3</b> RF</a></li>
+</ul></li>
+<li class="chapter" data-level="19.2" data-path="modèles-génératifs.html"><a href="modèles-génératifs.html#art-of-featuring"><i class="fa fa-check"></i><b>19.2</b> art of featuring</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="20" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html"><i class="fa fa-check"></i><b>20</b> Annexes : quelques problèmes très techniques</a><ul>
+<li class="chapter" data-level="20.1" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#la-question-de-lencodage"><i class="fa fa-check"></i><b>20.1</b> La question de l’encodage</a></li>
+<li class="chapter" data-level="20.2" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#jouer-avec-les-formats-de-données"><i class="fa fa-check"></i><b>20.2</b> Jouer avec les formats de données</a><ul>
+<li class="chapter" data-level="20.2.1" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#des-formats-exotiques"><i class="fa fa-check"></i><b>20.2.1</b> des formats exotiques</a></li>
+</ul></li>
+<li class="chapter" data-level="20.3" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#adopter-des-formats-propres-tidy"><i class="fa fa-check"></i><b>20.3</b> Adopter des formats “propres” (tidy)</a></li>
+<li class="chapter" data-level="20.4" data-path="annexes-quelques-problèmes-très-techniques.html"><a href="annexes-quelques-problèmes-très-techniques.html#les-limites-du-calcul"><i class="fa fa-check"></i><b>20.4</b> Les limites du calcul</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="etudes-de-cas.html"><a href="etudes-de-cas.html"><i class="fa fa-check"></i><b>21</b> Etudes de cas</a><ul>
+<li class="chapter" data-level="21.1" data-path="etudes-de-cas.html"><a href="etudes-de-cas.html#sommaire"><i class="fa fa-check"></i><b>21.1</b> Sommaire</a><ul>
+<li class="chapter" data-level="21.1.1" data-path="etudes-de-cas.html"><a href="etudes-de-cas.html#cas-1"><i class="fa fa-check"></i><b>21.1.1</b> Cas 1</a></li>
+<li class="chapter" data-level="21.1.2" data-path="etudes-de-cas.html"><a href="etudes-de-cas.html#cas-2"><i class="fa fa-check"></i><b>21.1.2</b> Cas 2</a></li>
+<li class="chapter" data-level="21.1.3" data-path="etudes-de-cas.html"><a href="etudes-de-cas.html#cas-3"><i class="fa fa-check"></i><b>21.1.3</b> Cas 3</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">NLP avec r et en français - un Manuel synthétique</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="modèles-génératifs" class="section level1">
+<h1><span class="header-section-number">Chapitre 19</span> Modèles génératifs</h1>
+<div id="simples-models" class="section level2">
+<h2><span class="header-section-number">19.1</span> simples models</h2>
+<div id="naives-bayes" class="section level3">
+<h3><span class="header-section-number">19.1.1</span> Naives bayes</h3>
+</div>
+<div id="elastic-net" class="section level3">
+<h3><span class="header-section-number">19.1.2</span> elastic net</h3>
+</div>
+<div id="rf" class="section level3">
+<h3><span class="header-section-number">19.1.3</span> RF</h3>
+</div>
+</div>
+<div id="art-of-featuring" class="section level2">
+<h2><span class="header-section-number">19.2</span> art of featuring</h2>
+<p>utiliser les plongements</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="deep-learning.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/18-Generative-model.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

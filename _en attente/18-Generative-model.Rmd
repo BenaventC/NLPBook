@@ -1,0 +1,19 @@
+# Modèles génératifs
+
+
+https://github.com/FranxYao/Deep-Generative-Models-for-Natural-Language-Processing
+
+
+Les méthodes génératives se sont fait connaitre dans le grand public avec les générateur de texte GPT2 et GPT3. Elles couvrent un large nombre d'application industrielles.
+
+La méthode est celle des GAN
+
+Ce chapitre est informatif, mais certaines techniques peuvent trouver place dans un processus de recherche.
+
+## la traduction
+
+## Les résumés
+
+## les questions réponses
+
+##

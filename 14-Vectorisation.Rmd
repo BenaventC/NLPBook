@@ -77,7 +77,7 @@ et on fait de l'annotations POS, comme étudié dans le chapitre X. attention ç
 library(cleanNLP) #pour les POS et Dépendences syntaxiques
 
 # initialisation du modèle , ici udpipe, mais aussi spacy corenlp ou stringi
-#(un travail devrait être de comprer ces méthodes par le taux de couvrement!!!!)
+#(un travail devrait être de comparer ces méthodes par le taux de couvrement!!!!)
 cnlp_init_udpipe(model_name  = "english")
 
 
@@ -113,30 +113,29 @@ write.table(all_tweets, file="./data/tweets.txt")
 
 ### WordVectors au travail
 
-deux étapes
+Deux étapes
 
  * un preprocessing, qui permet de prendre en compte les ngrams
  * l'entrainement du modèle
 
-```{r 1404,fig.cap='', out.width='80%', fig.asp=.75, fig.align='center', eval=FALSE}
+```{r 1404,fig.cap='', out.width='80%', fig.asp=.75, fig.align='center', eval=TRUE}
 #install.packages("remotes")
 #remotes::install_github("bmschmidt/wordVectors")
 library(wordVectors)
 
 #Nettoyage des tweets et identification des n-grammes en vue d'entraîner le modèle
-prep_word2vec(origin="./data/tweets.txt",destination="./data/trump_vec.txt",lowercase=T,bundle_ngrams=4)
+prep_word2vec(origin="./data/tweets.txt",destination="./data/trump_vec.txt",lowercase=T,bundle_ngrams=3)
 
 #Création et entraînement du modèle vectoriel
 
 model = train_word2vec("./data/trump_vec.txt",
                        "./data/trump.bin",
-                       vectors=200,threads=2,
+                       vectors=200,threads=3,
                        window=5,
                        iter=10,negative_samples=0,
                        force=TRUE, 
                        min_count=30)
 
-mod<-model@.Data
 ```
 
 La taille du vocabulaire est de 2306 pour 401445 mots dans le fichier d'entraînement. Ils se présente sous la forme d'un tableau de 2306 termes, et de 200 colonnes. 
