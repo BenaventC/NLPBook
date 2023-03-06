@@ -1,51 +1,47 @@
 # Vectorisation du corpus
 
 
-C'est sans doute l'idée la plus novatrice que l'approche computationnelle du langage a apporté ces 10 dernières années. Le modèle word2vec de Mikolov(2013) en est une première version, d'autres ont apporté des amélioration comme le modèle Glove.
+C'est sans doute l'idée la plus novatrice que l'approche computationnelle du langage a apporté ces 10 dernières années. Le modèle word2vec de @mikolov_efficient_2013 en est une version originelle. 
 
-L'idée fondamentale est qu'on peut représenter des mots dans un espace de grande dimension par des vecteurs. Ce qui importe c'est de conserver la relation entre mots dans cet espace. Deux mots très corrélés, au sens de leur cooccurences, doivent l'être avec la même intensité dans cet espace. Admettant que le cosinus de l'angle entre deux vecteurs est équivalent à leur corrélation, on comprend aisément que la vectorisation consiste à identifier un jeu de coordonnées, les paramètres des vecteurs mots, en connaissant les angles qu'is forment entre eux. 
+L'idée fondamentale est qu'on peut représenter des mots dans un espace de grande dimension par des vecteurs. Ce qui importe c'est de conserver la relation entre mots dans cet espace. Deux mots très corrélés, au sens de leur cooccurences, doivent l'être avec la même intensité dans cet espace. Admettant que le cosinus de l'angle entre deux vecteurs est équivalent à leur corrélation, on comprend aisément que la vectorisation consiste à identifier un jeu de coordonnées, les paramètres des vecteurs mots, en connaissant les angles qu'ils forment entre eux. 
 
-De manière imaginée, il s'agit de représenter le vocabulaire d'un corpus ( et si ce corpus est celui de tous les corpus, d'une langue) sous la forme d'un oursin. Mais dans un espace à de 100 à 1000 dimensions. Si les oursins pointent leurs aiguilles dans toutes les directions, celles-ci sont contraintes à trois dimensions.
+De manière imaginée, il s'agit de représenter le vocabulaire d'un corpus ( et si ce corpus est celui de tous les corpus, d'une langue) sous la forme d'un oursin. Mais dans un espace à de 100 à 1000 dimensions. Si les oursins pointent leurs aiguilles dans toutes les directions, celles-ci sont contraintes à trois dimensions. Le résultat de cette opération se définit par ce qu'on appelle en anglais les embeddings, et en français de manière peut plus poétique de plongement. Et oui, on plonge les mots dans un océan de vecteur!
+
 
 ![Oursin](./images/oursin.jpg)
 
-
-
-
-Pour estimer les coordonnée des vecteurs deux méthodes peuvent être employée simultanéement.
+Pour estimer les coordonnée des vecteurs deux méthodes peuvent être employées Alternativement
 
 -   Les mots observés, dont on peut prédire le contexte (Skip-gram)
 
 -   Les éléments du contexte observés, dont on peut prédire le mot (CBOW)
 
-L'idée de plongement lexical tient alors dans cette dynamique double d'identification et de rattachament des éléments textuels ensembles, selon différentes méthodes de vraisemblance/mesure.
+L'idée de plongement lexical tient alors dans cette dynamique double d'identification et de rattachement des éléments textuels ensemble, selon différentes méthodes de vraisemblance/mesure.
 
-![](.\images\skipgramCbow.png)
+![Figure 1 :](.\images\skipgramCbow.png)
 
 
-Le caractère remarquable de la méthode c'est qu'il est posible d'opérer des opérations algébriques, l'exemple canonique est celui de 
+Le caractère remarquable de la méthode c'est qu'il est possible d'opérer des opérations algébriques, l'exemple canonique est celui de 
 
-reine = Roi+Homme - Femme
+$reine = Roi- Homme + Femme$
 
 
 ![vecteur](./images/wordvector.png)
 
-
 ## Application avec Word2vec
 
+Pour la mise en oeuvre on emploie le package [WordVec](https://github.com/bmschmidt/wordVectors) de BenJamin Schmidt sur le corpus Trump. 
 
-pour la mise en oeuvre on emploie le package [WordVec](https://github.com/bmschmidt/wordVectors) de BenJamin Schmidt sur le corpus Trump. 
-
-Dans un premier temps on exploite les éléments présentés dans les chapitre précédents pour pré-processer le texte et le transformer en une séquence de termes bien tempérés : on va transformer les tweets en une séquences de lemmes, en ne gardant que les unités pleinement signifiantes : noms communs, adjectifs et adverbes, verbes. En quelque sorte un excercice de condensation du langage sur ses unités les plus signifiantes.
+Dans un premier temps on exploite les éléments présentés dans les chapitre précédents pour pré-processer le texte et le transformer en une séquence de termes bien tempérés : on va transformer les twits en une séquences de lemmes, en ne gardant que les unités pleinement signifiantes : noms communs, adjectifs et adverbes, verbes. En quelque sorte un exercice de condensation du langage sur ses unités les plus signifiantes.
 
 C'est aussi l'occasion de rappeler que ce qui importe dans le traitement du langage est de réduire les variations de formes pour mieux capturer les significations.  
 
 
 ### Préparer et annoter grammaticalement les données
 
-On prépare les données en "résumant" les tweets à leur plus simple expression
+On prépare les données en "résumant" les twits à leur plus simple expression
 
-d'abord on tokenize, et on réduit les tokens en suprrimant les symbole, les nombre, en mettant en minuscules etc 
+d'abord on tokenize, et on réduit les tokens en supprimant les symboles, les nombres, en mettant en minuscules etc 
 
 ```{r 1401,fig.cap='', out.width='80%', fig.asp=.75, fig.align='center'}
 df_trump<- read_csv("./data/TrumpTwitterArchive01-08-2021.csv")
@@ -61,6 +57,7 @@ foo<-tokens(obj, remove_punct = TRUE,
   tokens_remove(pattern = c("*.tt", "*.uk", "*.com", "rt", "#*", "@*","amp", "RT")) %>%
   tokens_select(pattern="<U+.*",  selection = "remove", valuetype = "regex")%>%
   tokens_tolower() 
+
 #on reconstitue la chaine de caractère à partir des tokens transformés
 foo1<-data.frame(
   id = seq_along(foo),
@@ -68,10 +65,7 @@ foo1<-data.frame(
   row.names = NULL
 )
 ```
-
-et on fait de l'annotations POS, comme étudié dans le chapitre X. attention ç a peut prendre du temps. 35 mn sur notre machine. c'est pourquoi nous ajoutons un petit dispositif de calcul de temps pour se donner une maitrise des ajustements. le traitement du texte consomme parfois beaucoups de ressources, et il est utile d'en contrôler l'usage. 
-
-
+et on fait de l’annotation POS, comme étudié dans le chapitre X. attention ç a peut prendre du temps. 35 mn sur notre machine. c'est pourquoi nous ajoutons un petit dispositif de calcul de temps pour se donner une maîtrise des ajustements. le traitement du texte consomme parfois beaucoup de ressources, et il est utile d'en contrôler l'usage. 
 
 ```{r 1402,fig.cap='', out.width='80%', fig.asp=.75, fig.align='center', eval=FALSE}
 library(cleanNLP) #pour les POS et Dépendences syntaxiques
@@ -94,7 +88,7 @@ write_rds(Vocab,"./data/Vocab.rds")
 donc l'opération aura pris ```t``` minutes.
 
 
-Et un peu de filtrage sur les POS afin de se contreer sur les unités signifiantes.
+Et un peu de filtrage sur les POS afin de se concentrer sur les unités signifiantes.
 
 ```{r 1403,fig.cap='', out.width='80%', fig.asp=.75, fig.align='center'}
 Vocab <-readRDS ("./data/Vocab.rds")
@@ -127,14 +121,18 @@ library(wordVectors)
 prep_word2vec(origin="./data/tweets.txt",destination="./data/trump_vec.txt",lowercase=T,bundle_ngrams=3)
 
 #Création et entraînement du modèle vectoriel
-
+t1<-Sys.time
 model = train_word2vec("./data/trump_vec.txt",
                        "./data/trump.bin",
-                       vectors=200,threads=3,
+                       vectors=200,
+                       threads=3,
                        window=5,
-                       iter=10,negative_samples=0,
+                       iter=10,
+                       negative_samples=0,
                        force=TRUE, 
                        min_count=30)
+t2<-Sys.time
+t<-t2-t1
 
 ```
 
@@ -158,6 +156,8 @@ foo<-model %>%
   filter(word!="biden") #on choisit les 30 termes les plus proches, sauf biden
 
 foo$Similarity<-foo[,2] #juste pour renommer la variable
+
+
 g1<-ggplot(foo, aes(x=reorder(word,Similarity),y=Similarity))+
   geom_point(col="black",size=3)+
   coord_flip()+
@@ -185,7 +185,10 @@ On peut affiner le concept de -trump en faisant la somme de ses noms. On laisse 
 
 
 ```{r 1407,fig.cap='', out.width='80%', fig.asp=.75, fig.align='center'}
-foo<-model %>% wordVectors::closest_to(~("trump"+"donald_trump"+"mr.trump"+"donald"),30)
+foo<-model %>% 
+  wordVectors::closest_to(~("trump"+"donald_trump"+"mr.trump"+"donald"),30)
+
+
 foo$Similarity<-foo[,2]
 g1<-ggplot(foo, aes(x=reorder(word,Similarity),y=Similarity))+
   geom_point(col="black",size=3)+coord_flip()+theme_minimal()+
@@ -195,7 +198,8 @@ g1
 
 Quand on soustrait "Biden" du concept de "president trump", c'est Melania qui apparait. 
 
-```{r1408,fig.cap='', out.width='80%', fig.asp=.75, fig.align='center' }
+```{r 1408,fig.cap='', out.width='80%', fig.asp=.75, fig.align='center' }
+
 foo<-model %>% wordVectors::closest_to(~("trump"+ "president"-"biden"),30)
 foo$Similarity<-foo[,2]
 g1<-ggplot(foo, aes(x=reorder(word,Similarity),y=Similarity))+geom_point(col="black",size=3)+
@@ -204,8 +208,9 @@ g1<-ggplot(foo, aes(x=reorder(word,Similarity),y=Similarity))+geom_point(col="bl
   scale_y_log10()+ggtitle("N-grammes proches de trump-Biden")
 g1
 ```
-## Un clustering et une projection  tsne
 
+
+## Un clustering et une projection  tsne
 
 
 ```{r 1409,fig.cap='', out.width='80%', fig.asp=.75, fig.align='center'}
@@ -227,7 +232,7 @@ calculer tous  les cosinus
 ```{r 1410,fig.cap='', out.width='80%', fig.asp=.75, fig.align='center'}
 
 # un calcul de dissimilarité sur la base des cosinus
-#la fonction habituel dist ne le permetpas
+#la fonction habituelle dist ne le permetpas
 Matrix <- as.matrix(subset1)
 sim <- Matrix / sqrt(rowSums(Matrix * Matrix))
 sim <- sim %*% t(sim)
@@ -282,20 +287,44 @@ text(rtsne_out$Y, labels=rownames(subset),cex=0.8,col=color.vec[terms$groupes])
 ```
 
 
+## Doc2vec
+
+Si *Word2vec* est utile pour représenter l'espace sémantique, et comparer les vecteurs entre eux, il n'est pas suffisant pour entreprendre une exploration plus poussée du corpus. L'étape suivante, c'est de vectoriser aussi les phrase voire les texte en entiers avec l'idée simple qu'un texte est signé par le vecteurs moyens de ses constituants.
+
+Une procédure telle que Doc2Vec produit cette opération. 
+
+$V_t=frac{\sum_{x = a}^{b}v_it}{n_t}$
+
+@le_distributed_2014 a introduit la méthode paragraph2vec, qui ajoute un token du paragraphe, et propose  ainsi une alternavive plus consistante à la méthode des moyennes.
+
+### Un exemple
+
+Pour la mise en oeuvre on utilise le package Wor2vec de ....
+
+exemple de marketing et NLP ? voir [en attendant](https://benaventc.github.io/systematic-litterature-review/script01.html) 
 
 
-## les perspectives
+### Calcul des similarités et projection dans l'espace. 
 
 
-des cas d'applications
+### Une application à la détection de concept.
+
+Dans ce type d'application l'idée est de construire un vecteur artificiel  à partir d'un dictionnaire pré-établis en prenant la moyenne des vecteurs mots qui le compose. Il suffira ensuite de calculer la similarité entre ce vecteur cible et chacun des vecteurs textes pour identifier ceux dont le sens se rapproche du concept. C'est ce que font par exemple @gennaro_emotion_2022
 
 
- *  paragraph2vec
+## Les perspectives
 
- * pas que les termes mais des position s ou les pos.
+Des cas d'applications
+
+* Il existe d'autres modèles comme Glove https://nlp.stanford.edu/projects/glove/   ( et citation)
+
+* Il n'y a pas que les termes qui peuvent être vectorisé, mais aussi des fragments de mots, des ngrams, les lettres mais aussi des positions ou des pos. La méthode est très générale.
+
+* l'intérêt des modèles pré-entraînés est que ceci en étant évalué sur des corpus plus vastes, mieux formés, permettent une sématique plus précise d'une plus grande étendues de vocabulaire. Ils se présentent comme un véritable enrichissement du corpus étudié, notamment pour les mots peu fréquents qui ne peuvent faire l'objet d'embeddings internes. A contrario on risque de perde la saveur du corpus que l'on a vectorisé de manière interne : les spécificités sont mieux conservées ainsi. Une solution intermédiaire serait peut être de concaténer les deux sourcess, ou plus simplement de réentrainé le modèle externe sur les données internes. Ce sont des voies à explorer. 
  
- * l'avenir des modèles pré-entrainés qu'on examiné dans le chapitre deep-learning
+* l'avenir est déjà là et c'est celui des *Transformers* dont nous verrons au chapitre X qu'ils sont aussi des modèles d'embeddings dont la particularité est de prendre en compte la position du mot dans la phrase, permettant des caractérisations plus fine et de meilleures prédictions, en produisant des vecteurs dynamiques.
+
  
- 
+Une révolution en fait. 
 
 

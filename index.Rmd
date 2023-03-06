@@ -25,7 +25,7 @@ Le but de ce manuel est de donner une synthèse des méthodes et des modèles di
 
 Sa vocation est pratique, on s'appuie sur des corpus caractéristiques, et les scripts sont totalement reproductible. 
 
-On y laissera germer quelques considérations plus méthodologiques, voire épistémologiques. On ouvrira chaque fois que c'est possible et nécessaire la discussion aux questions théoriques et éthiques de ces méthodes. Leur réalisation computationnelle est le fruit souvent d'une longue histoire, au cours de laquelle les linguistes ont semé des idées essentielles qu'ont systématisées les informaticiens. Si ce champs est désormais désigné par l'acronyme NLP, pour "Natural Langage Processing" auquel correspond en français le TAL (Traitement Dutomatique du Langage naturel), l'expression de linguistique computationnelle convient peut-être mieux.
+On y laissera germer quelques considérations plus méthodologiques, voire épistémologiques. On ouvrira chaque fois que c'est possible et nécessaire la discussion aux questions théoriques et éthiques de ces méthodes. Leur réalisation computationnelle est le fruit souvent d'une longue histoire, au cours de laquelle les linguistes ont semé des idées essentielles qu'ont systématisées les informaticiens. Si ce champs est désormais désigné par l'acronyme NLP, pour "Natural Langage Processing" auquel correspond en français le TAL (Traitement Automatique du Langage naturel), l'expression de linguistique computationnelle convient peut-être mieux.
 
 On soignera la bibliographie de manière synthétique pour en faire un état de l'art essentiel et actualisé. La rédaction de l'ouvrage est mené avec une règle de reproductibilité et de transparence, c'est le pourquoi le choix de ce support et des jeux de données associés. Il sera dynamique, modifié à mesure de nos cours, séminaires, ateliers et observations des lecteurs.
 
@@ -38,21 +38,22 @@ La liste des cours et séminaires où il sera présenté et utilisé en 2021-202
  * Ecole Doctorale de Gestion à la Sorbonne - février 2022, "cours : NLP pour la recherche en gestion"
  * [Dauphine master 204](https://dauphine.psl.eu/formations/masters/marketing-et-strategie/m2-chef-de-produit-et-etudes-marketing) - Cours ["Text Analytics"](https://dauphine.psl.eu/formations/masters/marketing-et-strategie/m2-chef-de-produit-et-etudes-marketing/formation), Novembre 2021
  * [Master Siren - Dauphine](https://dauphine.psl.eu/formations/masters/systemes-information-reseaux-et-numerique) : intoduction aux Datasciences - mai 2022
- * Lille Master Data Science
- * [Ecole Doctorals EOS Nanterre]() : intoduction aux méthodes NLP 
+ * [Hackathon Siren]()
+ * [Lille Master Data Science]() : 
+ * [Ecole Doctorals EOS Nanterre]() : introduction aux méthodes NLP 
 
 
 ## La structure du livre
 
 L analyse NLP peut être analysée comme un processus qui va de la production jusqu'à la diffusion des analyses. Elle est aussi traversée par des évolutions profondes de méthodes qui ont complexifié au sens formel les modèles initiaux. Ce sont ces techniques que nous introduisons ici. 
 
-Cependant, l'apprentissage automatique appliqué à des milliards de données submerge la statistique. Les modèles de langage distribués par les grands acteurs du gidital, comprennent des dizaines, voir des centaines de milliards de paramètres. On les évoquerons dans les derniers chapîtres.
+Cependant, l'apprentissage automatique appliqué à des milliards de données submerge la statistique. Les modèles de langage distribués par les grands acteurs du digital, comprennent des dizaines, voir des centaines de milliards de paramètres. Ils s'appuient sur les architecture Transformer qui sont désormais le standard du domaine. Nous les évoquerons dans les derniers chapitres.
 
 Le plan suit une logique progresse qui va du simple au très compliqué, et de l'acquisition des données à leur traitement et leur modélisation. 
 
 
  * Acquisition des données : directe, api et scrapping
- * Corpus dtm et cooccurence
+ * Corpus dtm et co-occurence
  * AFC et typologie
  * l'annotation syntaxique et lexicale
  * analyse du sentiment et sa généralisation
@@ -77,7 +78,6 @@ En voici la présentation  systématique.
  * Covid : le corpus confinement jour, ainsi que celui de Banda.
  * PMP : titre et abstract de tout les article de la revue "Politique et Management Public" de 1982 à 2020. Le corpus a été constitué à l'inititive de Manel Benzarafa avec le soutien de la revue et des ses éditeurs.
  * David Bowie : Les articles des magazines musicaux relatif à ,la sortie des 23 album de l'artiste. Constitué par Elias Benavent.
- 
  * Appli de fitness
  * Langages / Julien
 
@@ -87,11 +87,11 @@ L'ensemble des codes et données sont disponibles dans le [repositery NLP Book](
 
 Ce  _livre_ est écrit en **Markdown** [@allaire_rmarkdown_2021] et construit avec le package **Bookdown** [@R-bookdown].
 
-Le code s'appuie très largement sur **tidyverse** et emploie largement les ressources de [**`ggplot`**](https://ggplot2.tidyverse.org/reference/index.html) et de [**`dplyr`**](https://dplyr.tidyverse.org/) . On recommande d'étudier ces deux ressources en parallèle.
+Le code s'appuie très largement sur `tidyverse` et emploie largement les ressources de [`ggplot`](https://ggplot2.tidyverse.org/reference/index.html) et de [`dplyr`](https://dplyr.tidyverse.org/) . On recommande d'étudier ces deux ressources en parallèle.
 
 Une mention particulière doit être faite sur la question du traitement du texte dont [`stringr`](https://stringr.tidyverse.org/articles/stringr.html) est un des outils fondamentaux, même si ardu. Il propose une multitude de fonctions pour traiter les chaînes de caractères. Son étude est recommandée de concert avec la connaissance des [regex](https://stringr.tidyverse.org/articles/regular-expressions.html). 
 
-D'autres outils transersaux sont utilisés dans le manuel. Pour les tableaux, nous opterons la plus part du temps pour les solutions de `flextable`. 
+D'autres outils transversaux sont utilisés dans le manuel. Pour les tableaux, nous opterons la plus part du temps pour les solutions de `flextable`. 
 
 On supposera que les lecteurs ont une connaissance satisfaisante de ces outils génériques, mais à chaque fois qu'on les introduira, on les expliquera.
 
@@ -192,7 +192,6 @@ theme_set(theme_bw())
 
 
 library(udpipe)
-library(quanteda)
 library(quanteda.textmodels)
 library(Rtsne)
 library(NMF)

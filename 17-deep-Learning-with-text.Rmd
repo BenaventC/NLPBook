@@ -1,65 +1,159 @@
-# Deep Learning
+# Deep Learning pour le texte
 
-Pour l'utilisateur en sciences sociales même si le deep learning est accessible dans un environnement r, et nous examinerons les possibilités offertes par keras, construire son modèle de langage est sans doute hors de portée. Il s'agira donc le plus souvent d'employer des modèles pré-entrainés, et éventuellement de les réentrainer sur nos coprus de données.
+A certains égards le deep-learning diffère peu du machine learning, dans le sens d'un effort à prédire bien à partir d'un vaste ensemble de données qui permet des structures plus complexes que celle des des techniques de machine-learning traditionnelles. 
+
+Ces structures peuvent être appréhendée en termes de nombres de paramètres qui passent de quelques milliers à des centaines de milliers, et même des centaines de milliards pour les LLM. La quantité ne fait pas tout, il y a aussi un mode de traitement des données qui se structure en deux temps : la construction de features, et leur inception dans des modèles denses de neurones, la composante prédictive.
+
+La poussée du deep-learning s'est d'abord manifestée dans le traitement de l'image. Un inivers de données dense, puisque pour une images, qui se présente comme une matrice de pixels, l'information est présente partout. Pour le texte, nous avons déjà observé qu'elle était rare : l'encodage primaire d'un texte est sparse. Mais revenons à la question de l'image. La percée des années 2010 2015 s'est faite largement sur l'idée de convolution, et plus généralement que l'analyse de l'image passe par un éclatement de l'image au travers de multiples transformation. Chaque transformation apporte un nouveau feature.  
+
+Pour le texte l'équivalent est sans doute la vectorisation, mais la particularité des modèles de deep learning se trouve certainement dans la capacité à prendre en compte le caractère séquentiel des textes. 
+
+Pour l'utilisateur en sciences sociales même si le deep learning est accessible dans un environnement r, et nous examinerons les possibilités offertes par *keras*, construire son modèle de langage est sans doute hors de portée. Il s'agira donc le plus souvent d'employer des modèles pré-entrainés, et éventuellement de les ré-entraîner sur nos corpus.
+
+## Des considérations générales
+
+Avant d'attaquer la structure de ces architectures, il est utile de se pencher sur quelques idées clés
+
+### Une révolution technologique : les LLM
+
+vectorisation
+
+### la notion de tâche
+
+La notion de tâche est intéressante car elle structure le développement des méthodes contemporaines de NLP. Il s'agit d'un problème caractérisé et de portée générale. Le site Huggingface en fait une ontologie assez précises, examinons les principales.
+
+* La **classification** consiste a attribué une valeur à un bloc de texte: c'est l'exemple typique de analyse du sentiment, mais aussi de la détermination des POS, de la détection du langage, etc. 
+* Zero shot classification, qui est une généralisation de la tâche précédente.
+* Le **résumé** : réduire un texte ou du moins l'extraction des principaux mots clés.
+* La **traduction** ou il s'agit d'établir des correspondances phrase à phrase.
+* La **prédiction** du mot ou des mots suivants au plus simple dans les système d'auto-complétion, ou de manière plus forte dans les AI générative qui rédige un texte à la suite d'un germe proposé (le prompt), c'est la dimension générative
+* Les Q&A
+* les modèles à trous
+* 
+ 
+ Mais bien d'autres tâches peuvent être envisagées.
+ 
+* La ponctuation, ou plus largement la détection de chunk, de groupe grammaticaux : groupes nominaux et verbaux 
+
+### La naissance d'un champs
+
+Le deep-learning n'est pas qu'un question de modèles, de mathématiques, de données. C'est aussi un champs social, professionnel, autant façonné par son économie, il promet des gains de productivités auxquelles les investisseurs ne sont pas indifférent, que par ses institutions naissantes, ses acteurs et une certaine culture. Il est aussi un fait social, un champs social dans leqyuel certains acteurs clés doivent être identifiés.  
+
+* Des langages communs : python, r, tensorflow, ...
+* Le rôle des plateformes : google, facebook, open.AI ...
+* Le nœud de HuggingFace, les échanges sur stalk over ..., kaggle, 
+* Une part de science participative. Le cas de Chatgpt évalué par une masse d'usagers qui indiqueront rapidement l'utilité des réponses pour consolider la mécanique de renforcement . 
 
 
-## L'environnement keras
+## Les architectures du texte :  des RNN, aux Transformers.
 
-l'interface de r pour [Keras](https://keras.rstudio.com/)
+Les évolutions de ces 20 dernières années se caractérisent par la recherche d'architectures qui prennent en comptent la structure du texte : les mots se présentent de manière séquentielle. Le modèle RNN, et le LSTM qui pallie à sa faiblesse principale : l'oubli, marquent une première vague d'architecture, plus fine, et plus adaptée que les modèles brutaux de réseaux de neurones et d'un texte conçu comme un sac de mot. 
+
+Comprendre le texte ( la parole) va devoir prendre en compte la séquence des tokens, et leur structure syntaxique implicite. En prenant en compte l'ordre d'apparition, et en comptant sur les régularités syntaxique, on peut espérer mieux saisir le sens, en introduisant dans les modèles la dimension séquentielles des énoncés.
+
+Cependant, l'esprit humain  ne procède pas de manière linéaire, le sens ne vient pas de l'accumulation des mots mais se décide une fois la phrase conclue. On sait par les travaux de la linguistique (cf leçon du Collège de France), que la structure des phrase est hiérarchique (les arbres syntaxique). On peut supposer que comprendre est un processus qui à la volée  hiérarchise les termes et sans doute les prédits, réactualisant le sens à chaque mot qui s'ajoute. Faisons l'expérience mentale de lire la phrase suivante mot à mot "le chat bondit sur la commode" . En s'aidant de nos images mentales, on s'aperçoit qu'en trois mouvements, le sens émerge, sans s'épuiser. Pour les machines, ces structures sont contenues dans la corrélation à toutes les distances (dans les limites de la longueur de la phrase). 
+
+Mais à ce stade, la hiérarchisation temporelle promet une amélioration de l'analyse. Deux solutions méritent d’être développées. La première est celle des Rnn, la seconde introduit un double contrôle temporel. 
+
+Néanmoins, il semble qu'il y ai en matière de modèle de langue un vainqueur, et c'est l'approche des *Transformers* dont le cœur est au-delà de la séquence, la capacité à attribuer des relations entre les éléments d'une séquence de texte, il s'agit du  mécanisme de l'attention. L'idée statistique que les mots au sein d'une séquences entretiennent des relations privilégiées : il peut s'agit de relation syntaxique : le verbe est après le sujet, de relation lexicale rouge est souvent la couleur de la rose, de co-références, elle est la rose dans le vers. 
+
+"Et mon amie la rose
+Me l'a dit ce matin
+À l'aurore je suis née"
+
+Sans compter que le matin relève de l'aurore, une éclosion. Une amie qui vient de naître. 
+
+### rnn et ltsm
+
+Il était logique que les réseaux de neurones récursifs soient la première architecture à obtenir des résultats intéressants. Leur caractère auto-régressif permet de tirer profit de la séquence des mots.
+
+C'est à première vue un réseau de neurone à couches cachées. Dans le schéma il n'y en a qu'une, mais la particularité est que le neurone n-1, est une entrée du neurone n . 
+
+Généralement les mots ne sont pas entré tels quels, mais re-encodés. La manière la plus simple de le faire est le hot encoding qui consiste simplement à coder un vecteur de longueur du vocabulaire par un 1 et des zéro. Cependant cette méthode demande un vecteur de grande taille : 10 000 si le vocabulaire est de 10000 ! On peut préféré condenser l'information dans un nombre plus réduits de vecteurs. C'est justement un des intérêts de *Word2vec* que l'on a étudié au chapitre X. Les valeurs $X_i$ dans le schéma représentent ces vecteurs.
+
+A chaque flèche est associé un poids, qui va définir la valeur du neurone $h_i$. 
+
+```{r}
+library(DiagrammeR)
+mermaid("
+flowchart LR
+X1-->H1
+X2-->H2
+X3-->H3
+subgraph a [input]
+    Une-->X1
+    Belle-->X2 
+    Affaire-->X3 
+   end
+subgraph hidden
+    H1-->H2
+    H2-->H3
+    H1-->H3
+    H1-->W1
+    H2-->W2
+    H3-->W3
+    end
+subgraph output
+    W1-->Positif 
+    W2-->Positif 
+    W3-->Positif 
+    end
+")
 
 
-### Les fonctions principales
-
- * cpu et gpu
- * 
-
-### Un premier exemple
-
-lequel?
-
-### Un deuxième exemple
-
-Lequel?
+```
 
 
 
-## Les architectures du texte : RNN, LTSM, Transformer et Reformer
+https://cran.r-project.org/web/packages/rnn/index.html
 
-Les évolutions de ces 10 dernières années se caractèreisent par la recherche d'architectures qui prennent en comptent la structure du texte : il y a un ordre séquentiel : les mots font sens quand on les lis ou les entends après une succision d'ordre mots dont on connait les règles de composition. 
+https://www.kaggle.com/code/rtatman/beginner-s-intro-to-rnn-s-in-r
 
-
-### rnn
-
-Il était logique que les rnn soient la première architecture qui a rendu des résultats intéressants. Leur acaractère autorégressif
-
-### ltsm
-
-Les ltsm on apportant une amélioration en prenant en compte des coorélations immédiates mais aussi plus lointaine dans le régl&age de l'oubli et de la mémoire
+https://databricks-prod-cloudfront.cloud.databricks.com/public/4027ec902e239c93eaaa8714f173bcfc/2961012104553482/4462572393058228/1806228006848429/latest.html
 
 
-### transformer
 
-L'innovation des transformer, fondée sur des modèles a trou.....
+exemple :  classification ( avec comparaison avec un RF - voir avant)
+
+Les Ltsm on apportant une amélioration en prenant en compte des corrélations immédiates mais aussi plus lointaines dans le réglage de l'oubli et de la mémoire. ceci est réalisé par ce mécanisme
+
+graph ltsm
 
 
-### reformer
 
-Les reformer étendent l'échelle des corrélations possibles. Parfois ce qui donne le sens d'un texte après 500 mots est peut _être le premier, même si nous ne l'ons pas perçu, il devient le contexte de la chute par exemple.
+### Transformer : attention is all you need
 
-exemple?
+Un article essentiel est apparu en 2018. "Attention is all you need" est la promesse. 
+
+
+D'une certaine manière les transformers sont une vectorisation plus complexe, mais de même nature que les word2vec que nous avons étudiés dans le chapitre XXX. Chaque terme ( mot) est encodé dans un vecteur de k dimension mais ce vecteur peut varier selon la position.
+
+Le cœur des Transformers est le mécanisme d'attention et d'auto-attention [@vaswani_attention_2017]. Il s'agit en fait pour le modèle  de déterminer au sein d'une phrase les corrélations, à différentes échelles, entre tous les mots. 
+
+[visualisation]()
+
+https://stats.stackexchange.com/questions/421935/what-exactly-are-keys-queries-and-values-in-attention-mechanisms
+
+Il s'appuie sur le concept de clé/valeur/requête qui est analogue aux systèmes de recherche. Par exemple, lorsque vous recherchez des vidéos sur Youtube, le moteur de recherche compare votre requête (texte dans la barre de recherche) à un ensemble de clés (titre de la vidéo, description, etc.) associées aux vidéos candidates dans sa base de données, puis vous présente les vidéos les mieux adaptées (valeurs).
+
+https://jalammar.github.io/illustrated-transformer/
 
 
 
 ## Les cas d'applications remarquables
 
-### Detection d'intention
-
-quand la théorie des actes de langages rencontre l'informatique
-
-### détection de toxicité des contenus
 
 
-### la detection des trolls
+### Détection d'intention
+
+Quand la théorie des actes de langages rencontre l'informatique
+
+### Détection de toxicité des contenus
+
+le cas de perspective
+
+la detection des trolls
+
 
 ### détection des sophismes et autres fallacies
 
@@ -75,6 +169,30 @@ triplet
 
 
 
+## deep langage learning with r 
+
+L'environnement keras
+
+l'interface de r pour [Keras](https://keras.rstudio.com/)
 
 
+### Un premier exemple
+
+lequel?
+
+### Un deuxième exemple
+
+Lequel?
+
+
+## Prompting
+
+Au-delà de la performance les LLM apportent un nouveau usage avec la technique du prompting- engineering, qui permet en quelques exemples, quelques dizaines, d'ajuster finement (fine tuning) le modèle à un problème spécifique. 
+
+https://towardsdatascience.com/almost-no-data-and-no-time-unlocking-the-true-potential-of-gpt3-a-case-study-b4710ca0614a
+
+
+https://theo.delemazure.fr/blog/degaucheoudedroite/histoire.html
+
+https://theo.delemazure.fr/blog/degaucheoudedroite/histoire.html
 

@@ -61,7 +61,6 @@ data<-df %>%
 #calcul de la mediane du nombre de retweets
 
 median<-round(median(data$retweets),1)
-
 # codage des tweets au dessus et en dessous de la médiane
 data<-data %>% 
   mutate(retweets_cl=ifelse(retweets>median, "yes","no"))
@@ -149,7 +148,6 @@ data_df_test <- data_dtm[-trainIndex, ] %>% as.matrix() %>% as.data.frame() #on 
 
 response_train <- meta$top[trainIndex] #on définit l'annotation
 
-trctrl <- trainControl(method = "cv",5, classProbs=TRUE, savePredictions = TRUE) # on définit la stratégie d'entrainement. Ici on utilise une méthode de cross validation fondée sur un découpage en 5 échantillons. 
 ```
 
 ### Un modèle naive bayes
@@ -166,6 +164,10 @@ On entraine le modèle avec un [lissage  de Laplace]()[https://towardsdatascienc
 
 
 ```{r 1205, fig.cap='', out.width='80%', fig.asp=1, fig.align='center', fig.width=9}
+
+trctrl <- trainControl(method = "cv",5, classProbs=TRUE, savePredictions = TRUE) # on définit la stratégie d'entrainement. Ici on utilise une méthode de cross validation fondée sur un découpage en 5 échantillons. 
+
+
 nb_mod <- train(x = data_df_train,
                 y = as.factor(response_train),
                 method = "naive_bayes",

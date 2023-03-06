@@ -261,3 +261,9 @@ sommaire
 cas-1
 cas-2
 cas-3
+int_topic
+evolution-en-fonction-de-la-variable-de-prévalence
+json
+xml
+r-markdown
+including-plots
